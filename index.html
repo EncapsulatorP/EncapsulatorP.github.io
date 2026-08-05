@@ -1,701 +1,300 @@
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="theme-color" content="#ff7a1a" />
-<title>EncapsulatorP — Open Computational Mathematics</title>
-<meta name="description" content="An open computational mathematics organization for reproducible experiments, public challenge proposals, independent replication, and collaborative work on hard discrete problems." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>EncapsulatorP — computational number theory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --paper:#fff5df;
-  --paper-2:#ffe9bf;
-  --paper-3:#fffdf7;
-  --ink:#160f08;
-  --ink-soft:#5c4932;
-  --muted:#8b7452;
-  --black:#0b0708;
-  --yellow:#ffc21f;
-  --orange:#ff7a1a;
-  --coral:#ff4d6d;
-  --pink:#ff2e8b;
-  --lime:#b6f000;
-  --lime-2:#cfff52;
-  --cyan:#12cbb6;
-  --grape:#8766ff;
-  --line:#e2c991;
-  --prism:linear-gradient(90deg,var(--pink),var(--grape),var(--cyan),var(--lime));
-  --sunset:linear-gradient(145deg,#ffd33f 0%,#ffad1f 25%,#ff7a1a 50%,#ff4d6d 76%,#d84295 100%);
-  --barcode:repeating-linear-gradient(90deg,var(--black) 0 7px,transparent 7px 12px,var(--black) 12px 15px,transparent 15px 27px,var(--black) 27px 40px,transparent 40px 45px,var(--black) 45px 49px,transparent 49px 61px);
-  --radius:18px;
-  --shadow:8px 8px 0 var(--black);
-  --maxw:1160px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  color:var(--ink);
-  background:var(--paper);
-  font-family:"IBM Plex Sans",system-ui,sans-serif;
-  font-size:17px;
-  line-height:1.62;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
-a{color:inherit}
-button,input{font:inherit}
-::selection{background:var(--lime-2);color:var(--black)}
-.wrap{width:min(var(--maxw),calc(100% - 48px));margin-inline:auto}
-.mono{font-family:"IBM Plex Mono",monospace}
-.eyebrow{
-  margin:0;
-  font-family:"IBM Plex Mono",monospace;
-  font-size:11.5px;
-  line-height:1.4;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  font-weight:600;
-}
-.skip-link{position:absolute;left:-999px;top:12px;z-index:100;background:var(--black);color:white;padding:10px 14px;border-radius:8px}
-.skip-link:focus{left:12px}
-
-/* navigation */
-.nav-shell{position:absolute;inset:0 0 auto;z-index:20;padding:20px 0}
-.nav{display:flex;align-items:center;gap:24px}
-.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;letter-spacing:.1em}
-.brand-mark{display:grid;place-items:center;width:38px;height:38px;border:2px solid var(--black);border-radius:11px;background:var(--lime);box-shadow:3px 3px 0 var(--black);font-family:"Fraunces",serif;font-size:24px;font-weight:700}
-.brand-name strong{background:var(--black);color:white;padding:2px 6px;border-radius:5px}
-.nav-links{display:flex;align-items:center;gap:21px;margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600}
-.nav-links a{text-decoration:none;border-bottom:2px solid transparent}
-.nav-links a:hover{border-color:var(--black)}
-.nav-cta{padding:10px 14px!important;border:2px solid var(--black)!important;border-radius:10px;background:var(--black);color:var(--lime-2)}
-
+:root{--paper:#FFF4DD;--tint:#FFEAC1;--card:#FFFDF7;--ink:#1A1206;--soft:#5A4A31;--muted:#8A7452;
+--yellow:#FFC21F;--orange:#FF7A1A;--coral:#FF4D6D;--pink:#FF2E8B;--lime:#B6F000;--lime2:#C7FF48;--cyan:#12CBB6;--blue:#5B6CFF;--violet:#8766FF;--blk:#0B0708;
+--prism:linear-gradient(90deg,#FF2E8B,#8766FF,#12CBB6,#B6F000);
+--barcode:repeating-linear-gradient(90deg,#0B0708 0 7px,transparent 7px 12px,#0B0708 12px 15px,transparent 15px 27px,#0B0708 27px 40px,transparent 40px 45px,#0B0708 45px 49px,transparent 49px 61px);--mw:1120px;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}::selection{background:var(--lime2);color:var(--blk)}
+.wrap{max-width:var(--mw);margin:0 auto;padding:0 24px}
+.kick{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc,var(--coral))}
+h2.t{font-family:"Fraunces",serif;font-weight:700;font-size:clamp(2rem,5.2vw,3rem);letter-spacing:-.02em;line-height:1.02;margin:8px 0 18px}
+h2.t em{font-style:italic;color:var(--acc,var(--coral))}
+.lead{max-width:64ch;font-size:1.08rem;color:var(--soft);line-height:1.62;margin:0 0 18px}
+.lead b{color:var(--ink)}
+/* nav */
+.nav{position:sticky;top:0;z-index:60;background:var(--blk);border-bottom:3px solid transparent;border-image:var(--prism) 1}
+.nav .in{max-width:var(--mw);margin:0 auto;padding:10px 18px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.nav .lg{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.12em;color:#fff;margin-right:auto;font-weight:600}
+.nav .lg b{background:var(--lime2);color:var(--blk);padding:2px 5px;border-radius:4px}
+.nav a{font-family:"IBM Plex Mono",monospace;font-size:11.5px;text-decoration:none;color:#C9B48C;padding:5px 10px;border-radius:8px;transition:color .15s}
+.nav a:hover{color:var(--lime2)}
 /* hero */
-.hero{position:relative;min-height:100svh;display:grid;align-items:center;overflow:hidden;background:var(--sunset);border-bottom:4px solid var(--black)}
-.hero::after{content:"";position:absolute;inset:auto 0 0;height:125px;background:var(--barcode);opacity:.12;mask-image:linear-gradient(transparent,#000);pointer-events:none}
-#hero-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1}
-.hero-veil{position:absolute;inset:0;z-index:2;background:radial-gradient(100% 95% at 5% 48%,rgba(255,216,71,.97) 0%,rgba(255,173,31,.72) 38%,rgba(255,77,109,.08) 72%,transparent 100%),linear-gradient(180deg,rgba(255,255,255,.08),transparent 74%,rgba(255,245,223,.34));pointer-events:none}
-.hero-content{position:relative;z-index:3;padding:132px 0 74px}
-.hero-copy{max-width:810px}
-.hero .eyebrow{color:var(--black);margin-bottom:22px}
-h1{margin:0;max-width:11ch;font-family:"Fraunces",serif;font-size:clamp(4rem,11vw,8.7rem);font-weight:700;line-height:.84;letter-spacing:-.045em;color:var(--black)}
-h1 em{font-weight:600;font-style:italic;background:var(--prism);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 rgba(11,7,8,.18))}
-.hero-lede{max-width:670px;margin:28px 0 14px;font-size:clamp(1.08rem,2.25vw,1.34rem);line-height:1.48;font-weight:500;color:var(--black)}
-.hero-lede strong{background:var(--black);color:var(--lime-2);padding:1px 6px;border-radius:5px}
-.hero-note{max-width:720px;margin:0;color:rgba(11,7,8,.78);font-family:"IBM Plex Mono",monospace;font-size:12.5px}
-.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 19px;border:2px solid var(--black);border-radius:12px;text-decoration:none;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;transition:transform .16s,box-shadow .16s,background .16s,color .16s}
-.btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--black)}
-.btn.primary{background:var(--black);color:var(--lime-2)}
-.btn.secondary{background:rgba(255,255,255,.46);color:var(--black)}
-.btn.light{background:var(--paper-3);color:var(--black)}
-.btn.ghost{border-color:#514331;color:#f8ecd8;background:transparent}
-.btn.ghost:hover{border-color:var(--lime-2);color:var(--lime-2);box-shadow:4px 4px 0 var(--lime-2)}
-.hero-signals{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}
-.signal{display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border:1.5px solid rgba(11,7,8,.62);border-radius:999px;background:rgba(255,255,255,.25);font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600}
-.signal::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--black)}
-
-.zebra{height:34px;background:var(--barcode);position:relative}
-.zebra::after{content:"";position:absolute;inset:auto 0 0;height:4px;background:var(--prism)}
-
-/* sections */
-section{padding:88px 0}
-section.alt{background:var(--paper-2)}
-section.dark{background:var(--black);color:var(--paper)}
-.sec-head{max-width:780px;margin-bottom:36px}
-.sec-head .eyebrow{color:var(--coral)}
-.dark .sec-head .eyebrow{color:var(--lime-2)}
-.sec-title{margin:9px 0 0;font-family:"Fraunces",serif;font-size:clamp(2.3rem,5.3vw,3.8rem);line-height:.98;letter-spacing:-.025em;font-weight:700}
-.sec-title em{font-style:italic;background:var(--prism);-webkit-background-clip:text;background-clip:text;color:transparent}
-.sec-sub{max-width:690px;margin:15px 0 0;color:var(--ink-soft);font-size:1.07rem}
-.dark .sec-sub{color:#cdbd9f}
-
-/* mission */
-.mission-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.mission-card{position:relative;min-height:250px;padding:24px;border:2px solid var(--black);border-radius:var(--radius);background:var(--paper-3);box-shadow:6px 6px 0 var(--black);overflow:hidden}
-.mission-card::before{content:attr(data-num);position:absolute;right:12px;top:-18px;font-family:"Fraunces",serif;font-size:90px;font-weight:700;color:rgba(11,7,8,.06)}
-.mission-icon{display:grid;place-items:center;width:42px;height:42px;border:2px solid var(--black);border-radius:12px;background:var(--accent,var(--yellow));font-family:"IBM Plex Mono",monospace;font-weight:600}
-.mission-card h3{margin:22px 0 8px;font-family:"Fraunces",serif;font-size:1.45rem;line-height:1.05}
-.mission-card p{margin:0;color:var(--ink-soft);font-size:14.5px;line-height:1.55}
-
-/* live lab */
-.lab{display:grid;grid-template-columns:.9fr 1.1fr;gap:34px;padding:34px;border:2px solid #3d3023;border-radius:24px;background:#110c0a;box-shadow:10px 10px 0 rgba(255,122,26,.38)}
-.lab-copy h3{margin:12px 0 13px;font-family:"Fraunces",serif;font-size:clamp(2rem,4.4vw,3rem);line-height:.98}
-.lab-copy h3 em{color:var(--lime-2)}
-.lab-copy p{margin:0 0 20px;color:#d5c5aa}
-.lab-form{display:flex;gap:10px}
-.lab-form input{min-width:0;flex:1;padding:12px 14px;border:1px solid #4b3b2d;border-radius:11px;background:#1b130e;color:white;font-family:"IBM Plex Mono",monospace}
-.lab-form input::placeholder{color:#8d785a}
-.lab-form button{padding:0 18px;border:0;border-radius:11px;background:var(--lime-2);color:var(--black);font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;cursor:pointer}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px}
-.chip{padding:5px 10px;border:1px solid #4b3b2d;border-radius:999px;background:transparent;color:#c8b594;font-family:"IBM Plex Mono",monospace;font-size:11px;cursor:pointer}
-.chip:hover{border-color:var(--coral);color:var(--coral)}
-.lab-screen{display:flex;flex-direction:column}
-#collatz-canvas{width:100%;height:245px;border:1px solid #3d3023;border-radius:14px;background:#070506}
-.readout{display:flex;flex-wrap:wrap;gap:26px;margin-top:14px;font-family:"IBM Plex Mono",monospace}
-.readout span{display:block}
-.readout .label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8d785a}
-.readout .value{font-size:18px;color:var(--lime-2)}
-.verdict{min-height:1.5em;margin-top:9px;color:var(--yellow);font-family:"IBM Plex Mono",monospace;font-size:12px}
-
-/* repositories */
-.repo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
-.repo-card{position:relative;display:flex;flex-direction:column;min-height:275px;padding:22px;border:2px solid var(--black);border-radius:var(--radius);background:var(--paper-3);text-decoration:none;transition:transform .16s,box-shadow .16s;overflow:hidden}
-.repo-card:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--accent,var(--coral))}
-.repo-card::before{content:"";position:absolute;inset:0 auto 0 0;width:6px;background:var(--accent,var(--coral))}
-.repo-top{display:flex;align-items:flex-start;gap:10px}
-.repo-name{font-family:"IBM Plex Mono",monospace;font-size:14px;font-weight:600;line-height:1.35;overflow-wrap:anywhere}
-.repo-status{margin-left:auto;flex:0 0 auto;padding:3px 8px;border:1px solid var(--line);border-radius:999px;color:#4d7900;background:#efffc8;font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase}
-.repo-topic{margin:13px 0 10px;color:var(--coral);font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:600}
-.repo-card p{margin:0;color:var(--ink-soft);font-size:14px;line-height:1.55;flex:1}
-.repo-foot{display:flex;justify-content:space-between;align-items:center;margin-top:18px;color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:10.5px}
-.repo-foot .open{color:var(--ink);font-weight:600}
-.repo-more{display:grid;place-items:center;text-align:center;border-style:dashed;background:transparent}
-.repo-more::before{display:none}
-.repo-more strong{font-family:"Fraunces",serif;font-size:1.8rem}
-
-/* workflow */
-.workflow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:2px solid var(--black);border-radius:var(--radius);background:var(--paper-3);overflow:hidden;box-shadow:var(--shadow)}
-.step{position:relative;padding:24px 20px;min-height:250px;border-right:1px solid var(--line)}
-.step:last-child{border-right:0}
-.step-num{display:grid;place-items:center;width:35px;height:35px;border:2px solid var(--black);border-radius:10px;background:var(--accent,var(--yellow));font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600}
-.step h3{margin:20px 0 9px;font-family:"Fraunces",serif;font-size:1.35rem;line-height:1.05}
-.step p{margin:0;color:var(--ink-soft);font-size:13.5px;line-height:1.55}
-.contract{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:32px}
-.contract-card{padding:22px;border:2px solid var(--black);border-radius:var(--radius);background:var(--paper-3)}
-.contract-card h3{margin:0 0 9px;font-family:"Fraunces",serif;font-size:1.45rem}
-.contract-card p{margin:0;color:var(--ink-soft);font-size:14px}
-.contract-list{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:15px}
-.contract-list span{display:flex;gap:8px;align-items:flex-start;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-soft)}
-.contract-list span::before{content:"✓";color:#3f7a00;font-weight:600}
-
-/* contribution */
-.contrib-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.contrib-card{padding:24px;border:1px solid #443628;border-radius:var(--radius);background:#130d0a}
-.contrib-card .role{display:inline-block;padding:4px 8px;border-radius:6px;background:var(--accent,var(--lime-2));color:var(--black);font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
-.contrib-card h3{margin:18px 0 9px;font-family:"Fraunces",serif;font-size:1.5rem}
-.contrib-card p{margin:0;color:#cdbd9f;font-size:14px}
-.contrib-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-
-/* challenge board */
-.call-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
-.call-board{border:2px solid var(--black);border-radius:var(--radius);background:var(--paper-3);box-shadow:var(--shadow);overflow:hidden}
-.call-row{display:grid;grid-template-columns:140px 1fr auto;gap:18px;align-items:center;padding:19px 21px;border-bottom:1px solid var(--line)}
-.call-row:last-child{border-bottom:0}
-.call-type{font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--coral)}
-.call-row strong{font-size:15px}
-.call-row p{margin:3px 0 0;color:var(--ink-soft);font-size:13.5px}
-.call-tag{padding:4px 8px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:10px;white-space:nowrap}
-.invite{padding:29px;border:2px solid var(--black);border-radius:var(--radius);background:var(--sunset);box-shadow:var(--shadow)}
-.invite h3{margin:0 0 10px;font-family:"Fraunces",serif;font-size:2rem;line-height:1}
-.invite p{margin:0 0 22px;color:var(--black);font-weight:500}
-
-/* labels / governance */
-.labels-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
-.legend{list-style:none;margin:0;padding:0;border-top:2px solid var(--black)}
-.legend li{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:15px 0;border-bottom:1px solid var(--line)}
-.lname{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
-.legend p{margin:0;color:var(--ink-soft);font-size:13.5px}
-.governance{padding:26px;border:2px solid var(--black);border-radius:var(--radius);background:var(--paper-3);box-shadow:var(--shadow)}
-.governance h3{margin:0 0 11px;font-family:"Fraunces",serif;font-size:1.7rem}
-.governance p{margin:0 0 14px;color:var(--ink-soft);font-size:14px}
-.gov-list{list-style:none;margin:0;padding:0}
-.gov-list li{display:flex;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-soft)}
-.gov-list li::before{content:"→";color:var(--coral);font-family:"IBM Plex Mono",monospace;font-weight:600}
-
-/* final cta */
-.final-cta{padding:72px 0;background:var(--sunset);border-top:4px solid var(--black);border-bottom:4px solid var(--black)}
-.final-box{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}
-.final-box h2{margin:0;font-family:"Fraunces",serif;font-size:clamp(2.6rem,6vw,5rem);line-height:.9;letter-spacing:-.03em}
-.final-box p{max-width:650px;margin:16px 0 0;color:var(--black);font-weight:500}
-.final-actions{display:flex;flex-direction:column;gap:10px;min-width:230px}
-
-footer{padding:50px 0 60px;background:var(--paper-2)}
-.foot{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end}
-.foot-title{font-family:"Fraunces",serif;font-size:2.1rem;font-weight:700}
-.foot-title span{background:var(--prism);-webkit-background-clip:text;background-clip:text;color:transparent}
-.foot-copy{max-width:610px;margin-top:7px;color:var(--muted);font-size:14px}
-.foot-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:16px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:600}
-.foot-links a{text-decoration:none;border-bottom:1px solid transparent}
-.foot-links a:hover{border-color:var(--ink)}
-
-:focus-visible{outline:3px solid var(--grape);outline-offset:3px}
-
-@media(max-width:960px){
-  .nav-links a:not(.nav-cta){display:none}
-  .mission-grid{grid-template-columns:repeat(2,1fr)}
-  .repo-grid{grid-template-columns:repeat(2,1fr)}
-  .workflow{grid-template-columns:repeat(2,1fr)}
-  .step{border-bottom:1px solid var(--line)}
-  .step:nth-child(2n){border-right:0}
-  .step:last-child{grid-column:1/-1;min-height:auto;border-bottom:0}
-  .contrib-grid{grid-template-columns:repeat(2,1fr)}
-  .call-grid,.labels-grid{grid-template-columns:1fr}
-}
-@media(max-width:720px){
-  body{font-size:16px}
-  .wrap{width:min(100% - 32px,var(--maxw))}
-  section{padding:62px 0}
-  .nav-shell{padding-top:14px}
-  .brand-name{display:none}
-  .nav-cta{font-size:10.5px;padding:9px 11px!important}
-  .hero-content{padding:112px 0 58px}
-  h1{font-size:clamp(3.6rem,18vw,5.6rem)}
-  .cta-row{flex-direction:column;align-items:stretch}
-  .mission-grid,.repo-grid,.contrib-grid,.contract{grid-template-columns:1fr}
-  .lab{grid-template-columns:1fr;padding:21px;box-shadow:6px 6px 0 rgba(255,122,26,.38)}
-  .lab-form{flex-direction:column}
-  .lab-form button{min-height:43px}
-  .workflow{grid-template-columns:1fr}
-  .step,.step:nth-child(2n){min-height:auto;border-right:0;border-bottom:1px solid var(--line)}
-  .step:last-child{grid-column:auto}
-  .contract-list{grid-template-columns:1fr}
-  .call-row{grid-template-columns:1fr;gap:5px}
-  .call-tag{justify-self:start}
-  .legend li{grid-template-columns:112px 1fr;gap:10px}
-  .final-box,.foot{grid-template-columns:1fr}
-  .final-actions{min-width:0}
-  .foot-links{justify-content:flex-start}
-}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-}
-</style>
-</head>
+.hero{background:var(--blk);color:var(--paper);position:relative;overflow:hidden;padding:96px 0 84px}
+.hero .bars{position:absolute;inset:0;background:var(--barcode);opacity:.10}
+.hero .wrap{position:relative}
+.hero h1{font-family:"Fraunces",serif;font-weight:700;font-size:clamp(3rem,10vw,6.6rem);line-height:.9;letter-spacing:-.03em;margin:0 0 20px;color:#fff}
+.hero h1 em{font-style:italic;font-weight:500;background:var(--prism);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:52ch;font-size:clamp(1.05rem,2.4vw,1.28rem);color:#E9D9C0;margin:0 0 12px}
+.hero .tag{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--lime2);letter-spacing:.04em;margin-top:14px}
+.hero .ky{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:22px}
+/* section shells */
+.sec{padding:84px 0;position:relative}
+.bg-cream{background:var(--paper)}.bg-tint{background:var(--tint)}.bg-dark{background:var(--blk);color:var(--paper)}
+.bg-dark .lead{color:#E4D6BE}.bg-dark .lead b{color:#fff}.bg-dark h2.t{color:#fff}
+.zebra{height:30px;background:var(--barcode);position:relative}.zebra::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--prism)}
+/* canvases / screens */
+.screen{border:2px solid var(--blk);border-radius:18px;overflow:hidden;background:#08060a;box-shadow:10px 10px 0 rgba(11,7,8,.16)}
+.bg-dark .screen{border-color:#2a2320;box-shadow:10px 10px 0 rgba(255,122,26,.18)}
+canvas.viz{display:block;width:100%}
+.split{display:grid;grid-template-columns:0.95fr 1.05fr;gap:34px;align-items:center}
+.readbar{display:flex;flex-wrap:wrap;gap:24px;margin-top:14px;font-family:"IBM Plex Mono",monospace}
+.readbar .k{display:block;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.readbar .v{font-size:17px;color:var(--acc,var(--ink));font-weight:600}
+.bg-dark .readbar .k{color:#8a7452}
+.cap{margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);max-width:70ch;line-height:1.6}
+.gleg{display:flex;flex-wrap:wrap;gap:16px;margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--soft)}
+.gleg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:middle}
+/* interactive controls */
+.feed{display:flex;gap:10px;margin:14px 0}
+.feed input{flex:1;min-width:0;font-family:"IBM Plex Mono",monospace;font-size:15px;background:#17110b;border:1px solid #3a2f22;border-radius:11px;color:var(--paper);padding:12px 14px}
+.feed button{font-family:"IBM Plex Mono",monospace;font-size:13.5px;font-weight:600;cursor:pointer;color:var(--blk);background:var(--acc,var(--lime2));border:none;border-radius:11px;padding:0 20px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{font-family:"IBM Plex Mono",monospace;font-size:12px;cursor:pointer;color:#C9B48C;background:transparent;border:1px solid #3a2f22;border-radius:20px;padding:5px 12px}
+.chip:hover{border-color:var(--acc,var(--coral));color:var(--acc,var(--coral))}
+.verdict{margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--yellow);min-height:1.2em}
+/* three regime cards */
+.regimes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.reg{position:relative;background:var(--card);border:2px solid var(--blk);border-radius:14px;padding:18px;overflow:hidden}
+.reg::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--rc)}
+.reg h4{font-family:"IBM Plex Mono",monospace;margin:0 0 6px;color:var(--rc);text-transform:uppercase;font-size:12px;letter-spacing:.08em}
+.reg p{margin:0;font-size:13.5px;color:var(--soft);line-height:1.5}
+/* archive */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px}
+.card{position:relative;background:var(--card);border:2px solid var(--blk);border-radius:14px;padding:20px;text-decoration:none;color:inherit;overflow:hidden;display:flex;flex-direction:column;transition:transform .16s,box-shadow .16s}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--e,var(--muted))}
+a.card:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--e,var(--coral))}
+.repo{font-family:"IBM Plex Mono",monospace;font-size:14.5px;font-weight:600}
+.pair{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--soft);margin:4px 0 10px}
+.card p{font-size:13.5px;color:var(--soft);margin:0 0 14px;flex:1;line-height:1.5}
+.vis{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--muted);color:var(--muted);border-radius:20px;padding:2px 8px;margin-left:8px}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--e);color:var(--e);border-radius:6px;padding:3px 9px;font-weight:600}
+.labels{list-style:none;margin:18px 0 0;padding:0;border-top:2px solid var(--blk);max-width:820px}
+.labels li{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:13px 0;border-bottom:1px solid #EAD5A6}
+.labels .n{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.labels p{margin:0;font-size:13.5px;color:var(--soft)}
+/* footer */
+footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
+.fg{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:flex-end}
+.fb{font-family:"Fraunces",serif;font-size:2.1rem;font-weight:700;color:#fff}.fb span{background:var(--prism);-webkit-background-clip:text;background-clip:text;color:transparent}
+.fc{font-family:"Fraunces",serif;font-style:italic;color:#C9B48C;margin-top:6px}
+.fm{font-family:"IBM Plex Mono",monospace;font-size:12px;color:#8a7452;line-height:1.9}.fm a{color:var(--lime2);text-decoration:none;font-weight:600}
+@media(max-width:860px){body{font-size:16px}.wrap{padding:0 18px}.sec{padding:56px 0}.split{grid-template-columns:1fr;gap:22px}.grid{grid-template-columns:1fr}.regimes{grid-template-columns:1fr}.hero{padding:64px 0 56px}.fg{flex-direction:column;align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.shimmer{animation:none}}
+.shimmer{animation:hue 24s linear infinite}@keyframes hue{to{filter:hue-rotate(360deg)}}
+</style></head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
 
-<header class="hero" id="top">
-  <div class="nav-shell">
-    <nav class="wrap nav" aria-label="Primary navigation">
-      <a class="brand" href="#top" aria-label="EncapsulatorP home">
-        <span class="brand-mark">P</span>
-        <span class="brand-name"><strong>Encapsulator</strong>P</span>
-      </a>
-      <div class="nav-links">
-        <a href="#capsules">Capsules</a>
-        <a href="#method">Method</a>
-        <a href="#contribute">Contribute</a>
-        <a class="nav-cta" href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/issues/new?title=Challenge%20proposal%3A%20">Propose a challenge</a>
-      </div>
-    </nav>
-  </div>
-  <canvas id="hero-canvas" aria-hidden="true"></canvas>
-  <div class="hero-veil"></div>
-  <div class="wrap hero-content">
-    <div class="hero-copy">
-      <p class="eyebrow">open computational mathematics · shared experiments · public review</p>
-      <h1>Hard problems.<br><em>Shared in public.</em></h1>
-      <p class="hero-lede">EncapsulatorP turns mathematical questions into <strong>reproducible capsules</strong>: scoped hypotheses, code, data, failure logs, and reviewable evidence.</p>
-      <p class="hero-note">Contribute a method. Reproduce a result. Find a counterexample. Improve the tooling. Propose the next challenge.</p>
-      <div class="cta-row">
-        <a class="btn primary" href="https://github.com/orgs/EncapsulatorP/repositories">Explore public capsules <span aria-hidden="true">→</span></a>
-        <a class="btn secondary" href="#contribute">Find your contribution path <span aria-hidden="true">↓</span></a>
-        <a class="btn secondary" href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/issues/new?title=Challenge%20proposal%3A%20">Propose a challenge <span aria-hidden="true">↗</span></a>
-      </div>
-      <div class="hero-signals" aria-label="Organization principles">
-        <span class="signal">No affiliation required</span>
-        <span class="signal">Credit follows contribution</span>
-        <span class="signal">Negative results welcome</span>
-        <span class="signal">Claims stay labeled</span>
-      </div>
-    </div>
-  </div>
-</header>
-<div class="zebra" aria-hidden="true"></div>
+<div class="nav"><div class="in"><span class="lg"><b>Encapsulator</b>P</span>
+<a href="#goldbach">Goldbach</a><a href="#recaman">Recamán</a><a href="#embed">Embedding</a><a href="#tetra">Tetration</a><a href="#scape">Collatzscape</a><a href="#validatron">Validatron</a><a href="#archive">Archive</a></div></div>
 
-<main id="main">
-<section id="about">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">why the organization exists</p>
-      <h2 class="sec-title">A common workshop for <em>uncommon questions.</em></h2>
-      <p class="sec-sub">The organization is not a single research diary. It is a place where contributors can turn a hard question into a bounded, inspectable project—and where useful failures count as progress.</p>
-    </div>
-    <div class="mission-grid">
-      <article class="mission-card" data-num="1" style="--accent:var(--yellow)">
-        <div class="mission-icon">Q</div>
-        <h3>Frame a tractable question</h3>
-        <p>Start with a precise mathematical or computational question, a falsifiable target, and a scope small enough for another person to inspect.</p>
-      </article>
-      <article class="mission-card" data-num="2" style="--accent:var(--cyan)">
-        <div class="mission-icon">R</div>
-        <h3>Make it reproducible</h3>
-        <p>Publish the environment, parameters, data provenance, baselines, and commands needed to rerun the experiment without private context.</p>
-      </article>
-      <article class="mission-card" data-num="3" style="--accent:var(--grape)">
-        <div class="mission-icon">↺</div>
-        <h3>Invite independent scrutiny</h3>
-        <p>Replication, adversarial review, alternative methods, and counterexamples are first-class contributions—not obstacles to authorship.</p>
-      </article>
-      <article class="mission-card" data-num="4" style="--accent:var(--lime)">
-        <div class="mission-icon">+</div>
-        <h3>Preserve what was learned</h3>
-        <p>Successful results, dead ends, datasets, visualizations, and reusable tools remain discoverable so the next contributor starts further ahead.</p>
-      </article>
-    </div>
-  </div>
-</section>
+<header class="hero"><div class="bars"></div><div class="wrap">
+<p class="ky">computational number theory · one long obsession</p>
+<h1>Hard problems,<br><em>encapsulated.</em></h1>
+<p>An open lab attacking the great unsolved problems — Collatz, Goldbach, Recamán, tetration — each with the machinery aimed at it, and each tagged by exactly how much is really known.</p>
+<p class="tag">scroll: six live experiments, one honest verifier, no repetition.</p>
+</div></header>
 
-<section class="dark" id="lab">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">a small doorway into the work</p>
-      <h2 class="sec-title">Collatz orbit <em>explorer.</em></h2>
-      <p class="sec-sub">This is a visualization, not a proof engine. Try a seed, inspect its orbit, and then follow the public capsules that ask sharper questions about the same dynamics.</p>
-    </div>
-    <div class="lab">
-      <div class="lab-copy">
-        <p class="eyebrow" style="color:var(--lime-2)">interactive demonstration · 3n+1</p>
-        <h3>Give the orbit a <em>starting integer.</em></h3>
-        <p>Even values halve. Odd values move to 3n+1. No divergent orbit or nontrivial cycle is known, but computation alone does not settle the conjecture.</p>
-        <div class="lab-form">
-          <input id="seed" type="text" inputmode="numeric" value="27" aria-label="Positive integer seed" placeholder="e.g. 27" />
-          <button id="run-collatz" type="button">Run orbit</button>
-        </div>
-        <div class="chips" id="seed-chips" aria-label="Example seeds">
-          <button class="chip" type="button" data-seed="27">27 · classic</button>
-          <button class="chip" type="button" data-seed="703">703 · high orbit</button>
-          <button class="chip" type="button" data-seed="6171">6171 · long route</button>
-          <button class="chip" type="button" data-seed="77031">77031 · 350 steps</button>
-        </div>
-      </div>
-      <div class="lab-screen">
-        <canvas id="collatz-canvas" aria-label="Plot of the selected Collatz orbit"></canvas>
-        <div class="readout" aria-live="polite">
-          <div><span class="label">steps to 1</span><span class="value" id="steps">—</span></div>
-          <div><span class="label">peak value</span><span class="value" id="peak">—</span></div>
-          <div><span class="label">seed</span><span class="value" id="shown-seed">—</span></div>
-        </div>
-        <div class="verdict" id="verdict">Ready.</div>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="zebra" aria-hidden="true"></div>
+<!-- GOLDBACH -->
+<section class="sec bg-cream" id="goldbach" style="--acc:#0c9a89">
+<div class="wrap">
+<p class="kick">01 · goldbach residues</p><h2 class="t">Goldbach, by <em>residue</em></h2>
+<p class="lead">How many ways N splits into two primes is pure arithmetic. Sort each even N by its residue mod 30 and the counts fall into chambers — divisibility by 3 fans them into <b>cones</b>, by 5 into a <b>ring</b>, by both into a <b>Möbius twist</b>, other primes into a <b>shell</b>, powers of two left on the bare <b>spine</b>. Drag to rotate.</p>
+<div class="screen"><canvas id="gbviz" class="viz" style="height:54vh;min-height:340px"></canvas></div>
+<div class="gleg"><span><i style="background:#5B6CFF"></i>÷3 cone</span><span><i style="background:#FF5A3C"></i>÷3·5 twist</span><span><i style="background:#12CBB6"></i>÷5 ring</span><span><i style="background:#9B6BFF"></i>other shell</span><span><i style="background:#FFA23D"></i>spine</span>
+<span style="margin-left:auto">even N: <b id="gb-r1">—</b> · chambers: <b id="gb-r2">—</b></span></div>
+</div></section>
+<div class="zebra"></div>
 
-<section class="alt" id="capsules">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">selected public work</p>
-      <h2 class="sec-title">Open <em>capsules.</em></h2>
-      <p class="sec-sub">Each repository is a starting point for inspection and collaboration. The landing page describes the question and method; the repository remains the source of truth for evidence, limitations, and current status.</p>
-    </div>
-    <div class="repo-grid">
-      <a class="repo-card" style="--accent:var(--cyan)" href="https://github.com/EncapsulatorP/recaman">
-        <div class="repo-top"><span class="repo-name">recaman</span><span class="repo-status">public</span></div>
-        <div class="repo-topic">sequence dynamics · obstruction signals</div>
-        <p>Experiments around Recamán-style dynamics, local structure, phase changes, and predictive baselines—with room for replication and stronger tests.</p>
-        <div class="repo-foot"><span>empirical investigation</span><span class="open">Open ↗</span></div>
-      </a>
-      <a class="repo-card" style="--accent:var(--orange)" href="https://github.com/EncapsulatorP/collatz_kesten-goldie">
-        <div class="repo-top"><span class="repo-name">collatz_kesten-goldie</span><span class="repo-status">public</span></div>
-        <div class="repo-topic">Collatz · stochastic recurrences</div>
-        <p>Explores a heavy-tail and stochastic-recurrence lens on Collatz stopping-time behavior without confusing a probabilistic model for a proof.</p>
-        <div class="repo-foot"><span>model + computation</span><span class="open">Open ↗</span></div>
-      </a>
-      <a class="repo-card" style="--accent:var(--pink)" href="https://github.com/EncapsulatorP/goldbach_busy_collatz">
-        <div class="repo-top"><span class="repo-name">goldbach_busy_collatz</span><span class="repo-status">public</span></div>
-        <div class="repo-topic">Goldbach counts · Collatz features</div>
-        <p>Compares Goldbach partition counts with features derived from Collatz orbits, inviting stronger controls, null models, and independent reproduction.</p>
-        <div class="repo-foot"><span>cross-structure study</span><span class="open">Open ↗</span></div>
-      </a>
-      <a class="repo-card" style="--accent:var(--lime)" href="https://github.com/EncapsulatorP/Erdos-Straus-Schinzel">
-        <div class="repo-top"><span class="repo-name">Erdos-Straus-Schinzel</span><span class="repo-status">public</span></div>
-        <div class="repo-topic">Egyptian fractions · residue classes</div>
-        <p>A computational workspace around reciprocal decompositions, modular structure, and reductions related to the Erdős–Straus family of questions.</p>
-        <div class="repo-foot"><span>number theory</span><span class="open">Open ↗</span></div>
-      </a>
-      <a class="repo-card" style="--accent:var(--grape)" href="https://github.com/EncapsulatorP/prime-tower-diagnostics">
-        <div class="repo-top"><span class="repo-name">prime-tower-diagnostics</span><span class="repo-status">public</span></div>
-        <div class="repo-topic">prime structures · diagnostics</div>
-        <p>Diagnostic experiments for prime-related tower and sign structures, with an emphasis on visual inspection and testable computational behavior.</p>
-        <div class="repo-foot"><span>diagnostic tooling</span><span class="open">Open ↗</span></div>
-      </a>
-      <a class="repo-card" style="--accent:var(--yellow)" href="https://github.com/EncapsulatorP/zeta_branching">
-        <div class="repo-top"><span class="repo-name">zeta_branching</span><span class="repo-status">public</span></div>
-        <div class="repo-topic">zeta-related constructions · branching</div>
-        <p>An experimental branch of the program exploring zeta-related structures, computational patterns, and the boundary between visualization and claim.</p>
-        <div class="repo-foot"><span>exploratory capsule</span><span class="open">Open ↗</span></div>
-      </a>
-      <a class="repo-card repo-more" href="https://github.com/orgs/EncapsulatorP/repositories">
-        <div>
-          <strong>Browse the full organization</strong>
-          <p>See every public repository, current code, documentation, and contribution surface.</p>
-          <span class="btn light" style="margin-top:12px">All repositories →</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-<div class="zebra" aria-hidden="true"></div>
+<!-- RECAMAN -->
+<section class="sec bg-dark" id="recaman" style="--acc:#FF4D6D">
+<div class="wrap"><div class="split">
+<div>
+<p class="kick">02 · recamán obstructions</p><h2 class="t">Predicting the <em>collisions</em></h2>
+<p class="lead">Not the pretty arcs — the <b>embedding</b>. Each step becomes a point: local crowding around the back-jump target, and how full the line already is. A model learns <b>forward-chaining</b> (never peeking) to call whether the next jump collides. Watch the boundary sharpen; the AUC is earned in order.</p>
+<div class="readbar"><div><span class="k">eligible steps</span><span class="v" id="rc-steps">—</span></div><div><span class="k">obstruction rate</span><span class="v" id="rc-rate">—</span></div><div><span class="k">forward-chaining AUC</span><span class="v" id="rc-auc">—</span></div><div><span class="k">weights</span><span class="v" id="rc-w" style="font-size:13px">—</span></div></div>
+</div>
+<div class="screen" style="display:flex;flex-direction:column"><canvas id="rcviz" class="viz" style="height:300px"></canvas><canvas id="rcviz2" class="viz" style="height:84px;border-top:1px solid #221c18;background:#0a0810"></canvas></div>
+</div></div></section>
+<div class="zebra"></div>
 
-<section id="method">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">the capsule method</p>
-      <h2 class="sec-title">From question to <em>reviewable object.</em></h2>
-      <p class="sec-sub">A capsule is not simply a repository name. It is a compact research contract that gives future contributors enough context to challenge, reproduce, extend, or retire the work.</p>
-    </div>
-    <div class="workflow">
-      <article class="step" style="--accent:var(--yellow)"><div class="step-num">01</div><h3>Propose</h3><p>State the question, why it matters, what would count as progress, and what would falsify the proposed direction.</p></article>
-      <article class="step" style="--accent:var(--orange)"><div class="step-num">02</div><h3>Scope</h3><p>Define a bounded first experiment, expected inputs, computational limits, known literature, and the initial baseline.</p></article>
-      <article class="step" style="--accent:var(--coral)"><div class="step-num">03</div><h3>Reproduce</h3><p>Provide commands, dependencies, seeds, datasets, checksums, and tests so another contributor can obtain the same outputs.</p></article>
-      <article class="step" style="--accent:var(--grape)"><div class="step-num">04</div><h3>Review</h3><p>Invite mathematical critique, code review, adversarial examples, leakage checks, and independent replication.</p></article>
-      <article class="step" style="--accent:var(--lime)"><div class="step-num">05</div><h3>Publish</h3><p>Release results with limitations, contributor credits, claim labels, and a clear list of unresolved questions.</p></article>
-    </div>
-    <div class="contract">
-      <article class="contract-card">
-        <h3>Every capsule should contain</h3>
-        <p>The minimum information a stranger needs to understand the question and rerun the work.</p>
-        <div class="contract-list">
-          <span>Problem statement</span><span>Claim and evidence labels</span><span>Reproduction commands</span><span>Data and parameter provenance</span><span>Known limitations</span><span>Contributor credits</span>
-        </div>
-      </article>
-      <article class="contract-card">
-        <h3>Every capsule may end differently</h3>
-        <p>Completion does not have to mean “proof.” A clean counterexample, a failed method, or a reusable dataset can close a useful research loop.</p>
-        <div class="contract-list">
-          <span>Proof or formal lemma</span><span>Computational finding</span><span>Negative result</span><span>Benchmark or dataset</span><span>Reusable tool</span><span>Clearly scoped open question</span>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
+<!-- EMBEDDING -->
+<section class="sec bg-tint" id="embed" style="--acc:#0c9a89">
+<div class="wrap">
+<p class="kick">03 · collatz delay embedding</p><h2 class="t">A map hiding in <em>plain sight</em></h2>
+<p class="lead">Plot every Collatz value against the next — a delay embedding at lag τ=1. Thousands of orbits collapse onto <b>two rails</b>: the halving branch (÷2) and the tripling branch (3n+1). The whole conjecture is a walk hopping between them.</p>
+<div class="screen"><canvas id="emviz" class="viz" style="height:52vh;min-height:320px"></canvas></div>
+<div class="cap">seeds streamed: <b id="em-r1">—</b> · points: <b id="em-r2">—</b> — axes are log a(t) vs log a(t+1)</div>
+</div></section>
+<div class="zebra"></div>
 
-<section class="dark" id="contribute">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">multiple ways into the organization</p>
-      <h2 class="sec-title">Contribute without becoming <em>someone’s assistant.</em></h2>
-      <p class="sec-sub">Contributors should be able to own questions, methods, replications, tools, and documentation. The organization grows by adding independent lines of work—not by orbiting one contributor.</p>
-    </div>
-    <div class="contrib-grid">
-      <article class="contrib-card" style="--accent:var(--yellow)"><span class="role">proposer</span><h3>Bring a challenge</h3><p>Propose a mathematical question, a computational experiment, or an existing repository that could become a clearer public capsule.</p></article>
-      <article class="contrib-card" style="--accent:var(--cyan)"><span class="role">replicator</span><h3>Reproduce a result</h3><p>Run a capsule independently, document deviations, test another environment, or build a smaller reference implementation.</p></article>
-      <article class="contrib-card" style="--accent:var(--coral)"><span class="role">adversary</span><h3>Try to break it</h3><p>Look for counterexamples, data leakage, weak baselines, hidden assumptions, or claims that run ahead of the evidence.</p></article>
-      <article class="contrib-card" style="--accent:var(--grape)"><span class="role">builder</span><h3>Improve the machinery</h3><p>Add tests, faster algorithms, reproducible environments, CI, notebooks, visualizations, or shared mathematical utilities.</p></article>
-      <article class="contrib-card" style="--accent:var(--lime)"><span class="role">explainer</span><h3>Make the work legible</h3><p>Improve documentation, diagrams, examples, terminology, onboarding, accessibility, and the bridge from code to mathematics.</p></article>
-      <article class="contrib-card" style="--accent:var(--orange)"><span class="role">maintainer</span><h3>Steward a capsule</h3><p>Take responsibility for an area, triage proposals, coordinate review, preserve attribution, and keep its claims correctly labeled.</p></article>
-    </div>
-    <div class="contrib-actions">
-      <a class="btn primary" href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/issues/new?title=Challenge%20proposal%3A%20">Submit a challenge proposal →</a>
-      <a class="btn ghost" href="https://github.com/search?q=org%3AEncapsulatorP+is%3Aissue+is%3Aopen&type=issues">Find open issues ↗</a>
-      <a class="btn ghost" href="https://github.com/orgs/EncapsulatorP/repositories">Choose a capsule ↗</a>
-    </div>
-  </div>
-</section>
-<div class="zebra" aria-hidden="true"></div>
+<!-- TETRATION -->
+<section class="sec bg-cream" id="tetra" style="--acc:#8766FF">
+<div class="wrap">
+<p class="kick">04 · flipping power towers</p><h2 class="t">Converge, flip, <em>diverge</em></h2>
+<p class="lead">Iterate the infinite tower x^x^x^… For a base between e^(−e) and e^(1/e) it settles; below e^(−e) it <b>flips</b> into a two-value cycle; above e^(1/e) it runs away. Out in that divergent wild sits Brun's constant — the twin-prime sum crawling toward 1.90216.</p>
+<div class="screen"><canvas id="ttviz" class="viz" style="height:46vh;min-height:300px"></canvas></div>
+<div class="readbar"><div><span class="k">twin-prime Σ → Brun B₂</span><span class="v" id="tt-r1">—</span></div><div><span class="k">last twin pair</span><span class="v" id="tt-r2" style="font-size:14px">—</span></div></div>
+<div class="regimes">
+<div class="reg" style="--rc:#B6F000"><h4>converge</h4><p>Base in (e^(−e)≈0.066, e^(1/e)≈1.444): one calm fixed point.</p></div>
+<div class="reg" style="--rc:#FF2E8B"><h4>flip</h4><p>Below e^(−e): locks into a two-value cycle, flipping forever — the pink fork.</p></div>
+<div class="reg" style="--rc:#FF7A1A"><h4>diverge</h4><p>Past e^(1/e): no fixed point, no cycle — it blows up. Brun lives here.</p></div>
+</div>
+</div></section>
+<div class="zebra"></div>
 
-<section class="alt" id="calls">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">standing invitations</p>
-      <h2 class="sec-title">What the organization is <em>looking for.</em></h2>
-      <p class="sec-sub">These calls are deliberately broader than a personal roadmap. They give new contributors a way to create value without waiting for a single maintainer to invent every task.</p>
-    </div>
-    <div class="call-grid">
-      <div class="call-board">
-        <article class="call-row"><span class="call-type">challenge proposals</span><div><strong>Questions with a clear computational first step</strong><p>Especially discrete mathematics, number theory, dynamical systems, symbolic experiments, and surprising cross-structure comparisons.</p></div><span class="call-tag">open</span></article>
-        <article class="call-row"><span class="call-type">replication</span><div><strong>Independent reruns of public capsules</strong><p>Different platforms, parameter ranges, null models, implementation languages, and documented mismatches are all useful.</p></div><span class="call-tag">high value</span></article>
-        <article class="call-row"><span class="call-type">counterexamples</span><div><strong>Adversarial tests and boundary cases</strong><p>A broken assumption found early is more valuable than a polished conclusion built on top of it.</p></div><span class="call-tag">welcome</span></article>
-        <article class="call-row"><span class="call-type">infrastructure</span><div><strong>Tests, environments, data lineage, and CI</strong><p>Help make experimental mathematics easier to rerun, compare, and review across repositories.</p></div><span class="call-tag">shared</span></article>
-        <article class="call-row"><span class="call-type">communication</span><div><strong>Explanations that respect both readers and rigor</strong><p>Turn notebooks into readable narratives, add diagrams, define terms, and make limitations impossible to miss.</p></div><span class="call-tag">ongoing</span></article>
-      </div>
-      <aside class="invite">
-        <p class="eyebrow" style="color:var(--black)">your idea belongs on the board</p>
-        <h3>Propose a new capsule.</h3>
-        <p>Bring the question, an initial method, or simply the failure mode you want the organization to investigate. A proposal can begin small.</p>
-        <a class="btn primary" href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/issues/new?title=Challenge%20proposal%3A%20">Open a proposal →</a>
-      </aside>
-    </div>
-  </div>
-</section>
+<!-- COLLATZSCAPE -->
+<section class="sec bg-dark" id="scape" style="--acc:#12CBB6">
+<div class="wrap">
+<p class="kick">05 · the surprise · collatzscape</p><h2 class="t">3n+1, continued into the <em>plane</em></h2>
+<p class="lead">The Collatz map has a smooth analytic continuation: f(z)=¼(2+7z−(2+5z)cos πz), agreeing with n/2 and 3n+1 on the integers. Iterate it over ℂ, color by escape speed, and the discrete conjecture unfolds into a fractal. The integers are a thin row on the real axis; this is the dream around them.</p>
+<div class="screen"><canvas id="csviz" class="viz shimmer" style="height:56vh;min-height:340px"></canvas></div>
+<div class="cap">escape-time render · f(z)=¼(2+7z−(2+5z)cos πz)</div>
+</div></section>
+<div class="zebra"></div>
 
-<section id="standards">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">claims, credit, and public trust</p>
-      <h2 class="sec-title">Rigor without pretending the work is <em>finished.</em></h2>
-      <p class="sec-sub">The organization can be playful in presentation while remaining strict about what each repository actually establishes.</p>
-    </div>
-    <div class="labels-grid">
-      <div>
-        <ul class="legend">
-          <li><span class="lname" style="color:#3f7a00">Theorem</span><p>A proved statement with a complete argument or a precise citation to one. Computation may support it but does not substitute for proof.</p></li>
-          <li><span class="lname" style="color:#0b8f80">Computational result</span><p>A reproducible finite computation or measured result, with the tested range and assumptions stated explicitly.</p></li>
-          <li><span class="lname" style="color:#c95a00">Conjecture</span><p>A clearly stated hypothesis that remains unproved, ideally paired with a falsification or search strategy.</p></li>
-          <li><span class="lname" style="color:#b52e55">Negative result</span><p>A method, predictor, bound, or proposed structure that failed under specified tests—and is documented so others need not repeat it blindly.</p></li>
-          <li><span class="lname" style="color:#684dcc">Tooling / dataset</span><p>Infrastructure or evidence assets. Useful, citable work that does not itself make a mathematical claim.</p></li>
-        </ul>
-      </div>
-      <aside class="governance">
-        <h3>Contributor-first governance</h3>
-        <p>The public face should make clear that EncapsulatorP is an organization with room for independent ownership, not a collection that exists to magnify one person.</p>
-        <ul class="gov-list">
-          <li>Credit follows commits, reviews, datasets, proposals, and maintained responsibilities.</li>
-          <li>Capsule decisions should be documented in issues or pull requests, not kept as private authority.</li>
-          <li>New maintainers can steward areas and repositories as contribution depth grows.</li>
-          <li>Disagreement about a claim is resolved through evidence, reproducibility, and explicit scope.</li>
-          <li>Private or immature work should not be used as public proof of scale.</li>
-          <li>Archived dead ends remain valuable when their limitations are clearly recorded.</li>
-        </ul>
-      </aside>
-    </div>
-  </div>
-</section>
+<!-- VALIDATRON -->
+<section class="sec bg-tint" id="validatron" style="--acc:#6b52d0">
+<div class="wrap"><div class="split">
+<div>
+<p class="kick">06 · the verifier · validatron</p><h2 class="t">Nothing ships <em>unlabeled</em></h2>
+<p class="lead">Every result runs a chamber — intake, reproduce, evidence, label check, publication pressure. Enter a claim's label and your confidence; watch how far it gets. This is the honesty spine behind all five experiments above.</p>
+<div class="feed"><input id="val-input" type="text" placeholder="empirical, 72" aria-label="label and confidence"><button id="val-run">Run it</button></div>
+<div class="chips" id="val-chips"><button class="chip" data-v="empirical,72">empirical · mid</button><button class="chip" data-v="conjecture,45">conjecture · testing</button><button class="chip" data-v="tooling,90">tooling · strong</button><button class="chip" data-v="theorem,30">theorem · thin</button></div>
+</div>
+<div>
+<div class="screen"><canvas id="valcanvas" class="viz" style="height:210px"></canvas></div>
+<div class="readbar"><div><span class="k">label</span><span class="v" id="val-r1" style="font-size:14px">—</span></div><div><span class="k">confidence</span><span class="v" id="val-r2">—</span></div><div><span class="k">chamber state</span><span class="v" id="val-r3" style="font-size:14px">—</span></div></div>
+<div class="verdict" id="val-verdict">enter a label and a confidence.</div>
+</div>
+</div></div></section>
+<div class="zebra"></div>
 
-<section class="final-cta">
-  <div class="wrap final-box">
-    <div>
-      <h2>Bring a question.<br>Leave a trail.</h2>
-      <p>EncapsulatorP is building a public workshop where mathematical curiosity becomes inspectable code, evidence, critique, and reusable knowledge.</p>
-    </div>
-    <div class="final-actions">
-      <a class="btn primary" href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/issues/new?title=Challenge%20proposal%3A%20">Propose a challenge →</a>
-      <a class="btn secondary" href="https://github.com/orgs/EncapsulatorP/repositories">Explore the organization ↗</a>
-    </div>
-  </div>
-</section>
-</main>
+<!-- ARCHIVE + LABELS -->
+<section class="sec bg-cream" id="archive" style="--acc:#c95a00">
+<div class="wrap">
+<p class="kick">the archive</p><h2 class="t">The <em>capsules</em></h2>
+<div class="grid">
+<a class="card" style="--e:#0c9a89" href="https://github.com/EncapsulatorP/collatz_kesten-goldie"><div style="display:flex;align-items:center"><span class="repo">collatz_kesten-goldie</span><span class="vis" style="color:#3f7a00;border-color:#9ac44a">Public</span></div><div class="pair">Collatz × Kesten–Goldie</div><p>Stopping times as a stochastic recurrence; reads off the heavy-tail exponent.</p><span class="tag" style="align-self:flex-start">Empirical</span></a>
+<a class="card" style="--e:#0c9a89" href="https://github.com/EncapsulatorP/goldbach_busy_collatz"><div style="display:flex;align-items:center"><span class="repo">goldbach_busy_collatz</span><span class="vis" style="color:#3f7a00;border-color:#9ac44a">Public</span></div><div class="pair">Goldbach × Collatz structure</div><p>Cross-examines Goldbach partition counts against Collatz orbit structure.</p><span class="tag" style="align-self:flex-start">Empirical</span></a>
+<div class="card" style="--e:#0c9a89"><div style="display:flex;align-items:center"><span class="repo">mertens_counterexample</span><span class="vis">Private</span></div><div class="pair">Mertens · the Riemann edge</div><p>Pushes the M(n)/√n boundary toward where Mertens is known to fail.</p><span class="tag" style="align-self:flex-start">Empirical</span></div>
+<div class="card" style="--e:#c95a00"><div style="display:flex;align-items:center"><span class="repo">Catalan_ruelle_mayer</span><span class="vis">Private</span></div><div class="pair">Catalan × Ruelle–Mayer</div><p>Transfer-operator machinery on Catalan-type exponent gaps.</p><span class="tag" style="align-self:flex-start">Theoretical</span></div>
+<div class="card" style="--e:#8A7452"><div style="display:flex;align-items:center"><span class="repo">NT_goldbachy_disastro…</span><span class="vis">Private</span></div><div class="pair">Goldbach, frequency side</div><p>A candidly-named dead-end log. Kept as data.</p><span class="tag" style="align-self:flex-start">Speculative</span></div>
+<div class="card" style="--e:#6b52d0"><div style="display:flex;align-items:center"><span class="repo">Validatron</span><span class="vis">Private</span></div><div class="pair">the verifier</div><p>Honest forward-chaining cross-validation. Earns the tag or ships without one.</p><span class="tag" style="align-self:flex-start">Tooling</span></div>
+</div>
+<p class="kick" style="margin-top:44px">house rules</p><h2 class="t">Epistemic <em>labels</em></h2>
+<ul class="labels">
+<li><span class="n" style="color:#3f7a00">Theorem</span><p>Proven, with a citation. The only tier allowed certainty.</p></li>
+<li><span class="n" style="color:#0c9a89">Empirical</span><p>Holds up under honest cross-validation. True so far, not proven.</p></li>
+<li><span class="n" style="color:#c95a00">Conjectural</span><p>A hypothesis under test — with the test written down first.</p></li>
+<li><span class="n" style="color:#8A7452">Speculative</span><p>Early, partial, or abandoned. Kept because a mapped dead end has value.</p></li>
+<li><span class="n" style="color:#6b52d0">Tooling</span><p>Infrastructure, not a claim.</p></li>
+</ul>
+</div></section>
 
-<footer>
-  <div class="wrap foot">
-    <div>
-      <div class="foot-title">Encapsulator<span>P</span></div>
-      <div class="foot-copy">Open computational mathematics: reproducible capsules, public challenges, independent review, and contributor-owned lines of inquiry.</div>
-    </div>
-    <div class="foot-links">
-      <a href="#about">Purpose</a>
-      <a href="#capsules">Capsules</a>
-      <a href="#method">Method</a>
-      <a href="#contribute">Contribute</a>
-      <a href="https://github.com/orgs/EncapsulatorP/repositories">GitHub ↗</a>
-    </div>
-  </div>
-</footer>
+<footer><div class="wrap fg">
+<div><div class="fb">Encapsulator<span>P</span></div><div class="fc">one page, six experiments, honestly labeled.</div></div>
+<div class="fm">github &nbsp;·&nbsp; <a href="https://github.com/orgs/EncapsulatorP/repositories">EncapsulatorP</a><br>collatz · goldbach · recamán · tetration · complex dynamics<br>mostly pending, gloriously</div>
+</div></footer>
 
 <script>
 (function(){
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function IO(el,on,off){var io=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?on():(off&&off());});},{threshold:0.04});io.observe(el);}
 
-  /* Hero: colorful computational trajectories, intentionally abstract. */
-  const hero = document.getElementById('hero-canvas');
-  const hx = hero.getContext('2d');
-  let hw=0,hh=0,hdpr=1,particles=[],raf=0;
-  const hues=[330,285,185,165,42];
-  function resizeHero(){
-    hdpr=Math.min(window.devicePixelRatio||1,2);
-    hw=hero.clientWidth; hh=hero.clientHeight;
-    hero.width=Math.floor(hw*hdpr); hero.height=Math.floor(hh*hdpr);
-    hx.setTransform(hdpr,0,0,hdpr,0,0);
-    particles=Array.from({length:Math.min(70,Math.max(34,Math.floor(hw/18)))},(_,i)=>({
-      x:Math.random()*hw,y:Math.random()*hh,
-      vx:(Math.random()-.5)*.38,vy:(Math.random()-.5)*.25,
-      r:1+Math.random()*2.2,h:hues[i%hues.length],phase:Math.random()*Math.PI*2
-    }));
-  }
-  function drawHero(t){
-    hx.clearRect(0,0,hw,hh);
-    hx.globalCompositeOperation='multiply';
-    for(const p of particles){
-      p.x+=p.vx; p.y+=p.vy;
-      if(p.x<-20)p.x=hw+20;if(p.x>hw+20)p.x=-20;
-      if(p.y<-20)p.y=hh+20;if(p.y>hh+20)p.y=-20;
-      const wave=Math.sin((p.x/hw)*Math.PI*4+p.phase+t*.00025)*18;
-      hx.beginPath();
-      hx.arc(p.x,p.y+wave,p.r,0,Math.PI*2);
-      hx.fillStyle=`hsla(${p.h},90%,42%,.42)`;
-      hx.fill();
-    }
-    hx.globalCompositeOperation='source-over';
-    for(let k=0;k<7;k++){
-      hx.beginPath();
-      const base=hh*(.18+k*.1);
-      for(let x=0;x<=hw;x+=10){
-        const y=base+Math.sin(x*.009+k*1.2+t*.00035)*18+Math.sin(x*.0027+k)*24;
-        x===0?hx.moveTo(x,y):hx.lineTo(x,y);
-      }
-      hx.strokeStyle=`hsla(${hues[k%hues.length]},85%,32%,.22)`;
-      hx.lineWidth=1.6;
-      hx.stroke();
-    }
-    raf=requestAnimationFrame(drawHero);
-  }
-  resizeHero();
-  window.addEventListener('resize',()=>{clearTimeout(window.__heroResize);window.__heroResize=setTimeout(resizeHero,160)});
-  if(!reduced) raf=requestAnimationFrame(drawHero);
-  else drawHero(0),cancelAnimationFrame(raf);
+/* 01 GOLDBACH RESIDUES 3D */
+(function(){var c=document.getElementById('gbviz');if(!c)return;var x=c.getContext('2d');var NMAX=2600;
+var comp=new Uint8Array(NMAX+1);for(var i=2;i*i<=NMAX;i++){if(!comp[i])for(var j=i*i;j<=NMAX;j+=i)comp[j]=1;}
+var primes=[];for(var k=2;k<=NMAX;k++)if(!comp[k])primes.push(k);
+function ways(n){var t=0;for(var a=0;a<primes.length;a++){var p=primes[a];if(p>n-p)break;if(!comp[n-p])t++;}return t;}
+function other(n){var m=n;while(m%2===0)m/=2;while(m%3===0)m/=3;while(m%5===0)m/=5;return m>1;}
+var COL={c3:'#5B6CFF',x35:'#FF5A3C',c5:'#12CBB6',o:'#9B6BFF',s:'#FFA23D'},pts=[];
+for(var N=4;N<=NMAX;N+=2){var g=ways(N),h3=N%3===0,h5=N%5===0,cl;if(h3&&h5)cl='x35';else if(h3)cl='c3';else if(h5)cl='c5';else if(other(N))cl='o';else cl='s';
+ var ang=((N%30)/30)*6.283,d=N/NMAX,R0,Rk,tw=0;if(cl==='s'){R0=.06;Rk=.05;}else if(cl==='c3'){R0=.12;Rk=.95;}else if(cl==='c5'){R0=.8;Rk=.06;}else if(cl==='x35'){R0=.3;Rk=.55;tw=2.4;}else{R0=1.08;Rk=.16;}
+ var rad=R0+Rk*d,a2=ang+tw*d;pts.push({px:rad*Math.cos(a2),py:(d*2-1)*1.15,pz:rad*Math.sin(a2),col:COL[cl],g:g,r:N%30});}
+var ch={};for(var i2=0;i2<pts.length;i2++){var p=pts[i2];(ch[p.r]=ch[p.r]||[]).push(i2);}
+var W,H,phi=.5,elev=.5,drag=false,lx=0,auto=true,raf=null;
+function rs(){var dp=Math.min(devicePixelRatio||1,2);W=c.clientWidth;H=c.clientHeight;c.width=(W*dp)|0;c.height=(H*dp)|0;x.setTransform(dp,0,0,dp,0,0);}
+function pr(p){var cp=Math.cos(phi),sp=Math.sin(phi),rx=p.px*cp-p.pz*sp,rz=p.px*sp+p.pz*cp,ce=Math.cos(elev),se=Math.sin(elev),ry=p.py*ce-rz*se,rz2=p.py*se+rz*ce,sc=3.2/(3.2+rz2+2.2),S=Math.min(W,H)*.42;return{x:W*.5+rx*sc*S,y:H*.52-ry*sc*S,z:rz2,s:sc};}
+function fr(){x.clearRect(0,0,W,H);if(auto&&!reduce)phi+=.0032;for(var i=0;i<pts.length;i++)pts[i]._=pr(pts[i]);
+ for(var r in ch){var a=ch[r];for(var k=1;k<a.length;k++){var A=pts[a[k-1]]._,B=pts[a[k]]._;x.strokeStyle='rgba(130,225,255,.05)';x.lineWidth=1;x.beginPath();x.moveTo(A.x,A.y);x.lineTo(B.x,B.y);x.stroke();}}
+ var o=pts.slice().sort(function(a,b){return a._.z-b._.z;});for(var i=0;i<o.length;i++){var p=o[i],q=p._,sz=(1.4+Math.min(6,p.g*.14))*q.s;x.globalAlpha=Math.max(.25,Math.min(1,q.s*1.1));x.fillStyle=p.col;x.beginPath();x.arc(q.x,q.y,sz,0,6.283);x.fill();}x.globalAlpha=1;if(!reduce)raf=requestAnimationFrame(fr);}
+function start(){if(!raf&&!reduce)raf=requestAnimationFrame(fr);}function stop(){if(raf)cancelAnimationFrame(raf);raf=null;}
+c.style.cursor='grab';function dn(e){drag=true;auto=false;lx=(e.touches?e.touches[0].clientX:e.clientX);c.style.cursor='grabbing';}
+function mv(e){if(!drag)return;var cx=(e.touches?e.touches[0].clientX:e.clientX);phi+=(cx-lx)*.01;lx=cx;if(reduce)fr();}function up(){drag=false;c.style.cursor='grab';}
+c.addEventListener('mousedown',dn);window.addEventListener('mousemove',mv);window.addEventListener('mouseup',up);c.addEventListener('touchstart',dn,{passive:true});window.addEventListener('touchmove',mv,{passive:true});window.addEventListener('touchend',up);
+window.addEventListener('resize',function(){clearTimeout(window.__g);window.__g=setTimeout(function(){rs();if(reduce)fr();},160);});
+rs();document.getElementById('gb-r1').textContent=pts.length.toLocaleString('en-US');document.getElementById('gb-r2').textContent='15';
+if(reduce)fr();else IO(c,start,stop);})();
 
-  /* Collatz explorer */
-  const canvas=document.getElementById('collatz-canvas');
-  const cx=canvas.getContext('2d');
-  let cw=0,ch=0,cdpr=1,lastSeq=[27,82,41,124,62,31,94,47,142,71,214,107,322,161,484,242,121,364,182,91,274,137,412,206,103,310,155,466,233,700,350,175,526,263,790,395,1186,593,1780,890,445,1336,668,334,167,502,251,754,377,1132,566,283,850,425,1276,638,319,958,479,1438,719,2158,1079,3238,1619,4858,2429,7288,3644,1822,911,2734,1367,4102,2051,6154,3077,9232,4616,2308,1154,577,1732,866,433,1300,650,325,976,488,244,122,61,184,92,46,23,70,35,106,53,160,80,40,20,10,5,16,8,4,2,1];
-  function resizePlot(){
-    cdpr=Math.min(window.devicePixelRatio||1,2);cw=canvas.clientWidth;ch=canvas.clientHeight;
-    canvas.width=Math.floor(cw*cdpr);canvas.height=Math.floor(ch*cdpr);cx.setTransform(cdpr,0,0,cdpr,0,0);
-    drawPlot(lastSeq,false);
-  }
-  function calculate(raw){
-    const clean=String(raw).replace(/[^0-9]/g,'');
-    if(!clean)return {error:'Enter a positive whole number.'};
-    if(clean.length>15)return {error:'Keep the seed below 16 digits for this browser demo.'};
-    let n;
-    try{n=BigInt(clean)}catch{return {error:'That value could not be parsed.'}}
-    if(n<1n)return {error:'The seed must be positive.'};
-    const seq=[Number(n)];let peak=n,steps=0;
-    while(n!==1n && steps<100000){
-      n=n%2n===0n?n/2n:3n*n+1n;
-      if(n>peak)peak=n;
-      seq.push(Number(n));steps++;
-      if(n>9007199254740991n)return {error:'This orbit exceeded safe plotting precision. Try a smaller seed.'};
-    }
-    if(steps>=100000)return {error:'The browser safety limit was reached.'};
-    return {seq,steps,peak,seed:clean};
-  }
-  function drawPlot(seq,animate=true){
-    lastSeq=seq;
-    cx.clearRect(0,0,cw,ch);
-    const peak=Math.max(...seq,2),logMax=Math.log10(peak)*1.08+.2;
-    const X=i=>cw*(.04+(seq.length===1?0:i/(seq.length-1))*.92);
-    const Y=v=>ch*(.92-(Math.log10(Math.max(1,v))/logMax)*.82);
-    const gradient=cx.createLinearGradient(0,0,cw,0);
-    gradient.addColorStop(0,'#ff2e8b');gradient.addColorStop(.5,'#8766ff');gradient.addColorStop(1,'#12cbb6');
-    function paint(end){
-      cx.clearRect(0,0,cw,ch);
-      cx.strokeStyle='rgba(255,255,255,.07)';cx.lineWidth=1;
-      for(let i=1;i<5;i++){cx.beginPath();cx.moveTo(0,ch*i/5);cx.lineTo(cw,ch*i/5);cx.stroke()}
-      cx.beginPath();
-      for(let i=0;i<=end;i++){const x=X(i),y=Y(seq[i]);i?cx.lineTo(x,y):cx.moveTo(x,y)}
-      cx.strokeStyle=gradient;cx.lineWidth=2;cx.lineJoin='round';cx.shadowColor='rgba(255,46,139,.45)';cx.shadowBlur=7;cx.stroke();cx.shadowBlur=0;
-      const x=X(end),y=Y(seq[end]);cx.fillStyle='#cfff52';cx.fillRect(x-2.2,y-2.2,4.4,4.4);
-    }
-    if(reduced||!animate){paint(seq.length-1);return}
-    let end=0;const jump=Math.max(1,Math.ceil(seq.length/80));
-    (function tick(){end=Math.min(seq.length-1,end+jump);paint(end);if(end<seq.length-1)requestAnimationFrame(tick)})();
-  }
-  function run(value){
-    const result=calculate(value);const verdict=document.getElementById('verdict');
-    if(result.error){verdict.textContent=result.error;return}
-    document.getElementById('seed').value=result.seed;
-    document.getElementById('steps').textContent=result.steps.toLocaleString('en-US');
-    document.getElementById('peak').textContent=result.peak.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
-    document.getElementById('shown-seed').textContent=result.seed;
-    verdict.textContent=result.steps>300?'A long finite route—still evidence about one seed, not the conjecture.':result.steps>100?'A substantial orbit. Inspect the structure, then test a sharper hypothesis.':'A finite orbit reaching 1. One data point, carefully labeled.';
-    drawPlot(result.seq,true);
-  }
-  document.getElementById('run-collatz').addEventListener('click',()=>run(document.getElementById('seed').value));
-  document.getElementById('seed').addEventListener('keydown',e=>{if(e.key==='Enter')run(e.target.value)});
-  document.getElementById('seed-chips').addEventListener('click',e=>{const b=e.target.closest('[data-seed]');if(b)run(b.dataset.seed)});
-  window.addEventListener('resize',()=>{clearTimeout(window.__plotResize);window.__plotResize=setTimeout(resizePlot,160)});
-  resizePlot();run('27');
+/* 02 RECAMAN embedding + inference */
+(function(){var main=document.getElementById('rcviz');if(!main)return;var g=main.getContext('2d');var strip=document.getElementById('rcviz2'),s=strip.getContext('2d');
+var Nn=2400,a=[0],seen=new Set([0]),mx=0;for(var n=1;n<=Nn;n++){var pv=a[n-1],c=pv-n,nx;if(c>0&&!seen.has(c))nx=c;else nx=pv+n;a.push(nx);seen.add(nx);if(nx>mx)mx=nx;}
+var occ=new Uint8Array(mx+2);occ[0]=1;var run=0,Wd=64,el=[];for(var n=1;n<=Nn;n++){var pv=a[n-1],c=pv-n;if(c>0){var lo=Math.max(0,c-Wd),hi=Math.min(mx,c+Wd),cnt=0;for(var v=lo;v<=hi;v++)cnt+=occ[v];el.push({x1:cnt/(hi-lo+1),x2:Math.min(1,n/Math.max(1,run)),y:occ[c]?1:0});}var q=a[n];if(q>run)run=q;occ[q]=1;}
+var b=0,w1=0,w2=0,lr=.5,WARM=140,preds=[],seenP=[],i=0,XM=.5,YM=1,MW,MH;
+function sig(z){return 1/(1+Math.exp(-z));}function px(v){return 30+(v/XM)*(MW-44);}function py(v){return(MH-24)-(v/YM)*(MH-42);}
+function rs(){var dp=Math.min(devicePixelRatio||1,2);MW=main.clientWidth;MH=main.clientHeight;main.width=(MW*dp)|0;main.height=(MH*dp)|0;g.setTransform(dp,0,0,dp,0,0);var SW=strip.clientWidth,SH=strip.clientHeight;strip.width=(SW*dp)|0;strip.height=(SH*dp)|0;s.setTransform(dp,0,0,dp,0,0);}
+function field(){var nx=48,ny=30;for(var gx=0;gx<nx;gx++){var x1a=gx/nx*XM,x1b=(gx+1)/nx*XM,xm=(x1a+x1b)/2;for(var gy=0;gy<ny;gy++){var y2a=gy/ny*YM,y2b=(gy+1)/ny*YM,ym=(y2a+y2b)/2,p=sig(b+w1*xm+w2*ym);g.fillStyle='rgba('+((182+73*p)|0)+','+((240-194*p)|0)+','+((139*p)|0)+',.15)';g.fillRect(px(x1a),py(y2b),px(x1b)-px(x1a)+1,py(y2a)-py(y2b)+1);}}}
+function auc(){var np=0,nn=0;for(var k=0;k<preds.length;k++){if(preds[k].y)np++;else nn++;}if(!np||!nn)return null;var so=preds.slice().sort(function(A,B){return A.p-B.p;}),rk=1,sp=0,idx=0;while(idx<so.length){var j=idx;while(j+1<so.length&&so[j+1].p===so[idx].p)j++;var av=(rk+rk+(j-idx))/2;for(var t=idx;t<=j;t++)if(so[t].y)sp+=av;rk+=(j-idx+1);idx=j+1;}return(sp-np*(np+1)/2)/(np*nn);}
+function strp(){var SW=strip.clientWidth,SH=strip.clientHeight;s.clearRect(0,0,SW,SH);var M=Math.min(preds.length,SW|0);if(M<2)return;var st=preds.length-M;s.strokeStyle='#8766FF';s.lineWidth=1.4;s.beginPath();for(var k=0;k<M;k++){var p=preds[st+k].p,X=k/M*SW,Y=(SH-4)-p*(SH-8);k?s.lineTo(X,Y):s.moveTo(X,Y);}s.stroke();for(var k=0;k<M;k++){var q=preds[st+k],X=k/M*SW;s.fillStyle=q.y?'rgba(255,46,139,.75)':'rgba(18,203,182,.5)';s.fillRect(X-.8,(q.y?4:SH-4)-.8,1.7,1.7);}}
+function draw(){g.clearRect(0,0,MW,MH);field();g.fillStyle='rgba(233,213,166,.5)';g.font='10px monospace';g.fillText('local density →',MW-116,MH-8);g.save();g.translate(13,86);g.rotate(-1.5708);g.fillText('fill ratio →',0,0);g.restore();for(var k=0;k<seenP.length;k++){var pt=seenP[k];g.fillStyle=pt.y?'rgba(255,46,139,.8)':'rgba(18,203,182,.6)';g.fillRect(px(Math.min(XM,pt.x1))-1.4,py(Math.min(YM,pt.x2))-1.4,2.8,2.8);}strp();}
+function feed(st){for(var q=0;q<st&&i<el.length;q++){var f=el[i],p=sig(b+w1*f.x1+w2*f.x2);if(i>=WARM)preds.push({p:p,y:f.y});var gd=f.y-p;b+=lr*gd;w1+=lr*gd*f.x1;w2+=lr*gd*f.x2;seenP.push(f);i++;}var ob=0;for(var k=0;k<i;k++)ob+=el[k].y;document.getElementById('rc-steps').textContent=i.toLocaleString('en-US');document.getElementById('rc-rate').textContent=(100*ob/Math.max(1,i)).toFixed(1)+'%';var A=auc();document.getElementById('rc-auc').textContent=A==null?'—':A.toFixed(3);document.getElementById('rc-w').textContent='('+w1.toFixed(1)+','+w2.toFixed(1)+')';}
+var started=false;function run(){if(started)return;started=true;rs();if(reduce){feed(el.length);draw();}else{(function go(){feed(10);draw();if(i<el.length)requestAnimationFrame(go);})();}}
+window.addEventListener('resize',function(){clearTimeout(window.__r);window.__r=setTimeout(function(){rs();draw();},160);});
+IO(main,run);})();
+
+/* 03 COLLATZ DELAY EMBEDDING */
+(function(){var c=document.getElementById('emviz');if(!c)return;var x=c.getContext('2d');var W,H,PAD=34,XM=7.2,seeds=0,pts=0,cur=null,raf=null;
+function rs(){var dp=Math.min(devicePixelRatio||1,2);W=c.clientWidth;H=c.clientHeight;c.width=(W*dp)|0;c.height=(H*dp)|0;x.setTransform(dp,0,0,dp,0,0);ax();}
+function px(l){return PAD+(l/XM)*(W-2*PAD);}function py(l){return(H-PAD)-(l/XM)*(H-2*PAD);}
+function ax(){x.clearRect(0,0,W,H);x.strokeStyle='rgba(255,255,255,.08)';x.lineWidth=1;x.beginPath();x.moveTo(PAD,H-PAD);x.lineTo(W-PAD,H-PAD);x.lineTo(W-PAD,PAD);x.stroke();x.fillStyle='rgba(233,213,166,.5)';x.font='10px monospace';x.fillText('log a(t) →',W-118,H-PAD+14);}
+function step(){if(!cur){cur={p:5+((Math.random()*300000)|0)};seeds++;}var it=0;while(cur&&it<10){var A=cur.p;if(A===1){cur=null;break;}var B=(A%2===0)?A/2:3*A+1,lx=Math.log10(A),ly=Math.log10(B);if(lx<=XM&&ly<=XM){x.fillStyle=(A%2===0)?'rgba(18,203,182,.5)':'rgba(255,46,139,.5)';x.fillRect(px(lx),py(ly),1.7,1.7);pts++;}cur.p=B;it++;}document.getElementById('em-r1').textContent=seeds.toLocaleString('en-US');document.getElementById('em-r2').textContent=pts.toLocaleString('en-US');}
+function start(){if(raf||reduce)return;(function go(){for(var i=0;i<7;i++)step();raf=requestAnimationFrame(go);})();}
+function stop(){if(raf)cancelAnimationFrame(raf);raf=null;}
+window.addEventListener('resize',function(){clearTimeout(window.__e);window.__e=setTimeout(rs,160);});rs();
+if(reduce){for(var i=0;i<9000;i++)step();}else IO(c,start,stop);})();
+
+/* 04 TETRATION + BRUN */
+(function(){var c=document.getElementById('ttviz');if(!c)return;var x=c.getContext('2d');var W,H,PAD=34,XMIN=.02,XMAX=2,YMAX=4,Eme=Math.exp(-Math.E),Eie=Math.exp(1/Math.E),B=1.9021605823;
+function px(b){return PAD+((b-XMIN)/(XMAX-XMIN))*(W-2*PAD);}function py(v){return(H-PAD)-(v/YMAX)*(H-2*PAD);}
+function rs(){var dp=Math.min(devicePixelRatio||1,2);W=c.clientWidth;H=c.clientHeight;c.width=(W*dp)|0;c.height=(H*dp)|0;x.setTransform(dp,0,0,dp,0,0);render();}
+function render(){x.clearRect(0,0,W,H);x.fillStyle='rgba(255,122,26,.1)';x.fillRect(px(Eie),PAD*.4,W-PAD-px(Eie),H-PAD-PAD*.4);x.fillStyle='rgba(233,213,166,.5)';x.font='10px monospace';x.fillText('towers diverge →',px(Eie)+8,PAD*.9);
+ [[Eme,'e^-e'],[Eie,'e^{1/e}']].forEach(function(p){var xx=px(p[0]);x.strokeStyle='rgba(255,255,255,.22)';x.setLineDash([4,4]);x.beginPath();x.moveTo(xx,PAD*.4);x.lineTo(xx,H-PAD);x.stroke();x.setLineDash([]);x.fillStyle='rgba(233,213,166,.7)';x.fillText(p[1],xx+3,H-PAD-6);});
+ var cols=Math.max(160,(W-2*PAD)|0);for(var i=0;i<=cols;i++){var b=XMIN+(i/cols)*(XMAX-XMIN);if(b>Eie)continue;var t=1,ok=true,k;for(k=0;k<260;k++){t=Math.pow(b,t);if(!isFinite(t)||t>1e4){ok=false;break;}}if(!ok)continue;var last=[];for(k=0;k<60;k++){t=Math.pow(b,t);last.push(t);}var mn=Math.min.apply(null,last),mxx=Math.max.apply(null,last);if(mxx-mn>.02){x.fillStyle='#FF2E8B';x.fillRect(px(b),py(mn),1.5,1.5);x.fillRect(px(b),py(mxx),1.5,1.5);}else{x.fillStyle='#B6F000';x.fillRect(px(b),py((mn+mxx)/2),1.5,1.5);}}
+ var bx=px(B);x.strokeStyle='#8766FF';x.setLineDash([2,3]);x.beginPath();x.moveTo(bx,PAD*.4);x.lineTo(bx,H-PAD);x.stroke();x.setLineDash([]);x.fillStyle='#8766FF';x.fillText('Brun B2',bx-52,PAD*1.6);}
+function sie(m){var s=new Uint8Array(m+1),p=[];for(var i=2;i<=m;i++){if(!s[i]){p.push(i);for(var j=i*i;j<=m;j+=i)s[j]=1;}}return{s:s,p:p};}
+var PR=sie(300000),tw=[];for(var i=0;i<PR.p.length;i++){var q=PR.p[i];if(q+2<=300000&&!PR.s[q+2])tw.push(q);}
+var bi=0,bs=0;function tick(){var ch=0;while(bi<tw.length&&ch<50){var q=tw[bi];bs+=1/q+1/(q+2);bi++;ch++;}document.getElementById('tt-r1').textContent=bs.toFixed(6);document.getElementById('tt-r2').textContent=tw[Math.min(bi,tw.length-1)]+', '+(tw[Math.min(bi,tw.length-1)]+2);if(bi<tw.length&&!reduce)requestAnimationFrame(tick);}
+window.addEventListener('resize',function(){clearTimeout(window.__t);window.__t=setTimeout(rs,160);});rs();tick();})();
+
+/* 05 COLLATZSCAPE FRACTAL */
+(function(){var c=document.getElementById('csviz');if(!c)return;var x=c.getContext('2d');var W,H,IW,IH,img,MAX=48,RA=-4.4,RB=4.4,IA=-3,IB=3,row=0,done=false;
+function it(re,im){var zr=re,zi=im,k;for(k=0;k<MAX;k++){var ar=Math.PI*zr,ai=Math.PI*zi,cr=Math.cos(ar)*Math.cosh(ai),ci=-Math.sin(ar)*Math.sinh(ai),pr=2+5*zr,pi=5*zi,mr=pr*cr-pi*ci,mi=pr*ci+pi*cr,rr=2+7*zr-mr,ri=7*zi-mi;zr=rr/4;zi=ri/4;if(!isFinite(zr)||!isFinite(zi))return k;if(zr*zr+zi*zi>1e12)return k;}return MAX;}
+var stp=[[255,46,139],[135,102,255],[18,203,182],[182,240,0]];function pal(t){var s=t*3,i=Math.min(2,Math.floor(s)),f=s-i,a=stp[i],b=stp[i+1];return[a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f,a[2]+(b[2]-a[2])*f];}
+function chunk(rows){var d=img.data;for(var yy=row;yy<Math.min(IH,row+rows);yy++){var im=IA+(yy/IH)*(IB-IA);for(var xx=0;xx<IW;xx++){var re=RA+(xx/IW)*(RB-RA),k=it(re,im),idx=(yy*IW+xx)*4;if(k>=MAX){d[idx]=8;d[idx+1]=6;d[idx+2]=12;d[idx+3]=255;}else{var gg=Math.min(1,.32+k/MAX),col=pal(k/MAX);d[idx]=col[0]*gg;d[idx+1]=col[1]*gg;d[idx+2]=col[2]*gg;d[idx+3]=255;}}}row+=rows;x.putImageData(img,0,0);}
+function render(){if(done)return;W=c.clientWidth;H=c.clientHeight;IW=Math.min(W,660)|0;IH=Math.min(H,400)|0;if(IW<2||IH<2)return;c.width=IW;c.height=IH;c.style.width=W+'px';c.style.height=H+'px';img=x.createImageData(IW,IH);row=0;done=true;if(reduce){while(row<IH)chunk(30);}else(function step(){chunk(6);if(row<IH)requestAnimationFrame(step);})();}
+window.addEventListener('resize',function(){clearTimeout(window.__c);window.__c=setTimeout(function(){done=false;render();},240);});
+IO(c,render);})();
+
+/* 06 VALIDATRON CHAMBER */
+(function(){var cv=document.getElementById('valcanvas');if(!cv)return;var g=cv.getContext('2d');var W,H,names=['intake','reproduce','evidence','label','publish'];
+function rs(){var dp=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=(W*dp)|0;cv.height=(H*dp)|0;g.setTransform(dp,0,0,dp,0,0);}
+function parse(v){var p=(v||'empirical,72').split(',');var lab=(p[0]||'empirical').trim().toLowerCase();var cf=Math.max(0,Math.min(100,parseInt((p[1]||'72').replace(/[^0-9]/g,''))||72));return{lab:lab,cf:cf};}
+function draw(lab,cf){rs();g.clearRect(0,0,W,H);g.fillStyle='#08060a';g.fillRect(0,0,W,H);var xs=[.1,.29,.48,.67,.86],pass=cf>=85?5:cf>=70?4:cf>=50?3:cf>=35?2:1,cols=['#12CBB6','#12CBB6','#B6F000','#FFC21F','#FF4D6D'];
+ for(var i=0;i<5;i++){var X=W*xs[i],on=i<pass;g.fillStyle=on?cols[i]:'rgba(255,255,255,.08)';g.fillRect(X,H*.30,W*.12,H*.36);g.strokeStyle='rgba(255,255,255,.18)';g.strokeRect(X,H*.30,W*.12,H*.36);g.fillStyle=on?'#08060a':'#7a6647';g.font='10px IBM Plex Mono';g.textAlign='center';g.fillText(names[i],X+W*.06,H*.5);}
+ g.textAlign='left';var st=pass>=5?'published':pass>=3?'held for review':'rejected';document.getElementById('val-r1').textContent=lab;document.getElementById('val-r2').textContent=cf+'%';document.getElementById('val-r3').textContent=st;
+ document.getElementById('val-verdict').textContent=pass>=5?'clears all five — publishable.':pass>=3?'stalls at stage '+(pass+1)+' — needs more evidence.':'insufficient support — sent back.';}
+function run(v){var o=parse(v);document.getElementById('val-input').value=o.lab+','+o.cf;draw(o.lab,o.cf);}
+document.getElementById('val-run').addEventListener('click',function(){run(document.getElementById('val-input').value);});
+document.getElementById('val-input').addEventListener('keydown',function(e){if(e.key==='Enter')run(e.target.value);});
+document.getElementById('val-chips').addEventListener('click',function(e){var b=e.target.closest('.chip');if(b)run(b.dataset.v);});
+window.addEventListener('resize',function(){clearTimeout(window.__vv);window.__vv=setTimeout(function(){run(document.getElementById('val-input').value);},150);});
+run('empirical,72');})();
 })();
 </script>
-</body>
-</html>
+</body></html>
