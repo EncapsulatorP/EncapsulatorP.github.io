@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>EncapsulatorP — computational number theory</title>
-<meta name="description" content="A working archive of attacks on the great open problems of number theory — Collatz, Goldbach, Mertens, Catalan — labeled by how much is actually known. Mostly pending, gloriously." />
+<title>EncapsulatorP — plan of future intents</title>
+<meta name="description" content="A working plan of future intents for the EncapsulatorP research program. Minimal achievements so far, open boxes left open on purpose. Mostly pending, gloriously." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,8 +13,6 @@
     --night-top:#07080F;
     --night-mid:#12152B;
     --night-dusk:#1B2340;
-    --moon:#E3E8F4;
-    --moon:#C7CDE6;
     --paper:#E9ECF4;
     --muted:#8390B4;
     --muted-2:#5B6488;
@@ -56,7 +54,7 @@
       radial-gradient(1px 1px at 54% 84%, rgba(199,205,230,.55), transparent),
       radial-gradient(1.4px 1.4px at 74% 66%, rgba(231,236,244,.65), transparent);
   }
-.moon{position:absolute;top:6vh;right:15vw;width:clamp(110px,15vw,182px);aspect-ratio:1;
+  .moon{position:absolute;top:6vh;right:15vw;width:clamp(110px,15vw,182px);aspect-ratio:1;
     border-radius:50%;opacity:.94;pointer-events:none;
     background:
       radial-gradient(circle at 64% 68%, rgba(150,163,196,.45), transparent 34%),
@@ -86,13 +84,13 @@
 
   .hero-head{padding:40px 0 44px;}
   h1{font-family:"Fraunces",serif;font-weight:500;font-size:clamp(3.2rem,11.5vw,7.4rem);
-    line-height:.94;letter-spacing:-.02em;margin:0 0 24px;max-width:15ch;
+    line-height:.94;letter-spacing:-.02em;margin:0 0 24px;max-width:16ch;
     text-shadow:0 2px 40px rgba(7,8,15,.6);}
   h1 em{font-style:italic;color:var(--phos);font-weight:400;}
-  .lede{font-size:clamp(1rem,2.4vw,1.22rem);color:#C9CFE2;max-width:47ch;margin:0 0 14px;}
+  .lede{font-size:clamp(1rem,2.4vw,1.22rem);color:#C9CFE2;max-width:48ch;margin:0 0 14px;}
   .lede b{color:var(--paper);font-weight:600;}
   .epigraph{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(.98rem,2.2vw,1.12rem);
-    color:var(--muted);max-width:44ch;margin:0 0 14px;line-height:1.5;}
+    color:var(--muted);max-width:46ch;margin:0 0 14px;line-height:1.5;}
   .moonline{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.02em;
     color:var(--muted-2);max-width:54ch;margin:0 0 30px;line-height:1.7;}
   .moonline b{color:var(--muted);font-weight:400;}
@@ -116,90 +114,44 @@
   .sec-num{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--phos);letter-spacing:.1em;}
   .sec-title{font-family:"Fraunces",serif;font-weight:500;font-size:clamp(1.7rem,4.5vw,2.5rem);
     letter-spacing:-.01em;line-height:1;margin:0;}
+  .sec-sub{color:var(--muted);max-width:62ch;margin:0 0 8px;font-size:1.05rem;}
 
-  /* ---------- PLAY / BUSY BEAVER ---------- */
-  .play{border-bottom:1px solid var(--line);}
-  .play-panel{background:var(--glass);border:1px solid var(--line);border-radius:20px;
-    padding:34px;backdrop-filter:blur(7px);display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:stretch;}
-  .play-title{font-family:"Fraunces",serif;font-weight:500;font-size:clamp(1.8rem,4.5vw,2.6rem);
-    line-height:1;margin:14px 0 12px;letter-spacing:-.01em;}
-  .play-title em{font-style:italic;color:var(--amber);}
-  .play-sub{color:#C4CAdf;font-size:1rem;margin:0 0 22px;max-width:42ch;}
-  .feed{display:flex;gap:10px;margin-bottom:14px;}
-  .feed input{flex:1;min-width:0;font-family:"IBM Plex Mono",monospace;font-size:15px;
-    background:rgba(7,8,15,.5);border:1px solid var(--line);border-radius:10px;color:var(--paper);
-    padding:12px 14px;}
-  .feed input::placeholder{color:var(--muted-2);}
-  .feed button{font-family:"IBM Plex Mono",monospace;font-size:13.5px;font-weight:600;cursor:pointer;
-    background:var(--phos);color:var(--night-top);border:none;border-radius:10px;padding:0 20px;
-    transition:background .2s,transform .2s;}
-  .feed button:hover{background:#7ff0d1;transform:translateY(-1px);}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;}
-  .chip{font-family:"IBM Plex Mono",monospace;font-size:12px;cursor:pointer;color:var(--muted);
-    background:transparent;border:1px solid var(--line);border-radius:20px;padding:5px 12px;
-    transition:border-color .2s,color .2s;}
-  .chip:hover{border-color:var(--phos);color:var(--phos);}
-  .chip b{color:var(--muted-2);font-weight:400;margin-left:6px;}
-  .play-right{display:flex;flex-direction:column;}
-  #play{width:100%;height:190px;display:block;border:1px solid var(--line);border-radius:12px;
-    background:rgba(7,8,15,.4);}
-  .readout{display:flex;gap:22px;margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;}
-  .readout .r{display:flex;flex-direction:column;gap:2px;}
-  .readout .k{color:var(--muted-2);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;}
-  .readout .v{color:var(--phos);font-size:16px;}
-  .verdict{margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--amber);min-height:1.2em;}
-  .play-foot{grid-column:1 / -1;border-top:1px solid var(--line);padding-top:16px;
-    font-family:"Fraunces",serif;font-style:italic;font-size:1.02rem;color:var(--muted);text-align:center;}
+  /* ---------- MINIMAL ACHIEVEMENTS ---------- */
+  .achieve-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px;}
+  .achieve{background:var(--glass);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px;backdrop-filter:blur(6px);position:relative;overflow:hidden;}
+  .achieve::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--phos);opacity:.85;}
+  .achieve h3{font-family:"Fraunces",serif;font-weight:500;font-size:1.35rem;margin:0 0 6px;color:var(--paper);}
+  .achieve .tagline{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--phos);margin-bottom:12px;letter-spacing:.03em;}
+  .achieve p{font-size:14.5px;line-height:1.55;color:#B9C0D6;margin:0 0 14px;}
+  .achieve .meta{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap;}
+  .achieve .meta a{color:var(--phos);text-decoration:none;}
+  .achieve .meta a:hover{text-decoration:underline;}
+  .achieve.highlight{border-color:rgba(95,227,192,.35);}
+  .achieve.highlight::before{background:var(--amber);}
 
-  /* ---------- PROGRAM ---------- */
-  .program{max-width:62ch;}
-  .program p{font-size:clamp(1.05rem,2.5vw,1.26rem);line-height:1.62;color:#CDD3E4;margin:0 0 22px;}
-  .program p.drop::first-letter{font-family:"Fraunces",serif;font-size:3.1em;line-height:.72;
-    float:left;padding:6px 12px 0 0;color:var(--phos);font-weight:500;}
-  .program strong{color:var(--paper);font-weight:600;}
-  .program .sat{font-family:"Fraunces",serif;font-style:italic;color:var(--amber);}
-  .program .m{font-family:"IBM Plex Mono",monospace;color:var(--phos);font-size:.9em;}
+  /* ---------- FUTURE PLAN ---------- */
+  .future{list-style:none;margin:0;padding:0;columns:2;column-gap:36px;}
+  .future li{break-inside:avoid;display:flex;gap:12px;align-items:flex-start;padding:12px 0;
+    font-size:1.02rem;color:var(--paper);opacity:.92;line-height:1.5;}
+  .future .box{flex-shrink:0;width:18px;height:18px;border:2px solid var(--phos);border-radius:5px;margin-top:3px;}
+  .future b{background:rgba(95,227,192,.18);padding:0 5px;border-radius:3px;color:var(--phos);}
+  .future .note{display:block;font-size:13.5px;color:var(--muted);margin-top:3px;font-family:"IBM Plex Mono",monospace;}
 
-  /* ---------- CAPSULES ---------- */
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
-  .card{position:relative;display:flex;flex-direction:column;background:var(--glass);
-    border:1px solid var(--line);border-radius:var(--radius);padding:24px 24px 20px;
-    text-decoration:none;color:inherit;transition:border-color .22s,transform .22s;
-    overflow:hidden;backdrop-filter:blur(6px);}
-  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
-    background:var(--edge,var(--muted-2));opacity:.85;transition:opacity .22s;}
-  a.card:hover{transform:translateY(-4px);border-color:var(--card-hover,var(--phos));}
-  a.card:hover::before{opacity:1;}
-  .card-top{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
-  .repo{font-family:"IBM Plex Mono",monospace;font-size:15.5px;font-weight:500;color:var(--paper);word-break:break-word;}
-  .vis{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-    padding:2px 8px;border-radius:20px;border:1px solid var(--line);color:var(--muted);flex-shrink:0;}
-  .vis.pub{color:var(--phos);border-color:#2f7d6c;}
-  .pairing{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--muted);margin:2px 0 14px;}
-  .pairing .x{color:var(--amber);padding:0 3px;}
-  .card p{font-size:14.5px;line-height:1.55;color:#B9C0D6;margin:0 0 18px;flex-grow:1;}
-  .card-foot{display:flex;align-items:center;gap:12px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);}
-  .lang{display:inline-flex;align-items:center;gap:6px;}
-  .langdot{width:9px;height:9px;border-radius:50%;background:#888;}
-  .py{background:#3776AB;} .html{background:#E34F26;}
-  .tag{margin-left:auto;padding:3px 9px;border-radius:6px;font-size:10.5px;letter-spacing:.09em;
-    text-transform:uppercase;border:1px solid var(--tagc,var(--line));color:var(--tagc,var(--muted));}
-  .e-emp{--edge:var(--phos);--card-hover:var(--phos);--tagc:var(--phos);}
-  .e-theo{--edge:var(--amber);--card-hover:var(--amber);--tagc:var(--amber);}
-  .e-spec{--edge:var(--muted-2);--card-hover:var(--muted);--tagc:var(--muted);}
-  .e-tool{--edge:#6f7bd8;--card-hover:#8b95e8;--tagc:#9aa3ee;}
-  .card.more{align-items:flex-start;justify-content:center;background:transparent;border-style:dashed;}
-  .card.more::before{display:none;}
-  .card.more .repo{color:var(--phos);}
-  .card.more p{margin-bottom:6px;}
+  /* ---------- CURRENT INVENTORY (small) ---------- */
+  .inventory{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px;}
+  .inv-card{background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+    font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--muted);backdrop-filter:blur(4px);}
+  .inv-card strong{display:block;color:var(--paper);font-size:14px;margin-bottom:4px;font-weight:500;}
+  .inv-card a{color:var(--phos);text-decoration:none;}
+  .inv-card a:hover{text-decoration:underline;}
 
-  /* ---------- LEGEND ---------- */
-  .legend-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:start;}
-  .legend-note{font-size:1.02rem;color:#C9CFE2;line-height:1.6;}
+  /* ---------- LEGEND (compact) ---------- */
+  .legend-note{font-size:1.02rem;color:#C9CFE2;line-height:1.6;max-width:62ch;margin-bottom:22px;}
   .legend-note .val{font-family:"IBM Plex Mono",monospace;color:var(--phos);}
   .legend-note b{color:var(--paper);}
-  .legend{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);}
-  .legend li{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:15px 0;
+  .legend{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);max-width:720px;}
+  .legend li{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:13px 0;
     border-bottom:1px solid var(--line);align-items:baseline;}
   .lname{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;}
   .legend li p{margin:0;font-size:14px;color:var(--muted);line-height:1.5;}
@@ -219,10 +171,9 @@
     body{font-size:16px;}
     .wrap{padding:0 18px;}
     section{padding:66px 0;}
-    .grid{grid-template-columns:1fr;}
-    .legend-wrap{grid-template-columns:1fr;gap:26px;}
+    .achieve-grid,.inventory{grid-template-columns:1fr;}
+    .future{columns:1;}
     .legend li{grid-template-columns:110px 1fr;gap:10px;}
-    .play-panel{grid-template-columns:1fr;gap:24px;padding:24px;}
     h1{font-size:clamp(3rem,15vw,4.4rem);}
     .hero-head{padding:28px 0 32px;}
     .cta-row{flex-direction:column;align-items:stretch;}
@@ -276,143 +227,213 @@
       <span class="live"><span class="dot"></span> live · collatz orbits · 3n+1</span>
     </div>
     <div class="hero-head">
-      <p class="eyebrow" style="margin:0 0 26px;">computational number theory · a working archive</p>
-      <h1>Hard&nbsp;problems,<br><em>encapsulated.</em></h1>
-      <p class="lede">An archive of attacks on the great open problems — <b>Collatz, Goldbach, Mertens, Catalan</b> — each paired with the machinery aimed at it, and labeled by exactly how much is actually known.</p>
-      <p class="epigraph">Most of them are still falling. A few of the questions never will resolve — and we keep feeding them anyway.</p>
-      <p class="moonline"><b>quasi una fantasia</b> — the Moonlight climbs in triplets, and so does every odd step: n &rarr; 3n+1.</p>
+      <p class="eyebrow" style="margin:0 0 26px;">computational number theory · a plan of intents</p>
+      <h1>Mostly&nbsp;pending.<br><em>Still moving.</em></h1>
+      <p class="lede">A research program that keeps the lights on for problems that may never resolve. We publish what we actually have — the <b>minimal achievements</b> — and leave the rest as open boxes on purpose.</p>
+      <p class="epigraph">Life isn’t fair. The conjectures aren’t either. We still feed them.</p>
+      <p class="moonline"><b>quasi una fantasia</b> — the Moonlight climbs in triplets, and so does every odd step: n → 3n+1.</p>
       <div class="cta-row">
-        <a class="btn primary" href="https://github.com/orgs/EncapsulatorP/repositories">Browse the repositories <span class="arw">&rarr;</span></a>
-        <a class="btn" href="#play">Play with one <span class="arw">&darr;</span></a>
+        <a class="btn primary" href="#achievements">What we have so far <span class="arw">↓</span></a>
+        <a class="btn" href="#future">The open boxes <span class="arw">↓</span></a>
       </div>
     </div>
   </div>
 </header>
 
-<!-- ============ PLAY / BUSY BEAVER ============ -->
-<section class="play" id="play">
+<!-- ============ MINIMAL ACHIEVEMENTS ============ -->
+<section id="achievements">
   <div class="wrap">
-    <div class="play-panel">
-      <div class="play-left">
-        <p class="eyebrow">an interlude · busy beaver</p>
-        <h2 class="play-title">Feed&nbsp;it a <em>number.</em></h2>
-        <p class="play-sub">Give it a nut — any positive integer — and watch the hailstone orbit gnaw its way back to 1. Even numbers halve; odd numbers leap to 3n+1. Nobody knows a seed that escapes.</p>
-        <div class="feed">
-          <input id="seed" type="text" inputmode="numeric" placeholder="e.g. 27" aria-label="starting integer" />
-          <button id="drop">Drop it</button>
-        </div>
-        <div class="chips" id="chips">
-          <button class="chip" data-n="27">27<b>the classic</b></button>
-          <button class="chip" data-n="703">703<b>high-flyer</b></button>
-          <button class="chip" data-n="6171">6171<b>a menace</b></button>
-          <button class="chip" data-n="9663">9663<b>wild</b></button>
-          <button class="chip" data-n="77031">77031<b>350 steps</b></button>
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">Minimal achievements</h2>
+    </div>
+    <p class="sec-sub">Honest inventory of what has survived its own scrutiny so far. Nothing here is dressed as more than it is.</p>
+
+    <div class="achieve-grid">
+      <div class="achieve highlight">
+        <h3>Recamán holes &amp; phase-slips</h3>
+        <div class="tagline">process-side · empirical · public</div>
+        <p>The classic Θ<sub>3</sub> wheel is falsified as a predictor of the real obstruction bit. Previous-bit conditioning dominates (q≈0.999 / 0.001). The stream is near-perfect alternation plus rare phase-slip defects. Value-side hard task (dataset D, forward CV) reaches mean AUC 0.7586 — the number that actually matters.</p>
+        <div class="meta">
+          <span>repo · <a href="https://github.com/EncapsulatorP/recaman">recaman</a></span>
+          <span>status · Empirical</span>
         </div>
       </div>
-      <div class="play-right">
-        <canvas id="play-canvas" aria-label="Collatz trajectory plot"></canvas>
-        <div class="readout">
-          <div class="r"><span class="k">steps to 1</span><span class="v" id="r-steps">—</span></div>
-          <div class="r"><span class="k">peak altitude</span><span class="v" id="r-peak">—</span></div>
+
+      <div class="achieve">
+        <h3>Collatz × Kesten–Goldie</h3>
+        <div class="tagline">stopping times · heavy tails · public</div>
+        <p>Treats Collatz stopping times as a stochastic recurrence and extracts the heavy-tail exponent predicted by the Kesten–Goldie theorem — a probabilistic shadow of the 3n+1 map. Lives as an open empirical capsule.</p>
+        <div class="meta">
+          <span>repo · <a href="https://github.com/EncapsulatorP/collatz_kesten-goldie">collatz_kesten-goldie</a></span>
+          <span>status · Empirical</span>
         </div>
-        <div class="verdict" id="verdict">give it a nut.</div>
       </div>
-      <p class="play-foot">Every number anyone has ever tried comes home. Nobody can prove they all do.</p>
+
+      <div class="achieve">
+        <h3>Goldbach × Collatz structure</h3>
+        <div class="tagline">interactive notebook · public</div>
+        <p>Cross-examines Goldbach partition counts against Collatz orbit structure. Where the two combs line up is recorded; where they don’t is left visible.</p>
+        <div class="meta">
+          <span>repo · <a href="https://github.com/EncapsulatorP/goldbach_busy_collatz">goldbach_busy_collatz</a></span>
+          <span>status · Empirical</span>
+        </div>
+      </div>
+
+      <div class="achieve">
+        <h3>Public wall + epistemic gate</h3>
+        <div class="tagline">infra · labels enforced</div>
+        <p>A working selection of capsules is public. Private tooling (Validatron, Diophantus) turns the five epistemic labels into a machine-enforced gate: no claim climbs a tier until the scrutiny for that tier is survived.</p>
+        <div class="meta">
+          <span>org · <a href="https://github.com/orgs/EncapsulatorP/repositories">EncapsulatorP</a></span>
+          <span>status · Tooling</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ PROGRAM ============ -->
-<section id="program">
+<!-- ============ CURRENT INVENTORY ============ -->
+<section id="inventory" style="padding-top:0;">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">The program</h2></div>
-    <div class="program">
-      <p class="drop">Every repository here is a <strong>capsule</strong>: one hard, well-defined problem, sealed together with a specific line of attack. Not a survey, not a textbook — a lab notebook that iterates. Some capsules chase a counterexample. Some port heavy machinery — transfer operators, Nevanlinna theory, stochastic recurrences — onto a problem it wasn't built for, to see what it says.</p>
-      <p>The rule of the house is honesty about status. A result that only holds under cross-validation is not a theorem, and it is never dressed as one. Everything is tagged — <span class="m">theorem</span>, <span class="m">empirical</span>, <span class="m">conjectural</span>, <span class="m">speculative</span> — and the tags are enforced by machine, not by mood.</p>
-      <p><span class="sat">More of these end in pendency than in proof.</span> That isn't failure; it's the weather. A mapped dead end is still a measurement, so the failed attacks stay in the record too.</p>
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Current inventory</h2>
+    </div>
+    <p class="sec-sub">Public and private capsules that exist today. Most remain open attacks; a few are already mapped dead ends kept on purpose.</p>
+    <div class="inventory">
+      <div class="inv-card">
+        <strong><a href="https://github.com/EncapsulatorP/recaman">recaman</a></strong>
+        holes · phase-slips · wheel falsified
+      </div>
+      <div class="inv-card">
+        <strong><a href="https://github.com/EncapsulatorP/collatz_kesten-goldie">collatz_kesten-goldie</a></strong>
+        stopping times · Kesten–Goldie
+      </div>
+      <div class="inv-card">
+        <strong><a href="https://github.com/EncapsulatorP/goldbach_busy_collatz">goldbach_busy_collatz</a></strong>
+        partitions × orbits
+      </div>
+      <div class="inv-card">
+        <strong>mertens_counterexample</strong>
+        M(n)/√n frontier · private
+      </div>
+      <div class="inv-card">
+        <strong>Catalan_ruelle_mayer</strong>
+        transfer operators · private
+      </div>
+      <div class="inv-card">
+        <strong>NT_goldbachy_disastrous</strong>
+        frequency-side log · private
+      </div>
+      <div class="inv-card">
+        <strong>Diophantus</strong>
+        shared Diophantine toolkit
+      </div>
+      <div class="inv-card">
+        <strong>Validatron</strong>
+        label enforcement · verifier
+      </div>
+      <div class="inv-card">
+        <strong><a href="https://github.com/orgs/EncapsulatorP/repositories">+ more</a></strong>
+        collatz_lift, prime-polarity, zeta_branching…
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ CAPSULES ============ -->
-<section id="capsules">
+<!-- ============ FUTURE INTENTS ============ -->
+<section id="future">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">The capsules</h2></div>
-    <div class="grid">
-
-      <a class="card e-emp" href="https://github.com/EncapsulatorP/collatz_kesten-goldie">
-        <div class="card-top"><span class="repo">collatz_kesten-goldie</span><span class="vis pub">Public</span></div>
-        <div class="pairing">Collatz <span class="x">&times;</span> Kesten&ndash;Goldie</div>
-        <p>Treats Collatz stopping times as a stochastic recurrence and reads off the heavy-tail exponent the Kesten&ndash;Goldie theorem predicts — a probabilistic shadow of the 3n+1 map.</p>
-        <div class="card-foot"><span class="lang"><span class="langdot py"></span>Python</span><span class="tag">Empirical</span></div>
-      </a>
-
-      <a class="card e-emp" href="https://github.com/EncapsulatorP/goldbach_busy_collatz">
-        <div class="card-top"><span class="repo">goldbach_busy_collatz</span><span class="vis pub">Public</span></div>
-        <div class="pairing">Goldbach <span class="x">&times;</span> Collatz structure</div>
-        <p>An interactive notebook cross-examining Goldbach partition counts against Collatz orbit structure — where the two combs of primes and iterations happen to line up.</p>
-        <div class="card-foot"><span class="lang"><span class="langdot html"></span>HTML</span><span class="tag">Empirical</span></div>
-      </a>
-
-      <div class="card e-emp" tabindex="0" aria-label="mertens_counterexample, private repository">
-        <div class="card-top"><span class="repo">mertens_counterexample</span><span class="vis">Private</span></div>
-        <div class="pairing">Mertens conjecture · the Riemann edge</div>
-        <p>Pushes the M(n)/&radic;n boundary toward the region where Mertens is known to fail, mapping the frontier that ties the Möbius sum back to the zeros of &zeta;.</p>
-        <div class="card-foot"><span class="lang"><span class="langdot py"></span>Python</span><span class="tag">Empirical</span></div>
-      </div>
-
-      <div class="card e-theo" tabindex="0" aria-label="Catalan_ruelle_mayer, private repository">
-        <div class="card-top"><span class="repo">Catalan_ruelle_mayer</span><span class="vis">Private</span></div>
-        <div class="pairing">Catalan <span class="x">&times;</span> Ruelle&ndash;Mayer operators</div>
-        <p>Brings thermodynamic-formalism machinery — Ruelle&ndash;Mayer transfer operators and their zeta functions — to bear on Catalan-type exponent gaps between perfect powers.</p>
-        <div class="card-foot"><span class="lang"><span class="langdot py"></span>Python</span><span class="tag">Theoretical</span></div>
-      </div>
-
-      <div class="card e-spec" tabindex="0" aria-label="NT_goldbachy_disastrous, private repository">
-        <div class="card-top"><span class="repo">NT_goldbachy_disastro&hellip;</span><span class="vis">Private</span></div>
-        <div class="pairing">Goldbach, the frequency side</div>
-        <p>A candidly-named log of a Goldbach frequency-side experiment that did not pan out. Kept on purpose: the shape of the failure is itself the result.</p>
-        <div class="card-foot"><span class="lang"><span class="langdot py"></span>Python</span><span class="tag">Speculative</span></div>
-      </div>
-
-      <div class="card e-tool" tabindex="0" aria-label="Diophantus, private repository">
-        <div class="card-top"><span class="repo">Diophantus</span><span class="vis">Private</span></div>
-        <div class="pairing">Shared Diophantine toolkit</div>
-        <p>The common solver and search layer — lattice reduction, bounded-height enumeration, integer-point routines — that the other capsules reach into when a problem turns Diophantine.</p>
-        <div class="card-foot"><span class="lang"><span class="langdot py"></span>Python</span><span class="tag">Tooling</span></div>
-      </div>
-
-      <div class="card e-tool" tabindex="0" aria-label="Validatron, private repository">
-        <div class="card-top"><span class="repo">Validatron</span><span class="vis">Private</span></div>
-        <div class="pairing">The verifier · label enforcement</div>
-        <p>Turns the epistemic labels into a gate: honest forward-chaining cross-validation, no leakage, no future peeking. A claim earns its tag here or it doesn't ship with one.</p>
-        <div class="card-foot"><span class="lang"><span class="langdot py"></span>Python</span><span class="tag">Tooling</span></div>
-      </div>
-
-      <a class="card more" href="https://github.com/orgs/EncapsulatorP/repositories">
-        <div class="card-top"><span class="repo">&rarr; all repositories</span></div>
-        <p>More capsules live in the org, public and private. This wall shows a working selection.</p>
-        <div class="card-foot"><span class="tag" style="margin-left:0;--tagc:var(--phos);">github · EncapsulatorP</span></div>
-      </a>
-
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">Plan of future intents</h2>
     </div>
+    <p class="sec-sub">Nothing here is done. Boxes left open on purpose. A wishlist the program is actually chasing.</p>
+
+    <ul class="future">
+      <li>
+        <span class="box"></span>
+        <div>
+          Close the local prediction problem for Recamán phase-slips.
+          <span class="note">where the rare defects occur — not whether the wheel flips</span>
+        </div>
+      </li>
+      <li>
+        <span class="box"></span>
+        <div>
+          Ship the first <b>theorem</b>-tagged result that clears Validatron end-to-end.
+        </div>
+      </li>
+      <li>
+        <span class="box"></span>
+        <div>
+          Promote one <b>speculative</b> capsule to <b>empirical</b> — honestly, no leakage.
+        </div>
+      </li>
+      <li>
+        <span class="box"></span>
+        <div>
+          Pin down the region where <b>mertens_counterexample</b> must finally bite.
+        </div>
+      </li>
+      <li>
+        <span class="box"></span>
+        <div>
+          A Goldbach frequency-side bound worth a citation.
+          <span class="note">or a cleanly mapped failure that is itself the result</span>
+        </div>
+      </li>
+      <li>
+        <span class="box"></span>
+        <div>
+          Turn the Ruelle–Mayer operators into a real Catalan-gap estimate.
+        </div>
+      </li>
+      <li>
+        <span class="box"></span>
+        <div>
+          Open one more capsule to the public.
+        </div>
+      </li>
+      <li>
+        <span class="box"></span>
+        <div>
+          Welcome the first outside contributor to the afterparty.
+        </div>
+      </li>
+      <li>
+        <span class="box"></span>
+        <div>
+          Publish the Book of Recipes as something a stranger can read.
+          <span class="note">Structural Recipes for Obstructed &amp; Resurgent Systems</span>
+        </div>
+      </li>
+      <li>
+        <span class="box"></span>
+        <div>
+          Real-signal crash-tests: biomedical, electricity demand, or any non-toy series that can falsify a capsule.
+        </div>
+      </li>
+    </ul>
   </div>
 </section>
 
-<!-- ============ METHOD / LEGEND ============ -->
+<!-- ============ LABELS ============ -->
 <section id="method">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">Epistemic labels</h2></div>
-    <div class="legend-wrap">
-      <p class="legend-note">Every capsule carries one of five tags. They are not adjectives — they are load-bearing. <b>Validatron</b> refuses to let a claim advance a tier until it survives the scrutiny that tier demands, so the distance between <span class="val">empirical</span> and <span class="val">theorem</span> stays visible instead of quietly collapsing.</p>
-      <ul class="legend">
-        <li><span class="lname c-thm">Theorem</span><p>Proven, with a citation. The only tier allowed to speak with certainty.</p></li>
-        <li><span class="lname c-emp">Empirical</span><p>Supported by computation that holds up under honest cross-validation. True so far, not proven.</p></li>
-        <li><span class="lname c-theo">Conjectural</span><p>A stated hypothesis actively under test — with the test written down before the answer.</p></li>
-        <li><span class="lname c-spec">Speculative</span><p>Early, partial, or abandoned. Kept as record because a mapped dead end has value.</p></li>
-        <li><span class="lname c-tool">Tooling</span><p>Infrastructure, not a claim: solvers, verifiers, and the plumbing the capsules share.</p></li>
-      </ul>
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title">Epistemic labels</h2>
     </div>
+    <p class="legend-note">The tags are load-bearing. <b>Validatron</b> refuses to let a claim advance a tier until it survives the scrutiny that tier demands, so the distance between <span class="val">empirical</span> and <span class="val">theorem</span> stays visible instead of quietly collapsing.</p>
+    <ul class="legend">
+      <li><span class="lname c-thm">Theorem</span><p>Proven, with a citation. The only tier allowed to speak with certainty.</p></li>
+      <li><span class="lname c-emp">Empirical</span><p>Supported by computation that holds up under honest cross-validation. True so far, not proven.</p></li>
+      <li><span class="lname c-theo">Conjectural</span><p>A stated hypothesis actively under test — with the test written down before the answer.</p></li>
+      <li><span class="lname c-spec">Speculative</span><p>Early, partial, or abandoned. Kept as record because a mapped dead end has value.</p></li>
+      <li><span class="lname c-tool">Tooling</span><p>Infrastructure, not a claim: solvers, verifiers, and the plumbing the capsules share.</p></li>
+    </ul>
   </div>
 </section>
 
@@ -425,7 +446,7 @@
     </div>
     <div class="foot-meta">
       github &nbsp;·&nbsp; <a href="https://github.com/orgs/EncapsulatorP/repositories">EncapsulatorP</a><br>
-      scope &nbsp;·&nbsp; collatz · goldbach · mertens · catalan · diophantine<br>
+      scope &nbsp;·&nbsp; collatz · goldbach · mertens · catalan · recaman · diophantine<br>
       status &nbsp;·&nbsp; mostly pending, gloriously
     </div>
   </div>
@@ -502,64 +523,6 @@
     document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
     start();
   }
-
-  /* ---------------- PLAY: FEED IT A NUMBER ---------------- */
-  const pc=document.getElementById('play-canvas'), pctx=pc.getContext('2d');
-  let PW=0,PH=0;
-  function presize(){ const d=Math.min(window.devicePixelRatio||1,2); PW=pc.clientWidth;PH=pc.clientHeight;pc.width=Math.floor(PW*d);pc.height=Math.floor(PH*d);pctx.setTransform(d,0,0,d,0,0); }
-  function trajBig(n){
-    let steps=0,peak=n,seq=[Number(n)];
-    while(n!==1n && steps<200000){ n=(n%2n===0n)?n/2n:3n*n+1n; if(n>peak)peak=n; seq.push(Number(n)); steps++; }
-    return {steps,peak,seq};
-  }
-  const fmt=x=>x.toLocaleString('en-US');
-  function drawTraj(seq,animate){
-    presize();
-    const peak=Math.max(...seq,2), logmax=Math.log10(peak)*1.06+0.2;
-    const X=i=>PW*(0.04+ (seq.length>1? i/(seq.length-1):0)*0.92);
-    const Y=v=>PH*(1-0.08-(Math.log10(Math.max(v,1))/logmax)*0.82);
-    function paint(upto){
-      pctx.clearRect(0,0,PW,PH);
-      pctx.strokeStyle='rgba(95,227,192,0.9)';pctx.lineWidth=1.6;pctx.lineJoin='round';
-      pctx.shadowColor='rgba(95,227,192,0.55)';pctx.shadowBlur=6;
-      pctx.beginPath();
-      for(let i=0;i<=upto;i++){const x=X(i),y=Y(seq[i]);i?pctx.lineTo(x,y):pctx.moveTo(x,y);}
-      pctx.stroke();pctx.shadowBlur=0;
-      const hx=X(upto),hy=Y(seq[upto]);
-      pctx.fillStyle='#F4B860';pctx.fillRect(hx-2,hy-2,4,4);
-    }
-    if(reduce||!animate){ paint(seq.length-1); return; }
-    let i=0;const stepPer=Math.max(1,Math.ceil(seq.length/70));
-    (function go(){ i=Math.min(i+stepPer,seq.length-1); paint(i); if(i<seq.length-1) requestAnimationFrame(go); })();
-  }
-  function verdictLine(n,steps,peak){
-    const ratio = peak / Math.max(n,1);
-    if(ratio>1000) return 'a proper menace — it climbed '+Math.round(ratio)+'× before surrendering.';
-    if(steps>200)  return 'took the scenic route home.';
-    if(steps<15)   return 'a quiet one. barely put up a fight.';
-    return 'fell home without much drama.';
-  }
-  function run(str){
-    const el=document.getElementById('seed');
-    const v=document.getElementById('verdict');
-    let clean=(str||'').toString().replace(/[^0-9]/g,'');
-    if(!clean){ v.textContent='give it a whole positive number.'; return; }
-    if(clean.length>16){ v.textContent='keep it under ~16 digits so the beaver doesn\u2019t choke.'; return; }
-    let n; try{ n=BigInt(clean); }catch(e){ v.textContent='that is not a number it can chew.'; return; }
-    if(n<1n){ v.textContent='needs a positive integer.'; return; }
-    el.value=clean;
-    const {steps,peak,seq}=trajBig(n);
-    document.getElementById('r-steps').textContent=fmt(steps);
-    document.getElementById('r-peak').textContent = peak>9e15 ? '10^'+(peak.toString().length-1)+'+' : fmt(Number(peak));
-    v.textContent=verdictLine(Number(n), Number(peak>9e15?BigInt('9000000000000000'):peak), steps);
-    drawTraj(seq,true);
-  }
-  document.getElementById('drop').addEventListener('click',()=>run(document.getElementById('seed').value));
-  document.getElementById('seed').addEventListener('keydown',e=>{ if(e.key==='Enter') run(e.target.value); });
-  document.getElementById('chips').addEventListener('click',e=>{ const b=e.target.closest('.chip'); if(b) run(b.dataset.n); });
-  window.addEventListener('resize',()=>{ clearTimeout(window.__pr); window.__pr=setTimeout(presize,180); });
-  // seed the toy so it isn't empty
-  presize(); run('27');
 })();
 </script>
 </body>
