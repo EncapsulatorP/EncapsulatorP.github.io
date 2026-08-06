@@ -115,11 +115,19 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <section class="sec bg-dark" id="recaman" style="--acc:#FF4D6D">
 <div class="wrap"><div class="split">
 <div>
-<p class="kick">02 · recamán obstructions</p><h2 class="t">Predicting the <em>collisions</em></h2>
-<p class="lead">Not the pretty arcs — the <b>embedding</b>. Each step becomes a point: local crowding around the back-jump target, and how full the line already is. A model learns <b>forward-chaining</b> (never peeking) to call whether the next jump collides. Watch the boundary sharpen; the AUC is earned in order.</p>
-<div class="readbar"><div><span class="k">eligible steps</span><span class="v" id="rc-steps">—</span></div><div><span class="k">obstruction rate</span><span class="v" id="rc-rate">—</span></div><div><span class="k">forward-chaining AUC</span><span class="v" id="rc-auc">—</span></div><div><span class="k">weights</span><span class="v" id="rc-w" style="font-size:13px">—</span></div></div>
+<p class="kick">02 · recamán obstructions</p><h2 class="t">The embedding, <em>from the repo</em></h2>
+<p class="lead">3,102 gap-events pulled from Recamán out past 4.3&nbsp;billion, each turned into <b>142 features</b> — digit signatures, residues mod 2…31, gap regime, and the Recamán residual itself. Under <b>forward-chaining</b> CV, three context splits predict their gaps almost perfectly (A, B, C &asymp; 0.99); only the honest-hard task — calling the next candidate start cold — sits at <b>0.759</b>. A separate random search over 6,000 linear codes then distilled a 10-dimensional embedding that pulls 194k positives off their controls. Both are drawn here straight from the results.</p>
+<div class="readbar">
+<div><span class="k">gap-events</span><span class="v" id="rc-r1">3,102</span></div>
+<div><span class="k">features</span><span class="v" id="rc-r2">142</span></div>
+<div><span class="k">context AUC (A)</span><span class="v" id="rc-r3">0.996</span></div>
+<div><span class="k">cold task (D)</span><span class="v" id="rc-r4">0.759</span></div>
 </div>
-<div class="screen" style="display:flex;flex-direction:column"><canvas id="rcviz" class="viz" style="height:300px"></canvas><canvas id="rcviz2" class="viz" style="height:84px;border-top:1px solid #221c18;background:#0a0810"></canvas></div>
+</div>
+<div>
+<div class="screen" style="display:flex;flex-direction:column"><canvas id="rcviz" class="viz" style="height:280px"></canvas><canvas id="rcviz2" class="viz" style="height:124px;border-top:1px solid #221c18;background:#0a0810"></canvas></div>
+<div class="cap">top &middot; the learned 10-D code — positive vs control class centroids; where the lines split, the embedding separates. bottom &middot; forward-CV AUC per dataset: A/B/C context splits against D, the cold candidate-start task. events: 2,535 singletons · 104 huge · regimes explosion/compression/stable.</div>
+</div>
 </div></div></section>
 <div class="zebra"></div>
 
@@ -232,21 +240,32 @@ window.addEventListener('resize',function(){clearTimeout(window.__g);window.__g=
 rs();document.getElementById('gb-r1').textContent=pts.length.toLocaleString('en-US');document.getElementById('gb-r2').textContent='15';
 if(reduce)fr();else IO(c,start,stop);})();
 
-/* 02 RECAMAN embedding + inference */
-(function(){var main=document.getElementById('rcviz');if(!main)return;var g=main.getContext('2d');var strip=document.getElementById('rcviz2'),s=strip.getContext('2d');
-var Nn=2400,a=[0],seen=new Set([0]),mx=0;for(var n=1;n<=Nn;n++){var pv=a[n-1],c=pv-n,nx;if(c>0&&!seen.has(c))nx=c;else nx=pv+n;a.push(nx);seen.add(nx);if(nx>mx)mx=nx;}
-var occ=new Uint8Array(mx+2);occ[0]=1;var run=0,Wd=64,el=[];for(var n=1;n<=Nn;n++){var pv=a[n-1],c=pv-n;if(c>0){var lo=Math.max(0,c-Wd),hi=Math.min(mx,c+Wd),cnt=0;for(var v=lo;v<=hi;v++)cnt+=occ[v];el.push({x1:cnt/(hi-lo+1),x2:Math.min(1,n/Math.max(1,run)),y:occ[c]?1:0});}var q=a[n];if(q>run)run=q;occ[q]=1;}
-var b=0,w1=0,w2=0,lr=.5,WARM=140,preds=[],seenP=[],i=0,XM=.5,YM=1,MW,MH;
-function sig(z){return 1/(1+Math.exp(-z));}function px(v){return 30+(v/XM)*(MW-44);}function py(v){return(MH-24)-(v/YM)*(MH-42);}
-function rs(){var dp=Math.min(devicePixelRatio||1,2);MW=main.clientWidth;MH=main.clientHeight;main.width=(MW*dp)|0;main.height=(MH*dp)|0;g.setTransform(dp,0,0,dp,0,0);var SW=strip.clientWidth,SH=strip.clientHeight;strip.width=(SW*dp)|0;strip.height=(SH*dp)|0;s.setTransform(dp,0,0,dp,0,0);}
-function field(){var nx=48,ny=30;for(var gx=0;gx<nx;gx++){var x1a=gx/nx*XM,x1b=(gx+1)/nx*XM,xm=(x1a+x1b)/2;for(var gy=0;gy<ny;gy++){var y2a=gy/ny*YM,y2b=(gy+1)/ny*YM,ym=(y2a+y2b)/2,p=sig(b+w1*xm+w2*ym);g.fillStyle='rgba('+((182+73*p)|0)+','+((240-194*p)|0)+','+((139*p)|0)+',.15)';g.fillRect(px(x1a),py(y2b),px(x1b)-px(x1a)+1,py(y2a)-py(y2b)+1);}}}
-function auc(){var np=0,nn=0;for(var k=0;k<preds.length;k++){if(preds[k].y)np++;else nn++;}if(!np||!nn)return null;var so=preds.slice().sort(function(A,B){return A.p-B.p;}),rk=1,sp=0,idx=0;while(idx<so.length){var j=idx;while(j+1<so.length&&so[j+1].p===so[idx].p)j++;var av=(rk+rk+(j-idx))/2;for(var t=idx;t<=j;t++)if(so[t].y)sp+=av;rk+=(j-idx+1);idx=j+1;}return(sp-np*(np+1)/2)/(np*nn);}
-function strp(){var SW=strip.clientWidth,SH=strip.clientHeight;s.clearRect(0,0,SW,SH);var M=Math.min(preds.length,SW|0);if(M<2)return;var st=preds.length-M;s.strokeStyle='#8766FF';s.lineWidth=1.4;s.beginPath();for(var k=0;k<M;k++){var p=preds[st+k].p,X=k/M*SW,Y=(SH-4)-p*(SH-8);k?s.lineTo(X,Y):s.moveTo(X,Y);}s.stroke();for(var k=0;k<M;k++){var q=preds[st+k],X=k/M*SW;s.fillStyle=q.y?'rgba(255,46,139,.75)':'rgba(18,203,182,.5)';s.fillRect(X-.8,(q.y?4:SH-4)-.8,1.7,1.7);}}
-function draw(){g.clearRect(0,0,MW,MH);field();g.fillStyle='rgba(233,213,166,.5)';g.font='10px monospace';g.fillText('local density →',MW-116,MH-8);g.save();g.translate(13,86);g.rotate(-1.5708);g.fillText('fill ratio →',0,0);g.restore();for(var k=0;k<seenP.length;k++){var pt=seenP[k];g.fillStyle=pt.y?'rgba(255,46,139,.8)':'rgba(18,203,182,.6)';g.fillRect(px(Math.min(XM,pt.x1))-1.4,py(Math.min(YM,pt.x2))-1.4,2.8,2.8);}strp();}
-function feed(st){for(var q=0;q<st&&i<el.length;q++){var f=el[i],p=sig(b+w1*f.x1+w2*f.x2);if(i>=WARM)preds.push({p:p,y:f.y});var gd=f.y-p;b+=lr*gd;w1+=lr*gd*f.x1;w2+=lr*gd*f.x2;seenP.push(f);i++;}var ob=0;for(var k=0;k<i;k++)ob+=el[k].y;document.getElementById('rc-steps').textContent=i.toLocaleString('en-US');document.getElementById('rc-rate').textContent=(100*ob/Math.max(1,i)).toFixed(1)+'%';var A=auc();document.getElementById('rc-auc').textContent=A==null?'—':A.toFixed(3);document.getElementById('rc-w').textContent='('+w1.toFixed(1)+','+w2.toFixed(1)+')';}
-var started=false;function run(){if(started)return;started=true;rs();if(reduce){feed(el.length);draw();}else{(function go(){feed(10);draw();if(i<el.length)requestAnimationFrame(go);})();}}
-window.addEventListener('resize',function(){clearTimeout(window.__r);window.__r=setTimeout(function(){rs();draw();},160);});
-IO(main,run);})();
+/* 02 RECAMAN — embedding + CV, straight from repo results */
+(function(){var main=document.getElementById('rcviz');if(!main)return;var g=main.getContext('2d');
+var strip=document.getElementById('rcviz2'),s=strip.getContext('2d');
+var pos=[0.410,0.500,0.5625,0.418,0.5325,0.491,0.450,0.5565,0.4235,0.423];
+var neg=[0.602,0.504,0.4455,0.585,0.4795,0.527,0.550,0.439,0.5642,0.5705];
+var auc=[['A',0.9961,'#12CBB6'],['B',0.9964,'#12CBB6'],['C',0.9944,'#12CBB6'],['D',0.7586,'#FF4D6D']];
+var W,H,SW,SH,dpr;
+function rs(){dpr=Math.min(devicePixelRatio||1,2);W=main.clientWidth;H=main.clientHeight;main.width=(W*dpr)|0;main.height=(H*dpr)|0;g.setTransform(dpr,0,0,dpr,0,0);SW=strip.clientWidth;SH=strip.clientHeight;strip.width=(SW*dpr)|0;strip.height=(SH*dpr)|0;s.setTransform(dpr,0,0,dpr,0,0);draw();}
+function drawMain(){g.clearRect(0,0,W,H);var PX=26,PT=32,PB=26,n=10,lo=0.40,hi=0.62;
+ function X(i){return PX+(i/(n-1))*(W-2*PX);}function Y(v){return (H-PB)-((v-lo)/(hi-lo))*(H-PT-PB);}
+ g.strokeStyle='rgba(255,255,255,.10)';g.lineWidth=1;g.textAlign='center';g.font='9px monospace';
+ for(var i=0;i<n;i++){var x=X(i);g.beginPath();g.moveTo(x,PT);g.lineTo(x,H-PB);g.stroke();g.fillStyle='rgba(233,213,166,.4)';g.fillText(String(i+1),x,H-PB+14);}
+ g.textAlign='left';g.fillStyle='rgba(233,213,166,.6)';g.font='10px monospace';g.fillText('learned 10-D code · class centroids',PX,PT-14);
+ function poly(a,col){g.strokeStyle=col;g.lineWidth=2;g.beginPath();for(var i=0;i<n;i++){var x=X(i),y=Y(a[i]);i?g.lineTo(x,y):g.moveTo(x,y);}g.stroke();for(var i=0;i<n;i++){g.fillStyle=col;g.beginPath();g.arc(X(i),Y(a[i]),3,0,6.283);g.fill();}}
+ poly(neg,'#FF4D6D');poly(pos,'#B6F000');
+ g.font='10px monospace';g.textAlign='right';g.fillStyle='#B6F000';g.fillText('positive',W-72,PT-4);g.fillStyle='#FF4D6D';g.fillText('control',W-8,PT-4);g.textAlign='left';}
+function drawStrip(){s.clearRect(0,0,SW,SH);var PX=32,lo=0.5,hi=1.0,bh=(SH-18)/4;
+ for(var i=0;i<4;i++){var y=6+i*bh,val=auc[i][1],w=((val-lo)/(hi-lo))*(SW-PX-72);
+  s.fillStyle='rgba(255,255,255,.06)';s.fillRect(PX,y+3,SW-PX-72,bh-8);
+  s.fillStyle=auc[i][2];s.fillRect(PX,y+3,Math.max(2,w),bh-8);
+  s.fillStyle='#E9D5A6';s.font='11px monospace';s.textAlign='left';s.fillText(auc[i][0],12,y+bh/2+4);
+  s.fillStyle='#fff';s.fillText(val.toFixed(3),PX+Math.max(2,w)+6,y+bh/2+4);}
+ s.fillStyle='rgba(233,213,166,.45)';s.font='9px monospace';s.fillText('forward-CV AUC · scale 0.5–1.0',PX,SH-3);}
+function draw(){drawMain();drawStrip();}
+window.addEventListener('resize',function(){clearTimeout(window.__r);window.__r=setTimeout(rs,150);});
+rs();})();
 
 /* 03 COLLATZ DELAY EMBEDDING */
 (function(){var c=document.getElementById('emviz');if(!c)return;var x=c.getContext('2d');var W,H,PAD=34,XM=7.2,seeds=0,pts=0,cur=null,raf=null;
