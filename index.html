@@ -20,11 +20,12 @@ h2.t em{font-style:italic;color:var(--acc,var(--coral))}
 .lead b{color:var(--ink)}
 /* nav */
 .nav{position:sticky;top:0;z-index:60;background:var(--blk);border-bottom:3px solid transparent;border-image:var(--prism) 1}
-.nav .in{max-width:var(--mw);margin:0 auto;padding:10px 18px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.nav .in{max-width:var(--mw);margin:0 auto;padding:8px 18px;display:flex;gap:4px;align-items:center;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.nav .in::-webkit-scrollbar{display:none}
 .nav .lg{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.12em;color:#fff;margin-right:auto;font-weight:600}
 .nav .lg b{background:var(--lime2);color:var(--blk);padding:2px 5px;border-radius:4px}
-.nav a{font-family:"IBM Plex Mono",monospace;font-size:11.5px;text-decoration:none;color:#C9B48C;padding:5px 10px;border-radius:8px;transition:color .15s}
-.nav a:hover{color:var(--lime2)}
+.nav a{font-family:"IBM Plex Mono",monospace;font-size:11px;text-decoration:none;color:#C9B48C;padding:5px 8px;border-radius:8px;transition:color .15s;white-space:nowrap}
+.nav a:hover,.nav a:focus-visible{color:var(--lime2)}
 /* hero */
 .hero{background:var(--blk);color:var(--paper);position:relative;overflow:hidden;padding:96px 0 84px}
 .hero .bars{position:absolute;inset:0;background:var(--barcode);opacity:.10}
@@ -35,7 +36,7 @@ h2.t em{font-style:italic;color:var(--acc,var(--coral))}
 .hero .tag{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--lime2);letter-spacing:.04em;margin-top:14px}
 .hero .ky{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:22px}
 /* section shells */
-.sec{padding:84px 0;position:relative}
+.sec{padding:70px 0;position:relative;scroll-margin-top:54px}
 .bg-cream{background:var(--paper)}.bg-tint{background:var(--tint)}.bg-dark{background:var(--blk);color:var(--paper)}
 .bg-dark .lead{color:#E4D6BE}.bg-dark .lead b{color:#fff}.bg-dark h2.t{color:#fff}
 .zebra{height:30px;background:var(--barcode);position:relative}.zebra::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--prism)}
@@ -58,12 +59,31 @@ canvas.viz{display:block;width:100%}
 .chips{display:flex;flex-wrap:wrap;gap:8px}.chip{font-family:"IBM Plex Mono",monospace;font-size:12px;cursor:pointer;color:#C9B48C;background:transparent;border:1px solid #3a2f22;border-radius:20px;padding:5px 12px}
 .chip:hover{border-color:var(--acc,var(--coral));color:var(--acc,var(--coral))}
 .verdict{margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--yellow);min-height:1.2em}
-/* three regime cards */
-.regimes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
-.reg{position:relative;background:var(--card);border:2px solid var(--blk);border-radius:14px;padding:18px;overflow:hidden}
-.reg::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--rc)}
-.reg h4{font-family:"IBM Plex Mono",monospace;margin:0 0 6px;color:var(--rc);text-transform:uppercase;font-size:12px;letter-spacing:.08em}
-.reg p{margin:0;font-size:13.5px;color:var(--soft);line-height:1.5}
+/* 04 · sign-flip specifics — compact, scan-first */
+#tetra{padding:54px 0}
+#tetra h2.t{font-size:clamp(1.8rem,4.5vw,2.65rem);margin-bottom:10px}
+#tetra .lead{font-size:.94rem;line-height:1.45;margin-bottom:10px;max-width:72ch}
+.eqline{font-family:"IBM Plex Mono",monospace;font-size:clamp(11.5px,2vw,15px);font-weight:600;letter-spacing:.01em;color:var(--ink);background:var(--card);border:1.5px solid var(--blk);border-left:5px solid var(--el,var(--violet));border-radius:10px;padding:9px 12px;margin:0 0 12px;overflow-x:auto;white-space:nowrap}
+.eqline .m{color:#c2185b}.eqline .p{color:#5c8a00}.eqline b{color:var(--el,var(--violet))}
+.ttctl{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:10px}
+.ttctl .lbl{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.ttctl input[type=range]{flex:1 1 220px;min-width:160px;accent-color:#8766FF;height:20px;cursor:ew-resize}
+.pchip{font-family:"IBM Plex Mono",monospace;font-size:10.5px;cursor:pointer;color:var(--soft);background:var(--card);border:1px solid var(--blk);border-radius:18px;padding:4px 9px;transition:background .14s,color .14s}
+.pchip:hover,.pchip:focus-visible{background:var(--violet);color:#fff}
+#tetra .readbar{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;margin-top:10px}
+#tetra .readbar>div{background:rgba(255,253,247,.72);border:1px solid #d7c6a3;border-radius:9px;padding:8px 9px;min-width:0}
+#tetra .readbar .k{font-size:8.5px;line-height:1.25}
+#tetra .readbar .v{font-size:12.5px;line-height:1.2;overflow-wrap:anywhere}
+#tetra .cap{font-size:10.5px;line-height:1.4;margin-top:8px;max-width:92ch}
+.ttfacts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.ttfact{position:relative;background:var(--card);border:1.5px solid var(--blk);border-left:5px solid var(--tc);border-radius:10px;padding:10px 12px;min-height:74px}
+.ttfact .n{display:block;font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--tc);font-weight:600;margin-bottom:3px}
+.ttfact b{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink)}
+.ttfact p{margin:3px 0 0;font-size:11.5px;line-height:1.35;color:var(--soft)}
+.ttwarn{margin-top:9px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#7a4d00;background:#fff8e7;border-left:4px solid #c95a00;padding:8px 10px;border-radius:7px}
+.sub{font-family:"Fraunces",serif;font-weight:700;font-size:1.35rem;letter-spacing:-.01em;margin:6px 0 10px}
+@media(max-width:860px){#tetra{padding:42px 0}#tetra .readbar{grid-template-columns:repeat(3,1fr)}.ttfacts{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){#tetra .readbar{grid-template-columns:repeat(2,1fr)}.ttfacts{grid-template-columns:1fr}#tetra .cap{display:none}}
 /* archive */
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px}
 .card{position:relative;background:var(--card);border:2px solid var(--blk);border-radius:14px;padding:20px;text-decoration:none;color:inherit;overflow:hidden;display:flex;flex-direction:column;transition:transform .16s,box-shadow .16s}
@@ -73,7 +93,17 @@ a.card:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--e,var(--c
 .pair{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--soft);margin:4px 0 10px}
 .card p{font-size:13.5px;color:var(--soft);margin:0 0 14px;flex:1;line-height:1.5}
 .vis{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--muted);color:var(--muted);border-radius:20px;padding:2px 8px;margin-left:8px}
-.tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--e);color:var(--e);border-radius:6px;padding:3px 9px;font-weight:600}
+.vis.wip{color:#c95a00;border-color:#c95a00;font-weight:600}
+.card .head{display:flex;align-items:center;flex-wrap:wrap;row-gap:4px}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--e);color:var(--e);border-radius:6px;padding:3px 9px;font-weight:600;white-space:nowrap}
+.tool{position:relative;display:grid;grid-template-columns:1.12fr .88fr;gap:26px;align-items:center;background:var(--card);border:2px solid var(--blk);border-radius:16px;padding:22px 26px;margin:6px 0 40px;box-shadow:8px 8px 0 rgba(107,82,208,.20);overflow:hidden}
+.tool::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;background:#6b52d0}
+.tool .hd{display:flex;align-items:center;flex-wrap:wrap;gap:9px}
+.tool .hd .repo{font-size:17px}
+.tool p{margin:10px 0 0;font-size:14px;color:var(--soft);line-height:1.55;max-width:54ch}
+.tool .aside{font-family:"IBM Plex Mono",monospace;font-size:12px;line-height:1.75;color:var(--muted);border-left:2px solid #EAD5A6;padding-left:20px}
+.tool .aside b{color:#6b52d0;font-weight:600}
+.tag.pend{border-style:dashed;--e:#8A7452}
 .labels{list-style:none;margin:18px 0 0;padding:0;border-top:2px solid var(--blk);max-width:820px}
 .labels li{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:13px 0;border-bottom:1px solid #EAD5A6}
 .labels .n{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
@@ -84,14 +114,17 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 .fb{font-family:"Fraunces",serif;font-size:2.1rem;font-weight:700;color:#fff}.fb span{background:var(--prism);-webkit-background-clip:text;background-clip:text;color:transparent}
 .fc{font-family:"Fraunces",serif;font-style:italic;color:#C9B48C;margin-top:6px}
 .fm{font-family:"IBM Plex Mono",monospace;font-size:12px;color:#8a7452;line-height:1.9}.fm a{color:var(--lime2);text-decoration:none;font-weight:600}
-@media(max-width:860px){body{font-size:16px}.wrap{padding:0 18px}.sec{padding:56px 0}.split{grid-template-columns:1fr;gap:22px}.grid{grid-template-columns:1fr}.regimes{grid-template-columns:1fr}.hero{padding:64px 0 56px}.fg{flex-direction:column;align-items:flex-start}}
+:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+@media(max-width:860px){.tool{grid-template-columns:1fr;gap:16px}.tool .aside{border-left:none;border-top:2px solid #EAD5A6;padding:16px 0 0}}
+@media(max-width:860px){body{font-size:16px}.wrap{padding:0 18px}.sec{padding:48px 0}.split{grid-template-columns:1fr;gap:22px}.grid{grid-template-columns:1fr}.regimes{grid-template-columns:1fr}.hero{padding:64px 0 56px}.fg{flex-direction:column;align-items:flex-start}}
+@media(max-width:640px){.lims{grid-template-columns:1fr}.note{flex-direction:column;gap:12px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.shimmer{animation:none}}
 .shimmer{animation:hue 24s linear infinite}@keyframes hue{to{filter:hue-rotate(360deg)}}
 </style></head>
 <body>
 
 <div class="nav"><div class="in"><span class="lg"><b>Encapsulator</b>P</span>
-<a href="#goldbach">Goldbach</a><a href="#recaman">Recamán</a><a href="#embed">Embedding</a><a href="#tetra">Tetration</a><a href="#scape">Collatzscape</a><a href="#validatron">Validatron</a><a href="#archive">Archive</a></div></div>
+<a href="#goldbach">Goldbach</a><a href="#recaman">Recamán</a><a href="#embed">Embedding</a><a href="#tetra">Sign-flip</a><a href="#scape">Collatzscape</a><a href="#validatron">Validatron</a><a href="#archive">Archive</a></div></div>
 
 <header class="hero"><div class="bars"></div><div class="wrap">
 <p class="ky">computational number theory · one long obsession</p>
@@ -141,18 +174,40 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </div></section>
 <div class="zebra"></div>
 
-<!-- TETRATION -->
+<!-- SIGN-FLIPPING POWER TOWERS -->
 <section class="sec bg-cream" id="tetra" style="--acc:#8766FF">
 <div class="wrap">
-<p class="kick">04 · flipping power towers</p><h2 class="t">Converge, flip, <em>diverge</em></h2>
-<p class="lead">Iterate the infinite tower x^x^x^… For a base between e^(−e) and e^(1/e) it settles; below e^(−e) it <b>flips</b> into a two-value cycle; above e^(1/e) it runs away. Out in that divergent wild sits Brun's constant — the twin-prime sum crawling toward 1.90216.</p>
-<div class="screen"><canvas id="ttviz" class="viz" style="height:46vh;min-height:300px"></canvas></div>
-<div class="readbar"><div><span class="k">twin-prime Σ → Brun B₂</span><span class="v" id="tt-r1">—</span></div><div><span class="k">last twin pair</span><span class="v" id="tt-r2" style="font-size:14px">—</span></div></div>
-<div class="regimes">
-<div class="reg" style="--rc:#B6F000"><h4>converge</h4><p>Base in (e^(−e)≈0.066, e^(1/e)≈1.444): one calm fixed point.</p></div>
-<div class="reg" style="--rc:#FF2E8B"><h4>flip</h4><p>Below e^(−e): locks into a two-value cycle, flipping forever — the pink fork.</p></div>
-<div class="reg" style="--rc:#FF7A1A"><h4>diverge</h4><p>Past e^(1/e): no fixed point, no cycle — it blows up. Brun lives here.</p></div>
+<p class="kick">04 · sign-flipping power towers</p><h2 class="t">Same tower. Opposite <em>phase.</em></h2>
+<p class="lead">The sign is part of every exponent level — a forced <b>+ / − / + / −</b> architecture, not an ordinary tetration cycle.</p>
+<div class="eqline">1.11 &nbsp;|&nbsp; <span class="m">−1.11</span> &nbsp;|&nbsp; <span class="p">+1.11</span> &nbsp;|&nbsp; <span class="m">−1.11</span> &nbsp;|&nbsp; <span class="p">+1.11</span> &nbsp;|&nbsp; …</div>
+
+<div class="screen" style="display:flex;flex-direction:column">
+<canvas id="ttbranch" class="viz" style="height:30vh;min-height:220px;max-height:300px"></canvas>
+<canvas id="ttladder" class="viz" style="height:118px;border-top:1px solid #221c18;background:#0a0810"></canvas>
 </div>
+<div class="ttctl">
+<span class="lbl">base</span>
+<input id="tt-base" type="range" min="1.002" max="1.6" step="0.0001" value="1.11" aria-label="tower base">
+<button class="pchip" data-b="1.11">1.11 · specimen</button>
+<button class="pchip" id="tt-bstar" data-b="1.1103955">b* · Brun match</button>
+<button class="pchip" data-b="1.44466786">e^(1/e)</button>
+</div>
+<div class="readbar">
+<div><span class="k">base</span><span class="v" id="tt-b">—</span></div>
+<div><span class="k">negative-first</span><span class="v" id="tt-lo" style="color:#c2185b">—</span></div>
+<div><span class="k">positive-first</span><span class="v" id="tt-hi" style="color:#5c8a00">—</span></div>
+<div><span class="k">upper excess</span><span class="v" id="tt-ex">—</span></div>
+<div><span class="k">2 − B₂</span><span class="v" id="tt-def">0.0978394169</span></div>
+<div><span class="k">gap</span><span class="v" id="tt-gap">—</span></div>
+</div>
+<div class="cap">Top · limiting branches vs base. Bottom · tower depth alternates around 1. Drag the slider; violet marks the Brun-deficit reference.</div>
+
+<div class="ttfacts">
+<div class="ttfact" style="--tc:#FF2E8B"><span class="n">flip</span><b>+ − + − + − …</b><p>The signs are imposed level by level.</p></div>
+<div class="ttfact" style="--tc:#0c9a89"><span class="n">two phases</span><b>0.891777… ↔ 1.097534…</b><p>At base 1.11 the limits settle on opposite sides of 1.</p></div>
+<div class="ttfact" style="--tc:#6b52d0"><span class="n">Brun boundary</span><b>0.097534… vs 0.097839…</b><p>Upper excess above 1 compared with 2 − B₂.</p></div>
+</div>
+<div class="ttwarn"><b>Observation, not identity.</b> The Brun proximity is reproducible but tunable by changing the base.</div>
 </div></section>
 <div class="zebra"></div>
 
@@ -186,15 +241,21 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <!-- ARCHIVE + LABELS -->
 <section class="sec bg-cream" id="archive" style="--acc:#c95a00">
 <div class="wrap">
-<p class="kick">the archive</p><h2 class="t">The <em>capsules</em></h2>
-<div class="grid">
+<p class="kick">the archive</p><h2 class="t">One instrument, <em>eight capsules</em></h2>
+<div class="tool">
+<div><div class="hd"><span class="tag" style="--e:#6b52d0">Tooling</span><span class="repo">Validatron</span><span class="vis">Private</span></div><p>Honest forward-chaining cross-validation. Every capsule below runs through it before it is allowed a label — and it earns the tag, or it ships without one.</p></div>
+<div class="aside">the only tool in the archive.<br>everything below it is a <b>claim</b>,<br>not an instrument.</div>
+</div>
+<p class="kick" style="--acc:#0c9a89">the claims</p>
+<div class="grid" style="margin-top:14px">
 <a class="card" style="--e:#0c9a89" href="https://github.com/EncapsulatorP/collatz_kesten-goldie"><div style="display:flex;align-items:center"><span class="repo">collatz_kesten-goldie</span><span class="vis" style="color:#3f7a00;border-color:#9ac44a">Public</span></div><div class="pair">Collatz × Kesten–Goldie</div><p>Stopping times as a stochastic recurrence; reads off the heavy-tail exponent.</p><span class="tag" style="align-self:flex-start">Empirical</span></a>
 <a class="card" style="--e:#0c9a89" href="https://github.com/EncapsulatorP/goldbach_busy_collatz"><div style="display:flex;align-items:center"><span class="repo">goldbach_busy_collatz</span><span class="vis" style="color:#3f7a00;border-color:#9ac44a">Public</span></div><div class="pair">Goldbach × Collatz structure</div><p>Cross-examines Goldbach partition counts against Collatz orbit structure.</p><span class="tag" style="align-self:flex-start">Empirical</span></a>
 <div class="card" style="--e:#0c9a89"><div style="display:flex;align-items:center"><span class="repo">mertens_counterexample</span><span class="vis">Private</span></div><div class="pair">Mertens · the Riemann edge</div><p>Pushes the M(n)/√n boundary toward where Mertens is known to fail.</p><span class="tag" style="align-self:flex-start">Empirical</span></div>
 <div class="card" style="--e:#c95a00"><div style="display:flex;align-items:center"><span class="repo">Catalan_ruelle_mayer</span><span class="vis">Private</span></div><div class="pair">Catalan × Ruelle–Mayer</div><p>Transfer-operator machinery on Catalan-type exponent gaps.</p><span class="tag" style="align-self:flex-start">Theoretical</span></div>
 <div class="card" style="--e:#0c9a89"><div style="display:flex;align-items:center"><span class="repo">recaman_obstructions</span><span class="vis">Private</span></div><div class="pair">Recamán gaps · 142 features</div><p>Forward-chaining CV separates gap contexts at AUC 0.99 (A/B/C); a distilled 10-D code peels 194k positives off controls.</p><span class="tag" style="align-self:flex-start">Empirical</span></div>
 <div class="card" style="--e:#c95a00"><div style="display:flex;align-items:center"><span class="repo">zeta_branching</span><span class="vis">Private</span></div><div class="pair">Ruelle/Riemann zeta · branch structure</div><p>Maps how the dynamical zeta’s branches split and continue across the transfer-operator spectrum — a clean, reproducible signature.</p><span class="tag" style="align-self:flex-start">Theoretical</span></div>
-<div class="card" style="--e:#6b52d0"><div style="display:flex;align-items:center"><span class="repo">Validatron</span><span class="vis">Private</span></div><div class="pair">the verifier</div><p>Honest forward-chaining cross-validation. Earns the tag or ships without one.</p><span class="tag" style="align-self:flex-start">Tooling</span></div>
+<a class="card" style="--e:#c95a00" href="https://github.com/EncapsulatorP/collatz_rupert_delay_embedding"><div class="head"><span class="repo">collatz_rupert_delay_embedding</span><span class="vis" style="color:#3f7a00;border-color:#9ac44a">Public</span><span class="vis wip">Early</span></div><div class="pair">Collatz × Rupert · delay hulls</div><p>Takes the τ=1 embedding of section 03 down to a single orbit — n = 27, 112 steps, peak 9,232 — and asks what counts the structure on the two rails. Answer so far: φ(2<sup>k</sup>) for the dyadic clusters, φ(2<sup>k</sup>)/2 for the helix period in the 3-D portrait. The teaser conjecture pushes further, tying convergence to Rupert-admissible limit geometry. Skeleton only right now — README, next steps, and a Plotly notebook — and kept in the archive because the question is good, not because the repo is.</p><span class="tag" style="align-self:flex-start">Conjectural</span></a>
+<div class="card" style="--e:#8A7452"><div class="head"><span class="repo">erdos_schnitzel</span><span class="vis">Private</span><span class="vis wip">New</span></div><div class="pair">Erdős line · not yet described</div><p>Newest capsule in the archive, still closed. No public statement of the problem, no reproduction, nothing cross-validated — so it sits here under the house rule rather than around it: it ships without a tag until it earns one.</p><span class="tag pend" style="align-self:flex-start">Unlabeled</span></div>
 </div>
 <p class="kick" style="margin-top:44px">house rules</p><h2 class="t">Epistemic <em>labels</em></h2>
 <ul class="labels">
@@ -202,12 +263,13 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <li><span class="n" style="color:#0c9a89">Empirical</span><p>Holds up under honest cross-validation. True so far, not proven.</p></li>
 <li><span class="n" style="color:#c95a00">Conjectural</span><p>A hypothesis under test — with the test written down first.</p></li>
 <li><span class="n" style="color:#6b52d0">Tooling</span><p>Infrastructure, not a claim.</p></li>
+<li><span class="n" style="color:#8A7452">Unlabeled</span><p>Open, but nothing has come out of it yet. No tag until a result earns one.</p></li>
 </ul>
 </div></section>
 
 <footer><div class="wrap fg">
 <div><div class="fb">Encapsulator<span>P</span></div><div class="fc">one page, six experiments, honestly labeled.</div></div>
-<div class="fm">github &nbsp;·&nbsp; <a href="https://github.com/orgs/EncapsulatorP/repositories">EncapsulatorP</a><br>collatz · goldbach · recamán · tetration · complex dynamics<br>mostly pending, gloriously</div>
+<div class="fm">github &nbsp;·&nbsp; <a href="https://github.com/orgs/EncapsulatorP/repositories">EncapsulatorP</a><br>collatz · goldbach · recamán · tetration · rupert geometry · erdős · complex dynamics<br>mostly pending, gloriously</div>
 </div></footer>
 
 <script>
@@ -278,18 +340,120 @@ function stop(){if(raf)cancelAnimationFrame(raf);raf=null;}
 window.addEventListener('resize',function(){clearTimeout(window.__e);window.__e=setTimeout(rs,160);});rs();
 if(reduce){for(var i=0;i<9000;i++)step();}else IO(c,start,stop);})();
 
-/* 04 TETRATION + BRUN */
-(function(){var c=document.getElementById('ttviz');if(!c)return;var x=c.getContext('2d');var W,H,PAD=34,XMIN=.02,XMAX=2,YMAX=4,Eme=Math.exp(-Math.E),Eie=Math.exp(1/Math.E),B=1.9021605823;
-function px(b){return PAD+((b-XMIN)/(XMAX-XMIN))*(W-2*PAD);}function py(v){return(H-PAD)-(v/YMAX)*(H-2*PAD);}
-function rs(){var dp=Math.min(devicePixelRatio||1,2);W=c.clientWidth;H=c.clientHeight;c.width=(W*dp)|0;c.height=(H*dp)|0;x.setTransform(dp,0,0,dp,0,0);render();}
-function render(){x.clearRect(0,0,W,H);x.fillStyle='rgba(255,122,26,.1)';x.fillRect(px(Eie),PAD*.4,W-PAD-px(Eie),H-PAD-PAD*.4);x.fillStyle='rgba(233,213,166,.5)';x.font='10px monospace';x.fillText('towers diverge →',px(Eie)+8,PAD*.9);
- [[Eme,'e^-e'],[Eie,'e^{1/e}']].forEach(function(p){var xx=px(p[0]);x.strokeStyle='rgba(255,255,255,.22)';x.setLineDash([4,4]);x.beginPath();x.moveTo(xx,PAD*.4);x.lineTo(xx,H-PAD);x.stroke();x.setLineDash([]);x.fillStyle='rgba(233,213,166,.7)';x.fillText(p[1],xx+3,H-PAD-6);});
- var cols=Math.max(160,(W-2*PAD)|0);for(var i=0;i<=cols;i++){var b=XMIN+(i/cols)*(XMAX-XMIN);if(b>Eie)continue;var t=1,ok=true,k;for(k=0;k<260;k++){t=Math.pow(b,t);if(!isFinite(t)||t>1e4){ok=false;break;}}if(!ok)continue;var last=[];for(k=0;k<60;k++){t=Math.pow(b,t);last.push(t);}var mn=Math.min.apply(null,last),mxx=Math.max.apply(null,last);if(mxx-mn>.02){x.fillStyle='#FF2E8B';x.fillRect(px(b),py(mn),1.5,1.5);x.fillRect(px(b),py(mxx),1.5,1.5);}else{x.fillStyle='#B6F000';x.fillRect(px(b),py((mn+mxx)/2),1.5,1.5);}}
- var bx=px(B);x.strokeStyle='#8766FF';x.setLineDash([2,3]);x.beginPath();x.moveTo(bx,PAD*.4);x.lineTo(bx,H-PAD);x.stroke();x.setLineDash([]);x.fillStyle='#8766FF';x.fillText('Brun B2',bx-52,PAD*1.6);}
-function sie(m){var s=new Uint8Array(m+1),p=[];for(var i=2;i<=m;i++){if(!s[i]){p.push(i);for(var j=i*i;j<=m;j+=i)s[j]=1;}}return{s:s,p:p};}
-var PR=sie(300000),tw=[];for(var i=0;i<PR.p.length;i++){var q=PR.p[i];if(q+2<=300000&&!PR.s[q+2])tw.push(q);}
-var bi=0,bs=0;function tick(){var ch=0;while(bi<tw.length&&ch<50){var q=tw[bi];bs+=1/q+1/(q+2);bi++;ch++;}document.getElementById('tt-r1').textContent=bs.toFixed(6);document.getElementById('tt-r2').textContent=tw[Math.min(bi,tw.length-1)]+', '+(tw[Math.min(bi,tw.length-1)]+2);if(bi<tw.length&&!reduce)requestAnimationFrame(tick);}
-window.addEventListener('resize',function(){clearTimeout(window.__t);window.__t=setTimeout(rs,160);});rs();tick();})();
+/* 04a SIGN-FLIPPING POWER TOWERS — branch diagram + ladder */
+(function(){
+var bc=document.getElementById('ttbranch'),ld=document.getElementById('ttladder');if(!bc||!ld)return;
+var g=bc.getContext('2d'),l=ld.getContext('2d');
+var DEF=0.0978394169;                 /* 2 − B2 */
+var BLO=1.002,BHI=1.6,EIE=Math.exp(1/Math.E),DEPTH=26;
+var PINK='#FF2E8B',LIME='#B6F000',VIO='#8766FF';
+var base=1.11,prog=DEPTH,anim=null,shown=false;
+
+/* the alternating 2-cycle: hi = b^(b^(-hi)), lo = b^(-hi) */
+function pair(b){var x=1,i,nx;for(i=0;i<500;i++){nx=Math.pow(b,Math.pow(b,-x));if(!isFinite(nx))return null;if(Math.abs(nx-x)<1e-15){x=nx;break;}x=nx;}
+ return{lo:Math.pow(b,-x),hi:x};}
+/* successive tower depths, alternating sign, seeded from the top */
+function ladderVals(b,n){var E=0,s=-1,out=[],k;for(k=0;k<n;k++){E=s*Math.pow(b,E);out.push(Math.pow(b,E));s=-s;}return out;}
+/* base where the upper branch sits exactly on 1 + (2 − B2) */
+function bstar(){var a=1.002,c=1.6,m,i;for(i=0;i<90;i++){m=(a+c)/2;if(pair(m).hi-1<DEF)a=m;else c=m;}return(a+c)/2;}
+var BSTAR=bstar();
+
+function fit(cv,ctx){var dp=Math.min(devicePixelRatio||1,2),W=cv.clientWidth,H=cv.clientHeight;
+ cv.width=(W*dp)|0;cv.height=(H*dp)|0;ctx.setTransform(dp,0,0,dp,0,0);return[W,H];}
+
+function drawBranch(){
+ var d=fit(bc,g),W=d[0],H=d[1],tight=W<560;
+ var L=tight?40:56,R=tight?58:112,T=30,Bm=34,VL=.51,VH=1.40;
+ function X(b){return L+((b-BLO)/(BHI-BLO))*(W-L-R);}
+ function Y(v){return(H-Bm)-((v-VL)/(VH-VL))*(H-T-Bm);}
+ g.clearRect(0,0,W,H);g.font='9.5px monospace';g.textBaseline='middle';
+ /* horizontal grid */
+ var ticks=[.6,.7,.8,.9,1.0,1.1,1.2,1.3];
+ for(var i=0;i<ticks.length;i++){var y=Y(ticks[i]),one=ticks[i]===1;
+  g.strokeStyle=one?'rgba(255,255,255,.30)':'rgba(255,255,255,.07)';g.setLineDash(one?[2,4]:[]);
+  g.beginPath();g.moveTo(L,y);g.lineTo(W-R,y);g.stroke();g.setLineDash([]);
+  g.fillStyle=one?'rgba(233,213,166,.75)':'rgba(233,213,166,.35)';g.textAlign='right';g.fillText(ticks[i].toFixed(1),L-7,y);}
+ /* base ticks */
+ g.textAlign='center';g.fillStyle='rgba(233,213,166,.35)';
+ [1.0,1.1,1.2,1.3,1.4,1.5,1.6].forEach(function(b){if(b<BLO)return;g.fillText(b.toFixed(1),X(b),H-Bm+15);});
+ g.textAlign='left';g.fillStyle='rgba(233,213,166,.45)';g.fillText('base →',L,H-Bm+15+13);
+ /* sample both branches */
+ var N=300,bs=[],up=[],dn=[],k;
+ for(k=0;k<=N;k++){var b=BLO+(k/N)*(BHI-BLO),p=pair(b);if(!p)continue;bs.push(b);up.push(p.hi);dn.push(p.lo);}
+ /* the phase gap */
+ g.beginPath();g.moveTo(X(bs[0]),Y(up[0]));
+ for(k=1;k<bs.length;k++)g.lineTo(X(bs[k]),Y(up[k]));
+ for(k=bs.length-1;k>=0;k--)g.lineTo(X(bs[k]),Y(dn[k]));
+ g.closePath();g.fillStyle='rgba(135,102,255,.10)';g.fill();
+ /* e^(1/e) marker */
+ var xe=X(EIE);g.strokeStyle='rgba(255,255,255,.20)';g.setLineDash([3,4]);
+ g.beginPath();g.moveTo(xe,T);g.lineTo(xe,H-Bm);g.stroke();g.setLineDash([]);
+ g.fillStyle='rgba(233,213,166,.55)';g.textAlign='left';g.fillText('e^(1/e)',xe+5,T+9);
+ /* the Brun rule */
+ var yb=Y(1+DEF);g.strokeStyle=VIO;g.setLineDash([5,4]);g.lineWidth=1.4;
+ g.beginPath();g.moveTo(L,yb);g.lineTo(W-R,yb);g.stroke();g.setLineDash([]);
+ g.fillStyle=VIO;g.textAlign=tight?'left':'left';g.fillText(tight?'1+(2−B₂)':'1 + (2 − B₂)',tight?L+4:W-R+8,yb);
+ /* branches */
+ function curve(arr,col){g.strokeStyle=col;g.lineWidth=2.4;g.lineJoin='round';g.beginPath();
+  for(var k=0;k<bs.length;k++){var x=X(bs[k]),y=Y(arr[k]);k?g.lineTo(x,y):g.moveTo(x,y);}g.stroke();}
+ curve(dn,PINK);curve(up,LIME);
+ if(!tight){g.fillStyle=LIME;g.textAlign='left';g.fillText('positive-first',W-R+8,Y(up[up.length-1]));
+  g.fillStyle=PINK;g.fillText('negative-first',W-R+8,Y(dn[dn.length-1]));}
+ /* exact-match ring */
+ var xs=X(BSTAR);g.strokeStyle=VIO;g.lineWidth=1.6;g.beginPath();g.arc(xs,yb,6.5,0,6.283);g.stroke();
+ g.fillStyle='rgba(135,102,255,.9)';g.textAlign='center';g.fillText('b* '+BSTAR.toFixed(6),xs,yb-16);
+ /* current base */
+ var p=pair(base),xc=X(base);
+ g.strokeStyle='rgba(255,255,255,.45)';g.setLineDash([2,3]);g.beginPath();g.moveTo(xc,T);g.lineTo(xc,H-Bm);g.stroke();g.setLineDash([]);
+ [[p.hi,LIME],[p.lo,PINK]].forEach(function(q){g.fillStyle=q[1];g.beginPath();g.arc(xc,Y(q[0]),4.6,0,6.283);g.fill();
+  g.strokeStyle='#08060a';g.lineWidth=1.4;g.stroke();});
+ g.fillStyle='rgba(233,213,166,.6)';g.textAlign='left';g.fillText('phase branches · limit vs base',L,T-14);
+ return p;
+}
+
+function drawLadder(p){
+ var d=fit(ld,l),W=d[0],H=d[1];
+ var L=68,R=20,T=26,Bm=24,span=Math.max(p.hi-p.lo,1e-6),VL=p.lo-.30*span,VH=p.hi+.30*span;
+ function X(k){return L+(k/(DEPTH-1))*(W-L-R);}
+ function Y(v){return(H-Bm)-((v-VL)/(VH-VL))*(H-T-Bm);}
+ l.clearRect(0,0,W,H);l.font='9.5px monospace';l.textBaseline='middle';
+ /* asymptotes */
+ [[p.hi,LIME,'positive-first'],[p.lo,PINK,'negative-first']].forEach(function(a){
+  l.strokeStyle=a[1];l.globalAlpha=.42;l.setLineDash([4,4]);l.lineWidth=1;
+  l.beginPath();l.moveTo(L,Y(a[0]));l.lineTo(W-R,Y(a[0]));l.stroke();l.setLineDash([]);l.globalAlpha=1;
+  l.fillStyle=a[1];l.textAlign='right';l.fillText(a[0].toFixed(6),L-8,Y(a[0]));});
+ if(1>VL&&1<VH){l.strokeStyle='rgba(255,255,255,.28)';l.setLineDash([2,4]);l.beginPath();l.moveTo(L,Y(1));l.lineTo(W-R,Y(1));l.stroke();l.setLineDash([]);
+  l.fillStyle='rgba(233,213,166,.7)';l.textAlign='right';l.fillText('1',L-6,Y(1));}
+ var v=ladderVals(base,DEPTH),n=Math.max(1,Math.min(DEPTH,Math.round(prog)));
+ /* zig-zag */
+ l.strokeStyle='rgba(255,255,255,.26)';l.lineWidth=1.2;l.beginPath();
+ for(var k=0;k<n;k++){var x=X(k),y=Y(v[k]);k?l.lineTo(x,y):l.moveTo(x,y);}l.stroke();
+ for(k=0;k<n;k++){var neg=(k%2===0);l.fillStyle=neg?PINK:LIME;l.beginPath();l.arc(X(k),Y(v[k]),3,0,6.283);l.fill();
+  if(k<DEPTH){l.fillStyle=neg?'rgba(255,46,139,.75)':'rgba(182,240,0,.75)';l.textAlign='center';l.fillText(neg?'−':'+',X(k),T-12);}}
+ l.fillStyle='rgba(233,213,166,.45)';l.textAlign='left';l.fillText('tower depth · exponent sign above each step',L,H-Bm+13);
+}
+
+function run(){var p=drawBranch();drawLadder(p);
+ document.getElementById('tt-b').textContent=base.toFixed(6);
+ document.getElementById('tt-lo').textContent=p.lo.toFixed(10);
+ document.getElementById('tt-hi').textContent=p.hi.toFixed(10);
+ document.getElementById('tt-ex').textContent=(p.hi-1).toFixed(10);
+ var gap=Math.abs(DEF-(p.hi-1));
+ document.getElementById('tt-gap').textContent=(gap<1e-9?'0':gap.toExponential(3));
+}
+function reveal(){if(shown||reduce){prog=DEPTH;run();shown=true;return;}shown=true;prog=0;
+ var t0=performance.now();(function go(t){prog=Math.min(DEPTH,((t-t0)/900)*DEPTH);run();
+  if(prog<DEPTH)anim=requestAnimationFrame(go);})(t0);}
+
+var sl=document.getElementById('tt-base');
+document.getElementById('tt-bstar').dataset.b=BSTAR.toFixed(7);
+document.getElementById('tt-bstar').textContent='b* = '+BSTAR.toFixed(6)+' · tuned to Brun';
+sl.addEventListener('input',function(){if(anim)cancelAnimationFrame(anim);prog=DEPTH;base=parseFloat(sl.value);run();});
+document.querySelectorAll('.pchip').forEach(function(b){b.addEventListener('click',function(){
+ if(anim)cancelAnimationFrame(anim);prog=DEPTH;base=parseFloat(b.dataset.b);sl.value=base;run();});});
+window.addEventListener('resize',function(){clearTimeout(window.__tt);window.__tt=setTimeout(run,150);});
+run();IO(bc,reveal);})();
+
 
 /* 05 COLLATZSCAPE FRACTAL */
 (function(){var c=document.getElementById('csviz');if(!c)return;var x=c.getContext('2d');var W,H,IW,IH,img,MAX=48,RA=-4.4,RB=4.4,IA=-3,IB=3,row=0,done=false;
