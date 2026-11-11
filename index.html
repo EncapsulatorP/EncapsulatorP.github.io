@@ -8,6 +8,7 @@
 </script>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>EncapsulatorP — computational number theory</title>
+<script>document.documentElement.classList.add("js")</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -168,13 +169,34 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 .rm-steps p b{color:var(--ink)}
 .rm-steps .eqline{margin:8px 0;font-size:13px;white-space:normal;line-height:1.8}
 @media(max-width:860px){.rm-pair{grid-template-columns:1fr}.rm-steps li{grid-template-columns:1fr;gap:6px}}
+.js .page{display:none}.js .page.on{display:block}
+.nav a.lg{margin-right:auto;padding:5px 0;font-size:12px;letter-spacing:.12em;color:#fff}
+.nav a[aria-current=page]{color:#0A1222;background:var(--lime2)}
+.board{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px;align-items:start}
+.cell{background:var(--card);border:2px solid var(--blk);border-top:6px solid var(--cc);border-radius:14px;padding:22px 24px;min-width:0}
+.ck{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--cc,#183463)}
+.cell h3{font:700 1.55rem/1.1 "Fraunces",serif;letter-spacing:-.01em;margin:8px 0 10px}
+.cell>p{font-size:14px;color:var(--soft);line-height:1.6;margin:0 0 12px}
+.hits{list-style:none;margin:0 0 14px;padding:0;border-top:1px solid #C9D4E8}
+.hits li{display:grid;grid-template-columns:38px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid #C9D4E8;font-size:13.5px;color:var(--ink);line-height:1.5}
+.hits b{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--cc)}
+.go{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;text-decoration:none;color:var(--cc);border:1.5px solid var(--cc);border-radius:8px;padding:7px 11px;margin:4px 8px 0 0}
+.go:hover,.go:focus-visible{background:var(--cc);color:#fff}
+.empty{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);border:1px dashed var(--muted);border-radius:6px;padding:5px 9px}
+.cell .loot{margin:6px 0 14px}.cell .loot p{color:#DCE5F5}
+.nextstrip{display:grid;grid-template-columns:auto auto 1fr;gap:16px;align-items:baseline;margin-top:20px;padding:16px 20px;background:#183463;color:#fff;border-radius:12px;text-decoration:none;font-size:14px}
+.nextstrip .ck{color:#BFD9F5}.nextstrip b{font-family:"Fraunces",serif;font-size:1.1rem}.nextstrip span:last-child{color:#C9D8F2}
+.nextstrip:hover{background:#0A1222}
+@media(max-width:860px){.board{grid-template-columns:1fr}.nextstrip{grid-template-columns:1fr;gap:4px}}
 .cm-wrap{max-width:1300px;margin:auto;padding:36px 24px}.cm-kicker{font:11px monospace;letter-spacing:.2em;text-transform:uppercase;color:#8bb9ec}.cm-title{font:500 clamp(38px,6vw,76px)/1.05 Georgia,serif;margin:18px 0}.cm-title em{color:#9bb8ed}.cm-intro{max-width:75ch;color:#b5c4df}.cm-stage{position:relative;overflow:hidden;border:1px solid #3a506e;border-radius:22px;background:#080f1e;margin-top:28px;box-shadow:0 25px 100px #0006}.cm-stage canvas{display:block;width:100%;height:540px;touch-action:none;cursor:grab}.cm-hud{position:absolute;left:22px;top:18px;pointer-events:none;text-shadow:0 2px 8px #000;font:11px monospace;letter-spacing:.08em;color:#d6eaff}.cm-sign{position:absolute;right:22px;bottom:16px;font:italic 21px Georgia;color:#d8eaff;pointer-events:none}.cm-controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:22px 0}.cm-controls button,.cm-presets button{border:1px solid #435d83;border-radius:22px;background:#101f36;color:#d9e7fb;padding:10px 16px;cursor:pointer;font:12px monospace}.cm-presets{display:flex;gap:9px;flex-wrap:wrap}.cm-presets button[aria-pressed=true]{background:#bdd3f5;color:#101f36;border-color:#bdd3f5}.cm-controls input{accent-color:#adcdf3;width:150px}.cm-controls label{font:12px monospace}.cm-note{font:12px/1.8 monospace;color:#a7bad6;max-width:100ch}.cm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}.cm-card{border:1px solid #304662;border-radius:16px;padding:22px;background:#101b2e}.cm-card h3{font:24px Georgia;margin:0 0 12px;color:#d6eaff}.cm-card p{font-size:14px;color:#b7c6dc}.cm-eq{font:13px/1.8 monospace;color:#a7d2e0;overflow-wrap:anywhere}.cm-stripe{height:12px;background:repeating-linear-gradient(100deg,#dce8f7 0 6px,#0b1527 6px 16px);opacity:.7;margin-top:38px}.cm-link{color:#bfd7fb}@media(max-width:700px){.cm-grid{grid-template-columns:1fr}.cm-stage canvas{height:420px}.cm-wrap{padding:24px 16px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
 </style></head>
 <body>
 
-<div class="nav"><div class="in"><span class="lg"><b>Encapsulator</b>P</span>
-<a href="#research-paths">Research views</a><a href="#goldbach">Goldbach</a><a href="#embed">Embedding</a><a href="#tetra">Sign-flip</a><a href="#scape">Collatzscape</a><a href="#validatron">Validatron</a><a href="#lemmas">Little lemmas</a><a href="#roadmap">Next steps</a><a href="#archive">Archive</a></div></div>
+<div class="nav"><div class="in"><a class="lg" href="#home"><b>Encapsulator</b>P</a>
+<a href="#home" data-tab="home">Home</a><a href="#lemmas" data-tab="lemmas">Lemmas</a><a href="#roadmap" data-tab="roadmap">Next steps</a><a href="#goldbach" data-tab="goldbach">Goldbach</a><a href="#collatz" data-tab="collatz">Collatz</a><a href="#towers" data-tab="towers">Towers</a><a href="#validatron" data-tab="validatron">Validatron</a><a href="#archive" data-tab="archive">Archive</a></div></div>
 
+<main>
+<div class="page on" data-page="home">
 <header class="hero"><div class="bars"></div><div class="wrap">
 <p class="ky">computational number theory · one long obsession</p>
 <h1>Mathematical possibilities,<br><em>encapsulated.</em></h1>
@@ -183,17 +205,23 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </div></header>
 
 <section class="sec bg-cream" id="research-paths"><div class="wrap">
-<p class="kick">Choose a research view</p><h2 class="t">Results first.<br><em>Room to explore.</em></h2>
-<div class="research-tabs" role="tablist" aria-label="Research views">
-<button id="tab-established" role="tab" aria-selected="true" aria-controls="panel-established" tabindex="0">Established results</button>
-<button id="tab-promising" role="tab" aria-selected="false" aria-controls="panel-promising" tabindex="-1">Promising observations</button>
-<button id="tab-revisit" role="tab" aria-selected="false" aria-controls="panel-revisit" tabindex="-1">Worth revisiting</button>
-<button id="tab-islands" role="tab" aria-selected="false" aria-controls="panel-islands" tabindex="-1">Disappointment Islands</button>
-</div>
-<div id="panel-established" role="tabpanel" aria-labelledby="tab-established"><p>Begin with the twin-prime Möbius identity, the Goldbach centre–gap identity and the exact twin test below. Each has an elementary written proof.</p></div>
-<div id="panel-promising" role="tabpanel" aria-labelledby="tab-promising" hidden><p>The tower phase limits and finite prime-pair counts provide concrete computational observations. Each experiment keeps its method and range visible. Evidence strength is assessed separately; this view does not assign a probability of truth.</p><a href="#goldbach">Explore prime-pair geometry ↓</a> · <a href="#tetra">Explore alternating towers ↓</a></div>
-<div id="panel-revisit" role="tabpanel" aria-labelledby="tab-revisit" hidden><p>A place for candidates a method may have missed. No verified false-negative cases are recorded here yet. Future entries will explain the original test, why it missed the result and the evidence supporting reconsideration.</p></div>
-<div id="panel-islands" role="tabpanel" aria-labelledby="tab-islands" hidden><p>Counterexamples and limits help locate where a statement applies. The Möbius identity remains valid; the counterexample below concerns its converse.</p><article class="loot" style="--loot:#948AC8">
+<p class="kick">Home · the evidence board</p><h2 class="t">Results first.<br><em>Room to explore.</em></h2>
+<p class="lead">Every finding is filed by two answers: what a test said, and what turned out to be true. The strongest cell comes first.</p>
+<div class="board">
+<article class="cell" style="--cc:#3f7a00"><span class="ck">Positive · positive</span><h3>Established results</h3>
+<p>The test said yes and a written proof agrees. Three exact identities so far.</p>
+<ul class="hits">
+<li><b>001</b><span>Twin primes p, p + 2 leave μ(p(p + 2)) = +1 next to a square.</span></li>
+<li><b>002</b><span>Odd primes p ≤ q satisfy pq = m² − d², with centre m and half-gap d.</span></li>
+<li><b>004</b><span>For m ≥ 3: Ω(m² − 1) = 2 exactly when m − 1 and m + 1 are prime.</span></li>
+</ul>
+<a class="go" href="#lemmas">Open the Hibernating Lemmas →</a></article>
+<article class="cell" style="--cc:#557CDB"><span class="ck">False negative</span><h3>Worth revisiting</h3>
+<p>A place for candidates a method may have missed. No verified false-negative cases are recorded here yet. Future entries will explain the original test, why it missed the result and the evidence supporting reconsideration.</p>
+<span class="empty">0 entries · open for the first one</span></article>
+<article class="cell" style="--cc:#948AC8"><span class="ck">False positive</span><h3>Disappointment Islands</h3>
+<p>The test said yes and the truth said no. Counterexamples and limits help locate where a statement applies. The Möbius identity remains valid; the counterexample concerns its converse.</p>
+<article class="loot" style="--loot:#948AC8">
 <span class="serial">Treasure 003 · square_neighbour_filter</span>
 <h3>False treasure.<br>A useful counterexample.</h3>
 <div class="formula">μ(m² − 1) = +1<br>⇏ m − 1, m + 1 prime</div>
@@ -204,12 +232,20 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <p>Scale check: for m below 200,000 the pattern μ(m² − 1) = +1 appears at 2,160 twin centres and at 30,215 non-twin centres. The filter mostly catches four-prime and six-prime products.</p>
 <p>The precise repair is treasure 004: count the prime factors with multiplicity and require exactly two.</p>
 <p>Lean status: formalization pending; no machine-checked proof claimed.</p>
-</details></article><p>The Brun crossing matches a reference value by tuning the base; it does not establish a new dynamical transition. Recamán is paused from this showcase while its presentation and supporting evidence are reviewed.</p></div>
+</details></article>
+<p>The Brun crossing matches a reference value by tuning the base; it does not establish a new dynamical transition. Recamán is paused from this showcase while its presentation and supporting evidence are reviewed.</p></article>
+<article class="cell" style="--cc:#c95a00"><span class="ck">Positive · awaiting proof</span><h3>Promising observations</h3>
+<p>The tower phase limits and finite prime-pair counts provide concrete computational observations. Each experiment keeps its method and range visible. Evidence strength is assessed separately; this view does not assign a probability of truth.</p>
+<a class="go" href="#goldbach">Explore prime-pair geometry →</a><a class="go" href="#towers">Explore alternating towers →</a></article>
+</div>
+<a class="nextstrip" href="#roadmap"><span class="ck">Next steps</span><b>Reflect. Translate. One prime polynomial.</b><span>The Goldbach p + q roadmap: two exact identities to formalize, one open correlation bound. →</span></a>
 </div></section>
+</div>
+<div class="page" data-page="lemmas">
 <!-- HIBERNATING LEMMAS -->
 <div id="positive-results">
 <section class="sec" id="lemmas" aria-labelledby="lemmas-title"><div class="wrap">
-<p class="kick">01 · established results · Pirates Bary · treasures encapsulated :-D</p>
+<p class="kick">positive · positive · established results · Pirates Bary · treasures encapsulated :-D</p>
 <h2 class="t" id="lemmas-title">Hibernating <em>Lemmas.</em></h2>
 <p class="lead">Small treasures. Long awakenings. A pirate’s chest of exact identities rescued from our larger obsessions — one little treasure at a time.</p>
 <div class="loot-grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))">
@@ -264,6 +300,8 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </div>
 <p class="cap">Established elementary results with written proofs; Lean verification pending. These local identities do not imply prime-pair existence at every scale.</p>
 </div></section><div class="zebra"></div></div>
+</div>
+<div class="page" data-page="roadmap">
 <!-- ROADMAP -->
 <section class="sec bg-tint" id="roadmap" style="--acc:#557CDB" aria-labelledby="roadmap-title"><div class="wrap">
 <p class="kick">next steps · goldbach p + q roadmap</p>
@@ -286,12 +324,14 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <li><span class="n" style="--rc:#697994">Definitions<small>to recover</small></span><div><p><b>Two names without a pinned definition.</b> Our “Bernoulli limit” and “trivial inversion theorem” are not yet written down exactly. Neither is identified with a standard theorem, and neither is used above, until its definition is recovered.</p></div></li>
 </ol>
 <div class="ttwarn"><b>Roadmap, not result.</b> Steps 01 and 02 are exact identities with a finite check in the repository. Nothing here proves Goldbach, the twin-prime conjecture or the Riemann hypothesis.</div>
-<p class="cap">G(N) counts ordered pairs; the Goldbach view below counts unordered pairs. Notes and check script: <a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/lemmas/ROADMAP.md">lemmas/ROADMAP.md</a> · <a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/lemmas/verify_roadmap.py">lemmas/verify_roadmap.py</a>. Background: <a href="https://terrytao.wordpress.com/2007/06/05/open-question-the-parity-problem-in-sieve-theory/">the parity problem in sieve theory</a> · <a href="https://dlmf.nist.gov/27.5">DLMF §27.5</a>.</p>
+<p class="cap">G(N) counts ordered pairs; the Goldbach tab counts unordered pairs. Notes and check script: <a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/lemmas/ROADMAP.md">lemmas/ROADMAP.md</a> · <a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/lemmas/verify_roadmap.py">lemmas/verify_roadmap.py</a>. Background: <a href="https://terrytao.wordpress.com/2007/06/05/open-question-the-parity-problem-in-sieve-theory/">the parity problem in sieve theory</a> · <a href="https://dlmf.nist.gov/27.5">DLMF §27.5</a>.</p>
 </div></section><div class="zebra"></div>
+</div>
+<div class="page" data-page="goldbach">
 <!-- GOLDBACH -->
 <section class="sec bg-cream" id="goldbach" style="--acc:#0c9a89">
 <div class="wrap">
-<p class="kick">01 · goldbach · prime-pair geometry</p><h2 class="t">Goldbach — the geometry of <em>prime pairs</em></h2>
+<p class="kick">goldbach · prime-pair geometry</p><h2 class="t">Goldbach — the geometry of <em>prime pairs</em></h2>
 <p class="lead">Explore how an even number N splits into two primes. Each point represents an even N from 4 to 2,600; its size encodes the number of unordered prime pairs. Colour and position organize divisibility patterns and remainders modulo 30. The cones, rings and twists are designed visual coordinates, inviting comparison across arithmetic families. Drag to rotate.</p>
 <div class="screen"><canvas id="gbviz" class="viz" style="height:54vh;min-height:340px"></canvas></div>
 <div class="gleg"><span><i style="background:#557CDB"></i>÷3 cone</span><span><i style="background:#FF5A3C"></i>÷3·5 twist</span><span><i style="background:#6FB6C3"></i>÷5 ring</span><span><i style="background:#9B6BFF"></i>other shell</span><span><i style="background:#FFA23D"></i>spine</span>
@@ -299,20 +339,36 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </div></section>
 <div class="zebra"></div>
 
+</div>
+<div class="page" data-page="collatz">
 <!-- EMBEDDING -->
 <section class="sec bg-tint" id="embed" style="--acc:#0c9a89">
 <div class="wrap">
-<p class="kick">02 · collatz delay embedding</p><h2 class="t">A map hiding in <em>plain sight</em></h2>
+<p class="kick">collatz · delay embedding</p><h2 class="t">A map hiding in <em>plain sight</em></h2>
 <p class="lead">Plot every Collatz value against the next — a delay embedding at lag τ=1. Thousands of orbits collapse onto <b>two rails</b>: the halving branch (÷2) and the tripling branch (3n+1). The whole conjecture is a walk hopping between them.</p>
 <div class="screen"><canvas id="emviz" class="viz" style="height:52vh;min-height:320px"></canvas></div>
 <div class="cap">seeds streamed: <b id="em-r1">—</b> · points: <b id="em-r2">—</b> — axes are log a(t) vs log a(t+1)</div>
 </div></section>
 <div class="zebra"></div>
 
+<section id="scape" style="background:#080f1e;color:#e9effb"><div class="cm-wrap">
+<p class="cm-kicker">EncapsulatorP · recursive cinema · study 01</p><h2 class="cm-title">Collatz<br><em>Metamorphoses.</em></h2>
+<p class="cm-intro">An integer spine inside a changing complex landscape. Orbit filaments, mirrored chambers and neural-like crossings: five views of a mathematical transformation. Drag to explore; scroll to zoom.</p>
+<div class="cm-presets" aria-label="Map views"><button data-mode="0" aria-pressed="true">01 · Integer spine</button><button data-mode="1" aria-pressed="false">02 · Orbit bloom</button><button data-mode="2" aria-pressed="false">03 · Orbifold lens</button><button data-mode="3" aria-pressed="false">04 · Neural filaments</button><button data-mode="4" aria-pressed="false">05 · Quasiparticle field</button></div>
+<div class="cm-stage"><canvas id="cm-canvas" aria-label="Interactive Collatz-inspired complex orbit render"></canvas><div class="cm-hud" id="cm-hud">96 ITERATIONS · ORBIT TRAPS + ESCAPE TIME</div><div class="cm-sign">Sol.6.1</div></div>
+<div class="cm-controls"><button id="cm-play">Animate mutation</button><button id="cm-reset">Reset view</button><button id="cm-export">Save PNG</button><label>Mutation <input id="cm-mutation" type="range" min="0" max="1" step="0.001" value="0.28"></label><label>Detail <input id="cm-detail" type="range" min="40" max="180" step="10" value="100"></label></div>
+<p class="cm-note" id="cm-description"></p><p class="cm-note">Colour combines finite escape time and proximity to orbit traps; dark regions mean no escape within the iteration limit, not proven boundedness. Orbifold, neural and quasiparticle names describe visual studies. No trained neural network or physical particle simulation is running.</p>
+<div class="cm-grid"><article class="cm-card"><h3>The integer spine</h3><p>The base entire extension agrees with the standard Collatz step on nonnegative integers.</p><div class="cm-eq">C(z) = [2 + 7z − (2 + 5z) cos(πz)] / 4</div></article><article class="cm-card"><h3>Mutation with an anchor</h3><p>Added sine terms vanish at every integer in exact mathematics. Complex dynamics can change while the integer rule stays fixed.</p><div class="cm-eq">Cₐ(z) = C(z) + a sin(πz) / 4<br>Neural view: + a sin(2πz) / 8</div></article><article class="cm-card"><h3>A lens, not a theorem</h3><p>The orbifold lens folds the displayed plane into six sectors. The particle field traces screen-space paths through the image. Neither establishes the Collatz conjecture.</p><div class="cm-eq">Exact integer agreement ≠ proof of convergence.</div></article></div>
+<div class="cm-stripe"></div><p class="cm-kicker">Further research · Goldbach atomic axis</p><h2 class="cm-title" style="font-size:36px">Prime pairs.<br><em>Dagger towers.</em></h2><p class="cm-intro">Place each odd prime pair on its centre m = (p + q)/2 and half-gap d = (q − p)/2. Goldbach fixes m; twin primes occupy d = 1. The product pq = m² − d² supplies the exact arithmetic foundation.</p><p class="cm-note">Proposed next interaction: paired sign-flipping tower phases driven by m and d, with targets chosen before tuning. “Atomic axis” is our visualization coordinate; “dagger” denotes an alternating-sign tower. The coupling is a research proposal, not an established prime-detection method.</p>
+</div></section>
+<div class="zebra"></div>
+
+</div>
+<div class="page" data-page="towers">
 <!-- SIGN-FLIPPING POWER TOWERS -->
 <section class="sec bg-cream" id="tetra" style="--acc:#948AC8">
 <div class="wrap">
-<p class="kick">03 · sign-flipping power towers</p><h2 class="t">Same tower. Opposite <em>phase.</em></h2>
+<p class="kick">towers · sign-flipping power towers</p><h2 class="t">Same tower. Opposite <em>phase.</em></h2>
 <p class="lead">The sign is part of every exponent level — a forced <b>+ / − / + / −</b> architecture, not an ordinary tetration cycle.</p>
 <div class="eqline">1.11 &nbsp;|&nbsp; <span class="m">−1.11</span> &nbsp;|&nbsp; <span class="p">+1.11</span> &nbsp;|&nbsp; <span class="m">−1.11</span> &nbsp;|&nbsp; <span class="p">+1.11</span> &nbsp;|&nbsp; …</div>
 
@@ -346,21 +402,11 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </div></section>
 <div class="zebra"></div>
 
-<section id="scape" style="background:#080f1e;color:#e9effb"><div class="cm-wrap">
-<p class="cm-kicker">EncapsulatorP · recursive cinema · study 01</p><h2 class="cm-title">Collatz<br><em>Metamorphoses.</em></h2>
-<p class="cm-intro">An integer spine inside a changing complex landscape. Orbit filaments, mirrored chambers and neural-like crossings: five views of a mathematical transformation. Drag to explore; scroll to zoom.</p>
-<div class="cm-presets" aria-label="Map views"><button data-mode="0" aria-pressed="true">01 · Integer spine</button><button data-mode="1" aria-pressed="false">02 · Orbit bloom</button><button data-mode="2" aria-pressed="false">03 · Orbifold lens</button><button data-mode="3" aria-pressed="false">04 · Neural filaments</button><button data-mode="4" aria-pressed="false">05 · Quasiparticle field</button></div>
-<div class="cm-stage"><canvas id="cm-canvas" aria-label="Interactive Collatz-inspired complex orbit render"></canvas><div class="cm-hud" id="cm-hud">96 ITERATIONS · ORBIT TRAPS + ESCAPE TIME</div><div class="cm-sign">Sol.6.1</div></div>
-<div class="cm-controls"><button id="cm-play">Animate mutation</button><button id="cm-reset">Reset view</button><button id="cm-export">Save PNG</button><label>Mutation <input id="cm-mutation" type="range" min="0" max="1" step="0.001" value="0.28"></label><label>Detail <input id="cm-detail" type="range" min="40" max="180" step="10" value="100"></label></div>
-<p class="cm-note" id="cm-description"></p><p class="cm-note">Colour combines finite escape time and proximity to orbit traps; dark regions mean no escape within the iteration limit, not proven boundedness. Orbifold, neural and quasiparticle names describe visual studies. No trained neural network or physical particle simulation is running.</p>
-<div class="cm-grid"><article class="cm-card"><h3>The integer spine</h3><p>The base entire extension agrees with the standard Collatz step on nonnegative integers.</p><div class="cm-eq">C(z) = [2 + 7z − (2 + 5z) cos(πz)] / 4</div></article><article class="cm-card"><h3>Mutation with an anchor</h3><p>Added sine terms vanish at every integer in exact mathematics. Complex dynamics can change while the integer rule stays fixed.</p><div class="cm-eq">Cₐ(z) = C(z) + a sin(πz) / 4<br>Neural view: + a sin(2πz) / 8</div></article><article class="cm-card"><h3>A lens, not a theorem</h3><p>The orbifold lens folds the displayed plane into six sectors. The particle field traces screen-space paths through the image. Neither establishes the Collatz conjecture.</p><div class="cm-eq">Exact integer agreement ≠ proof of convergence.</div></article></div>
-<div class="cm-stripe"></div><p class="cm-kicker">Further research · Goldbach atomic axis</p><h2 class="cm-title" style="font-size:36px">Prime pairs.<br><em>Dagger towers.</em></h2><p class="cm-intro">Place each odd prime pair on its centre m = (p + q)/2 and half-gap d = (q − p)/2. Goldbach fixes m; twin primes occupy d = 1. The product pq = m² − d² supplies the exact arithmetic foundation.</p><p class="cm-note">Proposed next interaction: paired sign-flipping tower phases driven by m and d, with targets chosen before tuning. “Atomic axis” is our visualization coordinate; “dagger” denotes an alternating-sign tower. The coupling is a research proposal, not an established prime-detection method.</p>
-</div></section>
-<div class="zebra"></div>
-
+</div>
+<div class="page" data-page="validatron">
 <!-- VALIDATRON -->
 <section class="sec bg-tint" id="validatron" style="--acc:#6b52d0"><div class="wrap">
-<p class="kick">05 · validatron · specialized mathematical intelligence</p>
+<p class="kick">validatron · specialized mathematical intelligence</p>
 <h2 class="t">Explore further.<br><em>Build the argument.</em></h2>
 <p class="lead">Validatron is being developed to connect our mathematical research with specialized open-weight models and complementary language models. Its purpose is to understand an idea on its own terms, explore connections, develop arguments and help turn promising steps into precise results.</p>
 <div class="grid">
@@ -371,6 +417,8 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 
 
 
+</div>
+<div class="page" data-page="archive">
 <!-- ARCHIVE + LABELS -->
 <section class="sec bg-cream" id="archive" style="--acc:#c95a00">
 <div class="wrap">
@@ -386,7 +434,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <div class="card" style="--e:#0c9a89"><div style="display:flex;align-items:center"><span class="repo">mertens_counterexample</span><span class="vis">Private</span></div><div class="pair">Mertens · the Riemann edge</div><p>Pushes the M(n)/√n boundary toward where Mertens is known to fail.</p><span class="tag" style="align-self:flex-start">Empirical</span></div>
 <div class="card" style="--e:#c95a00"><div style="display:flex;align-items:center"><span class="repo">Catalan_ruelle_mayer</span><span class="vis">Private</span></div><div class="pair">Catalan × Ruelle–Mayer</div><p>Transfer-operator machinery on Catalan-type exponent gaps.</p><span class="tag" style="align-self:flex-start">Theoretical</span></div>
 <div class="card" style="--e:#c95a00"><div style="display:flex;align-items:center"><span class="repo">zeta_branching</span><span class="vis">Private</span></div><div class="pair">Ruelle/Riemann zeta · branch structure</div><p>Maps how the dynamical zeta’s branches split and continue across the transfer-operator spectrum — a clean, reproducible signature.</p><span class="tag" style="align-self:flex-start">Theoretical</span></div>
-<a class="card" style="--e:#c95a00" href="https://github.com/EncapsulatorP/collatz_rupert_delay_embedding"><div class="head"><span class="repo">collatz_rupert_delay_embedding</span><span class="vis" style="color:#3f7a00;border-color:#9ac44a">Public</span><span class="vis wip">Early</span></div><div class="pair">Collatz × Rupert · delay hulls</div><p>Takes the τ=1 embedding of section 02 down to a single orbit — n = 27, 112 steps, peak 9,232 — and asks what counts the structure on the two rails. Answer so far: φ(2<sup>k</sup>) for the dyadic clusters, φ(2<sup>k</sup>)/2 for the helix period in the 3-D portrait. The teaser conjecture pushes further, tying convergence to Rupert-admissible limit geometry. An early exploration with a README, next steps and a Plotly notebook; the proposed connection remains conjectural.</p><span class="tag" style="align-self:flex-start">Conjectural</span></a>
+<a class="card" style="--e:#c95a00" href="https://github.com/EncapsulatorP/collatz_rupert_delay_embedding"><div class="head"><span class="repo">collatz_rupert_delay_embedding</span><span class="vis" style="color:#3f7a00;border-color:#9ac44a">Public</span><span class="vis wip">Early</span></div><div class="pair">Collatz × Rupert · delay hulls</div><p>Takes the τ=1 embedding of the Collatz tab down to a single orbit — n = 27, 112 steps, peak 9,232 — and asks what counts the structure on the two rails. Answer so far: φ(2<sup>k</sup>) for the dyadic clusters, φ(2<sup>k</sup>)/2 for the helix period in the 3-D portrait. The teaser conjecture pushes further, tying convergence to Rupert-admissible limit geometry. An early exploration with a README, next steps and a Plotly notebook; the proposed connection remains conjectural.</p><span class="tag" style="align-self:flex-start">Conjectural</span></a>
 <div class="card" style="--e:#697994"><div class="head"><span class="repo">erdos_schnitzel</span><span class="vis">Private</span><span class="vis wip">New</span></div><div class="pair">Erdős line · not yet described</div><p>An early private research direction. A problem statement and supporting materials will accompany its public introduction.</p><span class="tag pend" style="align-self:flex-start">Unlabeled</span></div>
 </div>
 <p class="kick" style="margin-top:44px">reading the research</p><h2 class="t">Stages of <em>understanding</em></h2>
@@ -399,6 +447,8 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </ul>
 </div></section>
 
+</div>
+</main>
 <footer><div class="wrap fg">
 <div><div class="fb">Encapsulator<span>P</span></div><div class="fc">ideas, experiments and small mathematical treasures.</div></div>
 <div class="fm">github &nbsp;·&nbsp; <a href="https://github.com/orgs/EncapsulatorP/repositories">EncapsulatorP</a><br>collatz · goldbach · tetration · rupert geometry · erdős · complex dynamics<br>mostly pending, gloriously</div>
@@ -608,6 +658,21 @@ let drag=null;canvas.onpointerdown=e=>{drag={x:e.clientX,y:e.clientY};canvas.set
 document.getElementById('cm-export').onclick=()=>{draw();const out=document.createElement('canvas');out.width=canvas.width;out.height=canvas.height;const ctx=out.getContext('2d');ctx.drawImage(canvas,0,0);ctx.fillStyle='#e1edff';ctx.font='italic 24px Georgia';ctx.textAlign='right';ctx.fillText('Sol.6.1',out.width-24,out.height-24);const a=document.createElement('a');a.download='collatz-metamorphoses-sol-6-1.png';a.href=out.toDataURL('image/png');a.click();};
 window.addEventListener('resize',draw);document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});draw();
 }catch(error){document.getElementById('cm-description').textContent='Renderer could not initialize: '+error.message;}
+})();
+</script>
+<script>
+(function(){
+var alias={home:'home','research-paths':'home',lemmas:'lemmas','positive-results':'lemmas',roadmap:'roadmap',goldbach:'goldbach',collatz:'collatz',embed:'collatz',scape:'collatz',towers:'towers',tetra:'towers',validatron:'validatron',archive:'archive'};
+var pages=Array.from(document.querySelectorAll('.page')),tabs=Array.from(document.querySelectorAll('.nav a[data-tab]'));
+function show(){
+ var id=(location.hash||'#home').slice(1),name=alias[id]||'home';
+ pages.forEach(function(p){p.classList.toggle('on',p.dataset.page===name);});
+ tabs.forEach(function(a){if(a.dataset.tab===name)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+ var el=(id!==name)&&document.getElementById(id);
+ if(el&&alias[id])el.scrollIntoView();else window.scrollTo(0,0);
+ window.dispatchEvent(new Event('resize'));
+}
+window.addEventListener('hashchange',show);show();
 })();
 </script></body></html>
 
