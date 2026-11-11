@@ -11,10 +11,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--paper:#FFF4DD;--tint:#FFEAC1;--card:#FFFDF7;--ink:#1A1206;--soft:#5A4A31;--muted:#8A7452;
---yellow:#FFC21F;--orange:#FF7A1A;--coral:#FF4D6D;--pink:#FF2E8B;--lime:#B6F000;--lime2:#C7FF48;--cyan:#12CBB6;--blue:#5B6CFF;--violet:#8766FF;--blk:#0B0708;
---prism:linear-gradient(90deg,#FF2E8B,#8766FF,#12CBB6,#B6F000);
---barcode:repeating-linear-gradient(90deg,#0B0708 0 7px,transparent 7px 12px,#0B0708 12px 15px,transparent 15px 27px,#0B0708 27px 40px,transparent 40px 45px,#0B0708 45px 49px,transparent 49px 61px);--mw:1120px;}
+:root{--paper:#F4F7FC;--tint:#E7EDF8;--card:#FFFFFF;--ink:#101B32;--soft:#465570;--muted:#697994;
+--yellow:#D6BA73;--orange:#759BCF;--coral:#8CA8E8;--pink:#A39BD5;--lime:#9BC8D8;--lime2:#BFD9F5;--cyan:#6FB6C3;--blue:#557CDB;--violet:#948AC8;--blk:#0A1222;
+--prism:linear-gradient(90deg,#A39BD5,#948AC8,#6FB6C3,#9BC8D8);
+--barcode:repeating-linear-gradient(90deg,#0A1222 0 7px,transparent 7px 12px,#0A1222 12px 15px,transparent 15px 27px,#0A1222 27px 40px,transparent 40px 45px,#0A1222 45px 49px,transparent 49px 61px);--mw:1120px;}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}::selection{background:var(--lime2);color:var(--blk)}
@@ -73,7 +73,7 @@ canvas.viz{display:block;width:100%}
 .eqline .m{color:#c2185b}.eqline .p{color:#5c8a00}.eqline b{color:var(--el,var(--violet))}
 .ttctl{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:10px}
 .ttctl .lbl{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.ttctl input[type=range]{flex:1 1 220px;min-width:160px;accent-color:#8766FF;height:20px;cursor:ew-resize}
+.ttctl input[type=range]{flex:1 1 220px;min-width:160px;accent-color:#948AC8;height:20px;cursor:ew-resize}
 .pchip{font-family:"IBM Plex Mono",monospace;font-size:10.5px;cursor:pointer;color:var(--soft);background:var(--card);border:1px solid var(--blk);border-radius:18px;padding:4px 9px;transition:background .14s,color .14s}
 .pchip:hover,.pchip:focus-visible{background:var(--violet);color:#fff}
 #tetra .readbar{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;margin-top:10px}
@@ -109,7 +109,7 @@ a.card:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--e,var(--c
 .tool p{margin:10px 0 0;font-size:14px;color:var(--soft);line-height:1.55;max-width:54ch}
 .tool .aside{font-family:"IBM Plex Mono",monospace;font-size:12px;line-height:1.75;color:var(--muted);border-left:2px solid #EAD5A6;padding-left:20px}
 .tool .aside b{color:#6b52d0;font-weight:600}
-.tag.pend{border-style:dashed;--e:#8A7452}
+.tag.pend{border-style:dashed;--e:#697994}
 .labels{list-style:none;margin:18px 0 0;padding:0;border-top:2px solid var(--blk);max-width:820px}
 .labels li{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:13px 0;border-bottom:1px solid #EAD5A6}
 .labels .n{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
@@ -126,54 +126,148 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 @media(max-width:640px){.lims{grid-template-columns:1fr}.note{flex-direction:column;gap:12px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.shimmer{animation:none}}
 .shimmer{animation:hue 24s linear infinite}@keyframes hue{to{filter:hue-rotate(360deg)}}
+
+#lemmas{--acc:#BFD9F5;background:#0b1018;color:#F4F7FC}
+#lemmas .lead,#lemmas .cap{color:#d9cbb5}
+.loot-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:30px 0}
+.loot{background:#141c29;border:1px solid #384253;border-top:4px solid var(--loot);border-radius:14px;padding:22px;min-width:0;box-shadow:5px 5px 0 #05080d}
+.loot .serial{font:11px "IBM Plex Mono",monospace;color:var(--loot);letter-spacing:.08em;text-transform:uppercase}
+.loot h3{font:600 26px/1.12 "Fraunces",serif;margin:16px 0;color:#fff}
+.loot p{font-size:14px;color:#d9cbb5;line-height:1.65}
+.loot .formula{font:500 17px/1.9 "IBM Plex Mono",monospace;color:var(--loot);padding:14px 0;overflow-wrap:anywhere}
+.loot details{border-top:1px solid #384253;padding-top:14px;margin-top:18px}
+.loot summary{cursor:pointer;font:12px "IBM Plex Mono",monospace;color:#BFD9F5;padding:5px 0}
+.loot .status{font:10px "IBM Plex Mono",monospace;border:1px solid #586276;border-radius:5px;padding:5px 7px;color:#d9cbb5;display:inline-block}
+.dispatch{border:1px dashed #D6BA73;border-radius:14px;padding:24px;background:#182333}
+.dispatch h3{font:600 27px "Fraunces",serif;margin:6px 0}
+.dispatch p{font-size:14px;color:#d9cbb5;max-width:80ch}
+.dispatch a{display:inline-block;border:1px solid #BFD9F5;border-radius:8px;padding:10px 14px;color:#BFD9F5;font:12px "IBM Plex Mono",monospace;text-decoration:none;margin:5px 10px 0 0}
+.dispatch a:hover{background:#BFD9F5;color:#0b1018}
+@media(max-width:860px){.loot-grid{grid-template-columns:1fr}}
+
+.research-tabs{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
+.research-tabs button{font:12px "IBM Plex Mono",monospace;border:1px solid #7D91B5;border-radius:24px;padding:12px 17px;background:transparent;color:#263D65;cursor:pointer}
+.research-tabs button[aria-selected=true]{background:#183463;color:#fff;border-color:#183463}
+[role=tabpanel]{border-left:3px solid #557CDB;padding:5px 22px;max-width:86ch;line-height:1.7}
+[role=tabpanel][hidden]{display:none}
+#panel-islands .loot{max-width:650px;margin:22px 0}
+#research-paths{padding-bottom:30px}
+#lemmas{padding-top:42px}
+#lemmas .loot-grid{gap:24px}
+.hero{background:linear-gradient(130deg,#081222,#182C4D)}
+.zebra{height:19px}
+#panel-islands .loot p{color:#DCE5F5}
+.cm-wrap{max-width:1300px;margin:auto;padding:36px 24px}.cm-kicker{font:11px monospace;letter-spacing:.2em;text-transform:uppercase;color:#8bb9ec}.cm-title{font:500 clamp(38px,6vw,76px)/1.05 Georgia,serif;margin:18px 0}.cm-title em{color:#9bb8ed}.cm-intro{max-width:75ch;color:#b5c4df}.cm-stage{position:relative;overflow:hidden;border:1px solid #3a506e;border-radius:22px;background:#080f1e;margin-top:28px;box-shadow:0 25px 100px #0006}.cm-stage canvas{display:block;width:100%;height:540px;touch-action:none;cursor:grab}.cm-hud{position:absolute;left:22px;top:18px;pointer-events:none;text-shadow:0 2px 8px #000;font:11px monospace;letter-spacing:.08em;color:#d6eaff}.cm-sign{position:absolute;right:22px;bottom:16px;font:italic 21px Georgia;color:#d8eaff;pointer-events:none}.cm-controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:22px 0}.cm-controls button,.cm-presets button{border:1px solid #435d83;border-radius:22px;background:#101f36;color:#d9e7fb;padding:10px 16px;cursor:pointer;font:12px monospace}.cm-presets{display:flex;gap:9px;flex-wrap:wrap}.cm-presets button[aria-pressed=true]{background:#bdd3f5;color:#101f36;border-color:#bdd3f5}.cm-controls input{accent-color:#adcdf3;width:150px}.cm-controls label{font:12px monospace}.cm-note{font:12px/1.8 monospace;color:#a7bad6;max-width:100ch}.cm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}.cm-card{border:1px solid #304662;border-radius:16px;padding:22px;background:#101b2e}.cm-card h3{font:24px Georgia;margin:0 0 12px;color:#d6eaff}.cm-card p{font-size:14px;color:#b7c6dc}.cm-eq{font:13px/1.8 monospace;color:#a7d2e0;overflow-wrap:anywhere}.cm-stripe{height:12px;background:repeating-linear-gradient(100deg,#dce8f7 0 6px,#0b1527 6px 16px);opacity:.7;margin-top:38px}.cm-link{color:#bfd7fb}@media(max-width:700px){.cm-grid{grid-template-columns:1fr}.cm-stage canvas{height:420px}.cm-wrap{padding:24px 16px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
 </style></head>
 <body>
 
 <div class="nav"><div class="in"><span class="lg"><b>Encapsulator</b>P</span>
-<a href="#goldbach">Goldbach</a><a href="#recaman">Recamán</a><a href="#embed">Embedding</a><a href="#tetra">Sign-flip</a><a href="#scape">Collatzscape</a><a href="#validatron">Validatron</a><a href="#archive">Archive</a></div></div>
+<a href="#research-paths">Research views</a><a href="#goldbach">Goldbach</a><a href="#embed">Embedding</a><a href="#tetra">Sign-flip</a><a href="#scape">Collatzscape</a><a href="#validatron">Validatron</a><a href="#lemmas">Little lemmas</a><a href="#archive">Archive</a></div></div>
 
 <header class="hero"><div class="bars"></div><div class="wrap">
 <p class="ky">computational number theory · one long obsession</p>
-<h1>Hard problems,<br><em>encapsulated.</em></h1>
-<p>An open lab attacking the great unsolved problems — Collatz, Goldbach, Recamán, tetration — each with the machinery aimed at it, and each tagged by exactly how much is really known.</p>
-<p class="tag">scroll: six live experiments, one honest verifier, no repetition.</p>
+<h1>Mathematical possibilities,<br><em>encapsulated.</em></h1>
+<p>An open research project exploring prime pairs, Collatz dynamics, recursive towers and mathematical intelligence. Ideas grow through exact arguments, computational experiments and connections across fields.</p>
+<p class="tag">prime-pair geometry · recursive dynamics · hibernating lemmas</p>
 </div></header>
 
+<section class="sec bg-cream" id="research-paths"><div class="wrap">
+<p class="kick">Choose a research view</p><h2 class="t">Results first.<br><em>Room to explore.</em></h2>
+<div class="research-tabs" role="tablist" aria-label="Research views">
+<button id="tab-established" role="tab" aria-selected="true" aria-controls="panel-established" tabindex="0">Established results</button>
+<button id="tab-promising" role="tab" aria-selected="false" aria-controls="panel-promising" tabindex="-1">Promising observations</button>
+<button id="tab-revisit" role="tab" aria-selected="false" aria-controls="panel-revisit" tabindex="-1">Worth revisiting</button>
+<button id="tab-islands" role="tab" aria-selected="false" aria-controls="panel-islands" tabindex="-1">Disappointment Islands</button>
+</div>
+<div id="panel-established" role="tabpanel" aria-labelledby="tab-established"><p>Begin with the twin-prime Möbius identity, the Goldbach centre–gap identity and the exact twin test below. Each has an elementary written proof.</p></div>
+<div id="panel-promising" role="tabpanel" aria-labelledby="tab-promising" hidden><p>The tower phase limits and finite prime-pair counts provide concrete computational observations. Each experiment keeps its method and range visible. Evidence strength is assessed separately; this view does not assign a probability of truth.</p><a href="#goldbach">Explore prime-pair geometry ↓</a> · <a href="#tetra">Explore alternating towers ↓</a></div>
+<div id="panel-revisit" role="tabpanel" aria-labelledby="tab-revisit" hidden><p>A place for candidates a method may have missed. No verified false-negative cases are recorded here yet. Future entries will explain the original test, why it missed the result and the evidence supporting reconsideration.</p></div>
+<div id="panel-islands" role="tabpanel" aria-labelledby="tab-islands" hidden><p>Counterexamples and limits help locate where a statement applies. The Möbius identity remains valid; the counterexample below concerns its converse.</p><article class="loot" style="--loot:#948AC8">
+<span class="serial">Treasure 003 · square_neighbour_filter</span>
+<h3>False treasure.<br>A useful counterexample.</h3>
+<div class="formula">μ(m² − 1) = +1<br>⇏ m − 1, m + 1 prime</div>
+<p>A positive Möbius value detects squarefreeness and an even number of prime factors. It cannot certify exactly two.</p>
+<span class="status">Exact · counterexample</span>
+<details><summary>Open the treasure · proof</summary>
+<p>Take m = 34. Then m − 1 = 33 = 3 × 11 and m + 1 = 35 = 5 × 7. Thus m² − 1 = 1155 = 3 × 5 × 7 × 11, so μ(1155) = 1; also μ(1156) = μ(34²) = 0. The adjacent (+1, 0) occurs without twin primes. This is the smallest such m; the next are 56, 86, 92, 94 and 104.</p>
+<p>Scale check: for m below 200,000 the pattern μ(m² − 1) = +1 appears at 2,160 twin centres and at 30,215 non-twin centres. The filter mostly catches four-prime and six-prime products.</p>
+<p>The precise repair is treasure 004: count the prime factors with multiplicity and require exactly two.</p>
+<p>Lean status: formalization pending; no machine-checked proof claimed.</p>
+</details></article><p>The Brun crossing matches a reference value by tuning the base; it does not establish a new dynamical transition. Recamán is paused from this showcase while its presentation and supporting evidence are reviewed.</p></div>
+</div></section>
+<!-- HIBERNATING LEMMAS -->
+<div id="positive-results">
+<section class="sec" id="lemmas" aria-labelledby="lemmas-title"><div class="wrap">
+<p class="kick">01 · established results · Pirates Bary · treasures encapsulated :-D</p>
+<h2 class="t" id="lemmas-title">Hibernating <em>Lemmas.</em></h2>
+<p class="lead">Small treasures. Long awakenings. A pirate’s chest of exact identities rescued from our larger obsessions — one little treasure at a time.</p>
+<div class="loot-grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))">
+<article class="loot" style="--loot:#6FB6C3">
+<span class="serial">Treasure 001 · twin_primes_moebius</span>
+<h3>Two primes.<br>One square next door.</h3>
+<div class="formula">μ(p(p + 2)) = +1<br>μ((p + 1)²) = 0</div>
+<p>If p and p + 2 are prime, their product sits exactly one step before a square. Every twin pair leaves an adjacent (+1, 0) in the Möbius sequence.</p>
+<span class="status">Exact · elementary proof</span>
+<details><summary>Open the treasure · proof</summary>
+<p>The primes p and p + 2 are distinct. Their product is squarefree with two prime factors, so μ(p(p + 2)) = (−1)² = 1. Since p + 1 &gt; 1, its square has a square divisor, giving μ((p + 1)²) = 0. Finally, p(p + 2) + 1 = (p + 1)².</p>
+<p>Specimen: 5 × 7 = 35, followed by 36; μ(35) = 1 and μ(36) = 0.</p>
+<p>This implication is one-way: treasure 003 shows the same pattern without twin primes, and treasure 004 gives the exact two-way test.</p>
+<p>Lean status: formalization pending; no machine-checked proof claimed.</p>
+</details></article>
+<article class="loot" style="--loot:#D6BA73">
+<span class="serial">Treasure 002 · centre_gap_product</span>
+<h3>Goldbach’s centre.<br>The twins’ gap.</h3>
+<div class="formula">p = m − d · q = m + d<br>pq = m² − d²</div>
+<p>For odd primes p ≤ q, set m = (p + q)/2 and d = (q − p)/2. Goldbach fixes the centre m. Twin primes fix d = 1.</p>
+<span class="status">Exact · algebraic identity</span>
+<details><summary>Open the treasure · proof</summary>
+<p>Both m and d are integers because p and q are odd. Expanding (m − d)(m + d) gives m² − d². Hence p + q = 2m and q − p = 2d.</p>
+<p>For p ≠ q, μ(pq) = 1. On the Goldbach diagonal p = q, d = 0 and μ(p²) = 0. Repeated-prime representations remain valid Goldbach representations; 2 + 2 is handled separately.</p>
+<p>Specimen: 10 = 3 + 7 has m = 5, d = 2 and pq = 25 − 4 = 21.</p>
+<p>The identity connects coordinates; existence of a prime pair at every centre remains a separate question.</p>
+<p>Lean status: formalization pending; no machine-checked proof claimed.</p>
+</details></article>
+<article class="loot" style="--loot:#9BC8D8">
+<span class="serial">Treasure 004 · exact_twin_test</span>
+<h3>Count to two.<br>Get the twins back.</h3>
+<div class="formula">Ω(m² − 1) = 2<br>⇔ m − 1, m + 1 prime</div>
+<p>For m ≥ 3, the neighbours of m are twin primes exactly when m² − 1 has two prime factors counted with multiplicity. This is the two-way version of treasure 001.</p>
+<span class="status">Exact · elementary proof</span>
+<details><summary>Open the treasure · proof</summary>
+<p>Write m² − 1 = (m − 1)(m + 1). For m ≥ 3 both factors are at least 2, so each contributes at least one prime factor and Ω(m² − 1) = Ω(m − 1) + Ω(m + 1) ≥ 2. Equality forces Ω(m − 1) = Ω(m + 1) = 1, so both are prime. Conversely, two primes give Ω = 2.</p>
+<p>Squarefreeness comes free: m − 1 ≠ m + 1, so the product of the two primes is squarefree and μ(m² − 1) = +1, recovering treasure 001.</p>
+<p>Specimens: m = 12 gives 143 = 11 × 13 and m = 18 gives 323 = 17 × 19, both twin centres with Ω = 2. m = 34 gives 1155 with Ω = 4 and is rejected.</p>
+<p>Away from squares: for distinct primes p, q the pair (μ(pq), μ(pq + 1)) equals (+1, 0) exactly when pq + 1 has a square divisor. Twins supply one, since pq + 1 = (p + 1)². They are not required: 3 × 13 = 39 and 40 = 2³ × 5.</p>
+<p>The test restates the twin-prime condition; it does not show that it holds infinitely often.</p>
+<p>Finite check: verified for 3 ≤ m &lt; 200,000 by lemmas/verify_lemmas.py. Lean status: formalization pending; no machine-checked proof claimed.</p>
+</details></article>
+
+</div>
+<div class="dispatch"><p class="kick">Proof dispatches · the first chest is open</p>
+<h3>One lemma lands. The log moves.</h3>
+<p>Follow the repository for updates, or subscribe to its Atom commit feed in a feed reader. Future Lean certificates should include source, toolchain and a successful check. Dedicated proof-only messaging is still to come.</p>
+<a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io">Watch on GitHub ↗</a>
+<a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/lemmas/LEMMAS.md">Statements and proofs ↗</a>
+<a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/lemmas/verify_lemmas.py">Finite check script ↗</a>
+<a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/commits/main.atom">Atom updates ↗</a>
+</div>
+<p class="cap">Established elementary results with written proofs; Lean verification pending. These local identities do not imply prime-pair existence at every scale.</p>
+</div></section><div class="zebra"></div></div>
 <!-- GOLDBACH -->
 <section class="sec bg-cream" id="goldbach" style="--acc:#0c9a89">
 <div class="wrap">
-<p class="kick">01 · goldbach residues</p><h2 class="t">Goldbach, by <em>residue</em></h2>
-<p class="lead">How many ways N splits into two primes is pure arithmetic. Sort each even N by its residue mod 30 and the counts fall into chambers — divisibility by 3 fans them into <b>cones</b>, by 5 into a <b>ring</b>, by both into a <b>Möbius twist</b>, other primes into a <b>shell</b>, powers of two left on the bare <b>spine</b>. Drag to rotate.</p>
+<p class="kick">01 · goldbach · prime-pair geometry</p><h2 class="t">Goldbach — the geometry of <em>prime pairs</em></h2>
+<p class="lead">Explore how an even number N splits into two primes. Each point represents an even N from 4 to 2,600; its size encodes the number of unordered prime pairs. Colour and position organize divisibility patterns and remainders modulo 30. The cones, rings and twists are designed visual coordinates, inviting comparison across arithmetic families. Drag to rotate.</p>
 <div class="screen"><canvas id="gbviz" class="viz" style="height:54vh;min-height:340px"></canvas></div>
-<div class="gleg"><span><i style="background:#5B6CFF"></i>÷3 cone</span><span><i style="background:#FF5A3C"></i>÷3·5 twist</span><span><i style="background:#12CBB6"></i>÷5 ring</span><span><i style="background:#9B6BFF"></i>other shell</span><span><i style="background:#FFA23D"></i>spine</span>
+<div class="gleg"><span><i style="background:#557CDB"></i>÷3 cone</span><span><i style="background:#FF5A3C"></i>÷3·5 twist</span><span><i style="background:#6FB6C3"></i>÷5 ring</span><span><i style="background:#9B6BFF"></i>other shell</span><span><i style="background:#FFA23D"></i>spine</span>
 <span style="margin-left:auto">even N: <b id="gb-r1">—</b> · chambers: <b id="gb-r2">—</b></span></div>
 </div></section>
-<div class="zebra"></div>
-
-<!-- RECAMAN -->
-<section class="sec bg-dark" id="recaman" style="--acc:#FF4D6D">
-<div class="wrap"><div class="split">
-<div>
-<p class="kick">02 · recamán obstructions</p><h2 class="t">The embedding, <em>from the repo</em></h2>
-<p class="lead">3,102 gap-events pulled from Recamán out past 4.3&nbsp;billion, each turned into <b>142 features</b> — digit signatures, residues mod 2…31, gap regime, and the Recamán residual itself. Under <b>forward-chaining</b> CV, three context splits predict their gaps almost perfectly (A, B, C &asymp; 0.99); only the honest-hard task — calling the next candidate start cold — sits at <b>0.759</b>. A separate random search over 6,000 linear codes then distilled a 10-dimensional embedding that pulls 194k positives off their controls. Both are drawn here straight from the results.</p>
-<div class="readbar">
-<div><span class="k">gap-events</span><span class="v" id="rc-r1">3,102</span></div>
-<div><span class="k">features</span><span class="v" id="rc-r2">142</span></div>
-<div><span class="k">context AUC (A)</span><span class="v" id="rc-r3">0.996</span></div>
-<div><span class="k">cold task (D)</span><span class="v" id="rc-r4">0.759</span></div>
-</div>
-</div>
-<div>
-<div class="screen" style="display:flex;flex-direction:column"><canvas id="rcviz" class="viz" style="height:280px"></canvas><canvas id="rcviz2" class="viz" style="height:124px;border-top:1px solid #221c18;background:#0a0810"></canvas></div>
-<div class="cap">top &middot; the learned 10-D code — positive vs control class centroids; where the lines split, the embedding separates. bottom &middot; forward-CV AUC per dataset: A/B/C context splits against D, the cold candidate-start task. events: 2,535 singletons · 104 huge · regimes explosion/compression/stable.</div>
-</div>
-</div></div></section>
 <div class="zebra"></div>
 
 <!-- EMBEDDING -->
 <section class="sec bg-tint" id="embed" style="--acc:#0c9a89">
 <div class="wrap">
-<p class="kick">03 · collatz delay embedding</p><h2 class="t">A map hiding in <em>plain sight</em></h2>
+<p class="kick">02 · collatz delay embedding</p><h2 class="t">A map hiding in <em>plain sight</em></h2>
 <p class="lead">Plot every Collatz value against the next — a delay embedding at lag τ=1. Thousands of orbits collapse onto <b>two rails</b>: the halving branch (÷2) and the tripling branch (3n+1). The whole conjecture is a walk hopping between them.</p>
 <div class="screen"><canvas id="emviz" class="viz" style="height:52vh;min-height:320px"></canvas></div>
 <div class="cap">seeds streamed: <b id="em-r1">—</b> · points: <b id="em-r2">—</b> — axes are log a(t) vs log a(t+1)</div>
@@ -181,9 +275,9 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <div class="zebra"></div>
 
 <!-- SIGN-FLIPPING POWER TOWERS -->
-<section class="sec bg-cream" id="tetra" style="--acc:#8766FF">
+<section class="sec bg-cream" id="tetra" style="--acc:#948AC8">
 <div class="wrap">
-<p class="kick">04 · sign-flipping power towers</p><h2 class="t">Same tower. Opposite <em>phase.</em></h2>
+<p class="kick">03 · sign-flipping power towers</p><h2 class="t">Same tower. Opposite <em>phase.</em></h2>
 <p class="lead">The sign is part of every exponent level — a forced <b>+ / − / + / −</b> architecture, not an ordinary tetration cycle.</p>
 <div class="eqline">1.11 &nbsp;|&nbsp; <span class="m">−1.11</span> &nbsp;|&nbsp; <span class="p">+1.11</span> &nbsp;|&nbsp; <span class="m">−1.11</span> &nbsp;|&nbsp; <span class="p">+1.11</span> &nbsp;|&nbsp; …</div>
 
@@ -209,7 +303,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <div class="cap">Top · limiting branches vs base. Bottom · tower depth alternates around 1. Drag the slider; violet marks the Brun-deficit reference.</div>
 
 <div class="ttfacts">
-<div class="ttfact" style="--tc:#FF2E8B"><span class="n">flip</span><b>+ − + − + − …</b><p>The signs are imposed level by level.</p></div>
+<div class="ttfact" style="--tc:#A39BD5"><span class="n">flip</span><b>+ − + − + − …</b><p>The signs are imposed level by level.</p></div>
 <div class="ttfact" style="--tc:#0c9a89"><span class="n">two phases</span><b>0.891777… ↔ 1.097534…</b><p>At base 1.11 the limits settle on opposite sides of 1.</p></div>
 <div class="ttfact" style="--tc:#6b52d0"><span class="n">Brun boundary</span><b>0.097534… vs 0.097839…</b><p>Upper excess above 1 compared with 2 − B₂.</p></div>
 </div>
@@ -217,40 +311,38 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </div></section>
 <div class="zebra"></div>
 
-<!-- COLLATZSCAPE -->
-<section class="sec bg-dark" id="scape" style="--acc:#12CBB6">
-<div class="wrap">
-<p class="kick">05 · the surprise · collatzscape</p><h2 class="t">3n+1, continued into the <em>plane</em></h2>
-<p class="lead">The Collatz map has a smooth analytic continuation: f(z)=¼(2+7z−(2+5z)cos πz), agreeing with n/2 and 3n+1 on the integers. Iterate it over ℂ, color by escape speed, and the discrete conjecture unfolds into a fractal. The integers are a thin row on the real axis; this is the dream around them.</p>
-<div class="screen"><canvas id="csviz" class="viz shimmer" style="height:56vh;min-height:340px"></canvas></div>
-<div class="cap">escape-time render · f(z)=¼(2+7z−(2+5z)cos πz)</div>
+<section id="scape" style="background:#080f1e;color:#e9effb"><div class="cm-wrap">
+<p class="cm-kicker">EncapsulatorP · recursive cinema · study 01</p><h2 class="cm-title">Collatz<br><em>Metamorphoses.</em></h2>
+<p class="cm-intro">An integer spine inside a changing complex landscape. Orbit filaments, mirrored chambers and neural-like crossings: five views of a mathematical transformation. Drag to explore; scroll to zoom.</p>
+<div class="cm-presets" aria-label="Map views"><button data-mode="0" aria-pressed="true">01 · Integer spine</button><button data-mode="1" aria-pressed="false">02 · Orbit bloom</button><button data-mode="2" aria-pressed="false">03 · Orbifold lens</button><button data-mode="3" aria-pressed="false">04 · Neural filaments</button><button data-mode="4" aria-pressed="false">05 · Quasiparticle field</button></div>
+<div class="cm-stage"><canvas id="cm-canvas" aria-label="Interactive Collatz-inspired complex orbit render"></canvas><div class="cm-hud" id="cm-hud">96 ITERATIONS · ORBIT TRAPS + ESCAPE TIME</div><div class="cm-sign">Sol.6.1</div></div>
+<div class="cm-controls"><button id="cm-play">Animate mutation</button><button id="cm-reset">Reset view</button><button id="cm-export">Save PNG</button><label>Mutation <input id="cm-mutation" type="range" min="0" max="1" step="0.001" value="0.28"></label><label>Detail <input id="cm-detail" type="range" min="40" max="180" step="10" value="100"></label></div>
+<p class="cm-note" id="cm-description"></p><p class="cm-note">Colour combines finite escape time and proximity to orbit traps; dark regions mean no escape within the iteration limit, not proven boundedness. Orbifold, neural and quasiparticle names describe visual studies. No trained neural network or physical particle simulation is running.</p>
+<div class="cm-grid"><article class="cm-card"><h3>The integer spine</h3><p>The base entire extension agrees with the standard Collatz step on nonnegative integers.</p><div class="cm-eq">C(z) = [2 + 7z − (2 + 5z) cos(πz)] / 4</div></article><article class="cm-card"><h3>Mutation with an anchor</h3><p>Added sine terms vanish at every integer in exact mathematics. Complex dynamics can change while the integer rule stays fixed.</p><div class="cm-eq">Cₐ(z) = C(z) + a sin(πz) / 4<br>Neural view: + a sin(2πz) / 8</div></article><article class="cm-card"><h3>A lens, not a theorem</h3><p>The orbifold lens folds the displayed plane into six sectors. The particle field traces screen-space paths through the image. Neither establishes the Collatz conjecture.</p><div class="cm-eq">Exact integer agreement ≠ proof of convergence.</div></article></div>
+<div class="cm-stripe"></div><p class="cm-kicker">Further research · Goldbach atomic axis</p><h2 class="cm-title" style="font-size:36px">Prime pairs.<br><em>Dagger towers.</em></h2><p class="cm-intro">Place each odd prime pair on its centre m = (p + q)/2 and half-gap d = (q − p)/2. Goldbach fixes m; twin primes occupy d = 1. The product pq = m² − d² supplies the exact arithmetic foundation.</p><p class="cm-note">Proposed next interaction: paired sign-flipping tower phases driven by m and d, with targets chosen before tuning. “Atomic axis” is our visualization coordinate; “dagger” denotes an alternating-sign tower. The coupling is a research proposal, not an established prime-detection method.</p>
 </div></section>
 <div class="zebra"></div>
 
 <!-- VALIDATRON -->
-<section class="sec bg-tint" id="validatron" style="--acc:#6b52d0">
-<div class="wrap"><div class="split">
-<div>
-<p class="kick">06 · the verifier · validatron</p><h2 class="t">Nothing ships <em>unlabeled</em></h2>
-<p class="lead">Every result runs a chamber — intake, reproduce, evidence, label check, publication pressure. Enter a claim's label and your confidence; watch how far it gets. This is the honesty spine behind all five experiments above.</p>
-<div class="feed"><input id="val-input" type="text" placeholder="empirical, 72" aria-label="label and confidence"><button id="val-run">Run it</button></div>
-<div class="chips" id="val-chips"><button class="chip" data-v="empirical,72">empirical · mid</button><button class="chip" data-v="conjecture,45">conjecture · testing</button><button class="chip" data-v="tooling,90">tooling · strong</button><button class="chip" data-v="theorem,30">theorem · thin</button></div>
-</div>
-<div>
-<div class="screen"><canvas id="valcanvas" class="viz" style="height:210px"></canvas></div>
-<div class="readbar"><div><span class="k">label</span><span class="v" id="val-r1" style="font-size:14px">—</span></div><div><span class="k">confidence</span><span class="v" id="val-r2">—</span></div><div><span class="k">chamber state</span><span class="v" id="val-r3" style="font-size:14px">—</span></div></div>
-<div class="verdict" id="val-verdict">enter a label and a confidence.</div>
-</div>
-</div></div></section>
-<div class="zebra"></div>
+<section class="sec bg-tint" id="validatron" style="--acc:#6b52d0"><div class="wrap">
+<p class="kick">05 · validatron · specialized mathematical intelligence</p>
+<h2 class="t">Explore further.<br><em>Build the argument.</em></h2>
+<p class="lead">Validatron is being developed to connect our mathematical research with specialized open-weight models and complementary language models. Its purpose is to understand an idea on its own terms, explore connections, develop arguments and help turn promising steps into precise results.</p>
+<div class="grid">
+<div class="card" style="--e:#6b52d0"><h3 class="sub">Two adaptations. A shared comparison.</h3><p>The planned Hugging Face pipeline compares the original gpt-oss-120b with separate Validatron and AndrosAIS adaptations, alongside selected paid models. Each adaptation keeps its own objectives. Checkpoints, adaptation methods and evaluation results will document what changes.</p><span class="tag" style="align-self:flex-start">In development</span></div>
+<div class="card" style="--e:#0c9a89"><h3 class="sub">Questions worth following.</h3><p>Prime–transcendental relationships, sign-flipping towers, Catalan–Ruelle structures, Collatz dynamics and Goldbach prime pairs form the research agenda. Evaluation asks whether a model preserves definitions, proposes useful connections and develops sound arguments. Numerical experiments and formal proof checks contribute where appropriate.</p><span class="tag" style="align-self:flex-start">Research direction</span></div>
+</div><p class="cap">The model adaptations and benchmark are planned work. Published runs will link their exact models, inputs and outcomes. This page does not execute model evaluation.</p>
+</div></section><div class="zebra"></div>
+
+
 
 <!-- ARCHIVE + LABELS -->
 <section class="sec bg-cream" id="archive" style="--acc:#c95a00">
 <div class="wrap">
-<p class="kick">the archive</p><h2 class="t">One instrument, <em>eight capsules</em></h2>
+<p class="kick">the archive</p><h2 class="t">Research tools and <em>open directions</em></h2>
 <div class="tool">
-<div><div class="hd"><span class="tag" style="--e:#6b52d0">Tooling</span><span class="repo">Validatron</span><span class="vis">Private</span></div><p>Honest forward-chaining cross-validation. Every capsule below runs through it before it is allowed a label — and it earns the tag, or it ships without one.</p></div>
-<div class="aside">the only tool in the archive.<br>everything below it is a <b>claim</b>,<br>not an instrument.</div>
+<div><div class="hd"><span class="tag" style="--e:#6b52d0">Tooling</span><span class="repo">Validatron</span><span class="vis">Private</span></div><p>Specialized model adaptation, comparative evaluation and mathematical exploration. Validatron is being developed alongside the research projects below.</p></div>
+<div class="aside">models · methods · mathematical questions<br>Adaptations and evaluation pipeline in development.</div>
 </div>
 <p class="kick" style="--acc:#0c9a89">the claims</p>
 <div class="grid" style="margin-top:14px">
@@ -258,24 +350,23 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="card" style="--e:#0c9a89" href="https://github.com/EncapsulatorP/goldbach_busy_collatz"><div style="display:flex;align-items:center"><span class="repo">goldbach_busy_collatz</span><span class="vis" style="color:#3f7a00;border-color:#9ac44a">Public</span></div><div class="pair">Goldbach × Collatz structure</div><p>Cross-examines Goldbach partition counts against Collatz orbit structure.</p><span class="tag" style="align-self:flex-start">Empirical</span></a>
 <div class="card" style="--e:#0c9a89"><div style="display:flex;align-items:center"><span class="repo">mertens_counterexample</span><span class="vis">Private</span></div><div class="pair">Mertens · the Riemann edge</div><p>Pushes the M(n)/√n boundary toward where Mertens is known to fail.</p><span class="tag" style="align-self:flex-start">Empirical</span></div>
 <div class="card" style="--e:#c95a00"><div style="display:flex;align-items:center"><span class="repo">Catalan_ruelle_mayer</span><span class="vis">Private</span></div><div class="pair">Catalan × Ruelle–Mayer</div><p>Transfer-operator machinery on Catalan-type exponent gaps.</p><span class="tag" style="align-self:flex-start">Theoretical</span></div>
-<div class="card" style="--e:#0c9a89"><div style="display:flex;align-items:center"><span class="repo">recaman_obstructions</span><span class="vis">Private</span></div><div class="pair">Recamán gaps · 142 features</div><p>Forward-chaining CV separates gap contexts at AUC 0.99 (A/B/C); a distilled 10-D code peels 194k positives off controls.</p><span class="tag" style="align-self:flex-start">Empirical</span></div>
 <div class="card" style="--e:#c95a00"><div style="display:flex;align-items:center"><span class="repo">zeta_branching</span><span class="vis">Private</span></div><div class="pair">Ruelle/Riemann zeta · branch structure</div><p>Maps how the dynamical zeta’s branches split and continue across the transfer-operator spectrum — a clean, reproducible signature.</p><span class="tag" style="align-self:flex-start">Theoretical</span></div>
-<a class="card" style="--e:#c95a00" href="https://github.com/EncapsulatorP/collatz_rupert_delay_embedding"><div class="head"><span class="repo">collatz_rupert_delay_embedding</span><span class="vis" style="color:#3f7a00;border-color:#9ac44a">Public</span><span class="vis wip">Early</span></div><div class="pair">Collatz × Rupert · delay hulls</div><p>Takes the τ=1 embedding of section 03 down to a single orbit — n = 27, 112 steps, peak 9,232 — and asks what counts the structure on the two rails. Answer so far: φ(2<sup>k</sup>) for the dyadic clusters, φ(2<sup>k</sup>)/2 for the helix period in the 3-D portrait. The teaser conjecture pushes further, tying convergence to Rupert-admissible limit geometry. Skeleton only right now — README, next steps, and a Plotly notebook — and kept in the archive because the question is good, not because the repo is.</p><span class="tag" style="align-self:flex-start">Conjectural</span></a>
-<div class="card" style="--e:#8A7452"><div class="head"><span class="repo">erdos_schnitzel</span><span class="vis">Private</span><span class="vis wip">New</span></div><div class="pair">Erdős line · not yet described</div><p>Newest capsule in the archive, still closed. No public statement of the problem, no reproduction, nothing cross-validated — so it sits here under the house rule rather than around it: it ships without a tag until it earns one.</p><span class="tag pend" style="align-self:flex-start">Unlabeled</span></div>
+<a class="card" style="--e:#c95a00" href="https://github.com/EncapsulatorP/collatz_rupert_delay_embedding"><div class="head"><span class="repo">collatz_rupert_delay_embedding</span><span class="vis" style="color:#3f7a00;border-color:#9ac44a">Public</span><span class="vis wip">Early</span></div><div class="pair">Collatz × Rupert · delay hulls</div><p>Takes the τ=1 embedding of section 02 down to a single orbit — n = 27, 112 steps, peak 9,232 — and asks what counts the structure on the two rails. Answer so far: φ(2<sup>k</sup>) for the dyadic clusters, φ(2<sup>k</sup>)/2 for the helix period in the 3-D portrait. The teaser conjecture pushes further, tying convergence to Rupert-admissible limit geometry. An early exploration with a README, next steps and a Plotly notebook; the proposed connection remains conjectural.</p><span class="tag" style="align-self:flex-start">Conjectural</span></a>
+<div class="card" style="--e:#697994"><div class="head"><span class="repo">erdos_schnitzel</span><span class="vis">Private</span><span class="vis wip">New</span></div><div class="pair">Erdős line · not yet described</div><p>An early private research direction. A problem statement and supporting materials will accompany its public introduction.</p><span class="tag pend" style="align-self:flex-start">Unlabeled</span></div>
 </div>
-<p class="kick" style="margin-top:44px">house rules</p><h2 class="t">Epistemic <em>labels</em></h2>
+<p class="kick" style="margin-top:44px">reading the research</p><h2 class="t">Stages of <em>understanding</em></h2>
 <ul class="labels">
-<li><span class="n" style="color:#3f7a00">Theorem</span><p>Proven, with a citation. The only tier allowed certainty.</p></li>
-<li><span class="n" style="color:#0c9a89">Empirical</span><p>Holds up under honest cross-validation. True so far, not proven.</p></li>
-<li><span class="n" style="color:#c95a00">Conjectural</span><p>A hypothesis under test — with the test written down first.</p></li>
-<li><span class="n" style="color:#6b52d0">Tooling</span><p>Infrastructure, not a claim.</p></li>
-<li><span class="n" style="color:#8A7452">Unlabeled</span><p>Open, but nothing has come out of it yet. No tag until a result earns one.</p></li>
+<li><span class="n" style="color:#3f7a00">Theorem</span><p>A mathematical statement supported by a proof, with assumptions and a source.</p></li>
+<li><span class="n" style="color:#0c9a89">Empirical</span><p>A reported computational observation within a stated range and method.</p></li>
+<li><span class="n" style="color:#c95a00">Conjectural</span><p>A proposed statement guiding further mathematical investigation.</p></li>
+<li><span class="n" style="color:#6b52d0">Tooling</span><p>Software and methods supporting exploration and evaluation.</p></li>
+<li><span class="n" style="color:#697994">Unlabeled</span><p>An early direction whose scope and results are still being developed.</p></li>
 </ul>
 </div></section>
 
 <footer><div class="wrap fg">
-<div><div class="fb">Encapsulator<span>P</span></div><div class="fc">one page, six experiments, honestly labeled.</div></div>
-<div class="fm">github &nbsp;·&nbsp; <a href="https://github.com/orgs/EncapsulatorP/repositories">EncapsulatorP</a><br>collatz · goldbach · recamán · tetration · rupert geometry · erdős · complex dynamics<br>mostly pending, gloriously</div>
+<div><div class="fb">Encapsulator<span>P</span></div><div class="fc">ideas, experiments and small mathematical treasures.</div></div>
+<div class="fm">github &nbsp;·&nbsp; <a href="https://github.com/orgs/EncapsulatorP/repositories">EncapsulatorP</a><br>collatz · goldbach · tetration · rupert geometry · erdős · complex dynamics<br>mostly pending, gloriously</div>
 </div></footer>
 
 <script>
@@ -289,7 +380,7 @@ var comp=new Uint8Array(NMAX+1);for(var i=2;i*i<=NMAX;i++){if(!comp[i])for(var j
 var primes=[];for(var k=2;k<=NMAX;k++)if(!comp[k])primes.push(k);
 function ways(n){var t=0;for(var a=0;a<primes.length;a++){var p=primes[a];if(p>n-p)break;if(!comp[n-p])t++;}return t;}
 function other(n){var m=n;while(m%2===0)m/=2;while(m%3===0)m/=3;while(m%5===0)m/=5;return m>1;}
-var COL={c3:'#5B6CFF',x35:'#FF5A3C',c5:'#12CBB6',o:'#9B6BFF',s:'#FFA23D'},pts=[];
+var COL={c3:'#557CDB',x35:'#FF5A3C',c5:'#6FB6C3',o:'#9B6BFF',s:'#FFA23D'},pts=[];
 for(var N=4;N<=NMAX;N+=2){var g=ways(N),h3=N%3===0,h5=N%5===0,cl;if(h3&&h5)cl='x35';else if(h3)cl='c3';else if(h5)cl='c5';else if(other(N))cl='o';else cl='s';
  var ang=((N%30)/30)*6.283,d=N/NMAX,R0,Rk,tw=0;if(cl==='s'){R0=.06;Rk=.05;}else if(cl==='c3'){R0=.12;Rk=.95;}else if(cl==='c5'){R0=.8;Rk=.06;}else if(cl==='x35'){R0=.3;Rk=.55;tw=2.4;}else{R0=1.08;Rk=.16;}
  var rad=R0+Rk*d,a2=ang+tw*d;pts.push({px:rad*Math.cos(a2),py:(d*2-1)*1.15,pz:rad*Math.sin(a2),col:COL[cl],g:g,r:N%30});}
@@ -308,33 +399,6 @@ window.addEventListener('resize',function(){clearTimeout(window.__g);window.__g=
 rs();document.getElementById('gb-r1').textContent=pts.length.toLocaleString('en-US');document.getElementById('gb-r2').textContent='15';
 if(reduce)fr();else IO(c,start,stop);})();
 
-/* 02 RECAMAN — embedding + CV, straight from repo results */
-(function(){var main=document.getElementById('rcviz');if(!main)return;var g=main.getContext('2d');
-var strip=document.getElementById('rcviz2'),s=strip.getContext('2d');
-var pos=[0.410,0.500,0.5625,0.418,0.5325,0.491,0.450,0.5565,0.4235,0.423];
-var neg=[0.602,0.504,0.4455,0.585,0.4795,0.527,0.550,0.439,0.5642,0.5705];
-var auc=[['A',0.9961,'#12CBB6'],['B',0.9964,'#12CBB6'],['C',0.9944,'#12CBB6'],['D',0.7586,'#FF4D6D']];
-var W,H,SW,SH,dpr;
-function rs(){dpr=Math.min(devicePixelRatio||1,2);W=main.clientWidth;H=main.clientHeight;main.width=(W*dpr)|0;main.height=(H*dpr)|0;g.setTransform(dpr,0,0,dpr,0,0);SW=strip.clientWidth;SH=strip.clientHeight;strip.width=(SW*dpr)|0;strip.height=(SH*dpr)|0;s.setTransform(dpr,0,0,dpr,0,0);draw();}
-function drawMain(){g.clearRect(0,0,W,H);var PX=26,PT=32,PB=26,n=10,lo=0.40,hi=0.62;
- function X(i){return PX+(i/(n-1))*(W-2*PX);}function Y(v){return (H-PB)-((v-lo)/(hi-lo))*(H-PT-PB);}
- g.strokeStyle='rgba(255,255,255,.10)';g.lineWidth=1;g.textAlign='center';g.font='9px monospace';
- for(var i=0;i<n;i++){var x=X(i);g.beginPath();g.moveTo(x,PT);g.lineTo(x,H-PB);g.stroke();g.fillStyle='rgba(233,213,166,.4)';g.fillText(String(i+1),x,H-PB+14);}
- g.textAlign='left';g.fillStyle='rgba(233,213,166,.6)';g.font='10px monospace';g.fillText('learned 10-D code · class centroids',PX,PT-14);
- function poly(a,col){g.strokeStyle=col;g.lineWidth=2;g.beginPath();for(var i=0;i<n;i++){var x=X(i),y=Y(a[i]);i?g.lineTo(x,y):g.moveTo(x,y);}g.stroke();for(var i=0;i<n;i++){g.fillStyle=col;g.beginPath();g.arc(X(i),Y(a[i]),3,0,6.283);g.fill();}}
- poly(neg,'#FF4D6D');poly(pos,'#B6F000');
- g.font='10px monospace';g.textAlign='right';g.fillStyle='#B6F000';g.fillText('positive',W-72,PT-4);g.fillStyle='#FF4D6D';g.fillText('control',W-8,PT-4);g.textAlign='left';}
-function drawStrip(){s.clearRect(0,0,SW,SH);var PX=32,lo=0.5,hi=1.0,bh=(SH-18)/4;
- for(var i=0;i<4;i++){var y=6+i*bh,val=auc[i][1],w=((val-lo)/(hi-lo))*(SW-PX-72);
-  s.fillStyle='rgba(255,255,255,.06)';s.fillRect(PX,y+3,SW-PX-72,bh-8);
-  s.fillStyle=auc[i][2];s.fillRect(PX,y+3,Math.max(2,w),bh-8);
-  s.fillStyle='#E9D5A6';s.font='11px monospace';s.textAlign='left';s.fillText(auc[i][0],12,y+bh/2+4);
-  s.fillStyle='#fff';s.fillText(val.toFixed(3),PX+Math.max(2,w)+6,y+bh/2+4);}
- s.fillStyle='rgba(233,213,166,.45)';s.font='9px monospace';s.fillText('forward-CV AUC · scale 0.5–1.0',PX,SH-3);}
-function draw(){drawMain();drawStrip();}
-window.addEventListener('resize',function(){clearTimeout(window.__r);window.__r=setTimeout(rs,150);});
-rs();})();
-
 /* 03 COLLATZ DELAY EMBEDDING */
 (function(){var c=document.getElementById('emviz');if(!c)return;var x=c.getContext('2d');var W,H,PAD=34,XM=7.2,seeds=0,pts=0,cur=null,raf=null;
 function rs(){var dp=Math.min(devicePixelRatio||1,2);W=c.clientWidth;H=c.clientHeight;c.width=(W*dp)|0;c.height=(H*dp)|0;x.setTransform(dp,0,0,dp,0,0);ax();}
@@ -352,7 +416,7 @@ var bc=document.getElementById('ttbranch'),ld=document.getElementById('ttladder'
 var g=bc.getContext('2d'),l=ld.getContext('2d');
 var DEF=0.0978394169;                 /* 2 − B2 */
 var BLO=1.002,BHI=1.6,EIE=Math.exp(1/Math.E),DEPTH=26;
-var PINK='#FF2E8B',LIME='#B6F000',VIO='#8766FF';
+var PINK='#A39BD5',LIME='#9BC8D8',VIO='#948AC8';
 var base=1.11,prog=DEPTH,anim=null,shown=false;
 
 /* the alternating 2-cycle: hi = b^(b^(-hi)), lo = b^(-hi) */
@@ -461,29 +525,54 @@ window.addEventListener('resize',function(){clearTimeout(window.__tt);window.__t
 run();IO(bc,reveal);})();
 
 
-/* 05 COLLATZSCAPE FRACTAL */
-(function(){var c=document.getElementById('csviz');if(!c)return;var x=c.getContext('2d');var W,H,IW,IH,img,MAX=48,RA=-4.4,RB=4.4,IA=-3,IB=3,row=0,done=false;
-function it(re,im){var zr=re,zi=im,k;for(k=0;k<MAX;k++){var ar=Math.PI*zr,ai=Math.PI*zi,cr=Math.cos(ar)*Math.cosh(ai),ci=-Math.sin(ar)*Math.sinh(ai),pr=2+5*zr,pi=5*zi,mr=pr*cr-pi*ci,mi=pr*ci+pi*cr,rr=2+7*zr-mr,ri=7*zi-mi;zr=rr/4;zi=ri/4;if(!isFinite(zr)||!isFinite(zi))return k;if(zr*zr+zi*zi>1e12)return k;}return MAX;}
-var stp=[[255,46,139],[135,102,255],[18,203,182],[182,240,0]];function pal(t){var s=t*3,i=Math.min(2,Math.floor(s)),f=s-i,a=stp[i],b=stp[i+1];return[a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f,a[2]+(b[2]-a[2])*f];}
-function chunk(rows){var d=img.data;for(var yy=row;yy<Math.min(IH,row+rows);yy++){var im=IA+(yy/IH)*(IB-IA);for(var xx=0;xx<IW;xx++){var re=RA+(xx/IW)*(RB-RA),k=it(re,im),idx=(yy*IW+xx)*4;if(k>=MAX){d[idx]=8;d[idx+1]=6;d[idx+2]=12;d[idx+3]=255;}else{var gg=Math.min(1,.32+k/MAX),col=pal(k/MAX);d[idx]=col[0]*gg;d[idx+1]=col[1]*gg;d[idx+2]=col[2]*gg;d[idx+3]=255;}}}row+=rows;x.putImageData(img,0,0);}
-function render(){if(done)return;W=c.clientWidth;H=c.clientHeight;IW=Math.min(W,660)|0;IH=Math.min(H,400)|0;if(IW<2||IH<2)return;c.width=IW;c.height=IH;c.style.width=W+'px';c.style.height=H+'px';img=x.createImageData(IW,IH);row=0;done=true;if(reduce){while(row<IH)chunk(30);}else(function step(){chunk(6);if(row<IH)requestAnimationFrame(step);})();}
-window.addEventListener('resize',function(){clearTimeout(window.__c);window.__c=setTimeout(function(){done=false;render();},240);});
-IO(c,render);})();
 
-/* 06 VALIDATRON CHAMBER */
-(function(){var cv=document.getElementById('valcanvas');if(!cv)return;var g=cv.getContext('2d');var W,H,names=['intake','reproduce','evidence','label','publish'];
-function rs(){var dp=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=(W*dp)|0;cv.height=(H*dp)|0;g.setTransform(dp,0,0,dp,0,0);}
-function parse(v){var p=(v||'empirical,72').split(',');var lab=(p[0]||'empirical').trim().toLowerCase();var cf=Math.max(0,Math.min(100,parseInt((p[1]||'72').replace(/[^0-9]/g,''))||72));return{lab:lab,cf:cf};}
-function draw(lab,cf){rs();g.clearRect(0,0,W,H);g.fillStyle='#08060a';g.fillRect(0,0,W,H);var xs=[.1,.29,.48,.67,.86],pass=cf>=85?5:cf>=70?4:cf>=50?3:cf>=35?2:1,cols=['#12CBB6','#12CBB6','#B6F000','#FFC21F','#FF4D6D'];
- for(var i=0;i<5;i++){var X=W*xs[i],on=i<pass;g.fillStyle=on?cols[i]:'rgba(255,255,255,.08)';g.fillRect(X,H*.30,W*.12,H*.36);g.strokeStyle='rgba(255,255,255,.18)';g.strokeRect(X,H*.30,W*.12,H*.36);g.fillStyle=on?'#08060a':'#7a6647';g.font='10px IBM Plex Mono';g.textAlign='center';g.fillText(names[i],X+W*.06,H*.5);}
- g.textAlign='left';var st=pass>=5?'published':pass>=3?'held for review':'rejected';document.getElementById('val-r1').textContent=lab;document.getElementById('val-r2').textContent=cf+'%';document.getElementById('val-r3').textContent=st;
- document.getElementById('val-verdict').textContent=pass>=5?'clears all five — publishable.':pass>=3?'stalls at stage '+(pass+1)+' — needs more evidence.':'insufficient support — sent back.';}
-function run(v){var o=parse(v);document.getElementById('val-input').value=o.lab+','+o.cf;draw(o.lab,o.cf);}
-document.getElementById('val-run').addEventListener('click',function(){run(document.getElementById('val-input').value);});
-document.getElementById('val-input').addEventListener('keydown',function(e){if(e.key==='Enter')run(e.target.value);});
-document.getElementById('val-chips').addEventListener('click',function(e){var b=e.target.closest('.chip');if(b)run(b.dataset.v);});
-window.addEventListener('resize',function(){clearTimeout(window.__vv);window.__vv=setTimeout(function(){run(document.getElementById('val-input').value);},150);});
-run('empirical,72');})();
+
 })();
 </script>
-</body></html>
+<script>
+(function(){const tabs=Array.from(document.querySelectorAll('.research-tabs [role=tab]'));
+function select(tab){tabs.forEach(t=>{const on=t===tab;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!on;});}
+tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>select(tab));tab.addEventListener('keydown',e=>{let j;if(e.key==='ArrowRight')j=(i+1)%tabs.length;else if(e.key==='ArrowLeft')j=(i+tabs.length-1)%tabs.length;else if(e.key==='Home')j=0;else if(e.key==='End')j=tabs.length-1;else return;e.preventDefault();select(tabs[j]);tabs[j].focus();});});})();
+</script><script>
+(()=>{'use strict';const canvas=document.getElementById('cm-canvas');const gl=canvas.getContext('webgl',{preserveDrawingBuffer:true,antialias:false});if(!gl){document.getElementById('cm-description').textContent='This view requires WebGL. Open this HTML in a browser with hardware acceleration enabled.';return;}
+const vs='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+const fs=`precision highp float;uniform vec2 res,center;uniform float zoom,amount,clock,mode,detail;
+vec2 mul(vec2 a,vec2 b){return vec2(a.x*b.x-a.y*b.y,a.x*b.y+a.y*b.x);}
+vec2 co(vec2 z){float y=clamp(z.y,-12.,12.);return vec2(cos(z.x)*cosh2(y),-sin(z.x)*sinh2(y));}
+float cosh2(float x){return .5*(exp(x)+exp(-x));}float sinh2(float x){return .5*(exp(x)-exp(-x));}
+vec2 si(vec2 z){float y=clamp(z.y,-12.,12.);return vec2(sin(z.x)*cosh2(y),cos(z.x)*sinh2(y));}
+vec3 palette(float t){return .52+.48*cos(6.28318*(vec3(.67,.81,.96)+t*vec3(.8,.65,.45)));}
+void main(){vec2 uv=(gl_FragCoord.xy-.5*res)/res.y;vec2 z=center+uv*zoom;
+if(mode>1.5&&mode<2.5){float r=length(z);float a=atan(z.y,z.x);a=abs(mod(a+0.523599,1.047198)-0.523599);z=r*vec2(cos(a),sin(a));}
+float trap=10.,line=10.,escape=0.,it=0.;vec2 prev=z;
+for(int i=0;i<180;i++){if(float(i)>=detail)break;if(dot(z,z)>144.){escape=1.;break;}vec2 w=3.14159265*z;
+trap=min(trap,abs(length(z-vec2(1.,0.))-.55));line=min(line,abs(z.y)+.03*abs(sin(z.x*3.)));
+vec2 next=(vec2(2.,0.)+7.*z-mul(vec2(2.,0.)+5.*z,co(w)))*.25;
+if(mode>.5)next+=amount*.25*si(w);
+if(mode>2.5&&mode<3.5)next+=amount*.125*si(2.*w);
+prev=z;z=next;it+=1.;}
+float fil=exp(-24.*trap),spine=exp(-30.*line);float t=it/detail;
+vec3 col=mix(vec3(.018,.034,.07),palette(.15+t*.8+trap*.15),.18+.6*pow(t,.45));
+col*=.08+.92*sqrt(t);col+=fil*vec3(.15,.43,.62)+spine*vec3(.36,.23,.39);col*=escape>.5?1.:.72;
+if(mode>3.5){vec2 q=uv;for(int j=0;j<18;j++){float a=float(j)*2.39996+clock*.15;vec2 pos=.29*vec2(cos(a),sin(a*1.31));float d=length(q-pos);col+=vec3(.45,.7,1.)*.00008/(d*d+.00004);}}
+float vign=1.-.4*dot(uv,uv);col*=max(.3,vign);col=pow(max(col,vec3(0.)),vec3(.85));gl_FragColor=vec4(col,1.);}`;
+// GLSL ES 1.00 requires function declarations before use.
+const fragment=fs.replace('vec2 co(vec2 z){float y=clamp(z.y,-12.,12.);return vec2(cos(z.x)*cosh2(y),-sin(z.x)*sinh2(y));}','').replace('vec2 si(vec2 z)', 'vec2 co(vec2 z){float y=clamp(z.y,-12.,12.);return vec2(cos(z.x)*cosh2(y),-sin(z.x)*sinh2(y));}\nvec2 si(vec2 z)');
+function shader(type,source){const sh=gl.createShader(type);gl.shaderSource(sh,source);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(sh));return sh;}
+try{const program=gl.createProgram();gl.attachShader(program,shader(gl.VERTEX_SHADER,vs));gl.attachShader(program,shader(gl.FRAGMENT_SHADER,fragment));gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));gl.useProgram(program);const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);const p=gl.getAttribLocation(program,'p');gl.enableVertexAttribArray(p);gl.vertexAttribPointer(p,2,gl.FLOAT,false,0,0);
+const U={};['res','center','zoom','amount','clock','mode','detail'].forEach(n=>U[n]=gl.getUniformLocation(program,n));let mode=0,zoom=8,cx=1,cy=0,playing=false,t=0,raf=null;const reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const descriptions=['BASE EXTENSION · integer Collatz agreement. Orbit traps reveal the central geometry.','SINE MUTATION · C(z) + a sin(πz)/4. Integer values remain anchored; complex orbits change.','SIX-SECTOR LENS · a folded view of the sine-mutated field; a visual orbifold analogy.','NEURAL FILAMENTS · a second sine harmonic changes the map. Neural-like geometry, without a trained network.','QUASIPARTICLE FIELD · luminous screen-space paths over the sine-mutated map; an artistic interaction layer.'];
+function draw(){const d=Math.min(devicePixelRatio||1,1.5),w=Math.round(canvas.clientWidth*d),h=Math.round(canvas.clientHeight*d);if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}gl.viewport(0,0,w,h);gl.uniform2f(U.res,w,h);gl.uniform2f(U.center,cx,cy);gl.uniform1f(U.zoom,zoom);gl.uniform1f(U.amount,+document.getElementById('cm-mutation').value);gl.uniform1f(U.clock,t);gl.uniform1f(U.mode,mode);gl.uniform1f(U.detail,+document.getElementById('cm-detail').value);gl.drawArrays(gl.TRIANGLES,0,6);document.getElementById('cm-description').textContent=descriptions[mode];}
+function stop(){playing=false;if(raf)cancelAnimationFrame(raf);raf=null;document.getElementById('cm-play').textContent='Animate mutation';}
+function tick(){if(!playing)return;t+=.035;document.getElementById('cm-mutation').value=.5+.48*Math.sin(t*.35);draw();raf=requestAnimationFrame(tick);}
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=+b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));draw();});
+document.getElementById('cm-play').onclick=()=>{if(playing)stop();else{if(mode===0)document.querySelector('[data-mode="1"]').click();playing=true;document.getElementById('cm-play').textContent='Pause';tick();}};
+document.getElementById('cm-reset').onclick=()=>{stop();cx=1;cy=0;zoom=8;draw();};
+['cm-mutation','cm-detail'].forEach(id=>document.getElementById(id).oninput=()=>{stop();draw();});
+let drag=null;canvas.onpointerdown=e=>{drag={x:e.clientX,y:e.clientY};canvas.setPointerCapture(e.pointerId);};canvas.onpointerup=()=>drag=null;canvas.onpointercancel=()=>drag=null;canvas.onpointermove=e=>{if(!drag)return;cx-=(e.clientX-drag.x)*zoom/canvas.clientHeight;cy+=(e.clientY-drag.y)*zoom/canvas.clientHeight;drag={x:e.clientX,y:e.clientY};draw();};canvas.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.03,Math.min(30,zoom*Math.exp(e.deltaY*.001)));draw();},{passive:false});
+document.getElementById('cm-export').onclick=()=>{draw();const out=document.createElement('canvas');out.width=canvas.width;out.height=canvas.height;const ctx=out.getContext('2d');ctx.drawImage(canvas,0,0);ctx.fillStyle='#e1edff';ctx.font='italic 24px Georgia';ctx.textAlign='right';ctx.fillText('Sol.6.1',out.width-24,out.height-24);const a=document.createElement('a');a.download='collatz-metamorphoses-sol-6-1.png';a.href=out.toDataURL('image/png');a.click();};
+window.addEventListener('resize',draw);document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});draw();
+}catch(error){document.getElementById('cm-description').textContent='Renderer could not initialize: '+error.message;}
+})();
+</script></body></html>
+

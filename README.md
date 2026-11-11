@@ -41,3 +41,16 @@ Every capsule carries one tag, enforced by `Validatron` — honest forward-chain
 ---
 
 <div align="center"><sub>chasing objects that may never resolve, under a planet named for melancholy · mostly pending, gloriously</sub></div>
+
+---
+
+### Hibernating Lemmas
+
+Small exact identities with written proofs, shown on the site as Treasures 001–004:
+twin primes and the Möbius pattern (+1, 0), the centre/half-gap product pq = m² − d²,
+the m = 34 counterexample to the converse, and the exact test Ω(m² − 1) = 2.
+
+- Statements, proofs and corrections log: [`lemmas/LEMMAS.md`](lemmas/LEMMAS.md)
+- Finite check (standard library only): `python3 lemmas/verify_lemmas.py`
+
+Lean formalization is pending; no machine-checked proof is claimed.
