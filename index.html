@@ -157,12 +157,23 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 .hero{background:linear-gradient(130deg,#081222,#182C4D)}
 .zebra{height:19px}
 #panel-islands .loot p{color:#DCE5F5}
+.rm-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0 8px}
+.rm-pair .card .eqline{margin:10px 0 8px;font-size:13px;white-space:normal;line-height:1.8}
+.rm-steps{list-style:none;margin:22px 0 0;padding:0;border-top:2px solid var(--blk);counter-reset:rm}
+.rm-steps li{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid #C9D4E8;counter-increment:rm}
+.rm-steps .n{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--rc,#183463)}
+.rm-steps .n::before{content:counter(rm,decimal-leading-zero) " · ";color:var(--muted)}
+.rm-steps .n small{display:block;margin-top:6px;font-size:9.5px;letter-spacing:.08em;border:1px solid currentColor;border-radius:5px;padding:2px 6px;width:max-content;font-weight:500}
+.rm-steps p{margin:0 0 6px;font-size:14px;color:var(--soft);line-height:1.6}
+.rm-steps p b{color:var(--ink)}
+.rm-steps .eqline{margin:8px 0;font-size:13px;white-space:normal;line-height:1.8}
+@media(max-width:860px){.rm-pair{grid-template-columns:1fr}.rm-steps li{grid-template-columns:1fr;gap:6px}}
 .cm-wrap{max-width:1300px;margin:auto;padding:36px 24px}.cm-kicker{font:11px monospace;letter-spacing:.2em;text-transform:uppercase;color:#8bb9ec}.cm-title{font:500 clamp(38px,6vw,76px)/1.05 Georgia,serif;margin:18px 0}.cm-title em{color:#9bb8ed}.cm-intro{max-width:75ch;color:#b5c4df}.cm-stage{position:relative;overflow:hidden;border:1px solid #3a506e;border-radius:22px;background:#080f1e;margin-top:28px;box-shadow:0 25px 100px #0006}.cm-stage canvas{display:block;width:100%;height:540px;touch-action:none;cursor:grab}.cm-hud{position:absolute;left:22px;top:18px;pointer-events:none;text-shadow:0 2px 8px #000;font:11px monospace;letter-spacing:.08em;color:#d6eaff}.cm-sign{position:absolute;right:22px;bottom:16px;font:italic 21px Georgia;color:#d8eaff;pointer-events:none}.cm-controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:22px 0}.cm-controls button,.cm-presets button{border:1px solid #435d83;border-radius:22px;background:#101f36;color:#d9e7fb;padding:10px 16px;cursor:pointer;font:12px monospace}.cm-presets{display:flex;gap:9px;flex-wrap:wrap}.cm-presets button[aria-pressed=true]{background:#bdd3f5;color:#101f36;border-color:#bdd3f5}.cm-controls input{accent-color:#adcdf3;width:150px}.cm-controls label{font:12px monospace}.cm-note{font:12px/1.8 monospace;color:#a7bad6;max-width:100ch}.cm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}.cm-card{border:1px solid #304662;border-radius:16px;padding:22px;background:#101b2e}.cm-card h3{font:24px Georgia;margin:0 0 12px;color:#d6eaff}.cm-card p{font-size:14px;color:#b7c6dc}.cm-eq{font:13px/1.8 monospace;color:#a7d2e0;overflow-wrap:anywhere}.cm-stripe{height:12px;background:repeating-linear-gradient(100deg,#dce8f7 0 6px,#0b1527 6px 16px);opacity:.7;margin-top:38px}.cm-link{color:#bfd7fb}@media(max-width:700px){.cm-grid{grid-template-columns:1fr}.cm-stage canvas{height:420px}.cm-wrap{padding:24px 16px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
 </style></head>
 <body>
 
 <div class="nav"><div class="in"><span class="lg"><b>Encapsulator</b>P</span>
-<a href="#research-paths">Research views</a><a href="#goldbach">Goldbach</a><a href="#embed">Embedding</a><a href="#tetra">Sign-flip</a><a href="#scape">Collatzscape</a><a href="#validatron">Validatron</a><a href="#lemmas">Little lemmas</a><a href="#archive">Archive</a></div></div>
+<a href="#research-paths">Research views</a><a href="#goldbach">Goldbach</a><a href="#embed">Embedding</a><a href="#tetra">Sign-flip</a><a href="#scape">Collatzscape</a><a href="#validatron">Validatron</a><a href="#lemmas">Little lemmas</a><a href="#roadmap">Next steps</a><a href="#archive">Archive</a></div></div>
 
 <header class="hero"><div class="bars"></div><div class="wrap">
 <p class="ky">computational number theory · one long obsession</p>
@@ -253,6 +264,30 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </div>
 <p class="cap">Established elementary results with written proofs; Lean verification pending. These local identities do not imply prime-pair existence at every scale.</p>
 </div></section><div class="zebra"></div></div>
+<!-- ROADMAP -->
+<section class="sec bg-tint" id="roadmap" style="--acc:#557CDB" aria-labelledby="roadmap-title"><div class="wrap">
+<p class="kick">next steps · goldbach p + q roadmap</p>
+<h2 class="t" id="roadmap-title">Reflect. Translate.<br><em>One prime polynomial.</em></h2>
+<p class="lead">Goldbach and twin primes both count two linear forms that are prime at once. Goldbach <b>reflects</b> around N/2; twins <b>translate</b> by 2. With a(n) = 1 for prime n and 0 otherwise, and P<sub>X</sub>(z) the sum of z<sup>p</sup> over primes p ≤ X, both counts are coefficients built from the same polynomial.</p>
+<div class="rm-pair">
+<div class="card" style="--e:#D6BA73"><div class="head"><span class="repo">Goldbach · reflection</span></div>
+<div class="eqline" style="--el:#D6BA73">G(N) = Σ a(n)·a(N − n) = [z<sup>N</sup>] P<sub>N</sub>(z)²</div>
+<p>Ordered prime pairs with p + q = N. Required: G(N) &gt; 0 for every even N ≥ 4.</p><span class="tag" style="align-self:flex-start;--e:#3f7a00">Exact identity</span></div>
+<div class="card" style="--e:#6FB6C3"><div class="head"><span class="repo">Twin primes · translation</span></div>
+<div class="eqline" style="--el:#6FB6C3">T(X) = Σ a(n)·a(n + 2) = [z²] P<sub>X+2</sub>(z)·P<sub>X</sub>(1/z)</div>
+<p>Primes n ≤ X with n + 2 prime. Required: T(X) grows without bound.</p><span class="tag" style="align-self:flex-start;--e:#3f7a00">Exact identity</span></div>
+</div>
+<p class="cap">In the coordinates of treasure 002, reflection fixes the centre m and translation fixes the half-gap d = 1.</p>
+<ol class="rm-steps">
+<li><span class="n" style="--rc:#3f7a00">Lean milestone<small>exact · to formalize</small></span><div><p><b>The prime-polynomial identities.</b> State and check the two coefficient identities above. They are finite, algebraic and tractable in Lean.</p></div></li>
+<li><span class="n" style="--rc:#3f7a00">Lean milestone<small>exact · to formalize</small></span><div><p><b>The inversion expansion.</b> Möbius inversion turns prime-power detection into signed divisor sums:</p><div class="eqline" style="--el:#557CDB">Λ(n) = Σ<sub>d | n</sub> μ(d)·log(n/d)</div><p>Substituted into R(N) = Σ Λ(n)·Λ(N − n), it gives two coupled Möbius sums with constraints d | n and e | N − n. R(N) also counts prime powers, so a proof has to remove that contribution.</p></div></li>
+<li><span class="n" style="--rc:#c95a00">Research milestone<small>open</small></span><div><p><b>The missing correlation bound.</b> The target is a main term that beats the error:</p><div class="eqline" style="--el:#c95a00">G(N) = A(N) + E(N), &nbsp; A(N) &gt; |E(N)|</div><p>for all sufficiently large even N, followed by finite verification below the threshold. Our Mertens work studies cancellation in a single sum of μ(n); Goldbach needs cancellation after coupling two arithmetic positions. Control of the single sum does not supply the coupled one, and sieve methods meet the parity obstruction here.</p></div></li>
+<li><span class="n" style="--rc:#6b52d0">Our tools<small>proposal</small></span><div><p><b>Where our constructions could earn a role.</b> Sign-flipping towers: propose a model for the signed cancellation error, then prove the model bounds the arithmetic error. Collatz flights: methods for separating approximate balance from exact admissibility. Brun and repunits: comparison sequences and weighting experiments. A tower or attractor becomes useful when it yields the uniform error bound in step 03; matching a limiting constant does not.</p></div></li>
+<li><span class="n" style="--rc:#697994">Definitions<small>to recover</small></span><div><p><b>Two names without a pinned definition.</b> Our “Bernoulli limit” and “trivial inversion theorem” are not yet written down exactly. Neither is identified with a standard theorem, and neither is used above, until its definition is recovered.</p></div></li>
+</ol>
+<div class="ttwarn"><b>Roadmap, not result.</b> Steps 01 and 02 are exact identities with a finite check in the repository. Nothing here proves Goldbach, the twin-prime conjecture or the Riemann hypothesis.</div>
+<p class="cap">G(N) counts ordered pairs; the Goldbach view below counts unordered pairs. Notes and check script: <a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/lemmas/ROADMAP.md">lemmas/ROADMAP.md</a> · <a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/lemmas/verify_roadmap.py">lemmas/verify_roadmap.py</a>. Background: <a href="https://terrytao.wordpress.com/2007/06/05/open-question-the-parity-problem-in-sieve-theory/">the parity problem in sieve theory</a> · <a href="https://dlmf.nist.gov/27.5">DLMF §27.5</a>.</p>
+</div></section><div class="zebra"></div>
 <!-- GOLDBACH -->
 <section class="sec bg-cream" id="goldbach" style="--acc:#0c9a89">
 <div class="wrap">

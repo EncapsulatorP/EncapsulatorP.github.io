@@ -54,3 +54,5 @@ the m = 34 counterexample to the converse, and the exact test Ω(m² − 1) = 2.
 - Finite check (standard library only): `python3 lemmas/verify_lemmas.py`
 
 Lean formalization is pending; no machine-checked proof is claimed.
+
+- Goldbach p + q roadmap (next steps): [`lemmas/ROADMAP.md`](lemmas/ROADMAP.md), check with `python3 lemmas/verify_roadmap.py`
