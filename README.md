@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/logo-encapsulatorp-512.png" alt="EncapsulatorP logo" width="120">
+
 # EncapsulatorP
 
 **computational number theory · a working archive**
