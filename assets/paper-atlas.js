@@ -103,8 +103,8 @@
     const selectedConnection = connections[currentBody()];
     const selectedMatches = selectedConnection && selectedConnection.stops.includes(stop.id);
     subjectMatchText.textContent = selectedMatches
-      ? `${selectedConnection.label}: this form has a stated connection to the selected treasure. The shape note explains its limits.`
-      : `${connection.label}: ${shape.name} offers a related way to read this treasure.`;
+      ? `${selectedConnection.label}: this form has a stated connection to the selected discovery. The shape note explains its limits.`
+      : `${connection.label}: ${shape.name} offers a related way to read this discovery.`;
     subjectMatchButton.hidden = !!selectedMatches;
     subjectMatchButton.textContent = `Use ${shape.name}`;
     subjectMatchButton.onclick = () => {
@@ -119,7 +119,7 @@
     if (!connection) return;
     connectionPanel.dataset.connectionKind = connection.kind;
     connectionLabel.textContent = connection.label;
-    connectionTitle.textContent = connection.stops.length ? 'A treasure that fits this form' : 'A form with its own source';
+    connectionTitle.textContent = connection.stops.length ? 'A connection that fits this form' : 'A form with its own source';
     connectionNote.textContent = connection.note;
     connectionActions.replaceChildren();
     connection.stops.forEach(id => {
@@ -513,7 +513,11 @@
   media.addEventListener('change', () => { if (media.matches) { motion = false; syncMotion(); } });
   window.addEventListener('hashchange', () => {
     if (location.hash === '#paper-atlas') openMap(null, true);
-    if (location.hash === '#paper-table') { if (dialog.open) showTable(true); else openMap(null, false); }
+    else if (location.hash === '#paper-table') { if (dialog.open) showTable(true); else openMap(null, false); }
+    else if (dialog.open && location.hash) {
+      leavingForLink = true;
+      dialog.close();
+    }
   });
   syncMotion();
   if (!location.hash || ['#paper-atlas', '#paper-table'].includes(location.hash)) openMap(null, location.hash === '#paper-atlas');

@@ -36,6 +36,8 @@ The main site retains its existing Google tag. A dedicated Atlas study web strea
 
 `atlas_ev_probe_a` and `atlas_ev_probe_b` are diagnostic-only names with `debug_mode` and `validation_only`; they never enter the primary denominator. Successful queuing alone does not establish end-to-end receipt. Browser-side blockers, delivery loss and nonconsenting traffic can affect the observed population and event ratios. Existing collection and consent settings remain in force.
 
+Validation on 21 November 2026: the explicit A and B probes queued successfully on the deployed QA page. Receipt in the intended destination has not been observed, so the collector remains unverified and no audience result is claimed.
+
 The earlier unverified v1 queue is not pooled with this v2 implementation.
 
 ## Decision rule before collecting a result
