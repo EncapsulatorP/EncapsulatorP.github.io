@@ -8,7 +8,7 @@ from pathlib import Path
 
 START = "<!-- PIRATES PLAN:START -->"
 END = "<!-- PIRATES PLAN:END -->"
-ASSET_VERSION = "plan-20261121-r2"
+ASSET_VERSION = "plan-20261121-r3"
 ALIASES = (
     "pirates-plan", "plan-timeline", "plan-routes", "repo-interlinks",
     "repo-register", "decision-targets", "plan-bridges",

@@ -147,9 +147,39 @@
     });
     return { width: 1200, height: Math.max(270, Math.ceil(ids.length / 3) * 155 + 65), boxes: [], positions: positions };
   }
+  function expeditionEvidencePath(a, b, positions, offset) {
+    var boxes = positions instanceof Map ? Array.from(positions.values()) : list(positions);
+    var ax = a.x + a.w / 2, bx = b.x + b.w / 2, lane = Math.min(12, Math.abs(offset || 0));
+    var sameRow = Math.abs(a.y - b.y) < 1;
+    function path(points) { return points.map(function (point, index) { return (index ? 'L' : 'M') + point[0] + ',' + point[1]; }).join(' '); }
+    if (sameRow) {
+      var skipped = boxes.some(function (box) {
+        var x = box.x + box.w / 2;
+        return Math.abs(box.y - a.y) < 1 && x > Math.min(ax, bx) + 1 && x < Math.max(ax, bx) - 1;
+      });
+      if (!skipped) return null;
+      var above = Math.min(a.y, b.y) - 24 - lane;
+      return path([[ax, a.y - 3], [ax, above], [bx, above], [bx, b.y - 6]]);
+    }
+    var down = b.y > a.y, direction = down ? 1 : -1;
+    var startY = down ? a.y + a.h + 3 : a.y - 3;
+    var endY = down ? b.y - 6 : b.y + b.h + 6;
+    var interveningRow = boxes.some(function (box) { return box.y > Math.min(a.y, b.y) + 1 && box.y < Math.max(a.y, b.y) - 1; });
+    if (!interveningRow) {
+      if (Math.abs(ax - bx) < 1) return null;
+      var gapY = (startY + endY) / 2 + Math.max(-8, Math.min(8, offset || 0));
+      return path([[ax, startY], [ax, gapY], [bx, gapY], [bx, endY]]);
+    }
+    // Leave each row through its gap before using an outer lane around intervening boxes.
+    var left = Math.min.apply(null, boxes.map(function (box) { return box.x; }));
+    var right = Math.max.apply(null, boxes.map(function (box) { return box.x + box.w; }));
+    var outerX = (ax + bx) / 2 < (left + right) / 2 ? left - 18 : right + 18;
+    var exitY = startY + direction * (20 + lane), entryY = endY - direction * (20 + lane);
+    return path([[ax, startY], [ax, exitY], [outerX, exitY], [outerX, entryY], [bx, entryY], [bx, endY]]);
+  }
   if (typeof module !== 'undefined' && module.exports) module.exports = {
     normal: normal, queryMatches: queryMatches, buildSearchIndex: buildSearchIndex, filterRepositories: filterRepositories, parseHash: parseHash,
-    hashFor: hashFor, portfolioLayout: portfolioLayout, neighborhoodLayout: neighborhoodLayout, piratePathLayout: piratePathLayout,
+    hashFor: hashFor, portfolioLayout: portfolioLayout, neighborhoodLayout: neighborhoodLayout, piratePathLayout: piratePathLayout, expeditionEvidencePath: expeditionEvidencePath,
     evidenceLevel: evidenceLevel, evidenceCounts: evidenceCounts, matchesEdgeFilters: matchesEdgeFilters, wrapLabel: wrapLabel
   };
   if (typeof document === 'undefined') return;
@@ -517,7 +547,7 @@
         var from = layout.positions.get(edge.from), to = layout.positions.get(edge.to); if (!from || !to) return;
         var kind = KINDS[edge.kind] ? edge.kind : 'proposed-reuse', level = evidenceLevel(edge), selected = edge.id === state.edge;
         var parallels = parallelEdges.get([edge.from, edge.to].sort().join('\u0000')), offset = (parallels.indexOf(edge.id) - (parallels.length - 1) / 2) * 24;
-        var shape = edgePath(from, to, offset);
+        var shape = view.isPath ? expeditionEvidencePath(from, to, layout.positions, offset) || edgePath(from, to, offset) : edgePath(from, to, offset);
         if (selected) svg.append(svgNode('path', { d: shape, class: 'pp-edge-halo' }));
         svg.append(svgNode('path', { d: shape, class: 'pp-network-edge' + (state.repo ? ' is-focus' : '') + (selected ? ' is-edge-selected' : ''),
           'data-kind': kind, 'data-evidence': level, 'data-edge-id': edge.id, 'marker-end': 'url(#pp-arrow-' + level + ')' }));
