@@ -94,7 +94,7 @@
   }
 
   function accordion(fold) {
-    const mesh = new Mesh(), columns = 6, angle = 0.035 + 1.23 * fold, width = 0.69;
+    const mesh = new Mesh(), columns = 6, angle = 1.23 * fold, width = 0.69;
     const path = [[0, 0]];
     for (let i = 0; i < columns; i++) path.push([path[i][0] + width * Math.cos(angle), path[i][1] + (i % 2 ? -1 : 1) * width * Math.sin(angle)]);
     const span = path[columns][0], tilt = 0.16, cs = Math.cos(tilt), sn = Math.sin(tilt);
@@ -233,41 +233,50 @@
     void main(){ vPosition=aPosition; vNormal=aNormal; vColor=aColor; vUV=aUV; vMeta=aMeta;
       vLight=uLightProjection*vec4(aPosition,1.0); gl_Position=uViewProjection*vec4(aPosition,1.0); }`;
   function fragment(derivatives, precision) {
+    // Fixed, evenly spread disk samples keep soft penumbrae stable while orbiting.
+    // There is no animated noise in the shadow or on the gallery floor.
+    const disk = Array.from({ length: 16 }, (_, i) => {
+      const radius = Math.sqrt((i + 0.5) / 16), angle = i * 2.399963229728653;
+      return `visible+=shadowTest(p,vec2(${(radius * Math.cos(angle)).toFixed(6)},${(radius * Math.sin(angle)).toFixed(6)})*uShadowStep*radius,bias);`;
+    }).join('\n');
     return `${derivatives ? '#extension GL_OES_standard_derivatives : enable\n' : ''}precision ${precision} float;
       varying vec3 vPosition; varying vec3 vNormal; varying vec3 vColor;
       varying vec2 vUV; varying vec3 vMeta; varying vec4 vLight;
       uniform sampler2D uShadow; uniform vec2 uShadowStep; uniform vec3 uEye; uniform vec3 uLight;
       float line(float x){ float d=abs(fract(x-0.5)-0.5); float w=${derivatives ? 'max(fwidth(x),0.001)' : '0.032'}; return 1.0-smoothstep(w*0.18,w*0.78,d); }
+      float shadowDepth(vec2 uv){vec2 encoded=texture2D(uShadow,uv).rg;return encoded.x+encoded.y/255.0;}
+      float shadowTest(vec3 p,vec2 offset,float bias){return smoothstep(p.z-bias-0.00035,p.z-bias+0.00035,shadowDepth(p.xy+offset));}
       float shadow(vec3 n,vec3 light){
         vec3 p=vLight.xyz/vLight.w*0.5+0.5;
         if(p.x<=0.0||p.x>=1.0||p.y<=0.0||p.y>=1.0||p.z>=1.0) return 1.0;
         float bias=max(0.00038,0.00105*(1.0-max(dot(n,light),0.0))); float visible=0.0;
-        for(int x=-1;x<=1;x++) for(int y=-1;y<=1;y++){
-          vec2 enc=texture2D(uShadow,p.xy+vec2(float(x),float(y))*uShadowStep*1.35).rg;
-          float z=enc.x+enc.y/255.0; visible+=smoothstep(p.z-bias-0.0004,p.z-bias+0.0004,z);
-        } return visible/9.0;
+        float separation=max(p.z-shadowDepth(p.xy),0.0);
+        float radius=2.4+min(separation*210.0,10.0);
+        ${disk}
+        return visible/16.0;
       }
       void main(){
         vec3 n=normalize(vNormal); if(!gl_FrontFacing)n=-n;
         vec3 light=normalize(uLight-vPosition), view=normalize(uEye-vPosition);
-        float ndl=max(dot(n,light),0.0), shade=shadow(n,light);
+        float ndl=max((dot(n,light)+0.06)/1.06,0.0), shade=shadow(n,light);
         vec3 base=vColor;
         float longitude=line(vUV.x*24.0), latitude=line(vUV.y*16.0);
         float contour=line(vUV.y*8.0+0.32*sin(vUV.x*13.0)+0.14*sin(vUV.x*29.0));
         float ink=max(max(longitude,latitude)*0.55,contour*0.37)*vMeta.x;
         base=mix(base,vec3(0.25,0.39,0.43),ink*0.43);
         float grain=fract(sin(dot(vPosition,vec3(173.13,229.71,317.37)))*43758.5453)-0.5;
-        base+=grain*0.012;
+        float grainFilter=${derivatives ? '1.0-smoothstep(0.35,1.0,max(length(dFdx(vPosition)),length(dFdy(vPosition)))*220.0)' : '0.0'};
+        base+=grain*0.004*grainFilter*(1.0-vMeta.z);
         vec3 linear=pow(max(base,vec3(0.01)),vec3(2.2));
-        vec3 ambient=vec3(0.75,0.82,0.91)*(0.25+0.20*max(n.y,0.0));
+        vec3 ambient=vec3(0.79,0.84,0.91)*(0.30+0.18*max(n.y,0.0));
         ambient+=vec3(1.0,0.87,0.70)*0.06*max(-n.y,0.0);
-        vec3 direct=vec3(1.0,0.925,0.80)*ndl*0.78*(0.12+0.88*shade);
+        vec3 direct=vec3(1.0,0.925,0.80)*ndl*0.70*(0.20+0.80*shade);
         vec3 color=linear*(ambient+direct)*vMeta.y;
-        color+=vec3(1.0,0.93,0.83)*pow(max(dot(n,normalize(light+view)),0.0),28.0)*0.027*shade;
+        color+=vec3(1.0,0.93,0.83)*pow(max(dot(n,normalize(light+view)),0.0),16.0)*0.019*shade;
         color+=linear*0.035*pow(1.0-max(dot(n,view),0.0),3.0);
         if(vMeta.z>0.5){
-          float contact=exp(-dot(vPosition.xz*0.63,vPosition.xz*0.63))*0.045;
-          color=linear*(0.97-contact)*(0.67+0.33*shade);
+          float contact=exp(-dot(vPosition.xz*0.63,vPosition.xz*0.63))*0.025;
+          color=linear*(1.0-contact)*mix(vec3(0.77,0.755,0.715),vec3(0.985),shade);
         }
         color=pow(max(color,vec3(0.0)),vec3(1.0/2.2));
         float fog=smoothstep(8.0,19.0,length(vPosition.xz));
@@ -337,7 +346,11 @@
     }
     _makeScene() {
       const makers = { origami: () => accordion(this._currentFold), sphere: globe, portal, tensegrity, terrace };
-      this._mesh = makers[this._shape](); this._center = average(this._mesh.bounds); this._mesh.floor();
+      this._mesh = makers[this._shape](); this._center = average(this._mesh.bounds);
+      // The floor receives shadows but never writes to the shadow map. Including
+      // its huge coplanar triangles creates sampling stripes / self-shadow moire.
+      this._shadowVertexCount = this._mesh.vertices.length / 14;
+      this._mesh.floor();
       const gl = this.gl; gl.bindBuffer(gl.ARRAY_BUFFER, this._meshBuffer); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this._mesh.vertices), gl.DYNAMIC_DRAW);
       gl.bindBuffer(gl.ARRAY_BUFFER, this._lineBuffer); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this._mesh.lines), gl.STATIC_DRAW);
       this._shadowDirty = true; this._selection();
@@ -369,7 +382,7 @@
         fit = Math.max(fit, z + Math.abs(dot(p, right)) / (tan * aspect * 0.79), z + Math.abs(dot(p, up)) / (tan * 0.79));
       }));
       const targetDistance = (fit + 0.12) / this._zoom;
-      this._distance = !this._distance ? targetDistance : this._distance + (targetDistance - this._distance) * 0.20;
+      this._distance = targetDistance;
       const eye = add(this._center, mul(direction, this._distance));
       return { eye, matrix: multiply(perspective(38 * RAD, aspect, 0.05, 60), lookAt(eye, this._center)) };
     }
@@ -381,7 +394,7 @@
       gl.depthMask(true); gl.disable(gl.BLEND);
       if (this._shadowDirty) {
         gl.bindFramebuffer(gl.FRAMEBUFFER, this._shadowFBO); gl.viewport(0, 0, this._shadowSize, this._shadowSize); gl.clearColor(1, 1, 1, 1); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-        this._bind(this._shadowProgram, this._meshBuffer); gl.uniformMatrix4fv(this._shadowProgram.uniforms.uViewProjection, false, this._lightMatrix); gl.drawArrays(gl.TRIANGLES, 0, count); this._shadowDirty = false;
+        this._bind(this._shadowProgram, this._meshBuffer); gl.uniformMatrix4fv(this._shadowProgram.uniforms.uViewProjection, false, this._lightMatrix); gl.drawArrays(gl.TRIANGLES, 0, this._shadowVertexCount); this._shadowDirty = false;
       }
       gl.bindFramebuffer(gl.FRAMEBUFFER, null); gl.viewport(0, 0, width, height); gl.clearColor(...palette.floor, 1); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
       this._bind(this._surfaceProgram, this._meshBuffer); const u = this._surfaceProgram.uniforms;
@@ -397,14 +410,14 @@
     _project(camera, rect) {
       const points = this._mesh.landmarks.map(mark => {
         const p = project(camera.matrix, mark.position), toCamera = sub(camera.eye, mark.position), distance = Math.hypot(...toCamera);
-        let visible = p[3] > 0 && dot(mark.normal, toCamera) > 0.005;
+        let visible = p[3] > 0 && distance > 0.01 && dot(mark.normal, toCamera) > 0.005;
         const x = p[0] / p[3] * 0.5 + 0.5, y = 0.5 - p[1] / p[3] * 0.5, depth = p[2] / p[3] * 0.5 + 0.5;
         visible = visible && x >= 0 && x <= 1 && y >= 0 && y <= 1 && depth > 0 && depth < 1;
         if (visible) { const ray = mul(toCamera, -1 / distance); visible = !this._mesh.triangles.some(tri => hitTriangle(camera.eye, ray, tri, distance)); }
-        return { x: clamp(x, 0, 1), y: clamp(y, 0, 1), visible, depth: clamp(depth, 0, 1) };
+        return { x: Number.isFinite(x) ? clamp(x, 0, 1) : 0.5, y: Number.isFinite(y) ? clamp(y, 0, 1) : 0.5, visible, depth: Number.isFinite(depth) ? clamp(depth, 0, 1) : 1 };
       });
       this._lastProjection = points;
-      this.onProject(points, { shape: this._shape, fold: this._currentFold, foldable: this._shape === 'origami', yaw: this._yaw / RAD, pitch: this._pitch / RAD, zoom: this._zoom, motion: this._motion && !this._reduced, active: this._active, width: rect.width, height: rect.height, renderer: 'WebGL', visiblePins: points.filter(p => p.visible).length });
+      this.onProject(points, { shape: this._shape, fold: this._currentFold, foldable: this._shape === 'origami', yaw: (this._yaw / RAD % 360 + 360) % 360, pitch: this._pitch / RAD, zoom: this._zoom, motion: this._motion && !this._reduced, active: this._active, width: rect.width, height: rect.height, renderer: 'WebGL', visiblePins: points.filter(p => p.visible).length });
     }
     _canDraw() { return !this._destroyed && !this._lost && this._active && this._visible && !document.hidden; }
     _request() { if (this._canDraw() && !this._frameId) this._frameId = requestAnimationFrame(time => this._frame(time)); }
