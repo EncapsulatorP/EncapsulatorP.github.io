@@ -1,0 +1,199 @@
+
+/**
+ * Objective: Simulate the topological difference between a Phase Slip Wheel 
+ * and a Riemann Helix.
+ */
+
+// 1. Setup App (UI + State)
+const { state, ui } = WH.createApp({
+    title: "Phase Slip vs. Riemann Helix",
+    params: {
+        mode: { value: 'Helix', options: ['Wheel', 'Helix'], label: "Topology Mode" },
+        mu: { value: 0.5, min: 0.1, max: 2.0, label: "Residue Accumulation (μ)" },
+        isRunning: { value: true, label: "Running" },
+        reset: { type: 'button', label: 'Reset', onClick: (s) => resetSimulation(s) }
+    }
+});
+
+// 2. Initialize Internal State
+state.theta = 0;
+state.totalResidue = 0;
+state.trailPoints = [];
+state.burstParticles = [];
+state.omega = 1.0;
+state.lastLoopTime = 0;
+
+function resetSimulation(s) {
+    s.theta = 0;
+    s.totalResidue = 0;
+    s.trailPoints = [];
+    s.burstParticles = [];
+    s.lastLoopTime = 0;
+}
+
+// Subscribe to mode changes to auto-reset
+state._subscribe((key) => {
+    if (key === 'mode') resetSimulation(state);
+});
+
+// 3. Initialize 3D Engine
+WH.initThree('viz', (scene, camera, renderer, controls) => {
+    
+    // Configure Camera
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+
+    // Setup Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambientLight);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    dirLight.position.set(5, 10, 7);
+    scene.add(dirLight);
+
+    // Grid / Reference Plane
+    const grid = new THREE.GridHelper(10, 10, WH.getColor('--outline'), WH.getColor('--surface-container-highest'));
+    grid.position.y = -0.01;
+    scene.add(grid);
+
+    // The Main Particle (Actor)
+    const actorGeo = new THREE.SphereGeometry(0.15, 32, 32);
+    const actorMat = new THREE.MeshStandardMaterial({ color: WH.getColor('--primary') });
+    const actor = new THREE.Mesh(actorGeo, actorMat);
+    scene.add(actor);
+
+    // Helix/Trail Geometry
+    const trailMaterial = new THREE.LineBasicMaterial({ 
+        color: WH.getColor('--chart-1'), 
+        linewidth: 3 
+    });
+    let trailLine = new THREE.Line(new THREE.BufferGeometry(), trailMaterial);
+    scene.add(trailLine);
+
+    // Wheel Reference Circle (Static)
+    const circleGeo = new THREE.TorusGeometry(2, 0.02, 16, 100);
+    const circleMat = new THREE.MeshStandardMaterial({ 
+        color: WH.getColor('--surface-container-high'),
+        transparent: true,
+        opacity: 0.3
+    });
+    const wheelRef = new THREE.Mesh(circleGeo, circleMat);
+    wheelRef.rotation.x = Math.PI / 2;
+    scene.add(wheelRef);
+
+    // Particle Burst Group
+    const burstGroup = new THREE.Group();
+    scene.add(burstGroup);
+
+    return ({ time, dt, state }) => {
+        if (!state.isRunning) return;
+
+        const radius = 2.0;
+
+        // 1. Logic Update
+        state.theta += state.omega * dt;
+
+        if (state.mode === 'Wheel') {
+            // WHEEL MODE: 2D Path
+            actor.position.x = radius * Math.cos(state.theta);
+            actor.position.y = 0;
+            actor.position.z = radius * Math.sin(state.theta);
+            
+            // Loop Snap & Burst
+            if (state.theta >= Math.PI * 2) {
+                state.theta = 0;
+                // Trigger Visual Burst
+                createBurst(burstGroup, actor.position.clone());
+                // Residue is "sacrificed" (resets)
+                state.totalResidue = 0;
+            } else {
+                // Temporary residue that will be lost
+                state.totalResidue = (state.theta / (Math.PI * 2)) * state.mu;
+            }
+
+            // Hide/Reset Helix visuals
+            trailLine.visible = false;
+            wheelRef.visible = true;
+
+        } else {
+            // HELIX MODE: 3D Path
+            state.totalResidue += state.mu * dt;
+            
+            actor.position.x = radius * Math.cos(state.theta);
+            actor.position.y = state.totalResidue; // Z-axis equivalent in Three.js coordinates
+            actor.position.z = radius * Math.sin(state.theta);
+
+            // Record Path
+            state.trailPoints.push(new THREE.Vector3(actor.position.x, actor.position.y, actor.position.z));
+            if (state.trailPoints.length > 1000) state.trailPoints.shift();
+
+            // Update Trail Geometry
+            trailLine.geometry.dispose();
+            trailLine.geometry = new THREE.BufferGeometry().setFromPoints(state.trailPoints);
+            
+            trailLine.visible = true;
+            wheelRef.visible = false;
+        }
+
+        // 2. Particle Burst Physics (Simulated manually for simplicity)
+        for (let i = burstGroup.children.length - 1; i >= 0; i--) {
+            const p = burstGroup.children[i];
+            p.position.add(p.userData.velocity.clone().multiplyScalar(dt));
+            p.userData.life -= dt;
+            p.material.opacity = p.userData.life;
+            if (p.userData.life <= 0) {
+                burstGroup.remove(p);
+                p.geometry.dispose();
+                p.material.dispose();
+            }
+        }
+
+        // 3. UI Update (HUD)
+        ui.setHUD([
+            { label: "Topology", value: state.mode },
+            { label: "Preserved Residue", value: state.mode === 'Helix' ? state.totalResidue.toFixed(3) : "0 (Lost)" },
+            { label: "Phase", value: `${((state.theta / (Math.PI * 2)) * 360).toFixed(0)}°` }
+        ]);
+
+        // Dynamic status text for pedagogical impact
+        if (state.mode === 'Wheel') {
+            ui.setStatus("Topological Wheel: Residue is sacrificed at each phase slip.");
+        } else {
+            ui.setStatus("Riemann Helix: Residue is preserved structurally across cycles.");
+        }
+
+        // Camera follow (optional, keeps helix in view)
+        if (state.mode === 'Helix') {
+            controls.target.y = THREE.MathUtils.lerp(controls.target.y, actor.position.y, 0.05);
+        } else {
+            controls.target.y = THREE.MathUtils.lerp(controls.target.y, 0, 0.05);
+        }
+    };
+});
+
+/**
+ * Helper to create an outward explosion of particles
+ */
+function createBurst(group, position) {
+    const count = 20;
+    const geo = new THREE.SphereGeometry(0.05, 8, 8);
+    for (let i = 0; i < count; i++) {
+        const mat = new THREE.MeshBasicMaterial({ 
+            color: WH.getColor('--chart-4'), 
+            transparent: true 
+        });
+        const p = new THREE.Mesh(geo, mat);
+        p.position.copy(position);
+        
+        // Random velocity outward
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 2 + Math.random() * 3;
+        p.userData.velocity = new THREE.Vector3(
+            Math.cos(angle) * speed,
+            (Math.random() - 0.5) * speed,
+            Math.sin(angle) * speed
+        );
+        p.userData.life = 1.0; // Seconds
+        
+        group.add(p);
+    }
+}

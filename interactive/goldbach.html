@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <title>Goldbach mirror · Gemini · EncapsulatorP</title>
+  <meta name="description" content="Move the center and scan equal distances to find prime pairs p = n − r and q = n + r with p + q = 2n.">
+  <link rel="icon" href="../assets/favicon-32.png">
+  <link rel="stylesheet" href="shared.css">
+  <script src="runtime.js" defer></script>
+  <script src="goldbach.js" defer></script>
+</head>
+<body>
+<main class="ix-exhibit">
+  <header class="ix-header"><div><p class="ix-kicker">Interactive · Exact rule · finite search</p><h1>Goldbach mirror</h1><p>Move the center and scan equal distances to find prime pairs p = n − r and q = n + r with p + q = 2n.</p></div><div class="ix-signature">Gemini<small>Goldbach mirror<br>Interactive concept · Atlas adaptation</small></div></header>
+  <p class="ix-boundary"><strong>Claim boundary</strong>This is a finite search for even totals from 20 through 200. Finding every pair in this range does not prove Goldbach’s conjecture.</p>
+  <section id="widget" aria-label="Goldbach mirror controls and view"></section>
+  <noscript><p>The controls and visualization require JavaScript. The recurrence, boundaries and source notes below remain readable.</p></noscript>
+  <details class="ix-notes" open><summary>Rules, limits &amp; source notes</summary><p class="ix-equation">p = n − r, q = n + r; p + q = 2n. Both p and q must be prime.</p><ul><li>The full pair table is recomputed for the selected center, independently of animation speed. Radius zero is included: a prime center gives the valid pair p = q = n.</li><li>The line and mirror arch preserve Gemini’s original center–radius idea. The scan now fits the full selected range on a phone. “Non-prime” includes 1, so it replaces the original “Composite” label.</li><li>Use Next radius for a discrete step, or Play animation to sweep the mirrors. The table contains every valid pair, even before the sweep reaches it.</li></ul><p class="ix-source-code">Gemini source: <code>interactive_visual_im_2424efeacfe55a9b.html</code>. <a href="sources/gemini-goldbach-original.js.txt">Read the supplied topic script</a> or <a href="sources.json">inspect the complete source inventory</a>.</p></details>
+  <footer class="ix-footer"><a href="index.html?topic=goldbach">All interactive contributions</a><a href="../index.html#goldbach">Goldbach laboratory</a><a href="../atlas/gemini-interactive-notes.md">Adaptation notes</a></footer>
+</main>
+</body>
+</html>

@@ -1001,30 +1001,54 @@ window.ENCAPSULATOR_ATLAS = {
     },
     {
       "id": "kesten-regimes",
-      "title": "When a multiplicative comparison changes regime",
+      "title": "Kesten–Goldie: the theorem, the multiplier law and the Collatz experiment",
       "family": "Dynamics & geometry",
       "status": "reported",
-      "origin": "Public regime report dated 2 May 2026",
-      "summary": "Collatz-type maps are compared through an affine residual recursion, with different normalizations producing different empirical regimes.",
-      "formula": "Δ_(n+1) = M_n Δ_n + Q_n\nReported 7x+1 case: exponent estimate 0.3447\nSource comparison value: 0.3429",
-      "why": "It is a concrete place to investigate which normalization and dependence assumptions make a stochastic comparison informative.",
+      "origin": "Recovered public scanner and saved output; README dated 2 May 2026, results document dated 8 June 2026",
+      "summary": "An established heavy-tail theorem meets a concrete affine experiment: see the mechanism first, then distinguish the exact comparison law from the reported Collatz-driven results.",
+      "formula": "Δ_(n+1) = M_n Δ_n + Q_n\nGeometric comparison: E[M^s] = a^s / (2^(s+1) − 1), s > −1\n7x+1 SSI: theoretical moment root κ = 0.3429\nSample-moment root κ = 0.3447; top-5% tail-fit exponent = 0.3417",
+      "why": "Repeated contraction can forget an initial state while occasional amplification creates rare large values. The classical theorem explains that mechanism; the recovered experiment asks how it appears under Collatz-derived multipliers.",
       "detail": [
-        "The source report also gives a 5x+1 comparison of 2.4342 against 2.7635. Those reported numbers were not rerun for this edition.",
-        "A heavy-tail theorem for a stochastic affine recursion has hypotheses about stationarity, dependence and moments. A deterministic orbit sample does not automatically satisfy them.",
-        "The next useful question is robustness across thresholds, horizons and normalization choices, with the raw trajectories retained."
+        "Start with the interactive Kesten–Goldie model at #kesten-goldie: a seeded affine path and an exact moment curve, followed by lemmas, explanation and proofs. Its iid teaching path is separate from the saved historical experiment.",
+        "The Kesten–Goldie theorem is established mathematics. For a suitable nondegenerate iid positive affine recursion with a stationary law, nonarithmetic log multiplier, a positive root E[M^κ] = 1 and the required finite moments, the stationary tail is asymptotic to C x^(−κ), with C > 0. The reported status here refers to the Collatz application.",
+        "The scanner takes K_n from restarted integer r·m + 1 orbits and evolves Δ with independent exponential additions Q_n. It uses M_n = a·2^(−K_n), with a = r in raw gauge and a = r/2 in SSI gauge. Δ is the auxiliary affine process, not the integer orbit or its stopping time.",
+        "Under the chosen geometric comparison P(K = k) = 2^(−k), k ≥ 1, E log M = log(a/4), E[M] = a/3, and a positive moment root exists exactly for 2 < a < 4. E[M] = 1 gives κ = 1; it is a mean-moment boundary, not by itself a loss of stationarity or a reason for logarithmic tail corrections.",
+        "The saved empirical κ is computed from the sampled multipliers by solving mean(M_i^κ) = 1. It is different from a fitted tail exponent. For 7x+1 SSI, the geometric-law root, sample-moment root and top-5% tail fit are 0.3429, 0.3447 and 0.3417; for 5x+1 SSI they are 2.7635, 2.4342 and 2.2193. These original outputs were not rerun for this edition.",
+        "The saved canonical raw-gauge dependence controls remain on a similar finite-horizon scale after shuffling or iid resampling of K. A stationary-law conclusion for deterministic Collatz dynamics still requires a justified probabilistic model and its hypotheses; the finite comparison alone does not establish them."
       ],
-      "next": "Recompute the source cases with a threshold-stability plot and dependence-aware controls before drawing a general conclusion.",
+      "next": "Preserve all three exponent diagnostics, compare thresholds and horizons, and test dependence and restart sensitivity while retaining the original trajectories.",
       "sources": [
         {
-          "label": "Regime report",
-          "url": "https://github.com/EncapsulatorP/collatz_kesten-goldie/blob/main/README.md"
+          "label": "See the interactive Kesten–Goldie model, lemmas and proofs",
+          "url": "https://encapsulatorp.github.io/#kesten-goldie"
+        },
+        {
+          "label": "Kesten · original random difference-equation theorem · 1973",
+          "url": "https://doi.org/10.1007/BF02392040"
+        },
+        {
+          "label": "Goldie · scalar implicit renewal theory · 1991",
+          "url": "https://doi.org/10.1214/aoap/1177005985"
+        },
+        {
+          "label": "Kevei · theorem and arithmetic distinction · 2016",
+          "url": "https://arxiv.org/abs/1609.07339v1"
+        },
+        {
+          "label": "Pinned scanner: multiplier moments, affine process and tail diagnostics",
+          "url": "https://github.com/EncapsulatorP/collatz_kesten-goldie/blob/791f509561d1d4cf77a471e94e808648741858ed/rboi_kesten_scanner.py"
+        },
+        {
+          "label": "Pinned original saved output · not rerun for this edition",
+          "url": "https://github.com/EncapsulatorP/collatz_kesten-goldie/blob/791f509561d1d4cf77a471e94e808648741858ed/scan_results.txt"
         }
       ],
       "connections": [
         "delay-geometry",
         "forced-collatzscape",
         "logistic-distributions"
-      ]
+      ],
+      "keyFormula": "E[M^κ] = 1 · the moment balance behind a power tail"
     },
     {
       "id": "composite-vanishing",
@@ -1418,6 +1442,46 @@ window.ENCAPSULATOR_ATLAS = {
         "logistic-quarter-turn",
         "composite-vanishing"
       ]
+    },
+    {
+      "id": "recaman-finite-gaps",
+      "title": "Recamán · around the gaps",
+      "family": "Dynamics & geometry",
+      "status": "finite",
+      "origin": "Gemini supplied visual study · Atlas adaptation and mathematical checks by ChatGPT · 21 November 2026",
+      "summary": "Observed delay triples, an illustrative Möbius ribbon and exact number-line arcs expose different features of a finite Recamán prefix. Scalar gaps remain a separate count.",
+      "formula": "a₀ = 0; aₙ = aₙ₋₁ − n if nonnegative and unvisited, otherwise aₙ₋₁ + n.\nN terms contain N − 1 transitions; addition may revisit a value.",
+      "why": "A shape becomes useful when its coordinates and limits are stated. The ribbon is a chosen view, while the sequence and its finite unvisited integers can be checked independently.",
+      "detail": [
+        "The browser explorer computes up to 8,000 terms. Delay points are exactly (aᵢ, aᵢ₊₁, aᵢ₊₂), normalized for display. The Möbius view is an illustrative mapping rather than a topological obstruction theorem.",
+        "The gap rail counts positive integers below the current prefix maximum that have not yet appeared. A missing integer at a finite horizon need not be missing forever. Backward ratios use N − 1 as their denominator.",
+        "The repository’s saved report, pinned at commit 056452f, follows 10,000,000 transitions and 103 selected catalogue targets: 23 were addition candidates bypassed by legal subtraction, 80 were never proposed, and none was selected. This is source-reported finite evidence; the browser does not rerun it.",
+        "Bernardo Recamán Santos is credited for the sequence. Gemini is credited beside the exhibit for the supplied visual concept; implementation changes and limits are documented."
+      ],
+      "next": "Compare the same candidate values at N and 2N, retaining the old range and reporting the horizon. Test predictive features against held-out segments and a shuffled baseline.",
+      "sources": [
+        {
+          "label": "Open the Recamán exhibit",
+          "url": "https://encapsulatorp.github.io/recaman/"
+        },
+        {
+          "label": "Sequence definition · OEIS A005132",
+          "url": "https://oeis.org/A005132"
+        },
+        {
+          "label": "Saved mechanism report · fixed commit",
+          "url": "https://github.com/EncapsulatorP/recaman/blob/056452f2be03dad5f7bca0f7024c8357f42d8c6b/outputs/hole_mechanism_report.md"
+        },
+        {
+          "label": "Visual provenance and independent checks",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/recaman-visual-notes.md"
+        }
+      ],
+      "connections": [
+        "representation-study"
+      ],
+      "promoted": "Gemini · visual contribution",
+      "keyFormula": "Subtract when legal; otherwise add. Finite gaps are not permanent holes."
     }
   ]
 };

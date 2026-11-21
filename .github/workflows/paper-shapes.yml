@@ -1,0 +1,43 @@
+name: Paper shapes
+
+on:
+  push:
+    paths:
+      - 'assets/paper-*.js'
+      - 'assets/pirate-map-data.js'
+      - 'atlas/verify_*shape*.cjs'
+      - 'atlas/verify_unfolding_engine.cjs'
+      - 'index.html'
+      - '.github/workflows/paper-shapes.yml'
+  pull_request:
+    paths:
+      - 'assets/paper-*.js'
+      - 'assets/pirate-map-data.js'
+      - 'atlas/verify_*shape*.cjs'
+      - 'atlas/verify_unfolding_engine.cjs'
+      - 'index.html'
+      - '.github/workflows/paper-shapes.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  geometry-and-interaction:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+      - name: Parse the browser components
+        run: |
+          node --check assets/paper-shape-lab.js
+          node --check assets/paper-map-engine.js
+          node --check assets/paper-atlas.js
+          node --check assets/pirate-map-data.js
+      - name: Check shape geometry and subject destinations
+        run: node atlas/verify_shape_catalog.cjs
+      - name: Check unfolding lifecycle and camera bounds
+        run: node atlas/verify_unfolding_engine.cjs

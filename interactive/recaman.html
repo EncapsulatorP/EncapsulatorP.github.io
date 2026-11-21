@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <title>Recamán coordinates · Gemini · EncapsulatorP</title>
+  <meta name="description" content="Compare the same finite Recamán sequence in delay triples, normalized delay and time/value coordinates.">
+  <link rel="icon" href="../assets/favicon-32.png">
+  <link rel="stylesheet" href="shared.css">
+  <script src="vendor/three-r146.min.js" defer></script>
+  <script src="vendor/OrbitControls-r146.js" defer></script>
+  <script src="runtime.js" defer></script>
+  <script src="recaman.js" defer></script>
+</head>
+<body>
+<main class="ix-exhibit">
+  <header class="ix-header"><div><p class="ix-kicker">Interactive · Exact sequence · chosen coordinates</p><h1>Recamán coordinates</h1><p>Compare the same finite Recamán sequence in delay triples, normalized delay and time/value coordinates.</p></div><div class="ix-signature">Gemini<small>Recamán coordinates<br>Interactive concept · Atlas adaptation</small></div></header>
+  <p class="ix-boundary"><strong>Claim boundary</strong>These coordinate pictures reveal the selected sample. They do not establish manifold topology, a growth rate, or a global geometric property of the infinite sequence.</p>
+  <section id="widget" aria-label="Recamán coordinates controls and view"></section>
+  <noscript><p>The controls and visualization require JavaScript. The recurrence, boundaries and source notes below remain readable.</p></noscript>
+  <details class="ix-notes" open><summary>Rules, limits &amp; source notes</summary><p class="ix-equation">a₀ = 0. Try aₙ₋₁ − n; use it if positive and not yet visited. Otherwise set aₙ = aₙ₋₁ + n.</p><ul><li>The sequence is named for Bernardo Recamán Santos. Gemini’s contribution here is the interactive coordinate visualization. An N-step sample contains N + 1 terms, a₀ through a_N.</li><li>Delay coordinates: (aₙ, aₙ₋₁, aₙ₋₂). Time/value coordinates: (n, aₙ, aₙ₋₁). Each display is scaled from the selected finite sample.</li><li>Normalized delay uses (aₙ/n, aₙ₋₁/(n−1), aₙ₋₂/(n−2)) starting at n = 3. This avoids the original undefined a₀/0 coordinate. Its scale is computed from observed ratios, without assuming aₙ grows like 2n.</li><li>Addition and subtraction keep separate colors. Instanced points preserve the original 3D scene while reducing the number of draw calls. Drag to orbit, scroll to zoom; focus the view for arrow-key orbiting, +/− zoom and R to reset the camera.</li></ul><p><a href="https://oeis.org/A005132">Recamán’s sequence · OEIS A005132 ↗</a></p><p class="ix-source-code">Gemini source: <code>interactive_visual_im_40a9d6898acfe388.html</code>. <a href="sources/gemini-recaman-original.js.txt">Read the supplied topic script</a> or <a href="sources.json">inspect the complete source inventory</a>.</p></details>
+  <footer class="ix-footer"><a href="index.html?topic=recaman">All interactive contributions</a><a href="../index.html#recaman">Recamán sequence explorer</a><a href="../atlas/gemini-interactive-notes.md">Adaptation notes</a></footer>
+</main>
+</body>
+</html>

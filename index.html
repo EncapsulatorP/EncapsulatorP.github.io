@@ -6,7 +6,7 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 </script>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#f5f2eb"><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>EncapsulatorP — computational number theory</title>
 <script>document.documentElement.classList.add("js")</script>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png"><meta property="og:image" content="https://encapsulatorp.github.io/assets/logo-encapsulatorp-512.png">
@@ -227,12 +227,17 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <link rel="stylesheet" href="assets/treasure-rooms.css">
 <link rel="stylesheet" href="assets/goldbach-lab.css">
 <link rel="stylesheet" href="assets/curious-cabinet.css">
-<link rel="stylesheet" href="assets/pirate-map.css?v=tensegrity">
+<link rel="stylesheet" href="assets/paper-atlas.css?v=unfold-20261121-r3">
+<link rel="stylesheet" href="assets/visual-first.css?v=visual-20261121-r2">
+<link rel="stylesheet" href="assets/evidence-board.css?v=evidence-20261121-r2">
+<link rel="stylesheet" href="assets/recaman-explorer.css?v=recaman-20261121-r1">
+<link rel="stylesheet" href="assets/interactive-space.css?v=interactive-20261121-r2">
+<link rel="stylesheet" href="assets/atlas-theme.css?v=coherent-20261121-r2">
 <meta name="description" content="Explore EncapsulatorP’s research atlas: Omega Stability, prime pairs, recursive towers, complex worlds and 45 source-linked mathematical threads.">
 </head>
 <body>
 
-<a class="tr-skip" href="#main-content">Skip to the current room</a><nav class="nav" aria-label="Main research rooms"><div class="in"><a class="lg" href="#atlas"><img src="assets/logo-encapsulatorp-96.png" alt="" width="24" height="24"><b>Encapsulator</b>P</a><div class="tr-nav-primary"><a href="#atlas" data-tab="atlas">Atlas · Spark</a><a href="#goldbach" data-tab="goldbach">Goldbach</a><a href="#pirate-chest" data-tab="buried-chat-stories">† Pirate Chest</a><a href="#cabinet" data-tab="cabinet">Curious Cabinet</a><a href="#collatz" data-tab="collatz">Collatz</a><a href="#towers" data-tab="towers">Towers</a></div><details class="tr-nav-more"><summary>More paths</summary><div class="tr-nav-menu"><a href="#home" data-tab="home">Math overview</a><a href="#lemmas" data-tab="lemmas">Hibernating Lemmas</a><a href="#roadmap" data-tab="roadmap">Next proof steps</a><a href="#validatron" data-tab="validatron">Validatron</a><a href="#archive" data-tab="archive">Subject map & repos</a><a href="#map-credits" data-tab="map-credits">Map Credits</a></div></details><label class="tr-sr-only" for="tr-all-rooms">All research rooms</label><select class="tr-mobile-nav" id="tr-all-rooms"><option value="#atlas">Atlas · Spark</option><option value="#goldbach">Goldbach</option><option value="#pirate-chest">† Pirate Chest</option><option value="#cabinet">Curious Cabinet</option><option value="#collatz">Collatz</option><option value="#towers">Towers</option><option value="#home">Math overview</option><option value="#lemmas">Hibernating Lemmas</option><option value="#roadmap">Next proof steps</option><option value="#validatron">Validatron</option><option value="#archive">Subject map & repos</option><option value="#map-credits">Map Credits</option></select></div></nav>
+<a class="tr-skip" href="#main-content">Skip to the current room</a><nav class="nav" aria-label="Main research rooms"><div class="in"><a class="lg" href="#atlas"><img src="assets/logo-encapsulatorp-96.png" alt="" width="24" height="24"><b>Encapsulator</b>P</a><div class="tr-nav-primary"><a href="#atlas" data-tab="atlas">Atlas · Spark</a><a href="#goldbach" data-tab="goldbach">Goldbach</a><a href="#pirate-chest" data-tab="buried-chat-stories">† Pirate Chest</a><a href="#collatz" data-tab="collatz">Collatz</a><a href="#towers" data-tab="towers">Towers</a><a href="#interactive" data-tab="interactive">Interactive</a></div><details class="tr-nav-more"><summary>More paths</summary><div class="tr-nav-menu"><a href="#cabinet" data-tab="cabinet">Curious Cabinet</a><a href="#paper-table">Back to the table</a><a href="#home" data-tab="home">Math overview</a><a href="evidence/">Evidence index</a><a href="#recaman" data-tab="recaman">Recamán · Gemini</a><a href="#lemmas" data-tab="lemmas">Hibernating Lemmas</a><a href="#roadmap" data-tab="roadmap">Next proof steps</a><a href="#validatron" data-tab="validatron">Validatron</a><a href="#archive" data-tab="archive">Subject map & repos</a><a href="#map-credits" data-tab="map-credits">Map Credits</a></div></details><label class="tr-sr-only" for="tr-all-rooms">All research rooms</label><select class="tr-mobile-nav" id="tr-all-rooms"><option value="#atlas">Atlas · Spark</option><option value="#goldbach">Goldbach</option><option value="#pirate-chest">† Pirate Chest</option><option value="#cabinet">Curious Cabinet</option><option value="#collatz">Collatz</option><option value="#towers">Towers</option><option value="#interactive">Interactive · Gemini</option><option value="#home">Math overview</option><option value="#recaman">Recamán · Gemini</option><option value="#lemmas">Hibernating Lemmas</option><option value="#roadmap">Next proof steps</option><option value="#validatron">Validatron</option><option value="#archive">Subject map & repos</option><option value="#map-credits">Map Credits</option><option value="#paper-table">Back to the table</option></select></div></nav>
 
 <main id="main-content" tabindex="-1">
 <div class="page" data-page="home">
@@ -242,45 +247,37 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <h1>There is a thread<br><em>worth pulling.</em></h1>
 <p>An open research project exploring prime pairs, Collatz dynamics, recursive towers and mathematical intelligence. Ideas grow through exact arguments, computational experiments and connections across fields.</p>
 <p class="tag">prime-pair geometry · recursive dynamics · hibernating lemmas</p>
-<a class="atlas-home-launch" href="#atlas"><img src="assets/omega-stability-thread-cover.png" width="1200" height="630" alt="Omega Stability: a luminous path through power-tower layers"><span><small>NEW · THE RESEARCH ATLAS</small><strong>Follow a spark.<br>Open a whole thread.</strong><span>45 entries · working exhibits · proofs and next questions</span><b>Enter the atlas →</b></span></a>
+<a class="atlas-home-launch" href="#atlas"><img src="assets/omega-stability-thread-cover.png" width="1200" height="630" alt="Omega Stability: a luminous path through power-tower layers"><span><small>NEW · THE RESEARCH ATLAS</small><strong>Follow a spark.<br>Open a whole thread.</strong><span>46 entries · working exhibits · proofs and next questions</span><b>Enter the atlas →</b></span></a>
 </div></header>
 <section class="sec"><div class="wrap"><p class="kick">Choose the view that catches you</p><div class="tr-route-grid">
 <a href="#goldbach"><small>01 / Prime pairs</small><strong>Goldbach’s constellation</strong><svg class="tr-mini-art" viewBox="0 0 280 95" aria-hidden="true"><path d="M20 80H260M140 5V85" fill="none" stroke="#54738a"/><path d="M25 80A115 72 0 0 1 255 80M57 80A83 58 0 0 1 223 80M101 80A39 36 0 0 1 179 80" fill="none" stroke="#8be0d9" stroke-width="2"/><circle cx="101" cy="80" r="4" fill="#d3ef9b"/><circle cx="179" cy="80" r="4" fill="#d3ef9b"/></svg><p>Move between prime pairs. See one sum unfold into exact centres, gaps and products.</p><b>Open the observatory →</b></a>
 <a href="#cabinet"><small>02 / Two new windows</small><strong>Circles &amp; mirrored worlds</strong><svg class="tr-mini-art" viewBox="0 0 280 95" aria-hidden="true"><circle cx="140" cy="48" r="40" fill="none" stroke="#bdacf3" stroke-width="2"/><path d="M65 48H215M140 3V92" stroke="#45637d"/><circle cx="175" cy="29" r="4" fill="#84e9d2"/><circle cx="175" cy="67" r="4" fill="#84e9d2"/><circle cx="140" cy="48" r="5" fill="#e5d58a"/></svg><p>Put Catalan at the centre. Let two logistic strands merge, mirror or separate.</p><b>Enter the Curious Cabinet →</b></a>
 <a href="#pirate-chest"><small>03 / From the notebook</small><strong>The Pirate Chest</strong><svg class="tr-mini-art" viewBox="0 0 280 95" aria-hidden="true"><path d="M70 72L112 22L140 72L168 22L210 72M86 48H194" fill="none" stroke="#d3c49d" stroke-width="2"/><circle cx="140" cy="48" r="38" fill="none" stroke="#8c9ebf" stroke-dasharray="3 6"/><path d="M140 11V85M133 48H147" stroke="#b6e9d3" stroke-width="2"/></svg><p>Dagger towers, Shapiro rings and unfinished questions with their source trails still attached.</p><b>Pick up a treasure →</b></a>
 </div></div></section>
-<section class="sec bg-tint" id="home-mathematics" aria-labelledby="home-math-title"><div class="wrap">
+<div class="ev-comparison" id="evidence-comparison"><div class="wrap" id="evidence-start"><p class="kick">The evidence board</p><p class="ev-intro">Follow an argument, inspect its boundary, or run a finite check. <a href="evidence/">Open the compact evidence index ↗</a></p></div><section class="sec bg-tint" id="home-mathematics" aria-labelledby="home-math-title"><div class="wrap">
 <h2 class="t" id="home-math-title">Identities, asymptotics, <em>and kernels.</em></h2>
 <div class="grid home-math-grid">
-<article class="card" style="--e:#3f7a00"><span class="tag">Exact identity</span><h3 class="sub">Ramanujan modulo 23</h3><p>In characteristic 23, (1 − q<sup>n</sup>)<sup>23</sup> = 1 − q<sup>23n</sup>. One factorization turns Δ into a simpler product.</p><a class="story-link" href="#buried-ramanujan-23">Read the coefficient proof</a></article>
-<article class="card" style="--e:#3f7a00"><span class="tag">Exact identity</span><h3 class="sub">Rudin–Shapiro on the circle</h3><p>Two signed polynomials divide the energy between them. |P<sub>j</sub>|² + |Q<sub>j</sub>|² = 2<sup>j+1</sup> on |z| = 1.</p><a class="story-link" href="#buried-shapiro-rings">Read the circle argument</a></article>
-<article class="card" style="--e:#3f7a00"><span class="tag">Euler product</span><h3 class="sub">Zeta’s 48 remainder lanes</h3><p>The 210-wheel products reconstruct ζ(s) with four factors removed, for Re(s) &gt; 1.</p><a class="story-link" href="#buried-zeta-partitionings">Read the partitioning</a></article>
-<article class="card" style="--e:#3f7a00"><span class="tag">Exact asymptotic</span><h3 class="sub">The critical tower’s slowdown</h3><p>For x<sub>n+1</sub> = exp(x<sub>n</sub>/e), starting at 1, the distance to e is asymptotic to 2e/n.</p><a class="story-link" href="#buried-critical-tower">Read the endpoint proof</a></article>
-<article class="card" style="--e:#3f7a00"><span class="tag">Exact asymptotic</span><h3 class="sub">The smooth part of Z(p)</h3><p>Z(n) = 2 + π/n + π²/(2n²) + O(n<sup>−3</sup>). The leading terms give Prime Polarity a baseline.</p><a class="story-link" href="#buried-zp-asymptotic">Read the expansion</a></article>
-<article class="card" style="--e:#3f7a00"><span class="tag">Exact kernel</span><h3 class="sub">A quarter-turn in the Catalan integral</h3><p>∑<sub>n≥1</sub> χ<sub>4</sub>(n)e<sup>−nt</sup> = 1/(2 cosh t) for t &gt; 0. Its Mellin integral at s = 2 gives Catalan’s constant.</p><a class="story-link" href="#buried-bubble-tube">Read the kernel story</a></article>
+<article data-evidence-entry="ramanujan-23" class="card" style="--e:#3f7a00"><span class="tag">Exact identity</span><h3 class="sub">Ramanujan modulo 23</h3><p>In characteristic 23, (1 − q<sup>n</sup>)<sup>23</sup> = 1 − q<sup>23n</sup>. One factorization turns Δ into a simpler product.</p><a data-evidence-open class="story-link" href="#buried-ramanujan-23">Read the coefficient proof</a></article>
+<article data-evidence-entry="shapiro" class="card" style="--e:#3f7a00"><span class="tag">Exact identity</span><h3 class="sub">Rudin–Shapiro on the circle</h3><p>Two signed polynomials divide the energy between them. |P<sub>j</sub>|² + |Q<sub>j</sub>|² = 2<sup>j+1</sup> on |z| = 1.</p><a data-evidence-open class="story-link" href="#buried-shapiro-rings">Read the circle argument</a></article>
+<article data-evidence-entry="wheel-210" class="card" style="--e:#3f7a00"><span class="tag">Euler product</span><h3 class="sub">Zeta’s 48 remainder lanes</h3><p>The 210-wheel products reconstruct ζ(s) with four factors removed, for Re(s) &gt; 1.</p><a data-evidence-open class="story-link" href="#buried-zeta-partitionings">Read the partitioning</a></article>
+<article data-evidence-entry="critical-tower" class="card" style="--e:#3f7a00"><span class="tag">Exact asymptotic</span><h3 class="sub">The critical tower’s slowdown</h3><p>For x<sub>n+1</sub> = exp(x<sub>n</sub>/e), starting at 1, the distance to e is asymptotic to 2e/n.</p><a data-evidence-open class="story-link" href="#buried-critical-tower">Read the endpoint proof</a></article>
+<article data-evidence-entry="zp-asymptotic" class="card" style="--e:#3f7a00"><span class="tag">Exact asymptotic</span><h3 class="sub">The smooth part of Z(p)</h3><p>Z(n) = 2 + π/n + π²/(2n²) + O(n<sup>−3</sup>). The leading terms give Prime Polarity a baseline.</p><a data-evidence-open class="story-link" href="#buried-zp-asymptotic">Read the expansion</a></article>
+<article data-evidence-entry="catalan-kernel" class="card" style="--e:#3f7a00"><span class="tag">Exact kernel</span><h3 class="sub">A quarter-turn in the Catalan integral</h3><p>∑<sub>n≥1</sub> χ<sub>4</sub>(n)e<sup>−nt</sup> = 1/(2 cosh t) for t &gt; 0. Its Mellin integral at s = 2 gives Catalan’s constant.</p><a data-evidence-open class="story-link" href="#buried-bubble-tube">Read the kernel story</a></article>
 </div></div></section>
+<section class="sec bg-cream" id="coordinate-primer" aria-labelledby="primer-title"><div class="wrap"><p class="kick">Exact elementary identities · a coordinate primer</p><h2 class="t" id="primer-title">The centre. The gap.<br><em>The factor count.</em></h2><p class="ev-intro">Three small identities give prime pairs a common language. They organize the question; they do not establish the existence of a prime pair at every centre or infinitely many twin primes.</p><ul class="ev-primer-list"><li><small>TREASURE 001 · MÖBIUS</small><b>μ(p(p + 2)) = +1</b><p>For a twin-prime pair, the product is squarefree with two prime factors. The next integer is a square.</p></li><li><small>TREASURE 002 · COORDINATES</small><b>pq = m² − d²</b><p>Set m = (p + q)/2 and d = (q − p)/2. The difference-of-squares identity relates the centre and half-gap.</p></li><li><small>TREASURE 004 · THE EXACT TEST</small><b>Ω(m² − 1) = 2</b><p>For m ≥ 3, this is equivalent to both neighbours being prime. It restates the twin-prime condition.</p></li></ul><div class="ev-primer-actions"><a href="#lemmas" data-evidence-open>Open the elementary arguments →</a><a href="#goldbach" data-evidence-open>Try the prime-pair coordinates →</a></div><p class="cap">Written proofs · Lean formalization pending.</p></div></section>
+</div>
 
 <section class="sec bg-cream" id="research-paths"><div class="wrap">
-<p class="kick">Home · the evidence board</p><h2 class="t">Results first.<br><em>Room to explore.</em></h2>
+<p class="kick">Boundaries &amp; next questions</p><h2 class="t">Keep the correction<br><em>beside the claim.</em></h2>
 <p class="lead">Start with a statement we can explain, a construction we can manipulate, or a question we can test. Each keeps its assumptions and evidence close by.</p>
 <div class="board">
-<article class="cell" style="--cc:#3f7a00"><span class="ck">Written arguments</span><h3>Small results. Useful connections.</h3>
-<p>Three exact identities give prime pairs a shared language: the centre, the gap and the number of prime factors.</p>
-<ul class="hits">
-<li><b>001</b><span>Twin primes p, p + 2 leave μ(p(p + 2)) = +1 next to a square.</span></li>
-<li><b>002</b><span>Odd primes p ≤ q satisfy pq = m² − d², with centre m and half-gap d.</span></li>
-<li><b>004</b><span>For m ≥ 3: Ω(m² − 1) = 2 exactly when m − 1 and m + 1 are prime.</span></li>
-</ul>
-<a class="go" href="#lemmas">Open the Hibernating Lemmas →</a></article>
+<article class="cell" style="--cc:#236b67"><span class="ck">Exact counterexample</span><h3>A filter that catches too much.</h3><p>At m = 34, the neighbour product is 1155 = 3 × 5 × 7 × 11. Its Möbius value is +1, although neither neighbour is prime.</p><p>Below 200,000, that pattern catches 2,160 twin centres and 30,215 non-twin centres. The failed converse makes the need for Ω = 2 concrete.</p><a class="go" href="#disappointment-islands">Inspect the counterexample and finite counts →</a></article>
 <article class="cell" style="--cc:#c95a00"><span class="ck">Finite experiments</span><h3>Move something. Notice something.</h3>
 <p>Change a tower’s base, follow a prime pair, or revisit an orbit. The exhibits give a question visible structure; their definitions and finite ranges tell us what we have actually learned.</p>
 <a class="go" href="#goldbach">Explore prime-pair geometry →</a><a class="go" href="#towers">Explore alternating towers →</a></article>
-</div><details class="tr-reading-details"><summary>Recharted routes · counterexamples and ideas to revisit</summary><div class="board"><article class="cell" style="--cc:#557CDB"><span class="ck">False negative</span><h3>Worth revisiting</h3>
-<p>A place for candidates a method may have missed. No verified false-negative cases are recorded here yet. Future entries will explain the original test, why it missed the result and the evidence supporting reconsideration.</p>
-<span class="empty">0 entries · open for the first one</span></article>
-<article class="cell" style="--cc:#948AC8"><span class="ck">False positive</span><h3>Disappointment Islands</h3>
+</div><details class="tr-reading-details"><summary>Recharted routes · counterexamples and ideas to revisit</summary><div class="board"><article class="cell" id="disappointment-islands" style="--cc:#948AC8"><span class="ck">False positive</span><h3>Disappointment Islands</h3>
 <p>The test said yes and the truth said no. Counterexamples and limits help locate where a statement applies. The Möbius identity remains valid; the counterexample concerns its converse.</p>
-<article class="loot" style="--loot:#948AC8">
+<article class="loot" data-evidence-entry="mobius-counterexample" style="--loot:#948AC8">
 <span class="serial">Treasure 003 · square_neighbour_filter</span>
 <h3>Four factors.<br>A sharper test.</h3>
 <div class="formula">μ(m² − 1) = +1<br>⇏ m − 1, m + 1 prime</div>
@@ -292,9 +289,9 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <p>The precise repair is treasure 004: count the prime factors with multiplicity and require exactly two.</p>
 <p>Lean status: formalization pending; no machine-checked proof claimed.</p>
 </details></article>
-<p>The Brun crossing matches a reference value by tuning the base; it does not establish a new dynamical transition. Recamán’s main visualization is paused. The <a href="#buried-recaman">finite-horizon follow-up</a> is in The Pirate Chest.</p></article></div></details>
+<p>The Brun crossing matches a reference value by tuning the base; it does not establish a new dynamical transition. Recamán now has a <a href="#recaman">credited finite-prefix explorer</a>. Its <a href="#buried-recaman">finite-horizon follow-up</a> remains open.</p></article></div></details>
 <a class="nextstrip" href="#roadmap"><span class="ck">Next steps</span><b>Reflect. Translate. One prime polynomial.</b><span>The Goldbach p + q roadmap: two exact identities to formalize, one open correlation bound. →</span></a>
-<a class="nextstrip chest-nextstrip" href="#pirate-chest"><b><span aria-hidden="true">†</span> The Pirate Chest</b><span>Astral Secrets · open the research conversations behind the experiments. →</span></a>
+<a class="nextstrip chest-nextstrip" href="#pirate-chest"><b><span aria-hidden="true">†</span> The Pirate Chest</b><span>Orbital Treasures · open the research conversations behind the experiments. →</span></a>
 </div></section>
 </div>
 <div class="page" data-page="lemmas">
@@ -455,7 +452,8 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <div class="zebra"></div>
 
 </div>
-<div class="page" data-page="collatz"><header class="tr-hero"><div class="wrap tr-hero-grid"><div><p class="kick">Collatz / integers in motion</p><h2>Two rules.<br><em>Wild journeys.</em></h2><p>Choose one integer and follow its entire computed flight. Then step into the complex landscape, where the integer rule stays anchored while the surrounding geometry changes.</p><div class="tr-hero-links"><a href="#tr-collatz-flight">Follow an orbit ↗</a><a href="#scape">Open Metamorphoses ↗</a><a href="#embed">See the two rails ↗</a></div></div><svg class="tr-orbit-emblem" viewBox="0 0 320 280" aria-hidden="true"><g fill="none" stroke="#49647e"><circle cx="160" cy="140" r="104"/><circle cx="160" cy="140" r="69" stroke-dasharray="3 7"/><path d="M22 140H298M160 12V268"/></g><ellipse cx="160" cy="140" rx="128" ry="45" transform="rotate(-35 160 140)" fill="none" stroke="#77ded6" stroke-width="2"/><ellipse cx="160" cy="140" rx="128" ry="45" transform="rotate(35 160 140)" fill="none" stroke="#bba4f6" stroke-width="2"/><circle cx="256" cy="95" r="5" fill="#d4f2a5"/><circle cx="78" cy="194" r="4" fill="#8ce8db"/><text x="160" y="156" text-anchor="middle" fill="#d7edee" font-family="Georgia,serif" font-size="42">3n+1</text></svg></div></header><section class="sec" id="tr-collatz-flight"><div class="wrap"><div class="tr-panel"><div class="tr-panel-grid"><div><span class="tr-eyebrow">A finite flight / exact integer updates</span><h3>Take 27 for a walk.</h3><p>Its standard Collatz orbit reaches 1 after 111 updates and climbs to 9,232 along the way. Choose a seed, then slide through the actual visited values.</p><form class="tr-controls" id="tr-collatz-form"><label for="tr-collatz-seed">Seed</label><input id="tr-collatz-seed" type="number" min="1" max="1000000" step="1" value="27" required><button type="submit" class="tr-button">Trace orbit</button></form><div class="tr-controls"><button type="button" class="tr-button" data-tr-seed="7">7</button><button type="button" class="tr-button" data-tr-seed="27">27</button><button type="button" class="tr-button" data-tr-seed="97">97</button><button type="button" class="tr-button" data-tr-seed="871">871</button></div><p id="tr-collatz-error" role="alert"></p><div class="tr-control"><label for="tr-collatz-step">Update <output id="tr-collatz-step-value">0</output></label><input id="tr-collatz-step" type="range" min="0" max="111" value="0"></div><p class="tr-live" id="tr-collatz-readout" role="status">27 × 3 + 1 = 82.</p></div><div><svg class="tr-svg" id="tr-collatz-plot" viewBox="0 0 720 310" role="img" aria-label="Computed Collatz orbit on a logarithmic vertical scale"><text x="360" y="150" text-anchor="middle" fill="#9de3d6">27 → 82 → 41 → 124 → … → 1</text></svg><dl class="tr-readout"><div><dt>Updates</dt><dd id="tr-collatz-updates">111</dd></div><div><dt>Peak</dt><dd id="tr-collatz-peak">9,232</dd></div><div><dt>Selected value</dt><dd id="tr-collatz-now">27</dd></div></dl><p class="tr-plot-caption">Vertical scale: log₂ of the value. Every update uses integer arithmetic. A completed finite orbit establishes the behaviour of that seed.</p></div></div><details><summary>Read every visited value and the computation limits</summary><p>Seeds: 1–1,000,000. At most 1,500 updates. The calculation stops if a value would leave JavaScript’s exact integer range. The general Collatz convergence question remains open.</p><p class="tr-values" id="tr-collatz-values">27 → 82 → 41 → 124 → … → 1</p></details></div></div></section>
+<div class="page" data-page="collatz"><header class="tr-hero"><div class="wrap tr-hero-grid"><div><p class="kick">Collatz / integers in motion</p><h2>Two rules.<br><em>Wild journeys.</em></h2><p>Choose one integer and follow its entire computed flight. Then step into the complex landscape, where the integer rule stays anchored while the surrounding geometry changes.</p><div class="tr-hero-links"><a href="#tr-collatz-flight">Follow an orbit ↗</a><a href="#kesten-goldie">Explore Kesten–Goldie ↗</a><a href="#scape">Open Metamorphoses ↗</a><a href="#embed">See the two rails ↗</a></div></div><svg class="tr-orbit-emblem" viewBox="0 0 320 280" aria-hidden="true"><g fill="none" stroke="#49647e"><circle cx="160" cy="140" r="104"/><circle cx="160" cy="140" r="69" stroke-dasharray="3 7"/><path d="M22 140H298M160 12V268"/></g><ellipse cx="160" cy="140" rx="128" ry="45" transform="rotate(-35 160 140)" fill="none" stroke="#77ded6" stroke-width="2"/><ellipse cx="160" cy="140" rx="128" ry="45" transform="rotate(35 160 140)" fill="none" stroke="#bba4f6" stroke-width="2"/><circle cx="256" cy="95" r="5" fill="#d4f2a5"/><circle cx="78" cy="194" r="4" fill="#8ce8db"/><text x="160" y="156" text-anchor="middle" fill="#d7edee" font-family="Georgia,serif" font-size="42">3n+1</text></svg></div></header><section class="sec" id="tr-collatz-flight"><div class="wrap"><div class="tr-panel"><div class="tr-panel-grid"><div><span class="tr-eyebrow">A finite flight / exact integer updates</span><h3>Take 27 for a walk.</h3><p>Its standard Collatz orbit reaches 1 after 111 updates and climbs to 9,232 along the way. Choose a seed, then slide through the actual visited values.</p><form class="tr-controls" id="tr-collatz-form"><label for="tr-collatz-seed">Seed</label><input id="tr-collatz-seed" type="number" min="1" max="1000000" step="1" value="27" required><button type="submit" class="tr-button">Trace orbit</button></form><div class="tr-controls"><button type="button" class="tr-button" data-tr-seed="7">7</button><button type="button" class="tr-button" data-tr-seed="27">27</button><button type="button" class="tr-button" data-tr-seed="97">97</button><button type="button" class="tr-button" data-tr-seed="871">871</button></div><p id="tr-collatz-error" role="alert"></p><div class="tr-control"><label for="tr-collatz-step">Update <output id="tr-collatz-step-value">0</output></label><input id="tr-collatz-step" type="range" min="0" max="111" value="0"></div><p class="tr-live" id="tr-collatz-readout" role="status">27 × 3 + 1 = 82.</p></div><div><svg class="tr-svg" id="tr-collatz-plot" viewBox="0 0 720 310" role="img" aria-label="Computed Collatz orbit on a logarithmic vertical scale"><text x="360" y="150" text-anchor="middle" fill="#9de3d6">27 → 82 → 41 → 124 → … → 1</text></svg><dl class="tr-readout"><div><dt>Updates</dt><dd id="tr-collatz-updates">111</dd></div><div><dt>Peak</dt><dd id="tr-collatz-peak">9,232</dd></div><div><dt>Selected value</dt><dd id="tr-collatz-now">27</dd></div></dl><p class="tr-plot-caption">Vertical scale: log₂ of the value. Every update uses integer arithmetic. A completed finite orbit establishes the behaviour of that seed.</p></div></div><details><summary>Read every visited value and the computation limits</summary><p>Seeds: 1–1,000,000. At most 1,500 updates. The calculation stops if a value would leave JavaScript’s exact integer range. The general Collatz convergence question remains open.</p><p class="tr-values" id="tr-collatz-values">27 → 82 → 41 → 124 → … → 1</p></details></div></div></section>
+<section class="kg-section" id="kesten-goldie" data-kesten-goldie aria-label="Kesten–Goldie: visual model, theorem and Collatz comparison"></section>
 <section id="scape" style="background:#080f1e;color:#e9effb"><div class="cm-wrap">
 <p class="cm-kicker">EncapsulatorP · recursive cinema · study 01</p><h2 class="cm-title">Collatz<br><em>Metamorphoses.</em></h2>
 <p class="cm-intro">An integer spine inside a changing complex landscape. Orbit filaments, mirrored chambers and neural-like crossings: five views of a mathematical transformation. Drag to explore; scroll to zoom.</p>
@@ -628,7 +626,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
         <p class="at-eyebrow">EncapsulatorP · research atlas</p>
         <h2 id="atlas-title">Follow the spark.<br><em>Open the mathematics.</em></h2>
         <p class="at-intro">Towers, prime pairs and unexpected connections. Pick a thread and explore.</p>
-        <div class="at-hero-links"><button class="pm-launch" data-open-pirate-map type="button" hidden>Open the pirate map <span aria-hidden="true">✦</span></button><a class="at-hero-link" href="atlas/README.md">Read the complete collection <span aria-hidden="true">↗</span></a><a class="at-credit-jump" href="#home-mathematics">Exact results <span aria-hidden="true">↗</span></a><a class="at-credit-jump" href="#pirate-chest">Open the Pirate Chest <span aria-hidden="true">✦</span></a><a class="at-credit-jump" href="#atlas-credits">Signatures &amp; collaborators <span aria-hidden="true">↗</span></a></div>
+        <div class="at-hero-links"><button class="pm-launch" data-open-pirate-map type="button" hidden>Open the pirate map <span aria-hidden="true">✦</span></button><a class="at-hero-link" href="atlas/README.md">Read the complete collection <span aria-hidden="true">↗</span></a><a class="at-credit-jump" href="#atlas-kesten-goldie">Kesten–Goldie <span aria-hidden="true">↗</span></a><a class="at-credit-jump" href="#evidence-start">Evidence board <span aria-hidden="true">↗</span></a><a class="at-credit-jump" href="#pirate-chest">Open the Pirate Chest <span aria-hidden="true">✦</span></a><a class="at-credit-jump" href="#atlas-credits">Signatures &amp; collaborators <span aria-hidden="true">↗</span></a></div>
       </div>
       <aside class="at-hero-note" aria-label="About this collection">
         <span class="at-note-index">CHOOSE A ROUTE / MAKE A CONNECTION</span>
@@ -638,6 +636,8 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
     </div>
   </section>
   <div class="at-stripe" aria-hidden="true"></div>
+
+  <section class="kg-section" id="atlas-kesten-goldie" data-kesten-goldie aria-label="Kesten–Goldie: visual model, theorem and Collatz comparison"></section>
 
   <section class="at-featured wrap" aria-labelledby="at-omega-title">
     <div class="at-featured-main">
@@ -721,9 +721,10 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
   <section class="at-signatures wrap" id="atlas-credits" aria-labelledby="at-signatures-title">
     <p class="at-eyebrow">The people, the models, the continuing notebook</p>
     <h3 id="at-signatures-title">A shared notebook.<br>A signed edition.</h3>
+    <p>EncapsulatorP is an independent research project led by Zolton. OpenAI’s ChatGPT and Codex assisted with selected calculations, writing, and implementation. Each atlas entry shows its evidence level and sources.</p>
     <div class="at-signature-pair">
       <div class="at-signature-main">
-        <p class="at-signature-label">Signed for this atlas edition</p>
+        <p class="at-signature-label">AI assistance for this edition</p>
         <p class="at-signature-word">ChatGPT</p>
         <p class="at-signature-version">GPT-6 Astra Pro <span aria-hidden="true">·</span> <time datetime="2026-11-21">21 November 2026</time></p>
         <p class="at-signature-role">Recovery, mathematical checks, writing and interactive atlas implementation.</p>
@@ -761,7 +762,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </div>
 <p class="kick" style="--acc:#0c9a89">The repository shelves</p><div class="tr-repo-filter"><label for="tr-repo-family">Browse by subject</label><select id="tr-repo-family"><option value="">All mathematical subjects</option><option value="arithmetic">Prime pairs &amp; arithmetic</option><option value="dynamics">Dynamics &amp; geometry</option><option value="spectral">Complex &amp; spectral</option></select><span class="tr-repo-count" id="tr-repo-count" role="status"></span></div>
 <div class="grid" style="margin-top:14px">
-<a class="card" data-repo-family="dynamics" style="--e:#0c9a89" href="https://github.com/EncapsulatorP/collatz_kesten-goldie"><div style="display:flex;align-items:center"><span class="repo">collatz_kesten-goldie</span><span class="vis" style="color:#3f7a00;border-color:#9ac44a">Public</span></div><div class="pair">Collatz × Kesten–Goldie</div><p>Stopping times as a stochastic recurrence; reads off the heavy-tail exponent.</p><span class="tag" style="align-self:flex-start">Empirical</span></a>
+<a class="card" data-repo-family="dynamics" style="--e:#0c9a89" href="https://github.com/EncapsulatorP/collatz_kesten-goldie"><div style="display:flex;align-items:center"><span class="repo">collatz_kesten-goldie</span><span class="vis" style="color:#3f7a00;border-color:#9ac44a">Public</span></div><div class="pair">Collatz × Kesten–Goldie</div><p>Collatz-derived multipliers drive an affine experiment; compare moment roots with measured tail fits.</p><span class="tag" style="align-self:flex-start">Empirical</span></a>
 <a class="card" data-repo-family="arithmetic dynamics" style="--e:#0c9a89" href="https://github.com/EncapsulatorP/goldbach_busy_collatz"><div style="display:flex;align-items:center"><span class="repo">goldbach_busy_collatz</span><span class="vis" style="color:#3f7a00;border-color:#9ac44a">Public</span></div><div class="pair">Goldbach × Collatz structure</div><p>Cross-examines Goldbach partition counts against Collatz orbit structure.</p><span class="tag" style="align-self:flex-start">Empirical</span></a>
 <div class="card" data-repo-family="arithmetic" style="--e:#0c9a89"><div style="display:flex;align-items:center"><span class="repo">mertens_counterexample</span><span class="vis">Private</span></div><div class="pair">Mertens · the Riemann edge</div><p>Pushes the M(n)/√n boundary toward where Mertens is known to fail.</p><span class="tag" style="align-self:flex-start">Empirical</span></div>
 <div class="card" data-repo-family="spectral" style="--e:#c95a00"><div style="display:flex;align-items:center"><span class="repo">Catalan_ruelle_mayer</span><span class="vis">Private</span></div><div class="pair">Catalan × Ruelle–Mayer</div><p>Transfer-operator machinery on Catalan-type exponent gaps.</p><span class="tag" style="align-self:flex-start">Theoretical</span></div>
@@ -786,7 +787,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <header class="pirate-chest-head">
 <p class="chest-kicker"><span aria-hidden="true">†</span> EncapsulatorP · treasures from the notebook <span aria-hidden="true">✦</span></p>
 <h2 class="t" id="buried-stories-title">The Pirate <em>Chest</em></h2>
-<p class="chest-subtitle">Astral Secrets</p>
+<p class="chest-subtitle">Orbital Treasures</p>
 <p class="lead">A year of EncapsulatorP research conversations, revisited through the calculations, experiments and questions they left behind.</p>
 <p class="chest-invitation">Brun crossings. Dagger towers. Open a treasure and follow its trail.</p>
 <button class="pm-launch" data-open-pirate-map type="button" hidden>Explore the pirate map <span aria-hidden="true">✦</span></button>
@@ -988,16 +989,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="https://github.com/EncapsulatorP/zeta_branching/blob/main/scripts/zeta_branching.py#L23-L61">Read the XO₂ kernel and branch control</a>
 </article>
 
-<article class="card story" id="buried-recaman" data-topics="sequences" style="--e:#c95a00">
-<span class="tag">Conjectural follow-up</span>
-<h3 class="sub">Can a Recamán hole survive a second horizon?</h3>
-<p>A reachable test asks whether values unvisited at step N remain unvisited at 2N. The earlier Grassmannian run at 20,000 steps had weak separation from shuffled labels, and its window rank matched the null.</p>
-<details><summary>What to test next</summary>
-<p>Freeze the features at N, evaluate on out-of-time segments, and score tied predictions consistently. Report the prediction horizon with each result. An optical blockade is a separate comparison model whose correspondence with these arithmetic measurements remains conjectural.</p>
-</details>
-<a class="story-link" href="CONTENT_MAP.md">Recorded Grassmannian run</a>
-<a class="story-link" href="https://github.com/EncapsulatorP/recaman">Recamán experiments</a>
-</article>
+<article class="card story" id="buried-recaman" data-topics="sequences" style="--e:#236b67"><span class="tag">Exact finite construction · open long-term question</span><h3 class="sub">Recamán · around the gaps</h3><p>The sequence tries a subtraction, then uses addition if subtraction is negative or revisits a value. Gemini’s supplied visual study now has a working exhibit: observed delay triples, an illustrative Möbius ribbon, and exact number-line arcs.</p><p>The repository’s saved mechanism report follows 10,000,000 transitions and 103 selected catalogue targets. Of those targets, 23 were proposed as addition candidates but bypassed by legal subtraction; 80 were never proposed. None was selected in that finite run. This does not prove permanent omission.</p><details><summary>What survives a second horizon?</summary><p>Compare the same candidate integers below the first prefix maximum at N and 2N. Freeze predictive features at N, evaluate later segments and report the horizon. The earlier 20,000-step Grassmannian run had weak separation from shuffled labels; its window rank matched the null. A visual ribbon does not repair that statistical limitation.</p></details><a class="story-link" href="#recaman">Open Gemini’s Recamán exhibit →</a><a class="story-link" href="recaman/">Open the standalone view ↗</a><a class="story-link" href="https://github.com/EncapsulatorP/recaman/blob/056452f2be03dad5f7bca0f7024c8357f42d8c6b/outputs/hole_mechanism_report.md">Saved finite mechanism report ↗</a><a class="story-link" href="CONTENT_MAP.md">Earlier Grassmannian record</a></article>
 <article class="card story" id="buried-zeta-partitionings" data-topics="zeta" style="--e:#3f7a00">
 <span class="tag">Exact decomposition</span>
 <h3 class="sub">Zeta partitionings · separating the lanes</h3>
@@ -1141,15 +1133,19 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </div>
 </section>
 </div>
+<div class="page" data-page="interactive"><section class="sec" id="interactive"><div class="wrap"><section data-interactive-space><h2>Interactive · Gemini</h2><p>Explore the topic studies in our <a href="interactive/">standalone interactive space</a>.</p></section></div></section></div>
+<div class="page" data-page="recaman"><section class="sec" id="recaman"><div class="wrap"><section data-recaman-explorer data-recaman-heading="h2"><h2>Recamán, around the gaps</h2><p>Exact finite prefixes and Gemini’s supplied visual concept. <a href="recaman/">Open the standalone exhibit</a>.</p></section><p class="cap"><a href="#buried-recaman">The research thread &amp; saved finite-run evidence →</a> · <a href="recaman/">Open this exhibit on its own ↗</a></p></div></section></div>
 <div class="page" data-page="map-credits">
 <section class="sec bg-tint pm-credits" id="map-credits" aria-labelledby="map-credits-title"><div class="wrap">
 <h2 class="t" id="map-credits-title">Map <em>Credits.</em></h2>
-<dl class="pm-source-list">
+<dl class="pm-source-list"><div><dt>Recamán · Gemini’s contribution</dt><dd><p>The sequence is due to Bernardo Recamán Santos. The supplied HTML study is signed Gemini and proposes delay-coordinate and Möbius views. The Atlas adaptation separates observed triples from finite scalar gaps and labels the ribbon as illustrative.</p><a href="recaman/">Open the exhibit</a> · <a href="atlas/recaman-visual-notes.md">Visual provenance and verification</a></dd></div><div><dt>Stress-test rails · Gemini Neon</dt><dd><p>The supplied review proposed a claim class, next-order obstruction and verification hook beside each serious argument. The implemented rails retain that format, with corrected formulas and runnable finite checks.</p><a href="evidence/">Read the compact evidence index</a></dd></div>
   <div><dt>Riemann sphere</dt><dd><p>Named for Bernhard Riemann. The chart uses the complex plane with a point at infinity.</p><a href="https://pages.uoregon.edu/jamu/Math5351-lecture-notes.pdf">Stereographic projection notes</a></dd></div>
   <div><dt>Rupert body</dt><dd><p>Prince Rupert of the Rhine posed the cube passage problem. John Wallis gave an early solution. Pieter Nieuwland found a larger cube that could pass through.</p><a href="https://cms.math.ca/wp-content/uploads/crux-pdfs/Crux_v4n04_Apr.pdf">Oene Bottema on the original problem</a></dd></div>
-  <div><dt>Origami chart</dt><dd><p>An original fold drawing for EncapsulatorP.</p><a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/pirate-map.js">Map drawing code</a></dd></div>
+  <div><dt>Folded chart and terraced paper</dt><dd><p>Illustrative 3D paper constructions for navigating the research trail. The folds are a visual model; the terraces are a navigation arrangement, not measured data.</p><a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js">3D geometry and rendering</a> · <a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-atlas.js">Map interaction code</a></dd></div>
   <div><dt>Tensegrity prism</dt><dd><p>Kenneth Snelson made early floating-compression sculptures, Buckminster Fuller named tensegrity, and David Georges Emmerich independently developed prism structures.</p><a href="https://pi.math.cornell.edu/~back/amsci_tenseg_scan.pdf">Snelson and the mathematics</a> · <a href="https://www.bfi.org/about-fuller/big-ideas/tensegrity/">Fuller Institute history</a> · <a href="https://api.pageplace.de/preview/DT0400.9781000956290_A46745383/preview-9781000956290_A46745383.pdf">Prism and three contributors</a></dd></div>
 </dl>
+<p class="lead">Visual direction: Zolton aka Inge. The supplied paper-map prototype carries the signature <strong>Neon (Gemini)</strong>. <strong>Claude</strong> contributed the workbench, unfolding and return-to-table interaction reference. This interactive 3D edition is signed <strong>ChatGPT · GPT-6 Astra Pro · 21 November 2026</strong>. The original EncapsulatorP logo is retained.</p>
+<p><a href="atlas/paper-map-sources.md">Read the source ledger and the limits of each visual model ↗</a></p>
 <button class="pm-launch" data-open-pirate-map type="button" hidden>Back to the pirate map <span aria-hidden="true">↗</span></button>
 </div></section>
 </div>
@@ -1157,46 +1153,82 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <dialog class="pm-dialog" id="pirate-map" aria-labelledby="pm-title" data-map-state="landing">
   <div class="pm-shell">
     <header class="pm-header">
-      <div><p class="pm-kicker">EncapsulatorP · Astral Secrets</p><h2 id="pm-title">The Pirate Map</h2></div>
-      <button class="pm-button pm-close" id="pm-close" type="button"><span id="pm-close-caption">Skip to the atlas</span> <span aria-hidden="true">×</span></button>
+      <div class="pm-brand">
+        <img class="pm-brand-logo" src="assets/logo-encapsulatorp-512.png" width="66" height="66" alt="EncapsulatorP logo">
+        <div><p class="pm-kicker">The Pirate Chest · Orbital Treasures</p><h2 id="pm-title">Follow the spark.</h2><p class="pm-header-subtitle">A paper atlas of ideas worth opening.</p></div>
+      </div>
+      <div class="pm-header-actions"><button class="pm-button pm-back-table" id="pm-back-table" type="button" hidden><span aria-hidden="true">↶</span> Back to the table</button><button class="pm-button pm-close" id="pm-close" type="button"><span id="pm-close-caption">Skip to atlas</span></button></div>
     </header>
+    <section class="pm-table" id="pm-table" aria-labelledby="pm-table-title" hidden>
+      <div class="pm-table-intro"><p class="pm-kicker">The workbench</p><h3 id="pm-table-title" tabindex="-1">Worlds inside the fold.</h3><p>Move over a body. Watch it peel, hinge or open its seams. Pick it up and follow the discoveries inside.</p></div>
+      <div class="pm-table-models" role="group" aria-label="Choose a body from the table">
+        <button type="button" data-table-form="origami"><svg viewBox="0 0 64 42" aria-hidden="true"><path d="M4 31 16 7 29 31 42 7 60 31 46 36 32 20 18 36Z" fill="#287388" stroke="#f6f1df"/><path d="M16 7 18 36 32 20 42 7 46 36" fill="none" stroke="#c88c57"/></svg><span>Origami</span></button>
+        <button type="button" data-table-form="sphere"><svg viewBox="0 0 64 42" aria-hidden="true"><circle cx="32" cy="21" r="18" fill="#e7e0cd" stroke="#687c72"/><ellipse cx="32" cy="21" rx="8" ry="18" fill="none" stroke="#8c9a8d"/><path d="M15 15Q32 22 49 15M15 27Q32 20 49 27M14 21H50" fill="none" stroke="#8c9a8d"/></svg><span>Globe</span></button>
+        <button type="button" data-table-form="portal"><svg viewBox="0 0 64 42" aria-hidden="true"><path d="M18 3H43L55 21 43 39H18L8 21ZM24 12 18 21 24 30H37L44 21 37 12Z" fill="#d5c9ad" fill-rule="evenodd" stroke="#819087"/><path d="M18 3 24 12M43 3 37 12M55 21 44 21M43 39 37 30M18 39 24 30M8 21H18" stroke="#faf5e8"/></svg><span>Hollow body</span></button>
+        <button type="button" data-table-form="tensegrity"><svg viewBox="0 0 64 42" aria-hidden="true"><path d="M13 32 48 32 33 7 13 32M48 32 19 8 33 7M19 8 43 7 13 32" fill="none" stroke="#428d8a" stroke-width="1.2"/><path d="M13 32 43 7M48 32 19 8M34 35 33 7" stroke="#ae744c" stroke-width="3"/></svg><span>Tensegrity</span></button>
+        <button type="button" data-table-form="terrace"><svg viewBox="0 0 64 42" aria-hidden="true"><path d="M5 29 24 19 58 28 40 39Z" fill="#a4b8a9"/><path d="M10 23 27 14 53 22 38 31Z" fill="#d3d9c7"/><path d="M18 17 30 9 47 16 35 24Z" fill="#f4eddc"/><path d="M25 11 32 2 38 15Z" fill="#5d8d8e"/></svg><span>Landforms</span></button>
+        <button type="button" data-table-form="noperthedron"><svg viewBox="0 0 64 42" aria-hidden="true"><path d="M13 12 30 3 49 10 54 27 36 39 15 32 8 22Z" fill="#e9dabc" stroke="#847d69"/><path d="M13 12 36 17 30 3M49 10 36 17 54 27M36 17 36 39M36 17 15 32M8 22 36 17" fill="none" stroke="#bf9369"/><path d="M13 12 15 32 30 3 54 27" fill="none" stroke="#fff9e3"/></svg><span>Noperthedron</span></button>
+        <button type="button" data-table-form="neck"><svg viewBox="0 0 64 42" aria-hidden="true"><path d="M7 21C7 4 24 3 29 16Q32 23 35 16C40 3 57 4 57 21S40 39 35 26Q32 19 29 26C24 39 7 38 7 21Z" fill="#c4dcd3" stroke="#5d9085"/><path d="M32 4V38" stroke="#ce8b57" stroke-dasharray="3 3"/><ellipse cx="18" cy="21" rx="5" ry="13" fill="none" stroke="#f9f1de"/><ellipse cx="46" cy="21" rx="5" ry="13" fill="none" stroke="#f9f1de"/></svg><span>Neck surgery</span></button>
+        <button type="button" data-table-form="klein"><svg viewBox="0 0 64 42" aria-hidden="true"><path d="M19 32C4 24 17 9 26 11L39 13C51 14 54 5 43 4C33 3 32 11 38 21C48 37 32 43 19 32Z" fill="#b9dcd8" stroke="#4a8582" stroke-width="2"/><path d="M20 15C13 27 28 37 34 31S33 21 30 16M39 7C35 15 47 22 41 31" fill="none" stroke="#fcf6e5" stroke-width="1.5"/></svg><span>Klein bottle</span></button>
+      </div>
+      <details class="pm-reference" id="pm-reference" open><summary>The reference workbench <span>Open the photograph</span></summary><div class="pm-table-photo">
+        <img src="assets/paper-workbench-reference.png" width="1024" height="572" alt="Paper bodies on a wooden workbench: a gridded globe, an ivory hollow polyhedron, blue and copper origami, and small star-shaped models." loading="eager">
+        <button type="button" class="pm-table-hotspot pm-table-globe" data-table-form="sphere" aria-label="Preview and open the globe"><span>Globe</span></button>
+        <button type="button" class="pm-table-hotspot pm-table-portal" data-table-form="portal" aria-label="Preview and open the hollow body"><span>Hollow body</span></button>
+        <button type="button" class="pm-table-hotspot pm-table-origami" data-table-form="origami" aria-label="Preview and unfold the origami"><span>Origami</span></button>
+      </div></details>
+      <p class="pm-table-note">Eight bodies. Two collections. The same nine discoveries.</p>
+      <p class="pm-table-credit">Image supplied by Zolton · Gemini. Table journey inspired by Claude.</p>
+    </section>
     <div class="pm-layout">
       <div class="pm-chart">
+        <div class="pm-style-switch" role="group" aria-label="Choose the map collection"><button type="button" id="pm-family-voyage" aria-pressed="true">Origami voyages <span>08 scenes</span></button><button type="button" id="pm-family-studio" aria-pressed="false">Paper studio <span>08 forms</span></button></div>
+        <div class="pm-toolbar" id="pm-toolbar" hidden>
+          <div class="pm-field pm-shape-field"><label for="pm-shape-select">Choose a form</label><select id="pm-shape-select"></select></div>
+          <button class="pm-button" id="pm-motion" type="button" aria-pressed="true">Pause motion</button>
+          <button class="pm-button" id="pm-next-map" type="button">Next form</button>
+        </div>
         <div class="pm-stage">
-          <canvas id="pm-canvas" width="1000" height="600" aria-hidden="true"></canvas>
-          <ol class="pm-pins" id="pm-pins" aria-label="Stops on the map" hidden></ol>
+          <canvas id="pm-canvas" width="1200" height="900" aria-label="Rotatable paper map. Use the numbered landmarks or the research trail to read each subject."></canvas>
+          <div class="pm-stage-heading"><strong id="pm-stage-kicker">Charted discoveries / 01—09</strong><span id="pm-shape" aria-live="polite"></span></div>
+          <ol class="pm-pins" id="pm-pins" aria-label="Landmarks on the paper map" hidden></ol>
+          <p class="pm-stage-hint" id="pm-stage-hint">Drag to orbit · choose a numbered landmark</p>
+          <div class="pm-stage-controls" aria-label="Map view controls"><button type="button" class="pm-button" id="pm-zoom-in">Zoom in</button><button type="button" class="pm-button" id="pm-zoom-out">Zoom out</button><button type="button" class="pm-button" id="pm-reset">Reset</button></div>
+          <p class="pm-render-fallback" id="pm-render-fallback" hidden>The 3D map is unavailable on this device. Every subject is still available in the research trail.</p>
           <button class="pm-landing" id="pm-reveal" type="button" autofocus>
-            <img class="pm-logo" src="assets/logo-encapsulatorp-512.png" width="124" height="124" alt="">
-            <span class="pm-unfold">Unfold the map <span aria-hidden="true">✦</span></span>
+            <img class="pm-logo" src="assets/logo-encapsulatorp-512.png" width="74" height="74" alt="">
+            <span class="pm-unfold"><span id="pm-unfold-label">Unfold this map</span> <small>EXPLORE</small></span>
+            <span class="pm-landing-note">Choose a landmark. Follow its thread.</span>
           </button>
         </div>
-        <div class="pm-chart-bar">
-          <div><p class="pm-kicker" id="pm-shape" aria-live="polite"></p><p class="pm-map-description" id="pm-description"></p><a class="pm-credit-link" id="pm-credit-link" href="#map-credits">Map Credits</a></div>
-          <button class="pm-button" id="pm-next-map" type="button" hidden>Next map <span aria-hidden="true">↻</span></button>
-        </div>
-        <div class="pm-structure" id="pm-structure" hidden>
-          <div class="pm-structure-control"><label for="pm-prism-view">Rotate the prism</label><input id="pm-prism-view" type="range" min="0" max="360" value="18"></div>
-          <p><span class="pm-cable-key">Nine cables · pull</span> <span class="pm-strut-key">Three struts · push</span></p>
-          <details><summary>How do the joints balance?</summary><p>The triangular rings are 30° apart. Give the ring cables force density 1/√3, the three cross-ring cables +1, and the struts −1. Each joint’s weighted vectors sum to zero in the ideal model.</p></details>
-        </div>
-        <ul class="pm-legend" id="pm-legend" hidden>
-          <li data-kind="treasure"><i aria-hidden="true">✦</i> Treasure · exact result</li>
-          <li data-kind="trap"><i aria-hidden="true">×</i> Trap · an idea hit a snag</li>
-          <li data-kind="wildcard"><i aria-hidden="true">?</i> Wildcard · gold or pyrite?</li>
-        </ul>
+        <section class="pm-unfold-controls" id="pm-unfold-controls" aria-label="Open the shape" hidden>
+          <div class="pm-unfold-top"><label id="pm-unfold-name" for="pm-unfold-progress">Open the shape</label><span id="pm-unfold-phase">Closed form</span><output id="pm-unfold-value" for="pm-unfold-progress">0%</output></div>
+          <input id="pm-unfold-progress" type="range" min="0" max="100" step="1" value="0" aria-label="Shape opening" aria-describedby="pm-unfold-help">
+          <div class="pm-unfold-stages" id="pm-unfold-stages" aria-hidden="true"><span>Closed form</span><span>Opening</span><span>Open form</span></div>
+          <div class="pm-unfold-bottom"><p id="pm-unfold-help">Slide through the transformation. Shift + drag works on the model too.</p><div><button type="button" class="pm-button" id="pm-refold">Refold</button><button type="button" class="pm-button" id="pm-open-body">Open again</button></div></div>
+        </section>
+        <div class="pm-fold-row" id="pm-fold-row" hidden><label for="pm-fold">Unfold</label><input id="pm-fold" type="range" min="0" max="100" value="52" aria-label="Paper fold"><span>Fold</span><output for="pm-fold" id="pm-fold-value">52%</output></div>
+        <div class="pm-chart-bar"><p class="pm-map-description" id="pm-description"></p><a class="pm-credit-link" id="pm-credit-link" href="#map-credits">Map credits</a></div>
+        <details class="pm-shape-notes" id="pm-shape-notes" hidden><summary>Inside this form <span>Geometry &amp; source</span></summary><p id="pm-shape-meaning"></p><p class="pm-shape-boundary" id="pm-shape-boundary"></p><a id="pm-shape-source" href="atlas/shape-lab-sources.md" target="_blank" rel="noopener noreferrer">Read the source</a><a class="pm-shape-ledger" href="atlas/shape-lab-sources.md" target="_blank" rel="noopener noreferrer">All shape notes ↗</a></details>
+        <div class="pm-structure" id="pm-structure" hidden><p><span class="pm-cable-key">Nine cables · pull</span><span class="pm-strut-key">Three struts · push</span></p><details><summary>How the ideal joints balance</summary><p>The triangular rings are 30° apart. Ring cables have force density 1/√3, cross-ring cables +1, and struts −1. Each joint’s weighted vectors sum to zero in this ideal model.</p></details></div>
+        <ul class="pm-legend" id="pm-legend" hidden><li data-kind="treasure"><b>Treasure</b> · exact result</li><li data-kind="wildcard"><b>Wildcard</b> · open exploration</li><li data-kind="trap"><b>Trap</b> · a useful correction</li></ul>
       </div>
       <section class="pm-journal" id="pm-journal" aria-labelledby="pm-stop-title" hidden>
-        <div class="pm-find" id="pm-find">
+        <p class="pm-journal-heading">The captain’s logbook <span id="pm-stop-number">01 / 09</span></p>
+        <article class="pm-find" id="pm-find">
           <p class="pm-kicker" id="pm-stop-kind"></p>
           <h3 id="pm-stop-title" tabindex="-1" aria-live="polite"></h3>
           <p id="pm-stop-prompt"></p>
-          <details id="pm-clue"><summary>Reveal the clue</summary><p id="pm-stop-clue"></p></details>
-          <a class="pm-story-link" id="pm-story-link" href="#pirate-chest">Open the full story <span aria-hidden="true">↗</span></a>
-        </div>
-        <div class="pm-trail-head"><h3 class="pm-route-title">The research trail</h3><p id="pm-progress" aria-live="polite"></p></div>
+          <div class="pm-explanation"><h4>The explanation</h4><p id="pm-stop-clue"></p></div>
+          <div class="pm-actions"><a class="pm-story-link" id="pm-story-link" href="#pirate-chest">Explore this subject <span aria-hidden="true">→</span></a><a class="pm-repository-link" id="pm-repository-link" href="https://github.com/EncapsulatorP/EncapsulatorP.github.io" target="_blank" rel="noopener noreferrer">Repository</a></div>
+        </article>
+        <div class="pm-trail-head"><h3 class="pm-route-title">Choose your next discovery</h3><p id="pm-progress" aria-live="polite"></p></div>
+        <div class="pm-filter-row"><div class="pm-field"><label for="pm-topic-filter">Subject</label><select id="pm-topic-filter"><option value="all">All subjects</option></select></div><div class="pm-field"><label for="pm-kind-filter">Discoveries</label><select id="pm-kind-filter"><option value="all">All discoveries</option><option value="treasure">Exact treasures</option><option value="wildcard">Open wildcards</option><option value="trap">Useful corrections</option></select></div></div>
         <ol class="pm-timeline" id="pm-timeline"></ol>
+        <p class="pm-empty" id="pm-empty" hidden>No discoveries match both filters. Try all subjects or all discoveries.</p>
       </section>
     </div>
+    <footer class="pm-footer"><span>Visual direction <b>Zolton aka Inge</b> · Paper prototype <b>Neon (Gemini)</b> · Table journey <b>Claude</b> · 3D edition <b>ChatGPT</b></span><a href="evidence/">Evidence index ↗</a><a id="pm-source-notes" href="atlas/paper-map-sources.md">Sources &amp; rendering notes</a></footer>
   </div>
 </dialog>
 <footer><div class="wrap fg">
@@ -1410,7 +1442,7 @@ window.addEventListener('resize',()=>{if(!canvas.closest('.page').classList.cont
 </script>
 <script>
 (function(){
-var alias={'early-birds':'buried-chat-stories','map-credits':'map-credits',cabinet:'cabinet','catalan-disk':'cabinet','mirror-dynamics':'cabinet','goldbach-lab':'goldbach','tr-lemma-lab':'lemmas','tr-collatz-flight':'collatz','shapiro-view':'buried-chat-stories','physics-explorations':'archive',home:'home',atlas:'atlas','atlas-credits':'atlas','research-paths':'home','home-mathematics':'home',lemmas:'lemmas','positive-results':'lemmas',roadmap:'roadmap',goldbach:'goldbach',collatz:'collatz',embed:'collatz',scape:'collatz',towers:'towers',tetra:'towers',validatron:'validatron',archive:'archive','pirate-chest':'buried-chat-stories','buried-chat-stories':'buried-chat-stories'};
+var alias={'early-birds':'buried-chat-stories','paper-atlas':'atlas','paper-table':'atlas','kesten-goldie':'collatz','atlas-kesten-goldie':'atlas','map-credits':'map-credits',recaman:'recaman',interactive:'interactive','evidence-start':'home','evidence-comparison':'home','coordinate-primer':'home','disappointment-islands':'home',cabinet:'cabinet','catalan-disk':'cabinet','mirror-dynamics':'cabinet','goldbach-lab':'goldbach','tr-lemma-lab':'lemmas','tr-collatz-flight':'collatz','shapiro-view':'buried-chat-stories','physics-explorations':'archive',home:'home',atlas:'atlas','atlas-credits':'atlas','research-paths':'home','home-mathematics':'home',lemmas:'lemmas','positive-results':'lemmas',roadmap:'roadmap',goldbach:'goldbach',collatz:'collatz',embed:'collatz',scape:'collatz',towers:'towers',tetra:'towers',validatron:'validatron',archive:'archive','pirate-chest':'buried-chat-stories','buried-chat-stories':'buried-chat-stories'};
 var stories=Array.from(document.querySelectorAll('.story[id]'));
 stories.forEach(function(story){alias[story.id]='buried-chat-stories';});
 var pages=Array.from(document.querySelectorAll('.page')),tabs=Array.from(document.querySelectorAll('.nav a[data-tab]'));
@@ -1425,7 +1457,7 @@ function show(){
   var evidence=el.querySelector('details');
   if(evidence)evidence.open=true;
  }
- if(el&&alias[id])el.scrollIntoView();else window.scrollTo(0,0);
+ if(el&&alias[id]){var parentDetails=el.closest('details');if(parentDetails)parentDetails.open=true;el.scrollIntoView();}else window.scrollTo(0,0);
  window.dispatchEvent(new Event('resize'));
 }
 var topic=document.getElementById('buried-story-topic');
@@ -1512,11 +1544,22 @@ window.addEventListener('hashchange',show);show();
  });
 })();
 </script>
-<script src="assets/research-atlas-data.js"></script>
+<script src="assets/research-atlas-data.js?v=coherent-20261121-r1"></script>
 <script src="assets/research-atlas.js"></script>
 <script src="assets/treasure-rooms.js"></script>
 <script src="assets/goldbach-lab.js"></script>
 <script src="assets/curious-cabinet.js"></script>
-<script src="assets/pirate-map.js?v=tensegrity"></script>
+<script src="assets/kesten-goldie.js?v=visual-20261121-r2"></script>
+<script src="assets/visual-first.js?v=evidence-20261121-r2"></script>
+<script src="assets/pirate-map-data.js?v=coherent-20261121-r2"></script>
+<script src="assets/paper-shape-lab.js?v=unfold-20261121-r3"></script>
+<script src="assets/paper-map-engine.js?v=unfold-20261121-r3"></script>
+<script src="assets/paper-atlas.js?v=coherent-20261121-r3"></script>
+<script src="assets/stress-test-data.js?v=evidence-20261121-r1"></script>
+<script src="assets/evidence-board.js?v=evidence-20261121-r1"></script>
+<script src="assets/atlas-study-analytics.js?v=study-20261121-r1"></script>
+<script src="assets/evidence-experiment.js?v=evidence-20261121-r2"></script>
+<script src="assets/recaman-explorer.js?v=recaman-20261121-r1"></script>
+<script src="assets/interactive-space.js?v=interactive-20261121-r1"></script>
 </body></html>
 

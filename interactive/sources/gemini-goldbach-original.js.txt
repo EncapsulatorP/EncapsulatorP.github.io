@@ -1,0 +1,206 @@
+
+/**
+ * Goldbach Mirror Symmetry Visualization
+ * Logic: Scans a radius 'r' from a center pole 'n'.
+ * If (n-r) and (n+r) are both prime, they form a Goldbach pair (2n).
+ */
+
+const isPrime = (num) => {
+    if (num <= 1) return false;
+    if (num <= 3) return true;
+    if (num % 2 === 0 || num % 3 === 0) return false;
+    for (let i = 5; i * i <= num; i += 6) {
+        if (num % i === 0 || num % (i + 2) === 0) return false;
+    }
+    return true;
+};
+
+// Initial state and UI setup
+const { state, ui } = WH.createApp({
+    title: "Goldbach Mirror Symmetry",
+    params: {
+        center_n: { value: 15, min: 10, max: 100, step: 1, label: "Center (n)" },
+        play: { type: 'play', value: false, label: "Animation" },
+        reset: { type: 'button', label: 'Reset', onClick: (s) => {
+            s.current_r = 0;
+            s.mirror_log = [];
+            s.play = false;
+        }}
+    },
+    editorial: {
+        hud: [
+            { label: "Current Radius (r)", value: "0" },
+            { label: "Mirror States Found", value: "0" }
+        ]
+    }
+});
+
+// Initialize internal tracking
+state.current_r = 0;
+state.mirror_log = [];
+
+// Subscribe to center changes to reset the scan
+state._subscribe('center_n', () => {
+    state.current_r = 0;
+    state.mirror_log = [];
+});
+
+// Update HUD when state changes
+state._subscribe('current_r', (r) => {
+    ui.setEditorial({
+        hud: [
+            { label: "Current Radius (r)", value: Math.floor(r).toString() },
+            { label: "Mirror States Found", value: state.mirror_log.length.toString() }
+        ]
+    });
+});
+
+// Split view into Canvas (Top) and Table (Bottom)
+const { vizTop, vizBottom } = ui.splitViz('65%');
+
+// Initialize the Data Table
+WH.initTable(vizBottom, ({ state }) => {
+    return {
+        data: state.mirror_log,
+        columns: [
+            { key: 'r', label: 'Radius (r)', width: '20%' },
+            { key: 'p1', label: 'n - r (Prime)', width: '25%' },
+            { key: 'p2', label: 'n + r (Prime)', width: '25%' },
+            { key: 'sum', label: 'Sum (2n)', width: '30%' }
+        ]
+    };
+});
+
+// Initialize Canvas Visualization
+WH.initCanvas(vizTop, ({ ctx, cx, cy, state, width, height }) => {
+    
+    // Configuration
+    const nodeRadius = 8;
+    const spacing = 18;
+    const scrollSpeed = 2.0; // Radius units per second
+    
+    ui.setLegend([
+        { label: 'Prime', color: '--chart-1' },
+        { label: 'Composite', color: '--surface-container-highest' },
+        { label: 'Mirror State', color: '--positive' }
+    ]);
+
+    return ({ dt, frameCount }) => {
+        const n = state.center_n;
+        
+        // 1. Update Physics / Animation
+        if (state.play) {
+            state.current_r += dt * scrollSpeed;
+            // Bound r within the possible range [0, n-1]
+            if (state.current_r >= n - 1) {
+                state.current_r = n - 1;
+                state.play = false;
+            }
+        }
+
+        const rInt = Math.floor(state.current_r);
+        const p1 = n - rInt;
+        const p2 = n + rInt;
+
+        // 2. Mirror Detection Logic (Check if we found a new pair at this integer radius)
+        if (isPrime(p1) && isPrime(p2)) {
+            const alreadyLogged = state.mirror_log.some(m => m.r === rInt);
+            if (!alreadyLogged) {
+                state.mirror_log.unshift({
+                    r: rInt,
+                    p1: p1,
+                    p2: p2,
+                    sum: p1 + p2
+                });
+            }
+        }
+
+        // 3. Drawing
+        const screenN = cx;
+        const screenY = cy + 20;
+
+        // Draw the number line background
+        ctx.strokeStyle = WH.getColor('--stroke-emphasis');
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(0, screenY);
+        ctx.lineTo(width, screenY);
+        ctx.stroke();
+
+        // Draw numbers/nodes
+        // We calculate which numbers to show based on width and spacing
+        const range = Math.ceil(cx / spacing) + 2;
+        const startNum = Math.max(1, n - range);
+        const endNum = n + range;
+
+        for (let i = startNum; i <= endNum; i++) {
+            const x = screenN + (i - n) * spacing;
+            const isP = isPrime(i);
+            const isCurrentMatch = (i === p1 || i === p2) && isPrime(p1) && isPrime(p2);
+            
+            // Draw Node
+            ctx.beginPath();
+            ctx.arc(x, screenY, isP ? nodeRadius : nodeRadius * 0.6, 0, Math.PI * 2);
+            
+            if (isCurrentMatch) {
+                ctx.fillStyle = WH.getColor('--positive');
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = WH.getColor('--positive');
+            } else if (isP) {
+                ctx.fillStyle = WH.getColor('--chart-1');
+                ctx.shadowBlur = 0;
+            } else {
+                ctx.fillStyle = WH.getColor('--surface-container-highest');
+                ctx.shadowBlur = 0;
+            }
+            ctx.fill();
+            ctx.shadowBlur = 0; // Reset
+
+            // Label the numbers
+            if (i === n || i % 5 === 0 || isCurrentMatch) {
+                ctx.font = i === n ? 'bold 12px sans-serif' : '10px sans-serif';
+                ctx.fillStyle = WH.getColor('--on-surface-default');
+                ctx.textAlign = 'center';
+                ctx.fillText(i.toString(), x, screenY + 25);
+            }
+        }
+
+        // Draw the Center Pole
+        ctx.setLineDash([5, 5]);
+        ctx.strokeStyle = WH.getColor('--on-surface-default');
+        ctx.beginPath();
+        ctx.moveTo(screenN, screenY - 60);
+        ctx.lineTo(screenN, screenY + 10);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillText('n = ' + n, screenN, screenY - 70);
+
+        // Draw the Scanning Radius r
+        const xLeft = screenN - state.current_r * spacing;
+        const xRight = screenN + state.current_r * spacing;
+
+        // Connection Arch
+        ctx.beginPath();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = (isPrime(p1) && isPrime(p2)) ? WH.getColor('--positive') : WH.getColor('--primary');
+        ctx.moveTo(xLeft, screenY);
+        ctx.bezierCurveTo(xLeft, screenY - 100, xRight, screenY - 100, xRight, screenY);
+        ctx.stroke();
+
+        // Draw the scan pointers
+        ctx.fillStyle = WH.getColor('--primary');
+        ctx.beginPath();
+        ctx.moveTo(xLeft, screenY - 5); ctx.lineTo(xLeft - 5, screenY - 15); ctx.lineTo(xLeft + 5, screenY - 15);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(xRight, screenY - 5); ctx.lineTo(xRight - 5, screenY - 15); ctx.lineTo(xRight + 5, screenY - 15);
+        ctx.fill();
+
+        // Tag the discovery
+        if (isPrime(p1) && isPrime(p2)) {
+            ctx.drawTag(`$${p1} + ${p2} = ${2*n}$`, screenN, screenY - 105);
+        } else {
+            ctx.drawTag(`r = ${rInt}`, screenN, screenY - 50);
+        }
+    };
+});
