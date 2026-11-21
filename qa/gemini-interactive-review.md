@@ -1,6 +1,6 @@
 # Gemini Interactive and map-minimum review
 
-Reviewed 21 November 2026.
+Reviewed 21 November 2026. This records the initial six-view edition. The [subsequent restoration review](gemini-restoration-review-20261121.md) covers the ten-view collection, recovered sources, live WebGL inspection and phone framing fixes.
 
 ## Published result
 
