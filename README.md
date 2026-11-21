@@ -19,6 +19,23 @@ Its visual entrance leads to working mathematical exhibits, exact structures,
 finite experiments and questions with a concrete next step. Open a thread for
 its definitions, argument, source trail and related ideas.
 
+## The living treasure rooms
+
+Goldbach and the Pirate Chest now sit beside Atlas Spark in the navigation.
+The other rooms have fresh entrances and working views of the mathematics:
+
+- [Goldbach's observatory](https://encapsulatorp.github.io/#goldbach): choose an even sum, inspect every unordered prime pair, and switch between centre arcs and the exact product curve.
+- [The Curious Cabinet](https://encapsulatorp.github.io/#cabinet): two selected views, Catalan's critical disk and C3.2Z's mirror/merge/split dynamics.
+- [Hibernating Lemmas](https://encapsulatorp.github.io/#lemmas): factor the neighbours of a square and see the exact twin-prime criterion at work.
+- [Collatz](https://encapsulatorp.github.io/#collatz): trace an integer flight before entering the complex Metamorphoses.
+- [The Pirate Chest](https://encapsulatorp.github.io/#pirate-chest): move around the Rudin–Shapiro energy circle, then open its written argument.
+- [Subject map and repositories](https://encapsulatorp.github.io/#archive): browse mathematics by subject, with a separate shelf explaining the scope of physics explorations.
+
+Atlas Spark's content and its own CSS/JavaScript are preserved. The collection
+still has 45 entries; the two Cabinet views deepen existing threads. See the
+[edition notes and checks](atlas/living-rooms.md) and
+[Cabinet formulas and provenance](atlas/cabinet-notes.md).
+
 ## Start with the strongest threads
 
 | Thread | What is available |
@@ -61,6 +78,7 @@ python3 atlas/reproduce.py
 python3 atlas/reproduce_experiments.py  # requires mpmath; recorded run used 1.3.0
 python3 lemmas/verify_lemmas.py
 python3 lemmas/verify_roadmap.py
+node atlas/verify_rooms.cjs
 ```
 
 The first command uses only the standard library. Integer checks are exact;
