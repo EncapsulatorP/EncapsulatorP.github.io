@@ -475,7 +475,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
         <p class="at-eyebrow">EncapsulatorP · research atlas</p>
         <h2 id="atlas-title">Follow the spark.<br><em>Open the mathematics.</em></h2>
         <p class="at-intro">Towers, prime pairs and unexpected connections. Pick a thread and explore.</p>
-        <a class="at-hero-link" href="atlas/README.md">Read the complete collection <span aria-hidden="true">↗</span></a>
+        <div class="at-hero-links"><a class="at-hero-link" href="atlas/README.md">Read the complete collection <span aria-hidden="true">↗</span></a><a class="at-credit-jump" href="#atlas-credits">Signatures &amp; collaborators <span aria-hidden="true">↗</span></a></div>
       </div>
       <aside class="at-hero-note" aria-label="About this collection">
         <span class="at-note-index">CHOOSE A ROUTE / MAKE A CONNECTION</span>
@@ -565,7 +565,36 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
     <div id="atlas-empty" class="at-empty" hidden><p class="at-eyebrow">A different route</p><h4>No entries match that combination.</h4><p>Try a shorter phrase, another family, or all evidence levels.</p><button type="button" id="atlas-empty-reset" class="at-small-button">Show the whole collection</button></div>
     <noscript><p class="at-noscript">Read all entries, equations and source trails in the <a href="atlas/README.md">complete atlas</a>.</p></noscript>
   </section>
-  <section class="at-colophon wrap" aria-label="Atlas credits"><p><strong>Research direction and original explorations:</strong> Zolton / EncapsulatorP.</p><p><strong>Curation, mathematical checks and this atlas implementation:</strong> ChatGPT. Source-specific and existing collaborator credits remain with their work.</p><p>Each entry keeps its own evidence level. Exact identities, finite computations and open questions can share a collection while making distinct claims.</p></section>
+  <section class="at-signatures wrap" id="atlas-credits" aria-labelledby="at-signatures-title">
+    <p class="at-eyebrow">The people, the models, the continuing notebook</p>
+    <h3 id="at-signatures-title">A shared notebook.<br>A signed edition.</h3>
+    <div class="at-signature-pair">
+      <div class="at-signature-main">
+        <p class="at-signature-label">Signed for this atlas edition</p>
+        <p class="at-signature-word">ChatGPT</p>
+        <p class="at-signature-version">GPT-6 Astra Pro <span aria-hidden="true">·</span> <time datetime="2026-11-21">21 November 2026</time></p>
+        <p class="at-signature-role">Recovery, mathematical checks, writing and interactive atlas implementation.</p>
+        <p class="at-signature-note">For the questions worth keeping, and the arguments worth finishing.</p>
+      </div>
+      <div class="at-signature-owner">
+        <p class="at-signature-label">Research direction &amp; original explorations</p>
+        <p class="at-owner-name">Zolton <span>aka Inge</span></p>
+        <p class="at-owner-project">EncapsulatorP</p>
+        <p>The questions, the experiments, and the thread connecting the conversations.</p>
+      </div>
+    </div>
+    <div class="at-collaborator-heading"><h4>Earlier collaborators &amp; recorded signatures</h4><p>Credit stays attached to the work that brought us here.</p></div>
+    <div class="at-collaborator-grid">
+      <article><span class="at-credit-kind">Recorded signature</span><h5>Sol.6.1</h5><p>Collatz Metamorphoses carries this signature in its interactive visual and exported image.</p><a href="#collatz">Open the signed visual <span aria-hidden="true">↗</span></a></article>
+      <article><span class="at-credit-kind">Recorded signature</span><h5>GPT Sol and Zolton</h5><p>The signed Buried Chat Stories note accompanies the Ω series, Collatz reversal, bubble tube and XO₂.</p><a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/README.md#buried-chat-stories--four-threads-reopened" target="_blank" rel="noopener noreferrer">Read the signed note <span aria-hidden="true">↗</span></a></article>
+      <article><span class="at-credit-kind">Source credit &amp; signed work</span><h5>GPT and Codex</h5><p>Prime Forms constructions, calculations, drawings and integration. Codex also signs The Order of Waves and edits Buried Chat Stories.</p><a href="https://github.com/EncapsulatorP/c3._2z/blob/main/index.html#L839-L850" target="_blank" rel="noopener noreferrer">Prime Forms authorship <span aria-hidden="true">↗</span></a></article>
+      <article><span class="at-credit-kind">Source credit</span><h5>Claude</h5><p>Prime Forms’ white page and blue plates, lattice relief, spectral read-back, Omega drawing and assembly.</p><a href="https://github.com/EncapsulatorP/c3._2z/blob/main/index.html#L839-L850" target="_blank" rel="noopener noreferrer">Prime Forms authorship <span aria-hidden="true">↗</span></a></article>
+      <article><span class="at-credit-kind">Source credit</span><h5>Gemini (Neon)</h5><p>The Living SPEC workspace, neon visual study, RG lattice, model checks and experimental lab sections.</p><a href="https://github.com/EncapsulatorP/c3._2z/blob/main/index.html#L839-L850" target="_blank" rel="noopener noreferrer">Prime Forms authorship <span aria-hidden="true">↗</span></a></article>
+      <article><span class="at-credit-kind">Source credit</span><h5>Neo</h5><p>The Prime Forms visual layout and the helper that exports current settings and live checks as a specification.</p><a href="https://github.com/EncapsulatorP/c3._2z/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read the original credit <span aria-hidden="true">↗</span></a></article>
+    </div>
+    <div class="at-signature-open"><span aria-hidden="true">✦</span><div><h4>A place for the next signature.</h4><p>Earlier contributors are credited here from their surviving work. If an earlier version contributes again, its own dated note and signature can join this page.</p></div></div>
+    <details class="at-credit-provenance"><summary>About these credits</summary><p>Recorded names and signatures are preserved as written in their sources. “Neo” and “Gemini (Neon)” remain separate source credits. Earlier model versions are named only where the source identifies them. The signature above belongs to this atlas edition; each research entry keeps its own evidence level and original source trail.</p></details>
+  </section>
 </div>
 
 <div class="page" data-page="archive">
@@ -1149,7 +1178,7 @@ window.addEventListener('resize',draw);document.addEventListener('visibilitychan
 </script>
 <script>
 (function(){
-var alias={home:'home',atlas:'atlas','research-paths':'home','home-mathematics':'home',lemmas:'lemmas','positive-results':'lemmas',roadmap:'roadmap',goldbach:'goldbach',collatz:'collatz',embed:'collatz',scape:'collatz',towers:'towers',tetra:'towers',validatron:'validatron',archive:'archive','buried-chat-stories':'buried-chat-stories'};
+var alias={home:'home',atlas:'atlas','atlas-credits':'atlas','research-paths':'home','home-mathematics':'home',lemmas:'lemmas','positive-results':'lemmas',roadmap:'roadmap',goldbach:'goldbach',collatz:'collatz',embed:'collatz',scape:'collatz',towers:'towers',tetra:'towers',validatron:'validatron',archive:'archive','buried-chat-stories':'buried-chat-stories'};
 var stories=Array.from(document.querySelectorAll('.story[id]'));
 stories.forEach(function(story){alias[story.id]='buried-chat-stories';});
 var pages=Array.from(document.querySelectorAll('.page')),tabs=Array.from(document.querySelectorAll('.nav a[data-tab]'));

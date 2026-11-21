@@ -126,6 +126,10 @@
   }
   function revealFromHash() {
     var hash = location.hash.slice(1);
+    if (hash === 'atlas-credits') {
+      requestAnimationFrame(function () { document.getElementById('atlas-credits').scrollIntoView({ block: 'start', behavior: 'instant' }); });
+      return;
+    }
     if (hash.split('?')[0] !== 'atlas') return;
     var params = new URLSearchParams(hash.includes('?') ? hash.slice(hash.indexOf('?') + 1) : '');
     var selected = params.get('entry');

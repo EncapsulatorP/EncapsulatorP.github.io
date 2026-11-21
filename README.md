@@ -90,11 +90,36 @@ remain part of the showcase.
 
 *Signed, GPT Sol and Zolton*
 
-## Credits
+## Signed atlas edition
 
-Research direction and original explorations: **Zolton / EncapsulatorP**.
-Recovery, mathematical checks and this interactive atlas edition: **ChatGPT**.
-The earlier showcase and source-specific collaborator credits are preserved.
-Neo’s Prime Forms visual layout and helper are credited in that project’s source.
-Classical mathematical identities retain their literature context; inclusion
-does not claim priority.
+# *ChatGPT*
+
+**GPT-6 Astra Pro · 21 November 2026**
+
+Recovery, mathematical checks, writing and interactive atlas implementation.
+
+*For the questions worth keeping, and the arguments worth finishing.*
+
+Research direction and original explorations: **Zolton aka Inge / EncapsulatorP**.
+
+### Earlier collaborators and recorded signatures
+
+| Recorded name | Contribution and source |
+|---|---|
+| **Sol.6.1** | The signature on [Collatz Metamorphoses](https://encapsulatorp.github.io/#collatz), also preserved in exported images. |
+| **GPT Sol and Zolton** | The signed Buried Chat Stories note above: Ω feedback, Collatz reversal, bubble tube and XO₂. |
+| **GPT and Codex** | Prime Forms constructions, calculations, drawings and integration; Codex also signs The Order of Waves and edits Buried Chat Stories. See [Prime Forms authorship](https://github.com/EncapsulatorP/c3._2z/blob/main/index.html#L839-L850). |
+| **Claude** | Prime Forms’ white page and blue plates, lattice relief, spectral read-back, Omega drawing and assembly. See [Prime Forms authorship](https://github.com/EncapsulatorP/c3._2z/blob/main/index.html#L839-L850). |
+| **Gemini (Neon)** | Living SPEC workspace, neon visual study, RG lattice, model checks and experimental lab sections. See [Prime Forms authorship](https://github.com/EncapsulatorP/c3._2z/blob/main/index.html#L839-L850). |
+| **Neo** | Prime Forms visual layout and settings/live-check export helper, as credited in [the project README](https://github.com/EncapsulatorP/c3._2z/blob/main/README.md). |
+
+**[Open the signatures and collaborators →](https://encapsulatorp.github.io/#atlas-credits)**
+
+The recorded names remain as written in their sources. Neo and Gemini (Neon)
+are retained as separate source credits; earlier model versions are named only
+where a source identifies them. If an earlier version contributes again, its own
+dated note and signature can join the page. The signature of this edition does
+not replace the earlier signatures or alter their attribution.
+
+Each research entry keeps its evidence level and original source trail.
+Classical identities retain their literature context; inclusion does not claim priority.
