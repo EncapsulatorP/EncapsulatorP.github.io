@@ -33,10 +33,10 @@
 .pm-stage-hint{position:absolute;bottom:17px;left:22px;z-index:3;margin:0;pointer-events:none;color:#5f716b;font:500 10px/1.4 "IBM Plex Mono",monospace;letter-spacing:.025em}
 .pm-stage-controls{display:flex;gap:5px;position:absolute;right:15px;bottom:13px;z-index:5}
 .pm-stage-controls .pm-button{background:#fbfaf5e8;min-height:35px;padding:7px 10px;font-size:11px;box-shadow:0 3px 10px #263e3d0a}
-.pm-landing{position:absolute;inset:0;z-index:4;display:flex;align-items:center;justify-content:flex-end;flex-direction:column;gap:10px;padding:24px 18px 34px;cursor:pointer;border:0;background:transparent;color:var(--pm-ink)}
+.pm-landing{position:absolute;inset:0;z-index:4;display:flex;align-items:center;justify-content:flex-end;flex-direction:column;gap:10px;padding:24px 18px 34px;cursor:pointer;border:0;background:transparent;color:var(--pm-ink);pointer-events:none}
 .pm-landing:focus-visible{outline-offset:-6px}
 .pm-logo{position:absolute;top:26px;right:28px;width:74px;height:74px;border-radius:20px;box-shadow:0 12px 30px #1937312a;animation:pm-logo-arrival 1.25s cubic-bezier(.2,.75,.2,1) both}
-.pm-unfold{display:inline-flex;align-items:center;gap:15px;background:#173c47;color:#f8f5e9;border:1px solid #1b4550;padding:15px 26px;border-radius:999px;font:600 14px/1.2 "IBM Plex Sans",system-ui,sans-serif;box-shadow:0 10px 25px #173c4733;transition:transform .2s,background .2s}
+.pm-unfold{display:inline-flex;align-items:center;gap:15px;background:#173c47;color:#f8f5e9;border:1px solid #1b4550;padding:15px 26px;border-radius:999px;font:600 14px/1.2 "IBM Plex Sans",system-ui,sans-serif;box-shadow:0 10px 25px #173c4733;transition:transform .2s,background .2s;pointer-events:auto}
 .pm-unfold small{font:500 10px/1 "IBM Plex Mono",monospace;color:#b7cfca;letter-spacing:.05em}
 .pm-landing:hover .pm-unfold{transform:translateY(-3px);background:#255b64}
 .pm-landing-note{font-size:11px;color:#526761;background:#f3efe5e6;padding:4px 10px;border-radius:99px}

@@ -157,6 +157,7 @@
     $('pm-fold-row').hidden = shapes[shapeIndex].key !== 'origami';
     $('pm-structure').hidden = shapes[shapeIndex].key !== 'tensegrity';
     selectStop(chosen);
+    filterStops();
     if (engine && shapes[shapeIndex].key === 'origami') {
       cancelAnimationFrame(foldFrame);
       const start = performance.now(), target = Number($('pm-fold').value) / 100;
@@ -213,7 +214,12 @@
   $('pm-motion').addEventListener('click', () => { motion = !motion; syncMotion(); });
   $('pm-zoom-in').addEventListener('click', () => { if (engine) engine.zoomBy(1.12); });
   $('pm-zoom-out').addEventListener('click', () => { if (engine) engine.zoomBy(1 / 1.12); });
-  $('pm-reset').addEventListener('click', () => { if (engine) engine.reset(); });
+  $('pm-reset').addEventListener('click', () => {
+    cancelAnimationFrame(foldFrame);
+    $('pm-fold').value = '62';
+    $('pm-fold-value').value = '62%';
+    if (engine) engine.reset();
+  });
   $('pm-fold').addEventListener('input', () => {
     cancelAnimationFrame(foldFrame);
     $('pm-fold-value').value = `${$('pm-fold').value}%`;
@@ -221,10 +227,27 @@
   });
   topicFilter.addEventListener('change', filterStops);
   kindFilter.addEventListener('change', filterStops);
-  [$('pm-story-link'), $('pm-credit-link'), $('pm-source-notes')].forEach(link => link.addEventListener('click', () => {
+  [$('pm-story-link'), $('pm-credit-link')].forEach(link => link.addEventListener('click', event => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
     leavingForLink = true;
     dialog.close();
+    const hash = new URL(link.href, location.href).hash;
+    if (location.hash === hash) window.dispatchEvent(new HashChangeEvent('hashchange'));
+    else location.hash = hash;
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      if (location.hash !== hash) return;
+      const [name, query = ''] = hash.slice(1).split('?');
+      const entry = new URLSearchParams(query).get('entry');
+      const destination = document.getElementById(entry ? `atlas-entry-${entry}` : name);
+      const heading = destination?.querySelector('h2,h3,h4') || destination;
+      if (heading) {
+        if (!heading.hasAttribute('tabindex')) heading.tabIndex = -1;
+        heading.focus({ preventScroll: true });
+      }
+    }));
   }));
+  $('pm-source-notes').addEventListener('click', () => { leavingForLink = true; dialog.close(); });
   dialog.addEventListener('close', () => {
     cancelAnimationFrame(foldFrame);
     document.documentElement.classList.remove('pm-open');
