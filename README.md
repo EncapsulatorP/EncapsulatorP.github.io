@@ -32,7 +32,7 @@ The other rooms have fresh entrances and working views of the mathematics:
 - [Subject map and repositories](https://encapsulatorp.github.io/#archive): browse mathematics by subject, with a separate shelf explaining the scope of physics explorations.
 
 Atlas Spark's content and its own CSS/JavaScript are preserved. The collection
-still has 45 entries; the two Cabinet views deepen existing threads. See the
+now has 46 entries; the two Cabinet views deepen existing threads. See the
 [edition notes and checks](atlas/living-rooms.md) and
 [Cabinet formulas and provenance](atlas/cabinet-notes.md).
 
@@ -60,7 +60,7 @@ record where a source was recovered and where a definition or table remains miss
 ## Explore
 
 - [Interactive atlas](https://encapsulatorp.github.io/#atlas): search, family/evidence filters, related threads and three working exhibits.
-- [Complete reading copy](atlas/README.md): every entry, equation and source link.
+- [Complete reading copy (PDF)](atlas/README.pdf): every entry, equation and source link. [Markdown source](atlas/README.md).
 - [The Pirate Chest · Orbital Treasures](https://encapsulatorp.github.io/#pirate-chest): Brun crossings, dagger towers and research treasures, connected to the atlas.
 - [Hibernating Lemmas](https://encapsulatorp.github.io/#lemmas): small exact prime-pair identities and their proofs. The [Goldbach roadmap](lemmas/ROADMAP.md) records the next steps.
 - [Goldbach](https://encapsulatorp.github.io/#goldbach), [Collatz](https://encapsulatorp.github.io/#collatz), and [towers](https://encapsulatorp.github.io/#towers): the existing visual exhibits.
@@ -95,9 +95,21 @@ python3 atlas/build_catalog.py
 ```
 
 This validates IDs, evidence labels, source URLs and related-thread links, and
-rebuilds the browser data and complete reading copy. The browser loads local
-assets without a data-fetch dependency. Existing analytics and visual exhibits
-remain part of the showcase.
+rebuilds the browser data and Markdown reading copy. To refresh the linked PDF,
+install Pandoc and the DejaVu fonts, then run:
+
+```sh
+python3 -m pip install -r atlas/pdf-requirements.txt
+python3 atlas/build_pdf.py
+```
+
+The PDF retains all entry text, equations, source URLs and evidence labels, with
+clickable contents, related-entry links and PDF bookmarks. Commit the regenerated
+`atlas/README.pdf` with content updates. The renderer's docstring includes Ubuntu
+setup commands and its `--font-dir` option supports another font installation.
+
+The browser loads local assets without a data-fetch dependency. Existing
+analytics and visual exhibits remain part of the showcase.
 
 <a id="buried-chat-stories--four-threads-reopened"></a>
 
