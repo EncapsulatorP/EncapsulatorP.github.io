@@ -227,6 +227,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <link rel="stylesheet" href="assets/treasure-rooms.css">
 <link rel="stylesheet" href="assets/goldbach-lab.css">
 <link rel="stylesheet" href="assets/curious-cabinet.css">
+<link rel="stylesheet" href="assets/pirate-map.css">
 <meta name="description" content="Explore EncapsulatorP’s research atlas: Omega Stability, prime pairs, recursive towers, complex worlds and 45 source-linked mathematical threads.">
 </head>
 <body>
@@ -627,7 +628,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
         <p class="at-eyebrow">EncapsulatorP · research atlas</p>
         <h2 id="atlas-title">Follow the spark.<br><em>Open the mathematics.</em></h2>
         <p class="at-intro">Towers, prime pairs and unexpected connections. Pick a thread and explore.</p>
-        <div class="at-hero-links"><a class="at-hero-link" href="atlas/README.md">Read the complete collection <span aria-hidden="true">↗</span></a><a class="at-credit-jump" href="#home-mathematics">Exact results <span aria-hidden="true">↗</span></a><a class="at-credit-jump" href="#pirate-chest">Open the Pirate Chest <span aria-hidden="true">✦</span></a><a class="at-credit-jump" href="#atlas-credits">Signatures &amp; collaborators <span aria-hidden="true">↗</span></a></div>
+        <div class="at-hero-links"><button class="pm-launch" data-open-pirate-map type="button" hidden>Open the pirate map <span aria-hidden="true">✦</span></button><a class="at-hero-link" href="atlas/README.md">Read the complete collection <span aria-hidden="true">↗</span></a><a class="at-credit-jump" href="#home-mathematics">Exact results <span aria-hidden="true">↗</span></a><a class="at-credit-jump" href="#pirate-chest">Open the Pirate Chest <span aria-hidden="true">✦</span></a><a class="at-credit-jump" href="#atlas-credits">Signatures &amp; collaborators <span aria-hidden="true">↗</span></a></div>
       </div>
       <aside class="at-hero-note" aria-label="About this collection">
         <span class="at-note-index">CHOOSE A ROUTE / MAKE A CONNECTION</span>
@@ -788,6 +789,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <p class="chest-subtitle">Astral Secrets</p>
 <p class="lead">A year of EncapsulatorP research conversations, revisited through the calculations, experiments and questions they left behind.</p>
 <p class="chest-invitation">Brun crossings. Dagger towers. Open a treasure and follow its trail.</p>
+<button class="pm-launch" data-open-pirate-map type="button" hidden>Explore the pirate map <span aria-hidden="true">✦</span></button>
 <div class="chest-rule" aria-hidden="true"><span>†</span><i></i><span>✦</span><i></i><span>†</span></div>
 </header>
 <section class="tr-panel" id="shapiro-view" aria-labelledby="tr-shapiro-title"><div class="tr-panel-grid"><div><span class="tr-eyebrow">A treasure on the viewing table / exact identity</span><h3 id="tr-shapiro-title">Two waves.<br>One circle of energy.</h3><p>Rudin–Shapiro’s paired polynomials share the energy around the unit circle. Move the angle; what one gains, the other gives back.</p><div class="tr-control"><label for="tr-shapiro-depth">Recursion depth j <output id="tr-shapiro-depth-value">4</output></label><input id="tr-shapiro-depth" type="range" min="0" max="7" value="4"></div><div class="tr-control"><label for="tr-shapiro-angle">Angle θ <output id="tr-shapiro-angle-value">42°</output></label><input id="tr-shapiro-angle" type="range" min="0" max="360" value="42"></div><div class="tr-equation" id="tr-shapiro-energy">|Pⱼ|² + |Qⱼ|² = 2ʲ⁺¹</div><p class="tr-live" id="tr-shapiro-result" role="status">The identity holds on the unit circle.</p><a href="#buried-shapiro-rings">Open the argument and recurrences ↗</a></div><div><svg class="tr-svg" id="tr-shapiro-plot" viewBox="0 0 680 380" role="img" aria-label="Rudin–Shapiro polynomial energy around the circle"><circle cx="215" cy="180" r="130" fill="none" stroke="#7bded6"/><text x="215" y="185" text-anchor="middle" fill="#c7b0f3">P + Q energy</text></svg><p class="tr-plot-caption">Teal: |P|². Violet: |Q|². Angle is θ; radial distance shows each share of total energy. The displayed curves are sampled; the identity has a written proof.</p></div></div></section>
@@ -1123,6 +1125,46 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </section>
 </div>
 </main>
+<dialog class="pm-dialog" id="pirate-map" aria-labelledby="pm-title" data-map-state="landing">
+  <div class="pm-shell">
+    <header class="pm-header">
+      <div><p class="pm-kicker">EncapsulatorP · Astral Secrets</p><h2 id="pm-title">The Pirate Map</h2></div>
+      <button class="pm-button pm-close" id="pm-close" type="button"><span id="pm-close-caption">Skip to the atlas</span> <span aria-hidden="true">×</span></button>
+    </header>
+    <div class="pm-layout">
+      <div class="pm-chart">
+        <div class="pm-stage">
+          <canvas id="pm-canvas" width="1000" height="600" aria-hidden="true"></canvas>
+          <ol class="pm-pins" id="pm-pins" aria-label="Stops on the map" hidden></ol>
+          <button class="pm-landing" id="pm-reveal" type="button" autofocus>
+            <img class="pm-logo" src="assets/logo-encapsulatorp-512.png" width="124" height="124" alt="">
+            <span class="pm-unfold">Unfold the map <span aria-hidden="true">✦</span></span>
+          </button>
+        </div>
+        <div class="pm-chart-bar">
+          <div><p class="pm-kicker" id="pm-shape" aria-live="polite"></p><p class="pm-map-description" id="pm-description"></p></div>
+          <button class="pm-button" id="pm-next-map" type="button" hidden>Next map <span aria-hidden="true">↻</span></button>
+        </div>
+        <ul class="pm-legend" id="pm-legend" hidden>
+          <li data-kind="treasure"><i aria-hidden="true">✦</i> Treasure · exact result</li>
+          <li data-kind="trap"><i aria-hidden="true">×</i> Trap · an idea hit a snag</li>
+          <li data-kind="wildcard"><i aria-hidden="true">?</i> Wildcard · gold or pyrite?</li>
+        </ul>
+      </div>
+      <section class="pm-journal" id="pm-journal" aria-labelledby="pm-stop-title" hidden>
+        <div class="pm-find" id="pm-find">
+          <p class="pm-kicker" id="pm-stop-kind"></p>
+          <h3 id="pm-stop-title" tabindex="-1" aria-live="polite"></h3>
+          <p id="pm-stop-prompt"></p>
+          <details id="pm-clue"><summary>Reveal the clue</summary><p id="pm-stop-clue"></p></details>
+          <a class="pm-story-link" id="pm-story-link" href="#pirate-chest">Open the full story <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="pm-trail-head"><h3 class="pm-route-title">The research trail</h3><p id="pm-progress" aria-live="polite"></p></div>
+        <ol class="pm-timeline" id="pm-timeline"></ol>
+      </section>
+    </div>
+  </div>
+</dialog>
 <footer><div class="wrap fg">
 <div><div class="fb"><img src="assets/logo-encapsulatorp-96.png" alt="" width="54" height="54">Encapsulator<span>P</span></div><div class="fc">ideas, experiments and small mathematical treasures.</div></div>
 <div class="fm">github &nbsp;·&nbsp; <a href="https://github.com/orgs/EncapsulatorP/repositories">EncapsulatorP</a><br>collatz · goldbach · tetration · rupert geometry · erdős · complex dynamics<br>mostly pending, gloriously</div>
@@ -1441,5 +1483,6 @@ window.addEventListener('hashchange',show);show();
 <script src="assets/treasure-rooms.js"></script>
 <script src="assets/goldbach-lab.js"></script>
 <script src="assets/curious-cabinet.js"></script>
+<script src="assets/pirate-map.js"></script>
 </body></html>
 
