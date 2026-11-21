@@ -229,7 +229,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <body>
 
 <div class="nav"><div class="in"><a class="lg" href="#atlas"><img src="assets/logo-encapsulatorp-96.png" alt="" width="24" height="24"><b>Encapsulator</b>P</a>
-<a href="#atlas" data-tab="atlas">Atlas · new</a><a href="#home" data-tab="home">Overview</a><a href="#lemmas" data-tab="lemmas">Lemmas</a><a href="#roadmap" data-tab="roadmap">Next steps</a><a href="#goldbach" data-tab="goldbach">Goldbach</a><a href="#collatz" data-tab="collatz">Collatz</a><a href="#towers" data-tab="towers">Towers</a><a href="#validatron" data-tab="validatron">Validatron</a><a href="#archive" data-tab="archive">Archive</a><a href="#pirate-chest" data-tab="buried-chat-stories"><span class="chest-nav-mark" aria-hidden="true">†</span> The Pirate Chest</a></div></div>
+<a href="#atlas" data-tab="atlas">Atlas · new</a><a href="#home" data-tab="home">Math overview</a><a href="#lemmas" data-tab="lemmas">Lemmas</a><a href="#roadmap" data-tab="roadmap">Next steps</a><a href="#goldbach" data-tab="goldbach">Goldbach</a><a href="#collatz" data-tab="collatz">Collatz</a><a href="#towers" data-tab="towers">Towers</a><a href="#validatron" data-tab="validatron">Validatron</a><a href="#archive" data-tab="archive">Archive</a><a href="#pirate-chest" data-tab="buried-chat-stories"><span class="chest-nav-mark" aria-hidden="true">†</span> The Pirate Chest</a></div></div>
 
 <main>
 <div class="page" data-page="home">
@@ -404,12 +404,12 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <section id="scape" style="background:#080f1e;color:#e9effb"><div class="cm-wrap">
 <p class="cm-kicker">EncapsulatorP · recursive cinema · study 01</p><h2 class="cm-title">Collatz<br><em>Metamorphoses.</em></h2>
 <p class="cm-intro">An integer spine inside a changing complex landscape. Orbit filaments, mirrored chambers and neural-like crossings: five views of a mathematical transformation. Drag to explore; scroll to zoom.</p>
-<div class="cm-presets" aria-label="Map views"><button data-mode="0" aria-pressed="true">01 · Integer spine</button><button data-mode="1" aria-pressed="false">02 · Orbit bloom</button><button data-mode="2" aria-pressed="false">03 · Orbifold lens</button><button data-mode="3" aria-pressed="false">04 · Neural filaments</button><button data-mode="4" aria-pressed="false">05 · Quasiparticle field</button></div>
+<div class="cm-presets" aria-label="Map views"><button data-mode="0" aria-pressed="true">01 · Integer spine</button><button data-mode="1" aria-pressed="false">02 · Orbit bloom</button><button data-mode="2" aria-pressed="false">03 · Orbifold lens</button><button data-mode="3" aria-pressed="false">04 · Neural filaments</button><button data-mode="4" aria-pressed="false">05 · Luminous field</button></div>
 <div class="cm-stage"><canvas id="cm-canvas" aria-label="Interactive Collatz-inspired complex orbit render"></canvas><div class="cm-hud" id="cm-hud">96 ITERATIONS · ORBIT TRAPS + ESCAPE TIME</div><div class="cm-sign">Sol.6.1</div></div>
 <div class="cm-controls"><button id="cm-play">Animate mutation</button><button id="cm-reset">Reset view</button><button id="cm-export">Save PNG</button><label>Mutation <input id="cm-mutation" type="range" min="0" max="1" step="0.001" value="0.28"></label><label>Detail <input id="cm-detail" type="range" min="40" max="180" step="10" value="100"></label></div>
-<p class="cm-note" id="cm-description"></p><p class="cm-note">Colour combines finite escape time and proximity to orbit traps; dark regions mean no escape within the iteration limit, not proven boundedness. Orbifold, neural and quasiparticle names describe visual studies. No trained neural network or physical particle simulation is running.</p>
-<div class="cm-grid"><article class="cm-card"><h3>The integer spine</h3><p>The base entire extension agrees with the standard Collatz step on nonnegative integers.</p><div class="cm-eq">C(z) = [2 + 7z − (2 + 5z) cos(πz)] / 4</div></article><article class="cm-card"><h3>Mutation with an anchor</h3><p>Added sine terms vanish at every integer in exact mathematics. Complex dynamics can change while the integer rule stays fixed.</p><div class="cm-eq">Cₐ(z) = C(z) + a sin(πz) / 4<br>Neural view: + a sin(2πz) / 8</div></article><article class="cm-card"><h3>A lens, not a theorem</h3><p>The orbifold lens folds the displayed plane into six sectors. The particle field traces screen-space paths through the image. Neither establishes the Collatz conjecture.</p><div class="cm-eq">Exact integer agreement ≠ proof of convergence.</div></article></div>
-<div class="cm-stripe"></div><p class="cm-kicker">Further research · Goldbach atomic axis</p><h2 class="cm-title" style="font-size:36px">Prime pairs.<br><em>Dagger towers.</em></h2><p class="cm-intro">Place each odd prime pair on its centre m = (p + q)/2 and half-gap d = (q − p)/2. Goldbach fixes m; twin primes occupy d = 1. The product pq = m² − d² supplies the exact arithmetic foundation.</p><p class="cm-note">Proposed next interaction: paired sign-flipping tower phases driven by m and d, with targets chosen before tuning. “Atomic axis” is our visualization coordinate; “dagger” denotes an alternating-sign tower. The coupling is a research proposal, not an established prime-detection method.</p>
+<p class="cm-note" id="cm-description"></p><p class="cm-note">Colour combines finite escape time and proximity to orbit traps; dark regions mean no escape within the iteration limit, not proven boundedness. The orbifold lens folds the view, neural filaments describe the image geometry, and the luminous field adds screen-space paths.</p>
+<div class="cm-grid"><article class="cm-card"><h3>The integer spine</h3><p>The base entire extension agrees with the standard Collatz step on nonnegative integers.</p><div class="cm-eq">C(z) = [2 + 7z − (2 + 5z) cos(πz)] / 4</div></article><article class="cm-card"><h3>Mutation with an anchor</h3><p>Added sine terms vanish at every integer in exact mathematics. Complex dynamics can change while the integer rule stays fixed.</p><div class="cm-eq">Cₐ(z) = C(z) + a sin(πz) / 4<br>Neural view: + a sin(2πz) / 8</div></article><article class="cm-card"><h3>A lens, not a theorem</h3><p>The orbifold lens folds the displayed plane into six sectors. The luminous field traces screen-space paths through the image. Neither establishes the Collatz conjecture.</p><div class="cm-eq">Exact integer agreement ≠ proof of convergence.</div></article></div>
+<div class="cm-stripe"></div><p class="cm-kicker">Further research · Goldbach centre–gap axis</p><h2 class="cm-title" style="font-size:36px">Prime pairs.<br><em>Dagger towers.</em></h2><p class="cm-intro">Place each odd prime pair on its centre m = (p + q)/2 and half-gap d = (q − p)/2. Goldbach fixes m; twin primes occupy d = 1. The product pq = m² − d² supplies the exact arithmetic foundation.</p><p class="cm-note">Proposed next interaction: paired sign-flipping tower phases driven by m and d, with targets chosen before tuning. The centre–gap coordinates organize the prime pairs; “dagger” denotes an alternating-sign tower. The coupling is a research proposal, not an established prime-detection method.</p>
 </div></section>
 <div class="zebra"></div>
 
@@ -643,7 +643,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <select id="buried-story-topic">
 <option value="">All topics</option>
 <option value="towers">Towers and Ω</option>
-<option value="collatz">Collatz and time reversals</option>
+<option value="collatz">Collatz and conjugate symmetry</option>
 <option value="zeta">Zeta, Catalan and kernels</option>
 <option value="primes">Prime pairs and primality tests</option>
 <option value="recurrences">Ramanujan, Shapiro and recurrences</option>
@@ -660,7 +660,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a href="#buried-bubble-tube">Bubble tube</a>
 <a href="#buried-xo2">XO₂ geometron</a>
 <a href="#buried-zeta-partitionings">Zeta partitions</a>
-<a href="#buried-time-reversal">Time reversals</a>
+<a href="#buried-time-reversal">Conjugate symmetry</a>
 <a href="#buried-ramanujan-23">Ramanujan</a>
 <a href="#buried-shapiro-rings">Shapiro rings</a>
 <a href="#buried-golden-plastic">Golden and plastic</a>
@@ -856,7 +856,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 
 <article class="card story" id="buried-time-reversal" data-topics="collatz spectral" style="--e:#3f7a00">
 <span class="tag">Exact symmetry · conditional on the model</span>
-<h3 class="sub">Time reversals · the zero cloud in the mirror</h3>
+<h3 class="sub">Conjugate symmetry · the zero cloud in the mirror</h3>
 <p>The root scans compared positive and negative indices. For a branch on a conjugation-invariant domain with H(z̄) = H(z)̄, putting Q<sub>k</sub>(z) = H(z) − 2πik gives Q<sub>−k</sub>(z̄) = Q<sub>k</sub>(z)̄.</p>
 <details><summary>Which part survives the reversal?</summary>
 <p>A zero in the k-slice has a conjugate zero in the −k-slice, with the same multiplicity. That gives a check on the branch choice and the scan. A match between two finite clouds leaves the generating operator undetermined. A physical time reversal would require a state-space involution and a checked rule for how it reverses the evolution.</p>
@@ -1167,7 +1167,7 @@ const fragment=fs.replace('vec2 co(vec2 z){float y=clamp(z.y,-12.,12.);return ve
 function shader(type,source){const sh=gl.createShader(type);gl.shaderSource(sh,source);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(sh));return sh;}
 try{const program=gl.createProgram();gl.attachShader(program,shader(gl.VERTEX_SHADER,vs));gl.attachShader(program,shader(gl.FRAGMENT_SHADER,fragment));gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));gl.useProgram(program);const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);const p=gl.getAttribLocation(program,'p');gl.enableVertexAttribArray(p);gl.vertexAttribPointer(p,2,gl.FLOAT,false,0,0);
 const U={};['res','center','zoom','amount','clock','mode','detail'].forEach(n=>U[n]=gl.getUniformLocation(program,n));let mode=0,zoom=8,cx=1,cy=0,playing=false,t=0,raf=null;const reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
-const descriptions=['BASE EXTENSION · integer Collatz agreement. Orbit traps reveal the central geometry.','SINE MUTATION · C(z) + a sin(πz)/4. Integer values remain anchored; complex orbits change.','SIX-SECTOR LENS · a folded view of the sine-mutated field; a visual orbifold analogy.','NEURAL FILAMENTS · a second sine harmonic changes the map. Neural-like geometry, without a trained network.','QUASIPARTICLE FIELD · luminous screen-space paths over the sine-mutated map; an artistic interaction layer.'];
+const descriptions=['BASE EXTENSION · integer Collatz agreement. Orbit traps reveal the central geometry.','SINE MUTATION · C(z) + a sin(πz)/4. Integer values remain anchored; complex orbits change.','SIX-SECTOR LENS · a folded view of the sine-mutated field; a visual orbifold analogy.','NEURAL FILAMENTS · a second sine harmonic changes the map. Neural-like geometry, without a trained network.','LUMINOUS FIELD · screen-space paths over the sine-mutated map; an artistic interaction layer.'];
 function draw(){const d=Math.min(devicePixelRatio||1,1.5),w=Math.round(canvas.clientWidth*d),h=Math.round(canvas.clientHeight*d);if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}gl.viewport(0,0,w,h);gl.uniform2f(U.res,w,h);gl.uniform2f(U.center,cx,cy);gl.uniform1f(U.zoom,zoom);gl.uniform1f(U.amount,+document.getElementById('cm-mutation').value);gl.uniform1f(U.clock,t);gl.uniform1f(U.mode,mode);gl.uniform1f(U.detail,+document.getElementById('cm-detail').value);gl.drawArrays(gl.TRIANGLES,0,6);document.getElementById('cm-description').textContent=descriptions[mode];}
 function stop(){playing=false;if(raf)cancelAnimationFrame(raf);raf=null;document.getElementById('cm-play').textContent='Animate mutation';}
 function tick(){if(!playing)return;t+=.035;document.getElementById('cm-mutation').value=.5+.48*Math.sin(t*.35);draw();raf=requestAnimationFrame(tick);}

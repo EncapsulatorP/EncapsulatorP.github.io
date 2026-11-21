@@ -675,7 +675,7 @@ The existing Collatz Metamorphoses exhibit explores this family; its geometric n
 **Sources**
 
 - [Written argument · this atlas edition](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/mathematical-notes.md#collatz-integer-spine)
-- [Forced-map foundations](https://github.com/EncapsulatorP/collatz_quasi_particle_by_forced_tetration/blob/main/docs/00_foundations.md)
+- [Cosine-Collatz gate · self-contained model](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/mathematical-notes.md#forced-collatzscape)
 
 **Related:** [paired-cancellation](#paired-cancellation) · [forced-collatzscape](#forced-collatzscape) · [delay-geometry](#delay-geometry) · [logistic-quarter-turn](#logistic-quarter-turn)
 
@@ -705,7 +705,7 @@ The exact cancellation supplies a useful control: compare conjugate initial stat
 
 **Sources**
 
-- [Model definition and cancellation note](https://github.com/EncapsulatorP/collatz_quasi_particle_by_forced_tetration/blob/main/MODEL.md)
+- [Model definition and cancellation proof · this atlas edition](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/mathematical-notes.md#paired-cancellation)
 
 **Related:** [collatz-integer-spine](#collatz-integer-spine) · [forced-collatzscape](#forced-collatzscape) · [prime-layer-waves](#prime-layer-waves)
 
@@ -1236,8 +1236,8 @@ The exact integer spine and the conjugate-pair cancellation provide two independ
 
 **Sources**
 
-- [Precise model](https://github.com/EncapsulatorP/collatz_quasi_particle_by_forced_tetration/blob/main/MODEL.md)
-- [Mathematical foundations](https://github.com/EncapsulatorP/collatz_quasi_particle_by_forced_tetration/blob/main/docs/00_foundations.md)
+- [Paired-map definition and experiment conventions](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/mathematical-notes.md#forced-collatzscape)
+- [Integer-spine argument](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/mathematical-notes.md#collatz-integer-spine)
 
 **Related:** [collatz-integer-spine](#collatz-integer-spine) · [paired-cancellation](#paired-cancellation) · [delay-geometry](#delay-geometry)
 

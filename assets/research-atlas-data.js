@@ -630,8 +630,8 @@ window.ENCAPSULATOR_ATLAS = {
           "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/mathematical-notes.md#collatz-integer-spine"
         },
         {
-          "label": "Forced-map foundations",
-          "url": "https://github.com/EncapsulatorP/collatz_quasi_particle_by_forced_tetration/blob/main/docs/00_foundations.md"
+          "label": "Cosine-Collatz gate · self-contained model",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/mathematical-notes.md#forced-collatzscape"
         }
       ],
       "connections": [
@@ -658,8 +658,8 @@ window.ENCAPSULATOR_ATLAS = {
       "next": "Sweep the pairing mismatch and separate the antisymmetric contribution from the common phase term.",
       "sources": [
         {
-          "label": "Model definition and cancellation note",
-          "url": "https://github.com/EncapsulatorP/collatz_quasi_particle_by_forced_tetration/blob/main/MODEL.md"
+          "label": "Model definition and cancellation proof · this atlas edition",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/mathematical-notes.md#paired-cancellation"
         }
       ],
       "connections": [
@@ -1160,12 +1160,12 @@ window.ENCAPSULATOR_ATLAS = {
       "next": "Compare paired and unpaired phase terms at matched finite horizons, retaining the complete parameter record.",
       "sources": [
         {
-          "label": "Precise model",
-          "url": "https://github.com/EncapsulatorP/collatz_quasi_particle_by_forced_tetration/blob/main/MODEL.md"
+          "label": "Paired-map definition and experiment conventions",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/mathematical-notes.md#forced-collatzscape"
         },
         {
-          "label": "Mathematical foundations",
-          "url": "https://github.com/EncapsulatorP/collatz_quasi_particle_by_forced_tetration/blob/main/docs/00_foundations.md"
+          "label": "Integer-spine argument",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/mathematical-notes.md#collatz-integer-spine"
         }
       ],
       "connections": [

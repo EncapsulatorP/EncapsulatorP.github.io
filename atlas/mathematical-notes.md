@@ -319,6 +319,122 @@ arguments. A finite escape image records that extension, iteration budget,
 threshold and starting region; it does not by itself settle the integer
 convergence question.
 
+<a id="paired-cancellation"></a>
+## 8. Exact cancellation for a conjugate pair
+
+**Model attribution.** The paired Collatzscape construction is by
+**Zolton / EncapsulatorP**, recorded in February 2026. This mathematical
+restatement was checked against the author's canonical `MODEL.md` and
+`src/collatzscape/maps.py` on 21 November 2026. The cancellation argument and
+the self-contained notes in sections 8–9 are written by **ChatGPT · GPT-6
+Astra Pro** for this atlas edition.
+
+Let
+
+\[
+C(z)=\frac{z}{4}(1+\cos(\pi z))
+     +\frac{3z+1}{2}(1-\cos(\pi z))
+     =\frac{2+7z-(2+5z)\cos(\pi z)}4.
+\]
+
+Choose a real-valued signal \(f:\mathbb R\to[-1,1]\), real parameters
+\(\alpha,\gamma\), a direction \(\delta\in\{-1,1\}\), and a nonzero
+complex base \(c\). The default signal is \(f(u)=\tanh u\); the implemented
+alternative is \(f(u)=\max(-1,\min(1,u))\). Write
+
+\[
+h(z)=f(\operatorname{Re}C(z)),\qquad
+A(z,w)=\frac{\alpha}{2}\bigl(h(z)+h(w)\bigr),\qquad
+B(z,w)=\frac{\delta\gamma}{2}\bigl(h(z)-h(w)\bigr).
+\]
+
+The paired term is \(A\), the antisymmetric term is
+\(\phi_{\mathrm{anti}}=iB\), and the effective base is
+
+\[
+c_{\mathrm{eff}}(z,w)
+=c\exp\!\bigl(i(A(z,w)+iB(z,w))\bigr)
+=c\exp(-B(z,w)+iA(z,w)).
+\]
+
+**Exact statement.** If \(w=\overline z\), then
+\(\phi_{\mathrm{anti}}(z,w)=0\) and
+\(|c_{\mathrm{eff}}(z,w)|=|c|\).
+
+**Proof.** The cosine power series has real coefficients, so
+\(\cos(\pi\overline z)=\overline{\cos(\pi z)}\). The displayed expression
+therefore gives \(C(\overline z)=\overline{C(z)}\). Their real parts are
+equal, hence \(h(\overline z)=h(z)\), and the difference defining \(B\)
+vanishes. The remaining exponent \(iA=i\alpha h(z)\) is purely imaginary,
+which proves the modulus statement.
+
+This is a statement about the input pair at one step. It does not assert that
+the simultaneous update below preserves conjugacy or that an orbit converges.
+Reconstructing \(w=\overline z\) at every step enforces the cancellation at
+every step in exact arithmetic; evolving both coordinates independently need
+not do so.
+
+<a id="forced-collatzscape"></a>
+## 9. The paired exponential map and its experiment conventions
+
+With the complete definitions and parameters in section 8, one simultaneous
+step is
+
+\[
+\begin{aligned}
+z_{n+1}&=\exp\!\left(C(z_n)\operatorname{Log}
+                  c_{\mathrm{eff}}(z_n,w_n)\right),\\
+w_{n+1}&=\exp\!\left(C(w_n)\operatorname{Log}
+                  c_{\mathrm{eff}}(w_n,z_n)\right).
+\end{aligned}
+\]
+
+Both right-hand sides use the old pair \((z_n,w_n)\). Swapping the inputs
+leaves \(A\) unchanged and reverses \(B\), so the second effective base is
+\(c\exp(B(z_n,w_n)+iA(z_n,w_n))\). The effective bases are nonzero in exact
+arithmetic because \(c\ne0\).
+
+The implementation uses the complex principal logarithm. Away from its
+negative-real-axis cut,
+
+\[
+\operatorname{Log}\zeta=\log|\zeta|+i\operatorname{Arg}\zeta,
+\qquad -\pi<\operatorname{Arg}\zeta<\pi.
+\]
+
+A computation that lands on the cut must retain its boundary-value convention,
+including signed-zero behavior. Replacing this logarithm by a continuously
+unwrapped argument defines a different iteration. Although \(C\) is entire,
+the coupled update generally depends on real parts through \(h\); the full
+map is not thereby a holomorphic map of \((z,w)\).
+
+The two iteration rules in the checked `src/collatzscape/simulate.py` are:
+
+1. **Evolving pair:** initialize \(w_0=\overline{z_0}\), then update both
+   coordinates by the simultaneous step above.
+2. **Reset conjugate:** at every step evaluate the first coordinate using
+   \((z_n,\overline{z_n})\), retain that first result, and reconstruct its
+   conjugate for the next step. Here \(B=0\) at every input in exact arithmetic.
+
+The cosine gate used here is the one with the exact integer spine proved in
+section 7. The implementation also offers the local linear surrogate
+\(C_{\mathrm{lin}}(z)=1+(z-2)/2\); an experiment using that surrogate must
+identify it separately because it does not reproduce the odd Collatz branch.
+
+**Finite experiment record.** State the initial point or sampling grid,
+\(c,\alpha,\gamma,\delta\), signal and gate choices, pairing rule, logarithm
+convention, iteration budget \(N\), escape radius \(R\), numerical precision
+and overflow handling. The checked driver monitors the first coordinate: it
+stops when a component of \(z\) is nonfinite or \(|z|>R\), with default
+\(R=10^6\); otherwise it reports survival through \(N\) updates. Monitoring
+both coordinates would be an additional experiment convention.
+
+Finite survival, an image fringe, or a change in \(|c_{\mathrm{eff}}|\) is an
+observable of this specified model. A convergence or contraction conclusion
+requires an argument for the full update and its stated domain. The exact
+integer-spine identity and conjugate-pair cancellation supply reproducible
+controls for such comparisons.
+
 ## Reproduction scope
 
 The companion checks the tower equation with two independent numerical
