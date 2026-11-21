@@ -74,6 +74,7 @@ The two collections have equal size: five studio forms and five voyages. New vis
 
 - **Zolton:** research collection and visual direction, including the paper-polyhedron pirate-map request.
 - **Neon (Gemini):** the signature recorded on the uploaded prototype. This is a supplied source credit, not an authenticated identification of the model that produced it.
+- **Claude:** the workbench, illustrative unfolding and return-to-table interaction reference shared by Zolton for this edition.
 - **ChatGPT:** current map implementation and editing. This does not retroactively label all historical assistant contributions. Earlier names and model versions belong only where their sources document them.
 
 The supplied prototype informed the visual direction. This data keeps the nine previously published research landmarks and their existing evidence; it does not import additional numerical, physics or lottery claims from that prototype.
@@ -95,6 +96,6 @@ These are content and navigation checks. They introduce no new numerical experim
 
 Zolton supplied the photographic paper-model workbench and shared a Claude artifact on 21 November 2026. The artifact was inspected in its rendered interface: selecting a body launches an illustrative opening, reveals a chart, and offers **Back to the table**. This edition credits Claude for that interaction direction. It implements its own table chooser, live 3D preview and opening animation in the existing renderer. The reference's additional scientific stories, dates and surgery claims were not imported.
 
-The original supplied photograph is preserved as `assets/paper-workbench-reference.png`. The artifact credits that image to Zolton Farkas with Gemini. The three photo hotspots refer to visible bodies; the row of five model choices also keeps tensegrity and terraced landforms immediately available. Hover or keyboard focus previews a form. A click opens its chart and subject explanation. Both five-member collections retain the same nine subject destinations.
+The original supplied photograph is preserved as `assets/paper-workbench-reference.png`. The artifact credits that image to Zolton with Gemini. The three photo hotspots refer to visible bodies; the row of five model choices also keeps tensegrity and terraced landforms immediately available. Hover or keyboard focus previews a form. A click opens its chart and subject explanation. Both five-member collections retain the same nine subject destinations.
 
 The opening animation unfolds the creased paper chart in all five voyage scenes and opens the standalone accordion. The sphere, hollow body and tensegrity remain their own forms; no physical surgery or rigid-folding theorem is asserted for them. Reduced motion skips the opening. Pause and direct manipulation remain available.
