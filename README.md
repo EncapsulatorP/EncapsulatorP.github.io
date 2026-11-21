@@ -12,6 +12,8 @@ Most of them are still falling. A few of the questions never resolve — and we 
 
 **[▶ Open the live site — encapsulatorp.github.io](https://encapsulatorp.github.io/)**
 
+[Buried Chat Stories](https://encapsulatorp.github.io/#buried-chat-stories) revisits the research conversations behind the experiments.
+
 </div>
 
 ---
