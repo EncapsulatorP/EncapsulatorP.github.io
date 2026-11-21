@@ -47,7 +47,7 @@ Exact identity / written proof: 28 | Finite-depth observation: 3 | Reported comp
 - [Brun’s deficit meets a tunable tower](#brun-comparison)
 - [Theta bases with alternating and golden-density signs](#theta-towers)
 - [Totients supply the bases; Möbius supplies the signs](#totient-mobius-towers)
-- [When a multiplicative comparison changes regime](#kesten-regimes)
+- [Kesten–Goldie: the theorem, the multiplier law and the Collatz experiment](#kesten-regimes)
 - [A filter that removes composites needs a surviving pair](#composite-vanishing)
 - [An inverse Collatz tree, viewed through operators](#determinant-towers)
 - [Listen to the carries in a digit packet](#padic-drift)
@@ -1057,33 +1057,45 @@ The finite values were independently recomputed at high precision. Changing the 
 **Related:** [theta-towers](#theta-towers) · [factorial-valuations](#factorial-valuations) · [euler-resolvent](#euler-resolvent)
 
 <a id="kesten-regimes"></a>
-## When a multiplicative comparison changes regime
+## Kesten–Goldie: the theorem, the multiplier law and the Collatz experiment
 
 **Reported computation · Dynamics & geometry**
 
-*Origin: Public regime report dated 2 May 2026*
+*Origin: Recovered public scanner and saved output; README dated 2 May 2026, results document dated 8 June 2026*
 
-Collatz-type maps are compared through an affine residual recursion, with different normalizations producing different empirical regimes.
+An established heavy-tail theorem meets a concrete affine experiment: see the mechanism first, then distinguish the exact comparison law from the reported Collatz-driven results.
 
 ```text
 Δ_(n+1) = M_n Δ_n + Q_n
-Reported 7x+1 case: exponent estimate 0.3447
-Source comparison value: 0.3429
+Geometric comparison: E[M^s] = a^s / (2^(s+1) − 1), s > −1
+7x+1 SSI: theoretical moment root κ = 0.3429
+Sample-moment root κ = 0.3447; top-5% tail-fit exponent = 0.3417
 ```
 
-**Why follow it.** It is a concrete place to investigate which normalization and dependence assumptions make a stochastic comparison informative.
+**Why follow it.** Repeated contraction can forget an initial state while occasional amplification creates rare large values. The classical theorem explains that mechanism; the recovered experiment asks how it appears under Collatz-derived multipliers.
 
-The source report also gives a 5x+1 comparison of 2.4342 against 2.7635. Those reported numbers were not rerun for this edition.
+Start with the interactive Kesten–Goldie model at #kesten-goldie: a seeded affine path and an exact moment curve, followed by lemmas, explanation and proofs. Its iid teaching path is separate from the saved historical experiment.
 
-A heavy-tail theorem for a stochastic affine recursion has hypotheses about stationarity, dependence and moments. A deterministic orbit sample does not automatically satisfy them.
+The Kesten–Goldie theorem is established mathematics. For a suitable nondegenerate iid positive affine recursion with a stationary law, nonarithmetic log multiplier, a positive root E[M^κ] = 1 and the required finite moments, the stationary tail is asymptotic to C x^(−κ), with C > 0. The reported status here refers to the Collatz application.
 
-The next useful question is robustness across thresholds, horizons and normalization choices, with the raw trajectories retained.
+The scanner takes K_n from restarted integer r·m + 1 orbits and evolves Δ with independent exponential additions Q_n. It uses M_n = a·2^(−K_n), with a = r in raw gauge and a = r/2 in SSI gauge. Δ is the auxiliary affine process, not the integer orbit or its stopping time.
 
-**Next experiment or question.** Recompute the source cases with a threshold-stability plot and dependence-aware controls before drawing a general conclusion.
+Under the chosen geometric comparison P(K = k) = 2^(−k), k ≥ 1, E log M = log(a/4), E[M] = a/3, and a positive moment root exists exactly for 2 < a < 4. E[M] = 1 gives κ = 1; it is a mean-moment boundary, not by itself a loss of stationarity or a reason for logarithmic tail corrections.
+
+The saved empirical κ is computed from the sampled multipliers by solving mean(M_i^κ) = 1. It is different from a fitted tail exponent. For 7x+1 SSI, the geometric-law root, sample-moment root and top-5% tail fit are 0.3429, 0.3447 and 0.3417; for 5x+1 SSI they are 2.7635, 2.4342 and 2.2193. These original outputs were not rerun for this edition.
+
+The saved canonical raw-gauge dependence controls remain on a similar finite-horizon scale after shuffling or iid resampling of K. A stationary-law conclusion for deterministic Collatz dynamics still requires a justified probabilistic model and its hypotheses; the finite comparison alone does not establish them.
+
+**Next experiment or question.** Preserve all three exponent diagnostics, compare thresholds and horizons, and test dependence and restart sensitivity while retaining the original trajectories.
 
 **Sources**
 
-- [Regime report](https://github.com/EncapsulatorP/collatz_kesten-goldie/blob/main/README.md)
+- [See the interactive Kesten–Goldie model, lemmas and proofs](https://encapsulatorp.github.io/#kesten-goldie)
+- [Kesten · original random difference-equation theorem · 1973](https://doi.org/10.1007/BF02392040)
+- [Goldie · scalar implicit renewal theory · 1991](https://doi.org/10.1214/aoap/1177005985)
+- [Kevei · theorem and arithmetic distinction · 2016](https://arxiv.org/abs/1609.07339v1)
+- [Pinned scanner: multiplier moments, affine process and tail diagnostics](https://github.com/EncapsulatorP/collatz_kesten-goldie/blob/791f509561d1d4cf77a471e94e808648741858ed/rboi_kesten_scanner.py)
+- [Pinned original saved output · not rerun for this edition](https://github.com/EncapsulatorP/collatz_kesten-goldie/blob/791f509561d1d4cf77a471e94e808648741858ed/scan_results.txt)
 
 **Related:** [delay-geometry](#delay-geometry) · [forced-collatzscape](#forced-collatzscape) · [logistic-distributions](#logistic-distributions)
 
