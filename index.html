@@ -227,12 +227,12 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <link rel="stylesheet" href="assets/treasure-rooms.css">
 <link rel="stylesheet" href="assets/goldbach-lab.css">
 <link rel="stylesheet" href="assets/curious-cabinet.css">
-<link rel="stylesheet" href="assets/pirate-map.css">
+<link rel="stylesheet" href="assets/pirate-map.css?v=tensegrity">
 <meta name="description" content="Explore EncapsulatorP’s research atlas: Omega Stability, prime pairs, recursive towers, complex worlds and 45 source-linked mathematical threads.">
 </head>
 <body>
 
-<a class="tr-skip" href="#main-content">Skip to the current room</a><nav class="nav" aria-label="Main research rooms"><div class="in"><a class="lg" href="#atlas"><img src="assets/logo-encapsulatorp-96.png" alt="" width="24" height="24"><b>Encapsulator</b>P</a><div class="tr-nav-primary"><a href="#atlas" data-tab="atlas">Atlas · Spark</a><a href="#goldbach" data-tab="goldbach">Goldbach</a><a href="#pirate-chest" data-tab="buried-chat-stories">† Pirate Chest</a><a href="#cabinet" data-tab="cabinet">Curious Cabinet</a><a href="#collatz" data-tab="collatz">Collatz</a><a href="#towers" data-tab="towers">Towers</a></div><details class="tr-nav-more"><summary>More paths</summary><div class="tr-nav-menu"><a href="#home" data-tab="home">Math overview</a><a href="#lemmas" data-tab="lemmas">Hibernating Lemmas</a><a href="#roadmap" data-tab="roadmap">Next proof steps</a><a href="#validatron" data-tab="validatron">Validatron</a><a href="#archive" data-tab="archive">Subject map & repos</a></div></details><label class="tr-sr-only" for="tr-all-rooms">All research rooms</label><select class="tr-mobile-nav" id="tr-all-rooms"><option value="#atlas">Atlas · Spark</option><option value="#goldbach">Goldbach</option><option value="#pirate-chest">† Pirate Chest</option><option value="#cabinet">Curious Cabinet</option><option value="#collatz">Collatz</option><option value="#towers">Towers</option><option value="#home">Math overview</option><option value="#lemmas">Hibernating Lemmas</option><option value="#roadmap">Next proof steps</option><option value="#validatron">Validatron</option><option value="#archive">Subject map & repos</option></select></div></nav>
+<a class="tr-skip" href="#main-content">Skip to the current room</a><nav class="nav" aria-label="Main research rooms"><div class="in"><a class="lg" href="#atlas"><img src="assets/logo-encapsulatorp-96.png" alt="" width="24" height="24"><b>Encapsulator</b>P</a><div class="tr-nav-primary"><a href="#atlas" data-tab="atlas">Atlas · Spark</a><a href="#goldbach" data-tab="goldbach">Goldbach</a><a href="#pirate-chest" data-tab="buried-chat-stories">† Pirate Chest</a><a href="#cabinet" data-tab="cabinet">Curious Cabinet</a><a href="#collatz" data-tab="collatz">Collatz</a><a href="#towers" data-tab="towers">Towers</a></div><details class="tr-nav-more"><summary>More paths</summary><div class="tr-nav-menu"><a href="#home" data-tab="home">Math overview</a><a href="#lemmas" data-tab="lemmas">Hibernating Lemmas</a><a href="#roadmap" data-tab="roadmap">Next proof steps</a><a href="#validatron" data-tab="validatron">Validatron</a><a href="#archive" data-tab="archive">Subject map & repos</a><a href="#map-credits" data-tab="map-credits">Map Credits</a></div></details><label class="tr-sr-only" for="tr-all-rooms">All research rooms</label><select class="tr-mobile-nav" id="tr-all-rooms"><option value="#atlas">Atlas · Spark</option><option value="#goldbach">Goldbach</option><option value="#pirate-chest">† Pirate Chest</option><option value="#cabinet">Curious Cabinet</option><option value="#collatz">Collatz</option><option value="#towers">Towers</option><option value="#home">Math overview</option><option value="#lemmas">Hibernating Lemmas</option><option value="#roadmap">Next proof steps</option><option value="#validatron">Validatron</option><option value="#archive">Subject map & repos</option><option value="#map-credits">Map Credits</option></select></div></nav>
 
 <main id="main-content" tabindex="-1">
 <div class="page" data-page="home">
@@ -1124,6 +1124,18 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </div>
 </section>
 </div>
+<div class="page" data-page="map-credits">
+<section class="sec bg-tint pm-credits" id="map-credits" aria-labelledby="map-credits-title"><div class="wrap">
+<h2 class="t" id="map-credits-title">Map <em>Credits.</em></h2>
+<dl class="pm-source-list">
+  <div><dt>Riemann sphere</dt><dd><p>Named for Bernhard Riemann. The chart uses the complex plane with a point at infinity.</p><a href="https://pages.uoregon.edu/jamu/Math5351-lecture-notes.pdf">Stereographic projection notes</a></dd></div>
+  <div><dt>Rupert body</dt><dd><p>Prince Rupert of the Rhine posed the cube passage problem. John Wallis gave an early solution. Pieter Nieuwland found a larger cube that could pass through.</p><a href="https://cms.math.ca/wp-content/uploads/crux-pdfs/Crux_v4n04_Apr.pdf">Oene Bottema on the original problem</a></dd></div>
+  <div><dt>Origami chart</dt><dd><p>An original fold drawing for EncapsulatorP.</p><a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/pirate-map.js">Map drawing code</a></dd></div>
+  <div><dt>Tensegrity prism</dt><dd><p>Kenneth Snelson made early floating-compression sculptures, Buckminster Fuller named tensegrity, and David Georges Emmerich independently developed prism structures.</p><a href="https://pi.math.cornell.edu/~back/amsci_tenseg_scan.pdf">Snelson and the mathematics</a> · <a href="https://www.bfi.org/about-fuller/big-ideas/tensegrity/">Fuller Institute history</a> · <a href="https://api.pageplace.de/preview/DT0400.9781000956290_A46745383/preview-9781000956290_A46745383.pdf">Prism and three contributors</a></dd></div>
+</dl>
+<button class="pm-launch" data-open-pirate-map type="button" hidden>Back to the pirate map <span aria-hidden="true">↗</span></button>
+</div></section>
+</div>
 </main>
 <dialog class="pm-dialog" id="pirate-map" aria-labelledby="pm-title" data-map-state="landing">
   <div class="pm-shell">
@@ -1142,8 +1154,13 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
           </button>
         </div>
         <div class="pm-chart-bar">
-          <div><p class="pm-kicker" id="pm-shape" aria-live="polite"></p><p class="pm-map-description" id="pm-description"></p></div>
+          <div><p class="pm-kicker" id="pm-shape" aria-live="polite"></p><p class="pm-map-description" id="pm-description"></p><a class="pm-credit-link" id="pm-credit-link" href="#map-credits">Map Credits</a></div>
           <button class="pm-button" id="pm-next-map" type="button" hidden>Next map <span aria-hidden="true">↻</span></button>
+        </div>
+        <div class="pm-structure" id="pm-structure" hidden>
+          <div class="pm-structure-control"><label for="pm-prism-view">Rotate the prism</label><input id="pm-prism-view" type="range" min="0" max="360" value="18"></div>
+          <p><span class="pm-cable-key">Nine cables · pull</span> <span class="pm-strut-key">Three struts · push</span></p>
+          <details><summary>How do the joints balance?</summary><p>The triangular rings are 30° apart. Give the ring cables force density 1/√3, the three cross-ring cables +1, and the struts −1. Each joint’s weighted vectors sum to zero in the ideal model.</p></details>
         </div>
         <ul class="pm-legend" id="pm-legend" hidden>
           <li data-kind="treasure"><i aria-hidden="true">✦</i> Treasure · exact result</li>
@@ -1376,7 +1393,7 @@ window.addEventListener('resize',()=>{if(!canvas.closest('.page').classList.cont
 </script>
 <script>
 (function(){
-var alias={cabinet:'cabinet','catalan-disk':'cabinet','mirror-dynamics':'cabinet','goldbach-lab':'goldbach','tr-lemma-lab':'lemmas','tr-collatz-flight':'collatz','shapiro-view':'buried-chat-stories','physics-explorations':'archive',home:'home',atlas:'atlas','atlas-credits':'atlas','research-paths':'home','home-mathematics':'home',lemmas:'lemmas','positive-results':'lemmas',roadmap:'roadmap',goldbach:'goldbach',collatz:'collatz',embed:'collatz',scape:'collatz',towers:'towers',tetra:'towers',validatron:'validatron',archive:'archive','pirate-chest':'buried-chat-stories','buried-chat-stories':'buried-chat-stories'};
+var alias={'map-credits':'map-credits',cabinet:'cabinet','catalan-disk':'cabinet','mirror-dynamics':'cabinet','goldbach-lab':'goldbach','tr-lemma-lab':'lemmas','tr-collatz-flight':'collatz','shapiro-view':'buried-chat-stories','physics-explorations':'archive',home:'home',atlas:'atlas','atlas-credits':'atlas','research-paths':'home','home-mathematics':'home',lemmas:'lemmas','positive-results':'lemmas',roadmap:'roadmap',goldbach:'goldbach',collatz:'collatz',embed:'collatz',scape:'collatz',towers:'towers',tetra:'towers',validatron:'validatron',archive:'archive','pirate-chest':'buried-chat-stories','buried-chat-stories':'buried-chat-stories'};
 var stories=Array.from(document.querySelectorAll('.story[id]'));
 stories.forEach(function(story){alias[story.id]='buried-chat-stories';});
 var pages=Array.from(document.querySelectorAll('.page')),tabs=Array.from(document.querySelectorAll('.nav a[data-tab]'));
@@ -1483,6 +1500,6 @@ window.addEventListener('hashchange',show);show();
 <script src="assets/treasure-rooms.js"></script>
 <script src="assets/goldbach-lab.js"></script>
 <script src="assets/curious-cabinet.js"></script>
-<script src="assets/pirate-map.js"></script>
+<script src="assets/pirate-map.js?v=tensegrity"></script>
 </body></html>
 

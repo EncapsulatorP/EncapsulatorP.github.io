@@ -69,8 +69,12 @@
     }, {
       name: 'Origami chart', description: 'A folded chart that opens along its creases.',
       draw: drawOrigami, points: [[154,274],[258,187],[398,234],[525,128],[674,195],[830,167],[806,378],[618,486],[415,432]]
+    }, {
+      name: 'Tensegrity prism', description: 'Two triangles stay balanced as cables pull and struts push.',
+      draw: drawTensegrity, points: [[160,350],[242,198],[398,122],[555,118],[733,151],[844,287],[766,429],[586,484],[381,459]]
     }
   ];
+  const prism = buildPrism();
 
   const reveal = document.getElementById('pm-reveal');
   const canvas = document.getElementById('pm-canvas');
@@ -86,6 +90,9 @@
   const find = document.getElementById('pm-find');
   const clue = document.getElementById('pm-clue');
   const jump = document.getElementById('pm-story-link');
+  const creditLink = document.getElementById('pm-credit-link');
+  const structure = document.getElementById('pm-structure');
+  const prismView = document.getElementById('pm-prism-view');
   const closeButton = document.getElementById('pm-close');
   const closeCaption = document.getElementById('pm-close-caption');
   const shapeName = document.getElementById('pm-shape');
@@ -100,7 +107,11 @@
   let mapIndex = -1;
   let chosen = 0;
   let opener = null;
-  let leavingForStory = false;
+  let leavingForLink = false;
+
+  function syncPrismControls() {
+    structure.hidden = dialog.dataset.mapState !== 'explored' || charts[mapIndex].draw !== drawTensegrity;
+  }
 
   function nextChart() {
     if (mapIndex === -1) {
@@ -121,6 +132,7 @@
       marker.style.setProperty('--pm-x', x / 10 + '%');
       marker.style.setProperty('--pm-y', y / 6 + '%');
     });
+    syncPrismControls();
     paint();
   }
 
@@ -188,7 +200,7 @@
   function openMap(trigger) {
     if (dialog.open) return;
     opener = trigger || null;
-    leavingForStory = false;
+    leavingForLink = false;
     closeCaption.textContent = opener ? 'Close map' : 'Skip to the atlas';
     dialog.dataset.mapState = 'landing';
     stage.classList.remove('pm-revealing');
@@ -203,6 +215,7 @@
     dialog.dataset.mapState = 'explored';
     reveal.hidden = true;
     [pins, journal, legend, nextMap].forEach(element => { element.hidden = false; });
+    syncPrismControls();
     stage.classList.add('pm-revealing');
     selectStop(0);
     pins.firstElementChild.firstElementChild.focus({ preventScroll: true });
@@ -291,6 +304,54 @@
     context.setLineDash([]);
   }
 
+  function buildPrism() {
+    const vertices = Array.from({ length: 6 }, (_, i) => {
+      const upper = i >= 3;
+      const angle = (i % 3) * 2 * Math.PI / 3 + (upper ? Math.PI / 6 : 0);
+      return [Math.cos(angle), Math.sin(angle), upper ? 0.775 : -0.775];
+    });
+    const members = [];
+    const ringDensity = 1 / Math.sqrt(3);
+    for (let i = 0; i < 3; i++) {
+      const next = (i + 1) % 3;
+      members.push(
+        [i, next, ringDensity], [i + 3, next + 3, ringDensity],
+        [i, i + 3, 1], [i, next + 3, -1]
+      );
+    }
+    return { vertices, members };
+  }
+
+  function drawTensegrity() {
+    const ctx = context;
+    const yaw = Number(prismView.value) * Math.PI / 180;
+    const cosine = Math.cos(yaw), sine = Math.sin(yaw);
+    const points = prism.vertices.map(([x, y, z]) => {
+      const side = x * cosine - y * sine;
+      const depth = x * sine + y * cosine;
+      return [500 + 202 * side, 294 - 202 * (0.86 * z - 0.43 * depth), depth];
+    });
+    const segments = prism.members.map(([i, j, density]) => ({
+      start: points[i], end: points[j], density, depth: (points[i][2] + points[j][2]) / 2
+    }));
+    ctx.save();
+    ctx.lineCap = 'round';
+    segments.sort((a, b) => a.depth - b.depth).forEach(({ start, end, density, depth }) => {
+      const strut = density < 0;
+      ctx.globalAlpha = 0.74 + 0.15 * depth;
+      strokePath([start, end], '#08172a', strut ? 12 : 5);
+      strokePath([start, end], strut ? '#ffc68d' : '#88e3e5', strut ? 8 : 2.4);
+      if (strut) strokePath([start, end], '#ffe6c6', 1.3);
+    });
+    ctx.globalAlpha = 1;
+    points.slice().sort((a, b) => a[2] - b[2]).forEach(([x, y]) => {
+      ctx.beginPath(); ctx.arc(x, y, 6.5, 0, 2 * Math.PI);
+      ctx.fillStyle = '#132c42'; ctx.fill();
+      ctx.lineWidth = 2; ctx.strokeStyle = '#e8f1eb'; ctx.stroke();
+    });
+    ctx.restore();
+  }
+
   function paint() {
     if (!context || !dialog.open || mapIndex < 0) return;
     const scale = Math.min(window.devicePixelRatio || 1, 2);
@@ -341,11 +402,15 @@
   reveal.addEventListener('click', uncover);
   clue.addEventListener('toggle', markClue);
   nextMap.addEventListener('click', nextChart);
+  prismView.addEventListener('input', paint);
   closeButton.addEventListener('click', () => dialog.close());
-  jump.addEventListener('click', () => { leavingForStory = true; dialog.close(); });
+  [jump, creditLink].forEach(link => link.addEventListener('click', () => {
+    leavingForLink = true;
+    dialog.close();
+  }));
   dialog.addEventListener('close', () => {
     document.documentElement.classList.remove('pm-open');
-    if (leavingForStory) return;
+    if (leavingForLink) return;
     const target = opener || document.querySelector('[data-open-pirate-map]');
     if (target) target.focus({ preventScroll: true });
   });

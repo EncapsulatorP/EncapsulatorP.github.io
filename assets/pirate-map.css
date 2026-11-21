@@ -176,3 +176,18 @@
 @media (prefers-reduced-motion: reduce) {
   .pm-logo, .pm-revealing canvas { animation: none; }
 }
+
+.pm-dialog { scrollbar-color: #748ba7 var(--pm-night); }
+.pm-credit-link { display: inline-block; margin-top: 5px; color: var(--pm-muted); font-size: .8rem; text-underline-offset: 3px; }
+.pm-structure { margin-top: 12px; padding: 9px 12px; color: var(--pm-muted); background: var(--pm-night); border: 1px solid var(--pm-line); border-radius: 10px; font-size: .8rem; }
+.pm-structure-control { display: flex; align-items: center; gap: 8px 12px; flex-wrap: wrap; }
+.pm-structure-control input { min-width: 100px; max-width: 200px; flex: 1; accent-color: #77d7db; }
+.pm-structure p { margin: 5px 0; }
+.pm-cable-key { color: #88e3e5; margin-inline-end: 9px; }
+.pm-strut-key { color: #ffc68d; }
+.pm-structure summary { cursor: pointer; color: var(--pm-text); width: fit-content; }
+.pm-source-list { max-width: 760px; margin: 16px 0 24px; }
+.pm-source-list > div { padding: 11px 0; border-top: 1px solid #afbed3; }
+.pm-source-list dt { font: 700 1.18rem Fraunces, Georgia, serif; color: var(--ink); }
+.pm-source-list dd, .pm-source-list p { margin: 3px 0 0; color: var(--soft); font-size: .94rem; }
+.pm-source-list a { text-underline-offset: 3px; }
