@@ -44,7 +44,7 @@ record where a source was recovered and where a definition or table remains miss
 
 - [Interactive atlas](https://encapsulatorp.github.io/#atlas): search, family/evidence filters, related threads and three working exhibits.
 - [Complete reading copy](atlas/README.md): every entry, equation and source link.
-- [Buried Chat Stories](https://encapsulatorp.github.io/#buried-chat-stories): the earlier story collection, preserved and connected to the atlas.
+- [The Pirate Chest · Astral Secrets](https://encapsulatorp.github.io/#pirate-chest): Brun crossings, dagger towers and research treasures, connected to the atlas.
 - [Hibernating Lemmas](https://encapsulatorp.github.io/#lemmas): small exact prime-pair identities and their proofs. The [Goldbach roadmap](lemmas/ROADMAP.md) records the next steps.
 - [Goldbach](https://encapsulatorp.github.io/#goldbach), [Collatz](https://encapsulatorp.github.io/#collatz), and [towers](https://encapsulatorp.github.io/#towers): the existing visual exhibits.
 - [Validatron](https://encapsulatorp.github.io/#validatron): the mathematical retrieval and proof-development programme.
@@ -81,7 +81,11 @@ rebuilds the browser data and complete reading copy. The browser loads local
 assets without a data-fetch dependency. Existing analytics and visual exhibits
 remain part of the showcase.
 
-## Buried Chat Stories · four threads reopened
+<a id="buried-chat-stories--four-threads-reopened"></a>
+
+## The Pirate Chest · Astral Secrets
+
+Four threads reopened.
 
 - [The Ω series](https://encapsulatorp.github.io/#buried-omega-feedback) follows the Omega fixed point from a feedback loop to two prime layers whose order leaves a measurable second harmonic in the model.
 - [The Collatz–Riemann hint that turned around](https://encapsulatorp.github.io/#buried-collatz-riemann-reversal) traces the failed singularity argument back to something exact. The known 1–4–2 cycle produces a pole in its own orbit series, with Abel limit $7/12$ after normalization.
@@ -107,8 +111,8 @@ Research direction and original explorations: **Zolton aka Inge / EncapsulatorP*
 | Recorded name | Contribution and source |
 |---|---|
 | **Sol.6.1** | The signature on [Collatz Metamorphoses](https://encapsulatorp.github.io/#collatz), also preserved in exported images. |
-| **GPT Sol and Zolton** | The signed Buried Chat Stories note above: Ω feedback, Collatz reversal, bubble tube and XO₂. |
-| **GPT and Codex** | Prime Forms constructions, calculations, drawings and integration; Codex also signs The Order of Waves and edits Buried Chat Stories. See [Prime Forms authorship](https://github.com/EncapsulatorP/c3._2z/blob/main/index.html#L839-L850). |
+| **GPT Sol and Zolton** | The signed note for The Pirate Chest above: Ω feedback, Collatz reversal, bubble tube and XO₂. |
+| **GPT and Codex** | Prime Forms constructions, calculations, drawings and integration; Codex also signs The Order of Waves and edits The Pirate Chest. See [Prime Forms authorship](https://github.com/EncapsulatorP/c3._2z/blob/main/index.html#L839-L850). |
 | **Claude** | Prime Forms’ white page and blue plates, lattice relief, spectral read-back, Omega drawing and assembly. See [Prime Forms authorship](https://github.com/EncapsulatorP/c3._2z/blob/main/index.html#L839-L850). |
 | **Gemini (Neon)** | Living SPEC workspace, neon visual study, RG lattice, model checks and experimental lab sections. See [Prime Forms authorship](https://github.com/EncapsulatorP/c3._2z/blob/main/index.html#L839-L850). |
 | **Neo** | Prime Forms visual layout and settings/live-check export helper, as credited in [the project README](https://github.com/EncapsulatorP/c3._2z/blob/main/README.md). |

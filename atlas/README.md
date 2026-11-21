@@ -302,7 +302,7 @@ This is an exact asymptotic characterization. It does not supply a finite-prefix
 
 **Exact identity / written proof · Towers & constants**
 
-*Origin: Recovered Buried Chat Stories edition · 21 November 2026*
+*Origin: The Pirate Chest · recovered edition · 21 November 2026*
 
 At the upper real tetration endpoint, the tower approaches its fixed point with a precise inverse-depth law.
 
@@ -332,7 +332,7 @@ This is the ordinary positive tower at base exp(1/e), with the stated starting v
 
 **Exact identity / written proof · Complex & spectral**
 
-*Origin: June conversation recovered in Buried Chat Stories*
+*Origin: June conversation recovered in The Pirate Chest*
 
 A complex phase parameter enters an integral whose power series is available exactly.
 
