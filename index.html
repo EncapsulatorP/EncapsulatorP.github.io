@@ -228,11 +228,11 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </head>
 <body>
 
-<div class="nav"><div class="in"><a class="lg" href="#home"><img src="assets/logo-encapsulatorp-96.png" alt="" width="24" height="24"><b>Encapsulator</b>P</a>
-<a href="#home" data-tab="home">Home</a><a href="#atlas" data-tab="atlas">Atlas · new</a><a href="#lemmas" data-tab="lemmas">Lemmas</a><a href="#roadmap" data-tab="roadmap">Next steps</a><a href="#goldbach" data-tab="goldbach">Goldbach</a><a href="#collatz" data-tab="collatz">Collatz</a><a href="#towers" data-tab="towers">Towers</a><a href="#validatron" data-tab="validatron">Validatron</a><a href="#archive" data-tab="archive">Archive</a><a href="#buried-chat-stories" data-tab="buried-chat-stories">Buried Chat Stories</a></div></div>
+<div class="nav"><div class="in"><a class="lg" href="#atlas"><img src="assets/logo-encapsulatorp-96.png" alt="" width="24" height="24"><b>Encapsulator</b>P</a>
+<a href="#atlas" data-tab="atlas">Atlas · new</a><a href="#home" data-tab="home">Overview</a><a href="#lemmas" data-tab="lemmas">Lemmas</a><a href="#roadmap" data-tab="roadmap">Next steps</a><a href="#goldbach" data-tab="goldbach">Goldbach</a><a href="#collatz" data-tab="collatz">Collatz</a><a href="#towers" data-tab="towers">Towers</a><a href="#validatron" data-tab="validatron">Validatron</a><a href="#archive" data-tab="archive">Archive</a><a href="#buried-chat-stories" data-tab="buried-chat-stories">Buried Chat Stories</a></div></div>
 
 <main>
-<div class="page on" data-page="home">
+<div class="page" data-page="home">
 <header class="hero"><div class="bars"></div><div class="wrap">
 <img class="mark" src="assets/logo-encapsulatorp-512.png" alt="EncapsulatorP logo" width="84" height="84">
 <p class="ky">computational number theory · one long obsession</p>
@@ -468,14 +468,14 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 
 
 </div>
-<div class="page atlas-page" data-page="atlas">
+<div class="page atlas-page on" data-page="atlas">
   <section class="at-hero" aria-labelledby="atlas-title">
     <div class="wrap at-hero-grid">
       <div>
         <p class="at-eyebrow">EncapsulatorP · research atlas</p>
         <h2 id="atlas-title">Follow the spark.<br><em>Open the mathematics.</em></h2>
         <p class="at-intro">Towers, prime pairs and unexpected connections. Pick a thread and explore.</p>
-        <div class="at-hero-links"><a class="at-hero-link" href="atlas/README.md">Read the complete collection <span aria-hidden="true">↗</span></a><a class="at-credit-jump" href="#atlas-credits">Signatures &amp; collaborators <span aria-hidden="true">↗</span></a></div>
+        <div class="at-hero-links"><a class="at-hero-link" href="atlas/README.md">Read the complete collection <span aria-hidden="true">↗</span></a><a class="at-credit-jump" href="#home-mathematics">Exact results <span aria-hidden="true">↗</span></a><a class="at-credit-jump" href="#atlas-credits">Signatures &amp; collaborators <span aria-hidden="true">↗</span></a></div>
       </div>
       <aside class="at-hero-note" aria-label="About this collection">
         <span class="at-note-index">CHOOSE A ROUTE / MAKE A CONNECTION</span>
@@ -1183,7 +1183,7 @@ var stories=Array.from(document.querySelectorAll('.story[id]'));
 stories.forEach(function(story){alias[story.id]='buried-chat-stories';});
 var pages=Array.from(document.querySelectorAll('.page')),tabs=Array.from(document.querySelectorAll('.nav a[data-tab]'));
 function show(){
- var id=(location.hash||'#home').slice(1).split('?')[0],name=alias[id]||'home';
+ var id=(location.hash||'#atlas').slice(1).split('?')[0],name=alias[id]||'atlas';
  pages.forEach(function(p){p.classList.toggle('on',p.dataset.page===name);});
  tabs.forEach(function(a){if(a.dataset.tab===name)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
  var el=(id!==name)&&document.getElementById(id);
