@@ -61,7 +61,7 @@ record where a source was recovered and where a definition or table remains miss
 
 - [Interactive atlas](https://encapsulatorp.github.io/#atlas): search, family/evidence filters, related threads and three working exhibits.
 - [Complete reading copy](atlas/README.md): every entry, equation and source link.
-- [The Pirate Chest · Astral Secrets](https://encapsulatorp.github.io/#pirate-chest): Brun crossings, dagger towers and research treasures, connected to the atlas.
+- [The Pirate Chest · Orbital Treasures](https://encapsulatorp.github.io/#pirate-chest): Brun crossings, dagger towers and research treasures, connected to the atlas.
 - [Hibernating Lemmas](https://encapsulatorp.github.io/#lemmas): small exact prime-pair identities and their proofs. The [Goldbach roadmap](lemmas/ROADMAP.md) records the next steps.
 - [Goldbach](https://encapsulatorp.github.io/#goldbach), [Collatz](https://encapsulatorp.github.io/#collatz), and [towers](https://encapsulatorp.github.io/#towers): the existing visual exhibits.
 - [Validatron](https://encapsulatorp.github.io/#validatron): the mathematical retrieval and proof-development programme.
@@ -101,7 +101,9 @@ remain part of the showcase.
 
 <a id="buried-chat-stories--four-threads-reopened"></a>
 
-## The Pirate Chest · Astral Secrets
+<a id="the-pirate-chest--astral-secrets"></a>
+
+## The Pirate Chest · Orbital Treasures
 
 Four threads reopened.
 
@@ -114,7 +116,9 @@ Four threads reopened.
 
 ## Signed atlas edition
 
-# *ChatGPT*
+EncapsulatorP is an independent research project led by Zolton. OpenAI’s ChatGPT and Codex assisted with selected calculations, writing, and implementation. Each atlas entry shows its evidence level and sources.
+
+### AI assistance · ChatGPT
 
 **GPT-6 Astra Pro · 21 November 2026**
 
