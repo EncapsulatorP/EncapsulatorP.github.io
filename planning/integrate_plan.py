@@ -8,6 +8,7 @@ from pathlib import Path
 
 START = "<!-- PIRATES PLAN:START -->"
 END = "<!-- PIRATES PLAN:END -->"
+ASSET_VERSION = "plan-20261121-r2"
 ALIASES = (
     "pirates-plan", "plan-timeline", "plan-routes", "repo-interlinks",
     "repo-register", "decision-targets", "plan-bridges",
@@ -69,17 +70,24 @@ def integrate(root: Path, nav: str, expected_sha256: str | None) -> dict:
     if 'href="assets/pirates-plan.css' not in text:
         if text.count("</head>") != 1:
             raise ValueError("Expected one closing head element.")
-        text = text.replace("</head>", '<link rel="stylesheet" href="assets/pirates-plan.css?v=plan-20261121-r1">\n</head>', 1)
+        text = text.replace("</head>", '<link rel="stylesheet" href="assets/pirates-plan.css?v=' + ASSET_VERSION + '">\n</head>', 1)
         actions.append("Added scoped stylesheet")
     scripts = []
     for asset in ("pirates-plan-data.js", "pirates-plan.js"):
         if 'src="assets/' + asset not in text:
-            scripts.append('<script src="assets/' + asset + '?v=plan-20261121-r1"></script>')
+            scripts.append('<script src="assets/' + asset + '?v=' + ASSET_VERSION + '"></script>')
     if scripts:
         if text.count("</body>") != 1:
             raise ValueError("Expected one closing body element.")
         text = text.replace("</body>", "\n".join(scripts) + "\n</body>", 1)
         actions.append("Added local data and enhancement scripts")
+    versioned = re.sub(
+        r'((?:src|href)="assets/(?:pirates-plan\.css|pirates-plan(?:-data)?\.js))(?:\?[^\"]*)?(\")',
+        lambda match: match.group(1) + '?v=' + ASSET_VERSION + match.group(2), text,
+    )
+    if versioned != text:
+        text = versioned
+        actions.append("Refreshed the three planning asset versions")
     if index.read_text(encoding="utf-8") != original:
         raise ValueError("The local index changed during integration. Re-run against the fresh file.")
     index.write_text(text, encoding="utf-8")

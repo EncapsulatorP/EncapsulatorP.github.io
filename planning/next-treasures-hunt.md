@@ -20,6 +20,122 @@ Meaningfulness (M), importance (I) and ROI (R) are independent judgments on a 1�
 
 The audit reviewed every README and tree plus selected core files. It did not rerun every repository test suite or certify every historical result.
 
+# Read the connection map
+
+The complete inventory and the research graph answer different questions: every current organization repository is registered, while connections record the documented, proposed and speculative bridges identified so far.
+
+| Evidence level | Line pattern | Meaning |
+| --- | --- | --- |
+| Known / documented basis | solid | The stated object, source relationship or navigation is documented. Read its scope; this label does not certify a cross-repository theorem. |
+| Proposed work | long dash | An interface, reuse or experiment is specified, but its successful implementation or result is still pending. |
+| Speculative bridge | dotted | A useful question or analogy with a missing mathematical or experimental bridge. The finite probe and pivot condition are explicit. |
+
+A proved cross-repository implication requires a proof artifact and explicit assumptions. A shared object, a reported numerical match and a working hyperlink retain their narrower meanings. Every connection below states its known basis and open question.
+
+**Pirate path:** orange dash-dot arrows and numbered stops show the proposed work order. They do not assert a mathematical implication between consecutive repositories.
+
+# Pirate path · Next treasures · first expedition
+
+A suggested work order through seven bounded treasures. Orange dash-dot arrows mean visit next when the gate permits; they are not mathematical implications or implemented dependencies. The final physics stop is conditional.
+
+[Follow this expedition on the map](https://encapsulatorp.github.io/#pirates-plan?path=next-treasures)
+
+## 1. Make the geometry trustworthy
+
+[Rupert delay hulls](https://github.com/EncapsulatorP/collatz_rupert_delay_embedding) · earliest review S1
+
+**Next treasure:** Save an independently checked positive-clearance cube passage, repair translation handling, and add the exact Noperthedron control.
+
+**Advance or pivot:** Translation covariance and strictness pass before larger scans; a search miss retains its unresolved status.
+
+## 2. Give the result a proof record
+
+[Validatron](https://github.com/EncapsulatorP/Validatron) · earliest review S1
+
+**Next treasure:** Preserve source, statement, assumptions, witness/checker output and the separate three-affine-line Collatz lemma.
+
+**Advance or pivot:** Numerical witnesses and formal proofs retain distinct states. Pending Lean integration need not block a checked empirical capsule.
+
+## 3. Bank an exact arithmetic result
+
+[Goldbach counts](https://github.com/EncapsulatorP/goldbach_busy_collatz) · earliest review S2
+
+**Next treasure:** Independently reproduce a small exact count, CRT and χ4 evidence capsule.
+
+**Advance or pivot:** Exact direct enumeration agrees and provenance is complete. The unresolved optional tower adapter is a separate target.
+
+## 4. Name the map and its clock
+
+[collatz_lift](https://github.com/EncapsulatorP/collatz_lift) · earliest review S3
+
+**Next treasure:** Reconcile written and implemented gates, branch conventions and standard/accelerated clocks before comparing growth or roots.
+
+**Advance or pivot:** A tiny saved trajectory and derivative fixture reproduce the declared map; analytic root checks use a valid unclipped domain.
+
+## 5. Connect Newton and growth instruments
+
+[Tower diagnostics](https://github.com/EncapsulatorP/prime-tower-diagnostics) · earliest review S3
+
+**Next treasure:** Reproduce one Newton–Collatz finite-time growth comparison with fixed horizon, normalization, escape handling and null controls.
+
+**Advance or pivot:** If the visible signal vanishes under controls, retain the negative result and reusable instrument.
+
+## 6. Extract one exact tower identity
+
+[c3._2z](https://github.com/EncapsulatorP/c3._2z) · earliest review S4
+
+**Next treasure:** Publish an exact logarithmic transport/layer-order fixture with explicit base, units and representation controls.
+
+**Advance or pivot:** An independent computation reproduces the identity; tower decomposition is an optional comparison with its own input family.
+
+## 7. Open a bounded physics experiment
+
+[ROLT depth](https://github.com/EncapsulatorP/rolt-phi-kappa3_expand) · earliest review S6
+
+**Next treasure:** Measure depth versus stability/decay at matched noise and resources, linked to the recovered physics notebook.
+
+**Advance or pivot:** Enter after choosing the model, objective and baseline. Synthetic DNA and LiDAR remain separate scoped follow-on experiments.
+
+
+# Pirate path · Newton → growth → a sensing test
+
+A proposed connected expedition along E42, E53 and E44. Begin after the first Rupert control work and the numerical-contract gate. The last step is a synthetic sensing hypothesis, not a demonstrated LiDAR advantage.
+
+[Follow this expedition on the map](https://encapsulatorp.github.io/#pirates-plan?path=newton-lidar)
+
+## 1. Recover the Newton trace
+
+[Tower decomposition](https://github.com/EncapsulatorP/prime_tower_decomposition) · earliest review S3
+
+**Next treasure:** Reproduce the cubic-roots-of-unity control and retain residual, step-size and derivative-stress traces.
+
+**Advance or pivot:** The named control agrees with its definition; shock intensity is kept distinct from a Lyapunov exponent.
+
+## 2. Apply it to a declared function
+
+[collatz_lift](https://github.com/EncapsulatorP/collatz_lift) · earliest review S3
+
+**Next treasure:** Export Newton traces on one small unclipped lift domain, with derivative failures and converged roots labeled.
+
+**Advance or pivot:** The observable, clock, branch and analytic domain are explicit.
+
+## 3. Calibrate the growth report
+
+[Tower diagnostics](https://github.com/EncapsulatorP/prime-tower-diagnostics) · earliest review S3
+
+**Next treasure:** Compare raw growth and actual horizon on the same polynomial and starting points before any common color scale.
+
+**Advance or pivot:** Normalization, derivative floor, clipping and escape masks are visible; record the reason if the instruments disagree.
+
+## 4. Try a synthetic ranging signal
+
+[c3._2z](https://github.com/EncapsulatorP/c3._2z) · earliest review S6
+
+**Next treasure:** Encode a saved trajectory as a bounded optical phase waveform and estimate a delayed noisy return.
+
+**Advance or pivot:** Any improvement must survive matched energy, bandwidth and noise controls. Retain a null result; no hardware performance is claimed.
+
+
 # Stages and decision windows
 
 ## S0 · Land the map
@@ -140,11 +256,11 @@ Local search includes repo names, concepts and edge work. GitHub code search dep
 
 **Question:** Which geometric signal survives a change of coordinates, map clock and null model?
 
-[Rupert delay hulls](https://github.com/EncapsulatorP/collatz_rupert_delay_embedding) → [Tower diagnostics](https://github.com/EncapsulatorP/prime-tower-diagnostics) → [collatz_lift](https://github.com/EncapsulatorP/collatz_lift) → [Forced tetration](https://github.com/EncapsulatorP/collatz_quasi_particle_by_forced_tetration) → [collatz_kesten-goldie](https://github.com/EncapsulatorP/collatz_kesten-goldie) → [Validatron](https://github.com/EncapsulatorP/Validatron)
+[Rupert delay hulls](https://github.com/EncapsulatorP/collatz_rupert_delay_embedding) → [Tower diagnostics](https://github.com/EncapsulatorP/prime-tower-diagnostics) → [collatz_lift](https://github.com/EncapsulatorP/collatz_lift) → [Forced tetration](https://github.com/EncapsulatorP/collatz_quasi_particle_by_forced_tetration) → [collatz_kesten-goldie](https://github.com/EncapsulatorP/collatz_kesten-goldie) → [Validatron](https://github.com/EncapsulatorP/Validatron) → [Tower decomposition](https://github.com/EncapsulatorP/prime_tower_decomposition)
 
 **Target (review from S1):** A tiny trajectory bundle, strict Rupert witness and separately defined finite-time Lyapunov report.
 
-**Connections:** E16, E17, E19, E37, E38
+**Connections:** E16, E17, E19, E37, E38, E42, E51, E53
 
 [Search this route in Pirates Plan](https://encapsulatorp.github.io/#pirates-plan?q=Collatz) · [Search organization code](https://github.com/search?q=org%3AEncapsulatorP%20Collatz&type=code)
 
@@ -168,7 +284,7 @@ Local search includes repo names, concepts and edge work. GitHub code search dep
 
 **Target (review from S4):** A logarithmic transport fixture, a compatible tower adapter and an explicitly Schanuel-conditional target; recover the Mahler ladder as a separate analytic note.
 
-**Connections:** E06, E10, E13, E24, E34
+**Connections:** E06, E10, E13, E24, E34, E46, E52
 
 [Search this route in Pirates Plan](https://encapsulatorp.github.io/#pirates-plan?q=tower) · [Search organization code](https://github.com/search?q=org%3AEncapsulatorP%20tower&type=code)
 
@@ -188,11 +304,11 @@ Local search includes repo names, concepts and edge work. GitHub code search dep
 
 **Question:** Which χ4/beta identities are exact, and which operator or spectral links remain to be built?
 
-[Type-2 signatures](https://github.com/EncapsulatorP/ZP_type2_sector_invariants) → [Catalan operators](https://github.com/EncapsulatorP/Catalan_ruelle_mayer) → [Goldbach counts](https://github.com/EncapsulatorP/goldbach_busy_collatz) → [GUE spectra](https://github.com/EncapsulatorP/Gaussian_Unitary_Ensemble) → [NT arithmetic lab](https://github.com/EncapsulatorP/NT_goldbachy_disastrous_cake) → [zeta_branching](https://github.com/EncapsulatorP/zeta_branching) → [collatz_lift](https://github.com/EncapsulatorP/collatz_lift) → [Forced tetration](https://github.com/EncapsulatorP/collatz_quasi_particle_by_forced_tetration) → [Mertens lattice](https://github.com/EncapsulatorP/mertens_counterexamples)
+[Type-2 signatures](https://github.com/EncapsulatorP/ZP_type2_sector_invariants) → [Catalan operators](https://github.com/EncapsulatorP/Catalan_ruelle_mayer) → [Goldbach counts](https://github.com/EncapsulatorP/goldbach_busy_collatz) → [GUE spectra](https://github.com/EncapsulatorP/Gaussian_Unitary_Ensemble) → [NT arithmetic lab](https://github.com/EncapsulatorP/NT_goldbachy_disastrous_cake) → [zeta_branching](https://github.com/EncapsulatorP/zeta_branching) → [collatz_lift](https://github.com/EncapsulatorP/collatz_lift) → [Forced tetration](https://github.com/EncapsulatorP/collatz_quasi_particle_by_forced_tetration) → [Mertens lattice](https://github.com/EncapsulatorP/mertens_counterexamples) → [Tower decomposition](https://github.com/EncapsulatorP/prime_tower_decomposition)
 
 **Target (review from S4):** Finite character fixtures, explicit operator obligations and an independent root-count reference.
 
-**Connections:** E03, E22, E23, E26, E27, E28
+**Connections:** E03, E22, E23, E26, E27, E28, E50
 
 [Search this route in Pirates Plan](https://encapsulatorp.github.io/#pirates-plan?q=Catalan) · [Search organization code](https://github.com/search?q=org%3AEncapsulatorP%20Catalan&type=code)
 
@@ -200,11 +316,11 @@ Local search includes repo names, concepts and edge work. GitHub code search dep
 
 **Question:** Can a layered model improve retained information or a sensing objective under matched resources?
 
-[ROLT depth](https://github.com/EncapsulatorP/rolt-phi-kappa3_expand) → [c3._2z](https://github.com/EncapsulatorP/c3._2z) → [Forced tetration](https://github.com/EncapsulatorP/collatz_quasi_particle_by_forced_tetration) → [Time reversal](https://github.com/EncapsulatorP/Time_reversal_simulations) → [Tower diagnostics](https://github.com/EncapsulatorP/prime-tower-diagnostics) → [Fixed-point shadow](https://github.com/EncapsulatorP/Fixed-Point-Shadow) → [collatz_lift](https://github.com/EncapsulatorP/collatz_lift) → [antiverse](https://github.com/EncapsulatorP/antiverse) → [Rupert delay hulls](https://github.com/EncapsulatorP/collatz_rupert_delay_embedding)
+[ROLT depth](https://github.com/EncapsulatorP/rolt-phi-kappa3_expand) → [c3._2z](https://github.com/EncapsulatorP/c3._2z) → [Forced tetration](https://github.com/EncapsulatorP/collatz_quasi_particle_by_forced_tetration) → [Time reversal](https://github.com/EncapsulatorP/Time_reversal_simulations) → [Tower diagnostics](https://github.com/EncapsulatorP/prime-tower-diagnostics) → [Fixed-point shadow](https://github.com/EncapsulatorP/Fixed-Point-Shadow) → [collatz_lift](https://github.com/EncapsulatorP/collatz_lift) → [antiverse](https://github.com/EncapsulatorP/antiverse) → [Rupert delay hulls](https://github.com/EncapsulatorP/collatz_rupert_delay_embedding) → [zp-program](https://github.com/EncapsulatorP/zp-program)
 
 **Target (review from S6):** One matched layer/noise experiment, a synthetic-alphabet retention curve and an explicit LiDAR benchmark question, linked to the recovered physics notebook.
 
-**Connections:** E14, E20, E21, E32, E37
+**Connections:** E14, E20, E21, E32, E37, E43, E44, E47, E48
 
 [Search this route in Pirates Plan](https://encapsulatorp.github.io/#pirates-plan?q=stability) · [Search organization code](https://github.com/search?q=org%3AEncapsulatorP%20stability&type=code)
 
@@ -212,13 +328,25 @@ Local search includes repo names, concepts and edge work. GitHub code search dep
 
 **Question:** Which small result can save repeated implementation and checking across the whole portfolio?
 
-[collatz_backoff](https://github.com/EncapsulatorP/collatz_backoff) → [Validatron](https://github.com/EncapsulatorP/Validatron) → [Goldbach counts](https://github.com/EncapsulatorP/goldbach_busy_collatz) → [prime-polarity](https://github.com/EncapsulatorP/prime-polarity) → [Prime wheel 210](https://github.com/EncapsulatorP/Periodic-Table-of-Primes-210) → [gilbreath](https://github.com/EncapsulatorP/gilbreath) → [NT arithmetic lab](https://github.com/EncapsulatorP/NT_goldbachy_disastrous_cake)
+[collatz_backoff](https://github.com/EncapsulatorP/collatz_backoff) → [Validatron](https://github.com/EncapsulatorP/Validatron) → [Goldbach counts](https://github.com/EncapsulatorP/goldbach_busy_collatz) → [prime-polarity](https://github.com/EncapsulatorP/prime-polarity) → [Prime wheel 210](https://github.com/EncapsulatorP/Periodic-Table-of-Primes-210) → [gilbreath](https://github.com/EncapsulatorP/gilbreath) → [NT arithmetic lab](https://github.com/EncapsulatorP/NT_goldbachy_disastrous_cake) → [c3._2z](https://github.com/EncapsulatorP/c3._2z)
 
 **Target (review from S1):** A modular-bijection proof, complete prime labels and one explicitly defined signed/modular transform.
 
-**Connections:** E07, E25, E31, E36
+**Connections:** E07, E25, E31, E36, E52
 
 [Search this route in Pirates Plan](https://encapsulatorp.github.io/#pirates-plan?q=proof) · [Search organization code](https://github.com/search?q=org%3AEncapsulatorP%20proof&type=code)
+
+## R8 · Newton shocks → trustworthy growth → a sensing test
+
+**Question:** Which dynamical structure survives a common numerical contract and helps a declared sensing objective?
+
+[Tower decomposition](https://github.com/EncapsulatorP/prime_tower_decomposition) → [collatz_lift](https://github.com/EncapsulatorP/collatz_lift) → [Tower diagnostics](https://github.com/EncapsulatorP/prime-tower-diagnostics) → [c3._2z](https://github.com/EncapsulatorP/c3._2z)
+
+**Target (review from S3):** A reproducible Newton trace, a growth report with a declared numerical contract, and a separately gated synthetic ranging comparison under matched energy, bandwidth and noise.
+
+**Connections:** E42, E53, E44
+
+[Search this route in Pirates Plan](https://encapsulatorp.github.io/#pirates-plan?route=R8) · [Search organization code](https://github.com/search?q=org%3AEncapsulatorP%20Newton&type=code)
 
 # Repository purposes and next targets
 
@@ -282,7 +410,7 @@ Local search includes repo names, concepts and edge work. GitHub code search dep
 
 **Stop or pivot:** If the acceptance check fails, publish the failed case and repair the object or baseline before scaling. If the first bounded experiment is null, retain the reusable artifact and reconsider the next target.
 
-**Connections:** E07, E08, E09, E10, E36, E38, E41
+**Connections:** E07, E08, E09, E10, E36, E38, E41, E52
 
 **Sources:** [target_planning.md](https://github.com/EncapsulatorP/Validatron/blob/ad7ad831638e5c3d282331335f150afbbd98b64f/target_planning.md) · [src/validatron/adapters/lean4_adapter.py](https://github.com/EncapsulatorP/Validatron/blob/ad7ad831638e5c3d282331335f150afbbd98b64f/src/validatron/adapters/lean4_adapter.py) · [repoaccess/repos.yaml](https://github.com/EncapsulatorP/Validatron/blob/ad7ad831638e5c3d282331335f150afbbd98b64f/repoaccess/repos.yaml) · [src/validatron/pipeline/registry.py](https://github.com/EncapsulatorP/Validatron/blob/ad7ad831638e5c3d282331335f150afbbd98b64f/src/validatron/pipeline/registry.py)
 
@@ -304,7 +432,7 @@ Local search includes repo names, concepts and edge work. GitHub code search dep
 
 **Stop or pivot:** If the acceptance check fails, publish the failed case and repair the object or baseline before scaling. If the first bounded experiment is null, retain the reusable artifact and reconsider the next target.
 
-**Connections:** E16, E17, E37, E38
+**Connections:** E16, E17, E37, E38, E45
 
 **Sources:** [docs/CLAIMS_AND_NONCLAIMS.md](https://github.com/EncapsulatorP/collatz_rupert_delay_embedding/blob/cf7e78217e05d9568e0382be3577254a1d96f167/docs/CLAIMS_AND_NONCLAIMS.md) · [src/collatz_polytope.py](https://github.com/EncapsulatorP/collatz_rupert_delay_embedding/blob/cf7e78217e05d9568e0382be3577254a1d96f167/src/collatz_polytope.py) · [scripts/rupert_proxy.py](https://github.com/EncapsulatorP/collatz_rupert_delay_embedding/blob/cf7e78217e05d9568e0382be3577254a1d96f167/scripts/rupert_proxy.py) · [scripts/scan_batch.py](https://github.com/EncapsulatorP/collatz_rupert_delay_embedding/blob/cf7e78217e05d9568e0382be3577254a1d96f167/scripts/scan_batch.py)
 
@@ -348,7 +476,7 @@ Local search includes repo names, concepts and edge work. GitHub code search dep
 
 **Stop or pivot:** If the acceptance check fails, publish the failed case and repair the object or baseline before scaling. If the first bounded experiment is null, retain the reusable artifact and reconsider the next target.
 
-**Connections:** E11, E12, E41
+**Connections:** E11, E12, E41, E49
 
 **Sources:** [wiki/Findings.md](https://github.com/EncapsulatorP/recaman/blob/056452f2be03dad5f7bca0f7024c8357f42d8c6b/wiki/Findings.md) · [wiki/Methods-and-Validation.md](https://github.com/EncapsulatorP/recaman/blob/056452f2be03dad5f7bca0f7024c8357f42d8c6b/wiki/Methods-and-Validation.md) · [wiki/Open-Questions.md](https://github.com/EncapsulatorP/recaman/blob/056452f2be03dad5f7bca0f7024c8357f42d8c6b/wiki/Open-Questions.md) · [apps/space/model_arena.py](https://github.com/EncapsulatorP/recaman/blob/056452f2be03dad5f7bca0f7024c8357f42d8c6b/apps/space/model_arena.py)
 
@@ -370,7 +498,7 @@ Local search includes repo names, concepts and edge work. GitHub code search dep
 
 **Stop or pivot:** If the acceptance check fails, publish the failed case and repair the object or baseline before scaling. If the first bounded experiment is null, retain the reusable artifact and reconsider the next target.
 
-**Connections:** E19, E20, E28
+**Connections:** E19, E20, E28, E42, E53
 
 **Sources:** [scripts/core/collatz.py](https://github.com/EncapsulatorP/collatz_lift/blob/7134ef3e85474810575209c436be8b6b16e8c5f2/scripts/core/collatz.py) · [scripts/analysis/zero_scan.py](https://github.com/EncapsulatorP/collatz_lift/blob/7134ef3e85474810575209c436be8b6b16e8c5f2/scripts/analysis/zero_scan.py) · [scripts/analysis/rouche.py](https://github.com/EncapsulatorP/collatz_lift/blob/7134ef3e85474810575209c436be8b6b16e8c5f2/scripts/analysis/rouche.py) · [results.md](https://github.com/EncapsulatorP/collatz_lift/blob/7134ef3e85474810575209c436be8b6b16e8c5f2/results.md)
 
@@ -392,7 +520,7 @@ Local search includes repo names, concepts and edge work. GitHub code search dep
 
 **Stop or pivot:** If the acceptance check fails, publish the failed case and repair the object or baseline before scaling. If the first bounded experiment is null, retain the reusable artifact and reconsider the next target.
 
-**Connections:** E15, E16, E30
+**Connections:** E15, E16, E30, E43, E44, E53
 
 **Sources:** [Lemma.md](https://github.com/EncapsulatorP/prime-tower-diagnostics/blob/23450b6b5ed6024c662cae23d3e0644a3ed8510b/Lemma.md) · [scripts/spinor_split_plot.py](https://github.com/EncapsulatorP/prime-tower-diagnostics/blob/23450b6b5ed6024c662cae23d3e0644a3ed8510b/scripts/spinor_split_plot.py) · [scripts/spinor_cocycles.py](https://github.com/EncapsulatorP/prime-tower-diagnostics/blob/23450b6b5ed6024c662cae23d3e0644a3ed8510b/scripts/spinor_cocycles.py) · [scripts/prime_index_dependence_test.py](https://github.com/EncapsulatorP/prime-tower-diagnostics/blob/23450b6b5ed6024c662cae23d3e0644a3ed8510b/scripts/prime_index_dependence_test.py)
 
@@ -436,7 +564,7 @@ Local search includes repo names, concepts and edge work. GitHub code search dep
 
 **Stop or pivot:** If the acceptance check fails, publish the failed case and repair the object or baseline before scaling. If the first bounded experiment is null, retain the reusable artifact and reconsider the next target.
 
-**Connections:** E17, E18
+**Connections:** E17, E18, E51
 
 **Sources:** [rboi_kesten_scanner.py](https://github.com/EncapsulatorP/collatz_kesten-goldie/blob/791f509561d1d4cf77a471e94e808648741858ed/rboi_kesten_scanner.py) · [plan.md](https://github.com/EncapsulatorP/collatz_kesten-goldie/blob/791f509561d1d4cf77a471e94e808648741858ed/plan.md) · [results.md](https://github.com/EncapsulatorP/collatz_kesten-goldie/blob/791f509561d1d4cf77a471e94e808648741858ed/results.md) · [docs/Dictionary.md](https://github.com/EncapsulatorP/collatz_kesten-goldie/blob/791f509561d1d4cf77a471e94e808648741858ed/docs/Dictionary.md)
 
@@ -458,7 +586,7 @@ Local search includes repo names, concepts and edge work. GitHub code search dep
 
 **Stop or pivot:** If the acceptance check fails, publish the failed case and repair the object or baseline before scaling. If the first bounded experiment is null, retain the reusable artifact and reconsider the next target.
 
-**Connections:** E12, E13, E14, E34, N02
+**Connections:** E12, E13, E14, E34, N02, E44, E46, E52
 
 **Sources:** [RESEARCH_ARCHIVE.md](https://github.com/EncapsulatorP/c3._2z/blob/7e8fb577bd3eb8da2e358d691164a9fee5c75f9b/RESEARCH_ARCHIVE.md) · [omega_stability_tests.py](https://github.com/EncapsulatorP/c3._2z/blob/7e8fb577bd3eb8da2e358d691164a9fee5c75f9b/omega_stability_tests.py) · [index.html](https://github.com/EncapsulatorP/c3._2z/blob/7e8fb577bd3eb8da2e358d691164a9fee5c75f9b/index.html) · [outputs/omega_stability/conclusions.md](https://github.com/EncapsulatorP/c3._2z/blob/7e8fb577bd3eb8da2e358d691164a9fee5c75f9b/outputs/omega_stability/conclusions.md)
 
@@ -502,7 +630,7 @@ Local search includes repo names, concepts and edge work. GitHub code search dep
 
 **Stop or pivot:** If the acceptance check fails, publish the failed case and repair the object or baseline before scaling. If the first bounded experiment is null, retain the reusable artifact and reconsider the next target.
 
-**Connections:** E10, E24
+**Connections:** E10, E24, E46, E47
 
 **Sources:** [z_p/proof_sketch.md](https://github.com/EncapsulatorP/zp-program/blob/70454700844d882615b9ff93fed17b5707af834d/z_p/proof_sketch.md) · [z_p/zeta_even_reduction.md](https://github.com/EncapsulatorP/zp-program/blob/70454700844d882615b9ff93fed17b5707af834d/z_p/zeta_even_reduction.md) · [tests/test_cp.py](https://github.com/EncapsulatorP/zp-program/blob/70454700844d882615b9ff93fed17b5707af834d/tests/test_cp.py)
 
@@ -524,7 +652,7 @@ Local search includes repo names, concepts and edge work. GitHub code search dep
 
 **Stop or pivot:** If the acceptance check fails, publish the failed case and repair the object or baseline before scaling. If the first bounded experiment is null, retain the reusable artifact and reconsider the next target.
 
-**Connections:** E22, E23
+**Connections:** E22, E23, E49
 
 **Sources:** [z_p/type2/signature.py](https://github.com/EncapsulatorP/ZP_type2_sector_invariants/blob/01c93cdf96efe585d10bb4b8d54b73e741f96101/z_p/type2/signature.py) · [z_p/type2/parity.py](https://github.com/EncapsulatorP/ZP_type2_sector_invariants/blob/01c93cdf96efe585d10bb4b8d54b73e741f96101/z_p/type2/parity.py) · [z_p/type2/narayana_fit.py](https://github.com/EncapsulatorP/ZP_type2_sector_invariants/blob/01c93cdf96efe585d10bb4b8d54b73e741f96101/z_p/type2/narayana_fit.py) · [results/publication/compact_results_table.md](https://github.com/EncapsulatorP/ZP_type2_sector_invariants/blob/01c93cdf96efe585d10bb4b8d54b73e741f96101/results/publication/compact_results_table.md)
 
@@ -546,7 +674,7 @@ Local search includes repo names, concepts and edge work. GitHub code search dep
 
 **Stop or pivot:** If the acceptance check fails, publish the failed case and repair the object or baseline before scaling. If the first bounded experiment is null, retain the reusable artifact and reconsider the next target.
 
-**Connections:** E13, E15
+**Connections:** E13, E15, E42, E50, E51
 
 **Sources:** [notes/digits/prime_power_digits.md](https://github.com/EncapsulatorP/prime_tower_decomposition/blob/9209c146480916235c148db03f8797a2a997d19a/notes/digits/prime_power_digits.md) · [scripts/towers/tower_prime_decomposition.py](https://github.com/EncapsulatorP/prime_tower_decomposition/blob/9209c146480916235c148db03f8797a2a997d19a/scripts/towers/tower_prime_decomposition.py) · [scripts/mirror_3223/mini_p3223_nr.py](https://github.com/EncapsulatorP/prime_tower_decomposition/blob/9209c146480916235c148db03f8797a2a997d19a/scripts/mirror_3223/mini_p3223_nr.py)
 
@@ -568,7 +696,7 @@ Local search includes repo names, concepts and edge work. GitHub code search dep
 
 **Stop or pivot:** If the acceptance check fails, publish the failed case and repair the object or baseline before scaling. If the first bounded experiment is null, retain the reusable artifact and reconsider the next target.
 
-**Connections:** E03, E23
+**Connections:** E03, E23, E50
 
 **Sources:** [src/catalan_mg/core.py](https://github.com/EncapsulatorP/Catalan_ruelle_mayer/blob/1aa0f8d76753cfa34d128d5d29598bb94eaf2131/src/catalan_mg/core.py) · [src/catalan_mg/generate.py](https://github.com/EncapsulatorP/Catalan_ruelle_mayer/blob/1aa0f8d76753cfa34d128d5d29598bb94eaf2131/src/catalan_mg/generate.py) · [PLAN.md](https://github.com/EncapsulatorP/Catalan_ruelle_mayer/blob/1aa0f8d76753cfa34d128d5d29598bb94eaf2131/PLAN.md) · [RESULTS.md](https://github.com/EncapsulatorP/Catalan_ruelle_mayer/blob/1aa0f8d76753cfa34d128d5d29598bb94eaf2131/RESULTS.md)
 
@@ -788,7 +916,7 @@ Local search includes repo names, concepts and edge work. GitHub code search dep
 
 **Stop or pivot:** If the acceptance check fails, publish the failed case and repair the object or baseline before scaling. If the first bounded experiment is null, retain the reusable artifact and reconsider the next target.
 
-**Connections:** E14, E21
+**Connections:** E14, E21, E43, E47, E48
 
 **Sources:** [nextsteps.md](https://github.com/EncapsulatorP/rolt-phi-kappa3_expand/blob/158e509ed6fa05c7e282f761637d700fc00d36f9/nextsteps.md) · [scripts/dirac/rolt_aps_eta_5case_sweep.py](https://github.com/EncapsulatorP/rolt-phi-kappa3_expand/blob/158e509ed6fa05c7e282f761637d700fc00d36f9/scripts/dirac/rolt_aps_eta_5case_sweep.py) · [scripts/qaoa/qaoa_maxcut_pennylane.py](https://github.com/EncapsulatorP/rolt-phi-kappa3_expand/blob/158e509ed6fa05c7e282f761637d700fc00d36f9/scripts/qaoa/qaoa_maxcut_pennylane.py)
 
@@ -898,7 +1026,7 @@ Local search includes repo names, concepts and edge work. GitHub code search dep
 
 **Stop or pivot:** If the acceptance check fails, publish the failed case and repair the object or baseline before scaling. If the first bounded experiment is null, retain the reusable artifact and reconsider the next target.
 
-**Connections:** E32, E33
+**Connections:** E32, E33, E48
 
 **Sources:** [README.md](https://github.com/EncapsulatorP/Fixed-Point-Shadow/blob/26744b515fcb08e9aa9065f56abeb71f352fb65d/README.md)
 
@@ -920,7 +1048,7 @@ Local search includes repo names, concepts and edge work. GitHub code search dep
 
 **Stop or pivot:** If the acceptance check fails, publish the failed case and repair the object or baseline before scaling. If the first bounded experiment is null, retain the reusable artifact and reconsider the next target.
 
-**Connections:** E34, E35
+**Connections:** E34, E35, E45
 
 **Sources:** [README.md](https://github.com/EncapsulatorP/YPer/blob/4f8c7b0fecc95f9568ccfa8b52ed968b9fc998b0/README.md)
 
@@ -938,6 +1066,10 @@ Direction records proposed artifact flow or the source of a hyperlink. A shared-
 
 Profile README links directly to the public research atlas and pirate chest.
 
+**Evidence level:** known. **Known basis:** The organization profile contains a working link to its public research atlas.
+
+**Open question:** Are navigation, source references and plan links synchronized after changes?
+
 **Status:** Existing documentation link
 
 **Next experiment:** Keep source and planning links synchronized with the canonical inventory.
@@ -951,6 +1083,10 @@ Profile README links directly to the public research atlas and pirate chest.
 **[Public atlas](https://github.com/EncapsulatorP/EncapsulatorP.github.io) → [c3._2z](https://github.com/EncapsulatorP/c3._2z)** · review from S0
 
 Site README links the C3 prime-layer/Prime Forms source and preserves attribution.
+
+**Evidence level:** known. **Known basis:** The website README links the C3/Prime Forms source and attributes it.
+
+**Open question:** Do the public exhibit and source links continue to resolve to the intended work?
 
 **Status:** Existing documentation link
 
@@ -969,6 +1105,10 @@ Site README links the C3 prime-layer/Prime Forms source and preserves attributio
 
 Both compute finite Goldbach prime-pair fibers; ESC adds restricted Egyptian-fraction features on those fibers. No theorem implication or imported common backend is established.
 
+**Evidence level:** known. **Known basis:** Both sources compute finite Goldbach prime-pair fibers; the ESC source adds Egyptian-fraction features.
+
+**Open question:** Which features are available before the fiber is known, and do they improve a held-out comparison?
+
 **Status:** Existing independent computations
 
 **Next experiment:** Evaluate features under a declared availability contract; keep descriptive fiber-derived features separate from prediction requiring unknown prime pairs.
@@ -982,6 +1122,10 @@ Both compute finite Goldbach prime-pair fibers; ESC adds restricted Egyptian-fra
 **[Goldbach counts](https://github.com/EncapsulatorP/goldbach_busy_collatz) → [Catalan operators](https://github.com/EncapsulatorP/Catalan_ruelle_mayer)** · review from S2
 
 The exact χ4-weighted Goldbach identity and Li_s(i)/Dirichlet-beta decomposition are written in the bridge; Catalan generator evaluates the same polylog channels. No common Ruelle–Mayer determinant is established.
+
+**Evidence level:** known. **Known basis:** The sources explicitly contain χ4, Dirichlet beta and polylog channels, including the finite weighted Goldbach identity.
+
+**Open question:** Which exact finite fixtures transfer, and what additional operator/trace identity would a determinant claim require?
 
 **Status:** Existing mathematical connection
 
@@ -997,6 +1141,10 @@ The exact χ4-weighted Goldbach identity and Li_s(i)/Dirichlet-beta decompositio
 
 Finite Goldbach and modular/arithmetic experiments overlap; NT integrations/ is currently only a placeholder.
 
+**Evidence level:** known. **Known basis:** Both repositories contain finite Goldbach/arithmetic computations. NT integrations are a placeholder.
+
+**Open question:** Do the count conventions and independent bounded reference outputs agree?
+
 **Status:** Existing independent implementations
 
 **Next experiment:** Compare exact count conventions and bounded reference outputs before extracting reusable helpers.
@@ -1010,6 +1158,10 @@ Finite Goldbach and modular/arithmetic experiments overlap; NT integrations/ is 
 **[Goldbach counts](https://github.com/EncapsulatorP/goldbach_busy_collatz) → [Prime wheel 210](https://github.com/EncapsulatorP/Periodic-Table-of-Primes-210)** · review from S2
 
 The Goldbach local CRT kernel and the PTP wheel both use unit residue classes, including mod210. Local compatibility counts do not establish prime existence.
+
+**Evidence level:** known. **Known basis:** Unit residue classes and mod-210 local arithmetic occur in both sources.
+
+**Open question:** Can one residue contract separate exact local compatibility from claims about prime existence?
 
 **Status:** Existing modular objects; reuse proposed
 
@@ -1025,6 +1177,10 @@ The Goldbach local CRT kernel and the PTP wheel both use unit residue classes, i
 
 C3's finite Recamán lab and the dedicated Recamán repo share the sequence family; C3's optical/blockade comparison is explicitly conjectural.
 
+**Evidence level:** known. **Known basis:** Both repositories contain finite versions of the Recamán recurrence.
+
+**Open question:** Do identical conventions reproduce identical checkpoints before the optical analogy is tested?
+
 **Status:** Existing parallel finite Recamán models
 
 **Next experiment:** Align recurrence conventions and finite checkpoints; compare exact trajectories before importing features into the physical analogy.
@@ -1038,6 +1194,10 @@ C3's finite Recamán lab and the dedicated Recamán repo share the sequence fami
 **[c3._2z](https://github.com/EncapsulatorP/c3._2z) → [Tower decomposition](https://github.com/EncapsulatorP/prime_tower_decomposition)** · review from S4
 
 Both study digit prime-power depth and logarithmic propagation/remainders; C3 explicitly varies physical units and prime-layer order, while decomposition studies decimal mirrors.
+
+**Evidence level:** known. **Known basis:** Both sources use prime-power digit layers and logarithmic remainders, with different representation and physical-unit choices.
+
+**Open question:** Which exact log-transport fixtures survive explicit base, unit and ordering controls?
 
 **Status:** Existing shared base-dependent objects
 
@@ -1053,6 +1213,10 @@ Both study digit prime-power depth and logarithmic propagation/remainders; C3 ex
 
 Both use p-adic valuations and representation/carry structure, but digit-factor classifications and factorial-ratio h_p(n) are different constructions.
 
+**Evidence level:** known. **Known basis:** Both sources use p-adic valuation/carry tools, applied to different arithmetic families.
+
+**Open question:** Can the elementary valuation fixtures be reused without identifying the distinct tower constructions?
+
 **Status:** Shared valuation/carry tools; different arithmetic families
 
 **Next experiment:** Reuse only v_p/base-carry test fixtures after declaring each input family; do not equate their tower heights.
@@ -1066,6 +1230,10 @@ Both use p-adic valuations and representation/carry structure, but digit-factor 
 **[Rupert delay hulls](https://github.com/EncapsulatorP/collatz_rupert_delay_embedding) → [collatz_kesten-goldie](https://github.com/EncapsulatorP/collatz_kesten-goldie)** · review from S3
 
 Delay-hull geometry and affine-recursion tail diagnostics can be evaluated on the same pinned integer trajectories after map/gauge conventions are matched.
+
+**Evidence level:** known. **Known basis:** Both sources study Collatz trajectory/valuation data; no combined imported pipeline was established.
+
+**Open question:** After matching the map and gauge, do geometry and tail features retain information beyond shuffled controls?
 
 **Status:** Shared Collatz orbit/valuation data; no imported pipeline established
 
@@ -1081,6 +1249,10 @@ Delay-hull geometry and affine-recursion tail diagnostics can be evaluated on th
 
 Lift code uses accelerated odd branch and H_hat=G(exp u)-u-ln2; forced tetration uses standard odd branch in an exponential feedback update. README formulas in lift currently disagree with its code.
 
+**Evidence level:** known. **Known basis:** Both sources implement analytic Collatz-related maps, but lift and forced tetration use different odd-branch clocks and updates.
+
+**Open question:** Which comparisons remain valid after the maps, derivatives, branches and clocks are explicitly aligned?
+
 **Status:** Related analytic Collatz extensions; different implemented maps
 
 **Next experiment:** Create versioned gate, update, derivative and branch contracts; reconcile documentation before comparing roots/survival.
@@ -1094,6 +1266,10 @@ Lift code uses accelerated odd branch and H_hat=G(exp u)-u-ln2; forced tetration
 **[Type-2 signatures](https://github.com/EncapsulatorP/ZP_type2_sector_invariants) → [Forced tetration](https://github.com/EncapsulatorP/collatz_quasi_particle_by_forced_tetration)** · review from S4
 
 Type2 README reports companion tetration sweeps observed under temporary files; local forced-tetration Type2 script imports its own collatzscape model and uses different feature formulas.
+
+**Evidence level:** proposed. **Known basis:** The Type-2 README reports a manual companion tetration comparison under temporary files; the local formulas differ.
+
+**Open question:** Can the comparison be recovered as a pinned, independently replayable signature bundle?
 
 **Status:** Documented manual companion comparison; no versioned cross-repo import
 
@@ -1109,6 +1285,10 @@ Type2 README reports companion tetration sweeps observed under temporary files; 
 
 Dirichlet chi4/beta and Catalan's constant are shared named objects; Catalan/Narayana combinatorics in Type2 are a different object family, not an automatic determinant relation.
 
+**Evidence level:** known. **Known basis:** The named beta/χ4/Catalan-constant channel appears in both sources; Catalan-number combinatorics is a separate object.
+
+**Open question:** Which exact channel identities transfer, and what is still missing for any combinatorial/operator relation?
+
 **Status:** Existing beta/chi4 channel; combinatorial Catalan is separate
 
 **Next experiment:** Share exact beta/polylog identity checks and keep combinatorial and constant/operator channels separately named.
@@ -1122,6 +1302,10 @@ Dirichlet chi4/beta and Catalan's constant are shared named objects; Catalan/Nar
 **[zp-program](https://github.com/EncapsulatorP/zp-program) → [prime-polarity](https://github.com/EncapsulatorP/prime-polarity)** · review from S5
 
 Both use exp(pi*zeta(n-1)/n)+1 as a generator, with prime-restricted reduction in zp-program and discrimination features in prime-polarity.
+
+**Evidence level:** known. **Known basis:** The same displayed exp(pi*zeta(n-1)/n)+1 family appears in both sources.
+
+**Open question:** Do the independent high-precision implementations agree, and do classification claims survive ties and controls?
 
 **Status:** Same displayed Z-family; independent implementations
 
@@ -1137,6 +1321,10 @@ Both use exp(pi*zeta(n-1)/n)+1 as a generator, with prime-restricted reduction i
 
 GUE studies spacings; Mertens lattice search uses zero-related high-precision phase/weight data. Sharing the object does not license substituting low-precision spacing zeros into the lattice certificate.
 
+**Evidence level:** known. **Known basis:** Zeta-zero data enters both projects, for spacing statistics and high-precision phase/weight work respectively.
+
+**Open question:** What precision and provenance contract permits safe reuse for the particular downstream calculation?
+
 **Status:** Zeta-zero inputs with different numerical obligations
 
 **Next experiment:** Create an input-precision/provenance manifest before any zero-data reuse.
@@ -1151,6 +1339,10 @@ GUE studies spacings; Mertens lattice search uses zero-related high-precision ph
 
 Boundary residue profiles explicitly compare 2-c_star from the Collatz Bay with a tunable inverse repunit-tower remainder.
 
+**Evidence level:** speculative. **Known basis:** The boundary source reports a numerical Collatz-Bay reference and a tunable repunit-tower comparison.
+
+**Open question:** Does any relation survive sensitivity, uncertainty and fitting controls beyond the reported numerical match?
+
 **Status:** Existing numerical Collatz-Bay reference
 
 **Next experiment:** Pin the same C(z) and root equation, compute sensitivity/uncertainty, and separate reproduced constant from fitted coincidence.
@@ -1158,6 +1350,42 @@ Boundary residue profiles explicitly compare 2-c_star from the Collatz Bay with 
 **Output:** A source-pinned comparison or adapter report for E29; include the inputs, output, acceptance result and keep/pivot/archive decision.
 
 **Evidence:** [collatz_bay.py](https://github.com/EncapsulatorP/Some_playful_boundary_paths_and_brun_twin_prime_sign_flipping_towers/blob/b07d1d3bac745ed8bb43fe6be0e7279d5c700818/scripts/boundary_residues/collatz_bay.py) · [README.md](https://github.com/EncapsulatorP/collatz_quasi_particle_by_forced_tetration/blob/e712b2e5d9ca4f1da5c973be9b7a39753b8a127b/README.md)
+
+### E50 · Dirichlet beta joins the Colmez and Catalan channels
+
+**[Tower decomposition](https://github.com/EncapsulatorP/prime_tower_decomposition) → [Catalan operators](https://github.com/EncapsulatorP/Catalan_ruelle_mayer)** · review from S4
+
+The decomposition repo explicitly computes beta(s)=L(s,chi_-4), its completed logarithmic derivative and twisted Mayer-beta entries. Catalan generators evaluate Li_s(i) channels whose imaginary component is beta(s) on the convergent real-order domain.
+
+**Evidence level:** known. **Known basis:** The shared Dirichlet-beta object is explicit in existing code, not merely a name similarity.
+
+**Open question:** A common signed determinant, Colmez-height identity or global operator correspondence is not established by evaluating these observables.
+
+**Status:** Documented shared object; cross-repository reuse remains proposed
+
+**Next experiment:** Cross-check small positive real orders and nonsingular functional-equation probes at increasing precision. Record the gamma/digamma completion separately from raw beta'/beta.
+
+**Output:** A shared beta reference table and a short operator-obligation ledger distinguishing confirmed identities from proposed extensions.
+
+**Evidence:** [Explicit beta and completed log-derivative implementation](https://github.com/EncapsulatorP/prime_tower_decomposition/blob/9209c146480916235c148db03f8797a2a997d19a/scripts/colmez/colmez.py) · [Catalan/polylog generator](https://github.com/EncapsulatorP/Catalan_ruelle_mayer/blob/1aa0f8d76753cfa34d128d5d29598bb94eaf2131/src/catalan_mg/core.py)
+
+### E51 · One Syracuse valuation stream, two diagnostics
+
+**[Tower decomposition](https://github.com/EncapsulatorP/prime_tower_decomposition) → [collatz_kesten-goldie](https://github.com/EncapsulatorP/collatz_kesten-goldie)** · review from S3
+
+The decomposition repo extracts odd-Syracuse valuations and analyzes finite Collatz windows; Kesten diagnostics use valuation-driven affine recursions and raw/SSI gauges. A common exact trajectory bundle can remove duplicated conventions.
+
+**Evidence level:** known. **Known basis:** Both repositories document valuation-based Collatz diagnostics.
+
+**Open question:** Whether the same higher-order valuation dependence explains window suppression and tail behavior; shared input data does not imply a shared limiting law.
+
+**Status:** Documented shared object; cross-repository reuse remains proposed
+
+**Next experiment:** Export identical odd states, v2 values and additive +1 corrections for a few seeds. Confirm both consumers reconstruct the same integer trajectory before comparing block-preserving nulls.
+
+**Output:** A trajectory/clock/gauge fixture plus a narrowly stated dependence comparison.
+
+**Evidence:** [Syracuse and window-diagnostic source map](https://github.com/EncapsulatorP/prime_tower_decomposition/blob/9209c146480916235c148db03f8797a2a997d19a/README.md) · [Raw/SSI and dependence-control scope](https://github.com/EncapsulatorP/collatz_kesten-goldie/blob/791f509561d1d4cf77a471e94e808648741858ed/README.md)
 
 
 ## Proposed reuse
@@ -1167,6 +1395,10 @@ Boundary residue profiles explicitly compare 2-c_star from the Collatz Bay with 
 **[Goldbach counts](https://github.com/EncapsulatorP/goldbach_busy_collatz) → [Mertens lattice](https://github.com/EncapsulatorP/mertens_counterexamples)** · review from S5
 
 Goldbach capsule has exact finite μ/M(n) checks; Mertens repo has lattice candidate enumeration. Use compatible evidence schemas, while preserving different mathematical claims.
+
+**Evidence level:** proposed. **Known basis:** The Goldbach capsule contains finite Möbius checks; the Mertens source contains lattice candidate enumeration.
+
+**Open question:** Can a common exact evidence record preserve the different claims and precision requirements?
 
 **Status:** Proposed; sources now available
 
@@ -1182,6 +1414,10 @@ Goldbach capsule has exact finite μ/M(n) checks; Mertens repo has lattice candi
 
 Goldbach implements an optional import of boundary_residues.constructive, but the current boundary repo main lacks that module and notes/real_tower_theorem.md. Present repunit_tower code is a distinct object.
 
+**Evidence level:** proposed. **Known basis:** An optional Goldbach import is present, but its expected module and theorem note are absent from the named boundary repository main.
+
+**Open question:** Which compatible checkout or explicitly implemented adapter supplies the intended map?
+
 **Status:** Adapter target not verified
 
 **Next experiment:** Locate/pin the compatible checkout or explicitly implement the approved map adapter; reproduce fixed-base output and source hashes.
@@ -1195,6 +1431,10 @@ Goldbach implements an optional import of boundary_residues.constructive, but th
 **[Validatron](https://github.com/EncapsulatorP/Validatron) → [Goldbach counts](https://github.com/EncapsulatorP/goldbach_busy_collatz)** · review from S1
 
 Goldbach's Validatron-manifest hook reports readiness only; proposed exact χ4/CRT/count lemmas become semantic/proof fixtures for the actual proof stack.
+
+**Evidence level:** proposed. **Known basis:** Goldbach contains exact finite arithmetic fixtures and a Validatron readiness hook; Validatron contains the source/claim registry.
+
+**Open question:** Can an actual statement-and-proof fixture be replayed through that registry?
 
 **Status:** Readiness manifest only; no live service
 
@@ -1210,6 +1450,10 @@ Goldbach's Validatron-manifest hook reports readiness only; proposed exact χ4/C
 
 Antiverse's exact preorder/partial-order example supplies original, failed, repaired and quotient statements for Validatron's assumption/variant lineage.
 
+**Evidence level:** proposed. **Known basis:** The private Antiverse notes contain a concrete preorder/partial-order example and assumption variants.
+
+**Open question:** After the physics relocation decision, can one optional repair fixture preserve original and changed statements?
+
 **Status:** Optional downstream constructive-repair fixture after physics relocation; not implemented
 
 **Next experiment:** After the physics destination/naming decision and migration/link audit are settled, optionally replay one exact preorder countermodel and repaired uniqueness proof in Validatron. Preserve the pinned witness lineage across relocation and distinguish proof failure, countermodel and repaired theorem.
@@ -1223,6 +1467,10 @@ Antiverse's exact preorder/partial-order example supplies original, failed, repa
 **[Validatron](https://github.com/EncapsulatorP/Validatron) → [Diophantus](https://github.com/EncapsulatorP/Diophantus)** · review from S5
 
 Diophantus verified integer identities and bounded search reports are compact inputs for distinct identity-proof versus bounded-search evidence handling.
+
+**Evidence level:** proposed. **Known basis:** Diophantus contains exact integer identities and bounded search records.
+
+**Open question:** Can the proof pipeline keep an identity certificate distinct from an exhausted finite search?
 
 **Status:** Proposed exact-arithmetic certificates
 
@@ -1238,6 +1486,10 @@ Diophantus verified integer identities and bounded search reports are compact in
 
 Z(p)'s exact rational reduction and Schanuel-conditional claims exercise assumption closure and precision-bounded PSLQ evidence handling.
 
+**Evidence level:** proposed. **Known basis:** Z(p) contains an exact rational reduction and an explicitly Schanuel-conditional claim family.
+
+**Open question:** Can the repaired conditional implication be checked with every assumption retained?
+
 **Status:** Proposed conditional-claim corpus
 
 **Next experiment:** Repair the conditional statement first; retain explicit Schanuel assumption and never treat no PSLQ hit as independence proof.
@@ -1251,6 +1503,10 @@ Z(p)'s exact rational reduction and Schanuel-conditional claims exercise assumpt
 **[recaman](https://github.com/EncapsulatorP/recaman) → [Obstruction-Theory](https://github.com/EncapsulatorP/Obstruction-Theory)** · review from S2
 
 Recamán distinguishes missing-value candidates from blocked process steps. That exact distinction is a useful seed for a typed obstruction ledger; the target repo currently contains only a remit.
+
+**Evidence level:** proposed. **Known basis:** Recamán records finite missing-value candidates and blocked transition steps; Obstruction-Theory currently supplies a remit.
+
+**Open question:** Can one ledger preserve the distinction between a finite observation and a universal obstruction?
 
 **Status:** Proposed first obstruction case
 
@@ -1266,6 +1522,10 @@ Recamán distinguishes missing-value candidates from blocked process steps. That
 
 Both use delayed geometric views of scalar dynamics. A common lag/normalization/null suite can test how much visible structure comes from coordinate choices.
 
+**Evidence level:** proposed. **Known basis:** Both sources use delayed geometric views of scalar trajectories.
+
+**Open question:** Which geometric signal survives common lag, normalization, horizon and null controls?
+
 **Status:** Proposed shared geometry diagnostics
 
 **Next experiment:** Compare raw/log maps, lag, horizon and shuffled controls; keep hull proxy, fractal dimension and convergence claims separate.
@@ -1279,6 +1539,10 @@ Both use delayed geometric views of scalar dynamics. A common lag/normalization/
 **[collatz_kesten-goldie](https://github.com/EncapsulatorP/collatz_kesten-goldie) → [Diophantus](https://github.com/EncapsulatorP/Diophantus)** · review from S5
 
 Diophantus future_integrations explicitly pins the SSI-to-syllable/additive-correction ledger; Kesten scanner already compares raw and SSI gauge regimes.
+
+**Evidence level:** proposed. **Known basis:** Diophantus explicitly records the SSI/additive-correction bridge; the Kesten scanner already compares gauge regimes.
+
+**Open question:** Can an exact +1 correction ledger support a reproducible cross-repository comparison?
 
 **Status:** Documented planned SSI bridge
 
@@ -1294,6 +1558,10 @@ Diophantus future_integrations explicitly pins the SSI-to-syllable/additive-corr
 
 Both contain complex-root scans, sectors and continuation. The reconstructed Time_reversal models are not evidence for the same generating function.
 
+**Evidence level:** proposed. **Known basis:** Both sources contain complex-root/sector computations, with different reconstructed generating models.
+
+**Open question:** Can a known analytic reference validate a reusable contour and continuation instrument?
+
 **Status:** Proposed root-scanner/continuation reuse
 
 **Next experiment:** Use a known analytic model as a shared contour fixture; track poles, near-boundary roots and refined counts before comparing sector statistics.
@@ -1307,6 +1575,10 @@ Both contain complex-root scans, sectors and continuation. The reconstructed Tim
 **[prime-polarity](https://github.com/EncapsulatorP/prime-polarity) → [Prime wheel 210](https://github.com/EncapsulatorP/Periodic-Table-of-Primes-210)** · review from S5
 
 Polarity labels and PTP benchmarks both require primes. A complete segmented sieve can be a shared reference after independent verification; heuristic residue subsets cannot replace full labels.
+
+**Evidence level:** proposed. **Known basis:** Both projects need exact prime labels; a complete sieve is an available reference approach.
+
+**Open question:** Can a common full-cover label source replace inconsistent benchmark labeling?
 
 **Status:** Proposed common exact prime-label source
 
@@ -1322,6 +1594,10 @@ Polarity labels and PTP benchmarks both require primes. A complete segmented sie
 
 GUE's sign-change zero scan can be compared with NT's Hardy-Z/Gram/nzeros utilities; these are not currently a verified common dependency.
 
+**Evidence level:** proposed. **Known basis:** Both sources contain zeta-zero or Hardy-Z related numerical utilities.
+
+**Open question:** Do independently computed counts and locations agree under precision and resolution refinement?
+
 **Status:** Proposed zero-reference cross-check
 
 **Next experiment:** Compare counts and locations at increasing resolution/precision, retaining negative controls and enough spacings for meaningful statistics.
@@ -1335,6 +1611,10 @@ GUE's sign-change zero scan can be compared with NT's Hardy-Z/Gram/nzeros utilit
 **[zeta_branching](https://github.com/EncapsulatorP/zeta_branching) → [collatz_lift](https://github.com/EncapsulatorP/collatz_lift)** · review from S6
 
 Both involve complex maps and branch-sensitive computations; the zeta-inspired kernel is not the lifted Collatz observable or Riemann zeta itself.
+
+**Evidence level:** proposed. **Known basis:** Both sources implement branch-sensitive complex computations; their functions are different.
+
+**Open question:** Can they share error, branch and overflow conventions on known-function fixtures?
 
 **Status:** Proposed branch-aware numerical protocol
 
@@ -1350,6 +1630,10 @@ Both involve complex maps and branch-sensitive computations; the zeta-inspired k
 
 Mod-m automata and factorial valuation/carry dependence are different objects; a shared held-out residue-matched control protocol may test both.
 
+**Evidence level:** proposed. **Known basis:** The sources study modular transforms and factorial valuation/carry structure in different sequences.
+
+**Open question:** Can a common held-out, residue-matched control protocol reveal which effects are family-specific?
+
 **Status:** Proposed modular/carry null controls
 
 **Next experiment:** Specify each sequence transform and compare prime versus matched random inputs without transferring conclusions between families.
@@ -1363,6 +1647,10 @@ Mod-m automata and factorial valuation/carry dependence are different objects; a
 **[gilbreath](https://github.com/EncapsulatorP/gilbreath) → [NT arithmetic lab](https://github.com/EncapsulatorP/NT_goldbachy_disastrous_cake)** · review from S6
 
 Gilbreath's RPPTD hooks remain placeholders; NT contains an explicit Rudin–Shapiro recursion and finite-ring tower models that could serve as defined comparison channels.
+
+**Evidence level:** proposed. **Known basis:** Gilbreath has placeholder transform hooks; NT supplies named Rudin–Shapiro and finite-ring comparison models.
+
+**Open question:** What exact RPPTD transform was intended, and how does it compare with defined baselines?
 
 **Status:** Proposed precise transform definitions
 
@@ -1378,6 +1666,10 @@ Gilbreath's RPPTD hooks remain placeholders; NT contains an explicit Rudin–Sha
 
 A concrete state/map/query definition from Fixed-Point-Shadow can seed the new obstruction ledger; its broad shadow conjectures need domain-specific hypotheses.
 
+**Evidence level:** proposed. **Known basis:** Fixed-Point-Shadow states a broad query/boundary direction; Obstruction-Theory is an initial remit.
+
+**Open question:** Can one explicit state, map and query yield a precisely scoped obstruction example?
+
 **Status:** Proposed definitions-first ledger
 
 **Next experiment:** Record one precise query obstruction and a trivial counterexample to an overbroad universal statement.
@@ -1391,6 +1683,10 @@ A concrete state/map/query definition from Fixed-Point-Shadow can seed the new o
 **[YPer](https://github.com/EncapsulatorP/YPer) → [c3._2z](https://github.com/EncapsulatorP/c3._2z)** · review from S6
 
 YPer currently only names hyperconstructions/chainladders; C3's exact two-layer prime maps offer a concrete possible first composition/ordering example.
+
+**Evidence level:** proposed. **Known basis:** YPer names chainladders; C3 supplies concrete two-layer prime maps and composition formulas.
+
+**Open question:** Can one such finite composition become a first well-defined chainladder construction?
 
 **Status:** Proposed first finite construction
 
@@ -1406,6 +1702,10 @@ YPer currently only names hyperconstructions/chainladders; C3's exact two-layer 
 
 The affine-permutation iff gcd(a,M)=1 argument supplies a compact theorem and counterexample family independent of the Collatz conjecture.
 
+**Evidence level:** proposed. **Known basis:** The modular-bijection argument and noncoprime collision family supply a compact exact calibration case.
+
+**Open question:** Can the proof stack replay the theorem with the actual identifier/slot assumptions retained?
+
 **Status:** Proposed exact modular calibration case
 
 **Next experiment:** Replay the bijection statement and a noncoprime collision witness with all ID/slot assumptions retained.
@@ -1419,6 +1719,10 @@ The affine-permutation iff gcd(a,M)=1 argument supplies a compact theorem and co
 **[Forced tetration](https://github.com/EncapsulatorP/collatz_quasi_particle_by_forced_tetration) → [Rupert delay hulls](https://github.com/EncapsulatorP/collatz_rupert_delay_embedding)** · review from S3
 
 Both programs generate finite trajectories. A proposed adapter can expose their geometry while keeping integer Collatz and forced complex tetration as different systems.
+
+**Evidence level:** proposed. **Known basis:** Both sources generate finite trajectories; integer Collatz and forced complex tetration are different systems.
+
+**Open question:** Can a named trajectory/embedding adapter compare geometry without transferring convergence claims?
 
 **Status:** Proposed in this roadmap; not an implemented integration
 
@@ -1434,6 +1738,10 @@ Both programs generate finite trajectories. A proposed adapter can expose their 
 
 Rupert needs an independent strict-containment witness checker; Validatron needs explicit statement/evidence lineage. This is a proposed artifact interface, not a claim that a floating witness is a Lean proof.
 
+**Evidence level:** proposed. **Known basis:** Rupert needs strict witness checking; Validatron contains source/statement/evidence infrastructure.
+
+**Open question:** Can the interface preserve checked positive witnesses, rejected boundaries and unresolved searches as separate states?
+
 **Status:** Proposed in this roadmap; not an implemented integration
 
 **Next experiment:** Register one verified positive witness, one rejected zero-clearance case and one unresolved search with distinct evidence states. Formalize the three-affine-line lemma as a separate exact target.
@@ -1447,6 +1755,10 @@ Rupert needs an independent strict-containment witness checker; Validatron needs
 **[antiverse](https://github.com/EncapsulatorP/antiverse) → [Obstruction-Theory](https://github.com/EncapsulatorP/Obstruction-Theory)** · review from S5
 
 Antiverse supplies a concrete assumption-change example; the new obstruction repo can record which hypothesis repairs it. This gives the crossdomain vocabulary a precise first case.
+
+**Evidence level:** proposed. **Known basis:** Antiverse contains an exact assumption-change example; Obstruction-Theory can host a typed account of it.
+
+**Open question:** After relocation, is the optional witness useful as one sourced obstruction-ledger entry?
 
 **Status:** Optional downstream obstruction fixture after physics relocation; not implemented
 
@@ -1462,6 +1774,10 @@ Antiverse supplies a concrete assumption-change example; the new obstruction rep
 
 A bounded power-sum search can populate an obstruction ledger without pretending that no candidate in the box means no integer solution exists.
 
+**Evidence level:** proposed. **Known basis:** Diophantus contains exact identities and bounded search evidence; the obstruction ledger can distinguish their scopes.
+
+**Open question:** What additional argument would be required to turn a finite exclusion into a universal result?
+
 **Status:** Proposed in this roadmap; not an implemented integration
 
 **Next experiment:** Import one exact identity and one exhausted finite box with its bounds, then state what additional argument a universal exclusion would require.
@@ -1476,6 +1792,10 @@ A bounded power-sum search can populate an obstruction ledger without pretending
 
 Recamán is an intended evidence-capsule pilot. A proposed source/claim adapter should preserve the distinction between observed holes, blocked steps and any exact recurrence lemma.
 
+**Evidence level:** proposed. **Known basis:** Recamán supplies exact finite recurrence traces and empirical evidence suitable for a claim record.
+
+**Open question:** Can the source/claim adapter preserve finite scope and the meaning of missing values?
+
 **Status:** Proposed in this roadmap; not an implemented integration
 
 **Next experiment:** Register a tiny exact recurrence trace and its provenance; attach the held-out empirical result without converting it to a permanent-absence theorem.
@@ -1483,6 +1803,168 @@ Recamán is an intended evidence-capsule pilot. A proposed source/claim adapter 
 **Output:** A small versioned fixture and decision note for E41.
 
 **Evidence:** [Validatron source](https://github.com/EncapsulatorP/Validatron/blob/ad7ad831638e5c3d282331335f150afbbd98b64f/README.md) · [recaman source](https://github.com/EncapsulatorP/recaman/blob/056452f2be03dad5f7bca0f7024c8357f42d8c6b/README.md)
+
+### E42 · Newton shocks on a named lifted function
+
+**[Tower decomposition](https://github.com/EncapsulatorP/prime_tower_decomposition) → [collatz_lift](https://github.com/EncapsulatorP/collatz_lift)** · review from S3
+
+The 3223 Newton module already records residual, step size, derivative stress and contraction along Newton trajectories. Collatz lift already computes Newton-refined roots. The proposed adapter applies those instruments to a precisely identified lift observable.
+
+**Evidence level:** proposed. **Known basis:** Both implementations exist independently; the Newton shock module includes a cubic-roots-of-unity control.
+
+**Open question:** Whether high-shock regions add useful information about lift convergence or basin structure. Shock intensity is not itself a Lyapunov exponent or a basin-boundary certificate.
+
+**Status:** Proposed interface or proof work; not an implemented cross-repository dependency
+
+**Next experiment:** First reproduce the cubic control. Then apply the same trace schema to a small lift grid where the unclipped analytic observable is explicitly defined; record clipping, derivative failures and converged roots separately.
+
+**Output:** A common Newton trace fixture, two comparable diagnostic plots and a bounded association report.
+
+**Evidence:** [Existing Newton shock implementation](https://github.com/EncapsulatorP/prime_tower_decomposition/blob/9209c146480916235c148db03f8797a2a997d19a/scripts/mirror_3223/mini_p3223_nr.py) · [Lift observable and Newton refinement](https://github.com/EncapsulatorP/collatz_lift/blob/7134ef3e85474810575209c436be8b6b16e8c5f2/scripts/core/collatz.py)
+
+### E43 · Tangent growth and spectral transfer growth
+
+**[Tower diagnostics](https://github.com/EncapsulatorP/prime-tower-diagnostics) → [ROLT depth](https://github.com/EncapsulatorP/rolt-phi-kappa3_expand)** · review from S6
+
+Both programs can express finite growth through products of local multipliers or matrices. ROLT explicitly proposes transfer-matrix Lyapunov sweeps; prime diagnostics already accumulates map-derivative cocycles. A common report can distinguish their different operators and clocks.
+
+**Evidence level:** proposed. **Known basis:** Existing scalar cocycle code and an explicit ROLT transfer-matrix research target.
+
+**Open question:** Whether the proposed ROLT layer effect survives matched variance and system size. A scalar map exponent is not the spectral exponent of a different physical operator.
+
+**Status:** Proposed interface or proof work; not an implemented cross-repository dependency
+
+**Next experiment:** Build a periodic or constant-coefficient transfer-matrix control with a calculable growth rate, then one small ROLT sweep at fixed variance. Report raw log growth, actual step count, norm convention and finite-size sensitivity alongside the map diagnostics.
+
+**Output:** A versioned growth-report contract and a controlled scalar-versus-matrix demonstration.
+
+**Evidence:** [Existing cocycle comparison](https://github.com/EncapsulatorP/prime-tower-diagnostics/blob/23450b6b5ed6024c662cae23d3e0644a3ed8510b/scripts/spinor_cocycles.py) · [Explicit ROLT Lyapunov and matched-variance targets](https://github.com/EncapsulatorP/rolt-phi-kappa3_expand/blob/158e509ed6fa05c7e282f761637d700fc00d36f9/nextsteps.md)
+
+### E44 · Chaotic trajectories to a synthetic ranging signal
+
+**[Tower diagnostics](https://github.com/EncapsulatorP/prime-tower-diagnostics) → [c3._2z](https://github.com/EncapsulatorP/c3._2z)** · review from S6
+
+Prime diagnostics supplies named dynamical trajectories; C3 already has an ideal optical phase-modulation exhibit. A proposed bounded phase encoder can turn a saved trajectory into a reference waveform for a synthetic delay-estimation experiment.
+
+**Evidence level:** speculative. **Known basis:** The mathematical trajectory code and optical phase exhibit exist. The recovered external chaotic-LiDAR source uses waveform correlation and discusses Lyapunov/correlation diagnostics.
+
+**Open question:** Whether any selected waveform improves ranging under matched bandwidth, energy and noise. No LiDAR implementation or performance advantage exists in these repositories.
+
+**Status:** Speculative transfer or application; finite control experiment pending
+
+**Next experiment:** Freeze the map and phase encoder; simulate a delayed noisy return. Compare delay error, correlation sidelobes and failure rate against a matched conventional waveform and randomized control across a small predeclared SNR grid.
+
+**Output:** A synthetic ranging benchmark with waveform provenance and a keep/pivot decision; no hardware claim.
+
+**Evidence:** [Dynamical source](https://github.com/EncapsulatorP/prime-tower-diagnostics/blob/23450b6b5ed6024c662cae23d3e0644a3ed8510b/scripts/spinor_cocycles.py) · [C3 optical phase slots](https://github.com/EncapsulatorP/c3._2z/blob/7e8fb577bd3eb8da2e358d691164a9fee5c75f9b/README.md) · [Recovered LiDAR foundation and scope](https://github.com/kugguk2022/LSR5L-/blob/cb785c0f6518f690782c29ba2d26ac90cdf3d7de/research-atlas/physics/dynamics-recovery.md)
+
+### E45 · Three coordinates, two channels, and what six means
+
+**[Rupert delay hulls](https://github.com/EncapsulatorP/collatz_rupert_delay_embedding) → [YPer](https://github.com/EncapsulatorP/YPer)** · review from S6
+
+A delay embedding gives a concrete state representation for testing the recovered dimension/cardinality question. YPer can begin with a precisely declared two-channel, three-coordinate construction rather than an undefined dimensional analogy.
+
+**Evidence level:** proposed. **Known basis:** The recovered note distinguishes realification of C^3, Cartesian products, tensor products, cardinality and fractal dimension. The Rupert program provides finite delay-coordinate data.
+
+**Open question:** The user's intended 6=3·2 construction and brane implication remain unrecovered. These calibration examples do not identify that missing construction.
+
+**Status:** Proposed interface or proof work; not an implemented cross-repository dependency
+
+**Next experiment:** Create an object ledger for a three-coordinate real delay, two such channels in R^6, C^3 viewed over R, R^3×R^2 and R^3⊗R^2. Record coordinate field, ambient dimension, sampled support, hull rank and cardinality statement separately.
+
+**Output:** An exact dimension/cardinality comparison card plus one finite geometry demonstration with declared sampling scales.
+
+**Evidence:** [Delay-hull scope](https://github.com/EncapsulatorP/collatz_rupert_delay_embedding/blob/cf7e78217e05d9568e0382be3577254a1d96f167/docs/CLAIMS_AND_NONCLAIMS.md) · [YPer remit](https://github.com/EncapsulatorP/YPer/blob/4f8c7b0fecc95f9568ccfa8b52ed968b9fc998b0/README.md) · [Recovered dimension distinctions](https://github.com/kugguk2022/LSR5L-/blob/cb785c0f6518f690782c29ba2d26ac90cdf3d7de/research-atlas/physics/math-recovery.md)
+
+### E46 · Mahler layer increments and exact tower remainders
+
+**[zp-program](https://github.com/EncapsulatorP/zp-program) → [c3._2z](https://github.com/EncapsulatorP/c3._2z)** · review from S4
+
+The recovered Mahler ladder has an exact per-layer recurrence and a 2^-k remainder bound. C3 has exact logarithmic perturbation transport through layers. They can share a layer-by-layer evidence format while remaining different functions.
+
+**Evidence level:** proposed. **Known basis:** The two exact identities are written in their respective sources. The Mahler ladder is external recovered material, not an implemented zp-program module.
+
+**Open question:** No equivalence with the Z(p) family or common transcendence theorem is established. Schanuel remains an explicit assumption for the separate Z(p) target.
+
+**Status:** Proposed interface or proof work; not an implemented cross-repository dependency
+
+**Next experiment:** Evaluate a small Mahler ladder by direct truncation and recurrence with explicit tail bounds; record each increment and remainder beside a C3 logarithmic-transport fixture. Add a separate conditional-claim record for Z(p).
+
+**Output:** Two exact layer notebooks sharing a provenance/remainder schema, with conditional transcendence kept separate.
+
+**Evidence:** [Z(p) program and bounds](https://github.com/EncapsulatorP/zp-program/blob/70454700844d882615b9ff93fed17b5707af834d/README.md) · [Exact logarithmic transport](https://github.com/EncapsulatorP/c3._2z/blob/7e8fb577bd3eb8da2e358d691164a9fee5c75f9b/README.md) · [Exact Mahler ladder and separate Schanuel deduction](https://github.com/kugguk2022/LSR5L-/blob/cb785c0f6518f690782c29ba2d26ac90cdf3d7de/research-atlas/physics/math-recovery.md)
+
+### E47 · The documented Zeteon frequency-selector experiment
+
+**[zp-program](https://github.com/EncapsulatorP/zp-program) → [ROLT depth](https://github.com/EncapsulatorP/rolt-phi-kappa3_expand)** · review from S6
+
+ROLT nextsteps explicitly proposes selecting driving frequencies through a Diophantine score S_L applied to the Z(p) family, then comparing them with the current fixed frequencies. This is an existing planned connection missing from the graph.
+
+**Evidence level:** proposed. **Known basis:** The proposal is explicit in ROLT nextsteps; zp-program supplies the exact Z(p) definition and rational even-zeta reduction.
+
+**Open question:** The selector and claimed spectral benefit are not implemented or established. Arithmetic status of a constant does not guarantee better physical or computational performance.
+
+**Status:** Explicit historical proposal recovered from ROLT nextsteps; implementation pending
+
+**Next experiment:** Pin the score and frequency projection first. Compare a tiny Z(p)-selected frequency set against the current frequencies and matched controls using the same variance, system size and observable.
+
+**Output:** A reproducible selector specification and a fixed-budget spectral comparison, retaining null outcomes.
+
+**Evidence:** [Explicit Zeteon selector proposal](https://github.com/EncapsulatorP/rolt-phi-kappa3_expand/blob/158e509ed6fa05c7e282f761637d700fc00d36f9/nextsteps.md) · [Exact Z(p) reduction](https://github.com/EncapsulatorP/zp-program/blob/70454700844d882615b9ff93fed17b5707af834d/z_p/zeta_even_reduction.md)
+
+### E49 · Transfer a binary-walk signature to phase slips
+
+**[Type-2 signatures](https://github.com/EncapsulatorP/ZP_type2_sector_invariants) → [recaman](https://github.com/EncapsulatorP/recaman)** · review from S4
+
+Type2 already extracts walk balance, drift, returns and run statistics from Collatz parity. Recamán has a binary blocked/free process with rare departures from alternation. Those feature instruments can be tested on a different sequence without transferring the Collatz interpretation.
+
+**Evidence level:** speculative. **Known basis:** Both binary data sources and their existing diagnostics are implemented.
+
+**Open question:** Whether Type2 features predict Recamán slips beyond previous-bit, recency and visited-neighbor baselines; a positive result would concern a finite forecasting task.
+
+**Status:** Speculative transfer or application; finite control experiment pending
+
+**Next experiment:** Freeze prefix-only signature features and compare them on one later-horizon holdout, with alternation and magnitude-matched controls. Do not use eventual hole membership as an input.
+
+**Output:** A small transfer benchmark reporting rare-event precision/recall and incremental gain or a useful null result.
+
+**Evidence:** [Existing Type2 signature](https://github.com/EncapsulatorP/ZP_type2_sector_invariants/blob/01c93cdf96efe585d10bb4b8d54b73e741f96101/z_p/type2/signature.py) · [Recamán finite forecasting and slip targets](https://github.com/EncapsulatorP/recaman/blob/056452f2be03dad5f7bca0f7024c8357f42d8c6b/wiki/Open-Questions.md)
+
+### E52 · The prime-layer order identity becomes a proof target
+
+**[Validatron](https://github.com/EncapsulatorP/Validatron) → [c3._2z](https://github.com/EncapsulatorP/c3._2z)** · review from S4
+
+C3 states exact shared-fixed-point and first-derivative identities for two prime-layer compositions, with an order-dependent second derivative. This is a compact constructive target for Validatron, followed by a separately scoped harmonic consequence.
+
+**Evidence level:** proposed. **Known basis:** The local analytic result is written in the C3 source. It is not presently a reported Lean certificate.
+
+**Open question:** Formal replay, faithful translation of the hypotheses and the precise remainder conditions for the second-harmonic statement.
+
+**Status:** Exact local result written in the source; source-faithful formalization proposed
+
+**Next experiment:** Formalize the fixed-point and equal-first-derivative statements first, retaining positivity/domain assumptions. Then prove the second-derivative difference and state the small-amplitude Taylor remainder separately.
+
+**Output:** One source-linked exact proof package with the numerical waveform check attached as a different evidence type.
+
+**Evidence:** [Exact prime-layer order result](https://github.com/EncapsulatorP/c3._2z/blob/7e8fb577bd3eb8da2e358d691164a9fee5c75f9b/README.md) · [Source fidelity and proof-development requirements](https://github.com/EncapsulatorP/Validatron/blob/ad7ad831638e5c3d282331335f150afbbd98b64f/target_planning.md)
+
+### E53 · One Newton benchmark, two growth instruments
+
+**[collatz_lift](https://github.com/EncapsulatorP/collatz_lift) → [Tower diagnostics](https://github.com/EncapsulatorP/prime-tower-diagnostics)** · review from S3
+
+Lift has Newton root refinement and analytic derivative code; prime diagnostics has a Newton cocycle channel. A shared known-function fixture can expose differences in derivative floors, clipping, escape handling and averaging.
+
+**Evidence level:** proposed. **Known basis:** Both numerical instruments exist. They currently study different observables and do not provide interchangeable exponents.
+
+**Open question:** Whether the recovered visual similarities persist when raw growth, actual horizon and normalization are aligned.
+
+**Status:** Proposed interface or proof work; not an implemented cross-repository dependency
+
+**Next experiment:** Run both instruments on the same small polynomial and identical initial points, then on one declared unclipped lift observable. Publish raw values and masks before any common color scale.
+
+**Output:** A numerical-contract comparison that either validates a reusable adapter or records a precise reason the channels differ.
+
+**Evidence:** [Newton refinement and derivative implementation](https://github.com/EncapsulatorP/collatz_lift/blob/7134ef3e85474810575209c436be8b6b16e8c5f2/scripts/core/collatz.py) · [Newton cocycle instrument](https://github.com/EncapsulatorP/prime-tower-diagnostics/blob/23450b6b5ed6024c662cae23d3e0644a3ed8510b/scripts/spinor_cocycles.py) · [Recovered numerical-contract issues](https://github.com/kugguk2022/LSR5L-/blob/cb785c0f6518f690782c29ba2d26ac90cdf3d7de/research-atlas/physics/dynamics-recovery.md)
 
 
 ## Analogy
@@ -1492,6 +1974,10 @@ Recamán is an intended evidence-capsule pilot. A proposed source/claim adapter 
 **[c3._2z](https://github.com/EncapsulatorP/c3._2z) → [ROLT depth](https://github.com/EncapsulatorP/rolt-phi-kappa3_expand)** · review from S6
 
 Both ask how added depth changes response/stability. C3 tower maps and ROLT QAOA/Dirac models have different states and observables; no universal optimal depth or DNA-alphabet bound follows.
+
+**Evidence level:** speculative. **Known basis:** C3 has tower/layer maps; ROLT has depth-dependent QAOA/Dirac models. Their state spaces and observables differ.
+
+**Open question:** Does a matched cost/noise experiment reveal a useful depth–stability comparison?
 
 **Status:** Proposed experimental comparison
 
@@ -1507,6 +1993,10 @@ Both ask how added depth changes response/stability. C3 tower maps and ROLT QAOA
 
 Complex secular-model roots and Dirac/QAOA depth spectra invite a stability comparison, but they do not define a shared physical system.
 
+**Evidence level:** speculative. **Known basis:** The sources contain spectral toy models in different mathematical and physical settings.
+
+**Open question:** Is there a common reference operator and measurable quantity that makes the comparison meaningful?
+
 **Status:** Different spectral toy/comparison models
 
 **Next experiment:** Choose one common reference operator and physical quantity before cross-model inference; otherwise retain an analogy label.
@@ -1520,6 +2010,10 @@ Complex secular-model roots and Dirac/QAOA depth spectra invite a stability comp
 **[Fixed-point shadow](https://github.com/EncapsulatorP/Fixed-Point-Shadow) → [antiverse](https://github.com/EncapsulatorP/antiverse)** · review from S6
 
 Fixed-point/diagonal/inverse-boundary language and changing-axiom proof families are compatible questions but no equivalence theorem or common implementation exists.
+
+**Evidence level:** speculative. **Known basis:** Both notes discuss fixed points or boundaries, but no common formal object or equivalence has been supplied.
+
+**Open question:** After physics relocation, is there one exact finite correspondence worth reopening this parked analogy for?
 
 **Status:** Parked analogy; optional later review after physics relocation
 
@@ -1535,6 +2029,10 @@ Fixed-point/diagonal/inverse-boundary language and changing-axiom proof families
 
 The remits invite a relation between layer construction and obstruction, but neither repository yet defines that relation.
 
+**Evidence level:** speculative. **Known basis:** The repositories contain construction and obstruction remits, without a defined relation between them.
+
+**Open question:** Can a named construction and a scoped obstruction produce a genuine bridge?
+
 **Status:** Two new concept seeds; no formal bridge
 
 **Next experiment:** Promote this analogy to a concrete shared-object or reuse link only after one construction and one precisely scoped obstruction are specified.
@@ -1542,6 +2040,24 @@ The remits invite a relation between layer construction and obstruction, but nei
 **Output:** A source-pinned comparison or adapter report for E35; include the inputs, output, acceptance result and keep/pivot/archive decision.
 
 **Evidence:** [README.md](https://github.com/EncapsulatorP/YPer/blob/4f8c7b0fecc95f9568ccfa8b52ed968b9fc998b0/README.md) · [README.md](https://github.com/EncapsulatorP/Obstruction-Theory/blob/8d5fc9d48835012748e444fecc20df3a9ef46653/README.md)
+
+### E48 · Layer depth versus retained information
+
+**[ROLT depth](https://github.com/EncapsulatorP/rolt-phi-kappa3_expand) → [Fixed-point shadow](https://github.com/EncapsulatorP/Fixed-Point-Shadow)** · review from S6
+
+ROLT asks how added depth trades gain against stability/cost. Fixed-Point-Shadow asks when information-discarding evolution makes reconstruction difficult. The recovered synthetic-alphabet channel supplies a concrete toy model in which retained information can be measured.
+
+**Evidence level:** speculative. **Known basis:** The source frameworks and the exact substitution-plus-erasure channel formula are documented. They do not yet share an implemented system.
+
+**Open question:** Whether layered memory improves retention under matched resources, and whether any such mechanism transfers to molecular alphabets. No universal optimal depth or DNA alphabet ceiling follows.
+
+**Status:** Speculative transfer or application; finite control experiment pending
+
+**Next experiment:** Instantiate one finite encoder/channel/decoder graph and a flat comparator with equal memory, updates, noise and observation horizon. Verify the unlayered exact channel limits; include reversible-encoding and shuffled-layer controls.
+
+**Output:** A retained-information/turnover Pareto plot and a mechanism report showing whether any advantage survives resource matching.
+
+**Evidence:** [ROLT depth and stability model](https://github.com/EncapsulatorP/rolt-phi-kappa3_expand/blob/158e509ed6fa05c7e282f761637d700fc00d36f9/README.md) · [Information-loss framework and qualifications](https://github.com/EncapsulatorP/Fixed-Point-Shadow/blob/26744b515fcb08e9aa9065f56abeb71f352fb65d/README.md) · [Exact channel model and proposed layer controls](https://github.com/kugguk2022/LSR5L-/blob/cb785c0f6518f690782c29ba2d26ac90cdf3d7de/research-atlas/physics/biophysics-expansion.md)
 
 
 # Rupert / Noperthedron restart
@@ -1694,6 +2210,12 @@ At each stage gate, spend at most 30 minutes updating the two active capsules, s
 Move the antiverse organization decision to the immediate queue: prepare relocation to the physics organization and review the name. “Formal witness dynamics” is a descriptive working label only. Retain the current private repository ID, URL and source history until an actual transfer or rename is verified. Preserve the sound kernel and exact local examples; park the universal generator and continuous polarity calculus. Validatron/Obstruction reuse remains optional from S5.
 
 **Gate (S0):** Record the exact destination organization slug and the naming choice, then complete the migration, redirect, access and search-link audit. No destination organization is inferred from the recovered private physics notebook. The current inventory remains 32; after verified transfer, represent the source as an external physics bridge, update its links and adjust the organization count.
+
+## D10 · Draw the unknown links and the next expedition
+
+Show documented, proposed and speculative connections with distinct colors and line patterns. Give every edge its known basis, open question and finite next probe. Overlay a numbered Pirate path for the next work without turning work order into a mathematical implication.
+
+**Gate (S0):** A known label states the exact scope of source evidence. A proved implication requires an actual proof artifact and its assumptions; no shared-object or numerical-match edge receives that status automatically. Speculative edges remain visible and inspectable.
 
 
 # Claim boundaries and maintenance

@@ -44,6 +44,8 @@ for e in edges:
     require(e['kind'] in allowed and e['stage'] in stage_ids, f"Invalid type/stage: {e['id']}")
     require(e['evidence'] and all(https(s['url']) for s in e['evidence']), f"Missing evidence: {e['id']}")
     require(e['mechanism'] and e['nextExperiment'] and e['deliverable'], f"Missing edge work: {e['id']}")
+    require(e.get('evidenceLevel') in {'known','proposed','speculative'}, f"Missing evidence level: {e['id']}")
+    require(e.get('knownBasis') and e.get('openQuestion'), f"Missing known/open boundary: {e['id']}")
 for s in plan['stages']:
     require(all(d in stage_ids and d < s['id'] for d in s['dependencies']), f"Invalid stage ordering: {s['id']}")
 for r in plan['routes']:
@@ -52,6 +54,16 @@ for r in plan['routes']:
     require(all(n in r['repositories'] for e in r['edgeIds'] for n in [edge_by_id[e]['from'],edge_by_id[e]['to']]), f"Missing route endpoint: {r['id']}")
 for b in plan['externalBridges']:
     require(https(b['url']) and all(n in by_id for n in b['linksTo']), f"Invalid external bridge: {b['id']}")
+paths = plan.get('piratePaths', [])
+require(len({p['id'] for p in paths}) == len(paths), 'Duplicate Pirate path IDs')
+for path in paths:
+    require(len(path['stops']) >= 2 and path.get('summary'), f"Incomplete Pirate path: {path['id']}")
+    stops = {s['repo'] for s in path['stops']}
+    for stop in path['stops']:
+        require(stop['repo'] in by_id and stop.get('target') and stop.get('gate'), f"Invalid Pirate stop: {path['id']}")
+        require(stop['stage'] in stage_ids, f"Unknown Pirate stop stage: {path['id']}")
+    require(all(e in edge_by_id for e in path.get('edgeIds', [])), f"Unknown Pirate path edge: {path['id']}")
+    require(all(edge_by_id[e]['from'] in stops and edge_by_id[e]['to'] in stops for e in path.get('edgeIds', [])), f"Off-path edge endpoint: {path['id']}")
 
 KIND = {'existing-link':'Existing navigation','existing-code':'Existing code dependency','shared-object':'Shared mathematical object','proposed-reuse':'Proposed reuse','analogy':'Analogy'}
 def clean(s):
@@ -66,6 +78,16 @@ def src(items):
 blocks=[]
 blocks.append(f"**Organization decision record · {plan['edition']}**\n\n{plan['summary']}\n\n**{link('Open the interactive Pirates Plan',plan['publicUrl'])}** · {link('Canonical roadmap data','https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/planning/roadmap.json')}\n\n{plan['scope']}")
 blocks.append('# How we will use this\n\n'+plan['capacity']+'\n\n'+plan['scoring']['description']+'\n\n**Priority bands:** P0 shared foundations; P1 next research queue; P2 conditional follow-on; P3 exploratory or source-recovery work. Every repository is covered. Queue inclusion does not mean all work is active.\n\n**Link labels:** Existing navigation means a checked hyperlink; shared object means inspected independent work on a named object; proposed reuse carries an experiment or adapter to build; analogy preserves an interesting question without asserting an identity. No operational imported computation between the audited organization main branches was established. The optional Goldbach tower adapter remains unresolved.\n\nThe audit reviewed every README and tree plus selected core files. It did not rerun every repository test suite or certify every historical result.')
+key=['# Read the connection map','', 'The complete inventory and the research graph answer different questions: every current organization repository is registered, while connections record the documented, proposed and speculative bridges identified so far.','', '| Evidence level | Line pattern | Meaning |','| --- | --- | --- |']
+for level in plan.get('evidenceKey', []):
+    key.append(f"| {clean(level['label'])} | {clean(level['pattern'])} | {clean(level['meaning'])} |")
+key += ['', 'A proved cross-repository implication requires a proof artifact and explicit assumptions. A shared object, a reported numerical match and a working hyperlink retain their narrower meanings. Every connection below states its known basis and open question.', '', '**Pirate path:** orange dash-dot arrows and numbered stops show the proposed work order. They do not assert a mathematical implication between consecutive repositories.']
+blocks.append('\n'.join(key))
+for path in paths:
+    itinerary=['# Pirate path · '+path['title'],'',path['summary'],'',link('Follow this expedition on the map',plan['publicUrl']+'?path='+quote(path['id'],safe='')),'']
+    for i, stop in enumerate(path['stops'],1):
+        itinerary += [f"## {i}. {stop['title']}",'',rl(by_id[stop['repo']])+f" · earliest review {stop['stage']}",'','**Next treasure:** '+stop['target'],'','**Advance or pivot:** '+stop['gate'],'']
+    blocks.append('\n'.join(itinerary))
 st=['# Stages and decision windows','']
 for s in plan['stages']:
     st += [f"## {s['id']} · {s['title']}",'',f"**{s['window']} · {s['effort']}**",'',s['target'],'','**Advance when:** '+s['gate'],'','**Depends on:** '+(', '.join(s['dependencies']) or 'Publication work in this session.'),'']
@@ -89,7 +111,7 @@ for kind in ['existing-link','shared-object','proposed-reuse','analogy','existin
     if not selected:continue
     lines=[f"## {KIND[kind]}",'']
     for e in selected:
-        lines += [f"### {e['id']} · {e['label']}",'',f"**{rl(by_id[e['from']])} → {rl(by_id[e['to']])}** · review from {e['stage']}",'',e['mechanism'],'',f"**Status:** {e['status']}",'',f"**Next experiment:** {e['nextExperiment']}",'',f"**Output:** {e['deliverable']}",'',f"**Evidence:** {src(e['evidence'])}",'']
+        lines += [f"### {e['id']} · {e['label']}",'',f"**{rl(by_id[e['from']])} → {rl(by_id[e['to']])}** · review from {e['stage']}",'',e['mechanism'],'',f"**Evidence level:** {e['evidenceLevel']}. **Known basis:** {e['knownBasis']}",'',f"**Open question:** {e['openQuestion']}",'',f"**Status:** {e['status']}",'',f"**Next experiment:** {e['nextExperiment']}",'',f"**Output:** {e['deliverable']}",'',f"**Evidence:** {src(e['evidence'])}",'']
     blocks.append('\n'.join(lines))
 rup=['# Rupert / Noperthedron restart','','The first win is a reliable geometry instrument and reusable witnesses. A Collatz-convergence/Rupert equivalence remains an unproved target, with no proof deadline. The audit reproduced origin-dependent translation search and zero-clearance boundary acceptance in the current proxy.','','| Target | Review window | Concrete output |','| --- | --- | --- |']
 for m in plan['rupertMilestones']:
@@ -110,4 +132,4 @@ md='# '+plan['title']+'\n\n'+'\n\n'.join(blocks)+'\n'
 payload=json.dumps(plan,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c').replace('\u2028','\\u2028').replace('\u2029','\\u2029')
 (ROOT/'assets/pirates-plan-data.js').write_text('/* Generated by planning/build_plan.py. */\nwindow.ENCAPSULATOR_PLAN = '+payload+';\n')
 (HERE/'page-blocks.json').write_text(json.dumps(blocks,ensure_ascii=False,indent=2)+'\n')
-print(json.dumps({'repositories':len(repos),'visibility':dict(Counter(r['visibility'] for r in repos)),'edges':len(edges),'edgeKinds':dict(Counter(e['kind'] for e in edges)),'routes':len(plan['routes']),'externalBridges':len(plan['externalBridges']),'pageBlocks':len(blocks),'readingCopyBytes':len(md.encode())}))
+print(json.dumps({'repositories':len(repos),'visibility':dict(Counter(r['visibility'] for r in repos)),'edges':len(edges),'edgeKinds':dict(Counter(e['kind'] for e in edges)),'evidenceLevels':dict(Counter(e['evidenceLevel'] for e in edges)),'routes':len(plan['routes']),'piratePaths':len(paths),'externalBridges':len(plan['externalBridges']),'pageBlocks':len(blocks),'readingCopyBytes':len(md.encode())}))
