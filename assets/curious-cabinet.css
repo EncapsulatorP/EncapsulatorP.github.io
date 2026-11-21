@@ -109,7 +109,7 @@
 .cc-orbit-table thead{background:#e7eef8;color:#2f4d73}
 .cc-orbit-table th:first-child{text-align:left}
 .cc-orbit-table tbody th{font-weight:500}
-.cc-colophon{padding:20px 0 3px;border-top:1px solid var(--cc-line)}
+.cc-colophon{padding:20px 0 3px;border-top:1px solid var(--cc-line);background:transparent}
 .cc-colophon p{font:10px/1.9 "IBM Plex Mono",monospace;color:#607692;max-width:110ch;margin:0 0 8px}
 .cc-colophon a{color:#3d6788;text-underline-offset:3px}
 @media(max-width:950px){.cc-wrap{width:calc(100% - 40px)}.cc-hero-grid{gap:30px}.cc-disk-layout{grid-template-columns:minmax(0,1.3fr) minmax(235px,1fr)}.cc-console{padding:21px 18px}.cc-stage-heading{padding-inline:17px}.cc-below-grid{gap:24px}.cc-hero h2{font-size:42px}.cc-doors strong{font-size:21px}.cc-door-symbol{flex-basis:36px}}
