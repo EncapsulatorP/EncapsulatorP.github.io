@@ -1,0 +1,486 @@
+/* PaperMapEngine · EncapsulatorP · 21 November 2026
+ * Procedural, dependency-free WebGL paper objects. No external assets.
+ * The tensegrity graph and force densities preserve buildPrism() from pirate-map.js.
+ * The other forms are geometric illustrations, not physical or theorem certificates.
+ */
+(function () {
+  'use strict';
+  const TAU = Math.PI * 2, RAD = Math.PI / 180;
+  const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
+  const add = (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
+  const sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+  const mul = (a, s) => [a[0] * s, a[1] * s, a[2] * s];
+  const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+  const unit = a => mul(a, 1 / (Math.hypot(a[0], a[1], a[2]) || 1));
+  const lerp = (a, b, t) => add(mul(a, 1 - t), mul(b, t));
+  const average = points => mul(points.reduce(add, [0, 0, 0]), 1 / points.length);
+  const normal = points => unit(cross(sub(points[1], points[0]), sub(points[2], points[0])));
+  const palette = {
+    paper: [0.945, 0.927, 0.874], ivory: [0.972, 0.956, 0.910],
+    edge: [0.792, 0.765, 0.685], back: [0.854, 0.824, 0.742],
+    blue: [0.390, 0.550, 0.630], navy: [0.255, 0.388, 0.475],
+    copper: [0.744, 0.478, 0.321], floor: [0.957, 0.950, 0.929]
+  };
+  const material = (color, grid = 0.4, ao = 1, floor = 0) => ({ color, grid, ao, floor });
+  const paper = material(palette.paper, 0.50);
+  const edge = material(palette.edge, 0, 0.86);
+  const back = material(palette.back, 0.12, 0.84);
+
+  function multiply(a, b) {
+    const out = new Float32Array(16);
+    for (let c = 0; c < 4; c++) for (let r = 0; r < 4; r++)
+      for (let k = 0; k < 4; k++) out[c * 4 + r] += a[k * 4 + r] * b[c * 4 + k];
+    return out;
+  }
+  function perspective(fov, aspect, near, far) {
+    const f = 1 / Math.tan(fov / 2), nf = 1 / (near - far);
+    return new Float32Array([f / aspect, 0, 0, 0, 0, f, 0, 0, 0, 0, (far + near) * nf, -1, 0, 0, 2 * far * near * nf, 0]);
+  }
+  function lookAt(eye, target) {
+    const z = unit(sub(eye, target)), x = unit(cross([0, 1, 0], z)), y = cross(z, x);
+    return new Float32Array([x[0], y[0], z[0], 0, x[1], y[1], z[1], 0, x[2], y[2], z[2], 0, -dot(x, eye), -dot(y, eye), -dot(z, eye), 1]);
+  }
+  function ortho(size, near, far) {
+    return new Float32Array([1 / size, 0, 0, 0, 0, 1 / size, 0, 0, 0, 0, -2 / (far - near), 0, 0, 0, -(far + near) / (far - near), 1]);
+  }
+  function project(m, p) {
+    const x = p[0], y = p[1], z = p[2];
+    return [m[0] * x + m[4] * y + m[8] * z + m[12], m[1] * x + m[5] * y + m[9] * z + m[13], m[2] * x + m[6] * y + m[10] * z + m[14], m[3] * x + m[7] * y + m[11] * z + m[15]];
+  }
+  function tangent(n) {
+    const a = unit(cross(Math.abs(n[1]) < 0.9 ? [0, 1, 0] : [1, 0, 0], n));
+    return [a, cross(n, a)];
+  }
+
+  class Mesh {
+    constructor() { this.vertices = []; this.lines = []; this.triangles = []; this.landmarks = []; this.bounds = [[Infinity, Infinity, Infinity], [-Infinity, -Infinity, -Infinity]]; }
+    triangle(a, b, c, mat = paper, uv = [[0, 0], [1, 0], [0, 1]]) {
+      const n = normal([a, b, c]);
+      [a, b, c].forEach((p, i) => {
+        this.vertices.push(...p, ...n, ...mat.color, ...uv[i], mat.grid, mat.ao, mat.floor);
+        if (!mat.floor) for (let k = 0; k < 3; k++) { this.bounds[0][k] = Math.min(this.bounds[0][k], p[k]); this.bounds[1][k] = Math.max(this.bounds[1][k], p[k]); }
+      });
+      if (!mat.floor) this.triangles.push([a, b, c]);
+    }
+    quad(points, mat = paper, uv = [[0, 0], [1, 0], [1, 1], [0, 1]]) {
+      this.triangle(points[0], points[1], points[2], mat, [uv[0], uv[1], uv[2]]);
+      this.triangle(points[0], points[2], points[3], mat, [uv[0], uv[2], uv[3]]);
+    }
+    seam(a, b, alpha = 0.15) { this.lines.push(...a, 0.34, 0.39, 0.40, alpha, ...b, 0.34, 0.39, 0.40, alpha); }
+    sheet(points, mat = paper, uv, thickness = 0.014) {
+      const n = normal(points), lower = points.map(p => sub(p, mul(n, thickness)));
+      if (points.length === 3) {
+        this.triangle(...points, mat, uv);
+        this.triangle(lower[2], lower[1], lower[0], back);
+      } else { this.quad(points, mat, uv); this.quad(lower.slice().reverse(), back); }
+      for (let i = 0; i < points.length; i++) {
+        const j = (i + 1) % points.length;
+        this.quad([points[i], lower[i], lower[j], points[j]], edge);
+      }
+      return n;
+    }
+    pin(position, n) { this.landmarks.push({ position: add(position, mul(n, 0.012)), normal: n }); }
+    tube(a, b, radius, sides, mat, caps = true) {
+      const axis = unit(sub(b, a)), [u, v] = tangent(axis);
+      const ring = (p, i) => add(p, add(mul(u, radius * Math.cos(i * TAU / sides)), mul(v, radius * Math.sin(i * TAU / sides))));
+      for (let i = 0; i < sides; i++) {
+        const a0 = ring(a, i), a1 = ring(a, i + 1), b0 = ring(b, i), b1 = ring(b, i + 1);
+        this.quad([a0, a1, b1, b0], mat);
+        if (caps) { this.triangle(a, a1, a0, edge); this.triangle(b, b0, b1, paper); }
+      }
+    }
+    floor() { this.quad([[-24, -0.025, -24], [-24, -0.025, 24], [24, -0.025, 24], [24, -0.025, -24]], material(palette.floor, 0, 1, 1)); }
+  }
+
+  function accordion(fold) {
+    const mesh = new Mesh(), columns = 6, angle = 0.035 + 1.23 * fold, width = 0.69;
+    const path = [[0, 0]];
+    for (let i = 0; i < columns; i++) path.push([path[i][0] + width * Math.cos(angle), path[i][1] + (i % 2 ? -1 : 1) * width * Math.sin(angle)]);
+    const span = path[columns][0], tilt = 0.16, cs = Math.cos(tilt), sn = Math.sin(tilt);
+    const transform = (p, z) => { const x = p[0] - span / 2; return [x * cs - p[1] * sn, x * sn + p[1] * cs + span * sn / 2 + 0.055, z]; };
+    const normals = [];
+    for (let i = 0; i < columns; i++) {
+      const points = [transform(path[i], -1.13), transform(path[i], 1.13), transform(path[i + 1], 1.13), transform(path[i + 1], -1.13)];
+      const color = i === 2 ? palette.blue : i === 4 ? palette.copper : i % 2 ? palette.ivory : palette.paper;
+      normals.push(mesh.sheet(points, material(color, i === 2 || i === 4 ? 0.32 : 0.66), [[i / columns, 0], [i / columns, 1], [(i + 1) / columns, 1], [(i + 1) / columns, 0]], 0.018));
+      mesh.seam(points[0], points[1], 0.16);
+      mesh.seam(points[0], points[3], 0.11);
+      mesh.seam(points[1], points[2], 0.11);
+    }
+    [[0.08, 0.18], [0.29, 0.17], [0.51, 0.18], [0.75, 0.20], [0.93, 0.38], [0.81, 0.75], [0.56, 0.79], [0.31, 0.73], [0.10, 0.67]].forEach(([u, v]) => {
+      const panel = Math.min(columns - 1, Math.floor(u * columns)), t = u * columns - panel;
+      const p = [path[panel][0] * (1 - t) + path[panel + 1][0] * t, path[panel][1] * (1 - t) + path[panel + 1][1] * t];
+      mesh.pin(transform(p, -1.13 + v * 2.26), normals[panel]);
+    });
+    return mesh;
+  }
+
+  function icoFaces(subdivide) {
+    const t = (1 + Math.sqrt(5)) / 2;
+    const vertices = [[-1, t, 0], [1, t, 0], [-1, -t, 0], [1, -t, 0], [0, -1, t], [0, 1, t], [0, -1, -t], [0, 1, -t], [t, 0, -1], [t, 0, 1], [-t, 0, -1], [-t, 0, 1]].map(unit);
+    const faces = [[0, 11, 5], [0, 5, 1], [0, 1, 7], [0, 7, 10], [0, 10, 11], [1, 5, 9], [5, 11, 4], [11, 10, 2], [10, 7, 6], [7, 1, 8], [3, 9, 4], [3, 4, 2], [3, 2, 6], [3, 6, 8], [3, 8, 9], [4, 9, 5], [2, 4, 11], [6, 2, 10], [8, 6, 7], [9, 8, 1]].map(f => f.map(i => vertices[i]));
+    if (!subdivide) return faces;
+    return faces.flatMap(([a, b, c]) => { const ab = unit(add(a, b)), bc = unit(add(b, c)), ca = unit(add(c, a)); return [[a, ab, ca], [b, bc, ab], [c, ca, bc], [ab, bc, ca]]; });
+  }
+  function globe() {
+    const mesh = new Mesh(), faces = icoFaces(true), radius = 1.28, center = [0, 1.34, 0];
+    const panels = [];
+    faces.forEach((face, i) => {
+      const points = face.map(p => add(center, mul(p, radius)));
+      const uv = face.map(p => [Math.atan2(p[2], p[0]) / TAU + 0.5, Math.asin(clamp(p[1], -1, 1)) / Math.PI + 0.5]);
+      if (Math.max(...uv.map(p => p[0])) - Math.min(...uv.map(p => p[0])) > 0.5) uv.forEach(p => { if (p[0] < 0.5) p[0] += 1; });
+      const color = i === 12 || i === 61 ? palette.blue : i === 38 ? palette.copper : i % 5 === 0 ? palette.ivory : palette.paper;
+      const n = mesh.sheet(points, material(color, 0.73, 0.98), uv, 0.012);
+      panels.push({ points, normal: n, direction: unit(sub(average(points), center)) });
+    });
+    const used = new Set();
+    [[0.20, 0.45], [0.80, 0.75], [1.35, 0.45], [1.85, 0.05], [2.80, -0.10], [-2.3, 0.35], [-1.25, -0.40], [0.05, -0.45], [1.05, -0.35]].forEach(([lon, lat]) => {
+      const direction = [Math.cos(lon) * Math.cos(lat), Math.sin(lat), Math.sin(lon) * Math.cos(lat)];
+      let best = -1, score = -Infinity;
+      panels.forEach((p, i) => { const d = dot(p.direction, direction); if (!used.has(i) && d > score) { best = i; score = d; } });
+      used.add(best); mesh.pin(average(panels[best].points), panels[best].normal);
+    });
+    return mesh;
+  }
+  function portal() {
+    const mesh = new Mesh(), count = 8, centerY = 1.38 * Math.cos(Math.PI / 8) + 0.055;
+    function ring(radius, z, dx = 0, dy = 0) { return Array.from({ length: count }, (_, i) => { const a = i * TAU / count + Math.PI / 8; return [dx + radius * Math.cos(a), centerY + dy + radius * Math.sin(a), z]; }); }
+    const front = ring(1.18, 0.51), shoulder = ring(1.38, 0.27), rearShoulder = ring(1.38, -0.30), rear = ring(1.20, -0.52);
+    const insideFront = ring(0.68, 0.51, 0.08, 0.02), insideRear = ring(0.62, -0.52, -0.15, 0.10);
+    const frontPanels = [], innerPanels = [];
+    for (let i = 0; i < count; i++) {
+      const j = (i + 1) % count;
+      [front, shoulder, rearShoulder].forEach((r, k) => { const next = [shoulder, rearShoulder, rear][k]; mesh.quad([r[i], next[i], next[j], r[j]], material(k === 1 && i === 4 ? palette.blue : i % 3 ? palette.paper : palette.ivory, 0.13)); });
+      const face = [front[i], front[j], insideFront[j], insideFront[i]], inside = [insideFront[i], insideFront[j], insideRear[j], insideRear[i]];
+      const uv = face.map(p => [(p[0] + 1.5) / 3, (p[1] - centerY + 1.5) / 3]);
+      mesh.quad(face, material(i === 6 ? palette.copper : palette.ivory, 0.38), uv);
+      mesh.quad([rear[j], rear[i], insideRear[i], insideRear[j]], material(palette.paper, 0.21, 0.90));
+      mesh.quad(inside, material(i === 1 ? palette.navy : palette.back, 0.15, 0.68));
+      mesh.seam(front[i], front[j], 0.10); mesh.seam(insideFront[i], insideFront[j], 0.18);
+      frontPanels.push(face); innerPanels.push(inside);
+    }
+    frontPanels.forEach(face => mesh.pin(average(face), [0, 0, 1]));
+    mesh.pin(average(innerPanels[5]), normal(innerPanels[5]));
+    return mesh;
+  }
+
+  function buildPrism() {
+    const vertices = Array.from({ length: 6 }, (_, i) => {
+      const upper = i >= 3;
+      const angle = (i % 3) * 2 * Math.PI / 3 + (upper ? Math.PI / 6 : 0);
+      return [Math.cos(angle), Math.sin(angle), upper ? 0.775 : -0.775];
+    });
+    const members = [], ringDensity = 1 / Math.sqrt(3);
+    for (let i = 0; i < 3; i++) {
+      const next = (i + 1) % 3;
+      members.push([i, next, ringDensity], [i + 3, next + 3, ringDensity], [i, i + 3, 1], [i, next + 3, -1]);
+    }
+    return { vertices, members };
+  }
+  function tensegrity() {
+    const mesh = new Mesh(), prism = buildPrism();
+    const vertices = prism.vertices.map(([x, y, z]) => [x * 1.15, (z + 0.775) * 1.15 + 0.10, y * 1.15]);
+    const struts = [];
+    prism.members.forEach(([i, j, density]) => {
+      if (density < 0) { mesh.tube(vertices[i], vertices[j], 0.066, 6, material(palette.ivory, 0.13)); struts.push([vertices[i], vertices[j]]); }
+      else mesh.tube(vertices[i], vertices[j], 0.0105, 5, material(i >= 3 ? palette.copper : palette.navy, 0, 1));
+    });
+    const nodeFaces = icoFaces(false);
+    vertices.forEach((p, i) => {
+      nodeFaces.forEach(f => mesh.triangle(...f.map(v => add(p, mul(v, 0.072))), material(palette.paper, 0)));
+      const n = unit([p[0], i >= 3 ? 0.45 : 0, p[2]]);
+      mesh.pin(add(p, mul(n, 0.071)), n);
+    });
+    struts.forEach(([a, b]) => { const axis = unit(sub(b, a)), n = unit(sub([0, 0, 1], mul(axis, dot(axis, [0, 0, 1])))); mesh.pin(add(average([a, b]), mul(n, 0.067)), n); });
+    return mesh;
+  }
+  function terrace() {
+    const mesh = new Mesh(), heights = [[1.67, 1.21, 0.83], [1.18, 0.85, 0.53], [0.72, 0.46, 0.25]];
+    for (let row = 0; row < 3; row++) for (let col = 0; col < 3; col++) {
+      const x = (col - 1) * 0.81, z = (row - 1) * 0.81, h = heights[row][col], r = 0.383;
+      const top = [[x - r, h, z - r], [x - r, h, z + r], [x + r, h, z + r], [x + r, h, z - r]];
+      const color = row === 1 && col === 2 ? palette.copper : row === 0 && col === 1 ? palette.blue : palette.ivory;
+      mesh.sheet(top, material(color, 0.45), top.map(p => [(p[0] + 1.3) / 2.6, (p[2] + 1.3) / 2.6]), 0.025);
+      for (let side = 0; side < 4; side++) {
+        const j = (side + 1) % 4, a = [top[side][0], 0.045, top[side][2]], b = [top[j][0], 0.045, top[j][2]];
+        mesh.quad([top[side], a, b, top[j]], material(side === 1 && col === 1 ? palette.blue : palette.paper, 0.13, 0.92));
+      }
+      mesh.seam(top[0], top[1], 0.10); mesh.seam(top[1], top[2], 0.10);
+      mesh.pin([x, h, z], [0, 1, 0]);
+    }
+    return mesh;
+  }
+
+  function hitTriangle(origin, ray, triangle, distance) {
+    const a = triangle[0], b = triangle[1], c = triangle[2];
+    const e1 = sub(b, a), e2 = sub(c, a), p = cross(ray, e2), determinant = dot(e1, p);
+    if (Math.abs(determinant) < 1e-9) return false;
+    const inverse = 1 / determinant, t = sub(origin, a), u = dot(t, p) * inverse;
+    if (u < -1e-6 || u > 1.000001) return false;
+    const q = cross(t, e1), v = dot(ray, q) * inverse;
+    if (v < -1e-6 || u + v > 1.000001) return false;
+    const d = dot(e2, q) * inverse;
+    return d > 0.02 && d < distance - 0.035;
+  }
+
+  const VERTEX = `
+    attribute vec3 aPosition; attribute vec3 aNormal; attribute vec3 aColor;
+    attribute vec2 aUV; attribute vec3 aMeta;
+    uniform mat4 uViewProjection; uniform mat4 uLightProjection;
+    varying vec3 vPosition; varying vec3 vNormal; varying vec3 vColor;
+    varying vec2 vUV; varying vec3 vMeta; varying vec4 vLight;
+    void main(){ vPosition=aPosition; vNormal=aNormal; vColor=aColor; vUV=aUV; vMeta=aMeta;
+      vLight=uLightProjection*vec4(aPosition,1.0); gl_Position=uViewProjection*vec4(aPosition,1.0); }`;
+  function fragment(derivatives, precision) {
+    return `${derivatives ? '#extension GL_OES_standard_derivatives : enable\n' : ''}precision ${precision} float;
+      varying vec3 vPosition; varying vec3 vNormal; varying vec3 vColor;
+      varying vec2 vUV; varying vec3 vMeta; varying vec4 vLight;
+      uniform sampler2D uShadow; uniform vec2 uShadowStep; uniform vec3 uEye; uniform vec3 uLight;
+      float line(float x){ float d=abs(fract(x-0.5)-0.5); float w=${derivatives ? 'max(fwidth(x),0.001)' : '0.032'}; return 1.0-smoothstep(w*0.18,w*0.78,d); }
+      float shadow(vec3 n,vec3 light){
+        vec3 p=vLight.xyz/vLight.w*0.5+0.5;
+        if(p.x<=0.0||p.x>=1.0||p.y<=0.0||p.y>=1.0||p.z>=1.0) return 1.0;
+        float bias=max(0.00038,0.00105*(1.0-max(dot(n,light),0.0))); float visible=0.0;
+        for(int x=-1;x<=1;x++) for(int y=-1;y<=1;y++){
+          vec2 enc=texture2D(uShadow,p.xy+vec2(float(x),float(y))*uShadowStep*1.35).rg;
+          float z=enc.x+enc.y/255.0; visible+=smoothstep(p.z-bias-0.0004,p.z-bias+0.0004,z);
+        } return visible/9.0;
+      }
+      void main(){
+        vec3 n=normalize(vNormal); if(!gl_FrontFacing)n=-n;
+        vec3 light=normalize(uLight-vPosition), view=normalize(uEye-vPosition);
+        float ndl=max(dot(n,light),0.0), shade=shadow(n,light);
+        vec3 base=vColor;
+        float longitude=line(vUV.x*24.0), latitude=line(vUV.y*16.0);
+        float contour=line(vUV.y*8.0+0.32*sin(vUV.x*13.0)+0.14*sin(vUV.x*29.0));
+        float ink=max(max(longitude,latitude)*0.55,contour*0.37)*vMeta.x;
+        base=mix(base,vec3(0.25,0.39,0.43),ink*0.43);
+        float grain=fract(sin(dot(vPosition,vec3(173.13,229.71,317.37)))*43758.5453)-0.5;
+        base+=grain*0.012;
+        vec3 linear=pow(max(base,vec3(0.01)),vec3(2.2));
+        vec3 ambient=vec3(0.75,0.82,0.91)*(0.25+0.20*max(n.y,0.0));
+        ambient+=vec3(1.0,0.87,0.70)*0.06*max(-n.y,0.0);
+        vec3 direct=vec3(1.0,0.925,0.80)*ndl*0.78*(0.12+0.88*shade);
+        vec3 color=linear*(ambient+direct)*vMeta.y;
+        color+=vec3(1.0,0.93,0.83)*pow(max(dot(n,normalize(light+view)),0.0),28.0)*0.027*shade;
+        color+=linear*0.035*pow(1.0-max(dot(n,view),0.0),3.0);
+        if(vMeta.z>0.5){
+          float contact=exp(-dot(vPosition.xz*0.63,vPosition.xz*0.63))*0.045;
+          color=linear*(0.97-contact)*(0.67+0.33*shade);
+        }
+        color=pow(max(color,vec3(0.0)),vec3(1.0/2.2));
+        float fog=smoothstep(8.0,19.0,length(vPosition.xz));
+        gl_FragColor=vec4(mix(color,vec3(0.957,0.950,0.929),fog),1.0);
+      }`;
+  }
+  const SHADOW_VERTEX = 'attribute vec3 aPosition; uniform mat4 uViewProjection; void main(){gl_Position=uViewProjection*vec4(aPosition,1.0);}';
+  const SHADOW_FRAGMENT = 'precision highp float; void main(){vec2 e=fract(min(gl_FragCoord.z,0.99999)*vec2(1.0,255.0));e.x-=e.y/255.0;gl_FragColor=vec4(e,0.0,1.0);}';
+  const LINE_VERTEX = 'attribute vec3 aPosition; attribute vec4 aColor; uniform mat4 uViewProjection; varying vec4 vColor; void main(){vColor=aColor;gl_Position=uViewProjection*vec4(aPosition,1.0);}';
+  const LINE_FRAGMENT = 'precision mediump float; varying vec4 vColor; void main(){gl_FragColor=vColor;}';
+
+  class PaperMapEngine {
+    constructor(canvas, options = {}) {
+      if (!canvas || typeof canvas.getContext !== 'function') throw new Error('The paper gallery needs a canvas. The complete map remains available in the list.');
+      const settings = { alpha: false, antialias: true, depth: true, premultipliedAlpha: false, powerPreference: 'low-power' };
+      let gl;
+      try { gl = canvas.getContext('webgl', settings) || canvas.getContext('experimental-webgl', settings); } catch (_) { /* readable fallback below */ }
+      if (!gl) throw new Error('This browser could not open the 3D paper gallery. You can still explore every landmark in the map list.');
+      this.canvas = canvas; this.gl = gl;
+      this.onProject = typeof options.onProject === 'function' ? options.onProject : () => {};
+      this.onInteraction = typeof options.onInteraction === 'function' ? options.onInteraction : () => {};
+      this._reduced = options.reducedMotion === undefined ? !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) : !!options.reducedMotion;
+      this._shape = 'origami'; this._fold = 0.62; this._currentFold = this._fold; this._phase = 0;
+      this._yaw = 0.44; this._pitch = 0.60; this._zoom = 1; this._selected = 0;
+      this._motion = !this._reduced; this._active = true; this._visible = true; this._destroyed = false; this._lost = false;
+      this._pausedUntil = 0; this._frameId = 0; this._lastTime = 0; this._distance = 0;
+      this._listeners = []; this._resources = []; this._pointers = new Map();
+      this._light = [-3.8, 7.5, 4.6]; this._lightMatrix = multiply(ortho(4.15, 0.1, 20), lookAt(this._light, [0, 0.6, 0]));
+      this._touchAction = canvas.style.touchAction; this._tabIndex = canvas.getAttribute('tabindex');
+      canvas.style.touchAction = 'none'; if (this._tabIndex === null) canvas.tabIndex = 0;
+      try { this._setup(); this._makeScene(); } catch (error) { this.destroy(); throw new Error('The 3D paper gallery could not initialize. The map list is still available. ' + error.message); }
+      this._events(); this._request();
+    }
+    _program(vertex, frag) {
+      const gl = this.gl, shaders = [];
+      for (const [type, source] of [[gl.VERTEX_SHADER, vertex], [gl.FRAGMENT_SHADER, frag]]) {
+        const shader = gl.createShader(type); gl.shaderSource(shader, source); gl.compileShader(shader);
+        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) { const message = gl.getShaderInfoLog(shader); gl.deleteShader(shader); shaders.forEach(s => gl.deleteShader(s)); throw new Error(message); }
+        shaders.push(shader);
+      }
+      const program = gl.createProgram(); shaders.forEach(shader => gl.attachShader(program, shader)); gl.linkProgram(program); shaders.forEach(shader => gl.deleteShader(shader));
+      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) { const message = gl.getProgramInfoLog(program); gl.deleteProgram(program); throw new Error(message); }
+      this._resources.push(['Program', program]);
+      return { program, attributes: Object.fromEntries(['aPosition', 'aNormal', 'aColor', 'aUV', 'aMeta'].map(name => [name, gl.getAttribLocation(program, name)])), uniforms: Object.fromEntries(['uViewProjection', 'uLightProjection', 'uShadow', 'uShadowStep', 'uEye', 'uLight'].map(name => [name, gl.getUniformLocation(program, name)])) };
+    }
+    _setup() {
+      const gl = this.gl;
+      const derivatives = !!gl.getExtension('OES_standard_derivatives');
+      const high = gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.HIGH_FLOAT);
+      const precision = high && high.precision > 0 ? 'highp' : 'mediump';
+      this._surfaceProgram = this._program(VERTEX, fragment(derivatives, precision));
+      this._shadowProgram = this._program(SHADOW_VERTEX, SHADOW_FRAGMENT.replace('highp', precision));
+      this._lineProgram = this._program(LINE_VERTEX, LINE_FRAGMENT);
+      const buffer = () => { const b = gl.createBuffer(); this._resources.push(['Buffer', b]); return b; };
+      this._meshBuffer = buffer(); this._lineBuffer = buffer(); this._selectionBuffer = buffer();
+      this._shadowSize = Math.min(1536, gl.getParameter(gl.MAX_TEXTURE_SIZE), gl.getParameter(gl.MAX_RENDERBUFFER_SIZE));
+      this._shadowTexture = gl.createTexture(); this._resources.push(['Texture', this._shadowTexture]); gl.bindTexture(gl.TEXTURE_2D, this._shadowTexture);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, this._shadowSize, this._shadowSize, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      const depth = gl.createRenderbuffer(); this._resources.push(['Renderbuffer', depth]); gl.bindRenderbuffer(gl.RENDERBUFFER, depth); gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, this._shadowSize, this._shadowSize);
+      this._shadowFBO = gl.createFramebuffer(); this._resources.push(['Framebuffer', this._shadowFBO]); gl.bindFramebuffer(gl.FRAMEBUFFER, this._shadowFBO);
+      gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, this._shadowTexture, 0); gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, depth);
+      if (gl.checkFramebufferStatus(gl.FRAMEBUFFER) !== gl.FRAMEBUFFER_COMPLETE) throw new Error('The graphics device could not create its paper-lighting buffer.');
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null); gl.enable(gl.DEPTH_TEST); gl.depthFunc(gl.LEQUAL); gl.disable(gl.CULL_FACE);
+      this._maxAttributes = gl.getParameter(gl.MAX_VERTEX_ATTRIBS);
+    }
+    _makeScene() {
+      const makers = { origami: () => accordion(this._currentFold), sphere: globe, portal, tensegrity, terrace };
+      this._mesh = makers[this._shape](); this._center = average(this._mesh.bounds); this._mesh.floor();
+      const gl = this.gl; gl.bindBuffer(gl.ARRAY_BUFFER, this._meshBuffer); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this._mesh.vertices), gl.DYNAMIC_DRAW);
+      gl.bindBuffer(gl.ARRAY_BUFFER, this._lineBuffer); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this._mesh.lines), gl.STATIC_DRAW);
+      this._shadowDirty = true; this._selection();
+    }
+    _selection() {
+      const data = [], mark = this._mesh.landmarks[this._selected];
+      if (mark) {
+        const [a, b] = tangent(mark.normal), center = add(mark.position, mul(mark.normal, 0.006));
+        for (let i = 0; i < 48; i++) {
+          const p = angle => add(center, add(mul(a, 0.103 * Math.cos(angle)), mul(b, 0.103 * Math.sin(angle))));
+          data.push(...p(i * TAU / 48), 0.70, 0.40, 0.18, 0.66, ...p((i + 1) * TAU / 48), 0.70, 0.40, 0.18, 0.66);
+        }
+      }
+      this._selectionCount = data.length / 7;
+      this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this._selectionBuffer); this.gl.bufferData(this.gl.ARRAY_BUFFER, new Float32Array(data), this.gl.DYNAMIC_DRAW);
+    }
+    _bind(program, buffer, lines = false) {
+      const gl = this.gl; gl.useProgram(program.program); gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      for (let i = 0; i < this._maxAttributes; i++) gl.disableVertexAttribArray(i);
+      const layout = lines ? [['aPosition', 3, 0], ['aColor', 4, 3]] : [['aPosition', 3, 0], ['aNormal', 3, 3], ['aColor', 3, 6], ['aUV', 2, 9], ['aMeta', 3, 11]];
+      layout.forEach(([name, size, offset]) => { const location = program.attributes[name]; if (location >= 0) { gl.enableVertexAttribArray(location); gl.vertexAttribPointer(location, size, gl.FLOAT, false, (lines ? 7 : 14) * 4, offset * 4); } });
+    }
+    _camera(aspect) {
+      const cp = Math.cos(this._pitch), direction = [Math.sin(this._yaw) * cp, Math.sin(this._pitch), Math.cos(this._yaw) * cp];
+      const right = unit(cross([0, 1, 0], direction)), up = cross(direction, right), tan = Math.tan(38 * RAD / 2);
+      let fit = 1;
+      this._mesh.triangles.forEach(tri => tri.forEach(point => {
+        const p = sub(point, this._center), z = dot(p, direction);
+        fit = Math.max(fit, z + Math.abs(dot(p, right)) / (tan * aspect * 0.79), z + Math.abs(dot(p, up)) / (tan * 0.79));
+      }));
+      const targetDistance = (fit + 0.12) / this._zoom;
+      this._distance = !this._distance ? targetDistance : this._distance + (targetDistance - this._distance) * 0.20;
+      const eye = add(this._center, mul(direction, this._distance));
+      return { eye, matrix: multiply(perspective(38 * RAD, aspect, 0.05, 60), lookAt(eye, this._center)) };
+    }
+    _draw() {
+      const gl = this.gl, rect = this.canvas.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 1.8);
+      const width = Math.max(1, Math.round(rect.width * dpr)), height = Math.max(1, Math.round(rect.height * dpr));
+      if (this.canvas.width !== width || this.canvas.height !== height) { this.canvas.width = width; this.canvas.height = height; }
+      const camera = this._camera(width / height), count = this._mesh.vertices.length / 14;
+      gl.depthMask(true); gl.disable(gl.BLEND);
+      if (this._shadowDirty) {
+        gl.bindFramebuffer(gl.FRAMEBUFFER, this._shadowFBO); gl.viewport(0, 0, this._shadowSize, this._shadowSize); gl.clearColor(1, 1, 1, 1); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+        this._bind(this._shadowProgram, this._meshBuffer); gl.uniformMatrix4fv(this._shadowProgram.uniforms.uViewProjection, false, this._lightMatrix); gl.drawArrays(gl.TRIANGLES, 0, count); this._shadowDirty = false;
+      }
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null); gl.viewport(0, 0, width, height); gl.clearColor(...palette.floor, 1); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+      this._bind(this._surfaceProgram, this._meshBuffer); const u = this._surfaceProgram.uniforms;
+      gl.uniformMatrix4fv(u.uViewProjection, false, camera.matrix); gl.uniformMatrix4fv(u.uLightProjection, false, this._lightMatrix);
+      gl.uniform3fv(u.uEye, camera.eye); gl.uniform3fv(u.uLight, this._light); gl.uniform2f(u.uShadowStep, 1 / this._shadowSize, 1 / this._shadowSize);
+      gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, this._shadowTexture); gl.uniform1i(u.uShadow, 0);
+      gl.enable(gl.POLYGON_OFFSET_FILL); gl.polygonOffset(1, 1); gl.drawArrays(gl.TRIANGLES, 0, count); gl.disable(gl.POLYGON_OFFSET_FILL);
+      gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA); gl.depthMask(false); gl.lineWidth(1);
+      if (this._mesh.lines.length) { this._bind(this._lineProgram, this._lineBuffer, true); gl.uniformMatrix4fv(this._lineProgram.uniforms.uViewProjection, false, camera.matrix); gl.drawArrays(gl.LINES, 0, this._mesh.lines.length / 7); }
+      if (this._selectionCount) { this._bind(this._lineProgram, this._selectionBuffer, true); gl.uniformMatrix4fv(this._lineProgram.uniforms.uViewProjection, false, camera.matrix); gl.drawArrays(gl.LINES, 0, this._selectionCount); }
+      gl.depthMask(true); gl.disable(gl.BLEND); this._project(camera, rect);
+    }
+    _project(camera, rect) {
+      const points = this._mesh.landmarks.map(mark => {
+        const p = project(camera.matrix, mark.position), toCamera = sub(camera.eye, mark.position), distance = Math.hypot(...toCamera);
+        let visible = p[3] > 0 && dot(mark.normal, toCamera) > 0.005;
+        const x = p[0] / p[3] * 0.5 + 0.5, y = 0.5 - p[1] / p[3] * 0.5, depth = p[2] / p[3] * 0.5 + 0.5;
+        visible = visible && x >= 0 && x <= 1 && y >= 0 && y <= 1 && depth > 0 && depth < 1;
+        if (visible) { const ray = mul(toCamera, -1 / distance); visible = !this._mesh.triangles.some(tri => hitTriangle(camera.eye, ray, tri, distance)); }
+        return { x: clamp(x, 0, 1), y: clamp(y, 0, 1), visible, depth: clamp(depth, 0, 1) };
+      });
+      this._lastProjection = points;
+      this.onProject(points, { shape: this._shape, fold: this._currentFold, foldable: this._shape === 'origami', yaw: this._yaw / RAD, pitch: this._pitch / RAD, zoom: this._zoom, motion: this._motion && !this._reduced, active: this._active, width: rect.width, height: rect.height, renderer: 'WebGL', visiblePins: points.filter(p => p.visible).length });
+    }
+    _canDraw() { return !this._destroyed && !this._lost && this._active && this._visible && !document.hidden; }
+    _request() { if (this._canDraw() && !this._frameId) this._frameId = requestAnimationFrame(time => this._frame(time)); }
+    _stop() { if (this._frameId) cancelAnimationFrame(this._frameId); this._frameId = 0; this._lastTime = 0; }
+    _frame(time) {
+      this._frameId = 0; if (!this._canDraw()) return;
+      const dt = this._lastTime ? Math.min((time - this._lastTime) / 1000, 0.05) : 0; this._lastTime = time;
+      const moving = this._motion && !this._reduced && this._pointers.size === 0 && time >= this._pausedUntil;
+      if (moving) {
+        this._yaw += dt * TAU / 48; this._phase += dt * TAU / 16;
+        if (this._shape === 'origami') {
+          const amplitude = Math.min(0.12, this._fold * 0.5, (1 - this._fold) * 0.5), value = this._fold + amplitude * Math.sin(this._phase);
+          if (Math.abs(value - this._currentFold) > 0.0002) { this._currentFold = value; this._makeScene(); }
+        }
+      }
+      this._draw();
+      if (this._motion && !this._reduced) this._request();
+    }
+    _listen(target, name, fn, options) { target.addEventListener(name, fn, options); this._listeners.push(() => target.removeEventListener(name, fn, options)); }
+    _interaction(type) { this._pausedUntil = performance.now() + 3500; this.onInteraction({ type, yaw: this._yaw / RAD, pitch: this._pitch / RAD, fold: this._currentFold, zoom: this._zoom }); this._request(); }
+    _events() {
+      const canvas = this.canvas;
+      this._listen(canvas, 'pointerdown', event => {
+        if (event.pointerType === 'mouse' && event.button !== 0) return;
+        this._pointers.set(event.pointerId, [event.clientX, event.clientY]);
+        try { canvas.setPointerCapture(event.pointerId); } catch (_) { /* detached canvas */ }
+        this._pinch = 0; this._interaction('orbit-start');
+      });
+      this._listen(canvas, 'pointermove', event => {
+        if (!this._pointers.has(event.pointerId)) return;
+        const before = this._pointers.get(event.pointerId); this._pointers.set(event.pointerId, [event.clientX, event.clientY]);
+        if (this._pointers.size === 1) {
+          const rect = canvas.getBoundingClientRect(); this._yaw -= (event.clientX - before[0]) / Math.max(rect.width, 1) * TAU;
+          this._pitch = clamp(this._pitch + (event.clientY - before[1]) / Math.max(rect.height, 1) * Math.PI, 0.10, 1.35);
+        } else {
+          const [a, b] = Array.from(this._pointers.values()), distance = Math.hypot(a[0] - b[0], a[1] - b[1]);
+          if (this._pinch) this._zoom = clamp(this._zoom * distance / this._pinch, 0.55, 2.1); this._pinch = distance;
+        }
+        this._interaction('orbit');
+      });
+      const release = event => { if (!this._pointers.delete(event.pointerId)) return; this._pinch = 0; this._interaction('orbit-end'); };
+      this._listen(canvas, 'pointerup', release); this._listen(canvas, 'pointercancel', release); this._listen(canvas, 'lostpointercapture', release);
+      this._listen(canvas, 'wheel', event => { event.preventDefault(); const scale = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? 400 : 1; this.zoomBy(Math.exp(-event.deltaY * scale * 0.0012)); this._interaction('zoom'); }, { passive: false });
+      this._listen(canvas, 'keydown', event => {
+        const keys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', '+', '=', '-', '_', 'Home', '0']; if (!keys.includes(event.key)) return;
+        event.preventDefault();
+        if (event.key === 'ArrowLeft') this._yaw -= 7 * RAD; else if (event.key === 'ArrowRight') this._yaw += 7 * RAD;
+        else if (event.key === 'ArrowUp') this._pitch = clamp(this._pitch + 0.08, 0.10, 1.35); else if (event.key === 'ArrowDown') this._pitch = clamp(this._pitch - 0.08, 0.10, 1.35);
+        else if (event.key === '+' || event.key === '=') this.zoomBy(1.1); else if (event.key === '-' || event.key === '_') this.zoomBy(1 / 1.1); else this.reset();
+        this._interaction('keyboard');
+      });
+      this._listen(document, 'visibilitychange', () => { if (document.hidden) this._stop(); else this._request(); });
+      this._listen(canvas, 'webglcontextlost', event => { event.preventDefault(); this._lost = true; this._stop(); this.onProject((this._lastProjection || []).map(p => ({ ...p, visible: false })), { error: 'The graphics context paused. The landmark list remains available.', renderer: 'WebGL' }); });
+      this._listen(canvas, 'webglcontextrestored', () => { if (this._destroyed) return; try { this._resources = []; this._setup(); this._lost = false; this._makeScene(); this._request(); } catch (_) { this.onProject([], { error: 'The 3D view could not restart. Use the landmark list.', renderer: 'WebGL' }); } });
+      if (typeof ResizeObserver !== 'undefined') { this._resizeObserver = new ResizeObserver(() => this._request()); this._resizeObserver.observe(canvas); }
+      else this._listen(window, 'resize', () => this._request());
+      if (typeof IntersectionObserver !== 'undefined') {
+        this._intersectionObserver = new IntersectionObserver(entries => { this._visible = entries[0].isIntersecting; if (this._visible) this._request(); else this._stop(); }, { threshold: 0 }); this._intersectionObserver.observe(canvas);
+      }
+    }
+    setShape(key) { if (this._destroyed || !['origami', 'sphere', 'portal', 'tensegrity', 'terrace'].includes(key)) return; this._shape = key; this._distance = 0; this._currentFold = this._fold; this._phase = 0; this._makeScene(); this._request(); }
+    setSelected(index) { if (this._destroyed || !Number.isInteger(index) || index < 0 || index > 8) return; this._selected = index; this._selection(); this._request(); }
+    setFold(value) { if (this._destroyed || !Number.isFinite(Number(value))) return; this._fold = clamp(Number(value), 0, 1); this._currentFold = this._fold; this._phase = 0; this._pausedUntil = performance.now() + 2500; if (this._shape === 'origami') this._makeScene(); this._request(); }
+    setMotion(value) { if (this._destroyed) return; if (!value) { this._fold = this._currentFold; this._phase = 0; } this._motion = !!value; this._lastTime = 0; this._request(); }
+    setActive(value) { if (this._destroyed) return; this._active = !!value; if (this._active) this._request(); else this._stop(); }
+    setYaw(degrees) { if (this._destroyed || !Number.isFinite(Number(degrees))) return; this._yaw = Number(degrees) * RAD; this._pausedUntil = performance.now() + 2500; this._request(); }
+    zoomBy(factor) { if (this._destroyed || !Number.isFinite(Number(factor)) || Number(factor) <= 0) return; this._zoom = clamp(this._zoom * Number(factor), 0.55, 2.1); this._request(); }
+    reset() { if (this._destroyed) return; this._yaw = 0.44; this._pitch = 0.60; this._zoom = 1; this._distance = 0; this._fold = 0.62; this._currentFold = this._fold; this._phase = 0; this._pausedUntil = performance.now() + 2000; if (this._shape === 'origami') this._makeScene(); this._request(); }
+    destroy() {
+      if (this._destroyed) return; this._destroyed = true; this._stop();
+      (this._listeners || []).forEach(remove => remove()); if (this._resizeObserver) this._resizeObserver.disconnect(); if (this._intersectionObserver) this._intersectionObserver.disconnect();
+      (this._resources || []).forEach(([kind, resource]) => { if (resource) this.gl['delete' + kind](resource); }); this._resources = [];
+      this.canvas.style.touchAction = this._touchAction;
+      if (this._tabIndex === null) this.canvas.removeAttribute('tabindex'); else if (this._tabIndex !== undefined) this.canvas.setAttribute('tabindex', this._tabIndex);
+      this._pointers.clear();
+    }
+  }
+  window.PaperMapEngine = PaperMapEngine;
+})();
