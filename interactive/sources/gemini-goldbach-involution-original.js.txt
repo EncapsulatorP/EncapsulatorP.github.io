@@ -1,0 +1,171 @@
+
+/**
+ * Goldbach Mirror Involution Analysis
+ * Visualizing the symmetric/antisymmetric energy of prime distributions
+ */
+
+// 1. Math Helpers
+const isPrime = (num) => {
+    if (num < 2) return false;
+    for (let i = 2, s = Math.sqrt(num); i <= s; i++) {
+        if (num % i === 0) return false;
+    }
+    return true;
+};
+
+// 2. Logic: Process state and calculations
+const runAnalysis = () => {
+    const N = state.n;
+    const limit = N - 1;
+    
+    // Calculate Prime Vector P (Indices 1 to N-1)
+    const P = Array.from({ length: N }, (_, i) => i > 0 && i < N ? (isPrime(i) ? 1 : 0) : 0);
+    
+    // Energy Calculations
+    let ePlus = 0;
+    let eMinus = 0;
+    
+    for (let i = 1; i < N; i++) {
+        const pi = P[i];
+        const pni = P[N - i]; // Mirror index
+        ePlus += Math.pow((pi + pni) / 2, 2);
+        eMinus += Math.pow((pi - pni) / 2, 2);
+    }
+    
+    const totalE = ePlus + eMinus;
+    const rho = totalE === 0 ? 0 : eMinus / totalE;
+    
+    // Prepare Data for Plot
+    const pairs = [];
+    const mid = Math.floor(N / 2);
+    
+    for (let k = 1; k <= mid; k++) {
+        const nk = N - k;
+        const kPrime = isPrime(k);
+        const nkPrime = isPrime(nk);
+        
+        let category = "Composite-Composite";
+        if (kPrime && nkPrime) category = "Prime-Prime";
+        else if (kPrime || nkPrime) category = "Prime-Composite";
+        
+        pairs.push({
+            x: k,
+            k: k,
+            nk: nk,
+            kPrime,
+            nkPrime,
+            category
+        });
+    }
+
+    // Sync to State
+    state._chartData = pairs;
+    
+    // Update HUD
+    ui.setEditorial({
+        hud: [
+            { label: "Symmetric Energy (E+)", value: ePlus.toFixed(2) },
+            { label: "Antisymmetric Energy (E-)", value: eMinus.toFixed(2) },
+            { label: "Ratio (ρ)", value: rho.toFixed(4) }
+        ]
+    });
+};
+
+// 3. Initialize App
+const { state, ui } = WH.createApp({
+    params: {
+        n: { value: 30, min: 10, max: 150, step: 2, label: "Even Integer (N)" }
+    },
+    editorial: {
+        hud: [
+            { label: "Symmetric Energy (E+)", value: "0" },
+            { label: "Antisymmetric Energy (E-)", value: "0" },
+            { label: "Ratio (ρ)", value: "0" }
+        ]
+    }
+});
+
+// 4. Reactive Binding
+state._chartData = [];
+state._subscribe('n', runAnalysis);
+runAnalysis(); // Boot-up sync
+
+// 5. Engine: Observable Plot
+WH.initPlot('viz', ({ width, state }) => {
+    const data = [...state._chartData];
+    
+    return {
+        width,
+        height: 400,
+        x: { 
+            label: "k Index", 
+            grid: true 
+        },
+        y: { 
+            domain: [-1.5, 1.5], 
+            ticks: [-1, 1], 
+            tickFormat: d => d === 1 ? "k" : "N-k",
+            label: "Involution Orbit" 
+        },
+        color: {
+            domain: ["Prime-Prime", "Prime-Composite", "Composite-Composite"],
+            range: [
+                WH.getColor('--chart-1'), 
+                WH.getColor('--chart-3'), 
+                WH.getColor('--surface-container-highest')
+            ],
+            legend: true
+        },
+        marks: [
+            // Horizontal guides for the "fold"
+            Plot.ruleY([1, -1], { stroke: WH.getColor('--stroke-emphasis'), strokeDasharray: "4,4", strokeOpacity: 0.3 }),
+            
+            // Orbit Connectors
+            Plot.link(data, {
+                x: "x",
+                y1: 1,
+                y2: -1,
+                stroke: "category",
+                strokeWidth: d => d.category === "Prime-Prime" ? 3 : 1.5,
+                strokeOpacity: d => d.category === "Composite-Composite" ? 0.4 : 1,
+                tip: true
+            }),
+            
+            // Top Row Dots (k)
+            Plot.dot(data, {
+                x: "x",
+                y: 1,
+                fill: d => d.kPrime ? WH.getColor('--chart-1') : WH.getColor('--surface-container-highest'),
+                stroke: WH.getColor('--on-surface-default'),
+                strokeWidth: 0.5,
+                r: 4
+            }),
+            
+            // Bottom Row Dots (N-k)
+            Plot.dot(data, {
+                x: "x",
+                y: -1,
+                fill: d => d.nkPrime ? WH.getColor('--chart-1') : WH.getColor('--surface-container-highest'),
+                stroke: WH.getColor('--on-surface-default'),
+                strokeWidth: 0.5,
+                r: 4
+            }),
+            
+            // Text annotations for k and N-k at large steps to avoid clutter
+            Plot.text(data, {
+                filter: d => d.x % 10 === 0 || d.x === 1 || d.x === Math.floor(state.n/2),
+                x: "x",
+                y: 1.3,
+                text: "k",
+                fontSize: 10
+            }),
+            Plot.text(data, {
+                filter: d => d.x % 10 === 0 || d.x === 1 || d.x === Math.floor(state.n/2),
+                x: "x",
+                y: -1.3,
+                text: "nk",
+                fontSize: 10
+            })
+        ]
+    };
+});

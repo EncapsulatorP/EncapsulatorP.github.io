@@ -1,0 +1,99 @@
+<!-- PIRATES PLAN:START -->
+<div class="page pp-page" data-page="pirates-plan">
+  <header class="pp-hero" id="pirates-plan" aria-labelledby="pp-title">
+    <div class="pp-wrap">
+      <div class="pp-hero-top"><p class="pp-eyebrow">EncapsulatorP / Pirates Plan</p><span class="pp-edition" id="pp-edition">Research programme · 21 November 2026</span></div>
+      <div class="pp-hero-grid">
+        <div>
+          <h2 id="pp-title">Next treasures <br><em>hunt planning</em></h2>
+          <p class="pp-hero-summary" id="pp-summary">A complete repository map, a ranked research programme, and the next piece of work on every connection.</p>
+          <div class="pp-hero-actions" id="pp-hero-actions"><a class="pp-button pp-button-primary" href="#repo-interlinks">Explore the connections <span aria-hidden="true">↘</span></a><a class="pp-button pp-button-quiet" href="#repo-register">Find a repository</a><a class="pp-reading-link" href="planning/next-treasures-hunt.md">Read the complete plan ↗</a></div>
+        </div>
+        <aside class="pp-compass" aria-label="How to use this plan">
+          <svg viewBox="0 0 280 210" aria-hidden="true" focusable="false"><defs><linearGradient id="pp-compass-line" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#a2e3d8"/><stop offset="1" stop-color="#c1a8e7"/></linearGradient></defs><g fill="none" stroke="#506b7b"><ellipse cx="140" cy="105" rx="100" ry="67"/><ellipse cx="140" cy="105" rx="63" ry="95" transform="rotate(45 140 105)"/><ellipse cx="140" cy="105" rx="63" ry="95" transform="rotate(-45 140 105)"/><path d="M32 105H248M140 5V205" stroke-dasharray="3 8"/></g><path d="M80 56L197 76L169 164L55 119L80 56L169 164M197 76L55 119" fill="none" stroke="url(#pp-compass-line)" stroke-width="2"/><g fill="#b9f0d0" stroke="#0d2630" stroke-width="5"><circle cx="80" cy="56" r="8"/><circle cx="197" cy="76" r="8"/><circle cx="169" cy="164" r="8"/><circle cx="55" cy="119" r="8"/></g><circle cx="140" cy="105" r="12" fill="#dabf81"/><circle cx="140" cy="105" r="22" fill="none" stroke="#dabf81" stroke-opacity=".5"/></svg>
+          <p><strong>Choose a repository.</strong> Follow a connection. Find the experiment that makes the next decision possible.</p>
+        </aside>
+      </div>
+      <dl class="pp-stats" id="pp-stats" aria-label="Programme coverage"></dl>
+    </div>
+  </header>
+
+  <nav class="pp-subnav" aria-label="Pirates Plan sections"><div class="pp-wrap"><a href="#plan-timeline">01 / Stages</a><a href="#plan-routes">02 / Research routes</a><a href="#repo-interlinks">03 / Connections</a><a href="#repo-register">04 / All repositories</a><a href="#decision-targets">05 / Decisions</a></div></nav>
+
+  <div class="pp-wrap pp-main">
+    <div class="pp-loading" id="pp-loading" role="status">Opening the research programme… <a href="planning/next-treasures-hunt.md">The complete reading copy is also available.</a></div>
+    <noscript><p class="pp-note">The complete plan is available in the <a href="planning/next-treasures-hunt.md">reading copy</a>. Enable JavaScript for the searchable register and interactive repository map.</p></noscript>
+
+    <section class="pp-section" id="plan-timeline" aria-labelledby="pp-timeline-title">
+      <div class="pp-section-heading"><div><p class="pp-eyebrow">01 / Put the work in order</p><h3 id="pp-timeline-title">Stages, targets, and decision gates.</h3></div><p>Time windows describe the proposed sequence. Each stage earns its continuation through a specific result.</p></div>
+      <div class="pp-context-grid"><div class="pp-context" id="pp-scope"></div><div class="pp-context" id="pp-capacity"></div></div>
+      <div class="pp-timeline" id="pp-stages"></div>
+    </section>
+
+    <section class="pp-section" id="plan-routes" aria-labelledby="pp-routes-title">
+      <div class="pp-section-heading"><div><p class="pp-eyebrow">02 / Follow a question</p><h3 id="pp-routes-title">Research routes across the repositories.</h3></div><p>A route collects the repositories and connections needed to answer one question. Open it to focus the map and register.</p></div>
+      <div class="pp-route-grid" id="pp-routes"></div>
+    </section>
+
+    <section class="pp-section pp-map-section" id="repo-interlinks" aria-labelledby="pp-map-title">
+      <div class="pp-section-heading"><div><p class="pp-eyebrow">03 / Make the links useful</p><h3 id="pp-map-title">The repository connection map.</h3></div><p>Start with the whole portfolio, then select a repository to see its neighbours. Every connection below includes planned work.</p></div>
+      <div class="pp-path-launch" id="pp-path-launch">
+        <div><h4>Pirate path · next treasures</h4><p>Follow a numbered expedition through the next pieces of work. The orange path records work order, not a mathematical dependency.</p></div>
+        <label for="pp-pirate-path">Choose an expedition<select id="pp-pirate-path"><option value="">No expedition selected</option></select></label>
+        <button type="button" class="pp-button pp-button-expedition" id="pp-first-path">Follow the first expedition ↗</button>
+      </div>
+      <div class="pp-map-shell">
+        <div class="pp-evidence-key" aria-label="Connection evidence and path legend">
+          <div class="pp-evidence-items" id="pp-evidence-counts" role="status" aria-live="polite"></div>
+          <p><strong>Known / documented</strong> means the cited link or shared object has a documented basis. It does not prove an equivalence between repositories. Gold and purple lines name work still to do. <strong class="pp-expedition-key">Orange dash-dot: planned work order.</strong></p>
+        </div>
+        <div class="pp-map-toolbar">
+          <label for="pp-map-repo">Focus a repository<select id="pp-map-repo"><option value="">No single-repository focus</option></select></label>
+          <label for="pp-evidence">Evidence level<select id="pp-evidence"><option value="">All evidence levels</option><option value="known">Known / documented basis</option><option value="proposed">Proposed work</option><option value="speculative">Speculative bridges</option></select></label>
+          <label for="pp-edge-kind">Connection type<select id="pp-edge-kind"><option value="">All connection types</option><option value="existing-link">Existing navigation</option><option value="existing-code">Existing code link</option><option value="shared-object">Shared mathematical object</option><option value="proposed-reuse">Proposed reuse</option><option value="analogy">Analogy to test</option></select></label>
+          <button class="pp-button pp-button-quiet" type="button" id="pp-map-reset">Reset · whole portfolio</button>
+        </div>
+        <div class="pp-map-caption"><div><strong id="pp-map-view-title">Whole portfolio</strong><p id="pp-map-view-description">Repositories grouped by research family.</p></div><span class="pp-map-count" id="pp-map-count" role="status"></span></div>
+        <div class="pp-edge-picker"><label for="pp-edge-focus">Inspect a connection in this view<select id="pp-edge-focus"><option value="">Choose a connection to highlight</option></select></label><button class="pp-button pp-button-quiet" type="button" id="pp-read-edge" disabled>Read its evidence &amp; next work ↓</button></div>
+        <div id="pp-connection-inspector" class="pp-connection-inspector" hidden></div>
+        <div class="pp-graph-scroll" id="pp-graph-scroll" tabindex="0" aria-label="Repository graph. Scroll this region if the map is wider than the screen."><svg id="pp-graph" class="pp-graph" viewBox="0 0 1200 600" role="group" aria-labelledby="pp-graph-title pp-graph-description"><title id="pp-graph-title">Repository connections</title><desc id="pp-graph-description">A complete portfolio view with selectable repository nodes. The repository chooser and text list provide the same controls.</desc></svg></div>
+        <div class="pp-graph-footer"><p>Solid cyan: known basis. Long gold dashes: proposed work. Purple dots: speculative bridge. Orange dash-dot: expedition order. Inspect a connection above or open its ledger entry below; source and relationship type remain explicit.</p><div class="pp-map-legend" id="pp-map-legend"></div></div>
+        <details class="pp-node-list-details"><summary>Repository nodes as a keyboard-friendly list</summary><div class="pp-node-list" id="pp-node-list"></div></details>
+      </div>
+      <div class="pp-itinerary" id="pp-itinerary" hidden></div>
+      <div id="pp-selected-repo" class="pp-selected-repo" hidden></div>
+      <div class="pp-edge-heading"><div><h4>Work on the connections</h4><p id="pp-edge-context">The mechanism, evidence, next experiment, and deliverable for each link.</p></div><label for="pp-edge-search">Search connections<input id="pp-edge-search" type="search" placeholder="A method, repository, or planned experiment…" autocomplete="off"></label></div>
+      <p class="pp-result-count" id="pp-edge-count" role="status" aria-live="polite"></p>
+      <div class="pp-edge-list" id="pp-edges"></div>
+      <p class="pp-empty" id="pp-edge-empty" hidden>No connections match these filters. Try another term or reset the evidence and relationship filters.</p>
+    </section>
+
+    <section class="pp-section" id="repo-register" aria-labelledby="pp-register-title">
+      <div class="pp-section-heading"><div><p class="pp-eyebrow">04 / Every repository has a next move</p><h3 id="pp-register-title">The complete repository register.</h3></div><p>Ranked by the proposed programme. Open any row for its next target, acceptance criterion, effort, sources, and stop-or-pivot condition.</p></div>
+      <form class="pp-filters" id="pp-filters" role="search" aria-label="Search the repository plan">
+        <label class="pp-search-label" for="pp-search">Search all repositories<input id="pp-search" name="q" type="search" placeholder="Try Collatz, stability, a target, or a repo name…" autocomplete="off"></label>
+        <label for="pp-family">Research family<select id="pp-family"><option value="">All families</option></select></label>
+        <label for="pp-priority">Priority<select id="pp-priority"><option value="">All priorities</option></select></label>
+        <label for="pp-visibility">Visibility<select id="pp-visibility"><option value="">All repositories</option><option value="public">Public source</option><option value="private">Private source</option></select></label>
+        <label for="pp-sort">Sort by<select id="pp-sort"><option value="rank">Programme rank</option><option value="roi">Expected research ROI</option><option value="meaningfulness">Meaningfulness</option><option value="importance">Importance</option><option value="name">Repository name</option></select></label>
+        <button class="pp-button pp-button-light" type="button" id="pp-clear">Clear filters</button>
+      </form>
+      <div class="pp-register-status"><p class="pp-result-count" id="pp-repo-count" role="status" aria-live="polite"></p><button class="pp-text-button" type="button" id="pp-clear-route" hidden>Clear research route ×</button></div>
+      <details class="pp-scoring"><summary>How to read the ranking</summary><p id="pp-scoring-description">Scores are planning judgments. They guide attention and are revised when evidence changes.</p></details>
+      <div class="pp-repo-list" id="pp-repositories"></div>
+      <p class="pp-empty" id="pp-repo-empty" hidden>No repositories match these filters. Clear the filters or try another term.</p>
+    </section>
+
+    <section class="pp-section" id="decision-targets" aria-labelledby="pp-decisions-title">
+      <div class="pp-section-heading"><div><p class="pp-eyebrow">05 / Decisions that release the next work</p><h3 id="pp-decisions-title">Decision Targets.</h3></div><p>Keep each decision attached to the evidence needed to make it.</p></div>
+      <div class="pp-decision-grid" id="pp-decisions"></div>
+    </section>
+
+    <section class="pp-section" id="plan-bridges" aria-labelledby="pp-bridges-title">
+      <div class="pp-section-heading"><div><p class="pp-eyebrow">Beyond the organisation</p><h3 id="pp-bridges-title">External research bridges.</h3></div><p>Related work outside the organisation has its own source and next target.</p></div>
+      <div class="pp-bridge-grid" id="pp-bridges"></div>
+    </section>
+    <footer class="pp-colophon"><p>Research direction: <strong>Zolton / EncapsulatorP</strong>. This plan separates established connections, proposed reuse, and analogies to test.</p><p id="pp-footer-links"><a href="planning/next-treasures-hunt.md">Complete reading copy ↗</a><a href="planning/roadmap.json">Structured plan ↗</a><a href="#pirate-chest">Return to Pirate Chest ↗</a></p></footer>
+  </div>
+</div>
+<!-- PIRATES PLAN:END -->

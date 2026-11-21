@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <title>Recamán obstructions · Gemini · EncapsulatorP</title>
+  <meta name="description" content="Gemini’s Recamán 3D phase and twisted Möbius explorer, with visible red finite-gap markers and the original coordinate mappings.">
+  <link rel="icon" href="../assets/favicon-32.png">
+  <link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="recaman-obstructions.css">
+  <script src="vendor/three-r146.min.js" defer></script>
+  <script src="vendor/OrbitControls-r146.js" defer></script>
+  <script src="recaman-obstructions.js?v=restore-20261121-r2" defer></script>
+</head>
+<body>
+<main class="ix-exhibit">
+  <header class="ix-header"><div><p class="ix-kicker">Interactive · Exact sequence · finite gaps</p><h1>Recamán obstructions</h1><p>The original 3D phase cloud and twisted Möbius view, with the red holes restored. Turn the scene to see where the visited trajectory and unvisited-value markers overlap.</p></div><div class="ix-signature">Gemini<small>3D Phase &amp; Möbius Explorer<br>Visual concept · Atlas adaptation</small></div></header>
+  <p class="ix-boundary"><strong>What the red holes mean</strong>A red marker represents a positive integer not reached within the selected prefix. Its position follows Gemini’s chosen mapping. A finite scalar gap does not establish a missing delay triple, a permanent omission or a topological obstruction.</p>
+
+  <section id="recaman-obstructions" class="ro-explorer" data-theme="dark" aria-label="Recamán 3D phase and Möbius explorer">
+    <div class="ix-controls ro-controls">
+      <label class="ix-field" for="ro-terms"><span class="ix-control-label">Terms (N), including a₀ <output id="ro-terms-value" for="ro-terms">2,500</output></span><input id="ro-terms" type="range" min="200" max="8000" step="100" value="2500" aria-describedby="ro-horizon"></label>
+      <label class="ix-field ro-mode-field" for="ro-mode"><span class="ix-control-label">Projection</span><select id="ro-mode"><option value="delay">3D delay phase · (aᵢ, aᵢ₊₁, aᵢ₊₂)</option><option value="mobius">Twisted Möbius · remainder modulo 6</option></select></label>
+      <button id="ro-holes" class="ix-button" type="button" aria-pressed="true">Holes: ON</button>
+      <button id="ro-motion" class="ix-button" type="button" aria-pressed="true">Pause rotation</button>
+      <button id="ro-theme" class="ix-button" type="button" aria-pressed="true">Scene: midnight</button>
+    </div>
+    <p id="ro-horizon" class="ro-horizon">2,499 transitions · a₀ through a₂₄₉₉</p>
+    <dl class="ix-hud ro-hud" aria-label="Exact finite-prefix statistics">
+      <div><dt>Maximum value</dt><dd id="ro-maximum">10,163</dd></div>
+      <div><dt>Smallest hole</dt><dd id="ro-smallest">19</dd></div>
+      <div><dt>Holes below maximum</dt><dd id="ro-hole-count">8,156</dd></div>
+      <div><dt>Backward / transitions</dt><dd id="ro-backward">1,242 / 2,499 · 49.7%</dd></div>
+    </dl>
+    <div class="ro-stage" id="ro-stage">
+      <div class="ro-stage-heading"><span id="ro-view-name">Delay phase space · finite triples</span><span id="ro-renderer">Loading view</span></div>
+      <div id="ro-canvas-host" class="ro-canvas-host"></div>
+      <p id="ro-no-canvas" class="ro-no-canvas" hidden>The drawing is unavailable in this browser. The controls, exact counts, first terms and list of holes remain available below.</p>
+      <span class="ro-scene-signature">VISUALIZATION SIGNATURE // GEMINI</span>
+    </div>
+    <div class="ro-stage-actions"><p>Drag to orbit · pinch or scroll to zoom · arrow keys also work</p><div><button id="ro-zoom-out" class="ix-button" type="button" aria-label="Zoom out">−</button><button id="ro-zoom-in" class="ix-button" type="button" aria-label="Zoom in">+</button><button id="ro-reset" class="ix-button" type="button">Reset view</button></div></div>
+    <div class="ix-legend ro-legend"><span><i class="ro-back-color"></i>Backward (−n)</span><span><i class="ro-forward-color"></i>Forward (+n)</span><span><i class="ro-hole-color"></i>Hole · unvisited in this prefix</span></div>
+    <p id="ro-sampling" class="ix-status"></p>
+    <p id="ro-mapping" class="ro-mapping">Red holes use the source’s diagonal map with a small remainder-modulo-6 offset. Their positions are illustrative; they are not observed triples.</p>
+    <p class="ro-first-holes"><strong>First finite holes:</strong> <span id="ro-first-holes">19, 61, 76, 133, 150, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215</span></p>
+    <p id="ro-live" class="ro-sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+  </section>
+  <noscript><p>This exhibit needs JavaScript for its controls and drawing. The initial 2,500-term statistics above and the definitions below remain readable.</p></noscript>
+
+  <details class="ix-notes"><summary>Exact rule, hole mapping &amp; source fidelity</summary>
+    <p class="ix-equation">a₀ = 0. Try aₙ₋₁ − n; use it if positive and new. Otherwise use aₙ₋₁ + n.</p>
+    <p><strong>Finite horizon.</strong> N counts terms, including a₀, so there are N − 1 transitions. A hole is an integer h with 1 ≤ h &lt; max(a) that is absent from these N terms. Addition may revisit values. The counts use every generated term; they do not estimate an infinite horizon.</p>
+    <p><strong>Delay cloud.</strong> With M = max(a), the trajectory point at i is 2.2(aᵢ/M − ½, aᵢ₊₁/M − ½, aᵢ₊₂/M − ½), for 0 ≤ i &lt; N − 2. A red hole h uses p = 2.2(h/M − ½), j = 0.025((h mod 6) − 2.5), and position (p + j, p − j, p). This preserves the supplied red diagonal and its six offsets.</p>
+    <p><strong>Twisted Möbius view.</strong> Trajectories use u = 2πi/N, v = 0.9((aᵢ mod 6)/5 − ½), r = 1.1 + 0.6aᵢ/M and dᵢ ∈ {−1, 0, +1}, the direction into aᵢ. The position is ((r + v cos(u/2)) cos u, (r + v cos(u/2)) sin u, v sin(u/2) + 0.12dᵢ). A red hole uses u = 2πh/M, v = 0.9((h mod 6)/5 − ½), r = 1.1 + 0.6h/M, and no direction offset. In particular, the two angular coordinates use different inputs: index for the trajectory, value for the holes. This is the original illustrative mapping, not a derived manifold.</p>
+    <p><strong>What is retained.</strong> Both source mappings, the 200–8,000 range, default 2,500 terms, camera position (2.4, 2.0, 2.8), 48° field of view, blue/green trajectories, red holes, axes, orbiting, zooming, theme switch and Gemini signature. The source colors a₀ green; it has direction 0 and contributes no transition. Both modes retain the source’s N − 2 trajectory points.</p>
+    <p><strong>What is corrected or added.</strong> “Steps” is labeled terms, and the backward ratio uses N − 1. Source hole sampling is retained: every max(1, floor(H/4,000))-th hole is drawn, starting at the smallest; the displayed total H is unsampled. A local renderer, keyboard controls, explicit pause, reduced-motion support, hidden-view suspension and a Canvas projection fallback make the same scene usable on more devices. The surrounding paper palette follows the Atlas; midnight is the initial scene theme.</p>
+    <p><strong>First 16 terms:</strong> <span id="ro-first-terms">0, 1, 3, 6, 2, 7, 13, 20, 12, 21, 11, 22, 10, 23, 9, 24</span>.</p>
+    <p>Sequence: <strong>Bernardo Recamán Santos</strong> · <a href="https://oeis.org/A005132">OEIS A005132 ↗</a>. Interactive concept and original code: <strong>Gemini</strong>, supplied by Zolton. Local adaptation and finite-horizon labels: ChatGPT.</p>
+    <p class="ix-source-code">Source: <code>gemini-code-1795274358812.html</code>, titled <em>Recamán Obstructions — 3D Phase &amp; Möbius Explorer</em>. <a href="sources/gemini-recaman-obstructions-original.js.txt">Read the original topic script</a> · <a href="sources.json">Source inventory</a>.</p>
+  </details>
+  <footer class="ix-footer"><a href="index.html?topic=recaman-obstructions">All interactive contributions</a><a href="recaman.html">Other Recamán coordinates</a><a href="../index.html#recaman">Recamán sequence room</a></footer>
+</main>
+</body>
+</html>

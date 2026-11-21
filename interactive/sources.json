@@ -3,9 +3,9 @@
   "contributor": "Gemini",
   "suppliedBy": "Zolton",
   "adaptation": "EncapsulatorP Atlas",
-  "exportFiles": 12,
-  "uniqueWidgets": 9,
-  "selectedWidgets": 6,
+  "exportFiles": 14,
+  "uniqueWidgets": 11,
+  "selectedWidgets": 9,
   "records": [
     {
       "sha256": "4e0a95d07bec132b4de36b46b67c05a44babb6cdbeac9fe9793a96088d9ce9ed",
@@ -39,10 +39,12 @@
       "evidenceClass": "Conceptual animation",
       "boundary": "The reset and counter are defined animation rules in arbitrary units. This is not a physical model, demonstrated monodromy or construction of Riemann sheets. “Bitemporal” preserves the supplied concept’s name.",
       "adaptation": [
-        "Replace hole-center claim with inner-rim location.",
-        "Replace physical units and monodromy claims with explicit arbitrary-unit reset rules.",
-        "Keep wireframe aligned with particle coordinates.",
-        "Reset event colors and honor reduced motion."
+        "Preserve the original ordered finite-step recurrence, reset assignment and dt*0.05 rotating reference mesh.",
+        "Retain four bounded, thick, color-distinguished pass trails at their true coordinates; offer current-pass and original-view comparison.",
+        "Mark both reset endpoints and a dashed prescribed jump; Catch next reset pauses at the next unchanged event.",
+        "Retain full controls and trajectory in a projected Canvas fallback when WebGL is unavailable.",
+        "Use explicit arbitrary units and finite reset rules; replace hole-center claim with inner-rim crossing.",
+        "Quiet the wireframe in overlay modes, strengthen trail width/contrast and fit narrow-stage camera framing while preserving relative zoom."
       ],
       "originalTopicScript": "sources/gemini-torus-original.js.txt"
     },
@@ -79,9 +81,18 @@
         "Replace unsupported cosmological labels with recurrence parameters.",
         "Remove value cap from iteration; stop after raw first escape above100.",
         "Replace bounded/unstable verdict with finite run status.",
-        "Subscribe calculations only to actual parameter changes."
+        "Subscribe calculations only to actual parameter changes.",
+        "Restore the original named Poincaré exhibit as a dedicated route with all five source parameter ranges and exact capped replay available for comparison."
       ],
-      "originalTopicScript": "sources/gemini-threshold-original.js.txt"
+      "originalTopicScript": "sources/gemini-threshold-original.js.txt",
+      "additionalViews": [
+        {
+          "topic": "poincare",
+          "route": "poincare.html",
+          "originalTopicScript": "sources/gemini-poincare-original.js.txt",
+          "description": "Explicitly named Poincaré return-map specimen with leg-by-leg cobweb playback, orbit focus, original 0–20 view and separately labeled original capped replay."
+        }
+      ]
     },
     {
       "sha256": "ab665ec2fbbb79952f2c618b82b4409437e335f4d1a286e18b61060fadf21955",
@@ -130,7 +141,7 @@
       ],
       "status": "alternate",
       "topic": "Twisted Recamán coordinates",
-      "reason": "The selected delay-coordinate version makes the coordinate choices explicit and matches the existing Recamán exhibit."
+      "reason": "The source remains recorded as a coordinate-only alternative. The dedicated original Recamán obstruction explorer is now selected separately and restores its own exact red-hole and Möbius mappings."
     },
     {
       "sha256": "347402e4ba288349008a095862575a4a0bf9177d85ff68f65d3f50af3074d676",
@@ -138,9 +149,17 @@
       "filenames": [
         "interactive_visual_im_9df25cf48edc7ed6.html"
       ],
-      "status": "alternate",
-      "topic": "Goldbach involution",
-      "reason": "The mirror scan supplies the same finite prime-pair subject with clearer center–radius controls."
+      "status": "selected",
+      "topic": "goldbach-involution",
+      "route": "goldbach-involution.html",
+      "evidenceClass": "Exact finite energies",
+      "boundary": "Exact prime-indicator projection energies for a selected even total N from 10 through 150. The finite ratio does not prove Goldbach’s conjecture.",
+      "originalTopicScript": "sources/gemini-goldbach-involution-original.js.txt",
+      "adaptation": [
+        "Preserve all source controls, mirror connectors and exact E+, E− and rho definitions with no new normalization.",
+        "Expose folded-orbit energy contributions, central fixed-point multiplicity and the finite prime-pair list.",
+        "Use non-prime instead of composite for a category that includes 1."
+      ]
     },
     {
       "sha256": "06a88ae0d9e709f3f5cb7ed12977073c96c9896290e6924331dd19c3dfa276b0",
@@ -151,6 +170,46 @@
       "status": "withheld",
       "topic": "Threshold bursts / Poisson",
       "reason": "The High fit label is based on a count heuristic, not a goodness-of-fit test; resets alter the dynamics and the default can generate no bursts."
+    },
+    {
+      "sha256": "2a7091523a029587c6d675f3f511692fb28b3134f69780b21d11718f465a206e",
+      "bytes": 13587,
+      "filenames": [
+        "gemini-code-1795274340354.html"
+      ],
+      "status": "selected",
+      "topic": "complex-tetration",
+      "route": "complex-tetration.html",
+      "evidenceClass": "Finite basin · stochastic experiment",
+      "boundary": "Finite principal-branch tolerance and escape classification, with a separate stochastic logarithm-sheet experiment. No finite sample certifies convergence or Shell–Thron membership.",
+      "originalTopicScript": "sources/gemini-complex-tetration-original.js.txt",
+      "adaptation": [
+        "Preserve the original complex seed, four parameter ranges, real critical-base presets, basin palette and white/blue/red orbit layers.",
+        "Preserve one Gaussian perturbation per base and independent k in {−1,0,+1} at each update, not a cumulative sheet walk.",
+        "Use finite labels and one-based escape steps; keep the original tolerance and numerical escape limits.",
+        "Handle zero and the original near-zero numerical cutoff explicitly; exclude undefined perturbations from the survival denominator.",
+        "Add keyboard and numeric base selection; retain samples across resize and progressively rasterize the basin under the shared visibility lifecycle."
+      ]
+    },
+    {
+      "sha256": "9ed28eb6ac641569943a9be0ff458731bcb418084c1cdb4ea379221e6b01f627",
+      "bytes": 11142,
+      "filenames": [
+        "gemini-code-1795274358812.html"
+      ],
+      "status": "selected",
+      "topic": "recaman-obstructions",
+      "route": "recaman-obstructions.html",
+      "evidenceClass": "Exact sequence · finite gaps",
+      "boundary": "Red holes are finite unvisited scalar values placed with the source’s chosen mapping. The display does not prove a manifold or topological obstruction.",
+      "originalTopicScript": "sources/gemini-recaman-obstructions-original.js.txt",
+      "adaptation": [
+        "Restore exact source delay and twisted Möbius mappings, addition/subtraction colors and in-scene red-hole loci with the original sampling stride.",
+        "Retain source camera, N range, holes toggle, theme, rotation and orbit controls; add keyboard access.",
+        "Use N terms including a0 and N−1 transitions for the backward ratio.",
+        "Provide WebGL and projected Canvas rendering of the same coordinates and camera, with full finite statistics in either view.",
+        "Fit the complete original cloud on narrow stages by responsive camera distance; preserve relative user zoom and reset framing."
+      ]
     }
   ],
   "runtime": {
@@ -159,5 +218,6 @@
     "license": "vendor/THREE-LICENSE.txt",
     "requestPolicy": "No runtime network calls; exhibit CSP connect-src none.",
     "originalSourcePolicy": "Only original topic scripts are published as text; the remote scaffold is retained in the supplied uploads, not executed here."
-  }
+  },
+  "publicViews": 10
 }
