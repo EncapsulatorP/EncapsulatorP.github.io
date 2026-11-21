@@ -9,6 +9,8 @@ const TORUS_r = 3.5;
 const TRAIL_LIMIT = 4;
 const TRAIL_CAPACITY = 768;
 const TRAIL_INTERVAL = 1 / 30;
+const CURRENT_TRAIL_RADIUS = 0.2;
+const RETAINED_TRAIL_RADIUS = 0.155;
 const PASS_COLORS = ['#9eead7', '#ffd172', '#ff91ab', '#b6b1ff'];
 const VIEW_OVERLAY = 'Superimposed passes';
 const VIEW_CURRENT = 'Current pass';
@@ -268,7 +270,7 @@ WH.initThree('viz', (scene, camera, renderer, controls) => {
                 scene.add(mesh);
             }
             const current = pass === passes[passes.length - 1];
-            const radius = current ? 0.105 : 0.078;
+            const radius = current ? CURRENT_TRAIL_RADIUS : RETAINED_TRAIL_RADIUS;
             const start = record.radius === radius ? record.count : 0;
             for (let i = start; i < pass.points.length - 1; i++) {
                 positionSegment(dummy, pass.points[i], pass.points[i + 1], radius);
@@ -279,12 +281,12 @@ WH.initThree('viz', (scene, camera, renderer, controls) => {
             record.radius = radius;
             record.mesh.count = record.count;
             record.mesh.visible = shown.includes(pass);
-            record.mesh.material.opacity = current ? 1 : 0.78;
+            record.mesh.material.opacity = current ? 1 : 0.94;
         }
         const current = passes[passes.length - 1];
         currentTip.visible = shown.includes(current) && !frame.jump;
         if (currentTip.visible) {
-            positionSegment(currentTip, current.points[current.points.length - 1], position, 0.105);
+            positionSegment(currentTip, current.points[current.points.length - 1], position, CURRENT_TRAIL_RADIUS);
             currentTipMaterial.color.set(current.color);
         }
     }
@@ -303,10 +305,43 @@ WH.initThree('viz', (scene, camera, renderer, controls) => {
 
     camera.position.set(22, 18, 22);
     controls.enableDamping = true;
+    const target = controls.target || new THREE.Vector3();
+    const initialDistance = camera.position.distanceTo(target);
+    let framingFactor = 1;
+    let reframeAfterViewReset = false;
+    function fitNarrowStage() {
+        if (host.clientWidth < 1 || host.clientHeight < 1) return;
+        const aspect = host.clientWidth / host.clientHeight;
+        const horizontalHalfAngle = Math.atan(Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2) * aspect);
+        // Fit the original torus bound plus 8% breathing room horizontally.
+        // Apply only the change in framing, preserving the user's relative zoom,
+        // orbit direction and target when the phone rotates or the stage resizes.
+        const factor = Math.max(1, (TORUS_R + TORUS_r) * 1.08 / (initialDistance * Math.sin(horizontalHalfAngle)));
+        camera.position.sub(target).multiplyScalar(factor / framingFactor).add(target);
+        framingFactor = factor;
+        camera.updateMatrixWorld();
+        WH.requestDraw();
+    }
+    fitNarrowStage();
+    const initialFramingFactor = framingFactor;
+    const framingObserver = new ResizeObserver(fitNarrowStage);
+    framingObserver.observe(host);
+    const handleViewReset = event => {
+        if (event.key.toLowerCase() === 'r') reframeAfterViewReset = true;
+    };
+    renderer.domElement?.addEventListener('keydown', handleViewReset);
     WH.addBadge('3d_rotation', 'Drag to orbit · arrows / + / − / R also work');
     view = {
         draw(currentFrame) {
+            if (reframeAfterViewReset) {
+                // The shared R shortcut restores its initial camera snapshot.
+                // Account for any responsive resize since that snapshot.
+                camera.position.sub(target).multiplyScalar(framingFactor / initialFramingFactor).add(target);
+                camera.updateMatrixWorld();
+                reframeAfterViewReset = false;
+            }
             torus.rotation.z = meshAngle;
+            torusMaterial.opacity = state.trailView === VIEW_ORIGINAL ? 0.21 : 0.05;
             particle.position.copy(currentFrame.position);
             halo.position.copy(currentFrame.position);
             haloMaterial.color.set(PASS_COLORS[state.kt % PASS_COLORS.length]);
@@ -336,6 +371,8 @@ WH.initThree('viz', (scene, camera, renderer, controls) => {
     return {
         render: renderFrame,
         stop() {
+            framingObserver.disconnect();
+            renderer.domElement?.removeEventListener('keydown', handleViewReset);
             for (const record of meshes.values()) { record.mesh.dispose(); record.mesh.material.dispose(); }
             [torusGeometry, ringGeometry, particleGeometry, haloGeometry, segmentGeometry, jumpGeometry, markerGeometry].forEach(geometry => geometry.dispose());
             [torusMaterial, ringMaterial, particleMaterial, haloMaterial, currentTipMaterial, jumpMaterial, crossingMaterial, landingMaterial].forEach(material => material.dispose());

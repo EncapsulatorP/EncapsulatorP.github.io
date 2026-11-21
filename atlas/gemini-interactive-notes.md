@@ -43,7 +43,7 @@ Recovered source: <code>gemini-code-1795274358812.html</code>. The coordinate-on
 
 Red holes are sampled scalar values absent from the finite prefix. Their positions follow illustrative mappings; they are not observed delay triples. The Möbius trajectory wraps by sequence index, while the holes wrap by value divided by the prefix maximum. These distinct mappings are disclosed.
 
-The 2,500-term prefix has maximum 10,163, 8,156 finite holes, smallest hole 19 and 1,242 backward transitions among 2,499 transitions. The source’s “Steps” control becomes “Terms,” and the backward ratio divides by N − 1. The original camera, holes toggle, theme and orbit controls remain. Keyboard controls and a projected Canvas renderer preserve the same coordinates when WebGL is unavailable.
+The 2,500-term prefix has maximum 10,163, 8,156 finite holes, smallest hole 19 and 1,242 backward transitions among 2,499 transitions. The source’s “Steps” control becomes “Terms,” and the backward ratio divides by N − 1. The original camera direction, holes toggle, theme and orbit controls remain. Narrow stages increase the camera distance to fit the entire cloud; relative user zoom is preserved across resize, and Reset uses the responsive baseline. Keyboard controls and a projected Canvas renderer preserve the same coordinates when WebGL is unavailable.
 
 The sequence is named for **Bernardo Recamán Santos**; Gemini is credited for the visualization. The recurrence follows [OEIS A005132](https://oeis.org/A005132).
 
@@ -87,7 +87,7 @@ The chosen rules are m′ = g, w′ = Gm, v′ = w and u′ = s. The original **
 
 The original local-z wireframe rotation at 0.05 radians per time unit is restored. Under the source’s Euler rotation it spins the lattice around the same torus surface without changing the recurrence.
 
-Four recent passes remain visible as **thick teal, gold, pink and violet trails**. “Current pass” and “Original view” compare the same running state. **Catch next reset** pauses at the next unchanged event with bright endpoint rings and a dashed connector. The connector represents a prescribed jump, not integrated travel between its endpoints.
+Four recent passes remain visible as **thick teal, gold, pink and violet trails**. Overlay modes use a quieter reference mesh and stronger retained-trail contrast; Original view keeps its mesh. Responsive camera framing keeps the full torus visible on phones while preserving relative zoom. “Current pass” and “Original view” compare the same running state. **Catch next reset** pauses at the next unchanged event with bright endpoint rings and a dashed connector. The connector represents a prescribed jump, not integrated travel between its endpoints.
 
 The original upload contained one particle and one rotating reference mesh. Retained pass trails are an Atlas visibility addition; the source’s single-path view remains available. WebGL and projected Canvas use the same update function. The bounded trail history is disposed as old passes are replaced.
 
@@ -112,7 +112,7 @@ The remote widget scaffolds, unused libraries and Gemini message bridge are not 
 
 The hub mounts at <code>[data-interactive-space]</code>, loads one selected iframe and removes it when the topic changes. Source-and-origin-checked visibility messages suspend work when the room is hidden, a dialog covers it, the document is hidden or the frame is far offscreen. Embedded pages start inactive until the parent handshake. Back/forward cache restoration retains resources and renegotiates visibility.
 
-Reduced motion starts continuous animations paused. The Poincaré trace starts paused for everyone. Keyboard and pointer controls remain available. The topic chooser supports arrows, Home and End; controls stay in document flow on narrow screens. 3D fallback notes and numerical content remain accessible.
+Reduced motion starts continuous animations paused. The Poincaré trace starts paused for everyone. Keyboard and pointer controls remain available. The desktop topic chooser supports arrows, Home and End. Phones use a compact native topic selector so the instrument stays close; controls remain in document flow. 3D fallback notes and numerical content remain accessible.
 
 Main deep links use <code>#interactive?topic=</code> followed by complex-tetration, recaman-obstructions, goldbach-involution, poincare, torus, goldbach, logistic, recaman, threshold or phase-slip. The [standalone hub](../interactive/index.html) accepts the same values in <code>?topic=</code>. Every topic also has a standalone HTML route.
 

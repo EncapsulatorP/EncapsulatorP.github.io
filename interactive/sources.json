@@ -43,7 +43,8 @@
         "Retain four bounded, thick, color-distinguished pass trails at their true coordinates; offer current-pass and original-view comparison.",
         "Mark both reset endpoints and a dashed prescribed jump; Catch next reset pauses at the next unchanged event.",
         "Retain full controls and trajectory in a projected Canvas fallback when WebGL is unavailable.",
-        "Use explicit arbitrary units and finite reset rules; replace hole-center claim with inner-rim crossing."
+        "Use explicit arbitrary units and finite reset rules; replace hole-center claim with inner-rim crossing.",
+        "Quiet the wireframe in overlay modes, strengthen trail width/contrast and fit narrow-stage camera framing while preserving relative zoom."
       ],
       "originalTopicScript": "sources/gemini-torus-original.js.txt"
     },
@@ -206,7 +207,8 @@
         "Restore exact source delay and twisted Möbius mappings, addition/subtraction colors and in-scene red-hole loci with the original sampling stride.",
         "Retain source camera, N range, holes toggle, theme, rotation and orbit controls; add keyboard access.",
         "Use N terms including a0 and N−1 transitions for the backward ratio.",
-        "Provide WebGL and projected Canvas rendering of the same coordinates and camera, with full finite statistics in either view."
+        "Provide WebGL and projected Canvas rendering of the same coordinates and camera, with full finite statistics in either view.",
+        "Fit the complete original cloud on narrow stages by responsive camera distance; preserve relative user zoom and reset framing."
       ]
     }
   ],

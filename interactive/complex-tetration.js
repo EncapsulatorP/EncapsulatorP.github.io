@@ -103,7 +103,7 @@
   const hint = document.createElement('p'); hint.textContent = 'Click the basin to seed an orbit. Focus it and use arrow keys to move c; hold Shift for a finer step.';
   seedFields.append(hint); stage.before(seedFields);
   const caption = document.createElement('p'); caption.className = 'ct-caption';
-  caption.innerHTML = '<strong>Read the field.</strong> Blue: successive-step tolerance met. Dark blue: undecided after N updates. Brown: escape recorded. Background = bases c; paths = states z on the same scale.';
+  caption.innerHTML = '<strong>Read the field.</strong> Basin tint: successive-step tolerance met. Dark blue: undecided after N updates. Brown: escape recorded. Background = bases c; paths = states z on the same scale.';
   stage.after(caption);
   const status = root.querySelector('.ix-status'); status.classList.add('ct-status'); status.setAttribute('role', 'status');
   ui.setLegend([

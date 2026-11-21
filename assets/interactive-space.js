@@ -30,6 +30,11 @@
     head.append(kicker, el('h2', '', 'One question. A world to move.'), el('p', 'is-intro', 'Ten interactive views, recovered from Gemini’s supplied visualizations. Move through complex towers, red Recamán holes, prime energies and visible iteration. Each topic keeps its original idea and a clear claim boundary.'));
     const tabs = el('div', 'is-topics'); tabs.setAttribute('role', 'tablist'); tabs.setAttribute('aria-label', 'Interactive topics');
     const panel = el('section', 'is-selected'); panel.id = prefix + '-panel'; panel.setAttribute('role', 'tabpanel');
+    const picker = el('label', 'is-topic-picker', 'Choose a topic'), pickerSelect = el('select');
+    pickerSelect.setAttribute('aria-label', 'Interactive topic'); pickerSelect.setAttribute('aria-controls', panel.id);
+    topics.forEach(topic => { const option = el('option', '', topic.title); option.value = topic.id; pickerSelect.append(option); });
+    pickerSelect.addEventListener('change', () => { const topic = topics.find(item => item.id === pickerSelect.value); if (topic) choose(topic, true); });
+    picker.append(pickerSelect);
     const overview = el('div', 'is-overview'), copy = el('div'), title = el('h3'), evidence = el('p', 'is-evidence'), description = el('p', 'is-description'), signature = el('p', 'is-signature');
     copy.append(evidence, title, description); overview.append(copy, signature);
     const boundary = el('p', 'is-boundary'), links = el('div', 'is-links'), exhibitLink = el('a', '', 'Open this exhibit on its own ↗'), roomLink = el('a'), sourceLink = el('a', '', 'Gemini’s original topic script ↗');
@@ -41,7 +46,7 @@
     ledger.append(el('p', '', 'The visible concepts, original parameter ranges and topic logic remain Gemini’s contributions. The Atlas adaptation restores the red holes and energy readouts, adds explicit cobweb stepping, and strengthens the torus overlap. Numerical corrections are documented beside each exhibit. The coordinate-only twisted Recamán alternative remains in the inventory; the burst/Poisson widget remains withheld because its “High fit” label was not a valid fit test.'));
     const ledgerLinks = el('div', 'is-links'), notes = el('a', '', 'Adaptation notes ↗'), manifest = el('a', '', 'Complete source inventory ↗');
     notes.href = new URL('../atlas/gemini-interactive-notes.md', base).href; manifest.href = new URL('sources.json', base).href; ledgerLinks.append(notes, manifest); ledger.append(ledgerLinks);
-    mount.replaceChildren(head, tabs, panel, ledger);
+    mount.replaceChildren(head, picker, tabs, panel, ledger);
 
     function visible() { return inViewport && !document.hidden && mount.getClientRects().length > 0 && !document.querySelector('dialog[open]'); }
     function tellFrame(active) { if (frame?.contentWindow) frame.contentWindow.postMessage({ type: 'atlas-interactive-visibility', active }, location.origin); }
@@ -49,7 +54,7 @@
       if (frame || !visible()) return;
       frame = el('iframe', 'is-frame'); frame.title = 'Gemini · ' + selected.title;
       frame.setAttribute('sandbox', 'allow-scripts allow-same-origin'); frame.setAttribute('loading', 'lazy');
-      frame.src = new URL(selected.id + '.html?v=restore-20261121', base).href;
+      frame.src = new URL(selected.id + '.html?v=restore-20261121-r2', base).href;
       frame.addEventListener('load', () => tellFrame(visible())); frameHost.replaceChildren(frame);
     }
     function syncVisibility() {
@@ -70,6 +75,7 @@
     });
     function choose(topic, updateAddress) {
       const changed = selected.id !== topic.id; selected = topic;
+      pickerSelect.value = topic.id;
       buttons.forEach((button, id) => { const current = id === topic.id; button.setAttribute('aria-selected', String(current)); button.tabIndex = current ? 0 : -1; });
       panel.setAttribute('aria-labelledby', prefix + '-' + topic.id); title.textContent = topic.title; evidence.textContent = topic.label; description.textContent = topic.summary;
       signature.replaceChildren(el('span', '', 'Gemini · ' + topic.title), el('small', '', 'Interactive concept · Atlas adaptation'));

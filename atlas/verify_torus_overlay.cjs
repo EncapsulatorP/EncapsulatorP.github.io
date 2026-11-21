@@ -42,11 +42,14 @@ function harness(webgl) {
         replaceChildren(...nodes) { this.children = nodes; }
         setAttribute(key, value) { this.attributes[key] = value; }
         addEventListener(type, fn) { this.handlers[type] = fn; }
+        removeEventListener(type) { delete this.handlers[type]; }
         getContext() { return context2d; }
     }
     const host = new Element();
     const controls = new Element();
-    let callback, config, state, scene, cleanup;
+    const rendererElement = new Element('canvas');
+    const resizeCallbacks = [];
+    let callback, config, state, scene, camera, cleanup, initialCamera;
     const WH = {
         createApp(options) {
             config = options;
@@ -72,10 +75,13 @@ function harness(webgl) {
         initThree(where, setup) {
             if (!webgl) return;
             scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera();
-            const result = setup(scene, camera, {}, {});
+            camera = new THREE.PerspectiveCamera(45);
+            const result = setup(scene, camera, { domElement: rendererElement }, { target: new THREE.Vector3() });
+            camera.aspect = host.clientWidth / host.clientHeight;
+            camera.updateProjectionMatrix();
             camera.lookAt(0, 0, 0);
             camera.updateMatrixWorld();
+            initialCamera = camera.position.clone();
             callback = result.render;
             cleanup = result.stop;
         }
@@ -87,13 +93,28 @@ function harness(webgl) {
             createElement: tag => new Element(tag),
             querySelector: () => controls
         },
-        ResizeObserver: class { observe() {} },
+        ResizeObserver: class {
+            constructor(callback) { this.callback = callback; }
+            observe() { resizeCallbacks.push(this.callback); }
+            disconnect() { const index = resizeCallbacks.indexOf(this.callback); if (index >= 0) resizeCallbacks.splice(index, 1); }
+        },
         devicePixelRatio: 1
     });
     adapted.runInContext(context);
     return {
-        state, scene, host, controls, config, cleanup,
+        state, scene, camera, host, controls, config, cleanup,
         frame(dt) { strokes.length = 0; callback({ dt }); },
+        resize(width, height) {
+            host.clientWidth = width;
+            host.clientHeight = height;
+            if (camera) { camera.aspect = width / height; camera.updateProjectionMatrix(); }
+            resizeCallbacks.forEach(fn => fn());
+        },
+        resetCamera() {
+            rendererElement.handlers.keydown?.({ key: 'R' });
+            camera.position.copy(initialCamera);
+            callback({ dt: 0 });
+        },
         read: expression => vm.runInContext(expression, context),
         visibleTrailCount() {
             if (webgl) return scene.children.filter(object => object.isInstancedMesh && object.visible).length;
@@ -162,14 +183,40 @@ console.log(`PASS: 12,000 mixed-step frames and ${resets} resets exactly match t
 
 for (const webgl of [true, false]) {
     const test = harness(webgl);
+    if (webgl) {
+        const desktopDistance = test.camera.position.length();
+        const direction = test.camera.position.clone().normalize();
+        test.resize(330, 360);
+        const phoneDistance = test.camera.position.length();
+        assert(phoneDistance > desktopDistance, 'Give the phone stage enough horizontal room');
+        assert(test.camera.position.clone().normalize().distanceTo(direction) < 1e-12, 'Preserve the camera direction on resize');
+        const point = test.read('torusPoint');
+        for (let u = 0; u < 128; u++) {
+            for (let v = 0; v < 24; v++) {
+                const p = point(u * Math.PI / 64, v * Math.PI / 12);
+                const projected = new THREE.Vector3(p.x, p.y, p.z).project(test.camera);
+                assert(Math.abs(projected.x) < 1 && Math.abs(projected.y) < 1, 'Keep the default phone torus inside the stage');
+            }
+        }
+        test.camera.position.multiplyScalar(0.73); // User zoom, independent of responsive framing.
+        test.resize(880, 460);
+        assert(Math.abs(test.camera.position.length() / desktopDistance - 0.73) < 1e-12, 'Preserve relative zoom on widening');
+        test.resize(330, 360);
+        assert(Math.abs(test.camera.position.length() / phoneDistance - 0.73) < 1e-12, 'Preserve relative zoom on narrowing');
+        test.resetCamera();
+        assert(Math.abs(test.camera.position.length() / phoneDistance - 1) < 1e-12, 'R uses the current responsive framing');
+    }
     for (let index = 0; index < 720; index++) test.frame(0.05);
     assert(test.state.kt > 8, 'Exercise repeated history eviction');
     assert.equal(test.read('passes.length'), 4, 'Retain exactly the last four passes');
     assert(test.read('passes.every(pass => pass.points.length <= TRAIL_CAPACITY + 1)'), 'Bound all trail buffers');
     assert.equal(test.visibleTrailCount(), 4, 'Render all four retained passes in the default overlay');
+    const referenceMesh = webgl && test.scene.children.find(object => object.material?.wireframe);
+    if (referenceMesh) assert.equal(referenceMesh.material.opacity, 0.05, 'De-emphasize the mesh under the colored overlay');
     test.state.trailView = 'Original view';
     test.frame(0);
     assert.equal(test.visibleTrailCount(), 0, 'Hide trails in the source-style comparison');
+    if (referenceMesh) assert.equal(referenceMesh.material.opacity, 0.21, 'Keep the original comparison mesh visible');
     test.state.trailView = 'Current pass';
     test.frame(0);
     assert.equal(test.visibleTrailCount(), 1, 'Render just the current pass in isolation');
@@ -209,5 +256,5 @@ for (const webgl of [true, false]) {
         assert.equal(disposedInstances, 4, 'Release all replaced instance buffers');
         test.cleanup();
     }
-    console.log(`PASS: ${webgl ? 'Three.js scene' : 'Canvas fallback'}: bounded four-pass history, all comparison modes, catch-next-reset, frozen pause, reset cleanup${webgl ? ', finite matrices and instance disposal' : ''}.`);
+    console.log(`PASS: ${webgl ? 'Three.js scene' : 'Canvas fallback'}: bounded four-pass history, all comparison modes, catch-next-reset, frozen pause, reset cleanup${webgl ? ', finite matrices, instance disposal, phone framing and relative zoom' : ''}.`);
 }

@@ -62,7 +62,13 @@
     return { trajectory, holes, stride };
   }
 
-  const api = { computeRecaman, trajectoryPoint, holePoint, buildSceneData };
+  function responsiveCameraScale(width, height) {
+    // Preserve the source camera on wide stages. The original cloud fits within
+    // radius 2.25; this horizontal-framing allowance also fits it in portrait.
+    return Math.max(1, 1.4 * height / Math.max(width, 1));
+  }
+
+  const api = { computeRecaman, trajectoryPoint, holePoint, buildSceneData, responsiveCameraScale };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   if (typeof document === 'undefined') return;
   window.RecamanObstructions = api;
@@ -80,7 +86,7 @@
   let data = computeRecaman(2500), mode = 'delay', showHoles = true, theme = 'dark';
   let sceneData = buildSceneData(data, mode), playing = !reduced.matches;
   let renderer = null, controls = null, canvas = null, ctx = null, scene = null, group = null, holeCloud = null;
-  let camera = null, initialPosition = null, initialTarget = null, rotation = 0;
+  let camera = null, initialPosition = null, initialTarget = null, rotation = 0, framingScale = 1;
   let width = 640, height = 500, raf = 0, lastFrame = 0, lastCanvasDraw = 0, dragging = false;
   let interactionUntil = 0, inViewport = true, remoteActive = window.parent === window, disposed = false;
   let resizeObserver = null, viewportObserver = null, heightObserver = null, liveTimer = 0;
@@ -163,7 +169,7 @@
     controls?.dispose();
     controls = new THREE.OrbitControls(camera, canvas);
     controls.enableDamping = true; controls.dampingFactor = 0.06;
-    controls.minDistance = 0.8; controls.maxDistance = 20;
+    controls.minDistance = 0.8 * framingScale; controls.maxDistance = 20 * framingScale;
     controls.addEventListener('start', () => { dragging = true; interactionUntil = performance.now() + 1000; wake(); });
     controls.addEventListener('end', () => { dragging = false; interactionUntil = performance.now() + 600; wake(); });
     controls.addEventListener('change', () => { interactionUntil = performance.now() + 180; wake(); });
@@ -214,6 +220,17 @@
   function fit() {
     width = Math.max(1, host.clientWidth); height = Math.max(1, host.clientHeight);
     if (!camera || !canvas) return;
+    const nextScale = responsiveCameraScale(width, height);
+    if (nextScale !== framingScale) {
+      // Resize the current orbit about its target, preserving the user's
+      // relative zoom, pan and orientation in both rendering backends.
+      const offset = camera.position.clone().sub(controls.target).multiplyScalar(nextScale / framingScale);
+      camera.position.copy(controls.target).add(offset);
+      framingScale = nextScale;
+      initialPosition.set(2.4, 2.0, 2.8).multiplyScalar(framingScale);
+      controls.minDistance = 0.8 * framingScale; controls.maxDistance = 20 * framingScale;
+      controls.update();
+    }
     camera.aspect = width / height; camera.updateProjectionMatrix();
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     if (renderer) { renderer.setPixelRatio(dpr); renderer.setSize(width, height, false); }
@@ -285,7 +302,7 @@
       if (key === 'ArrowDown') spherical.phi += 0.1;
       if (key === '+' || key === '=') spherical.radius *= 0.9;
       if (key === '-') spherical.radius *= 1.1;
-      spherical.radius = Math.max(0.8, Math.min(20, spherical.radius)); spherical.makeSafe();
+      spherical.radius = Math.max(controls.minDistance, Math.min(controls.maxDistance, spherical.radius)); spherical.makeSafe();
       camera.position.copy(controls.target).add(new THREE.Vector3().setFromSpherical(spherical));
     }
     interactionUntil = performance.now() + 350; controls.update(); wake();
