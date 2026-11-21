@@ -37,24 +37,34 @@ def integrate(root: Path, nav: str, expected_sha256: str | None) -> dict:
         text = text.replace("</main>", fragment + "\n</main>", 1)
         actions.append("Added the planning room inside main")
     link = '<a href="#pirates-plan" data-tab="pirates-plan">Pirates Plan</a>'
-    if 'data-tab="pirates-plan"' not in text:
-        if nav == "primary":
-            anchor = '<a href="#pirate-chest" data-tab="buried-chat-stories">† Pirate Chest</a>'
-            if text.count(anchor) != 1:
-                raise ValueError("Expected the current Pirate Chest primary link exactly once.")
-            text = text.replace(anchor, anchor + link, 1)
-        else:
-            anchor = '<div class="tr-nav-menu">'
-            if text.count(anchor) != 1:
-                raise ValueError("Expected exactly one More paths menu.")
-            text = text.replace(anchor, anchor + link, 1)
-        actions.append("Added the Pirates Plan navigation link: " + nav)
-    if '<option value="#pirates-plan">' not in text:
-        anchor = '<option value="#pirate-chest">† Pirate Chest</option>'
-        if text.count(anchor) != 1:
-            raise ValueError("Expected the current Pirate Chest mobile option exactly once.")
-        text = text.replace(anchor, anchor + '<option value="#pirates-plan">Pirates Plan</option>', 1)
-        actions.append("Added the mobile room selector option")
+    if text.count('data-tab="pirates-plan"') != text.count(link) or text.count(link) > 1:
+        raise ValueError("Ambiguous Pirates Plan navigation link; review the index manually.")
+    before_navigation = text
+    text = text.replace(link, "", 1)
+    menus = list(re.finditer(r'<details class="tr-nav-more">[\s\S]*?</details>', text))
+    if len(menus) != 1:
+        raise ValueError("Expected exactly one More paths menu.")
+    menu = menus[0].group(0)
+    text = text[:menus[0].start()] + text[menus[0].end():]
+    primary = list(re.finditer(r'<div class="tr-nav-primary">([\s\S]*?)</div>', text))
+    if len(primary) != 1:
+        raise ValueError("Expected exactly one primary navigation group.")
+    if nav == "more":
+        menu = menu.replace("</div></details>", link + "</div></details>", 1)
+    replacement = '<div class="tr-nav-primary">' + primary[0].group(1) + menu
+    replacement += (link if nav == "primary" else "") + "</div>"
+    text = text[:primary[0].start()] + replacement + text[primary[0].end():]
+    option = '<option value="#pirates-plan">Pirates Plan</option>'
+    if text.count('<option value="#pirates-plan">') != text.count(option) or text.count(option) > 1:
+        raise ValueError("Ambiguous Pirates Plan mobile option; review the index manually.")
+    text = text.replace(option, "", 1)
+    selectors = list(re.finditer(r'<select class="tr-mobile-nav" id="tr-all-rooms">[\s\S]*?</select>', text))
+    if len(selectors) != 1:
+        raise ValueError("Expected exactly one mobile room selector.")
+    selector = selectors[0]
+    text = text[:selector.start()] + selector.group(0).replace("</select>", option + "</select>", 1) + text[selector.end():]
+    if text != before_navigation:
+        actions.append("Placed Pirates Plan last in navigation and the mobile selector: " + nav)
     router = re.search(r"\bvar alias=\{([^\n]*)\};", text)
     if not router:
         raise ValueError("Cannot find the current hash-router alias map. Review its structure before integrating.")
@@ -99,7 +109,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--nav", choices=("primary", "more"), default="primary",
-                        help="Primary tab follows Pirate Chest; more inserts the tab at the top of More paths.")
+                        help="Primary places the tab last, after More paths; more places it last inside that menu.")
     parser.add_argument("--expected-sha256", help="Optional hash of the freshly fetched local index.")
     args = parser.parse_args()
     print(json.dumps(integrate(args.root.resolve(), args.nav, args.expected_sha256), indent=2))
