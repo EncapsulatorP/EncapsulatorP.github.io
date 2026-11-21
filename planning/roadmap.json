@@ -7,7 +7,7 @@
   "publicUrl": "https://encapsulatorp.github.io/#pirates-plan",
   "pageUrl": "https://chatgpt.com/space/page_39c69fa6cd188191a9de30b945850662",
   "scope": "All 32 EncapsulatorP repositories visible in the complete organization inventory: 20 public and 12 private. Research purposes, links and planned work are disclosed here with the owner's authorization. Private source links still require repository access. External physics and upstream control projects are listed separately and are not counted as organization repos.",
-  "capacity": "Planning assumption: 12 focused hours per week, with at most two active research capsules. Each two-week window has 18 hours of planned work and 6 hours for review or overruns. Stage labels on repositories, routes and edges are earliest review windows, not completion commitments. First-target effort totals 222–436 hours across the whole queue; these twelve weeks provide 108 planned hours plus 36 buffer hours. First-target effort bands sum to more than this quarter's capacity, so lower-ranked work advances only when a gate passes or a slot opens. No paid compute is committed by this plan.",
+  "capacity": "Planning assumption: 12 focused hours per week, with at most two active research capsules. Each two-week window has 18 hours of planned work and 6 hours for review or overruns. Stage labels on repositories, routes and edges are earliest review windows, not completion commitments. First-target effort totals 219–430 hours across the whole queue; these twelve weeks provide 108 planned hours plus 36 buffer hours. First-target effort bands sum to more than this quarter's capacity, so lower-ranked work advances only when a gate passes or a slot opens. No paid compute is committed by this plan.",
   "scoring": {
     "description": "Meaningfulness (M), importance (I) and ROI (R) are independent judgments on a 1–5 ordinal scale. M reflects scientific value and the owner's expressed curiosity; I reflects what other work it unlocks; R reflects useful evidence or reusable output per focused session, including a decisive negative result. 5 is highest. These are not measured financial returns or probabilities of proving a conjecture. Rank also respects prerequisites: the two navigation deliverables are completed in this publication; the first research restart is Rupert alongside the shared proof fixture work."
   },
@@ -17,8 +17,8 @@
       "title": "Land the map",
       "window": "21–22 November 2026",
       "effort": "Current publication",
-      "target": "Publish all 32 repo purposes, typed links, searchable routes, the ranked queue and this decision record.",
-      "gate": "Inventory coverage is exact; every repo has a next target and at least one explanatory link; the public room and owner Page are readable.",
+      "target": "Publish all 32 repo purposes, typed links, searchable routes, the ranked queue and this decision record. Immediate organization decision: queue the private antiverse physics relocation and record the destination/naming choice before any transfer or rename.",
+      "gate": "Inventory coverage is exact; every repo has a next target and at least one explanatory link; the public room and owner Page are readable. Relocation remains pending until the destination and migration audit are recorded; change the inventory only after verified transfer.",
       "dependencies": []
     },
     {
@@ -72,8 +72,8 @@
       "title": "Compare arithmetic and obstruction methods",
       "window": "18–31 January 2027",
       "effort": "18 h planned + 6 h buffer",
-      "target": "Primary: tiny Mertens lattice/reference agreement. Sidecar: the exact antiverse assumption-change example and an Obstruction-Theory ledger. Review the ranked prime/search/backoff queue and select at most one additional probe if a slot opens.",
-      "gate": "Candidate search, checked witness and proved bound remain distinct. A comparison uses equal budgets and an explicit baseline. Publish a keep/pivot/archive decision for every executed probe.",
+      "target": "Primary: tiny Mertens lattice/reference agreement. Sidecar: an Obstruction-Theory ledger. The retained exact antiverse assumption-change example is an optional downstream fixture only after its immediate physics-relocation decision and migration audit are settled. Review the ranked prime/search/backoff queue and select at most one additional probe if a slot opens.",
+      "gate": "Candidate search, checked witness and proved bound remain distinct. A comparison uses equal budgets and an explicit baseline. Publish a keep/pivot/archive decision for every executed probe. Any antiverse-derived fixture is optional, keeps its pinned provenance and private-access requirements, and starts only after the relocation decision is settled and capacity is available.",
       "dependencies": [
         "S1",
         "S2",
@@ -1163,22 +1163,22 @@
       "name": "antiverse",
       "url": "https://github.com/EncapsulatorP/antiverse",
       "visibility": "private",
-      "family": "Obstructions and search",
-      "purpose": "Assumption changes, proof-relative anti-theorems and surviving structures",
-      "status": "Conditional queue",
-      "currentState": "Recovered manuscript and six source-led notes with exact local examples; no proof-assistant implementation or general generator.",
+      "family": "Physics and information",
+      "purpose": "Formal witness dynamics · physics relocation queued; retain the exact assumption-change kernel and local examples.",
+      "status": "Physics relocation queued · destination and naming pending",
+      "currentState": "The private repository remains EncapsulatorP/antiverse at its current URL. Its recovered manuscript and six source-led notes contain exact local examples; there is no proof-assistant implementation or general generator. The owner has requested physics relocation and a naming review. “Formal witness dynamics” is a descriptive working label, not an agreed repository name. No transfer or rename has occurred, and the exact destination organization has not yet been recovered.",
       "rank": 18,
       "priority": "P2",
-      "stage": "S5",
+      "stage": "S0",
       "scores": {
         "meaningfulness": 5,
         "importance": 4,
         "roi": 5
       },
-      "effort": "4–8 h",
-      "nextTarget": "Formalize the partial-order/preorder least-element example with variant lineage; use it to test Validatron distinguishes proof failure, countermodel and repaired theorem.",
-      "acceptance": "A least-element theorem, assumption variant, counterexample and repaired theorem have distinct linked statements and replayable evidence.",
-      "stopOrPivot": "If the acceptance check fails, publish the failed case and repair the object or baseline before scaling. If the first bounded experiment is null, retain the reusable artifact and reconsider the next target.",
+      "effort": "1–2 h",
+      "nextTarget": "Prepare the physics migration, redirect and search-link audit now: record the exact destination organization and naming choice; map current repository, atlas, Page, graph and code-search references to their intended destinations; preserve source history, private access and the exact local witnesses. Actual transfer or rename follows the destination decision. Optional Validatron/Obstruction witness reuse is reviewed from S5, after relocation is settled.",
+      "acceptance": "A migration checklist and old-to-new reference map identify the destination, naming choice, source/history preservation and private-access requirements. Do not mark relocation complete until the transfer or rename and access/redirect/search checks are verified. Retain this repository in the current 32-repository inventory until then; after verified transfer, move it to an external physics bridge and adjust the organization count.",
+      "stopOrPivot": "Keep relocation queued while the exact destination or naming choice is unresolved; do not guess an organization or delete the source. Preserve the sound kernel and exact local examples. Park the universal generator and continuous polarity calculus. Treat the Validatron and Obstruction-Theory bridges as optional downstream work after relocation, with no proof success claimed before replay.",
       "source": {
         "commit": "5c3ed702b79fecf5f853022a251de513ca3e0384",
         "url": "https://github.com/EncapsulatorP/antiverse/blob/5c3ed702b79fecf5f853022a251de513ca3e0384/README.md"
@@ -1203,11 +1203,17 @@
         "assumption repair",
         "preorder",
         "countermodel",
-        "axiom lattice"
+        "axiom lattice",
+        "Formal witness dynamics",
+        "physics relocation",
+        "migration",
+        "rename pending",
+        "destination pending",
+        "redirect audit"
       ],
-      "rationale": "A small exact assumption-change example can calibrate constructive proof repair across the organization.",
+      "rationale": "Follow the owner’s physics direction while preserving the useful exact kernel and avoiding another round of lost links or source reconstruction. The immediate target is organization and migration preparation; the mathematical follow-on is optional.",
       "searchUrl": "https://github.com/search?q=repo%3AEncapsulatorP%2Fantiverse%20&type=code",
-      "reviewWindow": "18–31 January 2027",
+      "reviewWindow": "Immediate organization decision (S0); earliest optional mathematical follow-on: S5, 18–31 January 2027",
       "owner": "Zolton · research direction and gate decisions; assistant sessions produce reviewable artifacts",
       "shortName": "antiverse",
       "links": [
@@ -1234,7 +1240,7 @@
         "roi": 4
       },
       "effort": "3–6 h",
-      "nextTarget": "Create a typed obstruction ledger with one exact antiverse case, one finite Recamán case and one bounded Diophantine case; record why their obstruction notions differ.",
+      "nextTarget": "Create a typed obstruction ledger with one exact assumption-change case, one finite Recamán case and one bounded Diophantine case; record why their obstruction notions differ. The retained antiverse witness is an optional downstream source after its physics relocation is settled.",
       "acceptance": "Three sourced examples record object, quantifiers, horizon, evidence and what would remove the obstruction; no universal obstruction claim is inferred.",
       "stopOrPivot": "If the acceptance check fails, publish the failed case and repair the object or baseline before scaling. If the first bounded experiment is null, retain the reusable artifact and reconsider the next target.",
       "source": {
@@ -2239,7 +2245,7 @@
       "kind": "proposed-reuse",
       "label": "Assumption changes and proof repair",
       "mechanism": "Antiverse's exact preorder/partial-order example supplies original, failed, repaired and quotient statements for Validatron's assumption/variant lineage.",
-      "status": "Proposed constructive repair fixtures",
+      "status": "Optional downstream constructive-repair fixture after physics relocation; not implemented",
       "evidence": [
         {
           "label": "target_planning.md",
@@ -2250,9 +2256,9 @@
           "url": "https://github.com/EncapsulatorP/antiverse/blob/5c3ed702b79fecf5f853022a251de513ca3e0384/docs/threads/proof-relative-anti-theorems.md"
         }
       ],
-      "nextExperiment": "Replay one exact countermodel and repaired uniqueness proof without converting failure of a proof into source-level falsity.",
-      "deliverable": "A source-pinned comparison or adapter report for E08; include the inputs, output, acceptance result and keep/pivot/archive decision.",
-      "stage": "S1",
+      "nextExperiment": "After the physics destination/naming decision and migration/link audit are settled, optionally replay one exact preorder countermodel and repaired uniqueness proof in Validatron. Preserve the pinned witness lineage across relocation and distinguish proof failure, countermodel and repaired theorem.",
+      "deliverable": "An optional source-pinned E08 witness/repair report with preserved old-to-new provenance links, inputs, replay result and keep/pivot/archive decision.",
+      "stage": "S5",
       "keywords": [
         "anti-axiom",
         "repair",
@@ -2945,7 +2951,7 @@
       "kind": "analogy",
       "label": "Logical and dynamical boundaries",
       "mechanism": "Fixed-point/diagonal/inverse-boundary language and changing-axiom proof families are compatible questions but no equivalence theorem or common implementation exists.",
-      "status": "Conceptual connection only",
+      "status": "Parked analogy; optional later review after physics relocation",
       "evidence": [
         {
           "label": "README.md",
@@ -2956,8 +2962,8 @@
           "url": "https://github.com/EncapsulatorP/antiverse/blob/5c3ed702b79fecf5f853022a251de513ca3e0384/docs/threads/correspondences-and-fixed-points.md"
         }
       ],
-      "nextExperiment": "Work one exact finite example and state what correspondence preserves; keep dynamic and logical boundaries distinct.",
-      "deliverable": "A source-pinned comparison or adapter report for E32; include the inputs, output, acceptance result and keep/pivot/archive decision.",
+      "nextExperiment": "Keep this logical/dynamical analogy parked during relocation. Reopen only for one exact finite example with an explicit preserved correspondence. Do not revive the universal generator or continuous polarity calculus from the analogy.",
+      "deliverable": "A scoped correspondence note only if this edge is reopened; otherwise retain its parked status and current pinned evidence.",
       "stage": "S6",
       "keywords": [
         "fixed points",
@@ -3207,7 +3213,7 @@
       "kind": "proposed-reuse",
       "label": "An exact obstruction case",
       "mechanism": "Antiverse supplies a concrete assumption-change example; the new obstruction repo can record which hypothesis repairs it. This gives the crossdomain vocabulary a precise first case.",
-      "status": "Proposed in this roadmap; not an implemented integration",
+      "status": "Optional downstream obstruction fixture after physics relocation; not implemented",
       "evidence": [
         {
           "label": "antiverse source",
@@ -3218,8 +3224,8 @@
           "url": "https://github.com/EncapsulatorP/Obstruction-Theory/blob/8d5fc9d48835012748e444fecc20df3a9ef46653/README.md"
         }
       ],
-      "nextExperiment": "Write original theorem, removed hypothesis, countermodel and repair in one ledger entry; compare its quantifiers with a finite Recamán non-observation.",
-      "deliverable": "A small versioned fixture and decision note for E39.",
+      "nextExperiment": "After relocation is settled, optionally record the retained exact original theorem, removed hypothesis, countermodel and repair as one obstruction-ledger entry; compare its quantifiers with a finite Recamán non-observation and preserve the source/redirect trail.",
+      "deliverable": "An optional small versioned E39 fixture and decision note, with provenance preserved across any verified relocation.",
       "stage": "S5",
       "keywords": [
         "obstruction",
@@ -3408,7 +3414,7 @@
         "E40",
         "E41"
       ],
-      "target": "Three scoped obstruction cases and one repaired theorem with source-to-proof lineage.",
+      "target": "Three scoped obstruction cases and one repaired theorem with source-to-proof lineage. The antiverse-derived witness is optional downstream work after its physics relocation is settled.",
       "stage": "S5",
       "keywords": [
         "obstruction",
@@ -3703,6 +3709,13 @@
       "title": "Refresh from outcomes, not expanding promises",
       "decision": "At each stage gate, spend at most 30 minutes updating the two active capsules, scores, links and next review dates.",
       "gate": "A new active target displaces or finishes an old one; the dated plan is a human work queue, not an automatic execution schedule.",
+      "stage": "S0"
+    },
+    {
+      "id": "D09",
+      "title": "Queue the formal-witness thread for physics relocation",
+      "decision": "Move the antiverse organization decision to the immediate queue: prepare relocation to the physics organization and review the name. “Formal witness dynamics” is a descriptive working label only. Retain the current private repository ID, URL and source history until an actual transfer or rename is verified. Preserve the sound kernel and exact local examples; park the universal generator and continuous polarity calculus. Validatron/Obstruction reuse remains optional from S5.",
+      "gate": "Record the exact destination organization slug and the naming choice, then complete the migration, redirect, access and search-link audit. No destination organization is inferred from the recovered private physics notebook. The current inventory remains 32; after verified transfer, represent the source as an external physics bridge, update its links and adjust the organization count.",
       "stage": "S0"
     }
   ],
