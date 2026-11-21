@@ -2,6 +2,21 @@
 
 Edition: **21 November 2026**.
 
+## Minimum discoveries on every map
+
+Every body in both collections carries at least one Treasure, one Trap and one
+Wildcard. `mapMinimumPicks` names the three guaranteed reading routes for each
+body; the other six research stops remain available. The trio stays outside the
+optional trail filters, and its map pins remain eligible for display regardless
+of those filters. The ordinary perspective can hide a pin on the back of a body,
+so the three text controls remain available even without the 3D renderer.
+
+The trio establishes navigation coverage. The separate shape-connection note
+states the strongest supported mathematical relationship. In particular, the
+neck and Klein picks are shared research routes, with no claimed arithmetic
+Ricci-flow or Klein-bottle correspondence. `verify_shape_catalog.cjs` checks the
+minimum category coverage for all sixteen forms.
+
 The paper workbench retains eight bodies in each of two collections and the same
 nine numbered research stops. The new connections help a reader choose a route
 without claiming that every body is produced by the mathematics beside it.

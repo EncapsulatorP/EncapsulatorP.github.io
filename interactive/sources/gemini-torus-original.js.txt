@@ -1,0 +1,154 @@
+
+/**
+ * Bitemporal Torus Simulation
+ * Focus: Topological branch ejection, temporal gravity, and monodromy events.
+ */
+
+// 1. Setup App (UI + State)
+const { state, ui } = WH.createApp({
+    title: "Bitemporal Torus Generator",
+    params: {
+        gravity: { value: 1.5, min: 0.1, max: 5.0, label: "Temporal Gravity (G)" },
+        growth: { value: 0.8, min: 0.1, max: 3.0, label: "Residue Growth Rate" },
+        speed: { value: 1.2, min: 0.1, max: 4.0, label: "Orbital Speed" },
+        isPlaying: { value: true, label: "Play/Pause" },
+        reset: { type: 'button', label: 'Reset System', onClick: (s) => resetSimulation(s) }
+    }
+});
+
+// 2. Initialize Internal State
+state.kt = 0;              // Current Sheet
+state.residueMass = 0;     // Accumulated residue
+state.temporalVelocity = 0; // Speed toward the hole
+state.v = 0;               // Poloidal angle (0 to PI)
+state.u = 0;               // Toroidal angle (0 to 2PI)
+state.flashAmount = 0;     // For screen flash event
+state.particleColor = WH.getColor('--primary');
+
+// Color scale for sheet changes
+const sheetColors = WH.createScale(['--chart-1', '--chart-2', '--chart-3', '--chart-4', '--chart-5']);
+
+/**
+ * Reset logic for the simulation state
+ */
+function resetSimulation(s) {
+    s.kt = 0;
+    s.residueMass = 0;
+    s.temporalVelocity = 0;
+    s.v = 0;
+    s.u = 0;
+    s.flashAmount = 0;
+}
+
+// 3. Initialize 3D Engine
+WH.initThree('viz', (scene, camera, renderer, controls) => {
+    // Scene Setup
+    const bgColor = new THREE.Color(WH.getColor('--surface'));
+    scene.background = bgColor;
+    
+    // Torus Geometry (Major Radius 10, Minor Radius 3.5)
+    const R = 10;
+    const r = 3.5;
+    const torusGeo = new THREE.TorusGeometry(R, r, 24, 80);
+    const torusMat = new THREE.MeshBasicMaterial({ 
+        color: WH.getColor('--outline'), 
+        wireframe: true,
+        transparent: true,
+        opacity: 0.2
+    });
+    const torus = new THREE.Mesh(torusGeo, torusMat);
+    torus.rotation.x = Math.PI / 2; // Lay flat
+    scene.add(torus);
+
+    // Particle
+    const partGeo = new THREE.SphereGeometry(0.5, 32, 32);
+    const partMat = new THREE.MeshStandardMaterial({ 
+        emissiveIntensity: 1,
+        roughness: 0.1,
+        metalness: 0.8
+    });
+    const particle = new THREE.Mesh(partGeo, partMat);
+    scene.add(particle);
+
+    // Light attached to particle
+    const partLight = new THREE.PointLight(WH.getColor('--primary'), 100, 20);
+    scene.add(partLight);
+
+    // Global Lighting
+    const ambient = new THREE.AmbientLight(0xffffff, 0.4);
+    scene.add(ambient);
+
+    camera.position.set(20, 15, 20);
+    controls.enableDamping = true;
+
+    // Interaction Hint
+    WH.addBadge('3d_rotation', 'Orbit View');
+
+    return ({ time, dt, state }) => {
+        if (!state.isPlaying) return;
+
+        // --- Physics Logic ---
+        // 1. Mass accumulation
+        state.residueMass += state.growth * dt;
+
+        // 2. Temporal Gravity effect (acceleration towards the center hole v = PI)
+        // Velocity increases with mass and gravity constant
+        const gravityEffect = state.gravity * state.residueMass;
+        state.temporalVelocity += gravityEffect * dt;
+        
+        // 3. Update angles
+        state.v += state.temporalVelocity * dt; // Inward spiral
+        state.u += state.speed * dt;           // Orbital spiral
+
+        // 4. Calculate 3D Position
+        // Standard torus parametric equations
+        // x = (R + r*cos(v)) * cos(u)
+        // y = r * sin(v)
+        // z = (R + r*cos(v)) * sin(u)
+        const rad = R + r * Math.cos(state.v);
+        particle.position.x = rad * Math.cos(state.u);
+        particle.position.y = r * Math.sin(state.v);
+        particle.position.z = rad * Math.sin(state.u);
+
+        // Update light position
+        partLight.position.copy(particle.position);
+
+        // --- Monodromy Event Trigger ---
+        // Center of the hole is at v = PI (or 180 degrees)
+        if (state.v >= Math.PI) {
+            // Trigger Event
+            state.kt++;
+            state.residueMass = 0;
+            state.temporalVelocity = 0;
+            state.v = -Math.PI / 2; // Teleport to bottom/outer edge
+            state.flashAmount = 1.0; // Trigger flash visual
+            
+            // Update visual properties
+            const colorToken = sheetColors((state.kt % 10) / 10);
+            const nextColor = WH.getColor(colorToken);
+            partMat.color.set(nextColor);
+            partMat.emissive.set(nextColor);
+            partLight.color.set(nextColor);
+        }
+
+        // --- Visual Polish ---
+        // Decay flash
+        if (state.flashAmount > 0) {
+            const flashColor = WH.transparent('--primary', state.flashAmount * 0.3);
+            scene.background = new THREE.Color(flashColor);
+            state.flashAmount -= dt * 2;
+        } else {
+            scene.background = bgColor;
+        }
+
+        // HUD Update
+        ui.setHUD([
+            { label: "Sheet (Kt)", value: state.kt },
+            { label: "Residue Mass", value: state.residueMass.toFixed(2) + " amu" },
+            { label: "Temporal Velocity", value: (state.temporalVelocity * 100).toFixed(0) + " m/s" }
+        ]);
+
+        // Dynamic rotation of the whole system slightly
+        torus.rotation.z += dt * 0.05;
+    };
+});

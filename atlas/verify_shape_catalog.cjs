@@ -31,6 +31,15 @@ unique(data.shapes.map(s => s.key), 'Shape keys');
 assert.deepEqual(data.shapes.map(s => s.key).sort(), expectedKeys.sort());
 for (const family of ['studio', 'voyage']) assert.equal(data.shapes.filter(s => s.family === family).length, 8);
 const byKey = Object.fromEntries(data.shapes.map(s => [s.key, s]));
+for (const body of Object.keys(pairs)) {
+  const picks = data.mapMinimumPicks[body];
+  assert.ok(Array.isArray(picks) && picks.length >= 3, `${body}: at least three discoveries`);
+  unique(picks, `${body}: distinct minimum picks`);
+  const stops = picks.map(id => data.trail.find(stop => stop.id === id));
+  assert.ok(stops.every(Boolean), `${body}: all guaranteed discoveries resolve`);
+  for (const kind of ['treasure', 'trap', 'wildcard']) assert.ok(stops.some(stop => stop.kind === kind), `${body}: always carries a ${kind}`);
+}
+console.log('Map coverage: all 16 forms retain at least one treasure, trap and wildcard.');
 const openingBodies = new Set(['origami', ...lab.keys]);
 assert.deepEqual([...openingBodies].sort(), ['klein', 'neck', 'noperthedron', 'origami', 'portal', 'sphere']);
 assert.equal(data.shapes.filter(s => s.unfoldable).length, 12);

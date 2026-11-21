@@ -48,6 +48,17 @@
   connectionActions.className = 'pm-connection-actions';
   connectionPanel.append(connectionLabel, connectionTitle, connectionNote, connectionActions);
   $('pm-shape-notes').before(connectionPanel);
+  const trioPanel = document.createElement('section');
+  trioPanel.className = 'pm-trio';
+  trioPanel.setAttribute('aria-labelledby', 'pm-trio-title');
+  const trioTitle = document.createElement('h3');
+  trioTitle.id = 'pm-trio-title'; trioTitle.textContent = 'Always on this map';
+  const trioNote = document.createElement('p');
+  trioNote.textContent = 'At least one treasure, one trap and one wildcard. These reading routes stay available when you filter the trail; the shape connection above explains the closest supported match.';
+  const trioButtons = document.createElement('div');
+  trioButtons.className = 'pm-trio-buttons';
+  trioButtons.setAttribute('role', 'group'); trioButtons.setAttribute('aria-label', 'Guaranteed discoveries on this map');
+  trioPanel.append(trioTitle, trioNote, trioButtons); connectionPanel.after(trioPanel);
   const subjectMatch = document.createElement('div');
   subjectMatch.className = 'pm-subject-match';
   const subjectMatchText = document.createElement('p');
@@ -59,6 +70,28 @@
 
   function currentBody() {
     return Object.keys(bodyKeys).find(name => Object.values(bodyKeys[name]).includes(shapes[shapeIndex].key));
+  }
+  function essentialIds() { return data.mapMinimumPicks[currentBody()] || []; }
+  function syncTrio() {
+    trioButtons.replaceChildren();
+    essentialIds().forEach(id => {
+      const index = trail.findIndex(stop => stop.id === id);
+      if (index < 0) return;
+      const stop = trail[index], button = document.createElement('button');
+      button.type = 'button'; button.dataset.kind = stop.kind;
+      button.setAttribute('aria-label', `${kindNames[stop.kind]} — ${stop.name}`);
+      const label = document.createElement('span'); label.textContent = kindNames[stop.kind];
+      const name = document.createElement('strong'); name.textContent = `${stop.name} →`;
+      button.append(label, name);
+      button.addEventListener('click', () => {
+        topicFilter.value = 'all'; kindFilter.value = 'all'; chosen = index;
+        if (dialog.dataset.mapState !== 'explored') unfold();
+        filterStops(); selectStop(index, true);
+        if (!compact.matches) $('pm-stop-title').focus({ preventScroll: true });
+      });
+      trioButtons.append(button);
+    });
+    refreshPins();
   }
   function syncSubjectMatch() {
     const stop = trail[chosen];
@@ -81,6 +114,7 @@
   }
   function syncConnection() {
     const body = currentBody(), connection = connections[body];
+    syncTrio();
     connectionPanel.hidden = !connection;
     if (!connection) return;
     connectionPanel.dataset.connectionKind = connection.kind;
@@ -156,7 +190,9 @@
   function refreshPins() {
     Array.from(pins.children).forEach((item, i) => {
       const p = latestProjection[i];
-      const visible = !!p && p.visible !== false && matches(trail[i]);
+      const essential = essentialIds().includes(trail[i].id);
+      item.firstElementChild.dataset.essential = String(essential);
+      const visible = !!p && p.visible !== false && (essential || matches(trail[i]));
       item.hidden = !visible;
       if (!visible) return;
       item.style.setProperty('--pm-x', `${p.x * 100}%`);

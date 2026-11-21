@@ -1,13 +1,13 @@
 (function (root) {
   'use strict';
-  var KEY = 'atlas.evidence-order.v1';
+  var KEY = 'atlas.evidence-order.v2';
   function chooseVariant(random) { return random < 0.5 ? 'a' : 'b'; }
   function validState(value) {
-    return !!value && (value.variant === 'a' || value.variant === 'b') && value.version === 1 &&
+    return !!value && (value.variant === 'a' || value.variant === 'b') && value.version === 2 &&
       ['exposed', 'engaged', 'stress', 'interactive'].every(function (flag) { return typeof value[flag] === 'boolean'; }) &&
       (value.exposed || !(value.engaged || value.stress || value.interactive)) && (!value.interactive || value.engaged);
   }
-  function eventName(variant, outcome) { return 'atlas_ev_v1_' + variant + '_' + outcome; }
+  function eventName(variant, outcome) { return 'atlas_ev_v2_' + variant + '_' + outcome; }
   var api = { chooseVariant: chooseVariant, validState: validState, eventName: eventName };
   if (typeof module === 'object' && module.exports) { module.exports = api; return; }
   var doc = root.document, comparison = doc.getElementById('evidence-comparison');
@@ -25,7 +25,7 @@
       if (storageAvailable) { try { stored = JSON.parse(raw); } catch (_) { stored = null; } }
     }
   }
-  var state = validState(stored) ? stored : { version: 1, variant: 'b', exposed: false, engaged: false, stress: false, interactive: false };
+  var state = validState(stored) ? stored : { version: 2, variant: 'b', exposed: false, engaged: false, stress: false, interactive: false };
   if (forced === 'elementary') state.variant = 'a';
   else if (forced === 'asymptotics') state.variant = 'b';
   else if (!validState(stored) && storageAvailable) { var bits = new Uint32Array(1); crypto.getRandomValues(bits); state.variant = chooseVariant(bits[0] / 4294967296); }
@@ -47,16 +47,16 @@
   function updateReceipt() {
     comparison.dataset.evidenceExposed = String(state.exposed);
     comparison.dataset.evidenceEngaged = String(state.engaged);
-    if (receiptNode) receiptNode.textContent = 'Variant ' + state.variant.toUpperCase() + ': ' + (state.variant === 'a' ? 'Coordinate Primer first' : 'Identities, asymptotics and kernels first') + '\nMode: ' + comparison.dataset.evidenceMode + '\nCollector: existing gtag queue; delivery not verified\n' + receipt.join('\n');
+    if (receiptNode) receiptNode.textContent = 'Variant ' + state.variant.toUpperCase() + ': ' + (state.variant === 'a' ? 'Coordinate Primer first' : 'Identities, asymptotics and kernels first') + '\nMode: ' + comparison.dataset.evidenceMode + '\nCollector: dedicated Atlas study stream; see the QA page for delivery status\n' + receipt.join('\n');
   }
   function record(outcome) {
     var flag = { exposed: 'exposed', engaged: 'engaged', stress: 'stress', interactive: 'interactive' }[outcome];
     if (!flag || state[flag] || (outcome !== 'exposed' && !state.exposed)) return;
     state[flag] = true; save();
     var name = eventName(state.variant, outcome), delivery = 'excluded';
-    if (eligible && typeof root.gtag === 'function') {
-      root.gtag('event', name, { experiment_id: 'evidence_order_v1', evidence_variant: state.variant, transport_type: 'beacon' });
-      delivery = 'queued; collector delivery unverified';
+    if (eligible && root.AtlasStudyAnalytics) {
+      var queued = root.AtlasStudyAnalytics.send(name, { experiment_id: 'evidence_order_v2', evidence_variant: state.variant });
+      delivery = queued ? 'queued to the study stream' : 'collector excluded';
     } else if (eligible) delivery = 'collector unavailable';
     receipt.push(name + ' — ' + delivery); updateReceipt();
   }

@@ -9,7 +9,7 @@ Does opening with a compact Coordinate Primer or with the identities, asymptotic
 - **A:** Coordinate Primer first.
 - **B:** Identities, asymptotics and kernels first.
 
-Both versions contain the same content, cards, links, rails and colours. Only the order of those two sections changes. The study is about presentation, not the truth, novelty or relative mathematical importance of a result. It is conditional on readers reaching the Math overview; it does not measure the arrival-map conversion rate.
+Both versions contain the same content, cards, links, rails and colours. The longer coordinate construction and its argument sit inside a collapsed detail in the Coordinate Primer, so they do not pre-empt the comparison. Only the order of those two sections changes. The study is about presentation, not the truth, novelty or relative mathematical importance of a result. It is conditional on readers reaching the Math overview; it does not measure the arrival-map conversion rate.
 
 ## Assignment and denominator
 
@@ -21,18 +21,22 @@ Preview links, `atlas_qa=1`, `atlas_preview`, Global Privacy Control, Do Not Tra
 
 ## Events and collection
 
-`assets/evidence-experiment.js` queues these to the site's existing `gtag` / dataLayer. A queued event is **not** evidence of successful GA4 collection.
+`assets/evidence-experiment.js` sends these through `assets/atlas-study-analytics.js` to the dedicated Atlas study destination `G-1PTRMLFW2R`, using the existing `gtag` / dataLayer on the main site. A queued event is **not** evidence of successful GA4 collection.
 
 | Meaning | A | B |
 | --- | --- | --- |
-| One eligible exposure | `atlas_ev_v1_a_exposed` | `atlas_ev_v1_b_exposed` |
-| One intentional open/run | `atlas_ev_v1_a_engaged` | `atlas_ev_v1_b_engaged` |
-| First stress-rail expansion | `atlas_ev_v1_a_stress` | `atlas_ev_v1_b_stress` |
-| First finite-check run | `atlas_ev_v1_a_interactive` | `atlas_ev_v1_b_interactive` |
+| One eligible exposure | `atlas_ev_v2_a_exposed` | `atlas_ev_v2_b_exposed` |
+| One intentional open/run | `atlas_ev_v2_a_engaged` | `atlas_ev_v2_b_engaged` |
+| First stress-rail expansion | `atlas_ev_v2_a_stress` | `atlas_ev_v2_b_stress` |
+| First finite-check run | `atlas_ev_v2_a_interactive` | `atlas_ev_v2_b_interactive` |
 
-The primary rate is engaged event count / exposed event count **within the same arm and reporting window**. Secondary events describe usage and do not replace the primary outcome. Names encode the arm, so the basic aggregate does not require a custom dimension. Parameters additionally include `experiment_id=evidence_order_v1` and `evidence_variant=a|b`.
+The primary rate is engaged event count / exposed event count **within the same arm and reporting window**. Secondary events describe usage and do not replace the primary outcome. Names encode the arm, so the basic aggregate does not require a custom dimension. Parameters additionally include `experiment_id=evidence_order_v2` and `evidence_variant=a|b`.
 
-The repository has GTM container `GTM-5F76VBD6`; no standalone GA4 measurement ID is present in source. The connected reporting surface did not expose this site's event reports. Verify event delivery in the actual receiving property before dating the experiment's start. Configure forwarding in that existing container if needed, without adding a second duplicate collector. Respect collection settings and exclude internal testing traffic. Browser-side suppression, blockers and partial delivery can bias event ratios, so compare these limitations with the assignment and exposure logic before interpreting numbers.
+The main site retains its existing Google tag. A dedicated Atlas study web stream was created for `https://encapsulatorp.github.io` on 21 November 2026. Its enhanced measurement is off. The study adapter configures only this destination with automatic page views off and routes its events explicitly with `send_to`. It strips query strings and referrers from the study payload and excludes privacy signals. The QA route loads the study tag only when an explicit probe is requested.
+
+`atlas_ev_probe_a` and `atlas_ev_probe_b` are diagnostic-only names with `debug_mode` and `validation_only`; they never enter the primary denominator. Successful queuing alone does not establish end-to-end receipt. Browser-side blockers, delivery loss and nonconsenting traffic can affect the observed population and event ratios. Existing collection and consent settings remain in force.
+
+The earlier unverified v1 queue is not pooled with this v2 implementation.
 
 ## Decision rule before collecting a result
 

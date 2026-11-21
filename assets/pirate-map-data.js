@@ -470,5 +470,47 @@ window.PIRATE_MAP_DATA = {
       "stops": [],
       "note": "The reversed seam makes nonorientability visible. The current arithmetic treasures do not establish a Klein-bottle connection. In particular, a square-root branch picture is not a Klein bottle."
     }
+  },
+  "mapMinimumPicks": {
+    "origami": [
+      "shuffle-signal",
+      "missing-term",
+      "impossible-coastline"
+    ],
+    "sphere": [
+      "shuffle-signal",
+      "missing-term",
+      "xo2-cave"
+    ],
+    "portal": [
+      "forty-eight-lanes",
+      "impostor-prime",
+      "impossible-coastline"
+    ],
+    "tensegrity": [
+      "second-beat",
+      "brun-crossing",
+      "impossible-coastline"
+    ],
+    "terrace": [
+      "second-beat",
+      "brun-crossing",
+      "xo2-cave"
+    ],
+    "noperthedron": [
+      "forty-eight-lanes",
+      "impostor-prime",
+      "impossible-coastline"
+    ],
+    "neck": [
+      "repeating-current",
+      "missing-term",
+      "impossible-coastline"
+    ],
+    "klein": [
+      "shuffle-signal",
+      "impostor-prime",
+      "impossible-coastline"
+    ]
   }
 };

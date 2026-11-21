@@ -1,0 +1,178 @@
+
+/**
+ * Dynamical Systems Dashboard: Poincaré Return Map & Thresholded Scalar Field
+ * Visualizing Collatz-like chaos in Early Dark Energy models.
+ */
+
+// 1. Setup App (UI + State)
+const { state, ui } = WH.createApp({
+    title: "Poincaré Map: Threshold Chaos",
+    params: {
+        lambda: { value: 0.85, min: 0.1, max: 1.5, step: 0.01, label: "Hubble Factor (λ)" },
+        vTh: { value: 2.0, min: 0.5, max: 5.0, step: 0.1, label: "Lattice Threshold (Vth)" },
+        vShift: { value: 1.0, min: 0.0, max: 5.0, step: 0.1, label: "Energy Shift (Vshift)" },
+        x0: { value: 1.5, min: 0.1, max: 10.0, step: 0.1, label: "Initial Amplitude (x0)" },
+        iterations: { value: 50, min: 10, max: 200, step: 1, label: "Iterations (N)" }
+    }
+});
+
+// 2. Initialize Internal State
+state.orbit = [];
+state.cobweb = [];
+state.functionPoints = [];
+state.identityLine = [{x: 0, y: 0}, {x: 20, y: 20}];
+
+// 3. Logic: Dynamical System Solver
+function updateCalculations() {
+    const { lambda, vTh, vShift, x0, iterations } = state;
+    
+    // Clear previous data
+    const orbit = [];
+    const cobweb = [];
+    const func = [];
+    
+    // A. Generate Piecewise Function Data (F(x))
+    // We sample densely to visualize jumps
+    const resolution = 400;
+    const maxX = 20;
+    for (let i = 0; i <= resolution; i++) {
+        const x = (i / resolution) * maxX;
+        const v_minus = lambda * x;
+        const parity = Math.floor(v_minus / vTh) % 2;
+        let y;
+        if (parity === 0) {
+            y = 0.5 * v_minus;
+        } else {
+            y = 3.0 * v_minus + vShift;
+        }
+        func.push({ x, y, parity });
+    }
+
+    // B. Iterative Orbit Mapping
+    let currentX = x0;
+    orbit.push({ n: 0, x: currentX });
+    
+    // Start cobweb at (x0, 0)
+    cobweb.push({ x: currentX, y: 0 });
+
+    for (let n = 1; n <= iterations; n++) {
+        const v_minus = lambda * currentX;
+        const parity = Math.floor(v_minus / vTh) % 2;
+        let nextX;
+        
+        if (parity === 0) {
+            nextX = 0.5 * v_minus;
+        } else {
+            nextX = 3.0 * v_minus + vShift;
+        }
+        
+        // Capped value for stability in visualization
+        const cappedNextX = Math.min(nextX, 100); 
+        
+        // Cobweb segments: (x_n, x_n) -> (x_n, x_n+1) -> (x_n+1, x_n+1)
+        cobweb.push({ x: currentX, y: cappedNextX });
+        cobweb.push({ x: cappedNextX, y: cappedNextX });
+
+        currentX = cappedNextX;
+        orbit.push({ n, x: currentX });
+        
+        // Break early if we explode significantly beyond chart bounds
+        if (currentX > 100) break;
+    }
+
+    state.orbit = orbit;
+    state.cobweb = cobweb;
+    state.functionPoints = func;
+    
+    // Update HUD stats
+    const finalVal = orbit[orbit.length - 1].x;
+    ui.setHUD([
+        { label: "Final X", value: finalVal.toFixed(2) },
+        { label: "Stability", value: finalVal > 50 ? "Unstable" : "Bounded" },
+        { label: "Branch", value: (Math.floor(lambda * finalVal / vTh) % 2 === 0) ? "Even" : "Odd" }
+    ]);
+}
+
+// 4. Initialize Visualization
+ui.splitViz('55%');
+
+// Return Map (Top)
+const updateMap = WH.initPlot('vizTop', (w, h) => ({
+    title: "Poincaré Return Map & Cobweb Trace",
+    grid: true,
+    inset: 10,
+    x: { domain: [0, 20], label: "x_n" },
+    y: { domain: [0, 20], label: "x_{n+1}" },
+    marks: [
+        // Identity Line
+        Plot.line(state.identityLine, { x: "x", y: "y", stroke: WH.getColor('--outline'), strokeDasharray: "4,4" }),
+        
+        // Piecewise Function F(x)
+        // We use groups (parity) to ensure jumps are visualized as breaks
+        Plot.line(state.functionPoints, { 
+            x: "x", 
+            y: "y", 
+            stroke: WH.getColor('--primary'), 
+            strokeWidth: 2,
+            z: (d) => Math.floor(state.lambda * d.x / state.vTh) 
+        }),
+        
+        // Cobweb Path
+        Plot.line(state.cobweb, { 
+            x: "x", 
+            y: "y", 
+            stroke: WH.getColor('--chart-4'), 
+            strokeOpacity: 0.6,
+            markerStart: "dot"
+        }),
+        
+        // Current Start Point x0
+        Plot.dot([ {x: state.x0, y: 0} ], { x: "x", y: "y", fill: WH.getColor('--negative'), r: 4 }),
+        Plot.text([ {x: state.x0, y: 0} ], { x: "x", y: "y", text: d => "Start", dy: 15, fill: WH.getColor('--on-surface-default') })
+    ]
+}));
+
+// Time Series (Bottom)
+const updateSeries = WH.initPlot('vizBottom', (w, h) => ({
+    title: "Kinetic Amplitude Time-Series",
+    grid: true,
+    y: { domain: [0, 50], label: "Kinetic Amplitude (x)" },
+    x: { label: "Iteration (n)" },
+    marks: [
+        Plot.lineY(state.orbit, { 
+            x: "n", 
+            y: "x", 
+            stroke: WH.getColor('--chart-2'), 
+            marker: "circle" 
+        }),
+        Plot.areaY(state.orbit, { 
+            x: "n", 
+            y: "x", 
+            fill: WH.getColor('--chart-2'), 
+            fillOpacity: 0.1 
+        }),
+        // Threshold Line (Reference)
+        Plot.ruleY([state.vTh / state.lambda], { 
+            stroke: WH.getColor('--chart-3'), 
+            strokeDasharray: "2,2",
+            title: "First Threshold Jump"
+        })
+    ]
+}));
+
+// 5. Reactivity & Subscriptions
+state._subscribe(() => {
+    updateCalculations();
+    updateMap();
+    updateSeries();
+});
+
+// Manual trigger for first frame
+updateCalculations();
+updateMap();
+updateSeries();
+
+// Add Instructional Badges
+WH.addBadge('analytics', 'Return Map');
+WH.addBadge('show_chart', 'Time Evolution');
+

@@ -1,0 +1,172 @@
+
+/**
+ * Logistic Map Bifurcation Explorer
+ * Focusing on the Period-3 window (r: 3.8 to 3.9)
+ */
+
+const PRESETS = {
+    'Deep Chaos': 3.81,
+    'Intermittency': 3.8281,
+    'Period-3': 3.83,
+    'Period-6': 3.845
+};
+
+const resetSim = () => {
+    state.r = 3.8281;
+    state.preset = 'Intermittency';
+};
+
+const { state, ui } = WH.createApp({
+    title: "Logistic Map Bifurcation Explorer",
+    params: {
+        r: { value: 3.8281, min: 3.8000, max: 3.9000, step: 0.0001, label: "r parameter" },
+        preset: { value: "Intermittency", options: ["Deep Chaos", "Intermittency", "Period-3", "Period-6"], label: "Presets" },
+        reset: { type: 'button', label: 'Reset', onClick: resetSim }
+    },
+    editorial: {
+        hud: [
+            { label: "Current r", value: "3.8281" },
+            { label: "Iteration State", value: "Intermittent" }
+        ]
+    }
+});
+
+const { vizTop, vizBottom } = ui.splitViz('60%');
+
+// Internal Data Generation
+const generateBifurcation = () => {
+    const data = [];
+    const steps = 180; // High resolution r-axis
+    for (let i = 0; i <= steps; i++) {
+        const r = 3.8 + (0.1 * i / steps);
+        let x = 0.5;
+        // Settle transients
+        for (let j = 0; j < 500; j++) {
+            x = r * x * (1 - x);
+        }
+        // Collect points to show attractor density
+        for (let j = 0; j < 60; j++) {
+            x = r * x * (1 - x);
+            data.push({ r, x });
+        }
+    }
+    return data;
+};
+
+state.bifurcationData = generateBifurcation();
+state.currentOrbit = [];
+
+const updateOrbit = () => {
+    const r = state.r;
+    let x = 0.5;
+    const orbit = [];
+    
+    // First 50 iterations (transients)
+    for (let i = 0; i < 50; i++) {
+        x = r * x * (1 - x);
+    }
+    
+    // Next 100 iterations (recorded)
+    for (let i = 0; i < 100; i++) {
+        x = r * x * (1 - x);
+        orbit.push({ n: i, x: x });
+    }
+    
+    state.currentOrbit = orbit;
+
+    // Determine iteration state for HUD
+    let stateLabel = "Chaotic";
+    if (r >= 3.828 && r <= 3.8285) stateLabel = "Intermittent";
+    else if (r > 3.8285 && r < 3.84) stateLabel = "Period-3 Stable";
+    else if (r >= 3.84 && r < 3.85) stateLabel = "Period-6";
+    else if (r < 3.82) stateLabel = "Full Chaos";
+
+    ui.setEditorial({
+        hud: [
+            { label: "Current r", value: r.toFixed(4) },
+            { label: "Iteration State", value: stateLabel }
+        ]
+    });
+};
+
+// Reactivity
+state._subscribe('r', updateOrbit);
+
+state._subscribe('preset', (val) => {
+    if (PRESETS[val]) {
+        state.r = PRESETS[val];
+    }
+});
+
+// Sync initial state
+updateOrbit();
+
+// Top Visualization: The Bifurcation Diagram
+WH.initPlot(vizTop, ({ width, state }) => {
+    const data = [...state.bifurcationData];
+    const currentR = state.r;
+
+    return {
+        width,
+        grid: true,
+        x: { 
+            label: "Control Parameter (r)", 
+            domain: [3.8, 3.9],
+            ticks: 5
+        },
+        y: { 
+            label: "Population (x)", 
+            domain: [0, 1] 
+        },
+        marks: [
+            // Background density
+            Plot.dot(data, {
+                x: "r",
+                y: "x",
+                r: 0.5,
+                fill: WH.getColor('--on-surface-default'),
+                fillOpacity: 0.3
+            }),
+            // Vertical Indicator Line
+            Plot.ruleX([currentR], {
+                stroke: WH.getColor('--primary'),
+                strokeWidth: 2
+            }),
+            // Current Attractor Points (Highlight)
+            Plot.dot(state.currentOrbit, {
+                x: () => currentR,
+                y: "x",
+                r: 2,
+                fill: WH.getColor('--primary')
+            })
+        ]
+    };
+});
+
+// Bottom Visualization: The Orbit Time-Series
+WH.initPlot(vizBottom, ({ width, state }) => {
+    const orbit = [...state.currentOrbit];
+
+    return {
+        width,
+        grid: true,
+        x: { label: "Iteration (n)" },
+        y: { label: "Value (x)", domain: [0, 1] },
+        marks: [
+            Plot.lineY(orbit, {
+                x: "n",
+                y: "x",
+                stroke: WH.getColor('--primary'),
+                strokeWidth: 1.5,
+                curve: "linear"
+            }),
+            Plot.dot(orbit, {
+                x: "n",
+                y: "x",
+                fill: WH.getColor('--primary'),
+                r: 2,
+                tip: true
+            })
+        ]
+    };
+});

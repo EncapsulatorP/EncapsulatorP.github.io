@@ -243,8 +243,15 @@
     var presets = make('div', 'vf-presets');
     [[12, 1, 'Twin neighbours'], [12, 0, 'No gap'], [12, 5, 'Open the gap']].forEach(function (p) { addPreset(presets, p[2], function () { doc.getElementById('vf-home-m').value = p[0]; doc.getElementById('vf-home-d').value = p[1]; dispatchInput(doc.getElementById('vf-home-m')); }); });
     model.box.appendChild(presets); var live = make('p', 'vf-live'); live.id = 'vf-home-result'; live.setAttribute('role', 'status'); model.box.appendChild(live);
-    after(hero, model.box); var route = readingRoute('home', proofs.pairs); route.classList.add('wrap'); after(model.box, route);
-    var promotion = hero.querySelector('.atlas-home-launch'); if (promotion) { promotion.classList.add('vf-home-promotion'); after(route, promotion); }
+    var route = readingRoute('home', proofs.pairs); route.classList.add('wrap');
+    var primer = doc.querySelector('#coordinate-primer .wrap');
+    if (primer) {
+      var construction = make('details', 'ev-primer-model');
+      construction.appendChild(make('summary', '', 'Open the coordinate construction and its argument'));
+      construction.append(model.box, route); primer.appendChild(construction);
+      route.querySelectorAll('a').forEach(function (link) { link.setAttribute('data-evidence-open', ''); });
+    } else { after(hero, model.box); after(model.box, route); }
+    var promotion = hero.querySelector('.atlas-home-launch'); if (promotion) { promotion.classList.add('vf-home-promotion'); after(hero, promotion); }
     function draw() {
       var m = value('vf-home-m', 12), dInput = doc.getElementById('vf-home-d'); dInput.max = String(m - 1); if (+dInput.value >= m) dInput.value = m - 1;
       var d = Number(dInput.value), v = centreGap(m, d), scale = 230 / (m + d), a = m * scale, cut = d * scale;

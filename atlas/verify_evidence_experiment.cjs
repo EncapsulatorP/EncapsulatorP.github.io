@@ -5,7 +5,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 const source = fs.readFileSync(require('node:path').join(__dirname, '../assets/evidence-experiment.js'), 'utf8');
-const KEY = 'atlas.evidence-order.v1';
+const KEY = 'atlas.evidence-order.v2';
 
 function fixture(options = {}) {
   let clock = 0, nextTimer = 1, callsToRandom = 0;
@@ -44,6 +44,7 @@ function fixture(options = {}) {
   win.sessionStorage = sessionStorage;
   win.crypto = { getRandomValues(array) { callsToRandom++; array[0] = options.randomBits ?? 0; return array; } };
   win.gtag = (...args) => events.push(args);
+  win.AtlasStudyAnalytics = { send(name, fields) { events.push(['event', name, fields]); return true; } };
   function timeout(fn, delay) { const id = nextTimer++; timers.set(id, { fn, due: clock + delay }); return id; }
   function advance(ms) {
     const target = clock + ms;
@@ -85,7 +86,7 @@ function fixture(options = {}) {
   };
 }
 
-const fresh = variant => ({ version:1, variant, exposed:false, engaged:false, stress:false, interactive:false });
+const fresh = variant => ({ version:2, variant, exposed:false, engaged:false, stress:false, interactive:false });
 const results = [];
 function test(name, callback) {
   try { callback(); results.push({name,pass:true}); }
@@ -106,18 +107,18 @@ test('obsolete truthy saved state gets a new random assignment', () => {
 });
 test('malformed stored JSON does not masquerade as unavailable storage', () => {
   const f = fixture({stored:'{bad json',randomBits:0}); assert.equal(f.randomCalls(),1); assert.equal(f.state().variant,'a');
-  f.expose(); assert.deepEqual(f.names(),['atlas_ev_v1_a_exposed']);
+  f.expose(); assert.deepEqual(f.names(),['atlas_ev_v2_a_exposed']);
 });
 test('nonboolean flags are discarded instead of suppressing events', () => {
   const f = fixture({stored:{...fresh('b'),exposed:'false'},randomBits:0}); assert.equal(f.state().exposed,false); assert.equal(f.state().variant,'a');
-  f.expose(); assert.deepEqual(f.names(),['atlas_ev_v1_a_exposed']);
+  f.expose(); assert.deepEqual(f.names(),['atlas_ev_v2_a_exposed']);
 });
 test('impossible engagement before exposure is discarded', () => {
   const f = fixture({stored:{...fresh('b'),engaged:true},randomBits:0}); assert.equal(f.state().engaged,false); assert.equal(f.state().variant,'a');
 });
 test('one full uninterrupted second is required, and exposure is deduplicated', () => {
   const f = fixture(); f.intersect(1); f.advance(999); assert.equal(f.events.length,0);
-  f.advance(1); assert.deepEqual(f.names(),['atlas_ev_v1_a_exposed']);
+  f.advance(1); assert.deepEqual(f.names(),['atlas_ev_v2_a_exposed']);
   f.intersect(0); f.intersect(1); f.advance(2000); assert.equal(f.events.length,1);
 });
 test('less than 50% of the introduction does not start exposure', () => {
@@ -146,7 +147,7 @@ test('clicks before exposure and synthetic clicks do not count', () => {
 });
 test('one intentional open counts once even after the introduction scrolls away', () => {
   const f = fixture(); f.expose(); f.intersect(0); f.click(); f.click();
-  assert.deepEqual(f.names(),['atlas_ev_v1_a_exposed','atlas_ev_v1_a_engaged']);
+  assert.deepEqual(f.names(),['atlas_ev_v2_a_exposed','atlas_ev_v2_a_engaged']);
 });
 test('hidden document cannot record engagement after a previous exposure', () => {
   const f = fixture(); f.expose(); f.setHidden(true); f.click(); assert.equal(f.events.length,1);
@@ -162,7 +163,7 @@ test('stress rail expansion is suppressed behind a modal', () => {
 });
 test('valid stress rail and finite-check events are deduplicated', () => {
   const f = fixture(); f.expose(); f.toggle(); f.toggle(); f.click('button'); f.click('button');
-  assert.deepEqual(f.names(),['atlas_ev_v1_a_exposed','atlas_ev_v1_a_stress','atlas_ev_v1_a_engaged','atlas_ev_v1_a_interactive']);
+  assert.deepEqual(f.names(),['atlas_ev_v2_a_exposed','atlas_ev_v2_a_stress','atlas_ev_v2_a_engaged','atlas_ev_v2_a_interactive']);
 });
 test('persisted outcomes do not emit again on reload', () => {
   const first = fixture(); first.expose(); first.click('button'); first.toggle();
