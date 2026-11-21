@@ -1,0 +1,262 @@
+{
+  "asOf": "2026-11-21",
+  "organization": "EncapsulatorP",
+  "repositories": [
+    {
+      "name": "prime-polarity",
+      "repo_url": "https://github.com/EncapsulatorP/prime-polarity",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "b91862c9b21c5c47ede33a29374be2d152241b9d",
+      "commit_date": "2026-06-01T18:04:21Z"
+    },
+    {
+      "name": "zp-program",
+      "repo_url": "https://github.com/EncapsulatorP/zp-program",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "70454700844d882615b9ff93fed17b5707af834d",
+      "commit_date": "2026-11-06T07:42:19Z"
+    },
+    {
+      "name": "Periodic-Table-of-Primes-210",
+      "repo_url": "https://github.com/EncapsulatorP/Periodic-Table-of-Primes-210",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "03ff7288dab0b0e45aa517cc54cf29f1e7578aad",
+      "commit_date": "2026-11-06T07:41:36Z"
+    },
+    {
+      "name": "rolt-phi-kappa3_expand",
+      "repo_url": "https://github.com/EncapsulatorP/rolt-phi-kappa3_expand",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "158e509ed6fa05c7e282f761637d700fc00d36f9",
+      "commit_date": "2026-06-08T14:48:23Z"
+    },
+    {
+      "name": "Gaussian_Unitary_Ensemble",
+      "repo_url": "https://github.com/EncapsulatorP/Gaussian_Unitary_Ensemble",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "629a896a65ce6cd2e592cf7473a3d971d2471417",
+      "commit_date": "2025-12-17T22:24:04Z"
+    },
+    {
+      "name": "collatz_backoff",
+      "repo_url": "https://github.com/EncapsulatorP/collatz_backoff",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "0a8a3b0bbefc68f818b61b79030b26da10bcc3aa",
+      "commit_date": "2026-01-22T21:46:11Z"
+    },
+    {
+      "name": "collatz_quasi_particle_by_forced_tetration",
+      "repo_url": "https://github.com/EncapsulatorP/collatz_quasi_particle_by_forced_tetration",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "e712b2e5d9ca4f1da5c973be9b7a39753b8a127b",
+      "commit_date": "2026-05-27T12:19:44Z"
+    },
+    {
+      "name": "collatz_rupert_delay_embedding",
+      "repo_url": "https://github.com/EncapsulatorP/collatz_rupert_delay_embedding",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "cf7e78217e05d9568e0382be3577254a1d96f167",
+      "commit_date": "2026-11-06T07:43:35Z"
+    },
+    {
+      "name": "ZP_type2_sector_invariants",
+      "repo_url": "https://github.com/EncapsulatorP/ZP_type2_sector_invariants",
+      "visibility": "private",
+      "default_branch": "main",
+      "commit": "01c93cdf96efe585d10bb4b8d54b73e741f96101",
+      "commit_date": "2026-03-02T17:42:28Z"
+    },
+    {
+      "name": "Fixed-Point-Shadow",
+      "repo_url": "https://github.com/EncapsulatorP/Fixed-Point-Shadow",
+      "visibility": "private",
+      "default_branch": "main",
+      "commit": "26744b515fcb08e9aa9065f56abeb71f352fb65d",
+      "commit_date": "2026-03-02T21:57:29Z"
+    },
+    {
+      "name": "recaman",
+      "repo_url": "https://github.com/EncapsulatorP/recaman",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "056452f2be03dad5f7bca0f7024c8357f42d8c6b",
+      "commit_date": "2026-10-24T12:19:23Z"
+    },
+    {
+      "name": "prime_tower_decomposition",
+      "repo_url": "https://github.com/EncapsulatorP/prime_tower_decomposition",
+      "visibility": "private",
+      "default_branch": "main",
+      "commit": "9209c146480916235c148db03f8797a2a997d19a",
+      "commit_date": "2026-05-22T13:37:46Z"
+    },
+    {
+      "name": "Time_reversal_simulations",
+      "repo_url": "https://github.com/EncapsulatorP/Time_reversal_simulations",
+      "visibility": "private",
+      "default_branch": "main",
+      "commit": "64c297d4e64265f646287dc071a6083a8105a726",
+      "commit_date": "2026-05-21T15:45:48Z"
+    },
+    {
+      "name": "c3._2z",
+      "repo_url": "https://github.com/EncapsulatorP/c3._2z",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "7e8fb577bd3eb8da2e358d691164a9fee5c75f9b",
+      "commit_date": "2026-11-21T10:45:20Z"
+    },
+    {
+      "name": "zeta_branching",
+      "repo_url": "https://github.com/EncapsulatorP/zeta_branching",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "96c28da08d6d0a76cb2e625062f59abbb51eb93f",
+      "commit_date": "2026-06-02T12:51:11Z"
+    },
+    {
+      "name": "goldbach_busy_collatz",
+      "repo_url": "https://github.com/EncapsulatorP/goldbach_busy_collatz",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "5adbd7d32efbec7f98ac51ee90d03cd347b249e1",
+      "commit_date": "2026-11-06T10:01:58Z"
+    },
+    {
+      "name": "Some_playful_boundary_paths_and_brun_twin_prime_sign_flipping_towers",
+      "repo_url": "https://github.com/EncapsulatorP/Some_playful_boundary_paths_and_brun_twin_prime_sign_flipping_towers",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "b07d1d3bac745ed8bb43fe6be0e7279d5c700818",
+      "commit_date": "2026-06-12T08:02:06Z"
+    },
+    {
+      "name": "prime-tower-diagnostics",
+      "repo_url": "https://github.com/EncapsulatorP/prime-tower-diagnostics",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "23450b6b5ed6024c662cae23d3e0644a3ed8510b",
+      "commit_date": "2026-11-06T07:40:33Z"
+    },
+    {
+      "name": "collatz_lift",
+      "repo_url": "https://github.com/EncapsulatorP/collatz_lift",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "7134ef3e85474810575209c436be8b6b16e8c5f2",
+      "commit_date": "2026-05-29T10:44:55Z"
+    },
+    {
+      "name": "Validatron",
+      "repo_url": "https://github.com/EncapsulatorP/Validatron",
+      "visibility": "private",
+      "default_branch": "main",
+      "commit": "ad7ad831638e5c3d282331335f150afbbd98b64f",
+      "commit_date": "2026-11-08T02:39:50Z"
+    },
+    {
+      "name": "Erdos-Straus-Schinzel",
+      "repo_url": "https://github.com/EncapsulatorP/Erdos-Straus-Schinzel",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "43e99b9b4be67462c2ab232e23fde0006ae99131",
+      "commit_date": "2026-06-05T14:22:42Z"
+    },
+    {
+      "name": "collatz_kesten-goldie",
+      "repo_url": "https://github.com/EncapsulatorP/collatz_kesten-goldie",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "791f509561d1d4cf77a471e94e808648741858ed",
+      "commit_date": "2026-06-19T06:48:55Z"
+    },
+    {
+      "name": "gilbreath",
+      "repo_url": "https://github.com/EncapsulatorP/gilbreath",
+      "visibility": "private",
+      "default_branch": "main",
+      "commit": "b1f26aceda871723ad8218fc76c4bf8ebe5e881e",
+      "commit_date": "2026-06-08T21:20:19Z"
+    },
+    {
+      "name": "antiverse",
+      "repo_url": "https://github.com/EncapsulatorP/antiverse",
+      "visibility": "private",
+      "default_branch": "main",
+      "commit": "5c3ed702b79fecf5f853022a251de513ca3e0384",
+      "commit_date": "2026-11-21T15:35:49Z"
+    },
+    {
+      "name": "Catalan_ruelle_mayer",
+      "repo_url": "https://github.com/EncapsulatorP/Catalan_ruelle_mayer",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "1aa0f8d76753cfa34d128d5d29598bb94eaf2131",
+      "commit_date": "2026-06-13T17:11:37Z"
+    },
+    {
+      "name": "Diophantus",
+      "repo_url": "https://github.com/EncapsulatorP/Diophantus",
+      "visibility": "private",
+      "default_branch": "main",
+      "commit": "3cdd74f11133d6aca24ce1bfa563181b06550ce7",
+      "commit_date": "2026-11-21T19:03:54Z"
+    },
+    {
+      "name": "NT_goldbachy_disastrous_cake",
+      "repo_url": "https://github.com/EncapsulatorP/NT_goldbachy_disastrous_cake",
+      "visibility": "private",
+      "default_branch": "main",
+      "commit": "b0fd5c981cf3a867c18de65196dbfae494256d62",
+      "commit_date": "2026-06-16T20:14:14Z"
+    },
+    {
+      "name": "mertens_counterexamples",
+      "repo_url": "https://github.com/EncapsulatorP/mertens_counterexamples",
+      "visibility": "private",
+      "default_branch": "main",
+      "commit": "8c03e6468e216091050cc81b0793a9191cbe4b1e",
+      "commit_date": "2026-06-21T09:01:10Z"
+    },
+    {
+      "name": "EncapsulatorP.github.io",
+      "repo_url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "4550d58bfbac58025de20df47b5844f88fa5c3fa",
+      "commit_date": "2026-11-21T20:24:35Z"
+    },
+    {
+      "name": ".github",
+      "repo_url": "https://github.com/EncapsulatorP/.github",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "627457ea62936f3648bd54d9ee435589553f5ddc",
+      "commit_date": "2026-11-21T12:39:48Z"
+    },
+    {
+      "name": "YPer",
+      "repo_url": "https://github.com/EncapsulatorP/YPer",
+      "visibility": "private",
+      "default_branch": "main",
+      "commit": "4f8c7b0fecc95f9568ccfa8b52ed968b9fc998b0",
+      "commit_date": "2026-11-21T19:40:19Z"
+    },
+    {
+      "name": "Obstruction-Theory",
+      "repo_url": "https://github.com/EncapsulatorP/Obstruction-Theory",
+      "visibility": "private",
+      "default_branch": "main",
+      "commit": "8d5fc9d48835012748e444fecc20df3a9ef46653",
+      "commit_date": "2026-11-21T19:44:35Z"
+    }
+  ]
+}
