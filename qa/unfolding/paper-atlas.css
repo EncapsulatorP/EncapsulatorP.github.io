@@ -118,7 +118,7 @@
 .pm-table-globe{left:18%;top:23%;width:19%;height:51%}
 .pm-table-portal{left:38%;top:24%;width:25%;height:47%}
 .pm-table-origami{left:66%;top:24%;width:26%;height:43%}
-.pm-table-models{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:14px}
+.pm-table-models{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:0 0 14px}
 .pm-table-models button{min-width:0;display:flex;flex-direction:column;align-items:center;gap:6px;border:1px solid #d8ddd2;border-radius:12px;background:#fcfaf3;color:#65756c;padding:8px 4px 10px;cursor:pointer;font-size:10px;transition:transform .18s,background .18s,border-color .18s}
 .pm-table-models button svg{width:51px;height:34px;max-width:90%}
 .pm-table-models button:hover,.pm-table-models button[aria-pressed=true]{background:#e7eee4;color:#214e48;border-color:#9ab9a8;transform:translateY(-2px)}

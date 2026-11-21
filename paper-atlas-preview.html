@@ -227,7 +227,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <link rel="stylesheet" href="assets/treasure-rooms.css">
 <link rel="stylesheet" href="assets/goldbach-lab.css">
 <link rel="stylesheet" href="assets/curious-cabinet.css">
-<link rel="stylesheet" href="qa/unfolding/paper-atlas.css?v=unfold-20261121-r1">
+<link rel="stylesheet" href="qa/unfolding/paper-atlas.css?v=unfold-20261121-r2">
 <link rel="stylesheet" href="assets/visual-first.css?v=visual-20261121-r2">
 <meta name="description" content="Explore EncapsulatorP’s research atlas: Omega Stability, prime pairs, recursive towers, complex worlds and 45 source-linked mathematical threads.">
 </head>
@@ -1154,13 +1154,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
       <div class="pm-header-actions"><button class="pm-button pm-back-table" id="pm-back-table" type="button" hidden><span aria-hidden="true">↶</span> Back to the table</button><button class="pm-button pm-close" id="pm-close" type="button"><span id="pm-close-caption">Skip to atlas</span></button></div>
     </header>
     <section class="pm-table" id="pm-table" aria-labelledby="pm-table-title" hidden>
-      <div class="pm-table-intro"><p class="pm-kicker">The workbench</p><h3 id="pm-table-title" tabindex="-1">There is a world<br>inside the fold.</h3><p>Move over a body. Watch it peel, hinge or open its seams. Pick it up and follow the discoveries inside.</p></div>
-      <div class="pm-table-photo">
-        <img src="assets/paper-workbench-reference.png" width="1024" height="572" alt="Paper bodies on a wooden workbench: a gridded globe, an ivory hollow polyhedron, blue and copper origami, and small star-shaped models." loading="eager">
-        <button type="button" class="pm-table-hotspot pm-table-globe" data-table-form="sphere" aria-label="Preview and open the globe"><span>Globe</span></button>
-        <button type="button" class="pm-table-hotspot pm-table-portal" data-table-form="portal" aria-label="Preview and open the hollow body"><span>Hollow body</span></button>
-        <button type="button" class="pm-table-hotspot pm-table-origami" data-table-form="origami" aria-label="Preview and unfold the origami"><span>Origami</span></button>
-      </div>
+      <div class="pm-table-intro"><p class="pm-kicker">The workbench</p><h3 id="pm-table-title" tabindex="-1">Worlds inside the fold.</h3><p>Move over a body. Watch it peel, hinge or open its seams. Pick it up and follow the discoveries inside.</p></div>
       <div class="pm-table-models" role="group" aria-label="Choose a body from the table">
         <button type="button" data-table-form="origami"><svg viewBox="0 0 64 42" aria-hidden="true"><path d="M4 31 16 7 29 31 42 7 60 31 46 36 32 20 18 36Z" fill="#287388" stroke="#f6f1df"/><path d="M16 7 18 36 32 20 42 7 46 36" fill="none" stroke="#c88c57"/></svg><span>Origami</span></button>
         <button type="button" data-table-form="sphere"><svg viewBox="0 0 64 42" aria-hidden="true"><circle cx="32" cy="21" r="18" fill="#e7e0cd" stroke="#687c72"/><ellipse cx="32" cy="21" rx="8" ry="18" fill="none" stroke="#8c9a8d"/><path d="M15 15Q32 22 49 15M15 27Q32 20 49 27M14 21H50" fill="none" stroke="#8c9a8d"/></svg><span>Globe</span></button>
@@ -1170,6 +1164,12 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
         <button type="button" data-table-form="noperthedron"><svg viewBox="0 0 64 42" aria-hidden="true"><path d="M13 12 30 3 49 10 54 27 36 39 15 32 8 22Z" fill="#e9dabc" stroke="#847d69"/><path d="M13 12 36 17 30 3M49 10 36 17 54 27M36 17 36 39M36 17 15 32M8 22 36 17" fill="none" stroke="#bf9369"/><path d="M13 12 15 32 30 3 54 27" fill="none" stroke="#fff9e3"/></svg><span>Noperthedron</span></button>
         <button type="button" data-table-form="neck"><svg viewBox="0 0 64 42" aria-hidden="true"><path d="M7 21C7 4 24 3 29 16Q32 23 35 16C40 3 57 4 57 21S40 39 35 26Q32 19 29 26C24 39 7 38 7 21Z" fill="#c4dcd3" stroke="#5d9085"/><path d="M32 4V38" stroke="#ce8b57" stroke-dasharray="3 3"/><ellipse cx="18" cy="21" rx="5" ry="13" fill="none" stroke="#f9f1de"/><ellipse cx="46" cy="21" rx="5" ry="13" fill="none" stroke="#f9f1de"/></svg><span>Neck surgery</span></button>
         <button type="button" data-table-form="klein"><svg viewBox="0 0 64 42" aria-hidden="true"><path d="M19 32C4 24 17 9 26 11L39 13C51 14 54 5 43 4C33 3 32 11 38 21C48 37 32 43 19 32Z" fill="#b9dcd8" stroke="#4a8582" stroke-width="2"/><path d="M20 15C13 27 28 37 34 31S33 21 30 16M39 7C35 15 47 22 41 31" fill="none" stroke="#fcf6e5" stroke-width="1.5"/></svg><span>Klein bottle</span></button>
+      </div>
+      <div class="pm-table-photo">
+        <img src="assets/paper-workbench-reference.png" width="1024" height="572" alt="Paper bodies on a wooden workbench: a gridded globe, an ivory hollow polyhedron, blue and copper origami, and small star-shaped models." loading="eager">
+        <button type="button" class="pm-table-hotspot pm-table-globe" data-table-form="sphere" aria-label="Preview and open the globe"><span>Globe</span></button>
+        <button type="button" class="pm-table-hotspot pm-table-portal" data-table-form="portal" aria-label="Preview and open the hollow body"><span>Hollow body</span></button>
+        <button type="button" class="pm-table-hotspot pm-table-origami" data-table-form="origami" aria-label="Preview and unfold the origami"><span>Origami</span></button>
       </div>
       <p class="pm-table-note">Eight bodies. Two collections. The same nine discoveries.</p>
       <p class="pm-table-credit">Image supplied by Zolton · Gemini. Table journey inspired by Claude.</p>
@@ -1545,9 +1545,9 @@ window.addEventListener('hashchange',show);show();
 <script src="assets/curious-cabinet.js"></script>
 <script src="assets/kesten-goldie.js?v=visual-20261121-r2"></script>
 <script src="assets/visual-first.js?v=visual-20261121-r2"></script>
-<script src="qa/unfolding/pirate-map-data.js?v=unfold-20261121-r1"></script>
-<script src="qa/unfolding/paper-shape-lab.js?v=unfold-20261121-r1"></script>
-<script src="qa/unfolding/paper-map-engine.js?v=unfold-20261121-r1"></script>
-<script src="qa/unfolding/paper-atlas.js?v=unfold-20261121-r1"></script>
+<script src="qa/unfolding/pirate-map-data.js?v=unfold-20261121-r2"></script>
+<script src="qa/unfolding/paper-shape-lab.js?v=unfold-20261121-r2"></script>
+<script src="qa/unfolding/paper-map-engine.js?v=unfold-20261121-r2"></script>
+<script src="qa/unfolding/paper-atlas.js?v=unfold-20261121-r2"></script>
 </body></html>
 

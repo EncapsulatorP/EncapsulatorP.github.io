@@ -226,7 +226,7 @@
   const bodyKeys = { sphere: 'sphere', portal: 'portal', noperthedron: 'noperthedron', neck: 'neck', klein: 'klein', 'voyage-globe': 'sphere', 'voyage-portal': 'portal', 'voyage-noperthedron': 'noperthedron', 'voyage-neck': 'neck', 'voyage-klein': 'klein' };
   const sceneKeys = ['origami', 'sphere', 'portal', 'tensegrity', 'terrace', 'noperthedron', 'neck', 'klein', 'voyage-chart', 'voyage-globe', 'voyage-portal', 'voyage-rigging', 'voyage-islands', 'voyage-noperthedron', 'voyage-neck', 'voyage-klein'];
   const hasShapeLab = () => !!(window.PaperShapeLab && typeof window.PaperShapeLab.build === 'function');
-  function bodyMesh(key, progress) {
+  function bodyMesh(key, progress, fixedCamera = false) {
     const model = window.PaperShapeLab.build(key, clamp(progress, 0, 1)), mesh = new Mesh();
     model.faces.forEach(face => {
       const points = face.points, color = palette[face.colorKey] || palette.paper;
@@ -241,8 +241,14 @@
       if (face.seams) for (let i = 0; i < points.length; i++) mesh.seam(points[i], points[(i + 1) % points.length], typeof face.seams === 'number' ? face.seams : 0.10);
     });
     (model.landmarks || []).forEach(mark => { mesh.pin(mark.position, unit(mark.normal)); mesh.landmarks[mesh.landmarks.length - 1].doubleSided = !!mark.doubleSided; });
-    mesh.cameraBounds = model.cameraBounds;
-    mesh.cameraPoints = model.cameraPoints;
+    // A rigid face tree may grow to several times its closed diameter. Keep
+    // those two studio solids large by framing their current faces. The hinge
+    // paths, extrema and camera fit are continuous in opening progress, so the
+    // camera gently reveals room for the net. Voyage compositions instead use
+    // the complete fixed envelope to keep the surrounding chart still.
+    const followFaces = !fixedCamera && (key === 'noperthedron' || key === 'portal');
+    mesh.cameraBounds = followFaces ? model.bounds : model.cameraBounds;
+    mesh.cameraPoints = followFaces ? model.faces.flatMap(face => face.points) : model.cameraPoints;
     mesh.cameraFitMargin = 0.84;
     return mesh;
   }
@@ -584,7 +590,7 @@
     let bodyEnvelope = null;
     const labKey = bodyKeys[key];
     if (labKey && hasShapeLab()) {
-      const body = bodyMesh(labKey, unfoldProgress), scale = 0.61, origin = [0, base + 0.055, -0.10];
+      const body = bodyMesh(labKey, unfoldProgress, true), scale = 0.61, origin = [0, base + 0.055, -0.10];
       placeMesh(mesh, body, origin, scale, turn * 0.60 + 0.16);
       if (!voyageCameraCache.has(key)) {
         const b = body.cameraBounds || body.bounds, points = body.cameraPoints || [];

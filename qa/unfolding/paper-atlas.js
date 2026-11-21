@@ -125,10 +125,13 @@
     tableButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.tableForm === body)));
     $('pm-unfold-label').textContent = shape.unfoldable ? 'Open this shape' : 'Explore this form';
     ['voyage', 'studio'].forEach(name => { $(`pm-family-${name}`).setAttribute('aria-pressed', String(name === family)); });
-    shapeSelect.replaceChildren();
-    shapes.filter(item => (item.family || 'studio') === family).forEach(item => {
-      const option = document.createElement('option'); option.value = item.key; option.textContent = item.name; shapeSelect.append(option);
-    });
+    if (shapeSelect.dataset.family !== family) {
+      shapeSelect.replaceChildren();
+      shapes.filter(item => (item.family || 'studio') === family).forEach(item => {
+        const option = document.createElement('option'); option.value = item.key; option.textContent = item.name; shapeSelect.append(option);
+      });
+      shapeSelect.dataset.family = family;
+    }
     shapeSelect.value = shape.key;
     $('pm-shape').textContent = shape.name;
     $('pm-description').textContent = shape.description;
