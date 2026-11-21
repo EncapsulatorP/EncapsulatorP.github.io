@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <title>Goldbach involution · Gemini · EncapsulatorP</title>
+  <meta name="description" content="Fold the prime indicator at N/2 and watch its exact symmetric energy E+, antisymmetric energy E− and ratio ρ change with the even total.">
+  <link rel="icon" href="../assets/favicon-32.png">
+  <link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="goldbach-involution.css">
+  <script src="runtime.js?v=restore-20261121" defer></script>
+  <script src="goldbach-involution.js" defer></script>
+</head>
+<body>
+<main class="ix-exhibit gb-involution">
+  <header class="ix-header"><div><p class="ix-kicker">Interactive · Exact finite identity</p><h1>Goldbach involution</h1><p>Fold the prime indicator at N/2. Matching prime pairs feed the symmetric part; mismatches feed both parts. Watch E+, E− and ρ as the even total changes.</p></div><div class="ix-signature">Gemini<small>Goldbach involution<br>Interactive concept · Atlas adaptation</small></div></header>
+  <p class="ix-boundary"><strong>Claim boundary</strong>These are exact statistics of a chosen binary representation for even totals from 10 through 150. A prime pair makes ρ &lt; ½ for that total; this identity does not establish a pair for every even integer.</p>
+  <section id="widget" aria-label="Goldbach involution controls and view"></section>
+  <noscript><p>The interactive display requires JavaScript. At the default N = 30, there are three unordered prime pairs: 7 + 23, 11 + 19 and 13 + 17. E+ = 8, E− = 2 and ρ = 0.2.</p></noscript>
+  <details class="ix-notes" open><summary>Definitions, normalization &amp; source notes</summary>
+    <p class="ix-equation">P(k) = 1 if k is prime, and 0 otherwise, for k = 1,…,N−1.<br>JP(k) = P(N−k); J²P = P.<br>P±(k) = (P(k) ± P(N−k))/2.<br>E± = Σ<sub>k=1</sub><sup>N−1</sup> P±(k)²; ρ = E−/(E+ + E−).</p>
+    <p>The energies use the ordinary sum of squared coordinates, with no division by N. The factor ½ belongs to each projection before squaring. The plot folds the full vector into k = 1,…,N/2: each off-center orbit represents two coordinates, while the fixed point k = N/2 is counted once.</p>
+    <p class="ix-equation">M = ΣP(k) = π(N−1); C = ΣP(k)P(N−k).<br>E+ + E− = M; E+ − E− = C.<br>E+ = (M + C)/2; E− = (M − C)/2.<br>ρ = ½ − C/(2M).</p>
+    <p>C counts ordered prime representations. If G counts unordered pairs, then C = 2G − D, where D = 1 when N/2 is prime and 0 otherwise. Thus ρ &lt; ½ is equivalent to finding at least one prime pair at the selected N. The ratio depends on this finite, unweighted indicator representation; it is not a new bound or a proof of Goldbach’s conjecture.</p>
+    <ul>
+      <li>Gemini’s original N range (10–150, even steps), default N = 30, projection formulas, three live energy readouts and two-row mirror-orbit plot are preserved. All arithmetic uses exact binary indicators; only the displayed ratio is rounded.</li>
+      <li>Prime–prime connectors are mint, mixed connectors are gold, and non-prime–non-prime connectors are muted. Each endpoint separately shows whether its integer is prime. “Non-prime” replaces the source’s “composite” label because 1 is included and is not composite.</li>
+      <li>Select an orbit with the inspection slider, click or tap a column, or focus the plot and use the arrow keys. The table exposes every orbit and its contribution to the full-vector energies, including the central fixed point.</li>
+      <li>The original hosted plotting shell is replaced by a local Canvas renderer. The added inspection controls and table explain the original statistic without changing it.</li>
+    </ul>
+    <p class="ix-source-code">Gemini source: <code>interactive_visual_im_9df25cf48edc7ed6.html</code>. <a href="sources/gemini-goldbach-involution-original.js.txt">Read the supplied topic script</a> or <a href="sources.json">inspect the complete source inventory</a>.</p>
+  </details>
+  <footer class="ix-footer"><a href="index.html?topic=goldbach-involution">All interactive contributions</a><a href="goldbach.html">Goldbach mirror scan</a><a href="../index.html#goldbach">Goldbach laboratory</a><a href="../atlas/gemini-interactive-notes.md">Adaptation notes</a></footer>
+</main>
+</body>
+</html>

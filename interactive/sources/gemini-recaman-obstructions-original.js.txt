@@ -1,0 +1,177 @@
+
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    const container = document.getElementById('canvas-container');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(48, window.innerWidth / window.innerHeight, 0.01, 200);
+    camera.position.set(2.4, 2.0, 2.8);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    container.appendChild(renderer.domElement);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.06;
+
+    const rootGroup = new THREE.Group();
+    scene.add(rootGroup);
+
+    let showHoles = true;
+    let currentN = 2500;
+    let currentManifold = 'delay';
+
+    function computeRecaman(N) {
+      const seq = new Int32Array(N);
+      const dirs = new Int8Array(N); // -1 backward, +1 forward
+      const visited = new Set([0]);
+      let maxVal = 0;
+      let backwardCount = 0;
+
+      for (let n = 1; n < N; n++) {
+        const prev = seq[n - 1];
+        const candidate = prev - n;
+        if (candidate > 0 && !visited.has(candidate)) {
+          seq[n] = candidate;
+          dirs[n] = -1;
+          backwardCount++;
+        } else {
+          seq[n] = prev + n;
+          dirs[n] = 1;
+        }
+        visited.add(seq[n]);
+        if (seq[n] > maxVal) maxVal = seq[n];
+      }
+
+      const holes = [];
+      let smallestHole = -1;
+      for (let k = 1; k < maxVal; k++) {
+        if (!visited.has(k)) {
+          if (smallestHole === -1) smallestHole = k;
+          holes.push(k);
+        }
+      }
+
+      return { seq, dirs, maxVal, holes, smallestHole, backwardRatio: backwardCount / N };
+    }
+
+    function clearGroup(group) {
+      while (group.children.length > 0) {
+        const obj = group.children[0];
+        if (obj.geometry) obj.geometry.dispose();
+        if (obj.material) obj.material.dispose();
+        group.remove(obj);
+      }
+    }
+
+    function rebuild() {
+      clearGroup(rootGroup);
+      const { seq, dirs, maxVal, holes, smallestHole, backwardRatio } = computeRecaman(currentN);
+      const scale = 1 / Math.max(maxVal, 1);
+
+      document.getElementById('st-max').textContent = maxVal.toLocaleString();
+      document.getElementById('st-min-hole').textContent = smallestHole === -1 ? 'None' : smallestHole.toLocaleString();
+      document.getElementById('st-hole-cnt').textContent = holes.length.toLocaleString();
+      document.getElementById('st-back-ratio').textContent = (backwardRatio * 100).toFixed(1) + '%';
+
+      const trajPos = [];
+      const trajCol = [];
+      const cBack = new THREE.Color(0x0f62fe);
+      const cFwd = new THREE.Color(0x198038);
+
+      for (let i = 0; i < currentN - 2; i++) {
+        let x, y, z;
+        if (currentManifold === 'delay') {
+          x = (seq[i] * scale - 0.5) * 2.2;
+          y = (seq[i + 1] * scale - 0.5) * 2.2;
+          z = (seq[i + 2] * scale - 0.5) * 2.2;
+        } else {
+          const u = (i / currentN) * Math.PI * 2;
+          const v = ((seq[i] % 6) / 5 - 0.5) * 0.9;
+          const r = 1.1 + seq[i] * scale * 0.6;
+          x = (r + v * Math.cos(u / 2)) * Math.cos(u);
+          y = (r + v * Math.cos(u / 2)) * Math.sin(u);
+          z = v * Math.sin(u / 2) + (dirs[i] * 0.12);
+        }
+        trajPos.push(x, y, z);
+        const col = dirs[i] === -1 ? cBack : cFwd;
+        trajCol.push(col.r, col.g, col.b);
+      }
+
+      const trajGeo = new THREE.BufferGeometry();
+      trajGeo.setAttribute('position', new THREE.Float32BufferAttribute(trajPos, 3));
+      trajGeo.setAttribute('color', new THREE.Float32BufferAttribute(trajCol, 3));
+      const trajMat = new THREE.PointsMaterial({ size: 0.024, vertexColors: true, transparent: true, opacity: 0.85 });
+      rootGroup.add(new THREE.Points(trajGeo, trajMat));
+
+      if (showHoles && holes.length > 0) {
+        const holePos = [];
+        const stride = Math.max(1, Math.floor(holes.length / 4000));
+        for (let i = 0; i < holes.length; i += stride) {
+          const h = holes[i];
+          const t = h * scale;
+          if (currentManifold === 'delay') {
+            const p = (t - 0.5) * 2.2;
+            const jitter = ((h % 6) - 2.5) * 0.025;
+            holePos.push(p + jitter, p - jitter, p);
+          } else {
+            const u = t * Math.PI * 2;
+            const v = ((h % 6) / 5 - 0.5) * 0.9;
+            const r = 1.1 + t * 0.6;
+            holePos.push(
+              (r + v * Math.cos(u / 2)) * Math.cos(u),
+              (r + v * Math.cos(u / 2)) * Math.sin(u),
+              v * Math.sin(u / 2)
+            );
+          }
+        }
+        const holeGeo = new THREE.BufferGeometry();
+        holeGeo.setAttribute('position', new THREE.Float32BufferAttribute(holePos, 3));
+        const holeMat = new THREE.PointsMaterial({ size: 0.032, color: 0xda1e28, transparent: true, opacity: 0.9 });
+        rootGroup.add(new THREE.Points(holeGeo, holeMat));
+      }
+
+      const axes = new THREE.AxesHelper(1.3);
+      rootGroup.add(axes);
+    }
+
+    document.getElementById('n-slider').addEventListener('input', (e) => {
+      currentN = parseInt(e.target.value, 10);
+      document.getElementById('n-val').textContent = currentN;
+      rebuild();
+    });
+
+    document.getElementById('manifold-select').addEventListener('change', (e) => {
+      currentManifold = e.target.value;
+      rebuild();
+    });
+
+    document.getElementById('toggle-holes').addEventListener('click', (e) => {
+      showHoles = !showHoles;
+      e.target.textContent = showHoles ? 'Holes: ON' : 'Holes: OFF';
+      e.target.classList.toggle('active', showHoles);
+      rebuild();
+    });
+
+    document.getElementById('toggle-theme').addEventListener('click', (e) => {
+      const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+      e.target.textContent = dark ? 'Dark Mode' : 'Light Mode';
+    });
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    rebuild();
+    (function animate() {
+      requestAnimationFrame(animate);
+      rootGroup.rotation.y += 0.0012;
+      controls.update();
+      renderer.render(scene, camera);
+    })();
+  

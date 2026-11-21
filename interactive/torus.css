@@ -1,0 +1,11 @@
+/* Torus-specific reading aids; the controls and page retain the Atlas palette. */
+.torus-stage{position:relative;isolation:isolate}
+.torus-readout{position:absolute;z-index:2;inset:15px auto auto 16px;display:grid;gap:3px;pointer-events:none;color:#f3f8ef;text-shadow:0 1px 5px #102d33;background:#163b43d9;border:1px solid #91b0a75c;border-radius:7px;padding:9px 12px;max-width:calc(100% - 32px)}
+.torus-readout strong{font:600 10px/1.5 ui-monospace,monospace;letter-spacing:.09em}
+.torus-readout span{font:11px/1.5 system-ui,sans-serif;color:#bfd2c8}
+.torus-event{position:absolute;z-index:2;inset:auto 16px 13px;pointer-events:none;margin:0;padding:10px 12px;color:#fff4d5;background:#163b43eF;border:1px solid #ffd1728c;border-radius:7px;font:11px/1.55 system-ui,sans-serif}
+.torus-event[hidden]{display:none}
+.torus-catch{border-color:#aa8b4c}
+.torus-reading{font-size:12px;color:var(--ix-muted);margin:14px 0 0;max-width:85ch}
+.torus-reading strong{color:var(--ix-accent)}
+@media(max-width:620px){.torus-readout{inset:11px auto auto 11px;padding:7px 9px;max-width:calc(100% - 22px)}.torus-readout span{font-size:10px}.torus-event{inset:auto 11px 10px;padding:8px 9px;font-size:10px}.torus-reading{font-size:11px}}

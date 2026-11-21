@@ -1,4 +1,4 @@
-/* Atlas adapter for the six supplied Gemini topic scripts.
+/* Atlas adapter for the supplied Gemini topic scripts.
  * Local controls, Canvas plots and Three.js lifecycle only. No bridge, eval or network calls.
  */
 (function () {
@@ -256,6 +256,10 @@
   window.Plot = Plot;
   window.WH = {
     createApp, initCanvas, initTable, initPlot, initThree, getColor,
+    onFrame(callback) {
+      loops.push(callback); requestDraw();
+      return () => { const index = loops.indexOf(callback); if (index !== -1) loops.splice(index, 1); };
+    },
     addBadge(icon, label) { const node = window.WH._badges; if (node && !node.textContent.includes(label)) node.append(el('span', '', label)); },
     createScale(tokens) { return fraction => tokens[Math.min(tokens.length - 1, Math.floor(Math.max(0, fraction) * tokens.length))]; },
     transparent(token, alpha) { const hex = getColor(token).replace('#', ''); return 'rgba(' + [0, 2, 4].map(i => parseInt(hex.slice(i, i + 2), 16)).join(',') + ',' + alpha + ')'; },

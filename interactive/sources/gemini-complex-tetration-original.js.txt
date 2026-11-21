@@ -1,0 +1,274 @@
+
+    const canvas = document.getElementById('viewport');
+    const ctx = canvas.getContext('2d');
+
+    // Viewport bounds in the complex c-plane
+    const VIEW = { reMin: -3.2, reMax: 3.8, imMin: -2.6, imMax: 2.6 };
+    const ESCAPE_R2 = 1e8;
+
+    let maxIter = 64;
+    let pBranch = 0.08;
+    let sigma = 0.015;
+    let ensembleSize = 24;
+    let seedC = { re: 1.32, im: 0.38 };
+
+    let fieldCanvas = document.createElement('canvas');
+    let fieldCtx = fieldCanvas.getContext('2d');
+
+    function complexToScreen(re, im) {
+      const x = ((re - VIEW.reMin) / (VIEW.reMax - VIEW.reMin)) * canvas.width;
+      const y = ((VIEW.imMax - im) / (VIEW.imMax - VIEW.imMin)) * canvas.height;
+      return [x, y];
+    }
+
+    function screenToComplex(x, y) {
+      const re = VIEW.reMin + (x / canvas.width) * (VIEW.reMax - VIEW.reMin);
+      const im = VIEW.imMax - (y / canvas.height) * (VIEW.imMax - VIEW.imMin);
+      return { re, im };
+    }
+
+    function randn() {
+      let u = 0, v = 0;
+      while (u === 0) u = Math.random();
+      while (v === 0) v = Math.random();
+      return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+    }
+
+    // Evaluates z_{n+1} = exp(z_n * (ln|c| + i*(arg(c) + 2*pi*k)))
+    function tetrationStep(zr, zi, lr, li) {
+      const u = zr * lr - zi * li;
+      const v = zr * li + zi * lr;
+      if (u > 25) return null; // overflow / escape
+      const eu = Math.exp(u);
+      return [eu * Math.cos(v), eu * Math.sin(v)];
+    }
+
+    function renderBasinField() {
+      const scale = 2;
+      const fw = Math.ceil(canvas.width / scale);
+      const fh = Math.ceil(canvas.height / scale);
+      fieldCanvas.width = fw;
+      fieldCanvas.height = fh;
+      const img = fieldCtx.createImageData(fw, fh);
+      const data = img.data;
+
+      let idx = 0;
+      for (let py = 0; py < fh; py++) {
+        const ci = VIEW.imMax - (py / fh) * (VIEW.imMax - VIEW.imMin);
+        for (let px = 0; px < fw; px++) {
+          const cr = VIEW.reMin + (px / fw) * (VIEW.reMax - VIEW.reMin);
+          const mag = Math.hypot(cr, ci);
+          if (mag < 1e-12) {
+            data[idx++] = 15; data[idx++] = 18; data[idx++] = 26; data[idx++] = 255;
+            continue;
+          }
+          const lr = Math.log(mag);
+          const li = Math.atan2(ci, cr);
+
+          let zr = cr, zi = ci;
+          let escaped = -1;
+          let converged = false;
+
+          for (let n = 0; n < maxIter; n++) {
+            const next = tetrationStep(zr, zi, lr, li);
+            if (!next) { escaped = n; break; }
+            const [nr, ni] = next;
+            const r2 = nr * nr + ni * ni;
+            if (r2 > ESCAPE_R2 || !Number.isFinite(r2)) { escaped = n; break; }
+            if (Math.hypot(nr - zr, ni - zi) < 1e-4) {
+              zr = nr; zi = ni; converged = true; break;
+            }
+            zr = nr; zi = ni;
+          }
+
+          if (converged) {
+            // Inside fixed-point Shell-Thron region: color by limit argument
+            const arg = Math.atan2(zi, zr);
+            data[idx++] = Math.floor(30 + 35 * Math.cos(arg));
+            data[idx++] = Math.floor(75 + 55 * Math.cos(arg - 2.094));
+            data[idx++] = Math.floor(145 + 75 * Math.cos(arg + 2.094));
+            data[idx++] = 255;
+          } else if (escaped === -1) {
+            // Bounded / periodic cycle
+            data[idx++] = 22; data[idx++] = 42; data[idx++] = 68; data[idx++] = 255;
+          } else {
+            // Escaped: smooth logarithmic brightness
+            const t = Math.min(1, escaped / maxIter);
+            const v = Math.floor(12 + 190 * Math.pow(t, 0.55));
+            data[idx++] = Math.floor(v * 0.85);
+            data[idx++] = Math.floor(v * 0.45);
+            data[idx++] = Math.floor(v * 0.32);
+            data[idx++] = 255;
+          }
+        }
+      }
+      fieldCtx.putImageData(img, 0, 0);
+    }
+
+    function drawAxes() {
+      const [ox, oy] = complexToScreen(0, 0);
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.16)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(0, oy); ctx.lineTo(canvas.width, oy);
+      ctx.moveTo(ox, 0); ctx.lineTo(ox, canvas.height);
+      ctx.stroke();
+
+      // Mark e^-e and e^(1/e) on real axis
+      const markers = [
+        { re: Math.exp(-Math.E), label: 'e^-e' },
+        { re: Math.exp(1 / Math.E), label: 'e^(1/e)' }
+      ];
+      ctx.fillStyle = 'rgba(238, 241, 246, 0.7)';
+      ctx.font = '10px ui-monospace, monospace';
+      markers.forEach((m) => {
+        const [mx, my] = complexToScreen(m.re, 0);
+        ctx.beginPath();
+        ctx.arc(mx, my, 3, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillText(m.label, mx + 5, my - 6);
+      });
+    }
+
+    function drawOrbits() {
+      ctx.drawImage(fieldCanvas, 0, 0, canvas.width, canvas.height);
+      drawAxes();
+
+      const cr0 = seedC.re, ci0 = seedC.im;
+      const mag0 = Math.hypot(cr0, ci0);
+      const lr0 = Math.log(Math.max(mag0, 1e-12));
+      const li0 = Math.atan2(ci0, cr0);
+
+      // 1. Stochastic branching ensemble
+      let survived = 0;
+      let escapeSum = 0;
+      let escapeCount = 0;
+
+      for (let m = 0; m < ensembleSize; m++) {
+        const cr = cr0 + randn() * sigma;
+        const ci = ci0 + randn() * sigma;
+        const mag = Math.hypot(cr, ci);
+        if (mag < 1e-12) continue;
+        const lr = Math.log(mag);
+        const liBase = Math.atan2(ci, cr);
+
+        let zr = cr, zi = ci;
+        let escapedAt = -1;
+
+        ctx.beginPath();
+        const [sx, sy] = complexToScreen(zr, zi);
+        ctx.moveTo(sx, sy);
+
+        for (let n = 0; n < maxIter; n++) {
+          let k = 0;
+          if (Math.random() < pBranch) k = Math.random() < 0.5 ? -1 : 1;
+          const next = tetrationStep(zr, zi, lr, liBase + 2 * Math.PI * k);
+          if (!next) { escapedAt = n; break; }
+          const [nr, ni] = next;
+          if (nr * nr + ni * ni > ESCAPE_R2 || !Number.isFinite(nr)) {
+            escapedAt = n; break;
+          }
+          zr = nr; zi = ni;
+          const [px, py] = complexToScreen(zr, zi);
+          ctx.lineTo(px, py);
+        }
+
+        if (escapedAt === -1) {
+          survived++;
+          ctx.strokeStyle = 'rgba(69, 137, 255, 0.38)';
+        } else {
+          escapeSum += escapedAt;
+          escapeCount++;
+          ctx.strokeStyle = 'rgba(255, 107, 107, 0.28)';
+        }
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+
+      // 2. Deterministic principal-branch orbit
+      let zr = cr0, zi = ci0;
+      let principalState = 'Bounded';
+      ctx.beginPath();
+      const [px0, py0] = complexToScreen(zr, zi);
+      ctx.moveTo(px0, py0);
+      for (let n = 0; n < maxIter; n++) {
+        const next = tetrationStep(zr, zi, lr0, li0);
+        if (!next) { principalState = `Escaped @${n}`; break; }
+        const [nr, ni] = next;
+        if (nr * nr + ni * ni > ESCAPE_R2) { principalState = `Escaped @${n}`; break; }
+        if (Math.hypot(nr - zr, ni - zi) < 1e-4) {
+          zr = nr; zi = ni; principalState = 'Convergent'; break;
+        }
+        zr = nr; zi = ni;
+        const [px, py] = complexToScreen(zr, zi);
+        ctx.lineTo(px, py);
+      }
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 1.6;
+      ctx.stroke();
+
+      // Seed marker
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.arc(px0, py0, 4, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Update HUD
+      const sign = ci0 >= 0 ? '+' : '-';
+      document.getElementById('st-c').textContent = `${cr0.toFixed(3)} ${sign} ${Math.abs(ci0).toFixed(3)}i`;
+      document.getElementById('st-state').textContent = principalState;
+      document.getElementById('st-surv').textContent = `${((survived / ensembleSize) * 100).toFixed(0)}%`;
+      document.getElementById('st-esc').textContent = escapeCount > 0 ? (escapeSum / escapeCount).toFixed(1) : '—';
+    }
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      renderBasinField();
+      drawOrbits();
+    }
+
+    canvas.addEventListener('click', (e) => {
+      seedC = screenToComplex(e.clientX, e.clientY);
+      drawOrbits();
+    });
+
+    document.getElementById('n-slider').addEventListener('input', (e) => {
+      maxIter = parseInt(e.target.value, 10);
+      document.getElementById('n-val').textContent = maxIter;
+      renderBasinField();
+      drawOrbits();
+    });
+
+    document.getElementById('pk-slider').addEventListener('input', (e) => {
+      pBranch = parseFloat(e.target.value);
+      document.getElementById('pk-val').textContent = pBranch.toFixed(2);
+      drawOrbits();
+    });
+
+    document.getElementById('sig-slider').addEventListener('input', (e) => {
+      sigma = parseFloat(e.target.value);
+      document.getElementById('sig-val').textContent = sigma.toFixed(3);
+      drawOrbits();
+    });
+
+    document.getElementById('m-slider').addEventListener('input', (e) => {
+      ensembleSize = parseInt(e.target.value, 10);
+      document.getElementById('m-val').textContent = ensembleSize;
+      drawOrbits();
+    });
+
+    document.getElementById('btn-eminuse').addEventListener('click', () => {
+      seedC = { re: Math.exp(-Math.E), im: 0.0 };
+      drawOrbits();
+    });
+
+    document.getElementById('btn-e1overe').addEventListener('click', () => {
+      seedC = { re: Math.exp(1 / Math.E), im: 0.0 };
+      drawOrbits();
+    });
+
+    document.getElementById('btn-resample').addEventListener('click', drawOrbits);
+    window.addEventListener('resize', resize);
+    resize();
+  

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <title>Complex tetration &amp; sheet jumps · Gemini · EncapsulatorP</title>
+  <meta name="description" content="Explore Gemini’s complex power-tower basin, principal orbit and stochastic sheet-jump ensemble with the original parameters and critical-base presets.">
+  <link rel="icon" href="../assets/favicon-32.png">
+  <link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="complex-tetration.css">
+  <script src="runtime.js?v=restore-20261121" defer></script>
+  <script src="complex-tetration.js" defer></script>
+</head>
+<body>
+<main class="ix-exhibit">
+  <header class="ix-header"><div><p class="ix-kicker">Interactive · Finite complex dynamics</p><h1>Complex tetration &amp; sheet jumps</h1><p>Gemini’s Shell–Thron basin explorer: a principal power tower in white, surrounded by a stochastic ensemble. Click the complex plane to choose a base.</p></div><div class="ix-signature">Gemini<small>Complex tetration<br>Interactive concept · Atlas adaptation</small></div></header>
+  <p class="ix-boundary"><strong>Claim boundary</strong>The basin colors report a finite numerical test of principal-branch iteration. Sheet jumps define a separate stochastic experiment. Neither finite survival nor a small successive difference proves convergence.</p>
+  <section id="widget" aria-label="Complex tetration controls and basin"></section>
+  <noscript><p>The basin and controls need JavaScript. The exact iteration and limits remain readable below.</p></noscript>
+  <details class="ix-notes" open>
+    <summary>Iteration, sheet jumps &amp; source notes</summary>
+    <p class="ix-equation">z₀ = c; zₙ₊₁ = exp(zₙ [ln|c| + i(arg c + 2πkₙ)]).</p>
+    <ul>
+      <li>The background uses the principal logarithm, kₙ = 0. Blue marks a successive-step difference below 10⁻⁴; dark blue means the run has not escaped or met that tolerance in N updates. Brown records an escape. The image samples bases c; the overlaid paths plot the iterated states z on the same complex scale.</li>
+      <li>Each ensemble orbit gets one perturbed base c + σ(ξ + iη), with independent standard normal ξ and η. At each update kₙ is freshly chosen: 0 with probability 1 − pₖ, or −1 and +1 with probability pₖ/2 each. The sheet index is <em>not</em> accumulated. Amber dots mark sampled nonzero choices.</li>
+      <li>The original safety limits are retained: escape at |z|² &gt; 10⁸, a non-finite value, or an exponential real part &gt; 25. “Survived” means only that none of those events occurred within the chosen N. Escape steps are displayed starting at 1.</li>
+      <li>The real presets c = e<sup>−e</sup> and c = e<sup>1/e</sup>, the original complex seed 1.32 + 0.38i, all four parameter ranges, the white principal orbit and blue/red ensemble paths are preserved. The logarithm at c = 0 is left undefined instead of silently replacing zero. Bases with |c| &lt; 10⁻¹² are excluded at the source’s numerical cutoff; survival uses only valid ensemble paths and reports excluded attempts separately.</li>
+      <li>Resample draws a fresh ensemble; resizing preserves it. The basin is drawn progressively at a finite raster resolution so the controls remain responsive. Changing pₖ, σ or M changes the ensemble, while the background remains a principal-branch experiment.</li>
+    </ul>
+    <p>For the mathematical convergence problem behind the Shell–Thron name, see I. N. Baker and P. J. Rippon, <a href="https://www.acadsci.fi/mathematica/Vol08/vol08pp179-186.pdf">Convergence of infinite exponentials (1983)</a>. The random sheet choices here are Gemini’s chosen visual experiment.</p>
+    <p class="ix-source-code">Gemini source: <code>gemini-code-1795274340354.html</code>. <a href="sources/gemini-complex-tetration-original.js.txt">Read the supplied topic script</a> or <a href="sources.json">inspect the complete source inventory</a>.</p>
+  </details>
+  <footer class="ix-footer"><a href="index.html?topic=complex-tetration">All interactive contributions</a><a href="../index.html#towers">Towers laboratory</a><a href="../atlas/gemini-interactive-notes.md">Adaptation notes</a></footer>
+</main>
+</body>
+</html>
