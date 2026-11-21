@@ -192,9 +192,9 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 @media(max-width:860px){.board{grid-template-columns:1fr}.nextstrip{grid-template-columns:1fr;gap:4px}}
 .cm-wrap{max-width:1300px;margin:auto;padding:36px 24px}.cm-kicker{font:11px monospace;letter-spacing:.2em;text-transform:uppercase;color:#8bb9ec}.cm-title{font:500 clamp(38px,6vw,76px)/1.05 Georgia,serif;margin:18px 0}.cm-title em{color:#9bb8ed}.cm-intro{max-width:75ch;color:#b5c4df}.cm-stage{position:relative;overflow:hidden;border:1px solid #3a506e;border-radius:22px;background:#080f1e;margin-top:28px;box-shadow:0 25px 100px #0006}.cm-stage canvas{display:block;width:100%;height:540px;touch-action:none;cursor:grab}.cm-hud{position:absolute;left:22px;top:18px;pointer-events:none;text-shadow:0 2px 8px #000;font:11px monospace;letter-spacing:.08em;color:#d6eaff}.cm-sign{position:absolute;right:22px;bottom:16px;font:italic 21px Georgia;color:#d8eaff;pointer-events:none}.cm-controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:22px 0}.cm-controls button,.cm-presets button{border:1px solid #435d83;border-radius:22px;background:#101f36;color:#d9e7fb;padding:10px 16px;cursor:pointer;font:12px monospace}.cm-presets{display:flex;gap:9px;flex-wrap:wrap}.cm-presets button[aria-pressed=true]{background:#bdd3f5;color:#101f36;border-color:#bdd3f5}.cm-controls input{accent-color:#adcdf3;width:150px}.cm-controls label{font:12px monospace}.cm-note{font:12px/1.8 monospace;color:#a7bad6;max-width:100ch}.cm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}.cm-card{border:1px solid #304662;border-radius:16px;padding:22px;background:#101b2e}.cm-card h3{font:24px Georgia;margin:0 0 12px;color:#d6eaff}.cm-card p{font-size:14px;color:#b7c6dc}.cm-eq{font:13px/1.8 monospace;color:#a7d2e0;overflow-wrap:anywhere}.cm-stripe{height:12px;background:repeating-linear-gradient(100deg,#dce8f7 0 6px,#0b1527 6px 16px);opacity:.7;margin-top:38px}.cm-link{color:#bfd7fb}@media(max-width:700px){.cm-grid{grid-template-columns:1fr}.cm-stage canvas{height:420px}.cm-wrap{padding:24px 16px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
 
-.story-search{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:24px 0}
-.story-search[hidden],.story[hidden]{display:none}
-.story-search input{font:inherit;color:var(--ink);background:var(--card);border:1px solid #7D91B5;border-radius:8px;padding:7px 11px;flex:1 1 220px;max-width:340px;min-width:0}
+.story-filters{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:24px 0}
+.story-filters[hidden],.story[hidden]{display:none}
+.story-filters select{font:inherit;color:var(--ink);background:var(--card);border:1px solid #7D91B5;border-radius:8px;padding:7px 11px;flex:1 1 220px;max-width:340px;min-width:0}
 #buried-story-count,.story-link{font:12px "IBM Plex Mono",monospace;color:#183463}
 .story-grid{align-items:start}
 .story{scroll-margin-top:66px}
@@ -604,9 +604,19 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <div class="wrap">
 <h2 class="t" id="buried-stories-title">Buried <em>Chat Stories.</em></h2>
 <p class="lead">A year of EncapsulatorP research conversations, revisited through the calculations, experiments and questions they left behind.</p>
-<div class="story-search" hidden>
-<label for="buried-story-search">Find a story</label>
-<input id="buried-story-search" type="search" placeholder="Search Ω, Collatz, Catalan…">
+<div class="story-filters" hidden>
+<label for="buried-story-topic">Topic</label>
+<select id="buried-story-topic">
+<option value="">All topics</option>
+<option value="towers">Towers and Ω</option>
+<option value="collatz">Collatz and time reversals</option>
+<option value="zeta">Zeta, Catalan and kernels</option>
+<option value="primes">Prime pairs and primality tests</option>
+<option value="recurrences">Ramanujan, Shapiro and recurrences</option>
+<option value="sequences">Digits, units and sequences</option>
+<option value="spectral">Spectral experiments</option>
+<option value="corrections">Corrections and demoted approaches</option>
+</select>
 <span id="buried-story-count" role="status" aria-live="polite"></span>
 <button type="button" class="story-toggle" id="buried-toggle-all">Collapse all stories</button>
 </div>
@@ -623,7 +633,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a href="#buried-prime-polarity">Demoted approaches</a>
 </nav>
 <div class="grid story-grid">
-<article class="card story" id="buried-omega-feedback" style="--e:#3f7a00">
+<article class="card story" id="buried-omega-feedback" data-topics="towers" style="--e:#3f7a00">
 <span class="tag">Exact fixed point</span>
 <h3 class="sub">The Ω series · from feedback to waves</h3>
 <p>Close a Beer–Lambert attenuation rule into the scalar loop x ↦ exp(−gx). At unit gain the steady value is the Omega constant. Change the gain to see where the fixed point loses linear stability.</p>
@@ -647,7 +657,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="https://github.com/EncapsulatorP/c3._2z">Omega Stability and Prime Forms</a>
 </article>
 
-<article class="card story" id="buried-collatz-riemann-reversal" style="--e:#3f7a00">
+<article class="card story" id="buried-collatz-riemann-reversal" data-topics="collatz zeta corrections" style="--e:#3f7a00">
 <span class="tag">Exact correction</span>
 <h3 class="sub">The Collatz–Riemann hint that turned around</h3>
 <p>One version of the hint put Riemann zeros upstream of Collatz collapse. Another tried to detect a failed orbit through a singularity. A stopping-time weight exposed a flaw in that second step. If τ(n) is infinite, exp(−βτ(n)) can be set to zero, and skipping that term supplies no automatic singularity.</p>
@@ -658,7 +668,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="#buried-complex-collatz">One integer rule, many complex maps</a>
 </article>
 
-<article class="card story" id="buried-bubble-tube" style="--e:#c95a00">
+<article class="card story" id="buried-bubble-tube" data-topics="zeta" style="--e:#c95a00">
 <span class="tag">Speculative model · exact kernel</span>
 <h3 class="sub">The bubble, the tube, and a quarter-turn</h3>
 <p>Can something collapse sideways and still travel along an axis? The bubble-versals-tube conversation let those directions evolve separately. A bubble or geode provides a possible shape for that idea.</p>
@@ -673,7 +683,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </details>
 <a class="story-link" href="#buried-catalan-quarter-turn">Catalan at the centre of a disk</a>
 </article>
-<article class="card story" id="buried-critical-tower" style="--e:#3f7a00">
+<article class="card story" id="buried-critical-tower" data-topics="towers" style="--e:#3f7a00">
 <span class="tag">Exact asymptotic</span>
 <h3 class="sub">The tower that slows down</h3>
 <p>What happens at the upper endpoint of the real power tower? For <var>x</var><sub>0</sub> = 1 and <var>x</var><sub>n+1</sub> = exp(<var>x</var><sub>n</sub>/e), the fixed point e has slope one. The distance to e decays like 2e/n.</p>
@@ -683,7 +693,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="#tetra">Compare with the alternating towers</a>
 </article>
 
-<article class="card story" id="buried-brun-crossing" style="--e:#0c766c">
+<article class="card story" id="buried-brun-crossing" data-topics="towers primes corrections" style="--e:#0c766c">
 <span class="tag">Empirical</span>
 <h3 class="sub">How close was 1.11 to Brun?</h3>
 <p>The upper fixed point of <var>b</var><sup><var>b</var><sup>−<var>x</var></sup></sup> at <var>b</var> = 1.11 is about 1.09753407. Its excess over one is about 0.00030535 below the Brun deficit 2 − B<sub>2</sub>.</p>
@@ -693,7 +703,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="https://github.com/EncapsulatorP/Some_playful_boundary_paths_and_brun_twin_prime_sign_flipping_towers">Boundary-residue experiments</a>
 </article>
 
-<article class="card story" id="buried-phase-integral" style="--e:#3f7a00">
+<article class="card story" id="buried-phase-integral" data-topics="zeta" style="--e:#3f7a00">
 <span class="tag">Exact identity</span>
 <h3 class="sub">A phase inside the Sophomore’s dream</h3>
 <p>A June note put a complex phase in the exponent of an integral. For |a| = 1, ∫<sub>0</sub><sup>1</sup> u<sup>−au</sup> du = ∑<sub>n≥1</sub> a<sup>n−1</sup>/n<sup>n</sup>. The familiar value ≈ 1.291286 appears anywhere the phase returns to 1.</p>
@@ -702,7 +712,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </details>
 </article>
 
-<article class="card story" id="buried-euler-wheel" style="--e:#3f7a00">
+<article class="card story" id="buried-euler-wheel" data-topics="zeta primes" style="--e:#3f7a00">
 <span class="tag">Exact factorization</span>
 <h3 class="sub">The 210-wheel as an Euler product</h3>
 <p>Remove the primes 2, 3, 5 and 7, and the remaining prime factors split among the 48 coprime remainders modulo 210. For Re(s) &gt; 1, multiplying the 48 class products reconstructs ζ(s) with those four Euler factors removed.</p>
@@ -712,7 +722,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="https://github.com/EncapsulatorP/Periodic-Table-of-Primes-210">PTP-210 prime generator</a>
 </article>
 
-<article class="card story" id="buried-goldbach-spine" style="--e:#3f7a00">
+<article class="card story" id="buried-goldbach-spine" data-topics="primes" style="--e:#3f7a00">
 <span class="tag">Exact obstruction</span>
 <h3 class="sub">Where the twin-prime line meets the spine</h3>
 <p>On Goldbach’s power-of-two spine, set the centre m = 2<sup>k</sup>. For k ≥ 1 and both primes above 3, the half-gap d must be 3 modulo 6. The line d = 1 meets the spine only at the pair 3 and 5.</p>
@@ -722,7 +732,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="#goldbach">Prime-pair geometry</a>
 </article>
 
-<article class="card story" id="buried-collatz-repunit" style="--e:#3f7a00">
+<article class="card story" id="buried-collatz-repunit" data-topics="collatz sequences" style="--e:#3f7a00">
 <span class="tag">Exact finite flight</span>
 <h3 class="sub">The first k steps of a binary repunit</h3>
 <p>Start the shortcut Collatz map at 2<sup>k</sup> − 1. After j steps the value is 3<sup>j</sup>2<sup>k−j</sup> − 1 for 0 ≤ j ≤ k. The orbit hands a string of ones to a power of three minus one.</p>
@@ -732,7 +742,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="#embed">Collatz experiments</a>
 </article>
 
-<article class="card story" id="buried-catalan-quarter-turn" style="--e:#3f7a00">
+<article class="card story" id="buried-catalan-quarter-turn" data-topics="zeta" style="--e:#3f7a00">
 <span class="tag">Exact identities</span>
 <h3 class="sub">Catalan at the centre of a disk</h3>
 <p>A quarter-turn yields χ<sub>4</sub>(n) = sin(πn/2). Weighted by n<sup>−2</sup>, these signs sum to Catalan’s constant. The coordinate w = (s − 2)/(s + 1) puts s = 2 at the centre and Re(s) = ½ on the rim.</p>
@@ -741,7 +751,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </details>
 </article>
 
-<article class="card story" id="buried-omega-order" style="--e:#3f7a00">
+<article class="card story" id="buried-omega-order" data-topics="towers spectral" style="--e:#3f7a00">
 <span class="tag">Exact local expansion</span>
 <h3 class="sub">The wave hiding in reversed order</h3>
 <p>Two prime layers T<sub>p</sub>(x) = Ωp<sup>Ω−x</sup> can agree at Ω and share a slope while retaining different curvatures. Their half-difference gives a signed second harmonic for a small sinusoidal drive.</p>
@@ -751,7 +761,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="https://github.com/EncapsulatorP/c3._2z">Prime Forms and The Order of Waves</a>
 </article>
 
-<article class="card story" id="buried-light-digits" style="--e:#3f7a00">
+<article class="card story" id="buried-light-digits" data-topics="towers sequences" style="--e:#3f7a00">
 <span class="tag">Exact encoding</span>
 <h3 class="sub">The third factor hiding in 299792458</h3>
 <p>Counting prime factors in each decimal digit of c in m/s gives 122121213. A cap of two gives 122121212. Both differ at a single digit because 8 = 2³.</p>
@@ -761,7 +771,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="https://github.com/EncapsulatorP/c3._2z">Unit experiments in Prime Forms</a>
 </article>
 
-<article class="card story" id="buried-complex-collatz" style="--e:#c95a00">
+<article class="card story" id="buried-complex-collatz" data-topics="collatz spectral" style="--e:#c95a00">
 <span class="tag">Conjectural</span>
 <h3 class="sub">One integer rule, many complex maps</h3>
 <p>Add a sin(πz) term to a complex Collatz extension. Every integer step survives exactly because the sine vanishes there, while off-integer orbits and zeros may move.</p>
@@ -771,7 +781,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="#scape">Collatz Metamorphoses</a>
 </article>
 
-<article class="card story" id="buried-xo2" style="--e:#697994">
+<article class="card story" id="buried-xo2" data-topics="zeta spectral" style="--e:#697994">
 <span class="tag">Speculative model · finite computation</span>
 <h3 class="sub">XO₂ · turn the geometron over</h3>
 <p>Pick a point, lift it to either square-root sheet, feed that value to ζ, then wrap the result in a three-term geometric sum. The two surfaces come from the same input plane.</p>
@@ -789,7 +799,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="https://github.com/EncapsulatorP/zeta_branching/blob/main/scripts/zeta_branching.py#L23-L61">Read the XO₂ kernel and branch control</a>
 </article>
 
-<article class="card story" id="buried-recaman" style="--e:#c95a00">
+<article class="card story" id="buried-recaman" data-topics="sequences" style="--e:#c95a00">
 <span class="tag">Conjectural follow-up</span>
 <h3 class="sub">Can a Recamán hole survive a second horizon?</h3>
 <p>A reachable test asks whether values unvisited at step N remain unvisited at 2N. The earlier Grassmannian run at 20,000 steps had weak separation from shuffled labels, and its window rank matched the null.</p>
@@ -799,7 +809,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="CONTENT_MAP.md">Recorded Grassmannian run</a>
 <a class="story-link" href="https://github.com/EncapsulatorP/recaman">Recamán experiments</a>
 </article>
-<article class="card story" id="buried-zeta-partitionings" style="--e:#3f7a00">
+<article class="card story" id="buried-zeta-partitionings" data-topics="zeta" style="--e:#3f7a00">
 <span class="tag">Exact decomposition</span>
 <h3 class="sub">Zeta partitionings · separating the lanes</h3>
 <p>The 210-wheel story started with admissible remainders. In the region Re(s) &gt; 1, each prime belongs to one lane after removing 2, 3, 5 and 7, and each Euler factor comes along with it.</p>
@@ -810,7 +820,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="#atlas?entry=prime-sectors">Zetheon and the weighted sectors</a>
 </article>
 
-<article class="card story" id="buried-time-reversal" style="--e:#3f7a00">
+<article class="card story" id="buried-time-reversal" data-topics="collatz spectral" style="--e:#3f7a00">
 <span class="tag">Exact symmetry · conditional on the model</span>
 <h3 class="sub">Time reversals · the zero cloud in the mirror</h3>
 <p>The root scans compared positive and negative indices. For a branch on a conjugation-invariant domain with H(z̄) = H(z)̄, putting Q<sub>k</sub>(z) = H(z) − 2πik gives Q<sub>−k</sub>(z̄) = Q<sub>k</sub>(z)̄.</p>
@@ -820,7 +830,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="#atlas?entry=paired-cancellation">Conjugate-pair cancellation</a>
 </article>
 
-<article class="card story" id="buried-ramanujan-23" style="--e:#3f7a00">
+<article class="card story" id="buried-ramanujan-23" data-topics="recurrences" style="--e:#3f7a00">
 <span class="tag">Exact coefficient congruence</span>
 <h3 class="sub">Ramanujan · the coefficient ring modulo 23</h3>
 <p>Reduce the discriminant series Δ(q) = q∏<sub>n≥1</sub>(1 − q<sup>n</sup>)<sup>24</sup> coefficient by coefficient modulo 23. Its product becomes q∏<sub>n≥1</sub>(1 − q<sup>n</sup>)(1 − q<sup>23n</sup>).</p>
@@ -831,7 +841,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="https://gaetan.chenevier.perso.math.cnrs.fr/GT/wilton.pdf">Wilton on congruences for τ</a>
 </article>
 
-<article class="card story" id="buried-shapiro-rings" style="--e:#3f7a00">
+<article class="card story" id="buried-shapiro-rings" data-topics="recurrences spectral" style="--e:#3f7a00">
 <span class="tag">Exact identity · root plots exploratory</span>
 <h3 class="sub">Shapiro rings · a perfectly balanced circle</h3>
 <p>In the recovered story, “Shapiro rings” meant the Rudin–Shapiro pair. Starting with P<sub>0</sub> = Q<sub>0</sub> = 1, set P<sub>j+1</sub> = P<sub>j</sub> + z<sup>2ʲ</sup>Q<sub>j</sub> and Q<sub>j+1</sub> = P<sub>j</sub> − z<sup>2ʲ</sup>Q<sub>j</sub>. On |z| = 1 their squared magnitudes sum to 2<sup>j+1</sup>.</p>
@@ -841,7 +851,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="https://annals.math.princeton.edu/wp-content/uploads/annals-v192-n3-p06-s.pdf">Rudin–Shapiro definitions and circle identity</a>
 </article>
 
-<article class="card story" id="buried-golden-plastic" style="--e:#3f7a00">
+<article class="card story" id="buried-golden-plastic" data-topics="recurrences" style="--e:#3f7a00">
 <span class="tag">Exact generating functions</span>
 <h3 class="sub">Golden and plastic · two recurrences, one seed</h3>
 <p>The golden ratio solves x² = x + 1; the plastic constant solves x³ = x + 1. Reversing these polynomials gives the Fibonacci and Padovan generating denominators, 1 − z − z² and 1 − z² − z³.</p>
@@ -851,7 +861,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="#buried-perrin-pseudoprime">The plastic recurrence’s prime-test trap</a>
 </article>
 
-<article class="card story" id="buried-perrin-pseudoprime" style="--e:#6b52a1">
+<article class="card story" id="buried-perrin-pseudoprime" data-topics="primes recurrences corrections" style="--e:#6b52a1">
 <span class="tag">Exact counterexample</span>
 <h3 class="sub">The plastic recurrence that let 521² through</h3>
 <p>The Perrin sequence P<sub>0</sub> = 3, P<sub>1</sub> = 0, P<sub>2</sub> = 2 with P<sub>n</sub> = P<sub>n−2</sub> + P<sub>n−3</sub> satisfies P<sub>p</sub> ≡ 0 (mod p) at every prime. The same test accepts 271441 = 521².</p>
@@ -861,7 +871,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="#buried-golden-plastic">Return to the plastic denominator</a>
 </article>
 
-<article class="card story" id="buried-zp-asymptotic" style="--e:#3f7a00">
+<article class="card story" id="buried-zp-asymptotic" data-topics="zeta primes" style="--e:#3f7a00">
 <span class="tag">Exact asymptotic</span>
 <h3 class="sub">Z(p) · subtract the smooth part first</h3>
 <p>Extend Z to n &gt; 2 through Z(n) = 1 + exp(πζ(n−1)/n). Then Z(n) = 2 + π/n + π²/(2n²) + O(n<sup>−3</sup>). The dominant change is a trend in the input n.</p>
@@ -871,7 +881,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="#atlas?entry=zp-even-zeta">The Bernoulli reduction at odd primes</a>
 </article>
 
-<article class="card story" id="buried-prime-polarity" style="--e:#6b52a1">
+<article class="card story" id="buried-prime-polarity" data-topics="primes spectral corrections" style="--e:#6b52a1">
 <span class="tag">Demoted · raw rank score</span>
 <h3 class="sub">Prime–transcendental polarity · a rank in disguise</h3>
 <p>The raw Z(n) decreases strictly for n &gt; 2. On the same sample, its exact ranking is identical to the ranking by −n. A raw AUC inherits all the effects of that ordering and any density drift across the window.</p>
@@ -881,7 +891,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="https://github.com/EncapsulatorP/prime-polarity">Prime Polarity code and scoring rules</a>
 </article>
 
-<article class="card story" id="buried-spectral-artifacts" style="--e:#6b52a1">
+<article class="card story" id="buried-spectral-artifacts" data-topics="spectral corrections" style="--e:#6b52a1">
 <span class="tag">Demoted · detector artifact</span>
 <h3 class="sub">The spectral plot that inherited a spacing rule</h3>
 <p>A minimum-distance setting forces neighboring detected peaks apart. A spacing deficit below that distance can therefore come from the detector, even when the underlying signal carries no such repulsion.</p>
@@ -891,7 +901,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="#atlas?entry=spectral-comparison">The spectral comparison plan</a>
 </article>
 
-<article class="card story" id="buried-pi-six-prefix" style="--e:#6b52a1">
+<article class="card story" id="buried-pi-six-prefix" data-topics="sequences corrections" style="--e:#6b52a1">
 <span class="tag">Demoted · numerical resemblance</span>
 <h3 class="sub">Where the π/6 continued fractions part</h3>
 <p>A κ³ experiment reported 0.5237429570121888, close to π/6 ≈ 0.5235987755982989. The displayed number and π/6 share the continued-fraction prefix [0; 1, 1, 10]. Their next coefficients are 33 and 10.</p>
@@ -901,7 +911,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="https://github.com/EncapsulatorP/rolt-phi-kappa3_expand">The κ³ project</a>
 </article>
 
-<article class="card story" id="buried-digit-factor-collision" style="--e:#6b52a1">
+<article class="card story" id="buried-digit-factor-collision" data-topics="sequences corrections" style="--e:#6b52a1">
 <span class="tag">Exact counterexample</span>
 <h3 class="sub">The digit encoding that confused 6 and 9</h3>
 <p>The largest prime factor and the number of prime factors, counted with multiplicity, give the same pair (3, 2) for 6 and 9. The positional tower needs more information if it is to recover every input digit.</p>
@@ -911,7 +921,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="#buried-light-digits">The light-speed digit encoding</a>
 </article>
 
-<article class="card story" id="buried-depth-product-counterexample" style="--e:#6b52a1">
+<article class="card story" id="buried-depth-product-counterexample" data-topics="towers corrections" style="--e:#6b52a1">
 <span class="tag">Exact counterexample</span>
 <h3 class="sub">Two smooth-looking profiles, two peaks</h3>
 <p>The recursive-depth toy model multiplies a gain profile by a stability profile. Unimodality of both factors is too weak to ensure a single maximum pattern in their product.</p>
@@ -1149,7 +1159,7 @@ function show(){
  tabs.forEach(function(a){if(a.dataset.tab===name)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
  var el=(id!==name)&&document.getElementById(id);
  if(storyPanels.has(el)){
-  if(el.hidden){search.value='';filterStories();}
+  if(el.hidden){topic.value='';filterStories();}
   setStoryOpen(storyPanels.get(el),true);updateBulkLabel();
   var evidence=el.querySelector('details');
   if(evidence)evidence.open=true;
@@ -1157,9 +1167,9 @@ function show(){
  if(el&&alias[id])el.scrollIntoView();else window.scrollTo(0,0);
  window.dispatchEvent(new Event('resize'));
 }
-var search=document.getElementById('buried-story-search');
+var topic=document.getElementById('buried-story-topic');
 var counter=document.getElementById('buried-story-count');
-var storyIndex=stories.map(function(story){return normalize(story.textContent);});
+var storyTopics=stories.map(function(story){return story.dataset.topics.split(' ');});
 var bulk=document.getElementById('buried-toggle-all');
 var storyPanels=new Map(stories.map(function(story){
  var heading=story.querySelector('h3'),body=document.createElement('div'),button=document.createElement('button');
@@ -1188,19 +1198,21 @@ bulk.addEventListener('click',function(){
  storyPanels.forEach(function(panel){setStoryOpen(panel,open);});updateBulkLabel();
 });
 
-function normalize(text){return text.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
 function filterStories(){
- var terms=normalize(search.value).trim().split(/\s+/).filter(Boolean);
- var count=0;
+ var selected=topic.value,count=0;
  stories.forEach(function(story,i){
-  var match=terms.every(function(term){return storyIndex[i].includes(term);});
+  var match=!selected||storyTopics[i].includes(selected);
   story.hidden=!match;
   if(match)count++;
  });
  counter.textContent=count+' of '+stories.length+' stories';
 }
-search.addEventListener('input',filterStories);
-search.closest('.story-search').hidden=false;
+topic.addEventListener('change',function(){
+ filterStories();
+ var linkedStory=document.getElementById(location.hash.slice(1));
+ if(storyPanels.has(linkedStory)&&linkedStory.hidden)history.replaceState(history.state,'','#buried-chat-stories');
+});
+topic.closest('.story-filters').hidden=false;
 filterStories();
 window.addEventListener('hashchange',show);show();
 })();
