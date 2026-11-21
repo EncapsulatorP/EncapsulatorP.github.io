@@ -53,3 +53,9 @@ Pause, reduced-motion handling, opening cancellation on direct manipulation, vis
 Public mathematics and private physics remain separate. No private physics notebook content or personal context is introduced by this visual release. Credits distinguish Zolton’s direction, Neon/Gemini’s supplied prototype and image reference, Claude’s table/unfolding interaction reference, and ChatGPT’s current implementation. Historical assistant versions are not inferred from dates.
 
 Five forms plus five voyages is equal catalogue representation. It is not randomized traffic allocation and does not establish a winner. The versioned A/B measurement proposal and later adaptive-selection conditions are recorded in [rendering-experiment.md](rendering-experiment.md). No reinforcement-learning system or measured conversion improvement is claimed for this release.
+
+## Published verification
+
+The main entrance was promoted in [`4a954e809d634eb5708787c9e2f223a3ae6ddb05`](https://github.com/EncapsulatorP/EncapsulatorP.github.io/commit/4a954e809d634eb5708787c9e2f223a3ae6ddb05). Both Proof HTML and GitHub Pages deployment completed successfully. The deployed `index.html` was observed with the workbench, original logo, two five-member collections and the current rendering assets.
+
+The live page also passed a 1024 px frame check with no horizontal overflow. Pause held all nine projected landmark positions steady; Play restored motion. The [published visual record](../qa/evidence/README.md) includes the shared workbench and the larger standalone tensegrity.
