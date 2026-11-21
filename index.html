@@ -204,6 +204,16 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 .story summary{cursor:pointer;font-size:13px;color:#183463}
 .story details p{margin:8px 0}
 .story-link{margin-top:10px;text-underline-offset:3px;width:fit-content}
+.story-jumps{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.story-jumps a{font:600 12px "IBM Plex Mono",monospace;color:#183463;background:var(--card);border:1px solid #7D91B5;border-radius:999px;padding:7px 12px;text-decoration:none}
+.story-jumps a:hover,.story-jumps a:focus-visible{color:#fff;background:#183463}
+.story:target{box-shadow:0 0 0 3px #557CDB}
+.story-demo{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;padding:10px 11px;margin:0 0 12px;border:1px solid #C9D4E8;border-radius:9px;background:var(--paper);font:13px "IBM Plex Mono",monospace}
+.story-demo[hidden]{display:none}
+.story-demo select,.story-demo input{font:inherit;color:var(--ink);max-width:100%}
+.story-demo output{color:#183463;flex-basis:100%;line-height:1.55}
+.story-art{display:block;width:min(100%,360px);height:auto;border-radius:8px;margin-top:10px}
+
 </style></head>
 <body>
 
@@ -476,7 +486,63 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <input id="buried-story-search" type="search" placeholder="Search Ω, Collatz, Catalan…">
 <span id="buried-story-count" role="status" aria-live="polite"></span>
 </div>
+<nav class="story-jumps" aria-label="Featured stories">
+<a href="#buried-omega-feedback">Ω series</a>
+<a href="#buried-collatz-riemann-reversal">The reversed hint</a>
+<a href="#buried-bubble-tube">Bubble tube</a>
+<a href="#buried-xo2">XO₂ geometron</a>
+</nav>
 <div class="grid story-grid">
+<article class="card story" id="buried-omega-feedback" style="--e:#3f7a00">
+<span class="tag">Exact fixed point</span>
+<h3 class="sub">The Ω series · from feedback to waves</h3>
+<p>Close a Beer–Lambert attenuation rule into the scalar loop x ↦ exp(−gx). At unit gain the steady value is the Omega constant. Change the gain to see where the fixed point loses linear stability.</p>
+<div class="story-demo" data-story-demo="omega" hidden>
+<label for="omega-story-gain">Feedback gain</label>
+<select id="omega-story-gain">
+<option value="1">1 · Ω fixed point</option>
+<option value="e">e · flip boundary</option>
+<option value="3.2">3.2 · repelling fixed point</option>
+</select>
+<output for="omega-story-gain" aria-live="polite"></output>
+</div>
+<details><summary>Follow the Ω series</summary>
+<p><strong>Feedback.</strong> The positive fixed point solves gx exp(gx) = g, so x<sub>*</sub> = W(g)/g and the multiplier is −W(g). At g = 1 this gives Ω = W(1) ≈ 0.56714329. At g = e the slope is −1.</p>
+<p><strong>Prime layers.</strong> The pair 2 → 7 has multiplier ≈ 0.433844 at Ω, while 5 → 7 gives ≈ 1.007355. <a href="#buried-omega-order">Reverse either pair</a> and the slope survives, while the quadratic difference between the orders changes sign.</p>
+<p><strong>Tower remainder.</strong> The Omega Stability notebook measures a different quantity. It carries an output perturbation ε back through iterated logarithms, one layer at a time. That remainder belongs to the chosen tower and perturbation. Ω(n), the arithmetic count of prime factors with multiplicity, appears in <a href="#lemmas">Hibernating Lemmas</a>.</p>
+<a href="https://github.com/EncapsulatorP/c3._2z">
+<img class="story-art" src="https://raw.githubusercontent.com/EncapsulatorP/c3._2z/main/assets/omega-readme-banner.svg" alt="Omega Stability, the iterated-logarithm and tower remainder notebook" width="1200" height="630" loading="lazy">
+</a>
+</details>
+<a class="story-link" href="https://github.com/EncapsulatorP/c3._2z">Omega Stability and Prime Forms</a>
+</article>
+
+<article class="card story" id="buried-collatz-riemann-reversal" style="--e:#3f7a00">
+<span class="tag">Exact correction</span>
+<h3 class="sub">The Collatz–Riemann hint that turned around</h3>
+<p>One version of the hint put Riemann zeros upstream of Collatz collapse. Another tried to detect a failed orbit through a singularity. A stopping-time weight exposed a flaw in that second step. If τ(n) is infinite, exp(−βτ(n)) can be set to zero, and skipping that term supplies no automatic singularity.</p>
+<details><summary>What failed, and what the reverse route gives</summary>
+<p>For β &gt; 0, the Dirichlet series with terms exp(−βτ(n))n<sup>−s</sup> converges absolutely for Re(s) &gt; 1, even with infinite stopping times. Changing the weight at a single index changes the function by a constant times n<sup>−s</sup>, which is entire. Behavior farther left depends on the whole coefficient sequence.</p>
+<p>Start instead with a known orbit and ask what analytic trace it leaves. On 1 → 4 → 2 → 1, the orbit potential ∑q<sup>k</sup>/T<sup>k</sup>(1) has the exact form (1 + q/4 + q²/2)/(1 − q³). Multiplying by 1 − q and taking q ↑ 1 gives 7/12. Here the cycle produces the pole in an orbit generating function. Relating an orbit observable to the Riemann zeta function remains an open step.</p>
+</details>
+<a class="story-link" href="#buried-complex-collatz">One integer rule, many complex maps</a>
+</article>
+
+<article class="card story" id="buried-bubble-tube" style="--e:#c95a00">
+<span class="tag">Speculative model · exact kernel</span>
+<h3 class="sub">The bubble, the tube, and a quarter-turn</h3>
+<p>Can something collapse sideways and still travel along an axis? The bubble-versals-tube conversation let those directions evolve separately. A bubble or geode provides a possible shape for that idea.</p>
+<div class="story-demo" data-story-demo="tube" hidden>
+<label for="tube-story-step">Transport steps</label>
+<input id="tube-story-step" type="range" min="0" max="12" value="4">
+<output for="tube-story-step" aria-live="polite"></output>
+</div>
+<details><summary>Two versions grew out of the picture</summary>
+<p><strong>Transport toy.</strong> Use (r, ℓ) ↦ (0.7r, 1.15ℓ), starting at (1, 1). The radius contracts while the longitudinal scale grows. The original discussion suggested a branch selector driven by a compound Collatz state; the slider isolates the geometry with fixed factors.</p>
+<p><strong>The “Tao Green buble integral.”</strong> Damp the odd quarter-turn signs χ<sub>4</sub>(n) by exp(−nt). Their sum is 1/(2 cosh t). Its normalized Mellin integral gives β(s) for Re(s) &gt; 1 and equals Catalan’s constant at s = 2. Restrict the sum at s = 2 to primes in a progression of step divisible by 4 and each term carries the same χ<sub>4</sub> sign. The arithmetic construction leaves the transport picture as a model.</p>
+</details>
+<a class="story-link" href="#buried-catalan-quarter-turn">Catalan at the centre of a disk</a>
+</article>
 <article class="card story" id="buried-critical-tower" style="--e:#3f7a00">
 <span class="tag">Exact asymptotic</span>
 <h3 class="sub">The tower that slows down</h3>
@@ -576,13 +642,21 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </article>
 
 <article class="card story" id="buried-xo2" style="--e:#697994">
-<span class="tag">Speculative model</span>
-<h3 class="sub">A two-sheet zeta specimen</h3>
-<p>The XO₂ prototype feeds w = ζ(z<sup>1/2</sup> + 1.25) into a finite sum of powers of λ/(1 + exp(w)). Crossing the square-root cut changes the input sheet and can change the picture.</p>
-<details><summary>Separate a branch from a rendering effect</summary>
-<p>Evaluate the two square-root choices at the same z and report their difference. Mask the singularities of ζ and mark points where 1 + exp(w) approaches zero. That comparison tests the stated kernel. Any interpretation of the shapes outside this complex map remains speculative.</p>
+<span class="tag">Speculative model · finite computation</span>
+<h3 class="sub">XO₂ · turn the geometron over</h3>
+<p>Pick a point, lift it to either square-root sheet, feed that value to ζ, then wrap the result in a three-term geometric sum. The two surfaces come from the same input plane.</p>
+<div class="story-demo" data-story-demo="xo2" hidden>
+<label for="xo2-story-sheet">Sheet at z = ¼</label>
+<select id="xo2-story-sheet">
+<option value="+">+√z</option>
+<option value="-">−√z</option>
+</select>
+<output for="xo2-story-sheet" aria-live="polite"></output>
+</div>
+<details><summary>What the flip actually changes</summary>
+<p>The repository uses w = ζ(1.25 ± √z) and r = 1/(1 + exp(w)), then returns r + r² + r³ at the default parameters. For z = ¼, the ζ arguments become 7/4 and 3/4. The recorded outputs are about 0.140269 and 2.817643. Rotating the branch cut changes where a renderer switches sheets. The input z = 1/16 also puts the minus sheet at ζ’s pole, so it deserves a separate mask when comparing surfaces.</p>
 </details>
-<a class="story-link" href="https://github.com/EncapsulatorP/zeta_branching">Zeta Branching source</a>
+<a class="story-link" href="https://github.com/EncapsulatorP/zeta_branching/blob/main/scripts/zeta_branching.py#L23-L61">Read the XO₂ kernel and branch control</a>
 </article>
 
 <article class="card story" id="buried-recaman" style="--e:#c95a00">
@@ -845,6 +919,40 @@ search.addEventListener('input',filterStories);
 search.closest('.story-search').hidden=false;
 filterStories();
 window.addEventListener('hashchange',show);show();
+})();
+</script>
+<script>
+(function(){
+ const demos = {
+  omega(value){
+   const g = value === 'e' ? Math.E : Number(value);
+   let low = 0, high = 1;
+   for (let i = 0; i < 44; i++) {
+    const x = (low + high) / 2;
+    if (Math.exp(-g * x) > x) low = x;
+    else high = x;
+   }
+   const x = (low + high) / 2;
+   return 'x* ≈ ' + x.toFixed(8) + ' · slope ≈ ' + (-g * x).toFixed(6);
+  },
+  tube(value){
+   const step = Number(value);
+   return 'Step ' + step + ' · radius ' + (0.7 ** step).toFixed(3) + ' · axial scale ' + (1.15 ** step).toFixed(3);
+  },
+  xo2(value){
+   return value === '+'
+    ? 'ζ input 7/4 · kernel ≈ 0.140269'
+    : 'ζ input 3/4 · kernel ≈ 2.817643';
+  }
+ };
+ document.querySelectorAll('[data-story-demo]').forEach(function(demo){
+  const control = demo.querySelector('input,select');
+  const readout = demo.querySelector('output');
+  const update = () => { readout.textContent = demos[demo.dataset.storyDemo](control.value); };
+  control.addEventListener('input',update);
+  update();
+  demo.hidden = false;
+ });
 })();
 </script></body></html>
 
