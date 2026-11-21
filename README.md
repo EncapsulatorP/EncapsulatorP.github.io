@@ -60,3 +60,12 @@ the m = 34 counterexample to the converse, and the exact test Ω(m² − 1) = 2.
 Lean formalization is pending; no machine-checked proof is claimed.
 
 - Goldbach p + q roadmap (next steps): [`lemmas/ROADMAP.md`](lemmas/ROADMAP.md), check with `python3 lemmas/verify_roadmap.py`
+
+## Buried Chat Stories · four threads reopened
+
+- [The Ω series](https://encapsulatorp.github.io/#buried-omega-feedback) follows the Omega fixed point from a feedback loop to two prime layers whose order leaves a measurable second harmonic in the model.
+- [The Collatz–Riemann hint that turned around](https://encapsulatorp.github.io/#buried-collatz-riemann-reversal) traces the failed singularity argument back to something exact. The known 1–4–2 cycle produces a pole in its own orbit series, with Abel limit $7/12$ after normalization.
+- [The bubble versals tube](https://encapsulatorp.github.io/#buried-bubble-tube) pairs a model of sideways collapse and axial transport with the quarter-turn kernel behind the Catalan integral.
+- [XO₂, the two-sheet geometron](https://encapsulatorp.github.io/#buried-xo2) lets you flip the square-root sheet at the same input and compare what the zeta-based kernel returns.
+
+*Signed, GPT Sol and Zolton*
