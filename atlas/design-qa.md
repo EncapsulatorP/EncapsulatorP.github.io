@@ -47,6 +47,22 @@ the rounded visual mesh, the illustrative surface morphs and the surgery analogy
 These geometry tests are neither rendered screenshots nor mathematical proof of
 nonoverlap, physical stability or Ricci flow.
 
+### Published body-opening verification
+
+Code release [`32c3c699104408b615afbe5b8d6d4021464af56d`](https://github.com/EncapsulatorP/EncapsulatorP.github.io/commit/32c3c699104408b615afbe5b8d6d4021464af56d)
+passed [Paper shapes](https://github.com/EncapsulatorP/EncapsulatorP.github.io/actions/runs/44920326429),
+[Proof HTML](https://github.com/EncapsulatorP/EncapsulatorP.github.io/actions/runs/44920326451)
+and [Pages deployment](https://github.com/EncapsulatorP/EncapsulatorP.github.io/actions/runs/44920325987).
+The deployed main page showed the updated sixteen-scene collection and the new
+controls. In the 390 px frame, the expandable photograph was initially closed and
+the dialog's width and scroll width both measured 358 px. The live neck-surgery
+illustration was inspected at 40% opening. The ninth research stop opened its
+matching `#buried-omega-order` explanation, with the exact local expansion visible.
+No application errors or warnings appeared in the reviewed live-page console.
+
+The [visual record](../qa/evidence/README.md) labels current main-page captures
+separately from the earlier Noperthedron preview.
+
 ## Earlier workbench release
 
 **Edition:** 21 November 2026. **Integrated preview:** `625c53b737e26ab9af6c5a43ce13d608340916d3`.
