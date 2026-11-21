@@ -214,11 +214,14 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 .story-demo output{color:#183463;flex-basis:100%;line-height:1.55}
 .story-art{display:block;width:min(100%,360px);height:auto;border-radius:8px;margin-top:10px}
 
-</style></head>
+</style>
+<link rel="stylesheet" href="assets/research-atlas.css">
+<meta name="description" content="Explore EncapsulatorP’s research atlas: Omega Stability, prime pairs, recursive towers, complex worlds and 45 source-linked mathematical threads.">
+</head>
 <body>
 
 <div class="nav"><div class="in"><a class="lg" href="#home"><img src="assets/logo-encapsulatorp-96.png" alt="" width="24" height="24"><b>Encapsulator</b>P</a>
-<a href="#home" data-tab="home">Home</a><a href="#lemmas" data-tab="lemmas">Lemmas</a><a href="#roadmap" data-tab="roadmap">Next steps</a><a href="#goldbach" data-tab="goldbach">Goldbach</a><a href="#collatz" data-tab="collatz">Collatz</a><a href="#towers" data-tab="towers">Towers</a><a href="#validatron" data-tab="validatron">Validatron</a><a href="#archive" data-tab="archive">Archive</a><a href="#buried-chat-stories" data-tab="buried-chat-stories">Buried Chat Stories</a></div></div>
+<a href="#home" data-tab="home">Home</a><a href="#atlas" data-tab="atlas">Atlas · new</a><a href="#lemmas" data-tab="lemmas">Lemmas</a><a href="#roadmap" data-tab="roadmap">Next steps</a><a href="#goldbach" data-tab="goldbach">Goldbach</a><a href="#collatz" data-tab="collatz">Collatz</a><a href="#towers" data-tab="towers">Towers</a><a href="#validatron" data-tab="validatron">Validatron</a><a href="#archive" data-tab="archive">Archive</a><a href="#buried-chat-stories" data-tab="buried-chat-stories">Buried Chat Stories</a></div></div>
 
 <main>
 <div class="page on" data-page="home">
@@ -228,6 +231,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <h1>Mathematical possibilities,<br><em>encapsulated.</em></h1>
 <p>An open research project exploring prime pairs, Collatz dynamics, recursive towers and mathematical intelligence. Ideas grow through exact arguments, computational experiments and connections across fields.</p>
 <p class="tag">prime-pair geometry · recursive dynamics · hibernating lemmas</p>
+<a class="atlas-home-launch" href="#atlas"><img src="assets/omega-stability-thread-cover.png" width="1200" height="630" alt="Omega Stability: a luminous path through power-tower layers"><span><small>NEW · THE RESEARCH ATLAS</small><strong>Follow a spark.<br>Open a whole thread.</strong><span>45 entries · working exhibits · proofs and next questions</span><b>Enter the atlas →</b></span></a>
 </div></header>
 
 <section class="sec bg-cream" id="research-paths"><div class="wrap">
@@ -242,6 +246,9 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <li><b>004</b><span>For m ≥ 3: Ω(m² − 1) = 2 exactly when m − 1 and m + 1 are prime.</span></li>
 </ul>
 <a class="go" href="#lemmas">Open the Hibernating Lemmas →</a></article>
+<article class="cell" style="--cc:#c95a00"><span class="ck">Positive · awaiting proof</span><h3>Promising observations</h3>
+<p>The tower phase limits and finite prime-pair counts provide concrete computational observations. Each experiment keeps its method and range visible. Evidence strength is assessed separately; this view does not assign a probability of truth.</p>
+<a class="go" href="#goldbach">Explore prime-pair geometry →</a><a class="go" href="#towers">Explore alternating towers →</a></article>
 <article class="cell" style="--cc:#557CDB"><span class="ck">False negative</span><h3>Worth revisiting</h3>
 <p>A place for candidates a method may have missed. No verified false-negative cases are recorded here yet. Future entries will explain the original test, why it missed the result and the evidence supporting reconsideration.</p>
 <span class="empty">0 entries · open for the first one</span></article>
@@ -260,9 +267,6 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <p>Lean status: formalization pending; no machine-checked proof claimed.</p>
 </details></article>
 <p>The Brun crossing matches a reference value by tuning the base; it does not establish a new dynamical transition. Recamán’s main visualization is paused. The <a href="#buried-recaman">finite-horizon follow-up</a> is in Buried Chat Stories.</p></article>
-<article class="cell" style="--cc:#c95a00"><span class="ck">Positive · awaiting proof</span><h3>Promising observations</h3>
-<p>The tower phase limits and finite prime-pair counts provide concrete computational observations. Each experiment keeps its method and range visible. Evidence strength is assessed separately; this view does not assign a probability of truth.</p>
-<a class="go" href="#goldbach">Explore prime-pair geometry →</a><a class="go" href="#towers">Explore alternating towers →</a></article>
 </div>
 <a class="nextstrip" href="#roadmap"><span class="ck">Next steps</span><b>Reflect. Translate. One prime polynomial.</b><span>The Goldbach p + q roadmap: two exact identities to formalize, one open correlation bound. →</span></a>
 <a class="nextstrip" href="#buried-chat-stories"><b>Buried Chat Stories</b><span>Open the research conversations behind the experiments. →</span></a>
@@ -445,6 +449,106 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 
 
 </div>
+<div class="page atlas-page" data-page="atlas">
+  <section class="at-hero" aria-labelledby="atlas-title">
+    <div class="wrap at-hero-grid">
+      <div>
+        <p class="at-eyebrow">EncapsulatorP · research atlas</p>
+        <h2 id="atlas-title">Follow the spark.<br><em>Open the mathematics.</em></h2>
+        <p class="at-intro">Towers, prime pairs and unexpected connections. Pick a thread and explore.</p>
+        <a class="at-hero-link" href="atlas/README.md">Read the complete collection <span aria-hidden="true">↗</span></a>
+      </div>
+      <aside class="at-hero-note" aria-label="About this collection">
+        <span class="at-note-index">CHOOSE A ROUTE / MAKE A CONNECTION</span>
+        <div class="at-metrics" id="atlas-metrics" aria-label="Collection size"></div>
+        <span class="at-edition" id="atlas-edition">A curated recovery from available conversations and source files.</span>
+      </aside>
+    </div>
+  </section>
+  <div class="at-stripe" aria-hidden="true"></div>
+
+  <section class="at-featured wrap" aria-labelledby="at-omega-title">
+    <div class="at-featured-main">
+      <a class="at-featured-image" href="#atlas?entry=omega-stability" aria-label="Open the Omega Stability synthesis">
+        <img src="assets/omega-stability-thread-cover.png" width="1200" height="630" alt="Original Omega Stability cover: iterated-logarithm formulas, rising curves and nested tower layers.">
+      </a>
+      <div class="at-featured-copy">
+        <span class="at-promotion">Featured synthesis</span>
+        <h3 id="at-omega-title">Omega Stability</h3>
+        <p>A thread across iterated logarithms, alternating towers and prime-layer order. Recovered from five or six connected conversations, including a shared branch.</p>
+        <a class="at-featured-link" href="#atlas?entry=omega-stability">Enter the Ω thread <span aria-hidden="true">→</span></a>
+        <details class="at-model-notes"><summary>Open the model notes</summary><p>Response, order and fixed-point structure connect distinct systems in this synthesis. For the p = 5, q = 7 Ω composition, the local multiplier is approximately 1.007355, so that fixed point is repelling. The historical cover title names the thread; each model has its own stability analysis.</p></details>
+      </div>
+    </div>
+    <div class="at-proof-priorities" aria-labelledby="at-ready-title">
+      <div class="at-priority-heading"><h4 id="at-ready-title">Ready to formalize</h4><p>Written proofs · Lean checks pending</p></div>
+      <div class="at-priority-grid">
+        <a href="#atlas?entry=tower-envelope"><span>01 / Recursive dynamics</span><strong>The sharp tower envelope</strong><p>Global contraction and the exact real envelope.</p><b aria-hidden="true">↗</b></a>
+        <a href="#atlas?entry=prime-layer-waves"><span>02 / Prime-layer order</span><strong>The order of waves</strong><p>A local expansion and its signed second harmonic.</p><b aria-hidden="true">↗</b></a>
+        <a href="#atlas?entry=logistic-quarter-turn"><span>03 / Dynamical identities</span><strong>The logistic quarter-turn</strong><p>An exact identity ready for a formal statement.</p><b aria-hidden="true">↗</b></a>
+      </div>
+    </div>
+    <nav class="at-thread-route" aria-labelledby="at-route-title">
+      <div class="at-route-heading"><h4 id="at-route-title">Six doors into the thread.</h4><p>Choose a connection. The details open in place.</p></div>
+      <div class="at-route-grid">
+        <a href="#atlas?entry=omega-stability"><span class="at-route-mark" aria-hidden="true">Ω</span><span><small>01 / Start here</small><strong>Omega Stability</strong></span><b aria-hidden="true">↗</b></a>
+        <a href="#atlas?entry=logarithmic-transport"><span class="at-route-mark" aria-hidden="true">log</span><span><small>02 / Change the scale</small><strong>Logarithmic transport</strong></span><b aria-hidden="true">↗</b></a>
+        <a href="#atlas?entry=tower-envelope"><span class="at-route-mark" aria-hidden="true">c↑</span><span><small>03 / Find the envelope</small><strong>Alternating towers</strong></span><b aria-hidden="true">↗</b></a>
+        <a href="#atlas?entry=prime-layer-waves"><span class="at-route-mark" aria-hidden="true">5↔7</span><span><small>04 / Reverse the layers</small><strong>The order of waves</strong></span><b aria-hidden="true">↗</b></a>
+        <a href="#atlas?entry=logistic-quarter-turn"><span class="at-route-mark" aria-hidden="true">π/2</span><span><small>05 / Turn the phase</small><strong>The logistic quarter-turn</strong></span><b aria-hidden="true">↗</b></a>
+        <a href="#atlas?entry=beta-catalan-disk"><span class="at-route-mark" aria-hidden="true">β</span><span><small>06 / Explore the operator</small><strong>The Beta–Catalan disk</strong></span><b aria-hidden="true">↗</b></a>
+      </div>
+    </nav>
+    <div class="at-proof-questions" aria-labelledby="at-next-proof-title"><h4 id="at-next-proof-title">Next proof questions</h4><a href="#atlas?entry=theta-towers">Theta towers: uniform tail control <span aria-hidden="true">→</span></a><a href="#atlas?entry=beta-catalan-disk">Beta–Catalan disk: operator space and trace versus evaluation <span aria-hidden="true">→</span></a></div>
+  </section>
+
+  <section class="at-lab wrap" aria-labelledby="atlas-lab-title">
+    <div class="at-section-heading">
+      <div><p class="at-eyebrow">A small working table</p><h3 id="atlas-lab-title">Touch the mathematics.</h3></div>
+      <p>Three constructions you can vary, with every rule visible.</p>
+    </div>
+    <div class="at-lab-tabs at-enhanced" id="atlas-lab-tabs" role="tablist" aria-label="Interactive constructions" hidden>
+      <button type="button" role="tab" id="at-tab-pairs" aria-controls="at-panel-pairs" aria-selected="true" tabindex="0" data-at-exhibit="pairs">01 <span>Prime-pair geometry</span></button>
+      <button type="button" role="tab" id="at-tab-towers" aria-controls="at-panel-towers" aria-selected="false" tabindex="-1" data-at-exhibit="towers">02 <span>Alternating towers</span></button>
+      <button type="button" role="tab" id="at-tab-wheel" aria-controls="at-panel-wheel" aria-selected="false" tabindex="-1" data-at-exhibit="wheel">03 <span>The 210 wheel</span></button>
+    </div>
+    <div class="at-lab-stage">
+      <section id="at-panel-pairs" class="at-exhibit" role="tabpanel" aria-labelledby="at-tab-pairs">
+        <div class="at-exhibit-copy"><span class="at-status" data-status="exact">Exact finite arithmetic</span><h4>One centre.<br>Every prime pair.</h4><p>Fix an even sum N. Each unordered prime pair becomes a point at half-gap d, with product pq = (N/2)² − d².</p><p class="at-rule">p + q = N · p ≤ q<br>m = N/2 · d = (q − p)/2</p>
+          <div class="at-enhanced" hidden><label class="at-range-label" for="at-pair-n">Even sum <output id="at-pair-n-value" for="at-pair-n">100</output></label><input id="at-pair-n" class="at-range" type="range" min="4" max="300" step="2" value="100"><p class="at-live" id="at-pair-summary" aria-live="polite"></p></div>
+        </div>
+        <div class="at-exhibit-plot"><svg id="at-pair-plot" class="at-plot" viewBox="0 0 720 320" role="img" aria-label="Half-gap versus product for prime pairs"></svg><p class="at-caption">Horizontal: half-gap d. Vertical: product pq. The curve is the coordinate identity; the points are prime pairs.</p><details class="at-values"><summary>Read the computed pairs</summary><ul id="at-pair-values"></ul></details></div>
+      </section>
+      <section id="at-panel-towers" class="at-exhibit" role="tabpanel" aria-labelledby="at-tab-towers" hidden>
+        <div class="at-exhibit-copy"><span class="at-status" data-status="finite">Finite numerical computation</span><h4>Two phases.<br>One coupled rule.</h4><p>Vary the positive base c. The lower and upper phases meet through u = c<sup>−v</sup> and v = c<sup>u</sup>.</p><p class="at-rule">v<sub>k+1</sub> = c<sup>(c<sup>−v<sub>k</sub></sup>)</sup><br>v<sub>0</sub> = 1 · 80 iterations</p>
+          <div class="at-enhanced" hidden><label class="at-range-label" for="at-tower-c">Base c <output id="at-tower-c-value" for="at-tower-c">1.11</output></label><input id="at-tower-c" class="at-range" type="range" min="1.01" max="2.4" step="0.001" value="1.11"><button class="at-small-button" type="button" id="at-tower-specimen">Return to c = 1.11</button><dl class="at-tower-values"><div><dt>Lower u</dt><dd id="at-tower-lower">—</dd></div><div><dt>Upper v</dt><dd id="at-tower-upper">—</dd></div></dl><p class="at-live" id="at-tower-summary" aria-live="polite"></p></div>
+        </div>
+        <div class="at-exhibit-plot"><svg id="at-tower-plot" class="at-plot" viewBox="0 0 720 320" role="img" aria-label="Numerical lower and upper alternating-tower phases as the base changes"></svg><p class="at-caption"><span class="at-legend-dot at-teal"></span>Lower phase <span class="at-legend-dot at-violet"></span>Upper phase. Values are numerical approximations; the iteration residual is shown beside the control.</p></div>
+      </section>
+      <section id="at-panel-wheel" class="at-exhibit" role="tabpanel" aria-labelledby="at-tab-wheel" hidden>
+        <div class="at-exhibit-copy"><span class="at-status" data-status="exact">Exact finite arithmetic</span><h4>210 positions.<br>48 open lanes.</h4><p>Because 210 = 2 × 3 × 5 × 7, removing their multiples leaves φ(210) = 48 admissible remainders. Every prime above 7 lies on one of these lanes.</p><p class="at-rule">gcd(r, 210) = 1</p><div class="at-enhanced" hidden><p class="at-control-label" id="at-wheel-factor-label">Remove multiples of</p><div class="at-factor-controls" role="group" aria-labelledby="at-wheel-factor-label"><button type="button" aria-pressed="true" data-at-factor="2">2</button><button type="button" aria-pressed="true" data-at-factor="3">3</button><button type="button" aria-pressed="true" data-at-factor="5">5</button><button type="button" aria-pressed="true" data-at-factor="7">7</button></div><p class="at-live" id="at-wheel-summary" aria-live="polite"></p></div><p class="at-caption">A surviving lane can contain composites: 121 and 169 both survive all four filters. The wheel organizes candidates.</p></div>
+        <div class="at-exhibit-plot"><div id="at-wheel-grid" class="at-wheel-grid" role="list" aria-label="Remainders from 0 through 209"></div><p class="at-caption"><span class="at-legend-dot at-teal"></span>Survives the selected filters <span class="at-legend-dot at-dim"></span>Divisible by a selected factor</p></div>
+      </section>
+    </div>
+    <noscript><p class="at-noscript">The controls need JavaScript. The definitions above and the <a href="atlas/README.md">complete reading copy</a> remain available.</p></noscript>
+  </section>
+
+  <section class="at-collection wrap" aria-labelledby="atlas-collection-title">
+    <div class="at-section-heading"><div><p class="at-eyebrow">The collection</p><h3 id="atlas-collection-title">Pick up a thread.</h3></div><p id="atlas-coverage">A curated recovery from available conversations and source files.</p></div>
+    <form class="at-filters at-enhanced" id="atlas-filters" role="search" aria-label="Search the research atlas" hidden>
+      <div class="at-search-field"><label for="atlas-search">Find an idea</label><input id="atlas-search" type="search" placeholder="Try Möbius, tower, spectral…" autocomplete="off"></div>
+      <div><label for="atlas-family">Research family</label><select id="atlas-family"><option value="">All families</option></select></div>
+      <div><label for="atlas-status">Evidence</label><select id="atlas-status"><option value="">All evidence levels</option></select></div>
+      <button class="at-reset" type="reset">Reset</button>
+    </form>
+    <div class="at-results-line"><p id="atlas-results-count" role="status" aria-live="polite"></p><a href="atlas/README.md">Full reading copy <span aria-hidden="true">↗</span></a></div>
+    <div id="atlas-entries" class="at-entry-grid"></div>
+    <div id="atlas-empty" class="at-empty" hidden><p class="at-eyebrow">A different route</p><h4>No entries match that combination.</h4><p>Try a shorter phrase, another family, or all evidence levels.</p><button type="button" id="atlas-empty-reset" class="at-small-button">Show the whole collection</button></div>
+    <noscript><p class="at-noscript">Read all entries, equations and source trails in the <a href="atlas/README.md">complete atlas</a>.</p></noscript>
+  </section>
+  <section class="at-colophon wrap" aria-label="Atlas credits"><p><strong>Research direction and original explorations:</strong> Zolton / EncapsulatorP.</p><p><strong>Curation, mathematical checks and this atlas implementation:</strong> ChatGPT. Source-specific and existing collaborator credits remain with their work.</p><p>Each entry keeps its own evidence level. Exact identities, finite computations and open questions can share a collection while making distinct claims.</p></section>
+</div>
+
 <div class="page" data-page="archive">
 <!-- ARCHIVE + LABELS -->
 <section class="sec bg-cream" id="archive" style="--acc:#c95a00">
@@ -461,8 +565,8 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="card" style="--e:#0c9a89" href="https://github.com/EncapsulatorP/goldbach_busy_collatz"><div style="display:flex;align-items:center"><span class="repo">goldbach_busy_collatz</span><span class="vis" style="color:#3f7a00;border-color:#9ac44a">Public</span></div><div class="pair">Goldbach × Collatz structure</div><p>Cross-examines Goldbach partition counts against Collatz orbit structure.</p><span class="tag" style="align-self:flex-start">Empirical</span></a>
 <div class="card" style="--e:#0c9a89"><div style="display:flex;align-items:center"><span class="repo">mertens_counterexample</span><span class="vis">Private</span></div><div class="pair">Mertens · the Riemann edge</div><p>Pushes the M(n)/√n boundary toward where Mertens is known to fail.</p><span class="tag" style="align-self:flex-start">Empirical</span></div>
 <div class="card" style="--e:#c95a00"><div style="display:flex;align-items:center"><span class="repo">Catalan_ruelle_mayer</span><span class="vis">Private</span></div><div class="pair">Catalan × Ruelle–Mayer</div><p>Transfer-operator machinery on Catalan-type exponent gaps.</p><span class="tag" style="align-self:flex-start">Theoretical</span></div>
-<div class="card" style="--e:#c95a00"><div style="display:flex;align-items:center"><span class="repo">zeta_branching</span><span class="vis">Private</span></div><div class="pair">Ruelle/Riemann zeta · branch structure</div><p>Maps how the dynamical zeta’s branches split and continue across the transfer-operator spectrum — a clean, reproducible signature.</p><span class="tag" style="align-self:flex-start">Theoretical</span></div>
-<a class="card" style="--e:#c95a00" href="https://github.com/EncapsulatorP/collatz_rupert_delay_embedding"><div class="head"><span class="repo">collatz_rupert_delay_embedding</span><span class="vis" style="color:#3f7a00;border-color:#9ac44a">Public</span><span class="vis wip">Early</span></div><div class="pair">Collatz × Rupert · delay hulls</div><p>Takes the τ=1 embedding of the Collatz tab down to a single orbit — n = 27, 112 steps, peak 9,232 — and asks what counts the structure on the two rails. Answer so far: φ(2<sup>k</sup>) for the dyadic clusters, φ(2<sup>k</sup>)/2 for the helix period in the 3-D portrait. The teaser conjecture pushes further, tying convergence to Rupert-admissible limit geometry. An early exploration with a README, next steps and a Plotly notebook; the proposed connection remains conjectural.</p><span class="tag" style="align-self:flex-start">Conjectural</span></a>
+<div class="card" style="--e:#c95a00"><div style="display:flex;align-items:center"><span class="repo">zeta_branching</span><span class="vis">Public</span></div><div class="pair">Ruelle/Riemann zeta · branch structure</div><p>A branch-controlled zeta transform feeding a finite geometric sum. The atlas gives its explicit kernel, branch conventions and next experiments.</p><span class="tag" style="align-self:flex-start">Theoretical</span></div>
+<a class="card" style="--e:#c95a00" href="https://github.com/EncapsulatorP/collatz_rupert_delay_embedding"><div class="head"><span class="repo">collatz_rupert_delay_embedding</span><span class="vis" style="color:#3f7a00;border-color:#9ac44a">Public</span><span class="vis wip">Early</span></div><div class="pair">Collatz × Rupert · delay hulls</div><p>Takes the τ=1 embedding of the Collatz tab down to a single orbit — n = 27, 111 updates / 112 visited vertices, peak 9,232 — and asks what counts the structure on the two rails. The two affine rails are exact. The extension to compact hulls and Rupert-admissible geometry is an exploratory question; the atlas separates the written unbounded-hull lemma from the proposed geometric implications.</p><span class="tag" style="align-self:flex-start">Conjectural</span></a>
 <div class="card" style="--e:#697994"><div class="head"><span class="repo">erdos_schnitzel</span><span class="vis">Private</span><span class="vis wip">New</span></div><div class="pair">Erdős line · not yet described</div><p>An early private research direction. A problem statement and supporting materials will accompany its public introduction.</p><span class="tag pend" style="align-self:flex-start">Unlabeled</span></div>
 </div>
 <p class="kick" style="margin-top:44px">reading the research</p><h2 class="t">Stages of <em>understanding</em></h2>
@@ -670,7 +774,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="https://github.com/EncapsulatorP/recaman">Recamán experiments</a>
 </article>
 </div>
-<p class="cap">From Zolton’s EncapsulatorP research conversations. Edited for the atlas by Codex. The June θ and Möbius tower experiments remain partial notes while their original definitions and outputs are recovered.</p>
+<p class="cap">From Zolton’s EncapsulatorP research conversations. Edited for the atlas by Codex. The June θ and Möbius tower definitions and finite outputs have now been recovered and recomputed in the <a href="#atlas?entry=theta-towers">research atlas</a>.</p>
 </div>
 </section>
 </div>
@@ -888,12 +992,12 @@ window.addEventListener('resize',draw);document.addEventListener('visibilitychan
 </script>
 <script>
 (function(){
-var alias={home:'home','research-paths':'home',lemmas:'lemmas','positive-results':'lemmas',roadmap:'roadmap',goldbach:'goldbach',collatz:'collatz',embed:'collatz',scape:'collatz',towers:'towers',tetra:'towers',validatron:'validatron',archive:'archive','buried-chat-stories':'buried-chat-stories'};
+var alias={home:'home',atlas:'atlas','research-paths':'home',lemmas:'lemmas','positive-results':'lemmas',roadmap:'roadmap',goldbach:'goldbach',collatz:'collatz',embed:'collatz',scape:'collatz',towers:'towers',tetra:'towers',validatron:'validatron',archive:'archive','buried-chat-stories':'buried-chat-stories'};
 var stories=Array.from(document.querySelectorAll('.story[id]'));
 stories.forEach(function(story){alias[story.id]='buried-chat-stories';});
 var pages=Array.from(document.querySelectorAll('.page')),tabs=Array.from(document.querySelectorAll('.nav a[data-tab]'));
 function show(){
- var id=(location.hash||'#home').slice(1),name=alias[id]||'home';
+ var id=(location.hash||'#home').slice(1).split('?')[0],name=alias[id]||'home';
  pages.forEach(function(p){p.classList.toggle('on',p.dataset.page===name);});
  tabs.forEach(function(a){if(a.dataset.tab===name)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
  var el=(id!==name)&&document.getElementById(id);
@@ -954,5 +1058,8 @@ window.addEventListener('hashchange',show);show();
   demo.hidden = false;
  });
 })();
-</script></body></html>
+</script>
+<script src="assets/research-atlas-data.js"></script>
+<script src="assets/research-atlas.js"></script>
+</body></html>
 

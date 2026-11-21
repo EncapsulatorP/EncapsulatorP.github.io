@@ -1,0 +1,702 @@
+{
+  "collatz_27": {
+    "map": "n/2 if n even; 3*n+1 if n odd; stop at first 1",
+    "orbit": [
+      27,
+      82,
+      41,
+      124,
+      62,
+      31,
+      94,
+      47,
+      142,
+      71,
+      214,
+      107,
+      322,
+      161,
+      484,
+      242,
+      121,
+      364,
+      182,
+      91,
+      274,
+      137,
+      412,
+      206,
+      103,
+      310,
+      155,
+      466,
+      233,
+      700,
+      350,
+      175,
+      526,
+      263,
+      790,
+      395,
+      1186,
+      593,
+      1780,
+      890,
+      445,
+      1336,
+      668,
+      334,
+      167,
+      502,
+      251,
+      754,
+      377,
+      1132,
+      566,
+      283,
+      850,
+      425,
+      1276,
+      638,
+      319,
+      958,
+      479,
+      1438,
+      719,
+      2158,
+      1079,
+      3238,
+      1619,
+      4858,
+      2429,
+      7288,
+      3644,
+      1822,
+      911,
+      2734,
+      1367,
+      4102,
+      2051,
+      6154,
+      3077,
+      9232,
+      4616,
+      2308,
+      1154,
+      577,
+      1732,
+      866,
+      433,
+      1300,
+      650,
+      325,
+      976,
+      488,
+      244,
+      122,
+      61,
+      184,
+      92,
+      46,
+      23,
+      70,
+      35,
+      106,
+      53,
+      160,
+      80,
+      40,
+      20,
+      10,
+      5,
+      16,
+      8,
+      4,
+      2,
+      1
+    ],
+    "peak": 9232,
+    "seed": 27,
+    "status": "exact finite integer computation",
+    "updates_to_first_one": 111,
+    "visited_vertices": 112
+  },
+  "display_significant_digits": 45,
+  "edition": "2026-11-21",
+  "egyptian_fraction_gate": {
+    "A": 3,
+    "B": 5,
+    "gate": "(A*b-B)*(A*c-B)=B^2; r,s positive and each congruent to -B modulo A",
+    "k": 4,
+    "m": 1,
+    "n": 5,
+    "results": [
+      {
+        "denominators": [
+          5,
+          2,
+          10
+        ],
+        "factor_pair": [
+          1,
+          25
+        ],
+        "left_exact": "4/5",
+        "right_exact": "4/5"
+      }
+    ],
+    "scope": "this selected first denominator a=n*m",
+    "status": "exact rational computation"
+  },
+  "even_zeta_family": {
+    "coefficient_formula": "c_p=(-1)^((p+1)/2)*2^(p-2)*B_(p-1)/(p*(p-1)!)",
+    "definition": "Z(p)=exp(pi*zeta(p-1)/p)+1=exp(c_p*pi^p)+1",
+    "results": [
+      {
+        "Bernoulli_exact": "1/6",
+        "Z_p": "6.59890434927349493122377521343655597624201423",
+        "c_p_exact": "1/18",
+        "exponent": "1.72257092668332334308201750372785528901251603",
+        "independent_zeta_vs_Bernoulli_residual": "1.81113581576534247350182385817755835613650624e-71",
+        "p": 3
+      },
+      {
+        "Bernoulli_exact": "-1/30",
+        "Z_p": "2.97396407936197420263221742350360463314729477",
+        "c_p_exact": "1/450",
+        "exponent": "0.680043743967292118361647355652079125511779348",
+        "independent_zeta_vs_Bernoulli_residual": "9.05567907882671236750911929088779178068253120e-72",
+        "p": 5
+      },
+      {
+        "Bernoulli_exact": "1/42",
+        "Z_p": "2.57866964974411763124927855626859105058114472",
+        "c_p_exact": "1/6615",
+        "exponent": "0.456582498530127296676372863654125749345038923",
+        "independent_zeta_vs_Bernoulli_residual": "9.05567907882671236750911929088779178068253120e-72",
+        "p": 7
+      }
+    ],
+    "source": "https://github.com/EncapsulatorP/zp-program/blob/main/z_p/zeta_even_reduction.md",
+    "status": "exact rational coefficients with independent special-function checks"
+  },
+  "interval_certified": false,
+  "library": {
+    "mpmath": "1.3.0"
+  },
+  "logistic_two_cycle": {
+    "cycle": [
+      "0.439960169001851855994408011590384473665000885",
+      "0.849937779554783763645048803350793804728188611"
+    ],
+    "cycle_equation_residual_max": "1.81113581576534247350182385817755835613650624e-71",
+    "cycle_formula": "x_+/-=(r+1 +/- sqrt((r-3)*(r+1)))/(2*r)",
+    "derivative_product": "-1.00000000000000000000000000000000000000000000",
+    "interpretation": "period-two multiplier reaches -1 at its period-doubling boundary",
+    "map": "f_r(x)=r*x*(1-x)",
+    "multiplier_at_r_star_exact": -1,
+    "multiplier_polynomial": "-r^2+2*r+4",
+    "r_star": "3.44948974278317809819728407470589139196594748",
+    "r_star_exact": "1+sqrt(6)",
+    "status": "numerical check of an exact two-cycle identity"
+  },
+  "omega_layer_order": {
+    "coefficient_vs_second_derivative_difference": "1.13195988485333904593863991136097397258531640e-72",
+    "half_difference": "D(u)=(T_q(T_p(Omega+u))-T_p(T_q(Omega+u)))/2",
+    "layer": "T_p(x)=Omega*p^(Omega-x)",
+    "omega": "0.567143290409783872999968662210355549753815787",
+    "omega_definition": "Omega*exp(Omega)=1",
+    "order_convention": "p -> q means T_q(T_p(x))",
+    "primes": [
+      5,
+      7
+    ],
+    "quadratic_coefficient": "0.0847367594452382517630438183858372293211693070",
+    "quadratic_coefficient_formula": "Omega^2*log(p)*log(q)*log(q/p)/4",
+    "samples": [
+      {
+        "D_u_over_D_half_u": "4.00011817220444624661688403589771059428701792",
+        "distance_from_scaling_4": "0.000118172204446246616884035897710594287017923957",
+        "half_difference": "0.000000000847417669147011254403375023119287532302752254",
+        "prediction_ratio": "1.00005909441776694081535707828598035065556740",
+        "quadratic_prediction": "0.000000000847367594452382517630438183858372293211693070",
+        "reversed_half_difference": "-0.000000000847417669147011254403375023119287532302752254",
+        "u": "0.000100000000000000000000000000000000000000000000"
+      },
+      {
+        "D_u_over_D_half_u": "4.00005909682928865527717145174051379206561694",
+        "distance_from_scaling_4": "0.0000590968292886552771714517405137920656169354055",
+        "half_difference": "0.000000000211848158645774051276090232333460124062282026",
+        "prediction_ratio": "1.00002955049364363507534725900729726712590281",
+        "quadratic_prediction": "0.000000000211841898613095629407609545964593073302923268",
+        "reversed_half_difference": "-0.000000000211848158645774051276090232333460124062282026",
+        "u": "0.0000500000000000000000000000000000000000000000000"
+      },
+      {
+        "D_u_over_D_half_u": "4.00002955109650556561685952461084816956374376",
+        "distance_from_scaling_4": "0.0000295510965055656168595246108481695637437637400",
+        "half_difference": "0.0000000000529612572008495850257831457212446292090316379",
+        "prediction_ratio": "1.00001477606801677896976791705758862309508221",
+        "quadratic_prediction": "0.0000000000529604746532739073519023864911482683257308169",
+        "reversed_half_difference": "-0.0000000000529612572008495850257831457212446292090316379",
+        "u": "0.0000250000000000000000000000000000000000000000000"
+      }
+    ],
+    "scope": "local u->0 expansion; no assertion of global orbit stability or physical waves",
+    "shared_first_derivative": "1.00735514223875210637934641202874279315497539",
+    "status": "finite-amplitude check of the local analytic expansion"
+  },
+  "power_weights": {
+    "analytic_explanation": "d(p*log p)/dp=1+log p changes sign at p=1/e",
+    "input_exact": [
+      "1/10",
+      "1/5",
+      "7/10"
+    ],
+    "input_order_descending_indices_zero_based": [
+      2,
+      1,
+      0
+    ],
+    "normalization_residual": "0.0",
+    "normalized_weights": [
+      "0.345636038169799734213501356391154120020153549",
+      "0.315373369028677242375286682594691173657903712",
+      "0.338990592801523023411211961014154706321942740"
+    ],
+    "output_order_descending_indices_zero_based": [
+      0,
+      2,
+      1
+    ],
+    "status": "finite numerical example with defined normalization",
+    "transform": "w_i=p_i^p_i; q_i=w_i/sum_j(w_j)",
+    "unnormalized_weights": [
+      "0.794328234724281502065918282836387932588960632",
+      "0.724779663677695531470614000881574090714179835",
+      "0.779055912670449093992255616501871633538487649"
+    ]
+  },
+  "precision_decimal_digits": 70,
+  "reproduction_command": "python3 atlas/reproduce_experiments.py > atlas/experiment-results.json",
+  "status": "all checks passed",
+  "theta_towers": {
+    "bases": "a_n=theta_3(0, exp(-pi*n)), n=1,...,10",
+    "basis_values_and_series_checks": [
+      {
+        "a_n": "1.08643481121330801457531612151022345707020571",
+        "analytic_series_tail_bound": "5.26533728630039100517240241872352962412686895e-231",
+        "finite_series_difference": "5.02979092817255549427126518841358071421366977e-72",
+        "n": 1
+      },
+      {
+        "a_n": "1.00373488548773909104767959506695386620799433",
+        "analytic_series_tail_bound": "1.38618883692525828579583866914958281997561169e-461",
+        "finite_series_difference": "8.66309612864922910372830650790861121697874005e-72",
+        "n": 2
+      },
+      {
+        "a_n": "1.00016139903514069402150207038939957388750839",
+        "analytic_series_tail_bound": "3.64937588445796735273200764148108821842099245e-692",
+        "finite_series_difference": "5.50486656038830089311376840438623069462076095e-73",
+        "n": 3
+      },
+      {
+        "a_n": "1.00000697468471241799127935745572277338608481",
+        "analytic_series_tail_bound": "9.60759745808100154614740386149176254078295721e-923",
+        "finite_series_difference": "4.55324714730244403984244629262425466587948887e-72",
+        "n": 4
+      },
+      {
+        "a_n": "1.00000030140345507801292215065490390808022362",
+        "analytic_series_tail_bound": "2.52936205638993776534391728348809645443095256e-1153",
+        "finite_series_difference": "4.37019491860866219156275717854033739657011413e-72",
+        "n": 5
+      },
+      {
+        "a_n": "1.00000001302482427215980145642433023090674573",
+        "analytic_series_tail_bound": "6.65897217303168574082437724980898293986287133e-1384",
+        "finite_series_difference": "2.08005574116871736580280439156292743830157315e-72",
+        "n": 6
+      },
+      {
+        "a_n": "1.00000000056285369149711054421823528181489461",
+        "analytic_series_tail_bound": "1.75308672355502369675345853982615595511184031e-1614",
+        "finite_series_difference": "4.79863524062689758942817409445386521929317891e-72",
+        "n": 7
+      },
+      {
+        "a_n": "1.00000000002432311341881861679481110095051775",
+        "analytic_series_tail_bound": "4.61529644582622611308631476582067768734440276e-1845",
+        "finite_series_difference": "8.84561291489259509644122166817703486151470561e-72",
+        "n": 8
+      },
+      {
+        "a_n": "1.00000000000105109703520128971104450567177470",
+        "analytic_series_tail_bound": "1.21505462317692504842152910303308827250400077e-2075",
+        "finite_series_difference": "4.31438799740564189039351057280292121454156253e-72",
+        "n": 9
+      },
+      {
+        "a_n": "1.00000000000004542202136648187677358550478187",
+        "analytic_series_tail_bound": "3.19883620615256735593836189767809044893314377e-2306",
+        "finite_series_difference": "3.47989230226397589513167816500424420478376565e-72",
+        "n": 10
+      }
+    ],
+    "depth": 10,
+    "golden_rule": "s_k=+1 iff k=floor(m*phi) for some integer m>=1; otherwise -1",
+    "infinite_depth_claim": false,
+    "phi": "1.61803398874989484820458683436563811772030918",
+    "recurrence": "t_N=a_N; t_k=a_k^(s_(k+1)*t_(k+1)), k=N-1,...,1",
+    "results": [
+      {
+        "exponent_signs": [
+          {
+            "level": 2,
+            "sign": -1
+          },
+          {
+            "level": 3,
+            "sign": 1
+          },
+          {
+            "level": 4,
+            "sign": -1
+          },
+          {
+            "level": 5,
+            "sign": 1
+          },
+          {
+            "level": 6,
+            "sign": -1
+          },
+          {
+            "level": 7,
+            "sign": 1
+          },
+          {
+            "level": 8,
+            "sign": -1
+          },
+          {
+            "level": 9,
+            "sign": 1
+          },
+          {
+            "level": 10,
+            "sign": -1
+          }
+        ],
+        "precision_70_vs_100_difference": "1.88582920327733267561648026206521030640332224e-72",
+        "recursive_vs_iterative_difference": "0.0",
+        "rule": "alternating_s2_negative",
+        "value": "0.920156883755197601018522259821670811045557559"
+      },
+      {
+        "exponent_signs": [
+          {
+            "level": 2,
+            "sign": 1
+          },
+          {
+            "level": 3,
+            "sign": -1
+          },
+          {
+            "level": 4,
+            "sign": 1
+          },
+          {
+            "level": 5,
+            "sign": -1
+          },
+          {
+            "level": 6,
+            "sign": 1
+          },
+          {
+            "level": 7,
+            "sign": -1
+          },
+          {
+            "level": 8,
+            "sign": 1
+          },
+          {
+            "level": 9,
+            "sign": -1
+          },
+          {
+            "level": 10,
+            "sign": 1
+          }
+        ],
+        "precision_70_vs_100_difference": "4.76652528884191056968370406313896900073396622e-72",
+        "recursive_vs_iterative_difference": "0.0",
+        "rule": "alternating_s2_positive",
+        "value": "1.08609967033555023757579302516676121167272265"
+      },
+      {
+        "exponent_signs": [
+          {
+            "level": 2,
+            "sign": -1
+          },
+          {
+            "level": 3,
+            "sign": 1
+          },
+          {
+            "level": 4,
+            "sign": 1
+          },
+          {
+            "level": 5,
+            "sign": -1
+          },
+          {
+            "level": 6,
+            "sign": 1
+          },
+          {
+            "level": 7,
+            "sign": -1
+          },
+          {
+            "level": 8,
+            "sign": 1
+          },
+          {
+            "level": 9,
+            "sign": 1
+          },
+          {
+            "level": 10,
+            "sign": -1
+          }
+        ],
+        "precision_70_vs_100_difference": "3.58558433048098729755699720155344524988723895e-72",
+        "recursive_vs_iterative_difference": "0.0",
+        "rule": "golden_beatty",
+        "value": "0.920156791623985231251096507681612985819291360"
+      }
+    ],
+    "s1_used": false,
+    "source": "https://github.com/EncapsulatorP/Some_playful_boundary_paths_and_brun_twin_prime_sign_flipping_towers/blob/main/notes/boundary_residue_notes.md",
+    "status": "recomputed finite-depth observations",
+    "theta_series_comparison_positive_terms": 12
+  },
+  "totient_mobius_towers": {
+    "infinite_depth_claim": false,
+    "recurrence": "t_N=a_N; t_k=a_k^(mu(n_(k+1))*t_(k+1))",
+    "results": [
+      {
+        "depth": 10,
+        "exact_bases": [
+          "2",
+          "4",
+          "2",
+          "6",
+          "4",
+          "10",
+          "12",
+          "6",
+          "8",
+          "16"
+        ],
+        "exponent_signs": [
+          {
+            "level": 2,
+            "sign": -1
+          },
+          {
+            "level": 3,
+            "sign": 1
+          },
+          {
+            "level": 4,
+            "sign": -1
+          },
+          {
+            "level": 5,
+            "sign": 1
+          },
+          {
+            "level": 6,
+            "sign": -1
+          },
+          {
+            "level": 7,
+            "sign": -1
+          },
+          {
+            "level": 8,
+            "sign": 1
+          },
+          {
+            "level": 9,
+            "sign": 1
+          },
+          {
+            "level": 10,
+            "sign": -1
+          }
+        ],
+        "input_n": [
+          3,
+          5,
+          6,
+          7,
+          10,
+          11,
+          13,
+          14,
+          15,
+          17
+        ],
+        "mobius_values_at_all_levels": [
+          -1,
+          -1,
+          1,
+          -1,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          -1
+        ],
+        "normalized": false,
+        "precision_70_vs_100_difference": "1.32163116302173851370356379609583223926188402e-72",
+        "recursive_vs_iterative_difference": "0.0",
+        "totient_values": [
+          2,
+          4,
+          2,
+          6,
+          4,
+          10,
+          12,
+          6,
+          8,
+          16
+        ],
+        "value": "0.492468328815191140828997615092707643610199855"
+      },
+      {
+        "depth": 12,
+        "exact_bases": [
+          "3/2",
+          "5/3",
+          "9/5",
+          "4/3",
+          "13/7",
+          "7/5",
+          "21/11",
+          "25/13",
+          "10/7",
+          "23/15",
+          "33/17",
+          "37/19"
+        ],
+        "exponent_signs": [
+          {
+            "level": 2,
+            "sign": -1
+          },
+          {
+            "level": 3,
+            "sign": -1
+          },
+          {
+            "level": 4,
+            "sign": 1
+          },
+          {
+            "level": 5,
+            "sign": -1
+          },
+          {
+            "level": 6,
+            "sign": 1
+          },
+          {
+            "level": 7,
+            "sign": -1
+          },
+          {
+            "level": 8,
+            "sign": -1
+          },
+          {
+            "level": 9,
+            "sign": 1
+          },
+          {
+            "level": 10,
+            "sign": 1
+          },
+          {
+            "level": 11,
+            "sign": -1
+          },
+          {
+            "level": 12,
+            "sign": -1
+          }
+        ],
+        "input_n": [
+          2,
+          3,
+          5,
+          6,
+          7,
+          10,
+          11,
+          13,
+          14,
+          15,
+          17,
+          19
+        ],
+        "mobius_values_at_all_levels": [
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          -1,
+          -1
+        ],
+        "normalized": true,
+        "precision_70_vs_100_difference": "1.63229109872937708116268109300130595344971143e-72",
+        "recursive_vs_iterative_difference": "9.05567907882671236750911929088779178068253120e-72",
+        "totient_values": [
+          1,
+          2,
+          4,
+          2,
+          6,
+          4,
+          10,
+          12,
+          6,
+          8,
+          16,
+          18
+        ],
+        "value": "0.821920364710926816412027745582348838175547883"
+      }
+    ],
+    "s1_used": false,
+    "source": "https://github.com/EncapsulatorP/Some_playful_boundary_paths_and_brun_twin_prime_sign_flipping_towers/blob/main/notes/boundary_residue_notes.md",
+    "status": "recomputed finite-depth observations"
+  }
+}
