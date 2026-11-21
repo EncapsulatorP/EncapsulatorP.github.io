@@ -39,6 +39,10 @@ The scientific atlas catalogue is not modified by this renderer. The five connec
 - Select a route: focus its repository and edge subset.
 - Graph short labels use shortName; full names remain in title, aria-label and the equivalent text controls.
 - Every edge opens its mechanism, current evidence, next experiment, deliverable and sources.
+- Evidence level is independent of relationship kind: `known` uses solid cyan, `proposed` long gold dashes and `speculative` purple dots. The ledger also shows each edge's known basis and open question. Explicit source qualifications override the relationship-kind fallback.
+- `?evidence=speculative` filters the graph; `?edge=E44` highlights a connection and its endpoint repositories. The labelled connection selector provides the same interaction without requiring a precise SVG click.
+- `?path=next-treasures` and `?path=newton-lidar` show numbered expeditions. Orange dash-dot arrows are suggested work order, not mathematical implications. Each stop has a target, gate and stage; focusing a stop preserves the itinerary and offers a return control.
+- The reset restores the whole graph and its initial internal scroll position. Search debounce callbacks cannot navigate away from another room. Reading selected-edge evidence clears a ledger search that would otherwise hide it.
 - Register search includes repository content, incident-edge metadata, linked external bridges and research-route keywords.
 - Connection search includes labels, endpoint names, mechanism, status, next experiment, deliverable, keywords and sources.
 - Filter the register by family, priority and source visibility; sort by rank, meaningfulness, importance, ROI or name.

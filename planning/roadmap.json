@@ -267,7 +267,8 @@
         "E10",
         "E36",
         "E38",
-        "E41"
+        "E41",
+        "E52"
       ]
     },
     {
@@ -337,7 +338,8 @@
         "E16",
         "E17",
         "E37",
-        "E38"
+        "E38",
+        "E45"
       ]
     },
     {
@@ -467,7 +469,8 @@
       "links": [
         "E11",
         "E12",
-        "E41"
+        "E41",
+        "E49"
       ]
     },
     {
@@ -529,7 +532,9 @@
       "links": [
         "E19",
         "E20",
-        "E28"
+        "E28",
+        "E42",
+        "E53"
       ]
     },
     {
@@ -599,7 +604,10 @@
       "links": [
         "E15",
         "E16",
-        "E30"
+        "E30",
+        "E43",
+        "E44",
+        "E53"
       ]
     },
     {
@@ -723,7 +731,8 @@
       "shortName": "collatz_kesten-goldie",
       "links": [
         "E17",
-        "E18"
+        "E18",
+        "E51"
       ]
     },
     {
@@ -789,7 +798,10 @@
         "E13",
         "E14",
         "E34",
-        "N02"
+        "N02",
+        "E44",
+        "E46",
+        "E52"
       ]
     },
     {
@@ -912,7 +924,9 @@
       "shortName": "zp-program",
       "links": [
         "E10",
-        "E24"
+        "E24",
+        "E46",
+        "E47"
       ]
     },
     {
@@ -974,7 +988,8 @@
       "shortName": "Type-2 signatures",
       "links": [
         "E22",
-        "E23"
+        "E23",
+        "E49"
       ]
     },
     {
@@ -1032,7 +1047,10 @@
       "shortName": "Tower decomposition",
       "links": [
         "E13",
-        "E15"
+        "E15",
+        "E42",
+        "E50",
+        "E51"
       ]
     },
     {
@@ -1093,7 +1111,8 @@
       "shortName": "Catalan operators",
       "links": [
         "E03",
-        "E23"
+        "E23",
+        "E50"
       ]
     },
     {
@@ -1697,7 +1716,10 @@
       "shortName": "ROLT depth",
       "links": [
         "E14",
-        "E21"
+        "E21",
+        "E43",
+        "E47",
+        "E48"
       ]
     },
     {
@@ -1980,7 +2002,8 @@
       "shortName": "Fixed-point shadow",
       "links": [
         "E32",
-        "E33"
+        "E33",
+        "E48"
       ]
     },
     {
@@ -2027,7 +2050,8 @@
       "shortName": "YPer",
       "links": [
         "E34",
-        "E35"
+        "E35",
+        "E45"
       ]
     }
   ],
@@ -2059,7 +2083,10 @@
         "prime fibers",
         "leakage"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "known",
+      "knownBasis": "Both sources compute finite Goldbach prime-pair fibers; the ESC source adds Egyptian-fraction features.",
+      "openQuestion": "Which features are available before the fiber is known, and do they improve a held-out comparison?"
     },
     {
       "id": "E02",
@@ -2088,7 +2115,10 @@
         "lattice",
         "provenance"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "The Goldbach capsule contains finite Möbius checks; the Mertens source contains lattice candidate enumeration.",
+      "openQuestion": "Can a common exact evidence record preserve the different claims and precision requirements?"
     },
     {
       "id": "E03",
@@ -2118,7 +2148,10 @@
         "Dirichlet beta",
         "operator"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "known",
+      "knownBasis": "The sources explicitly contain χ4, Dirichlet beta and polylog channels, including the finite weighted Goldbach identity.",
+      "openQuestion": "Which exact finite fixtures transfer, and what additional operator/trace identity would a determinant claim require?"
     },
     {
       "id": "E04",
@@ -2147,7 +2180,10 @@
         "counts",
         "modules"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "known",
+      "knownBasis": "Both repositories contain finite Goldbach/arithmetic computations. NT integrations are a placeholder.",
+      "openQuestion": "Do the count conventions and independent bounded reference outputs agree?"
     },
     {
       "id": "E05",
@@ -2176,7 +2212,10 @@
         "residues",
         "local constraints"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "known",
+      "knownBasis": "Unit residue classes and mod-210 local arithmetic occur in both sources.",
+      "openQuestion": "Can one residue contract separate exact local compatibility from claims about prime existence?"
     },
     {
       "id": "E06",
@@ -2206,7 +2245,10 @@
         "repunit",
         "source gap"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "An optional Goldbach import is present, but its expected module and theorem note are absent from the named boundary repository main.",
+      "openQuestion": "Which compatible checkout or explicitly implemented adapter supplies the intended map?"
     },
     {
       "id": "E07",
@@ -2236,7 +2278,10 @@
         "semantic fidelity",
         "manifest"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "Goldbach contains exact finite arithmetic fixtures and a Validatron readiness hook; Validatron contains the source/claim registry.",
+      "openQuestion": "Can an actual statement-and-proof fixture be replayed through that registry?"
     },
     {
       "id": "E08",
@@ -2266,7 +2311,10 @@
         "preorder",
         "axiom closure"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "The private Antiverse notes contain a concrete preorder/partial-order example and assumption variants.",
+      "openQuestion": "After the physics relocation decision, can one optional repair fixture preserve original and changed statements?"
     },
     {
       "id": "E09",
@@ -2295,7 +2343,10 @@
         "MITM",
         "finite evidence"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "Diophantus contains exact integer identities and bounded search records.",
+      "openQuestion": "Can the proof pipeline keep an identity certificate distinct from an exhausted finite search?"
     },
     {
       "id": "E10",
@@ -2325,7 +2376,10 @@
         "conditional",
         "Z(p)"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "Z(p) contains an exact rational reduction and an explicitly Schanuel-conditional claim family.",
+      "openQuestion": "Can the repaired conditional implication be checked with every assumption retained?"
     },
     {
       "id": "E11",
@@ -2355,7 +2409,10 @@
         "phase slips",
         "scope"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "Recamán records finite missing-value candidates and blocked transition steps; Obstruction-Theory currently supplies a remit.",
+      "openQuestion": "Can one ledger preserve the distinction between a finite observation and a universal obstruction?"
     },
     {
       "id": "E12",
@@ -2383,7 +2440,10 @@
         "blockade analogy",
         "finite recurrence"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "known",
+      "knownBasis": "Both repositories contain finite versions of the Recamán recurrence.",
+      "openQuestion": "Do identical conventions reproduce identical checkpoints before the optical analogy is tested?"
     },
     {
       "id": "E13",
@@ -2413,7 +2473,10 @@
         "logarithms",
         "tower remainder"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "known",
+      "knownBasis": "Both sources use prime-power digit layers and logarithmic remainders, with different representation and physical-unit choices.",
+      "openQuestion": "Which exact log-transport fixtures survive explicit base, unit and ordering controls?"
     },
     {
       "id": "E14",
@@ -2443,7 +2506,10 @@
         "biophysics analogy",
         "optimality"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "speculative",
+      "knownBasis": "C3 has tower/layer maps; ROLT has depth-dependent QAOA/Dirac models. Their state spaces and observables differ.",
+      "openQuestion": "Does a matched cost/noise experiment reveal a useful depth–stability comparison?"
     },
     {
       "id": "E15",
@@ -2472,7 +2538,10 @@
         "carry",
         "prime towers"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "known",
+      "knownBasis": "Both sources use p-adic valuation/carry tools, applied to different arithmetic families.",
+      "openQuestion": "Can the elementary valuation fixtures be reused without identifying the distinct tower constructions?"
     },
     {
       "id": "E16",
@@ -2502,7 +2571,10 @@
         "coordinate controls",
         "Rupert"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "Both sources use delayed geometric views of scalar trajectories.",
+      "openQuestion": "Which geometric signal survives common lag, normalization, horizon and null controls?"
     },
     {
       "id": "E17",
@@ -2532,7 +2604,10 @@
         "Kesten–Goldie",
         "SSI"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "known",
+      "knownBasis": "Both sources study Collatz trajectory/valuation data; no combined imported pipeline was established.",
+      "openQuestion": "After matching the map and gauge, do geometry and tail features retain information beyond shuffled controls?"
     },
     {
       "id": "E18",
@@ -2562,7 +2637,10 @@
         "syllables",
         "dependence"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "Diophantus explicitly records the SSI/additive-correction bridge; the Kesten scanner already compares gauge regimes.",
+      "openQuestion": "Can an exact +1 correction ledger support a reproducible cross-repository comparison?"
     },
     {
       "id": "E19",
@@ -2592,7 +2670,10 @@
         "tetration",
         "model mismatch"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "known",
+      "knownBasis": "Both sources implement analytic Collatz-related maps, but lift and forced tetration use different odd-branch clocks and updates.",
+      "openQuestion": "Which comparisons remain valid after the maps, derivatives, branches and clocks are explicitly aligned?"
     },
     {
       "id": "E20",
@@ -2621,7 +2702,10 @@
         "continuation",
         "model provenance"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "Both sources contain complex-root/sector computations, with different reconstructed generating models.",
+      "openQuestion": "Can a known analytic reference validate a reusable contour and continuation instrument?"
     },
     {
       "id": "E21",
@@ -2650,7 +2734,10 @@
         "Dirac",
         "physics analogy"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "speculative",
+      "knownBasis": "The sources contain spectral toy models in different mathematical and physical settings.",
+      "openQuestion": "Is there a common reference operator and measurable quantity that makes the comparison meaningful?"
     },
     {
       "id": "E22",
@@ -2680,7 +2767,10 @@
         "Catalan numbers",
         "provenance"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "The Type-2 README reports a manual companion tetration comparison under temporary files; the local formulas differ.",
+      "openQuestion": "Can the comparison be recovered as a pinned, independently replayable signature bundle?"
     },
     {
       "id": "E23",
@@ -2709,7 +2799,10 @@
         "Catalan constant",
         "Catalan numbers"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "known",
+      "knownBasis": "The named beta/χ4/Catalan-constant channel appears in both sources; Catalan-number combinatorics is a separate object.",
+      "openQuestion": "Which exact channel identities transfer, and what is still missing for any combinatorial/operator relation?"
     },
     {
       "id": "E24",
@@ -2739,7 +2832,10 @@
         "ties",
         "transcendence"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "known",
+      "knownBasis": "The same displayed exp(pi*zeta(n-1)/n)+1 family appears in both sources.",
+      "openQuestion": "Do the independent high-precision implementations agree, and do classification claims survive ties and controls?"
     },
     {
       "id": "E25",
@@ -2768,7 +2864,10 @@
         "coverage",
         "classification"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "Both projects need exact prime labels; a complete sieve is an available reference approach.",
+      "openQuestion": "Can a common full-cover label source replace inconsistent benchmark labeling?"
     },
     {
       "id": "E26",
@@ -2797,7 +2896,10 @@
         "zero counts",
         "precision"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "Both sources contain zeta-zero or Hardy-Z related numerical utilities.",
+      "openQuestion": "Do independently computed counts and locations agree under precision and resolution refinement?"
     },
     {
       "id": "E27",
@@ -2826,7 +2928,10 @@
         "precision",
         "spectral statistics"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "known",
+      "knownBasis": "Zeta-zero data enters both projects, for spacing statistics and high-precision phase/weight work respectively.",
+      "openQuestion": "What precision and provenance contract permits safe reuse for the particular downstream calculation?"
     },
     {
       "id": "E28",
@@ -2855,7 +2960,10 @@
         "surrogate",
         "numerics"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "Both sources implement branch-sensitive complex computations; their functions are different.",
+      "openQuestion": "Can they share error, branch and overflow conventions on known-function fixtures?"
     },
     {
       "id": "E29",
@@ -2884,7 +2992,10 @@
         "boundary remainder",
         "sensitivity"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "speculative",
+      "knownBasis": "The boundary source reports a numerical Collatz-Bay reference and a tunable repunit-tower comparison.",
+      "openQuestion": "Does any relation survive sensitivity, uncertainty and fitting controls beyond the reported numerical match?"
     },
     {
       "id": "E30",
@@ -2913,7 +3024,10 @@
         "prime gaps",
         "null controls"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "The sources study modular transforms and factorial valuation/carry structure in different sequences.",
+      "openQuestion": "Can a common held-out, residue-matched control protocol reveal which effects are family-specific?"
     },
     {
       "id": "E31",
@@ -2942,7 +3056,10 @@
         "Pascal",
         "finite rings"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "Gilbreath has placeholder transform hooks; NT supplies named Rudin–Shapiro and finite-ring comparison models.",
+      "openQuestion": "What exact RPPTD transform was intended, and how does it compare with defined baselines?"
     },
     {
       "id": "E32",
@@ -2971,7 +3088,10 @@
         "diagonal",
         "correspondence"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "speculative",
+      "knownBasis": "Both notes discuss fixed points or boundaries, but no common formal object or equivalence has been supplied.",
+      "openQuestion": "After physics relocation, is there one exact finite correspondence worth reopening this parked analogy for?"
     },
     {
       "id": "E33",
@@ -3000,7 +3120,10 @@
         "query class",
         "definitions"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "Fixed-Point-Shadow states a broad query/boundary direction; Obstruction-Theory is an initial remit.",
+      "openQuestion": "Can one explicit state, map and query yield a precisely scoped obstruction example?"
     },
     {
       "id": "E34",
@@ -3029,7 +3152,10 @@
         "prime layers",
         "composition"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "YPer names chainladders; C3 supplies concrete two-layer prime maps and composition formulas.",
+      "openQuestion": "Can one such finite composition become a first well-defined chainladder construction?"
     },
     {
       "id": "E35",
@@ -3058,7 +3184,10 @@
         "obstruction",
         "source pending"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "speculative",
+      "knownBasis": "The repositories contain construction and obstruction remits, without a defined relation between them.",
+      "openQuestion": "Can a named construction and a scoped obstruction produce a genuine bridge?"
     },
     {
       "id": "E36",
@@ -3087,7 +3216,10 @@
         "calibration",
         "backoff"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "The modular-bijection argument and noncoprime collision family supply a compact exact calibration case.",
+      "openQuestion": "Can the proof stack replay the theorem with the actual identifier/slot assumptions retained?"
     },
     {
       "id": "N01",
@@ -3115,7 +3247,10 @@
         "atlas",
         "source links"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "known",
+      "knownBasis": "The organization profile contains a working link to its public research atlas.",
+      "openQuestion": "Are navigation, source references and plan links synchronized after changes?"
     },
     {
       "id": "N02",
@@ -3143,7 +3278,10 @@
         "atlas",
         "source links"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "known",
+      "knownBasis": "The website README links the C3/Prime Forms source and attributes it.",
+      "openQuestion": "Do the public exhibit and source links continue to resolve to the intended work?"
     },
     {
       "id": "E37",
@@ -3173,7 +3311,10 @@
         "delay",
         "map contract"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "Both sources generate finite trajectories; integer Collatz and forced complex tetration are different systems.",
+      "openQuestion": "Can a named trajectory/embedding adapter compare geometry without transferring convergence claims?"
     },
     {
       "id": "E38",
@@ -3204,7 +3345,10 @@
         "Lean",
         "certificate"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "Rupert needs strict witness checking; Validatron contains source/statement/evidence infrastructure.",
+      "openQuestion": "Can the interface preserve checked positive witnesses, rejected boundaries and unresolved searches as separate states?"
     },
     {
       "id": "E39",
@@ -3233,7 +3377,10 @@
         "preorder",
         "proof repair"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "Antiverse contains an exact assumption-change example; Obstruction-Theory can host a typed account of it.",
+      "openQuestion": "After relocation, is the optional witness useful as one sourced obstruction-ledger entry?"
     },
     {
       "id": "E40",
@@ -3262,7 +3409,10 @@
         "obstruction",
         "certificate"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "Diophantus contains exact identities and bounded search evidence; the obstruction ledger can distinguish their scopes.",
+      "openQuestion": "What additional argument would be required to turn a finite exclusion into a universal result?"
     },
     {
       "id": "E41",
@@ -3292,7 +3442,466 @@
         "finite evidence",
         "provenance"
       ],
-      "codeImportVerified": false
+      "codeImportVerified": false,
+      "evidenceLevel": "proposed",
+      "knownBasis": "Recamán supplies exact finite recurrence traces and empirical evidence suitable for a claim record.",
+      "openQuestion": "Can the source/claim adapter preserve finite scope and the meaning of missing values?"
+    },
+    {
+      "id": "E42",
+      "from": "prime_tower_decomposition",
+      "to": "collatz_lift",
+      "kind": "proposed-reuse",
+      "label": "Newton shocks on a named lifted function",
+      "basisStatus": "documented-computation",
+      "transferStatus": "proposed",
+      "mechanism": "The 3223 Newton module already records residual, step size, derivative stress and contraction along Newton trajectories. Collatz lift already computes Newton-refined roots. The proposed adapter applies those instruments to a precisely identified lift observable.",
+      "nextExperiment": "First reproduce the cubic control. Then apply the same trace schema to a small lift grid where the unclipped analytic observable is explicitly defined; record clipping, derivative failures and converged roots separately.",
+      "deliverable": "A common Newton trace fixture, two comparable diagnostic plots and a bounded association report.",
+      "stage": "S3",
+      "keywords": [
+        "Newton",
+        "3223",
+        "shock",
+        "Collatz lift",
+        "basin",
+        "derivative"
+      ],
+      "codeImportVerified": false,
+      "evidence": [
+        {
+          "label": "Existing Newton shock implementation",
+          "url": "https://github.com/EncapsulatorP/prime_tower_decomposition/blob/9209c146480916235c148db03f8797a2a997d19a/scripts/mirror_3223/mini_p3223_nr.py"
+        },
+        {
+          "label": "Lift observable and Newton refinement",
+          "url": "https://github.com/EncapsulatorP/collatz_lift/blob/7134ef3e85474810575209c436be8b6b16e8c5f2/scripts/core/collatz.py"
+        }
+      ],
+      "knownBasis": "Both implementations exist independently; the Newton shock module includes a cubic-roots-of-unity control.",
+      "openQuestion": "Whether high-shock regions add useful information about lift convergence or basin structure. Shock intensity is not itself a Lyapunov exponent or a basin-boundary certificate.",
+      "evidenceLevel": "proposed",
+      "status": "Proposed interface or proof work; not an implemented cross-repository dependency"
+    },
+    {
+      "id": "E43",
+      "from": "prime-tower-diagnostics",
+      "to": "rolt-phi-kappa3_expand",
+      "kind": "proposed-reuse",
+      "label": "Tangent growth and spectral transfer growth",
+      "basisStatus": "documented-proposal",
+      "transferStatus": "proposed",
+      "mechanism": "Both programs can express finite growth through products of local multipliers or matrices. ROLT explicitly proposes transfer-matrix Lyapunov sweeps; prime diagnostics already accumulates map-derivative cocycles. A common report can distinguish their different operators and clocks.",
+      "nextExperiment": "Build a periodic or constant-coefficient transfer-matrix control with a calculable growth rate, then one small ROLT sweep at fixed variance. Report raw log growth, actual step count, norm convention and finite-size sensitivity alongside the map diagnostics.",
+      "deliverable": "A versioned growth-report contract and a controlled scalar-versus-matrix demonstration.",
+      "stage": "S6",
+      "keywords": [
+        "Lyapunov",
+        "cocycle",
+        "transfer matrix",
+        "spectral growth",
+        "fixed variance",
+        "physics"
+      ],
+      "codeImportVerified": false,
+      "evidence": [
+        {
+          "label": "Existing cocycle comparison",
+          "url": "https://github.com/EncapsulatorP/prime-tower-diagnostics/blob/23450b6b5ed6024c662cae23d3e0644a3ed8510b/scripts/spinor_cocycles.py"
+        },
+        {
+          "label": "Explicit ROLT Lyapunov and matched-variance targets",
+          "url": "https://github.com/EncapsulatorP/rolt-phi-kappa3_expand/blob/158e509ed6fa05c7e282f761637d700fc00d36f9/nextsteps.md"
+        }
+      ],
+      "knownBasis": "Existing scalar cocycle code and an explicit ROLT transfer-matrix research target.",
+      "openQuestion": "Whether the proposed ROLT layer effect survives matched variance and system size. A scalar map exponent is not the spectral exponent of a different physical operator.",
+      "evidenceLevel": "proposed",
+      "status": "Proposed interface or proof work; not an implemented cross-repository dependency"
+    },
+    {
+      "id": "E44",
+      "from": "prime-tower-diagnostics",
+      "to": "c3._2z",
+      "kind": "proposed-reuse",
+      "label": "Chaotic trajectories to a synthetic ranging signal",
+      "basisStatus": "documented-computation",
+      "transferStatus": "speculative-application",
+      "mechanism": "Prime diagnostics supplies named dynamical trajectories; C3 already has an ideal optical phase-modulation exhibit. A proposed bounded phase encoder can turn a saved trajectory into a reference waveform for a synthetic delay-estimation experiment.",
+      "nextExperiment": "Freeze the map and phase encoder; simulate a delayed noisy return. Compare delay error, correlation sidelobes and failure rate against a matched conventional waveform and randomized control across a small predeclared SNR grid.",
+      "deliverable": "A synthetic ranging benchmark with waveform provenance and a keep/pivot decision; no hardware claim.",
+      "stage": "S6",
+      "keywords": [
+        "LiDAR",
+        "chaotic sensing",
+        "Newton",
+        "Collatz",
+        "phase modulation",
+        "correlation",
+        "range"
+      ],
+      "codeImportVerified": false,
+      "evidence": [
+        {
+          "label": "Dynamical source",
+          "url": "https://github.com/EncapsulatorP/prime-tower-diagnostics/blob/23450b6b5ed6024c662cae23d3e0644a3ed8510b/scripts/spinor_cocycles.py"
+        },
+        {
+          "label": "C3 optical phase slots",
+          "url": "https://github.com/EncapsulatorP/c3._2z/blob/7e8fb577bd3eb8da2e358d691164a9fee5c75f9b/README.md"
+        },
+        {
+          "label": "Recovered LiDAR foundation and scope",
+          "url": "https://github.com/kugguk2022/LSR5L-/blob/cb785c0f6518f690782c29ba2d26ac90cdf3d7de/research-atlas/physics/dynamics-recovery.md"
+        }
+      ],
+      "knownBasis": "The mathematical trajectory code and optical phase exhibit exist. The recovered external chaotic-LiDAR source uses waveform correlation and discusses Lyapunov/correlation diagnostics.",
+      "openQuestion": "Whether any selected waveform improves ranging under matched bandwidth, energy and noise. No LiDAR implementation or performance advantage exists in these repositories.",
+      "evidenceLevel": "speculative",
+      "status": "Speculative transfer or application; finite control experiment pending"
+    },
+    {
+      "id": "E45",
+      "from": "collatz_rupert_delay_embedding",
+      "to": "YPer",
+      "kind": "proposed-reuse",
+      "label": "Three coordinates, two channels, and what six means",
+      "basisStatus": "exact-calibration-examples",
+      "transferStatus": "proposed",
+      "mechanism": "A delay embedding gives a concrete state representation for testing the recovered dimension/cardinality question. YPer can begin with a precisely declared two-channel, three-coordinate construction rather than an undefined dimensional analogy.",
+      "nextExperiment": "Create an object ledger for a three-coordinate real delay, two such channels in R^6, C^3 viewed over R, R^3×R^2 and R^3⊗R^2. Record coordinate field, ambient dimension, sampled support, hull rank and cardinality statement separately.",
+      "deliverable": "An exact dimension/cardinality comparison card plus one finite geometry demonstration with declared sampling scales.",
+      "stage": "S6",
+      "keywords": [
+        "dimension",
+        "cardinality",
+        "6=3×2",
+        "complex realification",
+        "tensor",
+        "delay embedding",
+        "branes"
+      ],
+      "codeImportVerified": false,
+      "evidence": [
+        {
+          "label": "Delay-hull scope",
+          "url": "https://github.com/EncapsulatorP/collatz_rupert_delay_embedding/blob/cf7e78217e05d9568e0382be3577254a1d96f167/docs/CLAIMS_AND_NONCLAIMS.md"
+        },
+        {
+          "label": "YPer remit",
+          "url": "https://github.com/EncapsulatorP/YPer/blob/4f8c7b0fecc95f9568ccfa8b52ed968b9fc998b0/README.md"
+        },
+        {
+          "label": "Recovered dimension distinctions",
+          "url": "https://github.com/kugguk2022/LSR5L-/blob/cb785c0f6518f690782c29ba2d26ac90cdf3d7de/research-atlas/physics/math-recovery.md"
+        }
+      ],
+      "knownBasis": "The recovered note distinguishes realification of C^3, Cartesian products, tensor products, cardinality and fractal dimension. The Rupert program provides finite delay-coordinate data.",
+      "openQuestion": "The user's intended 6=3·2 construction and brane implication remain unrecovered. These calibration examples do not identify that missing construction.",
+      "evidenceLevel": "proposed",
+      "status": "Proposed interface or proof work; not an implemented cross-repository dependency"
+    },
+    {
+      "id": "E46",
+      "from": "zp-program",
+      "to": "c3._2z",
+      "kind": "proposed-reuse",
+      "label": "Mahler layer increments and exact tower remainders",
+      "basisStatus": "exact-written-identities",
+      "transferStatus": "proposed",
+      "mechanism": "The recovered Mahler ladder has an exact per-layer recurrence and a 2^-k remainder bound. C3 has exact logarithmic perturbation transport through layers. They can share a layer-by-layer evidence format while remaining different functions.",
+      "nextExperiment": "Evaluate a small Mahler ladder by direct truncation and recurrence with explicit tail bounds; record each increment and remainder beside a C3 logarithmic-transport fixture. Add a separate conditional-claim record for Z(p).",
+      "deliverable": "Two exact layer notebooks sharing a provenance/remainder schema, with conditional transcendence kept separate.",
+      "stage": "S4",
+      "keywords": [
+        "Mahler",
+        "Schanuel",
+        "tower layers",
+        "dyadic ladder",
+        "remainder",
+        "exact recurrence"
+      ],
+      "codeImportVerified": false,
+      "evidence": [
+        {
+          "label": "Z(p) program and bounds",
+          "url": "https://github.com/EncapsulatorP/zp-program/blob/70454700844d882615b9ff93fed17b5707af834d/README.md"
+        },
+        {
+          "label": "Exact logarithmic transport",
+          "url": "https://github.com/EncapsulatorP/c3._2z/blob/7e8fb577bd3eb8da2e358d691164a9fee5c75f9b/README.md"
+        },
+        {
+          "label": "Exact Mahler ladder and separate Schanuel deduction",
+          "url": "https://github.com/kugguk2022/LSR5L-/blob/cb785c0f6518f690782c29ba2d26ac90cdf3d7de/research-atlas/physics/math-recovery.md"
+        }
+      ],
+      "knownBasis": "The two exact identities are written in their respective sources. The Mahler ladder is external recovered material, not an implemented zp-program module.",
+      "openQuestion": "No equivalence with the Z(p) family or common transcendence theorem is established. Schanuel remains an explicit assumption for the separate Z(p) target.",
+      "evidenceLevel": "proposed",
+      "status": "Proposed interface or proof work; not an implemented cross-repository dependency"
+    },
+    {
+      "id": "E47",
+      "from": "zp-program",
+      "to": "rolt-phi-kappa3_expand",
+      "kind": "proposed-reuse",
+      "label": "The documented Zeteon frequency-selector experiment",
+      "basisStatus": "documented-proposal",
+      "transferStatus": "proposed",
+      "mechanism": "ROLT nextsteps explicitly proposes selecting driving frequencies through a Diophantine score S_L applied to the Z(p) family, then comparing them with the current fixed frequencies. This is an existing planned connection missing from the graph.",
+      "nextExperiment": "Pin the score and frequency projection first. Compare a tiny Z(p)-selected frequency set against the current frequencies and matched controls using the same variance, system size and observable.",
+      "deliverable": "A reproducible selector specification and a fixed-budget spectral comparison, retaining null outcomes.",
+      "stage": "S6",
+      "keywords": [
+        "Zeteon",
+        "Z(p)",
+        "frequency selector",
+        "Diophantine score",
+        "ROLT",
+        "spectral control"
+      ],
+      "codeImportVerified": false,
+      "evidence": [
+        {
+          "label": "Explicit Zeteon selector proposal",
+          "url": "https://github.com/EncapsulatorP/rolt-phi-kappa3_expand/blob/158e509ed6fa05c7e282f761637d700fc00d36f9/nextsteps.md"
+        },
+        {
+          "label": "Exact Z(p) reduction",
+          "url": "https://github.com/EncapsulatorP/zp-program/blob/70454700844d882615b9ff93fed17b5707af834d/z_p/zeta_even_reduction.md"
+        }
+      ],
+      "knownBasis": "The proposal is explicit in ROLT nextsteps; zp-program supplies the exact Z(p) definition and rational even-zeta reduction.",
+      "openQuestion": "The selector and claimed spectral benefit are not implemented or established. Arithmetic status of a constant does not guarantee better physical or computational performance.",
+      "evidenceLevel": "proposed",
+      "status": "Explicit historical proposal recovered from ROLT nextsteps; implementation pending"
+    },
+    {
+      "id": "E48",
+      "from": "rolt-phi-kappa3_expand",
+      "to": "Fixed-Point-Shadow",
+      "kind": "analogy",
+      "label": "Layer depth versus retained information",
+      "basisStatus": "documented-models-and-exact-channel-control",
+      "transferStatus": "speculative-application",
+      "mechanism": "ROLT asks how added depth trades gain against stability/cost. Fixed-Point-Shadow asks when information-discarding evolution makes reconstruction difficult. The recovered synthetic-alphabet channel supplies a concrete toy model in which retained information can be measured.",
+      "nextExperiment": "Instantiate one finite encoder/channel/decoder graph and a flat comparator with equal memory, updates, noise and observation horizon. Verify the unlayered exact channel limits; include reversible-encoding and shuffled-layer controls.",
+      "deliverable": "A retained-information/turnover Pareto plot and a mechanism report showing whether any advantage survives resource matching.",
+      "stage": "S6",
+      "keywords": [
+        "biophysics",
+        "synthetic DNA",
+        "alphabet",
+        "stability",
+        "decay",
+        "memory",
+        "information retention"
+      ],
+      "codeImportVerified": false,
+      "evidence": [
+        {
+          "label": "ROLT depth and stability model",
+          "url": "https://github.com/EncapsulatorP/rolt-phi-kappa3_expand/blob/158e509ed6fa05c7e282f761637d700fc00d36f9/README.md"
+        },
+        {
+          "label": "Information-loss framework and qualifications",
+          "url": "https://github.com/EncapsulatorP/Fixed-Point-Shadow/blob/26744b515fcb08e9aa9065f56abeb71f352fb65d/README.md"
+        },
+        {
+          "label": "Exact channel model and proposed layer controls",
+          "url": "https://github.com/kugguk2022/LSR5L-/blob/cb785c0f6518f690782c29ba2d26ac90cdf3d7de/research-atlas/physics/biophysics-expansion.md"
+        }
+      ],
+      "knownBasis": "The source frameworks and the exact substitution-plus-erasure channel formula are documented. They do not yet share an implemented system.",
+      "openQuestion": "Whether layered memory improves retention under matched resources, and whether any such mechanism transfers to molecular alphabets. No universal optimal depth or DNA alphabet ceiling follows.",
+      "evidenceLevel": "speculative",
+      "status": "Speculative transfer or application; finite control experiment pending"
+    },
+    {
+      "id": "E49",
+      "from": "ZP_type2_sector_invariants",
+      "to": "recaman",
+      "kind": "proposed-reuse",
+      "label": "Transfer a binary-walk signature to phase slips",
+      "basisStatus": "documented-computation",
+      "transferStatus": "speculative-transfer",
+      "mechanism": "Type2 already extracts walk balance, drift, returns and run statistics from Collatz parity. Recamán has a binary blocked/free process with rare departures from alternation. Those feature instruments can be tested on a different sequence without transferring the Collatz interpretation.",
+      "nextExperiment": "Freeze prefix-only signature features and compare them on one later-horizon holdout, with alternation and magnitude-matched controls. Do not use eventual hole membership as an input.",
+      "deliverable": "A small transfer benchmark reporting rare-event precision/recall and incremental gain or a useful null result.",
+      "stage": "S4",
+      "keywords": [
+        "Type-2",
+        "Recamán",
+        "phase slips",
+        "Dyck statistics",
+        "binary sequence",
+        "held-out"
+      ],
+      "codeImportVerified": false,
+      "evidence": [
+        {
+          "label": "Existing Type2 signature",
+          "url": "https://github.com/EncapsulatorP/ZP_type2_sector_invariants/blob/01c93cdf96efe585d10bb4b8d54b73e741f96101/z_p/type2/signature.py"
+        },
+        {
+          "label": "Recamán finite forecasting and slip targets",
+          "url": "https://github.com/EncapsulatorP/recaman/blob/056452f2be03dad5f7bca0f7024c8357f42d8c6b/wiki/Open-Questions.md"
+        }
+      ],
+      "knownBasis": "Both binary data sources and their existing diagnostics are implemented.",
+      "openQuestion": "Whether Type2 features predict Recamán slips beyond previous-bit, recency and visited-neighbor baselines; a positive result would concern a finite forecasting task.",
+      "evidenceLevel": "speculative",
+      "status": "Speculative transfer or application; finite control experiment pending"
+    },
+    {
+      "id": "E50",
+      "from": "prime_tower_decomposition",
+      "to": "Catalan_ruelle_mayer",
+      "kind": "shared-object",
+      "label": "Dirichlet beta joins the Colmez and Catalan channels",
+      "basisStatus": "documented-shared-object",
+      "transferStatus": "proposed-reuse",
+      "mechanism": "The decomposition repo explicitly computes beta(s)=L(s,chi_-4), its completed logarithmic derivative and twisted Mayer-beta entries. Catalan generators evaluate Li_s(i) channels whose imaginary component is beta(s) on the convergent real-order domain.",
+      "nextExperiment": "Cross-check small positive real orders and nonsingular functional-equation probes at increasing precision. Record the gamma/digamma completion separately from raw beta'/beta.",
+      "deliverable": "A shared beta reference table and a short operator-obligation ledger distinguishing confirmed identities from proposed extensions.",
+      "stage": "S4",
+      "keywords": [
+        "Dirichlet beta",
+        "chi4",
+        "Catalan",
+        "Colmez",
+        "Mayer",
+        "functional equation"
+      ],
+      "codeImportVerified": false,
+      "evidence": [
+        {
+          "label": "Explicit beta and completed log-derivative implementation",
+          "url": "https://github.com/EncapsulatorP/prime_tower_decomposition/blob/9209c146480916235c148db03f8797a2a997d19a/scripts/colmez/colmez.py"
+        },
+        {
+          "label": "Catalan/polylog generator",
+          "url": "https://github.com/EncapsulatorP/Catalan_ruelle_mayer/blob/1aa0f8d76753cfa34d128d5d29598bb94eaf2131/src/catalan_mg/core.py"
+        }
+      ],
+      "knownBasis": "The shared Dirichlet-beta object is explicit in existing code, not merely a name similarity.",
+      "openQuestion": "A common signed determinant, Colmez-height identity or global operator correspondence is not established by evaluating these observables.",
+      "evidenceLevel": "known",
+      "status": "Documented shared object; cross-repository reuse remains proposed"
+    },
+    {
+      "id": "E51",
+      "from": "prime_tower_decomposition",
+      "to": "collatz_kesten-goldie",
+      "kind": "shared-object",
+      "label": "One Syracuse valuation stream, two diagnostics",
+      "basisStatus": "documented-shared-object",
+      "transferStatus": "proposed-reuse",
+      "mechanism": "The decomposition repo extracts odd-Syracuse valuations and analyzes finite Collatz windows; Kesten diagnostics use valuation-driven affine recursions and raw/SSI gauges. A common exact trajectory bundle can remove duplicated conventions.",
+      "nextExperiment": "Export identical odd states, v2 values and additive +1 corrections for a few seeds. Confirm both consumers reconstruct the same integer trajectory before comparing block-preserving nulls.",
+      "deliverable": "A trajectory/clock/gauge fixture plus a narrowly stated dependence comparison.",
+      "stage": "S3",
+      "keywords": [
+        "Syracuse",
+        "SSI",
+        "valuation",
+        "Collatz",
+        "Kesten–Goldie",
+        "additive correction"
+      ],
+      "codeImportVerified": false,
+      "evidence": [
+        {
+          "label": "Syracuse and window-diagnostic source map",
+          "url": "https://github.com/EncapsulatorP/prime_tower_decomposition/blob/9209c146480916235c148db03f8797a2a997d19a/README.md"
+        },
+        {
+          "label": "Raw/SSI and dependence-control scope",
+          "url": "https://github.com/EncapsulatorP/collatz_kesten-goldie/blob/791f509561d1d4cf77a471e94e808648741858ed/README.md"
+        }
+      ],
+      "knownBasis": "Both repositories document valuation-based Collatz diagnostics.",
+      "openQuestion": "Whether the same higher-order valuation dependence explains window suppression and tail behavior; shared input data does not imply a shared limiting law.",
+      "evidenceLevel": "known",
+      "status": "Documented shared object; cross-repository reuse remains proposed"
+    },
+    {
+      "id": "E52",
+      "from": "Validatron",
+      "to": "c3._2z",
+      "kind": "proposed-reuse",
+      "label": "The prime-layer order identity becomes a proof target",
+      "basisStatus": "exact-written-result",
+      "transferStatus": "proposed-formalization",
+      "mechanism": "C3 states exact shared-fixed-point and first-derivative identities for two prime-layer compositions, with an order-dependent second derivative. This is a compact constructive target for Validatron, followed by a separately scoped harmonic consequence.",
+      "nextExperiment": "Formalize the fixed-point and equal-first-derivative statements first, retaining positivity/domain assumptions. Then prove the second-derivative difference and state the small-amplitude Taylor remainder separately.",
+      "deliverable": "One source-linked exact proof package with the numerical waveform check attached as a different evidence type.",
+      "stage": "S4",
+      "keywords": [
+        "Validatron",
+        "Lean",
+        "Omega",
+        "prime layers",
+        "second harmonic",
+        "constructive proof",
+        "Taylor remainder"
+      ],
+      "codeImportVerified": false,
+      "evidence": [
+        {
+          "label": "Exact prime-layer order result",
+          "url": "https://github.com/EncapsulatorP/c3._2z/blob/7e8fb577bd3eb8da2e358d691164a9fee5c75f9b/README.md"
+        },
+        {
+          "label": "Source fidelity and proof-development requirements",
+          "url": "https://github.com/EncapsulatorP/Validatron/blob/ad7ad831638e5c3d282331335f150afbbd98b64f/target_planning.md"
+        }
+      ],
+      "knownBasis": "The local analytic result is written in the C3 source. It is not presently a reported Lean certificate.",
+      "openQuestion": "Formal replay, faithful translation of the hypotheses and the precise remainder conditions for the second-harmonic statement.",
+      "evidenceLevel": "proposed",
+      "status": "Exact local result written in the source; source-faithful formalization proposed"
+    },
+    {
+      "id": "E53",
+      "from": "collatz_lift",
+      "to": "prime-tower-diagnostics",
+      "kind": "proposed-reuse",
+      "label": "One Newton benchmark, two growth instruments",
+      "basisStatus": "documented-computation",
+      "transferStatus": "proposed",
+      "mechanism": "Lift has Newton root refinement and analytic derivative code; prime diagnostics has a Newton cocycle channel. A shared known-function fixture can expose differences in derivative floors, clipping, escape handling and averaging.",
+      "nextExperiment": "Run both instruments on the same small polynomial and identical initial points, then on one declared unclipped lift observable. Publish raw values and masks before any common color scale.",
+      "deliverable": "A numerical-contract comparison that either validates a reusable adapter or records a precise reason the channels differ.",
+      "stage": "S3",
+      "keywords": [
+        "Newton",
+        "Lyapunov",
+        "Collatz lift",
+        "normalization",
+        "escape mask",
+        "horizon"
+      ],
+      "codeImportVerified": false,
+      "evidence": [
+        {
+          "label": "Newton refinement and derivative implementation",
+          "url": "https://github.com/EncapsulatorP/collatz_lift/blob/7134ef3e85474810575209c436be8b6b16e8c5f2/scripts/core/collatz.py"
+        },
+        {
+          "label": "Newton cocycle instrument",
+          "url": "https://github.com/EncapsulatorP/prime-tower-diagnostics/blob/23450b6b5ed6024c662cae23d3e0644a3ed8510b/scripts/spinor_cocycles.py"
+        },
+        {
+          "label": "Recovered numerical-contract issues",
+          "url": "https://github.com/kugguk2022/LSR5L-/blob/cb785c0f6518f690782c29ba2d26ac90cdf3d7de/research-atlas/physics/dynamics-recovery.md"
+        }
+      ],
+      "knownBasis": "Both numerical instruments exist. They currently study different observables and do not provide interchangeable exponents.",
+      "openQuestion": "Whether the recovered visual similarities persist when raw growth, actual horizon and normalization are aligned.",
+      "evidenceLevel": "proposed",
+      "status": "Proposed interface or proof work; not an implemented cross-repository dependency"
     }
   ],
   "routes": [
@@ -3306,14 +3915,18 @@
         "collatz_lift",
         "collatz_quasi_particle_by_forced_tetration",
         "collatz_kesten-goldie",
-        "Validatron"
+        "Validatron",
+        "prime_tower_decomposition"
       ],
       "edgeIds": [
         "E16",
         "E17",
         "E19",
         "E37",
-        "E38"
+        "E38",
+        "E42",
+        "E51",
+        "E53"
       ],
       "target": "A tiny trajectory bundle, strict Rupert witness and separately defined finite-time Lyapunov report.",
       "stage": "S1",
@@ -3377,7 +3990,9 @@
         "E10",
         "E13",
         "E24",
-        "E34"
+        "E34",
+        "E46",
+        "E52"
       ],
       "target": "A logarithmic transport fixture, a compatible tower adapter and an explicitly Schanuel-conditional target; recover the Mahler ladder as a separate analytic note.",
       "stage": "S4",
@@ -3439,7 +4054,8 @@
         "zeta_branching",
         "collatz_lift",
         "collatz_quasi_particle_by_forced_tetration",
-        "mertens_counterexamples"
+        "mertens_counterexamples",
+        "prime_tower_decomposition"
       ],
       "edgeIds": [
         "E03",
@@ -3447,7 +4063,8 @@
         "E23",
         "E26",
         "E27",
-        "E28"
+        "E28",
+        "E50"
       ],
       "target": "Finite character fixtures, explicit operator obligations and an independent root-count reference.",
       "stage": "S4",
@@ -3475,14 +4092,19 @@
         "Fixed-Point-Shadow",
         "collatz_lift",
         "antiverse",
-        "collatz_rupert_delay_embedding"
+        "collatz_rupert_delay_embedding",
+        "zp-program"
       ],
       "edgeIds": [
         "E14",
         "E20",
         "E21",
         "E32",
-        "E37"
+        "E37",
+        "E43",
+        "E44",
+        "E47",
+        "E48"
       ],
       "target": "One matched layer/noise experiment, a synthetic-alphabet retention curve and an explicit LiDAR benchmark question, linked to the recovered physics notebook.",
       "stage": "S6",
@@ -3508,13 +4130,15 @@
         "prime-polarity",
         "Periodic-Table-of-Primes-210",
         "gilbreath",
-        "NT_goldbachy_disastrous_cake"
+        "NT_goldbachy_disastrous_cake",
+        "c3._2z"
       ],
       "edgeIds": [
         "E07",
         "E25",
         "E31",
-        "E36"
+        "E36",
+        "E52"
       ],
       "target": "A modular-bijection proof, complete prime labels and one explicitly defined signed/modular transform.",
       "stage": "S1",
@@ -3527,6 +4151,57 @@
       ],
       "searchUrl": "https://github.com/search?q=org%3AEncapsulatorP%20proof&type=code",
       "localUrl": "https://encapsulatorp.github.io/#pirates-plan?q=proof"
+    },
+    {
+      "id": "R8",
+      "title": "Newton shocks → trustworthy growth → a sensing test",
+      "repositories": [
+        "prime_tower_decomposition",
+        "collatz_lift",
+        "prime-tower-diagnostics",
+        "c3._2z"
+      ],
+      "edgeIds": [
+        "E42",
+        "E53",
+        "E44"
+      ],
+      "question": "Which dynamical structure survives a common numerical contract and helps a declared sensing objective?",
+      "waypoints": [
+        {
+          "edgeId": "E42",
+          "treasure": "A reproducible Newton trace",
+          "gate": "Cubic control and named lift observable agree with their definitions."
+        },
+        {
+          "edgeId": "E53",
+          "treasure": "A trustworthy finite growth report",
+          "gate": "Actual horizon, raw values, derivative floor, clipping and escape mask are visible."
+        },
+        {
+          "edgeId": "E44",
+          "treasure": "A synthetic ranging result worth keeping",
+          "gate": "Any improvement survives matched energy, bandwidth and noise controls; a null result is retained."
+        }
+      ],
+      "sideQuest": {
+        "edgeId": "E52",
+        "treasure": "A small exact prime-layer proof",
+        "gate": "Formal replay preserves the source statement and assumptions."
+      },
+      "status": "Proposed sequence of work, not a chain of theorem implications",
+      "keywords": [
+        "Newton",
+        "Collatz",
+        "Lyapunov",
+        "LiDAR",
+        "optical phase",
+        "next treasure"
+      ],
+      "target": "A reproducible Newton trace, a growth report with a declared numerical contract, and a separately gated synthetic ranging comparison under matched energy, bandwidth and noise.",
+      "stage": "S3",
+      "searchUrl": "https://github.com/search?q=org%3AEncapsulatorP%20Newton&type=code",
+      "localUrl": "https://encapsulatorp.github.io/#pirates-plan?route=R8"
     }
   ],
   "externalBridges": [
@@ -3717,6 +4392,13 @@
       "decision": "Move the antiverse organization decision to the immediate queue: prepare relocation to the physics organization and review the name. “Formal witness dynamics” is a descriptive working label only. Retain the current private repository ID, URL and source history until an actual transfer or rename is verified. Preserve the sound kernel and exact local examples; park the universal generator and continuous polarity calculus. Validatron/Obstruction reuse remains optional from S5.",
       "gate": "Record the exact destination organization slug and the naming choice, then complete the migration, redirect, access and search-link audit. No destination organization is inferred from the recovered private physics notebook. The current inventory remains 32; after verified transfer, represent the source as an external physics bridge, update its links and adjust the organization count.",
       "stage": "S0"
+    },
+    {
+      "id": "D10",
+      "title": "Draw the unknown links and the next expedition",
+      "stage": "S0",
+      "decision": "Show documented, proposed and speculative connections with distinct colors and line patterns. Give every edge its known basis, open question and finite next probe. Overlay a numbered Pirate path for the next work without turning work order into a mathematical implication.",
+      "gate": "A known label states the exact scope of source evidence. A proved implication requires an actual proof artifact and its assumptions; no shared-object or numerical-match edge receives that status automatically. Speculative edges remain visible and inspectable."
     }
   ],
   "claimBoundaries": [
@@ -3790,5 +4472,136 @@
     "code_import_verified": true,
     "operational_on_audited_repos": false
   },
-  "linkAudit": "No operational cross-repository imported computation was established among the audited org main branches. Shared objects, manual companion results and future-integration plans are typed explicitly. The one inspected optional adapter expects files absent from the named public boundary repo main."
+  "linkAudit": "No operational cross-repository imported computation was established among the audited org main branches. Shared objects, manual companion results and future-integration plans are typed explicitly. The one inspected optional adapter expects files absent from the named public boundary repo main.",
+  "evidenceKey": [
+    {
+      "id": "known",
+      "label": "Known / documented basis",
+      "color": "#76cfe0",
+      "pattern": "solid",
+      "meaning": "The stated object, source relationship or navigation is documented. Read its scope; this label does not certify a cross-repository theorem."
+    },
+    {
+      "id": "proposed",
+      "label": "Proposed work",
+      "color": "#e9c36a",
+      "pattern": "long dash",
+      "meaning": "An interface, reuse or experiment is specified, but its successful implementation or result is still pending."
+    },
+    {
+      "id": "speculative",
+      "label": "Speculative bridge",
+      "color": "#cf9ee7",
+      "pattern": "dotted",
+      "meaning": "A useful question or analogy with a missing mathematical or experimental bridge. The finite probe and pivot condition are explicit."
+    }
+  ],
+  "piratePaths": [
+    {
+      "id": "next-treasures",
+      "title": "Next treasures · first expedition",
+      "summary": "A suggested work order through seven bounded treasures. Orange dash-dot arrows mean visit next when the gate permits; they are not mathematical implications or implemented dependencies. The final physics stop is conditional.",
+      "stops": [
+        {
+          "repo": "collatz_rupert_delay_embedding",
+          "title": "Make the geometry trustworthy",
+          "stage": "S1",
+          "target": "Save an independently checked positive-clearance cube passage, repair translation handling, and add the exact Noperthedron control.",
+          "gate": "Translation covariance and strictness pass before larger scans; a search miss retains its unresolved status."
+        },
+        {
+          "repo": "Validatron",
+          "title": "Give the result a proof record",
+          "stage": "S1",
+          "target": "Preserve source, statement, assumptions, witness/checker output and the separate three-affine-line Collatz lemma.",
+          "gate": "Numerical witnesses and formal proofs retain distinct states. Pending Lean integration need not block a checked empirical capsule."
+        },
+        {
+          "repo": "goldbach_busy_collatz",
+          "title": "Bank an exact arithmetic result",
+          "stage": "S2",
+          "target": "Independently reproduce a small exact count, CRT and χ4 evidence capsule.",
+          "gate": "Exact direct enumeration agrees and provenance is complete. The unresolved optional tower adapter is a separate target."
+        },
+        {
+          "repo": "collatz_lift",
+          "title": "Name the map and its clock",
+          "stage": "S3",
+          "target": "Reconcile written and implemented gates, branch conventions and standard/accelerated clocks before comparing growth or roots.",
+          "gate": "A tiny saved trajectory and derivative fixture reproduce the declared map; analytic root checks use a valid unclipped domain."
+        },
+        {
+          "repo": "prime-tower-diagnostics",
+          "title": "Connect Newton and growth instruments",
+          "stage": "S3",
+          "target": "Reproduce one Newton–Collatz finite-time growth comparison with fixed horizon, normalization, escape handling and null controls.",
+          "gate": "If the visible signal vanishes under controls, retain the negative result and reusable instrument."
+        },
+        {
+          "repo": "c3._2z",
+          "title": "Extract one exact tower identity",
+          "stage": "S4",
+          "target": "Publish an exact logarithmic transport/layer-order fixture with explicit base, units and representation controls.",
+          "gate": "An independent computation reproduces the identity; tower decomposition is an optional comparison with its own input family."
+        },
+        {
+          "repo": "rolt-phi-kappa3_expand",
+          "title": "Open a bounded physics experiment",
+          "stage": "S6",
+          "target": "Measure depth versus stability/decay at matched noise and resources, linked to the recovered physics notebook.",
+          "gate": "Enter after choosing the model, objective and baseline. Synthetic DNA and LiDAR remain separate scoped follow-on experiments."
+        }
+      ],
+      "edgeIds": [
+        "E38",
+        "E07",
+        "E16",
+        "E14",
+        "E53",
+        "E52",
+        "E44",
+        "E43"
+      ]
+    },
+    {
+      "id": "newton-lidar",
+      "title": "Newton → growth → a sensing test",
+      "summary": "A proposed connected expedition along E42, E53 and E44. Begin after the first Rupert control work and the numerical-contract gate. The last step is a synthetic sensing hypothesis, not a demonstrated LiDAR advantage.",
+      "edgeIds": [
+        "E42",
+        "E53",
+        "E44"
+      ],
+      "stops": [
+        {
+          "repo": "prime_tower_decomposition",
+          "title": "Recover the Newton trace",
+          "stage": "S3",
+          "target": "Reproduce the cubic-roots-of-unity control and retain residual, step-size and derivative-stress traces.",
+          "gate": "The named control agrees with its definition; shock intensity is kept distinct from a Lyapunov exponent."
+        },
+        {
+          "repo": "collatz_lift",
+          "title": "Apply it to a declared function",
+          "stage": "S3",
+          "target": "Export Newton traces on one small unclipped lift domain, with derivative failures and converged roots labeled.",
+          "gate": "The observable, clock, branch and analytic domain are explicit."
+        },
+        {
+          "repo": "prime-tower-diagnostics",
+          "title": "Calibrate the growth report",
+          "stage": "S3",
+          "target": "Compare raw growth and actual horizon on the same polynomial and starting points before any common color scale.",
+          "gate": "Normalization, derivative floor, clipping and escape masks are visible; record the reason if the instruments disagree."
+        },
+        {
+          "repo": "c3._2z",
+          "title": "Try a synthetic ranging signal",
+          "stage": "S6",
+          "target": "Encode a saved trajectory as a bounded optical phase waveform and estimate a delayed noisy return.",
+          "gate": "Any improvement must survive matched energy, bandwidth and noise controls. Retain a null result; no hardware performance is claimed."
+        }
+      ]
+    }
+  ]
 }

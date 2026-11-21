@@ -37,22 +37,35 @@
 
     <section class="pp-section pp-map-section" id="repo-interlinks" aria-labelledby="pp-map-title">
       <div class="pp-section-heading"><div><p class="pp-eyebrow">03 / Make the links useful</p><h3 id="pp-map-title">The repository connection map.</h3></div><p>Start with the whole portfolio, then select a repository to see its neighbours. Every connection below includes planned work.</p></div>
+      <div class="pp-path-launch" id="pp-path-launch">
+        <div><h4>Pirate path · next treasures</h4><p>Follow a numbered expedition through the next pieces of work. The orange path records work order, not a mathematical dependency.</p></div>
+        <label for="pp-pirate-path">Choose an expedition<select id="pp-pirate-path"><option value="">No expedition selected</option></select></label>
+        <button type="button" class="pp-button pp-button-expedition" id="pp-first-path">Follow the first expedition ↗</button>
+      </div>
       <div class="pp-map-shell">
+        <div class="pp-evidence-key" aria-label="Connection evidence and path legend">
+          <div class="pp-evidence-items" id="pp-evidence-counts" role="status" aria-live="polite"></div>
+          <p><strong>Known / documented</strong> means the cited link or shared object has a documented basis. It does not prove an equivalence between repositories. Gold and purple lines name work still to do. <strong class="pp-expedition-key">Orange dash-dot: planned work order.</strong></p>
+        </div>
         <div class="pp-map-toolbar">
-          <label for="pp-map-repo">Focus a repository<select id="pp-map-repo"><option value="">Whole portfolio</option></select></label>
+          <label for="pp-map-repo">Focus a repository<select id="pp-map-repo"><option value="">No single-repository focus</option></select></label>
+          <label for="pp-evidence">Evidence level<select id="pp-evidence"><option value="">All evidence levels</option><option value="known">Known / documented basis</option><option value="proposed">Proposed work</option><option value="speculative">Speculative bridges</option></select></label>
           <label for="pp-edge-kind">Connection type<select id="pp-edge-kind"><option value="">All connection types</option><option value="existing-link">Existing navigation</option><option value="existing-code">Existing code link</option><option value="shared-object">Shared mathematical object</option><option value="proposed-reuse">Proposed reuse</option><option value="analogy">Analogy to test</option></select></label>
-          <button class="pp-button pp-button-quiet" type="button" id="pp-map-reset">Whole portfolio</button>
+          <button class="pp-button pp-button-quiet" type="button" id="pp-map-reset">Reset · whole portfolio</button>
         </div>
         <div class="pp-map-caption"><div><strong id="pp-map-view-title">Whole portfolio</strong><p id="pp-map-view-description">Repositories grouped by research family.</p></div><span class="pp-map-count" id="pp-map-count" role="status"></span></div>
+        <div class="pp-edge-picker"><label for="pp-edge-focus">Inspect a connection in this view<select id="pp-edge-focus"><option value="">Choose a connection to highlight</option></select></label><button class="pp-button pp-button-quiet" type="button" id="pp-read-edge" disabled>Read its evidence &amp; next work ↓</button></div>
+        <div id="pp-connection-inspector" class="pp-connection-inspector" hidden></div>
         <div class="pp-graph-scroll" id="pp-graph-scroll" tabindex="0" aria-label="Repository graph. Scroll this region if the map is wider than the screen."><svg id="pp-graph" class="pp-graph" viewBox="0 0 1200 600" role="group" aria-labelledby="pp-graph-title pp-graph-description"><title id="pp-graph-title">Repository connections</title><desc id="pp-graph-description">A complete portfolio view with selectable repository nodes. The repository chooser and text list provide the same controls.</desc></svg></div>
-        <div class="pp-graph-footer"><p>Arrows follow the direction recorded in the plan. Line styles distinguish the kind of connection; they do not rank mathematical certainty.</p><div class="pp-map-legend" id="pp-map-legend"></div></div>
+        <div class="pp-graph-footer"><p>Solid cyan: known basis. Long gold dashes: proposed work. Purple dots: speculative bridge. Orange dash-dot: expedition order. Inspect a connection above or open its ledger entry below; source and relationship type remain explicit.</p><div class="pp-map-legend" id="pp-map-legend"></div></div>
         <details class="pp-node-list-details"><summary>Repository nodes as a keyboard-friendly list</summary><div class="pp-node-list" id="pp-node-list"></div></details>
       </div>
+      <div class="pp-itinerary" id="pp-itinerary" hidden></div>
       <div id="pp-selected-repo" class="pp-selected-repo" hidden></div>
       <div class="pp-edge-heading"><div><h4>Work on the connections</h4><p id="pp-edge-context">The mechanism, evidence, next experiment, and deliverable for each link.</p></div><label for="pp-edge-search">Search connections<input id="pp-edge-search" type="search" placeholder="A method, repository, or planned experiment…" autocomplete="off"></label></div>
       <p class="pp-result-count" id="pp-edge-count" role="status" aria-live="polite"></p>
       <div class="pp-edge-list" id="pp-edges"></div>
-      <p class="pp-empty" id="pp-edge-empty" hidden>No connections match these filters. Try a different term or choose all connection types.</p>
+      <p class="pp-empty" id="pp-edge-empty" hidden>No connections match these filters. Try another term or reset the evidence and relationship filters.</p>
     </section>
 
     <section class="pp-section" id="repo-register" aria-labelledby="pp-register-title">

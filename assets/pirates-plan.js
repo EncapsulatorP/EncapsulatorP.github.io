@@ -8,6 +8,22 @@
     'proposed-reuse': { label: 'Proposed reuse', color: '#d9c182' },
     'analogy': { label: 'Analogy to test', color: '#c7addf' }
   };
+  var EVIDENCE = {
+    known: { label: 'Known / documented basis', color: '#89e8df', dash: '' },
+    proposed: { label: 'Proposed work', color: '#f1cc73', dash: '13 7' },
+    speculative: { label: 'Speculative bridge', color: '#cfb0f4', dash: '2 7' }
+  };
+  function evidenceLevel(edge) {
+    if (EVIDENCE[edge.evidenceLevel]) return edge.evidenceLevel;
+    if (['existing-link', 'existing-code', 'shared-object'].includes(edge.kind)) return 'known';
+    return edge.kind === 'analogy' ? 'speculative' : 'proposed';
+  }
+  function evidenceCounts(edges) {
+    return edges.reduce(function (counts, edge) { counts[evidenceLevel(edge)]++; return counts; }, { known: 0, proposed: 0, speculative: 0 });
+  }
+  function matchesEdgeFilters(edge, state) {
+    return (!state.kind || edge.kind === state.kind) && (!state.evidence || evidenceLevel(edge) === state.evidence);
+  }
   var PLAN_ROUTES = ['pirates-plan', 'plan-timeline', 'plan-routes', 'repo-interlinks', 'repo-register', 'decision-targets', 'plan-bridges'];
   function list(value) { return Array.isArray(value) ? value : []; }
   function plain(value) {
@@ -34,10 +50,13 @@
       list(ids).forEach(function (id) { if (index.has(id)) index.set(id, index.get(id) + ' ' + normal(value)); });
     }
     list(data.edges).forEach(function (edge) {
-      append([edge.from, edge.to], [edge.from, edge.to, edge.label, edge.kind, edge.mechanism, edge.status, edge.nextExperiment, edge.deliverable, edge.keywords, edge.evidence]);
+      append([edge.from, edge.to], [edge.from, edge.to, edge.label, edge.kind, edge.evidenceLevel, edge.knownBasis, edge.openQuestion, edge.mechanism, edge.status, edge.nextExperiment, edge.deliverable, edge.keywords, edge.evidence]);
     });
     list(data.externalBridges).forEach(function (bridge) { append(bridge.linksTo, [bridge.title, bridge.purpose, bridge.nextTarget, bridge.status, bridge.keywords, bridge.sources]); });
     list(data.routes).forEach(function (route) { append(route.repositories, [route.title, route.question, route.target, route.keywords]); });
+    list(data.piratePaths).forEach(function (path) {
+      list(path.stops).forEach(function (stop) { append([stop.repo], [path.title, path.summary, stop.title, stop.target, stop.gate, stop.stage]); });
+    });
     append(['collatz_rupert_delay_embedding'], data.rupertMilestones);
     return index;
   }
@@ -60,16 +79,17 @@
     var raw = (hash || '').replace(/^#/, ''), question = raw.indexOf('?');
     var route = question === -1 ? raw : raw.slice(0, question);
     var params = new URLSearchParams(question === -1 ? '' : raw.slice(question + 1));
-    var state = { active: PLAN_ROUTES.includes(route), repo: '', route: '', q: '', eq: '', family: '', priority: '', visibility: '', kind: '', sort: 'rank' };
-    ['repo', 'route', 'q', 'eq', 'family', 'priority', 'visibility', 'kind', 'sort'].forEach(function (key) {
+    var state = { active: PLAN_ROUTES.includes(route), repo: '', route: '', path: '', edge: '', evidence: '', q: '', eq: '', family: '', priority: '', visibility: '', kind: '', sort: 'rank' };
+    ['repo', 'route', 'path', 'edge', 'evidence', 'q', 'eq', 'family', 'priority', 'visibility', 'kind', 'sort'].forEach(function (key) {
       if (params.has(key)) state[key] = params.get(key).slice(0, 600);
     });
     if (!['rank', 'roi', 'meaningfulness', 'importance', 'name'].includes(state.sort)) state.sort = 'rank';
+    if (state.evidence && !EVIDENCE[state.evidence]) state.evidence = '';
     return state;
   }
   function hashFor(state) {
     var params = new URLSearchParams();
-    ['repo', 'route', 'q', 'eq', 'family', 'priority', 'visibility', 'kind', 'sort'].forEach(function (key) {
+    ['repo', 'route', 'path', 'edge', 'evidence', 'q', 'eq', 'family', 'priority', 'visibility', 'kind', 'sort'].forEach(function (key) {
       if (state[key] && !(key === 'sort' && state[key] === 'rank')) params.set(key, state[key]);
     });
     return '#pirates-plan' + (params.toString() ? '?' + params.toString() : '');
@@ -119,9 +139,18 @@
     return { width: 1200, height: height, boxes: [], positions: positions,
       notes: [{ x: 185, text: 'INCOMING LINKS' }, { x: 1015, text: 'OUTGOING / SHARED LINKS' }] };
   }
+  function piratePathLayout(stops) {
+    var ids = unique(list(stops).map(function (stop) { return stop.repo; })), positions = new Map();
+    ids.forEach(function (id, index) {
+      var row = Math.floor(index / 3), column = row % 2 ? 2 - index % 3 : index % 3;
+      positions.set(id, { x: 30 + column * 400, y: 65 + row * 155, w: 340, h: 75 });
+    });
+    return { width: 1200, height: Math.max(270, Math.ceil(ids.length / 3) * 155 + 65), boxes: [], positions: positions };
+  }
   if (typeof module !== 'undefined' && module.exports) module.exports = {
     normal: normal, queryMatches: queryMatches, buildSearchIndex: buildSearchIndex, filterRepositories: filterRepositories, parseHash: parseHash,
-    hashFor: hashFor, portfolioLayout: portfolioLayout, neighborhoodLayout: neighborhoodLayout, wrapLabel: wrapLabel
+    hashFor: hashFor, portfolioLayout: portfolioLayout, neighborhoodLayout: neighborhoodLayout, piratePathLayout: piratePathLayout,
+    evidenceLevel: evidenceLevel, evidenceCounts: evidenceCounts, matchesEdgeFilters: matchesEdgeFilters, wrapLabel: wrapLabel
   };
   if (typeof document === 'undefined') return;
   function init() {
@@ -138,6 +167,9 @@
     var stages = list(data.stages), routes = list(data.routes), state = parseHash(location.hash);
     var stageById = new Map(stages.map(function (stage) { return [stage.id, stage]; }));
     var routeById = new Map(routes.map(function (route) { return [route.id, route]; }));
+    var piratePaths = list(data.piratePaths).filter(function (path) { return path.id && list(path.stops).length && path.stops.every(function (stop) { return byId.has(stop.repo); }); });
+    var pathById = new Map(piratePaths.map(function (path) { return [path.id, path]; }));
+    var edgeById = new Map(edges.map(function (edge) { return [edge.id, edge]; }));
     var oldTitle = document.title, ns = 'http://www.w3.org/2000/svg', openRepos = new Set(), openEdges = new Set();
     function get(id) { return document.getElementById(id); }
     function node(tag, className, text) {
@@ -186,6 +218,10 @@
     function validState() {
       if (!byId.has(state.repo)) state.repo = '';
       if (!routeById.has(state.route)) state.route = '';
+      if (!pathById.has(state.path)) state.path = '';
+      if (state.path || state.repo) state.route = '';
+      if (!edgeById.has(state.edge) || (state.edge && !matchesEdgeFilters(edgeById.get(state.edge), state))) state.edge = '';
+      if (state.evidence && !EVIDENCE[state.evidence]) state.evidence = '';
       if (state.kind && !KINDS[state.kind]) state.kind = '';
     }
     function saveState(push) {
@@ -206,24 +242,44 @@
       if (!state.active) return;
       var base = (location.hash || '').replace(/^#/, '').split('?')[0];
       var destination = base !== 'pirates-plan' && PLAN_ROUTES.includes(base) ? base :
-        state.repo || state.route ? 'pp-map-title' : state.q ? 'pp-register-title' : '';
+        state.repo || state.route || state.path || state.edge || state.evidence ? 'pp-map-title' : state.q ? 'pp-register-title' : '';
       if (destination) requestAnimationFrame(function () { scrollTo(destination, false); });
     }
     function selectRepo(id, scroll) {
       if (!byId.has(id)) return;
-      state.repo = id; state.route = ''; saveState(true); renderDynamic();
+      state.repo = id; state.route = ''; state.edge = ''; saveState(true); renderDynamic();
       if (scroll) scrollTo('pp-map-title', true);
     }
     function selectRoute(id) {
       if (!routeById.has(id)) return;
-      state.route = id; state.repo = ''; state.q = ''; state.eq = ''; state.family = ''; state.priority = ''; state.visibility = '';
+      state.route = id; state.repo = ''; state.path = ''; state.edge = ''; state.q = ''; state.eq = ''; state.family = ''; state.priority = ''; state.visibility = '';
       saveState(true); renderDynamic(); scrollTo('pp-map-title', true);
     }
     function showRegister(id) {
-      state.repo = id; state.route = ''; state.q = ''; state.family = ''; state.priority = ''; state.visibility = '';
+      state.repo = id; state.route = ''; state.path = ''; state.edge = ''; state.q = ''; state.family = ''; state.priority = ''; state.visibility = '';
       saveState(false); renderDynamic();
       var target = get('pp-repo-' + encodeURIComponent(id));
       if (target) { target.open = true; target.scrollIntoView({ block: 'start', behavior: 'auto' }); target.querySelector('summary').focus({ preventScroll: true }); }
+    }
+    function selectPath(id) {
+      if (!pathById.has(id)) return;
+      state.path = id; state.repo = ''; state.route = ''; state.edge = ''; state.kind = ''; state.evidence = ''; state.eq = '';
+      state.q = ''; state.family = ''; state.priority = ''; state.visibility = '';
+      saveState(true); renderDynamic(); scrollTo('pp-map-title', true);
+    }
+    function selectEdge(id, scroll) {
+      if (!edgeById.has(id)) return;
+      state.edge = id; state.eq = ''; get('pp-edge-search').value = ''; openEdges.add(id); saveState(true); renderGraph(); renderEdges();
+      if (scroll) scrollTo('pp-map-title', true);
+    }
+    function inspectEdgeInLedger() {
+      if (state.eq) {
+        state.eq = ''; get('pp-edge-search').value = ''; saveState(false); renderEdges();
+      }
+      var card = get('pp-edge-' + encodeURIComponent(state.edge));
+      if (!card) return;
+      card.open = true; card.scrollIntoView({ block: 'start', behavior: 'auto' });
+      card.querySelector('summary').focus({ preventScroll: true });
     }
     function appendScores(parent, repo) {
       var dl = node('dl', 'pp-score-row'), scores = repo.scores || {};
@@ -253,7 +309,7 @@
       }
       var stats = clear('pp-stats'), privateCount = repositories.filter(function (repo) { return normal(repo.visibility) === 'private'; }).length;
       [[repositories.length, 'Repositories', (repositories.length - privateCount) + ' public · ' + privateCount + ' private'],
-        [edges.length, 'Documented connections', 'with planned work'], [routes.length, 'Research routes', 'across the portfolio'], [stages.length, 'Programme stages', 'with decision gates']].forEach(function (item) {
+        [edges.length, 'Connections in the plan', 'evidence levels shown'], [routes.length, 'Research routes', 'across the portfolio'], [stages.length, 'Programme stages', 'with decision gates']].forEach(function (item) {
         var box = node('div'), dd = node('dd', '', item[0]); dd.append(node('span', '', item[2])); box.append(node('dt', '', item[1]), dd); stats.append(box);
       });
       [['pp-scope', 'Coverage', data.scope], ['pp-capacity', 'Capacity assumption', data.capacity]].forEach(function (item) {
@@ -283,7 +339,7 @@
         card.append(button('Trace this route ↗', function () { selectRoute(route.id); }, 'pp-button pp-button-quiet'));
         if (route.searchUrl) { var search = safeLink(route.searchUrl, 'Search route source code ↗', 'pp-reading-link'); if (search) card.append(search); }
         if (list(route.keywords).length) card.append(button('Find related plans ↓', function () {
-          state.route = ''; state.repo = ''; state.q = plain(route.keywords[0]); state.family = ''; state.priority = ''; state.visibility = '';
+          state.route = ''; state.repo = ''; state.path = ''; state.edge = ''; state.q = plain(route.keywords[0]); state.family = ''; state.priority = ''; state.visibility = '';
           saveState(true); renderDynamic(); scrollTo('pp-register-title', true);
         }, 'pp-text-button pp-route-search'));
         routeRoot.append(card);
@@ -316,6 +372,9 @@
       addOptions('pp-map-repo', repositories.slice().sort(function (a, b) { return plain(a.name || a.id).localeCompare(plain(b.name || b.id)); }).map(function (repo) { return { value: repo.id, label: repo.name || repo.id }; }));
       addOptions('pp-family', unique(repositories.map(function (repo) { return repo.family; }).filter(Boolean)).sort());
       addOptions('pp-priority', unique(repositories.map(function (repo) { return repo.priority; }).filter(Boolean)).sort());
+      addOptions('pp-pirate-path', piratePaths.map(function (path) { return { value: path.id, label: path.title || path.id }; }));
+      get('pp-path-launch').hidden = !piratePaths.length;
+      if (piratePaths.length) get('pp-hero-actions').prepend(button('Pirate path · next treasures ↗', function () { selectPath(piratePaths[0].id); }, 'pp-button pp-button-expedition'));
       var kindSelect = get('pp-edge-kind');
       if (!Array.from(kindSelect.options).some(function (option) { return option.value === 'existing-link'; })) {
         var option = node('option', '', KINDS['existing-link'].label); option.value = 'existing-link'; kindSelect.append(option);
@@ -323,18 +382,22 @@
       var legend = clear('pp-map-legend');
       Object.keys(KINDS).forEach(function (kind) {
         if (!edges.some(function (edge) { return edge.kind === kind; })) return;
-        var item = node('span'); item.dataset.kind = kind; item.append(node('i'), document.createTextNode(KINDS[kind].label)); legend.append(item);
+        var item = node('span'); item.dataset.kind = kind; item.append(document.createTextNode(KINDS[kind].label)); legend.append(item);
       });
       if (loading) loading.hidden = true;
     }
     function visibleGraphData() {
-      var currentEdges = edges.filter(function (edge) { return !state.kind || edge.kind === state.kind; });
-      var ids, route = routeById.get(state.route), title, desc;
+      var currentEdges = edges.filter(function (edge) { return matchesEdgeFilters(edge, state); });
+      var ids, route = routeById.get(state.route), path = pathById.get(state.path), title, desc;
       if (state.repo) {
         currentEdges = currentEdges.filter(function (edge) { return edge.from === state.repo || edge.to === state.repo; });
         ids = new Set([state.repo]);
         currentEdges.forEach(function (edge) { ids.add(edge.from); ids.add(edge.to); });
-        title = repoName(state.repo); desc = 'Focused neighbourhood · select a neighbour to continue the research trail.';
+        title = repoName(state.repo); desc = 'Focused neighbourhood · ' + (path ? 'from Pirate path: ' + path.title + '. Return to the expedition below to see the whole itinerary.' : 'select a neighbour to continue the research trail.');
+      } else if (path) {
+        ids = new Set(list(path.stops).map(function (stop) { return stop.repo; }));
+        currentEdges = currentEdges.filter(function (edge) { return ids.has(edge.from) && ids.has(edge.to); });
+        title = 'Pirate path · ' + path.title; desc = 'Numbered orange arrows show planned work order. The other lines retain their own evidence level and relationship type.';
       } else if (route) {
         ids = new Set(list(route.repositories)); var edgeIds = new Set(list(route.edgeIds));
         currentEdges = currentEdges.filter(function (edge) { return ids.has(edge.from) && ids.has(edge.to) && (!edgeIds.size || edgeIds.has(edge.id)); });
@@ -343,36 +406,100 @@
         ids = new Set(repositories.map(function (repo) { return repo.id; }));
         title = 'Whole portfolio'; desc = 'Grouped by research family. Select any node to replace the overview with its immediate connections.';
       }
-      return { repositories: repositories.filter(function (repo) { return ids.has(repo.id); }), edges: currentEdges, title: title, description: desc };
+      if (state.evidence) title += ' · ' + ({ known: 'Known basis only', proposed: 'Proposed work only', speculative: 'Speculative bridges only' })[state.evidence];
+      if (state.kind) desc += ' Relationship filter: ' + KINDS[state.kind].label + '.';
+      return { repositories: repositories.filter(function (repo) { return ids.has(repo.id); }), edges: currentEdges, title: title, description: desc, path: path, isPath: Boolean(path && !state.repo) };
     }
     function svgNode(tag, attributes, text) {
       var element = document.createElementNS(ns, tag);
       Object.keys(attributes || {}).forEach(function (key) { element.setAttribute(key, attributes[key]); });
       if (text !== undefined) element.textContent = plain(text); return element;
     }
-    function edgePath(a, b) {
+    function edgePath(a, b, offset) {
+      offset = offset || 0;
       var ac = { x: a.x + a.w / 2, y: a.y + a.h / 2 }, bc = { x: b.x + b.w / 2, y: b.y + b.h / 2 };
       if (Math.abs(ac.x - bc.x) < 40) {
         var direction = bc.y > ac.y ? 1 : -1, sx = ac.x, sy = ac.y + direction * (a.h / 2 + 3), ex = bc.x, ey = bc.y - direction * (b.h / 2 + 6);
-        var bend = Math.max(34, Math.abs(ey - sy) * .25);
+        var bend = Math.max(34, Math.abs(ey - sy) * .25) + offset;
         return 'M' + sx + ',' + sy + ' C' + (sx + bend) + ',' + (sy + direction * 20) + ' ' + (ex + bend) + ',' + (ey - direction * 20) + ' ' + ex + ',' + ey;
       }
       var right = bc.x > ac.x, x1 = right ? a.x + a.w + 3 : a.x - 3, x2 = right ? b.x - 6 : b.x + b.w + 6;
       var midpoint = (x1 + x2) / 2;
-      return 'M' + x1 + ',' + ac.y + ' C' + midpoint + ',' + ac.y + ' ' + midpoint + ',' + bc.y + ' ' + x2 + ',' + bc.y;
+      return 'M' + x1 + ',' + ac.y + ' C' + midpoint + ',' + (ac.y - offset) + ' ' + midpoint + ',' + (bc.y - offset) + ' ' + x2 + ',' + bc.y;
+    }
+    function renderEvidenceKey(view) {
+      var total = evidenceCounts(edges), shown = evidenceCounts(view.edges), container = clear('pp-evidence-counts');
+      Object.keys(EVIDENCE).forEach(function (level) {
+        var info = EVIDENCE[level], item = node('div', 'pp-evidence-item'); item.dataset.evidence = level;
+        var swatch = svgNode('svg', { viewBox: '0 0 52 14', width: 52, height: 14, 'aria-hidden': 'true', focusable: 'false' });
+        swatch.append(svgNode('path', { d: 'M2 7H50', fill: 'none', stroke: info.color, 'stroke-width': 3, 'stroke-dasharray': info.dash }));
+        item.append(swatch, node('strong', '', info.label), node('span', '', shown[level] + ' shown / ' + total[level] + ' total'));
+        container.append(item);
+      });
+      var work = node('div', 'pp-evidence-item pp-evidence-path'), workSwatch = svgNode('svg', { viewBox: '0 0 52 14', width: 52, height: 14, 'aria-hidden': 'true', focusable: 'false' });
+      workSwatch.append(svgNode('path', { d: 'M2 7H50', fill: 'none', stroke: '#ffa166', 'stroke-width': 3, 'stroke-dasharray': '13 4 2 4' }));
+      work.append(workSwatch, node('strong', '', 'Pirate path · work order'), node('span', '', view.isPath ? Math.max(0, view.path.stops.length - 1) + ' planned steps' : 'Choose an expedition above')); container.append(work);
+    }
+    function renderEdgeInspector(view) {
+      var select = get('pp-edge-focus');
+      select.replaceChildren(node('option', '', 'Choose a connection to highlight')); select.firstElementChild.value = '';
+      view.edges.forEach(function (edge) {
+        var option = node('option', '', edge.id + ' · ' + edge.label + ' (' + EVIDENCE[evidenceLevel(edge)].label + ')');
+        option.value = edge.id; select.append(option);
+      });
+      var edge = view.edges.find(function (item) { return item.id === state.edge; });
+      select.value = edge ? edge.id : ''; get('pp-read-edge').disabled = !edge;
+      var box = clear('pp-connection-inspector'); box.hidden = !edge;
+      if (!edge) return;
+      var heading = node('div'); heading.append(node('span', 'pp-route-label', edge.id + ' / ' + EVIDENCE[evidenceLevel(edge)].label), node('h4', '', edge.label),
+        node('p', '', repoName(edge.from) + ' → ' + repoName(edge.to)));
+      var basis = node('div');
+      field(basis, 'Documented starting point', edge.knownBasis || edge.mechanism);
+      field(basis, 'Still open / next work', edge.openQuestion || edge.nextExperiment);
+      box.append(heading, basis);
+    }
+    function renderItinerary() {
+      var path = pathById.get(state.path), container = clear('pp-itinerary'); container.hidden = !path;
+      if (!path) return;
+      var heading = node('div', 'pp-itinerary-heading'), text = node('div');
+      text.append(node('p', 'pp-eyebrow', 'Pirate path / planned expedition'), node('h4', '', path.title), node('p', '', path.summary || 'Each stop has a next target. The orange connections show work order, not a proof or dependency.'));
+      heading.append(text);
+      if (state.repo) heading.append(button('Return to the full expedition ↑', function () { state.repo = ''; state.edge = ''; saveState(true); renderDynamic(); scrollTo('pp-map-title', true); }, 'pp-button pp-button-expedition'));
+      container.append(heading);
+      var ordered = node('ol', 'pp-itinerary-stops');
+      path.stops.forEach(function (stop, index) {
+        var card = node('li', 'pp-itinerary-stop' + (state.repo === stop.repo ? ' is-current' : ''));
+        card.append(node('span', 'pp-stop-number', String(index + 1).padStart(2, '0')), node('span', 'pp-route-label', stop.stage ? stageTitle(stop.stage) : 'Planned stop'), node('h5', '', stop.title || repoName(stop.repo)));
+        card.append(button(repoName(stop.repo) + ' ↗', function () { selectRepo(stop.repo, true); }, 'pp-stop-repo'));
+        field(card, 'Next target', stop.target); field(card, 'Gate before continuing', stop.gate);
+        ordered.append(card);
+      });
+      container.append(ordered);
+      var related = list(path.edgeIds).filter(function (id) { return edgeById.has(id); });
+      if (related.length) {
+        var links = node('div', 'pp-itinerary-connections'); links.append(node('strong', '', 'Related research connections: '));
+        related.forEach(function (id) { links.append(button(id + ' · ' + edgeById.get(id).label, function () {
+          var edge = edgeById.get(id), stopIds = new Set(path.stops.map(function (stop) { return stop.repo; }));
+          if (!stopIds.has(edge.from) || !stopIds.has(edge.to)) state.path = '';
+          state.repo = ''; state.kind = ''; state.evidence = ''; state.eq = ''; state.edge = id; openEdges.add(id); saveState(true); renderDynamic(); inspectEdgeInLedger();
+        }, 'pp-text-button')); }); container.append(links);
+      }
     }
     function renderGraph() {
       var view = visibleGraphData(), svg = get('pp-graph');
-      var layout = state.repo ? neighborhoodLayout(view.repositories, view.edges, state.repo) : portfolioLayout(view.repositories);
+      var layout = state.repo ? neighborhoodLayout(view.repositories, view.edges, state.repo) : view.isPath ? piratePathLayout(view.path.stops) : portfolioLayout(view.repositories);
+      var focusedEdge = view.edges.find(function (edge) { return edge.id === state.edge; });
       svg.replaceChildren();
       svg.classList.toggle('pp-graph-focus', Boolean(state.repo));
+      svg.classList.toggle('pp-has-edge-focus', Boolean(focusedEdge));
+      svg.classList.toggle('pp-graph-expedition', view.isPath);
       svg.setAttribute('viewBox', '0 0 ' + layout.width + ' ' + layout.height);
       svg.append(svgNode('title', { id: 'pp-graph-title' }, view.title + ' — repository connection map'),
         svgNode('desc', { id: 'pp-graph-description' }, view.repositories.length + ' selectable repositories and ' + view.edges.length + ' directed connections. Select a node with Enter or Space to inspect its neighbourhood. Equivalent controls appear in the repository chooser and text list.'));
       var defs = svgNode('defs');
-      Object.keys(KINDS).forEach(function (kind) {
-        var marker = svgNode('marker', { id: 'pp-arrow-' + kind, markerWidth: 6, markerHeight: 6, refX: 5, refY: 3, orient: 'auto', markerUnits: 'strokeWidth' });
-        marker.append(svgNode('path', { d: 'M0,0 L6,3 L0,6 Z', fill: KINDS[kind].color })); defs.append(marker);
+      Object.keys(EVIDENCE).concat(['path']).forEach(function (level) {
+        var marker = svgNode('marker', { id: 'pp-arrow-' + level, markerWidth: 6, markerHeight: 6, refX: 5, refY: 3, orient: 'auto', markerUnits: 'strokeWidth' });
+        marker.append(svgNode('path', { d: 'M0,0 L6,3 L0,6 Z', fill: level === 'path' ? '#ffa166' : EVIDENCE[level].color })); defs.append(marker);
       });
       svg.append(defs);
       layout.boxes.forEach(function (box) {
@@ -380,15 +507,29 @@
         svg.append(svgNode('text', { x: box.x + 17, y: box.y + 25, class: 'pp-family-title' }, wrapLabel(box.title, 44, 1)[0]));
       });
       list(layout.notes).forEach(function (note) { svg.append(svgNode('text', { x: note.x, y: 30, 'text-anchor': 'middle', class: 'pp-node-note' }, note.text)); });
+      var parallelEdges = new Map();
       view.edges.forEach(function (edge) {
+        var key = [edge.from, edge.to].sort().join('\u0000');
+        if (!parallelEdges.has(key)) parallelEdges.set(key, []);
+        parallelEdges.get(key).push(edge.id);
+      });
+      view.edges.slice().sort(function (a, b) { return Number(a.id === state.edge) - Number(b.id === state.edge); }).forEach(function (edge) {
         var from = layout.positions.get(edge.from), to = layout.positions.get(edge.to); if (!from || !to) return;
-        var kind = KINDS[edge.kind] ? edge.kind : 'proposed-reuse';
-        svg.append(svgNode('path', { d: edgePath(from, to), class: 'pp-network-edge' + (state.repo ? ' is-focus' : ''), 'data-kind': kind, 'marker-end': 'url(#pp-arrow-' + kind + ')' }));
+        var kind = KINDS[edge.kind] ? edge.kind : 'proposed-reuse', level = evidenceLevel(edge), selected = edge.id === state.edge;
+        var parallels = parallelEdges.get([edge.from, edge.to].sort().join('\u0000')), offset = (parallels.indexOf(edge.id) - (parallels.length - 1) / 2) * 24;
+        var shape = edgePath(from, to, offset);
+        if (selected) svg.append(svgNode('path', { d: shape, class: 'pp-edge-halo' }));
+        svg.append(svgNode('path', { d: shape, class: 'pp-network-edge' + (state.repo ? ' is-focus' : '') + (selected ? ' is-edge-selected' : ''),
+          'data-kind': kind, 'data-evidence': level, 'data-edge-id': edge.id, 'marker-end': 'url(#pp-arrow-' + level + ')' }));
+      });
+      if (view.isPath) view.path.stops.slice(1).forEach(function (stop, index) {
+        var from = layout.positions.get(view.path.stops[index].repo), to = layout.positions.get(stop.repo);
+        if (from && to && view.path.stops[index].repo !== stop.repo) svg.append(svgNode('path', { d: edgePath(from, to, 42), class: 'pp-expedition-line', 'marker-end': 'url(#pp-arrow-path)' }));
       });
       view.repositories.forEach(function (repo) {
         var p = layout.positions.get(repo.id); if (!p) return;
         var selected = repo.id === state.repo, group = svgNode('g', {
-          transform: 'translate(' + p.x + ',' + p.y + ')', class: 'pp-node' + (selected ? ' is-selected' : ''),
+          transform: 'translate(' + p.x + ',' + p.y + ')', class: 'pp-node' + (selected ? ' is-selected' : '') + (focusedEdge && [focusedEdge.from, focusedEdge.to].includes(repo.id) ? ' is-edge-endpoint' : ''),
           role: 'button', tabindex: 0, 'aria-label': 'Focus ' + repoName(repo.id) + (repo.rank ? ', programme rank ' + repo.rank : ''), 'aria-pressed': String(selected), 'data-repo': repo.id
         });
         group.append(svgNode('title', {}, repoName(repo.id) + '\n' + plain(repo.purpose)), svgNode('rect', { width: p.w, height: p.h, rx: 7, class: 'pp-node-box' }));
@@ -396,6 +537,13 @@
         var start = (p.h - labels.length * 13) / 2 + 10;
         labels.forEach(function (label, i) { group.append(svgNode('text', { x: 13, y: start + i * 13, class: 'pp-node-title' }, label)); });
         if (selected && repo.priority) group.append(svgNode('text', { x: 13, y: p.h - 10, class: 'pp-node-rank' }, repo.priority + ' · rank ' + repo.rank));
+        if (view.path) {
+          var stopNumbers = view.path.stops.map(function (stop, i) { return stop.repo === repo.id ? i + 1 : null; }).filter(Boolean);
+          if (stopNumbers.length) {
+            group.append(svgNode('circle', { cx: p.w - 6, cy: 0, r: 14, class: 'pp-graph-stop-disc' }), svgNode('text', { x: p.w - 6, y: 4, 'text-anchor': 'middle', class: 'pp-graph-stop-number' }, stopNumbers.join(',')));
+            group.setAttribute('aria-label', 'Expedition stop ' + stopNumbers.join(', ') + '. Focus ' + repoName(repo.id));
+          }
+        }
         group.addEventListener('click', function () { selectRepo(repo.id, false); });
         group.addEventListener('keydown', function (event) {
           if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectRepo(repo.id, false); get('pp-map-repo').focus({ preventScroll: true }); }
@@ -404,6 +552,7 @@
       });
       put('pp-map-view-title', view.title); put('pp-map-view-description', view.description);
       put('pp-map-count', view.repositories.length + ' repositories · ' + view.edges.length + ' links');
+      renderEvidenceKey(view); renderEdgeInspector(view);
       var textNodes = clear('pp-node-list');
       view.repositories.slice().sort(function (a, b) { return repoName(a.id).localeCompare(repoName(b.id)); }).forEach(function (repo) {
         var control = button(repoName(repo.id), function () { selectRepo(repo.id, false); get('pp-map-repo').focus({ preventScroll: true }); }, '');
@@ -432,31 +581,38 @@
     function renderEdges() {
       get('pp-edges').querySelectorAll('details[data-edge]').forEach(function (detail) { if (detail.open) openEdges.add(detail.dataset.edge); else openEdges.delete(detail.dataset.edge); });
       var view = visibleGraphData(), matching = view.edges.filter(function (edge) {
-        return queryMatches(normal([repoName(edge.from), repoName(edge.to), edge.label, edge.kind, edge.mechanism, edge.status, edge.nextExperiment, edge.deliverable, edge.keywords, edge.evidence]), state.eq);
+        return queryMatches(normal([repoName(edge.from), repoName(edge.to), edge.label, edge.kind, evidenceLevel(edge), edge.knownBasis, edge.openQuestion, edge.mechanism, edge.status, edge.nextExperiment, edge.deliverable, edge.keywords, edge.evidence]), state.eq);
       });
       var container = clear('pp-edges');
       matching.forEach(function (edge) {
-        var card = node('details', 'pp-edge'); card.dataset.edge = edge.id; card.open = openEdges.has(edge.id);
+        var card = node('details', 'pp-edge' + (state.edge === edge.id ? ' is-edge-selected' : '')); card.id = 'pp-edge-' + encodeURIComponent(edge.id); card.dataset.edge = edge.id; card.open = openEdges.has(edge.id) || state.edge === edge.id;
         var summary = node('summary'), tag = node('span', 'pp-edge-kind', (KINDS[edge.kind] || {}).label || edge.kind);
-        tag.dataset.kind = edge.kind; summary.append(tag, node('h5', '', edge.label || 'A connection to develop'), node('p', 'pp-edge-pair', repoName(edge.from) + ' → ' + repoName(edge.to)));
+        var evidenceTag = node('span', 'pp-edge-evidence', EVIDENCE[evidenceLevel(edge)].label); evidenceTag.dataset.evidence = evidenceLevel(edge);
+        var tags = node('div', 'pp-edge-badges'); tag.dataset.kind = edge.kind; tags.append(evidenceTag, tag);
+        summary.append(tags, node('h5', '', edge.id + ' · ' + (edge.label || 'A connection to develop')), node('p', 'pp-edge-pair', repoName(edge.from) + ' → ' + repoName(edge.to)));
         var body = node('div', 'pp-edge-body');
-        field(body, 'What connects them', edge.mechanism);
+        field(body, 'Documented starting point', edge.knownBasis || edge.mechanism);
+        if (edge.knownBasis && edge.knownBasis !== edge.mechanism) field(body, 'What connects them', edge.mechanism);
         field(body, 'Current evidence', edge.status);
+        field(body, 'Open question / what is not established', edge.openQuestion);
         field(body, 'Next experiment', edge.nextExperiment);
         field(body, 'Deliverable', edge.deliverable);
         field(body, 'Earliest stage', stageTitle(edge.stage));
         sources(body, edge.evidence, 'Evidence for the connection');
         var actions = node('div', 'pp-actions');
-        actions.append(button('Focus source', function () { selectRepo(edge.from, true); }), button('Focus destination', function () { selectRepo(edge.to, true); }));
+        actions.append(button('Highlight this connection ↑', function () { selectEdge(edge.id, true); }),
+          button('Focus source', function () { selectRepo(edge.from, true); }), button('Focus destination', function () { selectRepo(edge.to, true); }));
         body.append(actions); card.append(summary, body); container.append(card);
       });
-      put('pp-edge-count', matching.length + ' of ' + view.edges.length + ' connections' + (state.repo ? ' touching ' + repoName(state.repo) : state.route ? ' on this route' : ' in the portfolio'));
-      put('pp-edge-context', state.repo ? 'All links touching ' + repoName(state.repo) + '. Open a connection for its evidence and planned work.' : state.route ? 'The work on each connection in the selected research route.' : 'The mechanism, evidence, next experiment, and deliverable for each link.');
+      put('pp-edge-count', matching.length + ' of ' + view.edges.length + ' connections' + (state.repo ? ' touching ' + repoName(state.repo) : state.path ? ' among the expedition stops' : state.route ? ' on this route' : ' in the portfolio'));
+      put('pp-edge-context', state.repo ? 'All links touching ' + repoName(state.repo) + '. Open a connection for its evidence and planned work.' : state.path ? 'Research connections among the expedition stops. Orange work-order arrows are not additional mathematical edges.' : state.route ? 'The work on each connection in the selected research route.' : 'Each connection separates its documented starting point from its open question and planned work.');
       get('pp-edge-empty').hidden = matching.length > 0;
     }
     function renderRepositories() {
       get('pp-repositories').querySelectorAll('details[data-repo]').forEach(function (detail) { if (detail.open) openRepos.add(detail.dataset.repo); else openRepos.delete(detail.dataset.repo); });
-      var route = routeById.get(state.route), visible = filterRepositories(repositories, state, route, searchIndex), container = clear('pp-repositories');
+      var route = routeById.get(state.route), path = pathById.get(state.path);
+      var context = route || (path ? { repositories: path.stops.map(function (stop) { return stop.repo; }) } : null);
+      var visible = filterRepositories(repositories, state, context, searchIndex), container = clear('pp-repositories');
       visible.forEach(function (repo) {
         var card = node('details', 'pp-repo-card' + (state.repo === repo.id ? ' is-selected' : '')); card.id = 'pp-repo-' + encodeURIComponent(repo.id); card.dataset.repo = repo.id;
         card.open = repo.id === state.repo || openRepos.has(repo.id);
@@ -502,41 +658,54 @@
         }
         card.append(summary, body); container.append(card);
       });
-      put('pp-repo-count', visible.length + ' of ' + repositories.length + ' repositories' + (route ? ' · route: ' + route.title : '') + (state.q ? ' · matching “' + state.q + '”' : ''));
-      get('pp-repo-empty').hidden = visible.length > 0; get('pp-clear-route').hidden = !route;
+      put('pp-repo-count', visible.length + ' of ' + repositories.length + ' repositories' + (path ? ' · Pirate path: ' + path.title : route ? ' · route: ' + route.title : '') + (state.q ? ' · matching “' + state.q + '”' : ''));
+      get('pp-repo-empty').hidden = visible.length > 0; get('pp-clear-route').hidden = !route && !path;
+      get('pp-clear-route').textContent = path ? 'Clear expedition filter ×' : 'Clear research route ×';
     }
     function syncControls() {
-      [['pp-map-repo', 'repo'], ['pp-edge-kind', 'kind'], ['pp-edge-search', 'eq'], ['pp-search', 'q'], ['pp-family', 'family'], ['pp-priority', 'priority'], ['pp-visibility', 'visibility'], ['pp-sort', 'sort']].forEach(function (pair) {
+      [['pp-map-repo', 'repo'], ['pp-pirate-path', 'path'], ['pp-evidence', 'evidence'], ['pp-edge-kind', 'kind'], ['pp-edge-search', 'eq'], ['pp-search', 'q'], ['pp-family', 'family'], ['pp-priority', 'priority'], ['pp-visibility', 'visibility'], ['pp-sort', 'sort']].forEach(function (pair) {
         var control = get(pair[0]); if (control && control.value !== state[pair[1]]) control.value = state[pair[1]];
       });
       root.querySelectorAll('[data-route]').forEach(function (card) { card.setAttribute('aria-current', String(card.dataset.route === state.route)); });
     }
     function renderDynamic() {
-      validState(); syncControls(); renderGraph(); renderSelected(); renderEdges(); renderRepositories(); updateTitle();
+      validState(); syncControls(); renderGraph(); renderSelected(); renderEdges(); renderRepositories(); renderItinerary(); updateTitle();
     }
     renderStatic(); renderDynamic(); restoreRoutePosition();
     get('pp-map-repo').addEventListener('change', function () {
-      state.repo = this.value; state.route = ''; saveState(true); renderDynamic();
+      state.repo = this.value; state.route = ''; state.edge = ''; saveState(true); renderDynamic();
     });
-    get('pp-edge-kind').addEventListener('change', function () { state.kind = this.value; saveState(false); renderGraph(); renderEdges(); });
-    get('pp-map-reset').addEventListener('click', function () { state.repo = ''; state.route = ''; state.kind = ''; state.eq = ''; saveState(true); renderDynamic(); });
+    get('pp-edge-kind').addEventListener('change', function () { state.kind = this.value; state.edge = ''; saveState(false); renderGraph(); renderEdges(); });
+    get('pp-evidence').addEventListener('change', function () { state.evidence = this.value; state.edge = ''; saveState(false); renderGraph(); renderEdges(); });
+    get('pp-pirate-path').addEventListener('change', function () { if (this.value) selectPath(this.value); else { state.path = ''; state.edge = ''; saveState(true); renderDynamic(); } });
+    get('pp-first-path').addEventListener('click', function () { if (piratePaths.length) selectPath(piratePaths[0].id); });
+    get('pp-edge-focus').addEventListener('change', function () { if (this.value) selectEdge(this.value, false); else { state.edge = ''; saveState(false); renderGraph(); renderEdges(); } });
+    get('pp-read-edge').addEventListener('click', inspectEdgeInLedger);
+    get('pp-map-reset').addEventListener('click', function () { state.repo = ''; state.route = ''; state.path = ''; state.edge = ''; state.evidence = ''; state.kind = ''; state.eq = ''; saveState(true); renderDynamic(); get('pp-graph-scroll').scrollTop = 0; });
     get('pp-filters').addEventListener('submit', function (event) { event.preventDefault(); });
     var searchTimer, edgeTimer;
     get('pp-search').addEventListener('input', function () {
-      state.q = this.value; clearTimeout(searchTimer); searchTimer = setTimeout(function () { saveState(false); renderRepositories(); }, 100);
+      state.q = this.value; clearTimeout(searchTimer); searchTimer = setTimeout(function () {
+        if (!parseHash(location.hash).active) return;
+        saveState(false); renderRepositories();
+      }, 100);
     });
     get('pp-edge-search').addEventListener('input', function () {
-      state.eq = this.value; clearTimeout(edgeTimer); edgeTimer = setTimeout(function () { saveState(false); renderEdges(); }, 100);
+      state.eq = this.value; clearTimeout(edgeTimer); edgeTimer = setTimeout(function () {
+        if (!parseHash(location.hash).active) return;
+        saveState(false); renderEdges();
+      }, 100);
     });
     [['pp-family', 'family'], ['pp-priority', 'priority'], ['pp-visibility', 'visibility'], ['pp-sort', 'sort']].forEach(function (pair) {
       get(pair[0]).addEventListener('change', function () { state[pair[1]] = this.value; saveState(false); renderRepositories(); });
     });
     get('pp-clear').addEventListener('click', function () {
-      state.q = ''; state.family = ''; state.priority = ''; state.visibility = ''; state.sort = 'rank'; state.route = '';
-      saveState(false); syncControls(); renderRepositories(); renderGraph(); renderEdges(); get('pp-search').focus({ preventScroll: true });
+      state.q = ''; state.family = ''; state.priority = ''; state.visibility = ''; state.sort = 'rank'; state.route = ''; state.path = '';
+      saveState(false); renderDynamic(); get('pp-search').focus({ preventScroll: true });
     });
-    get('pp-clear-route').addEventListener('click', function () { state.route = ''; saveState(false); renderDynamic(); });
+    get('pp-clear-route').addEventListener('click', function () { state.route = ''; state.path = ''; state.edge = ''; saveState(false); renderDynamic(); });
     function hashChanged() {
+      clearTimeout(searchTimer); clearTimeout(edgeTimer);
       var next = parseHash(location.hash);
       if (next.active) { state = next; renderDynamic(); restoreRoutePosition(); } else updateTitle();
     }
