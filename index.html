@@ -213,6 +213,14 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 .story-demo select,.story-demo input{font:inherit;color:var(--ink);max-width:100%}
 .story-demo output{color:#183463;flex-basis:100%;line-height:1.55}
 .story-art{display:block;width:min(100%,360px);height:auto;border-radius:8px;margin-top:10px}
+.home-math-grid,.story-grid{gap:16px}
+.home-math-grid .tag{align-self:flex-start}
+.story-toggle{font:600 12px "IBM Plex Mono",monospace;color:#183463;background:var(--card);border:1px solid #7D91B5;border-radius:8px;padding:7px 10px;cursor:pointer}
+.story-toggle:hover,.story-toggle:focus-visible{background:#E3EDF9}
+.story > .story-toggle{align-self:flex-start;margin-bottom:10px}
+.story-body .story-link{display:block;max-width:100%}
+.story-body[hidden]{display:none}
+
 
 </style>
 <link rel="stylesheet" href="assets/research-atlas.css">
@@ -233,6 +241,17 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <p class="tag">prime-pair geometry · recursive dynamics · hibernating lemmas</p>
 <a class="atlas-home-launch" href="#atlas"><img src="assets/omega-stability-thread-cover.png" width="1200" height="630" alt="Omega Stability: a luminous path through power-tower layers"><span><small>NEW · THE RESEARCH ATLAS</small><strong>Follow a spark.<br>Open a whole thread.</strong><span>45 entries · working exhibits · proofs and next questions</span><b>Enter the atlas →</b></span></a>
 </div></header>
+
+<section class="sec bg-tint" id="home-mathematics" aria-labelledby="home-math-title"><div class="wrap">
+<h2 class="t" id="home-math-title">Identities, asymptotics, <em>and kernels.</em></h2>
+<div class="grid home-math-grid">
+<article class="card" style="--e:#3f7a00"><span class="tag">Exact identity</span><h3 class="sub">Ramanujan modulo 23</h3><p>In characteristic 23, (1 − q<sup>n</sup>)<sup>23</sup> = 1 − q<sup>23n</sup>. One factorization turns Δ into a simpler product.</p><a class="story-link" href="#buried-ramanujan-23">Read the coefficient proof</a></article>
+<article class="card" style="--e:#3f7a00"><span class="tag">Exact identity</span><h3 class="sub">Rudin–Shapiro on the circle</h3><p>Two signed polynomials divide the energy between them. |P<sub>j</sub>|² + |Q<sub>j</sub>|² = 2<sup>j+1</sup> on |z| = 1.</p><a class="story-link" href="#buried-shapiro-rings">Read the circle argument</a></article>
+<article class="card" style="--e:#3f7a00"><span class="tag">Euler product</span><h3 class="sub">Zeta’s 48 remainder lanes</h3><p>The 210-wheel products reconstruct ζ(s) with four factors removed, for Re(s) &gt; 1.</p><a class="story-link" href="#buried-zeta-partitionings">Read the partitioning</a></article>
+<article class="card" style="--e:#3f7a00"><span class="tag">Exact asymptotic</span><h3 class="sub">The critical tower’s slowdown</h3><p>For x<sub>n+1</sub> = exp(x<sub>n</sub>/e), starting at 1, the distance to e is asymptotic to 2e/n.</p><a class="story-link" href="#buried-critical-tower">Read the endpoint proof</a></article>
+<article class="card" style="--e:#3f7a00"><span class="tag">Exact asymptotic</span><h3 class="sub">The smooth part of Z(p)</h3><p>Z(n) = 2 + π/n + π²/(2n²) + O(n<sup>−3</sup>). The leading terms give Prime Polarity a baseline.</p><a class="story-link" href="#buried-zp-asymptotic">Read the expansion</a></article>
+<article class="card" style="--e:#3f7a00"><span class="tag">Exact kernel</span><h3 class="sub">A quarter-turn in the Catalan integral</h3><p>∑<sub>n≥1</sub> χ<sub>4</sub>(n)e<sup>−nt</sup> = 1/(2 cosh t) for t &gt; 0. Its Mellin integral at s = 2 gives Catalan’s constant.</p><a class="story-link" href="#buried-bubble-tube">Read the kernel story</a></article>
+</div></div></section>
 
 <section class="sec bg-cream" id="research-paths"><div class="wrap">
 <p class="kick">Home · the evidence board</p><h2 class="t">Results first.<br><em>Room to explore.</em></h2>
@@ -589,12 +608,19 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <label for="buried-story-search">Find a story</label>
 <input id="buried-story-search" type="search" placeholder="Search Ω, Collatz, Catalan…">
 <span id="buried-story-count" role="status" aria-live="polite"></span>
+<button type="button" class="story-toggle" id="buried-toggle-all">Collapse all stories</button>
 </div>
 <nav class="story-jumps" aria-label="Featured stories">
 <a href="#buried-omega-feedback">Ω series</a>
 <a href="#buried-collatz-riemann-reversal">The reversed hint</a>
 <a href="#buried-bubble-tube">Bubble tube</a>
 <a href="#buried-xo2">XO₂ geometron</a>
+<a href="#buried-zeta-partitionings">Zeta partitions</a>
+<a href="#buried-time-reversal">Time reversals</a>
+<a href="#buried-ramanujan-23">Ramanujan</a>
+<a href="#buried-shapiro-rings">Shapiro rings</a>
+<a href="#buried-golden-plastic">Golden and plastic</a>
+<a href="#buried-prime-polarity">Demoted approaches</a>
 </nav>
 <div class="grid story-grid">
 <article class="card story" id="buried-omega-feedback" style="--e:#3f7a00">
@@ -772,6 +798,127 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </details>
 <a class="story-link" href="CONTENT_MAP.md">Recorded Grassmannian run</a>
 <a class="story-link" href="https://github.com/EncapsulatorP/recaman">Recamán experiments</a>
+</article>
+<article class="card story" id="buried-zeta-partitionings" style="--e:#3f7a00">
+<span class="tag">Exact decomposition</span>
+<h3 class="sub">Zeta partitionings · separating the lanes</h3>
+<p>The 210-wheel story started with admissible remainders. In the region Re(s) &gt; 1, each prime belongs to one lane after removing 2, 3, 5 and 7, and each Euler factor comes along with it.</p>
+<details><summary>What happens if the lanes receive different weights?</summary>
+<p>Write log P<sub>r</sub>(s) = ∑<sub>p ≡ r</sub> ∑<sub>k≥1</sub> p<sup>−ks</sup>/k. Exponentiating the sum of these analytic logs restores the product over all primes coprime to 210. Weighting the logs by Θ(r) instead defines a new function in that half-plane. Its continuation and zeros require separate work.</p>
+</details>
+<a class="story-link" href="#buried-euler-wheel">The unweighted product</a>
+<a class="story-link" href="#atlas?entry=prime-sectors">Zetheon and the weighted sectors</a>
+</article>
+
+<article class="card story" id="buried-time-reversal" style="--e:#3f7a00">
+<span class="tag">Exact symmetry · conditional on the model</span>
+<h3 class="sub">Time reversals · the zero cloud in the mirror</h3>
+<p>The root scans compared positive and negative indices. For a branch on a conjugation-invariant domain with H(z̄) = H(z)̄, putting Q<sub>k</sub>(z) = H(z) − 2πik gives Q<sub>−k</sub>(z̄) = Q<sub>k</sub>(z)̄.</p>
+<details><summary>Which part survives the reversal?</summary>
+<p>A zero in the k-slice has a conjugate zero in the −k-slice, with the same multiplicity. That gives a check on the branch choice and the scan. A match between two finite clouds leaves the generating operator undetermined. A physical time reversal would require a state-space involution and a checked rule for how it reverses the evolution.</p>
+</details>
+<a class="story-link" href="#atlas?entry=paired-cancellation">Conjugate-pair cancellation</a>
+</article>
+
+<article class="card story" id="buried-ramanujan-23" style="--e:#3f7a00">
+<span class="tag">Exact coefficient congruence</span>
+<h3 class="sub">Ramanujan · the coefficient ring modulo 23</h3>
+<p>Reduce the discriminant series Δ(q) = q∏<sub>n≥1</sub>(1 − q<sup>n</sup>)<sup>24</sup> coefficient by coefficient modulo 23. Its product becomes q∏<sub>n≥1</sub>(1 − q<sup>n</sup>)(1 − q<sup>23n</sup>).</p>
+<details><summary>The short proof and the plastic-cubic clue</summary>
+<p>In characteristic 23, raising 1 − q<sup>n</sup> to power 23 gives 1 − q<sup>23n</sup>. Leave the remaining factor unchanged. This is an identity of formal power series modulo 23. The plastic polynomial x³ − x − 1 has discriminant −23, which made 23 a natural place to compare the arithmetic. The product calculation uses only the coefficient ring.</p>
+</details>
+<a class="story-link" href="#buried-golden-plastic">The golden and plastic recurrences</a>
+<a class="story-link" href="https://gaetan.chenevier.perso.math.cnrs.fr/GT/wilton.pdf">Wilton on congruences for τ</a>
+</article>
+
+<article class="card story" id="buried-shapiro-rings" style="--e:#3f7a00">
+<span class="tag">Exact identity · root plots exploratory</span>
+<h3 class="sub">Shapiro rings · a perfectly balanced circle</h3>
+<p>In the recovered story, “Shapiro rings” meant the Rudin–Shapiro pair. Starting with P<sub>0</sub> = Q<sub>0</sub> = 1, set P<sub>j+1</sub> = P<sub>j</sub> + z<sup>2ʲ</sup>Q<sub>j</sub> and Q<sub>j+1</sub> = P<sub>j</sub> − z<sup>2ʲ</sup>Q<sub>j</sub>. On |z| = 1 their squared magnitudes sum to 2<sup>j+1</sup>.</p>
+<details><summary>Why the energy stays balanced</summary>
+<p>Apply |a + b|² + |a − b|² = 2(|a|² + |b|²), with b = z<sup>2ʲ</sup>Q<sub>j</sub>. On the circle the multiplier has modulus one, so each step doubles the total energy. An individual root can move away from the circle. Root-location claims need their own bounds or certificates.</p>
+</details>
+<a class="story-link" href="https://annals.math.princeton.edu/wp-content/uploads/annals-v192-n3-p06-s.pdf">Rudin–Shapiro definitions and circle identity</a>
+</article>
+
+<article class="card story" id="buried-golden-plastic" style="--e:#3f7a00">
+<span class="tag">Exact generating functions</span>
+<h3 class="sub">Golden and plastic · two recurrences, one seed</h3>
+<p>The golden ratio solves x² = x + 1; the plastic constant solves x³ = x + 1. Reversing these polynomials gives the Fibonacci and Padovan generating denominators, 1 − z − z² and 1 − z² − z³.</p>
+<details><summary>Carry the construction into a modular ring</summary>
+<p>With F<sub>0</sub> = 0, F<sub>1</sub> = 1, the Fibonacci generating function is z/(1 − z − z²). The Padovan sequence with its first three terms equal to 1 has generating function (1 + z)/(1 − z² − z³). In ℤ/5ℤ, 3 solves the golden equation and 2 solves the plastic equation. These are solutions in that ring; the positive real roots describe a different setting.</p>
+</details>
+<a class="story-link" href="#buried-perrin-pseudoprime">The plastic recurrence’s prime-test trap</a>
+</article>
+
+<article class="card story" id="buried-perrin-pseudoprime" style="--e:#6b52a1">
+<span class="tag">Exact counterexample</span>
+<h3 class="sub">The plastic recurrence that let 521² through</h3>
+<p>The Perrin sequence P<sub>0</sub> = 3, P<sub>1</sub> = 0, P<sub>2</sub> = 2 with P<sub>n</sub> = P<sub>n−2</sub> + P<sub>n−3</sub> satisfies P<sub>p</sub> ≡ 0 (mod p) at every prime. The same test accepts 271441 = 521².</p>
+<details><summary>A proof of the rule and a replay of its failure</summary>
+<p>The Perrin terms are power sums of the roots of x³ − x − 1. Over a splitting field in characteristic p, Frobenius turns the sum of their p-th powers into the p-th power of their sum, which is zero. For the composite example, iterate the same three-term recurrence modulo 271441 up to index 271441. The final remainder is zero.</p>
+</details>
+<a class="story-link" href="#buried-golden-plastic">Return to the plastic denominator</a>
+</article>
+
+<article class="card story" id="buried-zp-asymptotic" style="--e:#3f7a00">
+<span class="tag">Exact asymptotic</span>
+<h3 class="sub">Z(p) · subtract the smooth part first</h3>
+<p>Extend Z to n &gt; 2 through Z(n) = 1 + exp(πζ(n−1)/n). Then Z(n) = 2 + π/n + π²/(2n²) + O(n<sup>−3</sup>). The dominant change is a trend in the input n.</p>
+<details><summary>Where the zeta contribution enters</summary>
+<p>For large n, bound the terms from 2 onward with 2<sup>1−n</sup> and the integral from 2 to infinity of x<sup>1−n</sup>. This gives ζ(n−1) = 1 + O(2<sup>−n</sup>). Taylor expansion of the exponential gives the stated terms. A primality experiment should compare against the n-trend before interpreting the residual.</p>
+</details>
+<a class="story-link" href="#atlas?entry=zp-even-zeta">The Bernoulli reduction at odd primes</a>
+</article>
+
+<article class="card story" id="buried-prime-polarity" style="--e:#6b52a1">
+<span class="tag">Demoted · raw rank score</span>
+<h3 class="sub">Prime–transcendental polarity · a rank in disguise</h3>
+<p>The raw Z(n) decreases strictly for n &gt; 2. On the same sample, its exact ranking is identical to the ranking by −n. A raw AUC inherits all the effects of that ordering and any density drift across the window.</p>
+<details><summary>Which controls would earn a stronger claim?</summary>
+<p>Compare against the input-rank baseline. Evaluate on odd or coprime inputs, shuffle scores within matched remainder groups, preserve ties, and use disjoint forward windows. Möbius and prime-power transforms need a feature audit, because an arithmetic label can re-enter the experiment through the feature or the sample construction.</p>
+</details>
+<a class="story-link" href="https://github.com/EncapsulatorP/prime-polarity">Prime Polarity code and scoring rules</a>
+</article>
+
+<article class="card story" id="buried-spectral-artifacts" style="--e:#6b52a1">
+<span class="tag">Demoted · detector artifact</span>
+<h3 class="sub">The spectral plot that inherited a spacing rule</h3>
+<p>A minimum-distance setting forces neighboring detected peaks apart. A spacing deficit below that distance can therefore come from the detector, even when the underlying signal carries no such repulsion.</p>
+<details><summary>How to make the comparison meaningful</summary>
+<p>Replay the same window, sampling grid and peak detector on randomized controls. Keep the density normalization and detector settings fixed. Check that a difference persists across spacings and detector settings before fitting a random-matrix law. Fourier peaks from periodic truncation need their own control as well.</p>
+</details>
+<a class="story-link" href="#atlas?entry=spectral-comparison">The spectral comparison plan</a>
+</article>
+
+<article class="card story" id="buried-pi-six-prefix" style="--e:#6b52a1">
+<span class="tag">Demoted · numerical resemblance</span>
+<h3 class="sub">Where the π/6 continued fractions part</h3>
+<p>A κ³ experiment reported 0.5237429570121888, close to π/6 ≈ 0.5235987755982989. The displayed number and π/6 share the continued-fraction prefix [0; 1, 1, 10]. Their next coefficients are 33 and 10.</p>
+<details><summary>Keep the comparison reproducible</summary>
+<p>Repeatedly take the integer part, subtract it and invert the remainder. Doing this to the reported decimal and to π/6 shows the divergence and a numerical gap of about 0.00014418. An identity would need an exact definition of the reported value and an argument that explains it.</p>
+</details>
+<a class="story-link" href="https://github.com/EncapsulatorP/rolt-phi-kappa3_expand">The κ³ project</a>
+</article>
+
+<article class="card story" id="buried-digit-factor-collision" style="--e:#6b52a1">
+<span class="tag">Exact counterexample</span>
+<h3 class="sub">The digit encoding that confused 6 and 9</h3>
+<p>The largest prime factor and the number of prime factors, counted with multiplicity, give the same pair (3, 2) for 6 and 9. The positional tower needs more information if it is to recover every input digit.</p>
+<details><summary>Repair the encoding</summary>
+<p>Keep the valuation vector instead. Over the primes 2 and 3, the digit 6 has exponents (1, 1) and 9 has (0, 2). Unique factorization gives the reconstruction for positive integers. The special handling of 0 in a digit display remains a separate convention.</p>
+</details>
+<a class="story-link" href="#buried-light-digits">The light-speed digit encoding</a>
+</article>
+
+<article class="card story" id="buried-depth-product-counterexample" style="--e:#6b52a1">
+<span class="tag">Exact counterexample</span>
+<h3 class="sub">Two smooth-looking profiles, two peaks</h3>
+<p>The recursive-depth toy model multiplies a gain profile by a stability profile. Unimodality of both factors is too weak to ensure a single maximum pattern in their product.</p>
+<details><summary>A seven-point counterexample</summary>
+<p>Take (1, 2, 3, 4, 5, 6, 5) and (5, 6, 2.8, 2.5, 2.4, 1, 0.9). Each rises to a single peak and then falls. Their product is (5, 12, 8.4, 10, 12, 6, 4.5), with two global maximizers at positions 2 and 5. For positive profiles, log-concavity gives a stronger route because the log of the product is the sum of the logs.</p>
+</details>
+<a class="story-link" href="#atlas?entry=rolt-depth">The solved depth toy</a>
 </article>
 </div>
 <p class="cap">From Zolton’s EncapsulatorP research conversations. Edited for the atlas by Codex. The June θ and Möbius tower definitions and finite outputs have now been recovered and recomputed in the <a href="#atlas?entry=theta-towers">research atlas</a>.</p>
@@ -992,7 +1139,7 @@ window.addEventListener('resize',draw);document.addEventListener('visibilitychan
 </script>
 <script>
 (function(){
-var alias={home:'home',atlas:'atlas','research-paths':'home',lemmas:'lemmas','positive-results':'lemmas',roadmap:'roadmap',goldbach:'goldbach',collatz:'collatz',embed:'collatz',scape:'collatz',towers:'towers',tetra:'towers',validatron:'validatron',archive:'archive','buried-chat-stories':'buried-chat-stories'};
+var alias={home:'home',atlas:'atlas','research-paths':'home','home-mathematics':'home',lemmas:'lemmas','positive-results':'lemmas',roadmap:'roadmap',goldbach:'goldbach',collatz:'collatz',embed:'collatz',scape:'collatz',towers:'towers',tetra:'towers',validatron:'validatron',archive:'archive','buried-chat-stories':'buried-chat-stories'};
 var stories=Array.from(document.querySelectorAll('.story[id]'));
 stories.forEach(function(story){alias[story.id]='buried-chat-stories';});
 var pages=Array.from(document.querySelectorAll('.page')),tabs=Array.from(document.querySelectorAll('.nav a[data-tab]'));
@@ -1001,13 +1148,46 @@ function show(){
  pages.forEach(function(p){p.classList.toggle('on',p.dataset.page===name);});
  tabs.forEach(function(a){if(a.dataset.tab===name)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
  var el=(id!==name)&&document.getElementById(id);
- if(el&&el.classList.contains('story')&&el.hidden){search.value='';filterStories();}
+ if(storyPanels.has(el)){
+  if(el.hidden){search.value='';filterStories();}
+  setStoryOpen(storyPanels.get(el),true);updateBulkLabel();
+  var evidence=el.querySelector('details');
+  if(evidence)evidence.open=true;
+ }
  if(el&&alias[id])el.scrollIntoView();else window.scrollTo(0,0);
  window.dispatchEvent(new Event('resize'));
 }
 var search=document.getElementById('buried-story-search');
 var counter=document.getElementById('buried-story-count');
 var storyIndex=stories.map(function(story){return normalize(story.textContent);});
+var bulk=document.getElementById('buried-toggle-all');
+var storyPanels=new Map(stories.map(function(story){
+ var heading=story.querySelector('h3'),body=document.createElement('div'),button=document.createElement('button');
+ body.className='story-body';body.id=story.id+'-body';
+ button.type='button';button.className='story-toggle';
+ button.setAttribute('aria-controls',body.id);
+ while(heading.nextSibling)body.append(heading.nextSibling);
+ story.append(button,body);
+ var panel={body:body,button:button,title:heading.textContent};
+ setStoryOpen(panel,true);
+ button.addEventListener('click',function(){setStoryOpen(panel,body.hidden);updateBulkLabel();});
+ return [story,panel];
+}));
+function setStoryOpen(panel,open){
+ panel.body.hidden=!open;
+ panel.button.textContent=open?'Collapse story':'Open story';
+ panel.button.setAttribute('aria-expanded',String(open));
+ panel.button.setAttribute('aria-label',panel.button.textContent+' — '+panel.title);
+}
+function updateBulkLabel(){
+ var allClosed=Array.from(storyPanels.values()).every(function(panel){return panel.body.hidden;});
+ bulk.textContent=allClosed?'Expand all stories':'Collapse all stories';
+}
+bulk.addEventListener('click',function(){
+ var open=Array.from(storyPanels.values()).every(function(panel){return panel.body.hidden;});
+ storyPanels.forEach(function(panel){setStoryOpen(panel,open);});updateBulkLabel();
+});
+
 function normalize(text){return text.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
 function filterStories(){
  var terms=normalize(search.value).trim().split(/\s+/).filter(Boolean);
