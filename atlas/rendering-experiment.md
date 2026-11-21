@@ -4,7 +4,7 @@
 
 The showcase contains two equal collections. **Paper studio** has five individual forms; **Origami voyages** has five scenes with opened charts, moving paper bodies and small origami boats. Both expose exactly the same nine discoveries, explanations, evidence labels and subject destinations.
 
-New visitors begin with Origami voyages. Readers can switch collections directly. Their chosen collection and last form are stored in their own browser to continue the visual sequence. There is no random traffic assignment, experiment-event transmission or automated promotion in this edition.
+New visitors begin at the shared workbench with Origami voyages moving in its live preview. Readers can switch collections directly; the corresponding body stays selected, making a comparison easier. Their chosen collection and last form are stored in their own browser to continue the visual sequence. There is no random traffic assignment, experiment-event transmission or automated promotion in this edition.
 
 Equal catalogue size is distinct from a 50/50 traffic experiment. The latter should start only after both collections pass the same interaction and rendering checks.
 

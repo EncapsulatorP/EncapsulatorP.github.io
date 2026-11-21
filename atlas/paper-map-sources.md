@@ -68,7 +68,7 @@ This half of the collection follows Zolton’s supplied paper-polyhedron images 
 
 All nine stations stay attached to chart material coordinates. The boats follow the printed route, and geometry can occlude stations naturally. Camera movement, folding and route motion are visual controls; they never modify a theorem’s status or a recorded benchmark.
 
-The two collections have equal size: five studio forms and five voyages. New visitors begin with the open-chart voyage. A reader’s collection choice is stored locally, and the next form cycles within that collection. This is a comparison-ready showcase, not a completed traffic experiment. See [the experiment plan](rendering-experiment.md).
+The two collections have equal size: five studio forms and five voyages. New visitors begin at the workbench with the open-chart voyage moving in the live preview. A reader’s collection and last form are stored locally; the Next form button cycles within that collection. Switching collections retains the corresponding body. This is a comparison-ready showcase, not a completed traffic experiment. See [the experiment plan](rendering-experiment.md).
 
 ## Edition credits
 
@@ -89,3 +89,12 @@ Validation checks the data contract and the existing source material:
 
 These are content and navigation checks. They introduce no new numerical experiment or claim about the renderer’s physical accuracy.
 
+
+
+## Workbench and unfolding reference
+
+Zolton supplied the photographic paper-model workbench and shared a Claude artifact on 21 November 2026. The artifact was inspected in its rendered interface: selecting a body launches an illustrative opening, reveals a chart, and offers **Back to the table**. This edition credits Claude for that interaction direction. It implements its own table chooser, live 3D preview and opening animation in the existing renderer. The reference's additional scientific stories, dates and surgery claims were not imported.
+
+The original supplied photograph is preserved as `assets/paper-workbench-reference.png`. The artifact credits that image to Zolton Farkas with Gemini. The three photo hotspots refer to visible bodies; the row of five model choices also keeps tensegrity and terraced landforms immediately available. Hover or keyboard focus previews a form. A click opens its chart and subject explanation. Both five-member collections retain the same nine subject destinations.
+
+The opening animation unfolds the creased paper chart in all five voyage scenes and opens the standalone accordion. The sphere, hollow body and tensegrity remain their own forms; no physical surgery or rigid-folding theorem is asserted for them. Reduced motion skips the opening. Pause and direct manipulation remain available.

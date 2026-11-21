@@ -223,6 +223,7 @@
   };
   const voyageCache = new Map();
   const voyageChartCache = new Map();
+  const voyageCameraCache = new Map();
   const voyageRows = [0, 0.018, 0.055, 0.14, 0.35, 0.65, 0.86, 0.945, 0.982, 1];
   function voyagePart(key, make) { if (!voyageCache.has(key)) voyageCache.set(key, make()); return voyageCache.get(key); }
   function mergeMesh(target, source, point, direction) {
@@ -450,13 +451,69 @@
     for (let i = 0; i < 9; i++) { const uv = routeUV((i / 9 + 0.025) * TAU); mesh.pin(chart.point(...uv, 0.011), chart.up(...uv)); }
     return { mesh, chart };
   }
+  function voyageCameraEnvelope(key, propVertices) {
+    if (voyageCameraCache.has(key)) return voyageCameraCache.get(key);
+    const points = [], low = chartSurface(key === 'voyage-chart' ? 0 : 0.28), high = chartSurface(key === 'voyage-chart' ? 1 : 0.28);
+    // Chart corners and crests stay low. Empty space above the outer corners is
+    // deliberately absent from this stable envelope.
+    for (let i = 0; i <= 6; i++) for (const v of [0, 0.14, 0.5, 0.86, 1]) {
+      const u = i / 6, x = (u - 0.5) * low.width, z = (v - 0.5) * low.depth;
+      points.push([x, low.point(u, v)[1] - 0.035, z], [x, high.point(u, v)[1] + 0.015, z]);
+    }
+    // A complete boat-route envelope includes both ships at every route phase.
+    // The upper ring belongs only to their footprint, not to the entire chart.
+    const boatTop = 0.075 + high.rise + 0.035 + 0.025 + 0.65 * 0.43;
+    for (let i = 0; i < 48; i++) {
+      const uv = routeUV(i * TAU / 48), p = low.point(...uv);
+      const tangentUV = routeUV(i * TAU / 48 + 0.001), q = low.point(...tangentUV), t = unit([q[0] - p[0], 0, q[2] - p[2]]), b = cross(t, [0, 1, 0]);
+      for (const [x, z] of [[-0.29, -0.14], [-0.29, 0.14], [0.29, -0.14], [0.29, 0.14]]) points.push([p[0] + t[0] * x + b[0] * z, boatTop, p[2] + t[2] * x + b[2] * z]);
+    }
+    const circle = (radius, y, origin, count = 32) => {
+      radius = radius / Math.cos(Math.PI / count) + 0.004;
+      for (let i = 0; i < count; i++) { const a = i * TAU / count; points.push([origin[0] + radius * Math.cos(a), y, origin[2] + radius * Math.sin(a)]); }
+    };
+    const baseLow = low.point(0.5, 0.5)[1] + 0.025, baseHigh = high.point(0.5, 0.5)[1] + 0.025;
+    if (key === 'voyage-chart') {
+      for (const [x, z, yaw, pitch] of [[-0.65, -0.23, -0.22, 0.12], [0.64, -0.42, 0.30, -0.09]]) {
+        const radius = Math.hypot(0.72, 0.077) * 0.86 / Math.cos(Math.PI / 32) + 0.004;
+        const depth = (0.72 * Math.abs(Math.sin(pitch)) + 0.077 * Math.cos(pitch)) * 0.86 + 0.004;
+        for (const base of [baseLow, baseHigh]) for (const dz of [-depth, depth]) for (let i = 0; i < 32; i++) {
+          const a = i * TAU / 32, dx = radius * Math.cos(a), dy = radius * Math.sin(a);
+          points.push([x + dx * Math.cos(yaw) + dz * Math.sin(yaw), base + 0.80 + dy, z - dx * Math.sin(yaw) + dz * Math.cos(yaw)]);
+        }
+      }
+    } else if (key === 'voyage-globe') {
+      const radius = 1.28 * 0.66 * 1.025;
+      for (let row = 0; row <= 12; row++) for (let col = 0; col < 24; col++) {
+        const lat = -Math.PI / 2 + row * Math.PI / 12, lon = col * TAU / 24;
+        points.push([radius * Math.cos(lat) * Math.cos(lon), baseLow + 1.04 + radius * Math.sin(lat), -0.15 + radius * Math.cos(lat) * Math.sin(lon)]);
+      }
+    } else if (key === 'voyage-portal') {
+      const source = voyagePart('portal', portal), anchor = average(source.bounds), levels = new Map();
+      for (let i = 0; i < source.vertices.length; i += 14) {
+        const y = (source.vertices[i + 1] - anchor[1]) * 0.66 + baseLow + 0.99, r = Math.hypot(source.vertices[i] - anchor[0], source.vertices[i + 2] - anchor[2]) * 0.66, label = y.toFixed(5);
+        const prior = levels.get(label); if (!prior || r > prior.r) levels.set(label, { y, r });
+      }
+      levels.forEach(({ y, r }) => { circle(r, y - 0.001, [0, 0, -0.12]); circle(r, y + 0.001, [0, 0, -0.12]); });
+    } else if (key === 'voyage-rigging') {
+      const source = voyagePart('rigging', tensegrity);
+      let radius = 0;
+      for (let i = 0; i < source.vertices.length; i += 14) radius = Math.max(radius, Math.hypot(source.vertices[i], source.vertices[i + 2]) * 0.78);
+      circle(radius, baseLow + 0.05 + source.bounds[0][1] * 0.78 - 0.01, [0, 0, -0.12]);
+      circle(radius, baseLow + 0.05 + source.bounds[1][1] * 0.78 + 0.01, [0, 0, -0.12]);
+    } else {
+      const unique = new Set();
+      for (let i = 0; i < propVertices.length; i += 14) { const p = propVertices.slice(i, i + 3), label = p.map(x => x.toFixed(5)).join(','); if (!unique.has(label)) { unique.add(label); points.push(p); } }
+    }
+    voyageCameraCache.set(key, points); return points;
+  }
   function voyageScene(key, fold, time) {
     let cached = voyageChartCache.get('master');
     if (!cached) { cached = voyageChart(0.28); voyageChartCache.set('master', cached); }
     // Coastline clipping is performed once. Animated folds only transform the
     // existing paper facets, keeping the mobile geometry update bounded.
     const { chart, mesh } = key === 'voyage-chart' ? refoldChart(cached, fold) : { chart: cached.chart, mesh: copyPaperMesh(cached.mesh) };
-    const turn = time * TAU / 34, base = chart.point(0.5, 0.5)[1] + 0.025;
+    const turn = time * TAU / 34, base = chart.point(0.5, 0.5)[1] + 0.025, propStart = mesh.vertices.length;
     if (key === 'voyage-chart') {
       const wheel = voyagePart('wheel', paperWheel);
       foldedStand(mesh, chart, -0.65, -0.23, base, 0.58, 0.44, 0.19); foldedStand(mesh, chart, 0.64, -0.42, base, 0.58, 0.44, 0.19);
@@ -482,9 +539,11 @@
       const a = [-0.22, base + 0.51, -0.45], b = [0.67, base + 0.51, -0.44], c = [0.56, base + 0.51, 0.17], peak = [0.31, base + 1.10, -0.18];
       mesh.sheet([a, peak, b], material(palette.ivory, 0.06), undefined, 0.016); mesh.sheet([b, peak, c], material(palette.paper, 0.06), undefined, 0.016); mesh.sheet([c, peak, a], material(voyageColors.shallows, 0.05), undefined, 0.016);
     }
+    mesh.cameraPoints = voyageCameraEnvelope(key, voyageCameraCache.has(key) ? [] : mesh.vertices.slice(propStart));
     sailBoat(mesh, chart, voyagePart('boat-blue', () => paperBoat(voyageColors.sea)), time * TAU / 30 + 0.65, 0.43);
     sailBoat(mesh, chart, voyagePart('boat-copper', () => paperBoat(palette.copper)), time * TAU / 30 + 0.65 + Math.PI * 1.12, 0.35);
-    // Constant framing includes every prop without camera breathing as boats move.
+    // The bounds provide an initial centre; cameraPoints provide the tight,
+    // time-independent fit without fictitious elevated outer corners.
     const top = key === 'voyage-islands' ? base + 1.30 : key === 'voyage-chart' ? base + 1.57 : base + 2.00;
     mesh.cameraBounds = [[-chart.width / 2 - 0.03, 0.02, -chart.depth / 2 - 0.03], [chart.width / 2 + 0.03, top, chart.depth / 2 + 0.03]];
     return mesh;
@@ -676,19 +735,27 @@
       const yaw = this._yaw + this._parallax[0], pitch = clamp(this._pitch + this._parallax[1], 0.10, 1.35);
       const cp = Math.cos(pitch), direction = [Math.sin(yaw) * cp, Math.sin(pitch), Math.cos(yaw) * cp];
       const right = unit(cross([0, 1, 0], direction)), up = cross(direction, right), tan = Math.tan(38 * RAD / 2);
+      let center = this._center;
+      const envelope = this._mesh.cameraPoints, margin = envelope || this._shape === 'tensegrity' ? 0.88 : 0.79;
+      if (envelope) {
+        let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+        envelope.forEach(point => { const p = sub(point, center), x = dot(p, right), y = dot(p, up); minX = Math.min(minX, x); maxX = Math.max(maxX, x); minY = Math.min(minY, y); maxY = Math.max(maxY, y); });
+        center = add(center, add(mul(right, (minX + maxX) / 2), mul(up, (minY + maxY) / 2)));
+      }
       let fit = 1;
       const include = point => {
-        const p = sub(point, this._center), z = dot(p, direction);
-        fit = Math.max(fit, z + Math.abs(dot(p, right)) / (tan * aspect * 0.79), z + Math.abs(dot(p, up)) / (tan * 0.79));
+        const p = sub(point, center), z = dot(p, direction);
+        fit = Math.max(fit, z + Math.abs(dot(p, right)) / (tan * aspect * margin), z + Math.abs(dot(p, up)) / (tan * margin));
       };
-      if (this._mesh.cameraBounds) {
+      if (envelope) envelope.forEach(include);
+      else if (this._mesh.cameraBounds) {
         const b = this._mesh.cameraBounds;
         for (let x = 0; x < 2; x++) for (let y = 0; y < 2; y++) for (let z = 0; z < 2; z++) include([b[x][0], b[y][1], b[z][2]]);
       } else this._mesh.triangles.forEach(tri => tri.forEach(include));
       const targetDistance = (fit + 0.12) / this._zoom;
       this._distance = targetDistance;
-      const eye = add(this._center, mul(direction, this._distance));
-      return { eye, matrix: multiply(perspective(38 * RAD, aspect, 0.05, 60), lookAt(eye, this._center)) };
+      const eye = add(center, mul(direction, this._distance));
+      return { eye, matrix: multiply(perspective(38 * RAD, aspect, 0.05, 60), lookAt(eye, center)) };
     }
     _draw() {
       const gl = this.gl, rect = this.canvas.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 1.8);

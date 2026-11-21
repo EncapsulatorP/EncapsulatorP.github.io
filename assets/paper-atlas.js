@@ -17,6 +17,14 @@
   const kindFilter = $('pm-kind-filter');
   const storageKey = 'encapsulatorp.paperAtlas.shape';
   const familyStorageKey = 'encapsulatorp.paperAtlas.collection';
+  const bodyKeys = {
+    origami: { studio: 'origami', voyage: 'voyage-chart' },
+    sphere: { studio: 'sphere', voyage: 'voyage-globe' },
+    portal: { studio: 'portal', voyage: 'voyage-portal' },
+    tensegrity: { studio: 'tensegrity', voyage: 'voyage-rigging' },
+    terrace: { studio: 'terrace', voyage: 'voyage-islands' }
+  };
+  const tableButtons = Array.from(dialog.querySelectorAll('[data-table-form]'));
   const kindNames = { treasure: 'Treasure', wildcard: 'Wildcard', trap: 'Trap' };
   const visited = new Set();
   let chosen = 0, shapeIndex = 0, family = 'voyage', engine = null, opener = null;
@@ -55,7 +63,7 @@
           if (info && typeof info.available === 'boolean' && info.available !== rendererAvailable) {
             rendererAvailable = info.available;
             $('pm-render-fallback').hidden = info.available;
-            pins.hidden = !info.available;
+            pins.hidden = !info.available || dialog.dataset.mapState === 'table';
             ['pm-motion', 'pm-zoom-in', 'pm-zoom-out', 'pm-reset', 'pm-fold'].forEach(id => { $(id).disabled = !info.available; });
           }
         },
@@ -77,6 +85,10 @@
     const shape = shapes[shapeIndex];
     family = shape.family || 'studio';
     dialog.dataset.collection = family;
+    dialog.dataset.shape = shape.key;
+    const body = Object.keys(bodyKeys).find(name => Object.values(bodyKeys[name]).includes(shape.key));
+    tableButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.tableForm === body)));
+    $('pm-unfold-label').textContent = family === 'voyage' || shape.foldable ? 'Unfold this map' : 'Explore this form';
     ['voyage', 'studio'].forEach(name => { $(`pm-family-${name}`).setAttribute('aria-pressed', String(name === family)); });
     shapeSelect.replaceChildren();
     shapes.filter(item => (item.family || 'studio') === family).forEach(item => {
@@ -99,7 +111,10 @@
     const current = members.findIndex(item => item.i === shapeIndex);
     setShape(members[(current + 1) % members.length].i);
   }
-  function setFamily(name) { setShape(shapes.findIndex(shape => (shape.family || 'studio') === name)); }
+  function setFamily(name) {
+    const body = Object.keys(bodyKeys).find(key => Object.values(bodyKeys[key]).includes(shapes[shapeIndex].key)) || 'origami';
+    setShape(shapes.findIndex(shape => shape.key === bodyKeys[body][name]));
+  }
   function selectStop(index, fromPin) {
     chosen = index;
     const stop = trail[index];
@@ -178,32 +193,44 @@
   }
   function unfold() {
     dialog.dataset.mapState = 'explored';
+    $('pm-table').hidden = true;
+    $('pm-back-table').hidden = false;
+    $('pm-stage-kicker').textContent = 'Charted discoveries / 01—09';
     $('pm-reveal').hidden = true;
     [$('pm-toolbar'), journal, $('pm-legend')].forEach(el => { el.hidden = false; });
-    pins.hidden = !engine;
+    pins.hidden = !engine || rendererAvailable === false;
     $('pm-fold-row').hidden = !shapes[shapeIndex].foldable;
     $('pm-structure').hidden = !['tensegrity', 'voyage-rigging'].includes(shapes[shapeIndex].key);
     selectStop(chosen);
     filterStops();
-    if (engine && shapes[shapeIndex].key === 'origami') {
-      cancelAnimationFrame(foldFrame);
-      const start = performance.now(), target = Number($('pm-fold').value) / 100;
-      const animateFold = now => {
-        const t = media.matches ? 1 : Math.min(1, (now - start) / 1100);
-        const ease = 1 - Math.pow(1 - t, 3);
-        engine.setFold(.94 + (target - .94) * ease);
-        if (t < 1 && dialog.open) foldFrame = requestAnimationFrame(animateFold);
-      };
-      foldFrame = requestAnimationFrame(animateFold);
-    }
+    if (engine && typeof engine.playOpening === 'function') engine.playOpening();
+    dialog.scrollTop = 0;
     shapeSelect.focus({ preventScroll: true });
+  }
+  function showTable(focus) {
+    cancelAnimationFrame(foldFrame);
+    hoveringPin = false;
+    dialog.dataset.mapState = 'table';
+    $('pm-table').hidden = false;
+    $('pm-back-table').hidden = true;
+    $('pm-stage-kicker').textContent = 'A live preview / move across the model';
+    [journal, $('pm-legend'), $('pm-fold-row'), $('pm-structure')].forEach(el => { el.hidden = true; });
+    $('pm-toolbar').hidden = false;
+    $('pm-reveal').hidden = false;
+    pins.hidden = true;
+    if (engine) { engine.setShape(shapes[shapeIndex].key); engine.setFold(Number($('pm-fold').value) / 100); syncMotion(); }
+    dialog.scrollTop = 0;
+    if (focus) $('pm-table-title').focus({ preventScroll: true });
   }
   function openMap(trigger, directly) {
     if (dialog.open) return;
     opener = trigger || null;
     leavingForLink = false;
+    hoveringPin = false;
     $('pm-close-caption').textContent = opener ? 'Close map' : 'Skip to atlas';
-    dialog.dataset.mapState = 'landing';
+    dialog.dataset.mapState = 'table';
+    $('pm-table').hidden = false;
+    $('pm-back-table').hidden = true;
     [journal, $('pm-legend'), $('pm-fold-row'), $('pm-structure')].forEach(el => { el.hidden = true; });
     $('pm-toolbar').hidden = false;
     $('pm-reveal').hidden = false;
@@ -216,15 +243,15 @@
       const savedFamily = localStorage.getItem(familyStorageKey);
       const members = shapes.map((shape, i) => ({ shape, i })).filter(item => item.shape.family === savedFamily);
       const previous = members.findIndex(item => item.shape.key === localStorage.getItem(storageKey));
-      if (members.length) next = members[(previous + 1) % members.length].i;
+      if (members.length) next = members[previous < 0 ? 0 : previous].i;
     } catch (_) {}
     setShape(next);
     if (engine) {
       engine.setActive(true);
-      if (shapes[next].key === 'origami') engine.setFold(.94);
       syncMotion();
     }
-    if (!engine || directly) unfold();
+    if (directly) unfold();
+    else showTable(false);
   }
   [...new Set(trail.map(stop => stop.topic))].sort().forEach(topic => {
     const option = document.createElement('option'); option.value = topic; option.textContent = topic; topicFilter.append(option);
@@ -234,7 +261,24 @@
     button.hidden = false;
     button.addEventListener('click', () => openMap(button));
   });
+  document.querySelectorAll('a[href="#paper-table"]').forEach(link => link.addEventListener('click', event => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    if (dialog.open) showTable(true); else openMap(link);
+    if (location.hash !== '#paper-table') location.hash = '#paper-table';
+  }));
   $('pm-reveal').addEventListener('click', unfold);
+  $('pm-back-table').addEventListener('click', () => showTable(true));
+  tableButtons.forEach(button => {
+    const preview = () => {
+      if (dialog.dataset.mapState !== 'table') return;
+      const key = bodyKeys[button.dataset.tableForm][family];
+      if (shapes[shapeIndex].key !== key) setShape(shapes.findIndex(shape => shape.key === key));
+    };
+    button.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') preview(); });
+    button.addEventListener('focus', preview);
+    button.addEventListener('click', () => { preview(); unfold(); });
+  });
   $('pm-close').addEventListener('click', () => dialog.close());
   $('pm-next-map').addEventListener('click', nextShape);
   ['voyage', 'studio'].forEach(name => { $(`pm-family-${name}`).addEventListener('click', () => setFamily(name)); });
@@ -284,7 +328,10 @@
   });
   document.addEventListener('visibilitychange', () => { if (engine) engine.setActive(dialog.open && !document.hidden); });
   media.addEventListener('change', () => { if (media.matches) { motion = false; syncMotion(); } });
-  window.addEventListener('hashchange', () => { if (location.hash === '#paper-atlas') openMap(null, true); });
+  window.addEventListener('hashchange', () => {
+    if (location.hash === '#paper-atlas') openMap(null, true);
+    if (location.hash === '#paper-table') { if (dialog.open) showTable(true); else openMap(null, false); }
+  });
   syncMotion();
-  if (!location.hash || location.hash === '#paper-atlas') openMap(null, location.hash === '#paper-atlas');
+  if (!location.hash || ['#paper-atlas', '#paper-table'].includes(location.hash)) openMap(null, location.hash === '#paper-atlas');
 })();
