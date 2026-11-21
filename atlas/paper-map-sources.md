@@ -15,7 +15,7 @@ The trail dates identify the recovered conversation periods or edition context a
 | Landmark | Subject destination | Scope and source |
 | --- | --- | --- |
 | Shuffle the signal | `#atlas?entry=tower-hadamard` | The normalized finite Fourier matrix is unitary exactly when its row indices are distinct modulo N. A tower recipe still has to pass this permutation criterion. [Written derivation](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/recovered-bridges.md#tower-hadamard); catalog entry `tower-hadamard`. |
-| The forty-eight lanes | `#atlas?entry=wheel-210` | Exactly 48 residue classes are coprime to 210. They contain every prime above 7 and also composites such as 121. [PTP-210 source](https://github.com/EncapsulatorP/Periodic-Table-of-Primes-210/blob/main/README.md); catalog entry `wheel-210`. |
+| The forty-eight lanes | `#atlas?entry=wheel-210` | Exactly 48 remainder classes are coprime to 210. They contain every prime above 7 and also composites such as 121. [PTP-210 source](https://github.com/EncapsulatorP/Periodic-Table-of-Primes-210/blob/main/README.md); catalog entry `wheel-210`. |
 | The impossible coastline | `#buried-complex-collatz` | A sine perturbation preserves the displayed map at integers while its off-integer dynamics may change. The geometric robustness question stays open. [Integer-spine argument](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/mathematical-notes.md#collatz-integer-spine); catalog entry `collatz-integer-spine` and the matching story in `index.html`. The destination is the explanation, replacing the earlier direct jump to `#scape`. |
 | The missing term | `#buried-collatz-riemann-reversal` | For one fixed positive integer n, a change of coefficient contributes a constant times exp(−s log n), an entire function of s. It cannot introduce a singularity by itself. The complete argument is in the existing story in `index.html`. The secondary link is labeled **Atlas source repository**; no separate original project repository has been established for this argument. |
 | The repeating current | `#atlas?entry=abel-orbit-signature` | For the standard Collatz cycle (1,4,2), the mean of the reciprocal values is 7/12. The normalized Abel limit gives that value for the cycle and any orbit eventually joining it. [Written derivation](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/recovered-bridges.md#abel-orbit-signature); catalog entry `abel-orbit-signature`. |
@@ -26,7 +26,7 @@ The trail dates identify the recovered conversation periods or edition context a
 
 The two generic atlas links point to the [actual source repository](https://github.com/EncapsulatorP/EncapsulatorP.github.io). All other secondary URLs are already present in `atlas/catalog.json` or the existing story links. The embedded `assets/research-atlas-data.js` carries the matching catalog entries.
 
-## The five paper forms
+## Paper studio · five forms
 
 ### Origami chart — `origami`
 
@@ -54,6 +54,22 @@ Those historical credits recognize Snelson, Fuller and Emmerich in their respect
 
 An original stepped navigation layout for the same trail. Terrace height does not measure truth, performance, chronology or physical energy. Its source is the [atlas navigation drawing](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js).
 
+## Origami voyages · five scenes
+
+This half of the collection follows Zolton’s supplied paper-polyhedron images and the sailing boat in the supplied Neon prototype. Each scene uses an opened chart, a printed route and two small folded-paper boats built as actual 3D meshes. The moving bodies are scenic interpretations, not experiments or asserted physical models.
+
+| Scene | Engine key | Composition |
+| --- | --- | --- |
+| The open-chart voyage | `voyage-chart` | A foldable chart with two turning corrugated paper wheels. |
+| The globe harbour | `voyage-globe` | A faceted cartographic globe staged over the open chart. |
+| The impossible passage | `voyage-portal` | A hollow paper body above the route, without a claimed Rupert passage ratio. |
+| Tension and sail | `voyage-rigging` | The three-strut prism as a small rigging sculpture over the chart. |
+| Islands from paper | `voyage-islands` | Layered paper landforms; their height encodes no research score. |
+
+All nine stations stay attached to chart material coordinates. The boats follow the printed route, and geometry can occlude stations naturally. Camera movement, folding and route motion are visual controls; they never modify a theorem’s status or a recorded benchmark.
+
+The two collections have equal size: five studio forms and five voyages. New visitors begin with the open-chart voyage. A reader’s collection choice is stored locally, and the next form cycles within that collection. This is a comparison-ready showcase, not a completed traffic experiment. See [the experiment plan](rendering-experiment.md).
+
 ## Edition credits
 
 - **Zolton:** research collection and visual direction, including the paper-polyhedron pirate-map request.
@@ -69,7 +85,7 @@ Validation checks the data contract and the existing source material:
 1. The trail has nine distinct IDs and retains its original four treasure, three trap and two wildcard markers.
 2. Each subject URL resolves either to an existing `index.html` ID or to an existing catalog entry handled by the atlas’s `#atlas?entry=` route.
 3. Each secondary URL names a repository already represented by the catalog. Direct source URLs are checked against the catalog or existing page links; the two explicitly labeled atlas-source links use that repository’s root.
-4. Shape keys are `origami`, `sphere`, `portal`, `tensegrity` and `terrace`.
+4. The collection has five studio forms and five voyage scenes. Every form uses the same nine subject destinations. Studio keys are `origami`, `sphere`, `portal`, `tensegrity` and `terrace`; voyage keys are listed below.
 
 These are content and navigation checks. They introduce no new numerical experiment or claim about the renderer’s physical accuracy.
 

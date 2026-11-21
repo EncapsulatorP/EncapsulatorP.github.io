@@ -166,7 +166,7 @@
     feature.className = 'kg-feature';
     feature.setAttribute('aria-labelledby', id + '-title');
     feature.innerHTML = `
-      <div class="kg-intro"><span class="kg-eyebrow">Kesten–Goldie / a mechanism you can see</span><h3 id="${id}-title">Small most of the time.<br>Large once in a while.</h3><p>Multiply what is already there. Add something fresh. Repeat. A system can forget its starting point while occasional bursts give its stationary distribution a heavy tail.</p></div>
+      <div class="kg-intro"><span class="kg-eyebrow">Kesten–Goldie / a mechanism you can see</span><h3 id="${id}-title">Small steps. Rare bursts.</h3><p>Multiply. Add. Repeat. Explore how contraction and occasional amplification shape a fixed, reproducible path.</p></div>
       <div class="kg-badges"><span>Established theorem</span><span>Exact comparison algebra</span><span>Reported Collatz experiment</span></div>
       <div class="kg-controls"><label for="${id}-model">Explore the mechanism<select id="${id}-model"><option value="bursts">Contraction with occasional bursts</option><option value="bounded">Every multiplier contracts</option><option value="growth">Every multiplier expands</option></select></label><label for="${id}-kappa" class="kg-kappa-control">Tail index κ · <output id="${id}-kappa-value" for="${id}-kappa">1.10</output><input id="${id}-kappa" type="range" min="0.35" max="3" step="0.05" value="1.1"></label><button id="${id}-motion" type="button" aria-pressed="false">Pause gentle motion</button></div>
       <div class="kg-visuals"><figure class="kg-visual" style="margin:0"><h4>Watch one path</h4><svg id="${id}-path" viewBox="0 0 720 270" role="group" tabindex="0" aria-label="Inspect the illustrative affine path" aria-describedby="${id}-path-help"></svg><p class="kg-inspect" id="${id}-step-readout" aria-live="off"></p><figcaption class="kg-caption" id="${id}-path-help">Move over the path to inspect a step. Keyboard: Left and Right arrows; Home and End. Vertical scale: log(1 + X). Seeded iid teaching model; 192 updates, not a Collatz orbit.</figcaption></figure><figure class="kg-visual" style="margin:0"><h4>Find the moment balance</h4><svg id="${id}-moment" viewBox="0 0 720 270" role="group" tabindex="0" aria-label="Inspect the exact moment curve" aria-describedby="${id}-moment-help"></svg><p class="kg-inspect" id="${id}-moment-readout" aria-live="off"></p><figcaption class="kg-caption" id="${id}-moment-help">The horizontal line is E[Mˢ] = 1. Move over the curve, or use Left and Right arrows, to inspect an exponent s. This curve is calculated from the exact law, not fitted to the path.</figcaption></figure></div>
@@ -176,6 +176,7 @@
       ${detailedContent(id)}
       <p class="kg-credit">Research direction and recovered experiments: Zolton / EncapsulatorP. Visual explanation, elementary derivations and source check: this ChatGPT atlas edition. Classical theorem credit remains with its original authors.</p>`;
     host.append(feature);
+    feature.querySelector('.kg-visuals').after(feature.querySelector('.kg-controls'));
     const get = suffix => feature.querySelector('#' + id + '-' + suffix);
     const modelControl = get('model'), kappaControl = get('kappa'), motionButton = get('motion');
     const pathSvg = get('path'), momentSvg = get('moment');

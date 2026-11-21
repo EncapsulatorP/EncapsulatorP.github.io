@@ -131,7 +131,9 @@
       const uv = face.map(p => [Math.atan2(p[2], p[0]) / TAU + 0.5, Math.asin(clamp(p[1], -1, 1)) / Math.PI + 0.5]);
       if (Math.max(...uv.map(p => p[0])) - Math.min(...uv.map(p => p[0])) > 0.5) uv.forEach(p => { if (p[0] < 0.5) p[0] += 1; });
       const color = i === 12 || i === 61 ? palette.blue : i === 38 ? palette.copper : i % 5 === 0 ? palette.ivory : palette.paper;
-      const n = mesh.sheet(points, material(color, 0.73, 0.98), uv, 0.012);
+      // Let the folded paper mass read first, especially where meridians meet.
+      const grid = 0.36 * (1 - 0.55 * Math.pow(Math.abs(unit(average(face))[1]), 8));
+      const n = mesh.sheet(points, material(color, grid, 0.98), uv, 0.012);
       panels.push({ points, normal: n, direction: unit(sub(average(points), center)) });
     });
     const used = new Set();
@@ -212,6 +214,282 @@
     return mesh;
   }
 
+  // The voyage family is a composed paper stage, not a physical simulation.
+  // All of its subject pins belong to the chart; moving props never own pins.
+  const voyageColors = {
+    sea: [0.115, 0.325, 0.475], shallows: [0.31, 0.57, 0.65],
+    route: [0.91, 0.67, 0.36], coast: [0.88, 0.89, 0.79],
+    interior: [0.29, 0.37, 0.40]
+  };
+  const voyageCache = new Map();
+  const voyageChartCache = new Map();
+  const voyageRows = [0, 0.018, 0.055, 0.14, 0.35, 0.65, 0.86, 0.945, 0.982, 1];
+  function voyagePart(key, make) { if (!voyageCache.has(key)) voyageCache.set(key, make()); return voyageCache.get(key); }
+  function mergeMesh(target, source, point, direction) {
+    for (let i = 0; i < source.vertices.length; i += 14) {
+      const p = point(source.vertices.slice(i, i + 3)), n = unit(direction(source.vertices.slice(i + 3, i + 6)));
+      target.vertices.push(...p, ...n, ...source.vertices.slice(i + 6, i + 14));
+      for (let k = 0; k < 3; k++) { target.bounds[0][k] = Math.min(target.bounds[0][k], p[k]); target.bounds[1][k] = Math.max(target.bounds[1][k], p[k]); }
+    }
+    source.triangles.forEach(tri => target.triangles.push(tri.map(point)));
+    for (let i = 0; i < source.lines.length; i += 7) target.lines.push(...point(source.lines.slice(i, i + 3)), ...source.lines.slice(i + 3, i + 7));
+  }
+  function placeMesh(target, source, origin, scale = 1, yaw = 0, pitch = 0, roll = 0, anchor = [0, 0, 0]) {
+    const cy = Math.cos(yaw), sy = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch), cr = Math.cos(roll), sr = Math.sin(roll);
+    const rotate = p => {
+      const y = p[1] * cp - p[2] * sp, z = p[1] * sp + p[2] * cp;
+      const x = p[0] * cr - y * sr, ry = p[0] * sr + y * cr;
+      return [x * cy + z * sy, ry, -x * sy + z * cy];
+    };
+    mergeMesh(target, source, p => add(origin, mul(rotate(sub(p, anchor)), scale)), rotate);
+  }
+  function chartSurface(fold) {
+    const angle = 0.055 + clamp(fold, 0, 1) * 0.34, columns = 6, width = 5.08 * Math.cos(angle), depth = 3.52;
+    const rise = 5.08 / columns * Math.sin(angle);
+    const uKnots = Array.from({ length: columns + 1 }, (_, i) => i / columns);
+    const curlAt = (t, knots, amplitude, power) => {
+      t = clamp(t, 0, 1); let index = 0;
+      while (index < knots.length - 2 && t > knots[index + 1]) index++;
+      const a = knots[index], b = knots[index + 1], ya = amplitude * Math.pow(Math.abs(a - 0.5) * 2, power), yb = amplitude * Math.pow(Math.abs(b - 0.5) * 2, power);
+      return ya + (yb - ya) * (t - a) / (b - a);
+    };
+    const point = (u, v, lift = 0) => {
+      const q = clamp(u, 0, 1) * columns, panel = Math.min(columns - 1, Math.floor(q)), t = q - panel;
+      const crease = panel % 2 ? 1 - t : t;
+      // The interpolation is identical to the rendered paper facets. Decals,
+      // ships and supports therefore use the actual surface, including its lip.
+      const curl = curlAt(v, voyageRows, 0.085, 10) + curlAt(u, uKnots, 0.024, 12);
+      return [(u - 0.5) * width, 0.075 + crease * rise + curl + lift, (v - 0.5) * depth];
+    };
+    const up = (u, v) => unit(cross(sub(point(u, v + 0.0005), point(u, v - 0.0005)), sub(point(u + 0.0005, v), point(u - 0.0005, v))));
+    return { point, up, width, depth, rise, columns, uKnots, vKnots: voyageRows };
+  }
+  function chartLine(mesh, chart, a, b, color, alpha = 0.4, lift = 0.006) {
+    mesh.lines.push(...chart.point(a[0], a[1], lift), ...color, alpha, ...chart.point(b[0], b[1], lift), ...color, alpha);
+  }
+  function clipCoordinate(polygon, limit, greater, axis = 0) {
+    const out = [];
+    for (let i = 0; i < polygon.length; i++) {
+      const a = polygon[i], b = polygon[(i + 1) % polygon.length], insideA = greater ? a[axis] >= limit : a[axis] <= limit, insideB = greater ? b[axis] >= limit : b[axis] <= limit;
+      if (insideA) out.push(a);
+      if (insideA !== insideB) { const t = (limit - a[axis]) / (b[axis] - a[axis]); out.push([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]); }
+    }
+    return out;
+  }
+  function chartPatch(mesh, chart, polygon, color, lift = 0.003) {
+    for (let panel = 0; panel < chart.columns; panel++) {
+      let band = clipCoordinate(polygon, panel / chart.columns, true); if (band.length < 3) continue;
+      band = clipCoordinate(band, (panel + 1) / chart.columns, false); if (band.length < 3) continue;
+      for (let row = 0; row < voyageRows.length - 1; row++) {
+        let clipped = clipCoordinate(band, voyageRows[row], true, 1); if (clipped.length < 3) continue;
+        clipped = clipCoordinate(clipped, voyageRows[row + 1], false, 1); if (clipped.length < 3) continue;
+        for (let i = 1; i < clipped.length - 1; i++) {
+          const uv = [clipped[0], clipped[i + 1], clipped[i]], points = uv.map(p => chart.point(p[0], p[1], lift));
+          if (Math.hypot(...cross(sub(points[1], points[0]), sub(points[2], points[0]))) > 1e-9) mesh.triangle(...points, material(color, 0, 1), uv);
+        }
+      }
+    }
+  }
+  function routeUV(theta) {
+    const r = 1 + 0.055 * Math.cos(3 * theta + 0.4);
+    return [0.5 + 0.385 * r * Math.cos(theta), 0.52 + 0.315 * r * Math.sin(theta)];
+  }
+  function voyageChart(fold) {
+    const mesh = new Mesh(), chart = chartSurface(fold), rows = voyageRows;
+    for (let i = 0; i < chart.columns; i++) for (let j = 0; j < rows.length - 1; j++) {
+      const uv = [[i / chart.columns, rows[j]], [i / chart.columns, rows[j + 1]], [(i + 1) / chart.columns, rows[j + 1]], [(i + 1) / chart.columns, rows[j]]];
+      const points = uv.map(p => chart.point(...p));
+      mesh.quad(points, material(i % 2 ? palette.ivory : palette.paper, 0.025), uv);
+      mesh.quad(points.map(p => add(p, [0, -0.028, 0])).reverse(), material(palette.back, 0, 0.92));
+    }
+    // A narrow rounded lip, with side thickness only on the sheet perimeter.
+    const rim = [];
+    for (let i = 0; i <= chart.columns; i++) rim.push([i / chart.columns, 0]);
+    rows.slice(1).forEach(v => rim.push([1, v]));
+    for (let i = chart.columns - 1; i >= 0; i--) rim.push([i / chart.columns, 1]);
+    rows.slice(1, -1).reverse().forEach(v => rim.push([0, v]));
+    rim.forEach((uv, i) => {
+      const next = rim[(i + 1) % rim.length], a = chart.point(...uv), b = chart.point(...next);
+      const a1 = add(a, [0, -0.006, 0]), b1 = add(b, [0, -0.006, 0]);
+      mesh.quad([a, a1, b1, b], material(palette.ivory, 0));
+      mesh.quad([a1, add(a, [0, -0.028, 0]), add(b, [0, -0.028, 0]), b1], material(palette.edge, 0, 0.95));
+    });
+    // Printed ocean: the ink follows each crease rather than floating over it.
+    const seaRows = rows.filter(v => v >= 0.055 && v <= 0.945);
+    for (let i = 0; i < chart.columns; i++) {
+      const a = Math.max(0.035, i / chart.columns), b = Math.min(0.965, (i + 1) / chart.columns);
+      for (let j = 0; j < seaRows.length - 1; j++) {
+        const v = seaRows[j], w = seaRows[j + 1];
+        const uv = [[a, v], [a, w], [b, w], [b, v]];
+        mesh.quad(uv.map(p => chart.point(...p, 0.002)), material(voyageColors.sea, 0.045), uv);
+      }
+    }
+    const coasts = [[0.28, 0.34, 0.13, 0.15, 0.4], [0.64, 0.46, 0.16, 0.19, 2.1], [0.77, 0.72, 0.068, 0.075, 1.1], [0.24, 0.73, 0.060, 0.047, 3.0]];
+    coasts.forEach(([u, v, ru, rv, phase]) => {
+      const points = Array.from({ length: 40 }, (_, i) => { const t = i * TAU / 40, r = 1 + 0.14 * Math.cos(3 * t + phase) + 0.055 * Math.sin(7 * t - phase); return [u + ru * r * Math.cos(t), v + rv * r * Math.sin(t)]; });
+      for (let i = 0; i < points.length; i++) chartPatch(mesh, chart, [[u, v], points[i], points[(i + 1) % points.length]], voyageColors.coast, 0.004);
+      for (const dilation of [1.07, 1.15, 1.24]) for (let i = 0; i < points.length; i++) {
+        const a = points[i], b = points[(i + 1) % points.length];
+        chartLine(mesh, chart, [u + (a[0] - u) * dilation, v + (a[1] - v) * dilation], [u + (b[0] - u) * dilation, v + (b[1] - v) * dilation], voyageColors.shallows, 0.27, 0.007);
+      }
+    });
+    for (let i = 0; i < 224; i++) {
+      const a = routeUV(i * TAU / 224), b = routeUV((i + 1) * TAU / 224);
+      chartLine(mesh, chart, a, b, palette.ivory, 0.30, 0.008);
+      if (i % 8 < 5) {
+        const pa = chart.point(...a, 0.009), pb = chart.point(...b, 0.009), sideways = mul(unit(cross(sub(pb, pa), [0, 1, 0])), 0.008);
+        mesh.quad([add(pa, sideways), sub(pa, sideways), sub(pb, sideways), add(pb, sideways)], material(voyageColors.route, 0));
+      }
+    }
+    for (let i = 0; i < 9; i++) { const uv = routeUV((i / 9 + 0.025) * TAU); mesh.pin(chart.point(...uv, 0.011), chart.up(...uv)); }
+    // Fold seams stay restrained; the dark ocean and warm margins carry the map.
+    for (let i = 1; i < chart.columns; i++) chartLine(mesh, chart, [i / chart.columns, 0.03], [i / chart.columns, 0.97], palette.ivory, 0.12, 0.010);
+    return { mesh, chart };
+  }
+  function paperBoat(accent) {
+    const mesh = new Mesh(), rim = [[-0.62, 0.20, 0], [0, 0.14, 0.28], [0.62, 0.20, 0], [0, 0.14, -0.28]], keel = [[-0.43, 0, 0], [0, 0, 0.09], [0.43, 0, 0], [0, 0, -0.09]];
+    const inner = rim.map(([x, y, z]) => [x * 0.94, y, z * 0.94]), bottom = keel.map(([x, , z]) => [x * 0.8, 0.035, z * 0.8]);
+    for (let i = 0; i < 4; i++) {
+      const j = (i + 1) % 4, bandA = lerp(keel[i], rim[i], 0.40), bandB = lerp(keel[j], rim[j], 0.40);
+      mesh.quad([rim[i], bandA, bandB, rim[j]], material(palette.ivory, 0));
+      mesh.quad([bandA, keel[i], keel[j], bandB], material(accent, 0));
+      mesh.quad([inner[i], inner[j], bottom[j], bottom[i]], material(voyageColors.interior, 0, 0.78));
+      mesh.quad([rim[i], rim[j], inner[j], inner[i]], material(palette.paper, 0));
+    }
+    mesh.quad(keel.slice().reverse(), material(palette.back, 0)); mesh.quad(bottom, material(voyageColors.interior, 0, 0.80));
+    const A = [-0.01, 0.15, 0.02], B = [0.46, 0.15, 0], F = [0.22, 0.17, 0.12], P = [0, 0.65, 0.025];
+    const C = [-0.46, 0.15, 0], D = [-0.04, 0.15, -0.015], G = [-0.24, 0.17, -0.12], Q = [-0.05, 0.58, -0.025];
+    mesh.sheet([A, F, P], material(palette.ivory, 0), undefined, 0.006); mesh.sheet([F, B, P], material(palette.paper, 0), undefined, 0.006);
+    mesh.sheet([C, Q, G], material([0.77, 0.87, 0.89], 0), undefined, 0.006); mesh.sheet([G, Q, D], material(palette.ivory, 0), undefined, 0.006);
+    mesh.seam(P, F, 0.19); mesh.seam(Q, G, 0.15);
+    return mesh;
+  }
+  function sailBoat(mesh, chart, source, theta, scale) {
+    const uv = routeUV(theta), before = chart.point(...routeUV(theta - 0.001)), after = chart.point(...routeUV(theta + 0.001));
+    const heading = unit([after[0] - before[0], 0, after[2] - before[2]]), up = [0, 1, 0], port = cross(heading, up), center = chart.point(...uv);
+    // Test every folded vertex and every keel-edge crossing of a chart crease.
+    // A ridge can sit between the boat centre and its pointed ends.
+    let height = -Infinity;
+    const clearPoint = ([x, y, z]) => {
+      const du = (heading[0] * x + port[0] * z) * scale / chart.width, dv = (heading[2] * x + port[2] * z) * scale / chart.depth;
+      height = Math.max(height, chart.point(uv[0] + du, uv[1] + dv)[1] - y * scale);
+    };
+    for (let i = 0; i < source.vertices.length; i += 14) clearPoint(source.vertices.slice(i, i + 3));
+    const keel = [[-0.43, 0, 0], [0, 0, 0.09], [0.43, 0, 0], [0, 0, -0.09]];
+    keel.forEach((a, i) => {
+      const b = keel[(i + 1) % keel.length];
+      for (const [axis, knots, size] of [[0, chart.uKnots, chart.width], [2, chart.vKnots, chart.depth]]) {
+        const au = uv[axis === 0 ? 0 : 1] + (heading[axis] * a[0] + port[axis] * a[2]) * scale / size;
+        const bu = uv[axis === 0 ? 0 : 1] + (heading[axis] * b[0] + port[axis] * b[2]) * scale / size;
+        for (const knot of knots) if ((knot - au) * (knot - bu) < 0) clearPoint(lerp(a, b, (knot - au) / (bu - au)));
+      }
+    });
+    center[1] = height + 0.025;
+    const direction = p => add(add(mul(heading, p[0]), mul(up, p[1])), mul(port, p[2]));
+    mergeMesh(mesh, source, p => add(center, mul(direction(p), scale)), direction);
+  }
+  function paperWheel() {
+    const mesh = new Mesh(), segments = 20;
+    const ring = (r, z, i) => { const a = i * TAU / segments; return [r * Math.cos(a), r * Math.sin(a), z + 0.022 * (i % 2 ? -1 : 1)]; };
+    for (let i = 0; i < segments; i++) {
+      const j = i + 1, color = i === 3 || i === 4 ? voyageColors.sea : i === 13 ? palette.copper : i % 2 ? palette.ivory : palette.paper;
+      const sections = [[0.68, 0.055], [0.72, 0.005], [0.68, -0.055], [0.37, -0.055], [0.33, 0.005], [0.37, 0.055]];
+      sections.forEach(([r, z], k) => { const [nr, nz] = sections[(k + 1) % sections.length]; mesh.quad([ring(r, z, i), ring(r, z, j), ring(nr, nz, j), ring(nr, nz, i)].reverse(), material(k === 3 ? palette.back : color, k === 5 ? 0.09 : 0, k === 3 ? 0.78 : 1)); });
+    }
+    return mesh;
+  }
+  function foldedStand(mesh, chart, x, z, y, width = 0.65, depth = 0.46, height = 0.20) {
+    const foot = (px, pz) => [px, chart.point(px / chart.width + 0.5, pz / chart.depth + 0.5)[1] + 0.009, pz];
+    const left = [foot(x - width / 2, z - depth / 2), foot(x - width / 2, z + depth / 2)], ridge = [[x, y + height, z - depth / 2], [x, y + height, z + depth / 2]], right = [foot(x + width / 2, z - depth / 2), foot(x + width / 2, z + depth / 2)];
+    mesh.sheet([left[0], left[1], ridge[1], ridge[0]], material(palette.ivory, 0.05), undefined, 0.018);
+    mesh.sheet([ridge[0], ridge[1], right[1], right[0]], material(palette.paper, 0.05), undefined, 0.018);
+  }
+  function paperIsland(mesh, chart, x, z, base, radius, phase) {
+    let y = base;
+    [0.11, 0.17, 0.23].forEach((height, layer) => {
+      const r = radius * (1 - layer * 0.22), count = 14;
+      const ring = (scale, altitude) => Array.from({ length: count }, (_, i) => { const a = i * TAU / count, local = r * scale * (1 + 0.11 * Math.sin(3 * a + phase) + 0.05 * Math.cos(5 * a)); return [x + local * Math.cos(a), altitude, z + local * Math.sin(a)]; });
+      const bottom = ring(1, y), shoulder = ring(1, y + height - 0.028), top = ring(0.95, y + height), center = [x, y + height, z];
+      if (layer === 0) bottom.forEach(p => { p[1] = chart.point(p[0] / chart.width + 0.5, p[2] / chart.depth + 0.5)[1] + 0.007; });
+      for (let i = 0; i < count; i++) {
+        const j = (i + 1) % count;
+        mesh.quad([bottom[i], shoulder[i], shoulder[j], bottom[j]], material(layer === 1 ? voyageColors.shallows : palette.paper, 0, 0.94));
+        mesh.quad([shoulder[i], top[i], top[j], shoulder[j]], material(palette.ivory, 0));
+        mesh.triangle(center, top[j], top[i], material(palette.ivory, 0.06));
+      }
+      y += height;
+    });
+  }
+  function copyPaperMesh(source) {
+    const mesh = new Mesh();
+    mesh.vertices = source.vertices.slice(); mesh.lines = source.lines.slice(); mesh.triangles = source.triangles.slice();
+    mesh.landmarks = source.landmarks.slice(); mesh.bounds = source.bounds.map(p => p.slice());
+    return mesh;
+  }
+  function refoldChart(cached, fold) {
+    const chart = chartSurface(fold), source = cached.mesh, mesh = new Mesh();
+    const scaleX = chart.width / cached.chart.width, deltaRise = chart.rise - cached.chart.rise;
+    const move = p => {
+      const q = clamp(p[0] / cached.chart.width + 0.5, 0, 1) * chart.columns, panel = Math.min(chart.columns - 1, Math.floor(q)), t = q - panel;
+      return [p[0] * scaleX, p[1] + (panel % 2 ? 1 - t : t) * deltaRise, p[2]];
+    };
+    mesh.vertices = source.vertices.slice();
+    for (let i = 0; i < mesh.vertices.length; i += 42) {
+      const triangle = [0, 14, 28].map(offset => move(source.vertices.slice(i + offset, i + offset + 3))), n = normal(triangle);
+      triangle.forEach((p, vertex) => {
+        const start = i + vertex * 14;
+        for (let axis = 0; axis < 3; axis++) {
+          mesh.vertices[start + axis] = p[axis]; mesh.vertices[start + 3 + axis] = n[axis];
+          mesh.bounds[0][axis] = Math.min(mesh.bounds[0][axis], p[axis]); mesh.bounds[1][axis] = Math.max(mesh.bounds[1][axis], p[axis]);
+        }
+      });
+      mesh.triangles.push(triangle);
+    }
+    mesh.lines = source.lines.slice();
+    for (let i = 0; i < mesh.lines.length; i += 7) { const p = move(source.lines.slice(i, i + 3)); for (let axis = 0; axis < 3; axis++) mesh.lines[i + axis] = p[axis]; }
+    for (let i = 0; i < 9; i++) { const uv = routeUV((i / 9 + 0.025) * TAU); mesh.pin(chart.point(...uv, 0.011), chart.up(...uv)); }
+    return { mesh, chart };
+  }
+  function voyageScene(key, fold, time) {
+    let cached = voyageChartCache.get('master');
+    if (!cached) { cached = voyageChart(0.28); voyageChartCache.set('master', cached); }
+    // Coastline clipping is performed once. Animated folds only transform the
+    // existing paper facets, keeping the mobile geometry update bounded.
+    const { chart, mesh } = key === 'voyage-chart' ? refoldChart(cached, fold) : { chart: cached.chart, mesh: copyPaperMesh(cached.mesh) };
+    const turn = time * TAU / 34, base = chart.point(0.5, 0.5)[1] + 0.025;
+    if (key === 'voyage-chart') {
+      const wheel = voyagePart('wheel', paperWheel);
+      foldedStand(mesh, chart, -0.65, -0.23, base, 0.58, 0.44, 0.19); foldedStand(mesh, chart, 0.64, -0.42, base, 0.58, 0.44, 0.19);
+      placeMesh(mesh, wheel, [-0.65, base + 0.80, -0.23], 0.86, -0.22, 0.12, turn);
+      placeMesh(mesh, wheel, [0.64, base + 0.80, -0.42], 0.86, 0.30, -0.09, -turn * 0.84 + 0.24);
+    } else if (key === 'voyage-globe') {
+      foldedStand(mesh, chart, 0, -0.15, base, 1.05, 0.67, 0.20);
+      placeMesh(mesh, voyagePart('globe', globe), [0, base + 1.04, -0.15], 0.66, turn + 0.35, 0.08, 0.12, [0, 1.34, 0]);
+    } else if (key === 'voyage-portal') {
+      const body = voyagePart('portal', portal), center = average(body.bounds);
+      foldedStand(mesh, chart, 0, -0.12, base, 1.12, 0.57, 0.12);
+      placeMesh(mesh, body, [0, base + 0.99, -0.12], 0.66, turn * 0.72 - 0.35, 0, 0, center);
+    } else if (key === 'voyage-rigging') {
+      const body = voyagePart('rigging', tensegrity);
+      placeMesh(mesh, body, [0, base + 0.05, -0.12], 0.78, turn * 0.82 + 0.2);
+      for (let i = 0; i < 3; i++) {
+        const a = i * TAU / 3 - (turn * 0.82 + 0.2), x = Math.cos(a) * 1.15 * 0.78, z = Math.sin(a) * 1.15 * 0.78 - 0.12;
+        foldedStand(mesh, chart, x, z, base, 0.24, 0.20, 0.125);
+      }
+    } else {
+      paperIsland(mesh, chart, -0.67, -0.28, base, 0.57, 0.4); paperIsland(mesh, chart, 0.44, -0.23, base, 0.62, 2.1); paperIsland(mesh, chart, 0.24, 0.60, base, 0.36, 1.1);
+      // A folded summit creates a distinct pop-up silhouette over the terraces.
+      const a = [-0.22, base + 0.51, -0.45], b = [0.67, base + 0.51, -0.44], c = [0.56, base + 0.51, 0.17], peak = [0.31, base + 1.10, -0.18];
+      mesh.sheet([a, peak, b], material(palette.ivory, 0.06), undefined, 0.016); mesh.sheet([b, peak, c], material(palette.paper, 0.06), undefined, 0.016); mesh.sheet([c, peak, a], material(voyageColors.shallows, 0.05), undefined, 0.016);
+    }
+    sailBoat(mesh, chart, voyagePart('boat-blue', () => paperBoat(voyageColors.sea)), time * TAU / 30 + 0.65, 0.43);
+    sailBoat(mesh, chart, voyagePart('boat-copper', () => paperBoat(palette.copper)), time * TAU / 30 + 0.65 + Math.PI * 1.12, 0.35);
+    // Constant framing includes every prop without camera breathing as boats move.
+    const top = key === 'voyage-islands' ? base + 1.30 : key === 'voyage-chart' ? base + 1.57 : base + 2.00;
+    mesh.cameraBounds = [[-chart.width / 2 - 0.03, 0.02, -chart.depth / 2 - 0.03], [chart.width / 2 + 0.03, top, chart.depth / 2 + 0.03]];
+    return mesh;
+  }
+
   function hitTriangle(origin, ray, triangle, distance) {
     const a = triangle[0], b = triangle[1], c = triangle[2];
     const e1 = sub(b, a), e2 = sub(c, a), p = cross(ray, e2), determinant = dot(e1, p);
@@ -242,8 +520,13 @@
     return `${derivatives ? '#extension GL_OES_standard_derivatives : enable\n' : ''}precision ${precision} float;
       varying vec3 vPosition; varying vec3 vNormal; varying vec3 vColor;
       varying vec2 vUV; varying vec3 vMeta; varying vec4 vLight;
-      uniform sampler2D uShadow; uniform vec2 uShadowStep; uniform vec3 uEye; uniform vec3 uLight;
+      uniform sampler2D uShadow; uniform vec2 uShadowStep; uniform vec3 uEye; uniform vec3 uLight; uniform float uPaperFinish;
       float line(float x){ float d=abs(fract(x-0.5)-0.5); float w=${derivatives ? 'max(fwidth(x),0.001)' : '0.032'}; return 1.0-smoothstep(w*0.18,w*0.78,d); }
+      float paperHash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+      float paperNoise(vec2 p){
+        vec2 i=floor(p),f=fract(p); f=f*f*(3.0-2.0*f);
+        return mix(mix(paperHash(i),paperHash(i+vec2(1.0,0.0)),f.x),mix(paperHash(i+vec2(0.0,1.0)),paperHash(i+vec2(1.0,1.0)),f.x),f.y);
+      }
       float shadowDepth(vec2 uv){vec2 encoded=texture2D(uShadow,uv).rg;return encoded.x+encoded.y/255.0;}
       float shadowTest(vec3 p,vec2 offset,float bias){return smoothstep(p.z-bias-0.00035,p.z-bias+0.00035,shadowDepth(p.xy+offset));}
       float shadow(vec3 n,vec3 light){
@@ -266,14 +549,25 @@
         base=mix(base,vec3(0.25,0.39,0.43),ink*0.43);
         float grain=fract(sin(dot(vPosition,vec3(173.13,229.71,317.37)))*43758.5453)-0.5;
         float grainFilter=${derivatives ? '1.0-smoothstep(0.35,1.0,max(length(dFdx(vPosition)),length(dFdy(vPosition)))*220.0)' : '0.0'};
-        base+=grain*0.004*grainFilter*(1.0-vMeta.z);
+        vec2 paperUV=vec2(dot(vPosition,vec3(0.81,0.39,0.45)),dot(vPosition,vec3(-0.26,0.92,-0.28)));
+        float toothFilter=${derivatives ? '1.0-smoothstep(0.20,0.65,max(length(dFdx(paperUV)),length(dFdy(paperUV)))*72.0)' : '0.0'};
+        float surface=(paperNoise(paperUV*5.5)-0.5)*0.012+(paperNoise(paperUV*72.0)-0.5)*0.006*toothFilter;
+        base+=mix(grain*0.004*grainFilter,surface,uPaperFinish)*(1.0-vMeta.z);
         vec3 linear=pow(max(base,vec3(0.01)),vec3(2.2));
         vec3 ambient=vec3(0.79,0.84,0.91)*(0.30+0.18*max(n.y,0.0));
         ambient+=vec3(1.0,0.87,0.70)*0.06*max(-n.y,0.0);
         vec3 direct=vec3(1.0,0.925,0.80)*ndl*0.70*(0.20+0.80*shade);
+        // Broad warm bounce keeps unlit ivory facets from reading as gray.
+        // A bounded softbox falloff gives planar faces a gentle light gradient.
+        float sky=0.5+0.5*n.y;
+        vec3 paperAmbient=mix(vec3(1.0,0.89,0.73),vec3(0.96,0.97,1.0),sky)*(0.35+0.12*sky);
+        paperAmbient*=0.83+0.17*smoothstep(0.025,0.50,vPosition.y);
+        float softbox=clamp(8.0/length(uLight-vPosition),0.80,1.24);
+        vec3 paperDirect=vec3(1.0,0.945,0.85)*ndl*0.66*softbox*(0.16+0.84*shade);
+        ambient=mix(ambient,paperAmbient,uPaperFinish); direct=mix(direct,paperDirect,uPaperFinish);
         vec3 color=linear*(ambient+direct)*vMeta.y;
-        color+=vec3(1.0,0.93,0.83)*pow(max(dot(n,normalize(light+view)),0.0),16.0)*0.019*shade;
-        color+=linear*0.035*pow(1.0-max(dot(n,view),0.0),3.0);
+        color+=vec3(1.0,0.93,0.83)*pow(max(dot(n,normalize(light+view)),0.0),mix(16.0,10.0,uPaperFinish))*mix(0.019,0.010,uPaperFinish)*shade;
+        color+=linear*mix(0.035,0.023,uPaperFinish)*pow(1.0-max(dot(n,view),0.0),3.0);
         if(vMeta.z>0.5){
           float contact=exp(-dot(vPosition.xz*0.63,vPosition.xz*0.63))*0.025;
           color=linear*(1.0-contact)*mix(vec3(0.77,0.755,0.715),vec3(0.985),shade);
@@ -300,8 +594,10 @@
       this.onInteraction = typeof options.onInteraction === 'function' ? options.onInteraction : () => {};
       this._reduced = options.reducedMotion === undefined ? !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) : !!options.reducedMotion;
       this._shape = 'origami'; this._fold = 0.62; this._currentFold = this._fold; this._phase = 0;
+      this._voyageTime = 0; this._voyageFrame = -1; this._sceneHz = 24;
       this._yaw = 0.44; this._pitch = 0.60; this._zoom = 1; this._selected = 0;
-      this._motion = !this._reduced; this._active = true; this._visible = true; this._destroyed = false; this._lost = false;
+      this._parallax = [0, 0]; this._parallaxTarget = [0, 0];
+      this._motion = !this._reduced; this._motionOverride = false; this._active = true; this._visible = true; this._destroyed = false; this._lost = false;
       this._pausedUntil = 0; this._frameId = 0; this._lastTime = 0; this._distance = 0;
       this._listeners = []; this._resources = []; this._pointers = new Map();
       this._light = [-3.8, 7.5, 4.6]; this._lightMatrix = multiply(ortho(4.15, 0.1, 20), lookAt(this._light, [0, 0.6, 0]));
@@ -320,7 +616,7 @@
       const program = gl.createProgram(); shaders.forEach(shader => gl.attachShader(program, shader)); gl.linkProgram(program); shaders.forEach(shader => gl.deleteShader(shader));
       if (!gl.getProgramParameter(program, gl.LINK_STATUS)) { const message = gl.getProgramInfoLog(program); gl.deleteProgram(program); throw new Error(message); }
       this._resources.push(['Program', program]);
-      return { program, attributes: Object.fromEntries(['aPosition', 'aNormal', 'aColor', 'aUV', 'aMeta'].map(name => [name, gl.getAttribLocation(program, name)])), uniforms: Object.fromEntries(['uViewProjection', 'uLightProjection', 'uShadow', 'uShadowStep', 'uEye', 'uLight'].map(name => [name, gl.getUniformLocation(program, name)])) };
+      return { program, attributes: Object.fromEntries(['aPosition', 'aNormal', 'aColor', 'aUV', 'aMeta'].map(name => [name, gl.getAttribLocation(program, name)])), uniforms: Object.fromEntries(['uViewProjection', 'uLightProjection', 'uShadow', 'uShadowStep', 'uEye', 'uLight', 'uPaperFinish'].map(name => [name, gl.getUniformLocation(program, name)])) };
     }
     _setup() {
       const gl = this.gl;
@@ -346,7 +642,8 @@
     }
     _makeScene() {
       const makers = { origami: () => accordion(this._currentFold), sphere: globe, portal, tensegrity, terrace };
-      this._mesh = makers[this._shape](); this._center = average(this._mesh.bounds);
+      this._mesh = this._isVoyage() ? voyageScene(this._shape, this._currentFold, this._voyageTime) : makers[this._shape]();
+      this._center = average(this._mesh.cameraBounds || this._mesh.bounds);
       // The floor receives shadows but never writes to the shadow map. Including
       // its huge coplanar triangles creates sampling stripes / self-shadow moire.
       this._shadowVertexCount = this._mesh.vertices.length / 14;
@@ -374,13 +671,20 @@
       layout.forEach(([name, size, offset]) => { const location = program.attributes[name]; if (location >= 0) { gl.enableVertexAttribArray(location); gl.vertexAttribPointer(location, size, gl.FLOAT, false, (lines ? 7 : 14) * 4, offset * 4); } });
     }
     _camera(aspect) {
-      const cp = Math.cos(this._pitch), direction = [Math.sin(this._yaw) * cp, Math.sin(this._pitch), Math.cos(this._yaw) * cp];
+      // Pointer response changes only the view. Surface coordinates and the
+      // projection used by the accessible landmark pins remain identical.
+      const yaw = this._yaw + this._parallax[0], pitch = clamp(this._pitch + this._parallax[1], 0.10, 1.35);
+      const cp = Math.cos(pitch), direction = [Math.sin(yaw) * cp, Math.sin(pitch), Math.cos(yaw) * cp];
       const right = unit(cross([0, 1, 0], direction)), up = cross(direction, right), tan = Math.tan(38 * RAD / 2);
       let fit = 1;
-      this._mesh.triangles.forEach(tri => tri.forEach(point => {
+      const include = point => {
         const p = sub(point, this._center), z = dot(p, direction);
         fit = Math.max(fit, z + Math.abs(dot(p, right)) / (tan * aspect * 0.79), z + Math.abs(dot(p, up)) / (tan * 0.79));
-      }));
+      };
+      if (this._mesh.cameraBounds) {
+        const b = this._mesh.cameraBounds;
+        for (let x = 0; x < 2; x++) for (let y = 0; y < 2; y++) for (let z = 0; z < 2; z++) include([b[x][0], b[y][1], b[z][2]]);
+      } else this._mesh.triangles.forEach(tri => tri.forEach(include));
       const targetDistance = (fit + 0.12) / this._zoom;
       this._distance = targetDistance;
       const eye = add(this._center, mul(direction, this._distance));
@@ -388,6 +692,7 @@
     }
     _draw() {
       const gl = this.gl, rect = this.canvas.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 1.8);
+      this._sceneHz = rect.width < 650 ? 18 : 24;
       const width = Math.max(1, Math.round(rect.width * dpr)), height = Math.max(1, Math.round(rect.height * dpr));
       if (this.canvas.width !== width || this.canvas.height !== height) { this.canvas.width = width; this.canvas.height = height; }
       const camera = this._camera(width / height), count = this._mesh.vertices.length / 14;
@@ -400,6 +705,8 @@
       this._bind(this._surfaceProgram, this._meshBuffer); const u = this._surfaceProgram.uniforms;
       gl.uniformMatrix4fv(u.uViewProjection, false, camera.matrix); gl.uniformMatrix4fv(u.uLightProjection, false, this._lightMatrix);
       gl.uniform3fv(u.uEye, camera.eye); gl.uniform3fv(u.uLight, this._light); gl.uniform2f(u.uShadowStep, 1 / this._shadowSize, 1 / this._shadowSize);
+      // Preserve the already-reviewed prism lighting; this finish is for paper solids.
+      gl.uniform1f(u.uPaperFinish, this._shape === 'tensegrity' ? 0 : 1);
       gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, this._shadowTexture); gl.uniform1i(u.uShadow, 0);
       gl.enable(gl.POLYGON_OFFSET_FILL); gl.polygonOffset(1, 1); gl.drawArrays(gl.TRIANGLES, 0, count); gl.disable(gl.POLYGON_OFFSET_FILL);
       gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA); gl.depthMask(false); gl.lineWidth(1);
@@ -417,37 +724,87 @@
         return { x: Number.isFinite(x) ? clamp(x, 0, 1) : 0.5, y: Number.isFinite(y) ? clamp(y, 0, 1) : 0.5, visible, depth: Number.isFinite(depth) ? clamp(depth, 0, 1) : 1 };
       });
       this._lastProjection = points;
-      this.onProject(points, { shape: this._shape, fold: this._currentFold, foldable: this._shape === 'origami', yaw: (this._yaw / RAD % 360 + 360) % 360, pitch: this._pitch / RAD, zoom: this._zoom, motion: this._motion && !this._reduced, active: this._active, width: rect.width, height: rect.height, renderer: 'WebGL', visiblePins: points.filter(p => p.visible).length });
+      this.onProject(points, { ...this._viewInfo(rect), status: 'ready', available: true, visiblePins: points.filter(p => p.visible).length });
+    }
+    _motionEnabled() { return this._motion && (!this._reduced || this._motionOverride); }
+    _isVoyage() { return this._shape.startsWith('voyage-'); }
+    _isFoldable() { return this._shape === 'origami' || this._shape === 'voyage-chart'; }
+    _viewInfo(rect) {
+      return { shape: this._shape, family: this._isVoyage() ? 'voyage' : 'studio', fold: this._currentFold, foldable: this._isFoldable(), yaw: (this._yaw / RAD % 360 + 360) % 360, pitch: this._pitch / RAD, zoom: this._zoom, motion: this._motionEnabled(), active: this._active, width: rect.width, height: rect.height, renderer: 'WebGL' };
+    }
+    _reportUnavailable(error, status) {
+      const points = Array.from({ length: 9 }, (_, i) => ({ ...((this._lastProjection || [])[i] || { x: 0.5, y: 0.5, depth: 1 }), visible: false }));
+      this.onProject(points, { ...this._viewInfo(this.canvas.getBoundingClientRect()), status, available: false, motion: false, visiblePins: 0, error });
     }
     _canDraw() { return !this._destroyed && !this._lost && this._active && this._visible && !document.hidden; }
     _request() { if (this._canDraw() && !this._frameId) this._frameId = requestAnimationFrame(time => this._frame(time)); }
-    _stop() { if (this._frameId) cancelAnimationFrame(this._frameId); this._frameId = 0; this._lastTime = 0; }
+    _stop() {
+      if (this._frameId) cancelAnimationFrame(this._frameId); this._frameId = 0; this._lastTime = 0;
+      this._setParallax(0, 0, true); this._pointers.clear();
+    }
+    _setParallax(yaw, pitch, immediate = false) {
+      this._parallaxTarget[0] = yaw; this._parallaxTarget[1] = pitch;
+      // Reduced motion keeps direct pointer control, without a trailing tween.
+      if (immediate || (this._reduced && !this._motionOverride)) { this._parallax[0] = yaw; this._parallax[1] = pitch; }
+    }
+    _followPointer(event) {
+      if (!this._canDraw() || event.pointerType !== 'mouse' || event.buttons || this._pointers.size) return;
+      const rect = this.canvas.getBoundingClientRect();
+      if (rect.width <= 0 || rect.height <= 0 || !Number.isFinite(event.clientX) || !Number.isFinite(event.clientY)) return;
+      const x = clamp((event.clientX - rect.left) / rect.width * 2 - 1, -1, 1);
+      const y = clamp((event.clientY - rect.top) / rect.height * 2 - 1, -1, 1);
+      this._setParallax(x * 0.08, -y * 0.055); this._request();
+    }
+    _updateParallax(dt) {
+      const amount = 1 - Math.exp(-12 * (dt || 1 / 60)); let unsettled = false;
+      for (let i = 0; i < 2; i++) {
+        this._parallax[i] += (this._parallaxTarget[i] - this._parallax[i]) * amount;
+        if (Math.abs(this._parallaxTarget[i] - this._parallax[i]) < 0.00008) this._parallax[i] = this._parallaxTarget[i];
+        else unsettled = true;
+      }
+      return unsettled;
+    }
     _frame(time) {
       this._frameId = 0; if (!this._canDraw()) return;
       const dt = this._lastTime ? Math.min((time - this._lastTime) / 1000, 0.05) : 0; this._lastTime = time;
-      const moving = this._motion && !this._reduced && this._pointers.size === 0 && time >= this._pausedUntil;
+      const moving = this._motionEnabled() && this._pointers.size === 0 && time >= this._pausedUntil;
       if (moving) {
         this._yaw += dt * TAU / 48; this._phase += dt * TAU / 16;
-        if (this._shape === 'origami') {
+        if (this._isVoyage()) {
+          this._voyageTime += dt;
+          // Geometry and its shadow map update at most 24 times per second
+          // (18 in narrow views), while
+          // orbit, pointer response and pin projection remain display-paced.
+          const step = Math.floor(this._voyageTime * this._sceneHz);
+          if (step !== this._voyageFrame) {
+            this._voyageFrame = step;
+            if (this._isFoldable()) { const amplitude = Math.min(0.10, this._fold * 0.5, (1 - this._fold) * 0.5); this._currentFold = this._fold + amplitude * Math.sin(this._phase); }
+            this._makeScene();
+          }
+        } else if (this._shape === 'origami') {
           const amplitude = Math.min(0.12, this._fold * 0.5, (1 - this._fold) * 0.5), value = this._fold + amplitude * Math.sin(this._phase);
           if (Math.abs(value - this._currentFold) > 0.0002) { this._currentFold = value; this._makeScene(); }
         }
       }
+      const parallaxMoving = this._updateParallax(dt);
       this._draw();
-      if (this._motion && !this._reduced) this._request();
+      if (this._motionEnabled() || parallaxMoving) this._request();
     }
     _listen(target, name, fn, options) { target.addEventListener(name, fn, options); this._listeners.push(() => target.removeEventListener(name, fn, options)); }
     _interaction(type) { this._pausedUntil = performance.now() + 3500; this.onInteraction({ type, yaw: this._yaw / RAD, pitch: this._pitch / RAD, fold: this._currentFold, zoom: this._zoom }); this._request(); }
     _events() {
       const canvas = this.canvas;
       this._listen(canvas, 'pointerdown', event => {
-        if (event.pointerType === 'mouse' && event.button !== 0) return;
+        if (!this._canDraw() || (event.pointerType === 'mouse' && event.button !== 0)) return;
+        // Begin a drag from the displayed view, without snapping out of hover.
+        this._yaw += this._parallax[0]; this._pitch = clamp(this._pitch + this._parallax[1], 0.10, 1.35); this._setParallax(0, 0, true);
         this._pointers.set(event.pointerId, [event.clientX, event.clientY]);
         try { canvas.setPointerCapture(event.pointerId); } catch (_) { /* detached canvas */ }
         this._pinch = 0; this._interaction('orbit-start');
       });
       this._listen(canvas, 'pointermove', event => {
-        if (!this._pointers.has(event.pointerId)) return;
+        if (!this._canDraw()) return;
+        if (!this._pointers.has(event.pointerId)) { this._followPointer(event); return; }
         const before = this._pointers.get(event.pointerId); this._pointers.set(event.pointerId, [event.clientX, event.clientY]);
         if (this._pointers.size === 1) {
           const rect = canvas.getBoundingClientRect(); this._yaw -= (event.clientX - before[0]) / Math.max(rect.width, 1) * TAU;
@@ -458,10 +815,12 @@
         }
         this._interaction('orbit');
       });
-      const release = event => { if (!this._pointers.delete(event.pointerId)) return; this._pinch = 0; this._interaction('orbit-end'); };
+      this._listen(canvas, 'pointerleave', () => { this._setParallax(0, 0); this._request(); });
+      const release = event => { if (!this._pointers.delete(event.pointerId)) return; this._pinch = 0; if (this._canDraw()) this._interaction('orbit-end'); };
       this._listen(canvas, 'pointerup', release); this._listen(canvas, 'pointercancel', release); this._listen(canvas, 'lostpointercapture', release);
-      this._listen(canvas, 'wheel', event => { event.preventDefault(); const scale = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? 400 : 1; this.zoomBy(Math.exp(-event.deltaY * scale * 0.0012)); this._interaction('zoom'); }, { passive: false });
+      this._listen(canvas, 'wheel', event => { if (!this._canDraw()) return; event.preventDefault(); const scale = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? 400 : 1; this.zoomBy(Math.exp(-event.deltaY * scale * 0.0012)); this._interaction('zoom'); }, { passive: false });
       this._listen(canvas, 'keydown', event => {
+        if (!this._canDraw()) return;
         const keys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', '+', '=', '-', '_', 'Home', '0']; if (!keys.includes(event.key)) return;
         event.preventDefault();
         if (event.key === 'ArrowLeft') this._yaw -= 7 * RAD; else if (event.key === 'ArrowRight') this._yaw += 7 * RAD;
@@ -470,22 +829,30 @@
         this._interaction('keyboard');
       });
       this._listen(document, 'visibilitychange', () => { if (document.hidden) this._stop(); else this._request(); });
-      this._listen(canvas, 'webglcontextlost', event => { event.preventDefault(); this._lost = true; this._stop(); this.onProject((this._lastProjection || []).map(p => ({ ...p, visible: false })), { error: 'The graphics context paused. The landmark list remains available.', renderer: 'WebGL' }); });
-      this._listen(canvas, 'webglcontextrestored', () => { if (this._destroyed) return; try { this._resources = []; this._setup(); this._lost = false; this._makeScene(); this._request(); } catch (_) { this.onProject([], { error: 'The 3D view could not restart. Use the landmark list.', renderer: 'WebGL' }); } });
+      this._listen(canvas, 'webglcontextlost', event => { event.preventDefault(); this._lost = true; this._stop(); this._reportUnavailable('The graphics context paused. The landmark list remains available.', 'context-lost'); });
+      this._listen(canvas, 'webglcontextrestored', () => { if (this._destroyed) return; try { this._resources = []; this._setup(); this._lost = false; this._makeScene(); this._request(); } catch (_) { this._lost = true; this._stop(); this._reportUnavailable('The 3D view could not restart. Use the landmark list.', 'context-unavailable'); } });
       if (typeof ResizeObserver !== 'undefined') { this._resizeObserver = new ResizeObserver(() => this._request()); this._resizeObserver.observe(canvas); }
       else this._listen(window, 'resize', () => this._request());
       if (typeof IntersectionObserver !== 'undefined') {
         this._intersectionObserver = new IntersectionObserver(entries => { this._visible = entries[0].isIntersecting; if (this._visible) this._request(); else this._stop(); }, { threshold: 0 }); this._intersectionObserver.observe(canvas);
       }
     }
-    setShape(key) { if (this._destroyed || !['origami', 'sphere', 'portal', 'tensegrity', 'terrace'].includes(key)) return; this._shape = key; this._distance = 0; this._currentFold = this._fold; this._phase = 0; this._makeScene(); this._request(); }
+    setShape(key) { if (this._destroyed || !['origami', 'sphere', 'portal', 'tensegrity', 'terrace', 'voyage-chart', 'voyage-globe', 'voyage-portal', 'voyage-rigging', 'voyage-islands'].includes(key)) return; this._shape = key; this._distance = 0; this._currentFold = this._fold; this._phase = 0; this._voyageTime = 0; this._voyageFrame = -1; this._makeScene(); this._request(); }
     setSelected(index) { if (this._destroyed || !Number.isInteger(index) || index < 0 || index > 8) return; this._selected = index; this._selection(); this._request(); }
-    setFold(value) { if (this._destroyed || !Number.isFinite(Number(value))) return; this._fold = clamp(Number(value), 0, 1); this._currentFold = this._fold; this._phase = 0; this._pausedUntil = performance.now() + 2500; if (this._shape === 'origami') this._makeScene(); this._request(); }
-    setMotion(value) { if (this._destroyed) return; if (!value) { this._fold = this._currentFold; this._phase = 0; } this._motion = !!value; this._lastTime = 0; this._request(); }
+    setFold(value) { if (this._destroyed || !Number.isFinite(Number(value))) return; this._fold = clamp(Number(value), 0, 1); this._currentFold = this._fold; this._phase = 0; this._pausedUntil = performance.now() + 2500; if (this._isFoldable()) this._makeScene(); this._request(); }
+    setMotion(value) {
+      if (this._destroyed) return;
+      if (!value) { this._fold = this._currentFold; this._phase = 0; }
+      // Reduced motion selects the initial state. An explicit Play action is a
+      // deliberate override; visibility and activity guards continue to apply.
+      this._motion = !!value; this._motionOverride = !!value;
+      if (value) this._pausedUntil = 0;
+      this._lastTime = 0; this._request();
+    }
     setActive(value) { if (this._destroyed) return; this._active = !!value; if (this._active) this._request(); else this._stop(); }
     setYaw(degrees) { if (this._destroyed || !Number.isFinite(Number(degrees))) return; this._yaw = Number(degrees) * RAD; this._pausedUntil = performance.now() + 2500; this._request(); }
     zoomBy(factor) { if (this._destroyed || !Number.isFinite(Number(factor)) || Number(factor) <= 0) return; this._zoom = clamp(this._zoom * Number(factor), 0.55, 2.1); this._request(); }
-    reset() { if (this._destroyed) return; this._yaw = 0.44; this._pitch = 0.60; this._zoom = 1; this._distance = 0; this._fold = 0.62; this._currentFold = this._fold; this._phase = 0; this._pausedUntil = performance.now() + 2000; if (this._shape === 'origami') this._makeScene(); this._request(); }
+    reset() { if (this._destroyed) return; this._yaw = 0.44; this._pitch = 0.60; this._zoom = 1; this._distance = 0; this._fold = 0.62; this._currentFold = this._fold; this._phase = 0; this._voyageTime = 0; this._voyageFrame = -1; this._setParallax(0, 0, true); this._pausedUntil = performance.now() + 2000; if (this._isFoldable() || this._isVoyage()) this._makeScene(); this._request(); }
     destroy() {
       if (this._destroyed) return; this._destroyed = true; this._stop();
       (this._listeners || []).forEach(remove => remove()); if (this._resizeObserver) this._resizeObserver.disconnect(); if (this._intersectionObserver) this._intersectionObserver.disconnect();

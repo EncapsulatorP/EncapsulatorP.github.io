@@ -16,11 +16,12 @@
   const topicFilter = $('pm-topic-filter');
   const kindFilter = $('pm-kind-filter');
   const storageKey = 'encapsulatorp.paperAtlas.shape';
+  const familyStorageKey = 'encapsulatorp.paperAtlas.collection';
   const kindNames = { treasure: 'Treasure', wildcard: 'Wildcard', trap: 'Trap' };
   const visited = new Set();
-  let chosen = 0, shapeIndex = 0, engine = null, opener = null;
+  let chosen = 0, shapeIndex = 0, family = 'voyage', engine = null, opener = null;
   let leavingForLink = false, motion = !media.matches, hoveringPin = false;
-  let latestProjection = [], foldFrame = 0;
+  let latestProjection = [], foldFrame = 0, rendererAvailable = null;
 
   function matches(stop) {
     return (topicFilter.value === 'all' || topicFilter.value === stop.topic) &&
@@ -48,7 +49,16 @@
       if (typeof window.PaperMapEngine !== 'function') throw new Error('3D renderer unavailable');
       engine = new window.PaperMapEngine(canvas, {
         reducedMotion: media.matches,
-        onProject(points) { latestProjection = points; refreshPins(); },
+        onProject(points, info) {
+          latestProjection = points;
+          refreshPins();
+          if (info && typeof info.available === 'boolean' && info.available !== rendererAvailable) {
+            rendererAvailable = info.available;
+            $('pm-render-fallback').hidden = info.available;
+            pins.hidden = !info.available;
+            ['pm-motion', 'pm-zoom-in', 'pm-zoom-out', 'pm-reset', 'pm-fold'].forEach(id => { $(id).disabled = !info.available; });
+          }
+        },
         onInteraction() { hoveringPin = false; }
       });
       engine.setMotion(motion);
@@ -56,6 +66,7 @@
       $('pm-render-fallback').hidden = false;
       canvas.hidden = true;
       pins.hidden = true;
+      ['pm-motion', 'pm-zoom-in', 'pm-zoom-out', 'pm-reset', 'pm-fold'].forEach(id => { $(id).disabled = true; });
       $('pm-reveal').hidden = true;
       dialog.dataset.renderer = 'unavailable';
       console.warn('Paper atlas: the subject trail is available without the 3D renderer.', error.message);
@@ -64,18 +75,31 @@
   function setShape(index) {
     shapeIndex = (index + shapes.length) % shapes.length;
     const shape = shapes[shapeIndex];
+    family = shape.family || 'studio';
+    dialog.dataset.collection = family;
+    ['voyage', 'studio'].forEach(name => { $(`pm-family-${name}`).setAttribute('aria-pressed', String(name === family)); });
+    shapeSelect.replaceChildren();
+    shapes.filter(item => (item.family || 'studio') === family).forEach(item => {
+      const option = document.createElement('option'); option.value = item.key; option.textContent = item.name; shapeSelect.append(option);
+    });
     shapeSelect.value = shape.key;
     $('pm-shape').textContent = shape.name;
     $('pm-description').textContent = shape.description;
-    $('pm-fold-row').hidden = shape.key !== 'origami' || dialog.dataset.mapState !== 'explored';
-    $('pm-structure').hidden = shape.key !== 'tensegrity' || dialog.dataset.mapState !== 'explored';
+    $('pm-fold-row').hidden = !shape.foldable || dialog.dataset.mapState !== 'explored';
+    $('pm-structure').hidden = !['tensegrity', 'voyage-rigging'].includes(shape.key) || dialog.dataset.mapState !== 'explored';
     if (engine) {
       engine.setShape(shape.key);
       engine.setSelected(chosen);
       engine.setFold(Number($('pm-fold').value) / 100);
     }
-    try { localStorage.setItem(storageKey, shape.key); } catch (_) {}
+    try { localStorage.setItem(storageKey, shape.key); localStorage.setItem(familyStorageKey, family); } catch (_) {}
   }
+  function nextShape() {
+    const members = shapes.map((shape, i) => ({ shape, i })).filter(item => (item.shape.family || 'studio') === family);
+    const current = members.findIndex(item => item.i === shapeIndex);
+    setShape(members[(current + 1) % members.length].i);
+  }
+  function setFamily(name) { setShape(shapes.findIndex(shape => (shape.family || 'studio') === name)); }
   function selectStop(index, fromPin) {
     chosen = index;
     const stop = trail[index];
@@ -133,7 +157,10 @@
       title.textContent = stop.name;
       button.append(date, title);
     }
-    button.addEventListener('click', () => selectStop(index, isPin));
+    button.addEventListener('click', () => {
+      if (dialog.dataset.mapState !== 'explored') unfold();
+      selectStop(index, isPin);
+    });
     item.append(button);
     return item;
   }
@@ -154,8 +181,8 @@
     $('pm-reveal').hidden = true;
     [$('pm-toolbar'), journal, $('pm-legend')].forEach(el => { el.hidden = false; });
     pins.hidden = !engine;
-    $('pm-fold-row').hidden = shapes[shapeIndex].key !== 'origami';
-    $('pm-structure').hidden = shapes[shapeIndex].key !== 'tensegrity';
+    $('pm-fold-row').hidden = !shapes[shapeIndex].foldable;
+    $('pm-structure').hidden = !['tensegrity', 'voyage-rigging'].includes(shapes[shapeIndex].key);
     selectStop(chosen);
     filterStops();
     if (engine && shapes[shapeIndex].key === 'origami') {
@@ -177,16 +204,19 @@
     leavingForLink = false;
     $('pm-close-caption').textContent = opener ? 'Close map' : 'Skip to atlas';
     dialog.dataset.mapState = 'landing';
-    [$('pm-toolbar'), pins, journal, $('pm-legend'), $('pm-fold-row'), $('pm-structure')].forEach(el => { el.hidden = true; });
+    [journal, $('pm-legend'), $('pm-fold-row'), $('pm-structure')].forEach(el => { el.hidden = true; });
+    $('pm-toolbar').hidden = false;
     $('pm-reveal').hidden = false;
     dialog.showModal();
     dialog.scrollTop = 0;
     document.documentElement.classList.add('pm-open');
     initEngine();
-    let next = 0;
+    let next = shapes.findIndex(shape => shape.key === 'voyage-chart');
     try {
-      const previous = shapes.findIndex(s => s.key === localStorage.getItem(storageKey));
-      if (previous >= 0) next = (previous + 1) % shapes.length;
+      const savedFamily = localStorage.getItem(familyStorageKey);
+      const members = shapes.map((shape, i) => ({ shape, i })).filter(item => item.shape.family === savedFamily);
+      const previous = members.findIndex(item => item.shape.key === localStorage.getItem(storageKey));
+      if (members.length) next = members[(previous + 1) % members.length].i;
     } catch (_) {}
     setShape(next);
     if (engine) {
@@ -196,9 +226,6 @@
     }
     if (!engine || directly) unfold();
   }
-  shapes.forEach(shape => {
-    const option = document.createElement('option'); option.value = shape.key; option.textContent = shape.name; shapeSelect.append(option);
-  });
   [...new Set(trail.map(stop => stop.topic))].sort().forEach(topic => {
     const option = document.createElement('option'); option.value = topic; option.textContent = topic; topicFilter.append(option);
   });
@@ -209,7 +236,8 @@
   });
   $('pm-reveal').addEventListener('click', unfold);
   $('pm-close').addEventListener('click', () => dialog.close());
-  $('pm-next-map').addEventListener('click', () => setShape(shapeIndex + 1));
+  $('pm-next-map').addEventListener('click', nextShape);
+  ['voyage', 'studio'].forEach(name => { $(`pm-family-${name}`).addEventListener('click', () => setFamily(name)); });
   shapeSelect.addEventListener('change', () => setShape(shapes.findIndex(s => s.key === shapeSelect.value)));
   $('pm-motion').addEventListener('click', () => { motion = !motion; syncMotion(); });
   $('pm-zoom-in').addEventListener('click', () => { if (engine) engine.zoomBy(1.12); });

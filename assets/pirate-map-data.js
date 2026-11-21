@@ -127,34 +127,89 @@ window.PIRATE_MAP_DATA = {
       "name": "Origami chart",
       "description": "An illustrative folded sheet whose creases organize the trail.",
       "sourceLabel": "Atlas fold drawing",
-      "sourceUrl": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js"
+      "sourceUrl": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js",
+      "family": "studio",
+      "foldable": true
     },
     {
       "key": "sphere",
       "name": "Riemann sphere",
       "description": "A paper globe inspired by the complex plane with one point at infinity.",
       "sourceLabel": "Stereographic projection · Jason Murphy",
-      "sourceUrl": "https://pages.uoregon.edu/jamu/Math5351-lecture-notes.pdf"
+      "sourceUrl": "https://pages.uoregon.edu/jamu/Math5351-lecture-notes.pdf",
+      "family": "studio",
+      "foldable": false
     },
     {
       "key": "portal",
       "name": "Rupert-inspired portal",
       "description": "An oblique opening through a faceted paper body, inspired by the cube-passage question.",
       "sourceLabel": "O. Bottema · A Problem of Pieter Nieuwland",
-      "sourceUrl": "https://cms.math.ca/wp-content/uploads/crux-pdfs/Crux_v4n04_Apr.pdf"
+      "sourceUrl": "https://cms.math.ca/wp-content/uploads/crux-pdfs/Crux_v4n04_Apr.pdf",
+      "family": "studio",
+      "foldable": false
     },
     {
       "key": "tensegrity",
       "name": "Tensegrity prism",
       "description": "A triangular prism drawn with tension cables and compression struts.",
       "sourceLabel": "Tensegrity mathematics · Cornell",
-      "sourceUrl": "https://pi.math.cornell.edu/~back/amsci_tenseg_scan.pdf"
+      "sourceUrl": "https://pi.math.cornell.edu/~back/amsci_tenseg_scan.pdf",
+      "family": "studio",
+      "foldable": false
     },
     {
       "key": "terrace",
       "name": "Terraced paper",
       "description": "A stepped paper landscape arranging the same nine landmarks into a reading path.",
       "sourceLabel": "Atlas navigation drawing",
+      "sourceUrl": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js",
+      "family": "studio",
+      "foldable": false
+    },
+    {
+      "key": "voyage-chart",
+      "name": "The open-chart voyage",
+      "description": "An opened paper chart, turning geometric wheels and two folded boats tracing a route between the discoveries.",
+      "family": "voyage",
+      "foldable": true,
+      "sourceLabel": "Zolton’s paper-voyage direction · current 3D implementation",
+      "sourceUrl": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js"
+    },
+    {
+      "key": "voyage-globe",
+      "name": "The globe harbour",
+      "description": "A faceted cartographic globe above an open chart, with tiny paper boats following the printed voyage.",
+      "family": "voyage",
+      "foldable": false,
+      "sourceLabel": "Zolton’s paper-voyage direction · current 3D implementation",
+      "sourceUrl": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js"
+    },
+    {
+      "key": "voyage-portal",
+      "name": "The impossible passage",
+      "description": "A hollow paper portal on a folded sea chart. The boats and passage are an imaginative setting for exploring the research.",
+      "family": "voyage",
+      "foldable": false,
+      "sourceLabel": "Zolton’s paper-voyage direction · current 3D implementation",
+      "sourceUrl": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js"
+    },
+    {
+      "key": "voyage-rigging",
+      "name": "Tension and sail",
+      "description": "A miniature rigging structure over the paper sea, with folded boats and a route through the same nine discoveries.",
+      "family": "voyage",
+      "foldable": false,
+      "sourceLabel": "Zolton’s paper-voyage direction · current 3D implementation",
+      "sourceUrl": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js"
+    },
+    {
+      "key": "voyage-islands",
+      "name": "Islands from paper",
+      "description": "Layered paper islands rise from an opened chart while little origami boats travel between the landmarks.",
+      "family": "voyage",
+      "foldable": false,
+      "sourceLabel": "Zolton’s paper-voyage direction · current 3D implementation",
       "sourceUrl": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js"
     }
   ],
@@ -176,4 +231,3 @@ window.PIRATE_MAP_DATA = {
     }
   ]
 };
-

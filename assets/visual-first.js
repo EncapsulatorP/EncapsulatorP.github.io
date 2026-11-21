@@ -106,7 +106,7 @@
   }
   function visible(item) {
     var room = item.node.closest('.page');
-    if (doc.hidden || (room && !room.classList.contains('on'))) return false;
+    if (doc.hidden || doc.querySelector('dialog[open]') || (room && !room.classList.contains('on'))) return false;
     var r = item.node.getBoundingClientRect();
     return r.width > 0 && r.height > 0 && r.bottom > 0 && r.top < window.innerHeight;
   }
@@ -504,8 +504,10 @@
     enhanceDirectPlots();
     ['hashchange', 'resize', 'scroll'].forEach(function (event) { window.addEventListener(event, wake, { passive: true }); });
     doc.addEventListener('visibilitychange', function () { if (doc.hidden && raf !== null) { window.cancelAnimationFrame(raf); raf = null; } else wake(); });
+    doc.addEventListener('close', wake, true);
     if (reduced.addEventListener) reduced.addEventListener('change', function (event) { if (event.matches) motionItems.forEach(function (item) { item.paused = true; if (item.refreshButton) item.refreshButton(); }); wake(); });
     wake();
+    if (location.hash && location.hash !== '#paper-atlas') requestAnimationFrame(function () { window.dispatchEvent(new HashChangeEvent('hashchange')); });
   }
   api.init = init;
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', init); else init();
