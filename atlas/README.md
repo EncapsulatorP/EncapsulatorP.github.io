@@ -12,7 +12,7 @@ Research direction and original explorations: Zolton / EncapsulatorP. Recovery, 
 
 Exact entries contain an identity or a written argument under stated assumptions. Finite-depth observations concern the displayed construction and cutoff. Reported computations retain their original provenance and are not described as reruns. Exploratory constructions and conjectural directions include the next concrete question. Classical identities are credited as mathematical background; no priority claim follows from inclusion.
 
-Exact identity / written proof: 28 | Finite-depth observation: 3 | Reported computation: 1 | Conjectural direction: 2 | Exploratory construction: 9 | Research tooling: 2
+Exact identity / written proof: 28 | Finite-depth observation: 4 | Reported computation: 1 | Conjectural direction: 2 | Exploratory construction: 9 | Research tooling: 2
 
 ## Navigate
 
@@ -61,6 +61,7 @@ Exact identity / written proof: 28 | Finite-depth observation: 3 | Reported comp
 - [The speed of light, through different written forms](#representation-study)
 - [Does the arithmetic score survive its controls?](#prime-polarity)
 - [Give a promising statement a precise next proof](#validatron)
+- [Recamán · around the gaps](#recaman-finite-gaps)
 
 <a id="omega-stability"></a>
 ## Omega Stability · the connected thread
@@ -1504,6 +1505,41 @@ This atlas supplies written arguments, source links and reproducible finite chec
 - [Atlas proof companion](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/mathematical-notes.md)
 
 **Related:** [alternating-tower-convergence](#alternating-tower-convergence) · [prime-polynomial](#prime-polynomial) · [logistic-quarter-turn](#logistic-quarter-turn) · [composite-vanishing](#composite-vanishing)
+
+<a id="recaman-finite-gaps"></a>
+## Recamán · around the gaps
+
+**Finite-depth observation · Dynamics & geometry**
+
+*Origin: Gemini supplied visual study · Atlas adaptation and mathematical checks by ChatGPT · 21 November 2026*
+
+Observed delay triples, an illustrative Möbius ribbon and exact number-line arcs expose different features of a finite Recamán prefix. Scalar gaps remain a separate count.
+
+```text
+a₀ = 0; aₙ = aₙ₋₁ − n if nonnegative and unvisited, otherwise aₙ₋₁ + n.
+N terms contain N − 1 transitions; addition may revisit a value.
+```
+
+**Why follow it.** A shape becomes useful when its coordinates and limits are stated. The ribbon is a chosen view, while the sequence and its finite unvisited integers can be checked independently.
+
+The browser explorer computes up to 8,000 terms. Delay points are exactly (aᵢ, aᵢ₊₁, aᵢ₊₂), normalized for display. The Möbius view is an illustrative mapping rather than a topological obstruction theorem.
+
+The gap rail counts positive integers below the current prefix maximum that have not yet appeared. A missing integer at a finite horizon need not be missing forever. Backward ratios use N − 1 as their denominator.
+
+The repository’s saved report, pinned at commit 056452f, follows 10,000,000 transitions and 103 selected catalogue targets: 23 were addition candidates bypassed by legal subtraction, 80 were never proposed, and none was selected. This is source-reported finite evidence; the browser does not rerun it.
+
+Bernardo Recamán Santos is credited for the sequence. Gemini is credited beside the exhibit for the supplied visual concept; implementation changes and limits are documented.
+
+**Next experiment or question.** Compare the same candidate values at N and 2N, retaining the old range and reporting the horizon. Test predictive features against held-out segments and a shuffled baseline.
+
+**Sources**
+
+- [Open the Recamán exhibit](https://encapsulatorp.github.io/recaman/)
+- [Sequence definition · OEIS A005132](https://oeis.org/A005132)
+- [Saved mechanism report · fixed commit](https://github.com/EncapsulatorP/recaman/blob/056452f2be03dad5f7bca0f7024c8357f42d8c6b/outputs/hole_mechanism_report.md)
+- [Visual provenance and independent checks](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/recaman-visual-notes.md)
+
+**Related:** [representation-study](#representation-study)
 
 ---
 

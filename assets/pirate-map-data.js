@@ -14,7 +14,8 @@ window.PIRATE_MAP_DATA = {
       "repository": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/recovered-bridges.md#tower-hadamard",
       "repositoryLabel": "Read the Fourier derivation",
       "evidenceLabel": "Exact permutation criterion",
-      "topic": "Fourier bases"
+      "topic": "Fourier bases",
+      "recommendedBody": "origami"
     },
     {
       "id": "forty-eight-lanes",
@@ -40,7 +41,8 @@ window.PIRATE_MAP_DATA = {
       "repository": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/mathematical-notes.md#collatz-integer-spine",
       "repositoryLabel": "Read the integer-spine argument",
       "evidenceLabel": "Exact integer agreement; open geometry",
-      "topic": "Complex Collatz maps"
+      "topic": "Complex Collatz maps",
+      "recommendedBody": "sphere"
     },
     {
       "id": "missing-term",
@@ -92,7 +94,8 @@ window.PIRATE_MAP_DATA = {
       "repository": "https://github.com/EncapsulatorP/EncapsulatorP.github.io",
       "repositoryLabel": "Atlas source repository",
       "evidenceLabel": "Exact composite counterexample",
-      "topic": "Primality tests"
+      "topic": "Primality tests",
+      "recommendedBody": "noperthedron"
     },
     {
       "id": "xo2-cave",
@@ -105,7 +108,8 @@ window.PIRATE_MAP_DATA = {
       "repository": "https://github.com/EncapsulatorP/zeta_branching/blob/main/scripts/zeta_branching.py",
       "repositoryLabel": "Read the XO₂ kernel",
       "evidenceLabel": "Two recorded finite evaluations",
-      "topic": "Zeta branches"
+      "topic": "Zeta branches",
+      "recommendedBody": "sphere"
     },
     {
       "id": "second-beat",
@@ -118,7 +122,8 @@ window.PIRATE_MAP_DATA = {
       "repository": "https://github.com/EncapsulatorP/c3._2z/blob/main/README.md",
       "repositoryLabel": "Open Prime Forms and Ω waves",
       "evidenceLabel": "Exact local expansion",
-      "topic": "Prime-layer response"
+      "topic": "Prime-layer response",
+      "recommendedBody": "terrace"
     }
   ],
   "shapes": [
@@ -404,5 +409,66 @@ window.PIRATE_MAP_DATA = {
       "role": "Current map implementation and editing",
       "note": "This credit covers the current implementation. Historical contributions keep the names and model versions documented in their own sources."
     }
-  ]
+  ],
+  "shapeConnections": {
+    "origami": {
+      "kind": "analogy",
+      "label": "Representation analogy",
+      "stops": [
+        "shuffle-signal"
+      ],
+      "note": "A fold moves the drawing while its labels stay attached. The Fourier treasure asks which rearrangements preserve a basis. The shared idea is tracking identity through a change of representation; folding is not a proof of the permutation criterion."
+    },
+    "sphere": {
+      "kind": "setting",
+      "label": "Shared complex setting",
+      "stops": [
+        "impossible-coastline",
+        "xo2-cave"
+      ],
+      "note": "The Riemann sphere adds one point at infinity to the complex plane. The Collatz and XO₂ treasures explore complex coordinates and branch choices. This globe is a reading surface, not a computed orbit or the square-root covering itself."
+    },
+    "portal": {
+      "kind": "study",
+      "label": "Shape study",
+      "stops": [],
+      "note": "The hollow body introduces the Rupert passage question. None of the current nine treasures proves a passage property. Keep this as a source-linked geometric study until a supported match is available."
+    },
+    "tensegrity": {
+      "kind": "analogy",
+      "label": "Coupled-system analogy",
+      "stops": [
+        "second-beat"
+      ],
+      "note": "The prism depends on interacting tension and compression members. The prime-layer treasure compares two coupled maps and what changes when their order is reversed. This is a coupling analogy; mechanical balance does not prove the arithmetic expansion."
+    },
+    "terrace": {
+      "kind": "analogy",
+      "label": "Layer-order analogy",
+      "stops": [
+        "second-beat"
+      ],
+      "note": "The terraces make separate layers visible. The matched treasure studies an exact second-order difference when two prime layers are swapped. The displayed heights are artistic and do not measure the expansion or its evidence."
+    },
+    "noperthedron": {
+      "kind": "analogy",
+      "label": "Counterexample-method analogy",
+      "stops": [
+        "impostor-prime"
+      ],
+      "note": "A Noperthedron refutes a universal passage claim; a Perrin pseudoprime refutes a primality-test converse. Both stories turn on a counterexample. The relationship is the method of disproof, not shared geometry."
+    },
+    "neck": {
+      "kind": "study",
+      "label": "Topology interlude",
+      "stops": [],
+      "note": "The neck-and-cap animation introduces a surgery idea. No current treasure establishes a Ricci-flow connection. The source and its dimensional limits remain the route into this shape."
+    },
+    "klein": {
+      "kind": "study",
+      "label": "Topology interlude",
+      "stops": [],
+      "note": "The reversed seam makes nonorientability visible. The current arithmetic treasures do not establish a Klein-bottle connection. In particular, a square-root branch picture is not a Klein bottle."
+    }
+  }
 };

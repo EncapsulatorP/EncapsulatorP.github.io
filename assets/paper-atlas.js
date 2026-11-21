@@ -35,6 +35,88 @@
   let chosen = 0, shapeIndex = 0, family = 'voyage', engine = null, opener = null;
   let leavingForLink = false, motion = !media.matches, hoveringPin = false;
   let latestProjection = [], foldFrame = 0, rendererAvailable = null, lastUnfoldPercent = -1;
+  const connections = data.shapeConnections || {};
+  const connectionPanel = document.createElement('section');
+  connectionPanel.className = 'pm-connection';
+  connectionPanel.setAttribute('aria-labelledby', 'pm-connection-title');
+  const connectionLabel = document.createElement('p');
+  connectionLabel.className = 'pm-kicker';
+  const connectionTitle = document.createElement('h3');
+  connectionTitle.id = 'pm-connection-title';
+  const connectionNote = document.createElement('p');
+  const connectionActions = document.createElement('div');
+  connectionActions.className = 'pm-connection-actions';
+  connectionPanel.append(connectionLabel, connectionTitle, connectionNote, connectionActions);
+  $('pm-shape-notes').before(connectionPanel);
+  const subjectMatch = document.createElement('div');
+  subjectMatch.className = 'pm-subject-match';
+  const subjectMatchText = document.createElement('p');
+  const subjectMatchButton = document.createElement('button');
+  subjectMatchButton.className = 'pm-button';
+  subjectMatchButton.type = 'button';
+  subjectMatch.append(subjectMatchText, subjectMatchButton);
+  find.append(subjectMatch);
+
+  function currentBody() {
+    return Object.keys(bodyKeys).find(name => Object.values(bodyKeys[name]).includes(shapes[shapeIndex].key));
+  }
+  function syncSubjectMatch() {
+    const stop = trail[chosen];
+    const recommended = stop && stop.recommendedBody;
+    const connection = recommended && connections[recommended];
+    subjectMatch.hidden = !connection;
+    if (!connection) return;
+    const shape = shapes.find(item => item.key === bodyKeys[recommended][family]);
+    const selectedConnection = connections[currentBody()];
+    const selectedMatches = selectedConnection && selectedConnection.stops.includes(stop.id);
+    subjectMatchText.textContent = selectedMatches
+      ? `${selectedConnection.label}: this form has a stated connection to the selected treasure. The shape note explains its limits.`
+      : `${connection.label}: ${shape.name} offers a related way to read this treasure.`;
+    subjectMatchButton.hidden = !!selectedMatches;
+    subjectMatchButton.textContent = `Use ${shape.name}`;
+    subjectMatchButton.onclick = () => {
+      setShape(shapes.findIndex(item => item.key === bodyKeys[recommended][family]));
+      shapeSelect.focus({ preventScroll: true });
+    };
+  }
+  function syncConnection() {
+    const body = currentBody(), connection = connections[body];
+    connectionPanel.hidden = !connection;
+    if (!connection) return;
+    connectionPanel.dataset.connectionKind = connection.kind;
+    connectionLabel.textContent = connection.label;
+    connectionTitle.textContent = connection.stops.length ? 'A treasure that fits this form' : 'A form with its own source';
+    connectionNote.textContent = connection.note;
+    connectionActions.replaceChildren();
+    connection.stops.forEach(id => {
+      const index = trail.findIndex(stop => stop.id === id);
+      if (index < 0) return;
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'pm-button';
+      button.textContent = `${trail[index].name} →`;
+      button.addEventListener('click', () => {
+        topicFilter.value = 'all';
+        kindFilter.value = 'all';
+        chosen = index;
+        if (dialog.dataset.mapState !== 'explored') unfold();
+        filterStops();
+        selectStop(index, true);
+        if (!compact.matches) $('pm-stop-title').focus({ preventScroll: true });
+      });
+      connectionActions.append(button);
+    });
+    if (!connection.stops.length) {
+      const link = document.createElement('a');
+      link.className = 'pm-button';
+      link.href = shapes[shapeIndex].sourceUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Read the shape’s source ↗';
+      connectionActions.append(link);
+    }
+    syncSubjectMatch();
+  }
 
   function syncUnfold(info) {
     if (!info || !shapes[shapeIndex].unfoldable) return;
@@ -139,6 +221,7 @@
     $('pm-description').textContent = shape.description;
     $('pm-fold-row').hidden = !shape.foldable || shape.unfoldable || dialog.dataset.mapState !== 'explored';
     syncShapeNotes(shape);
+    syncConnection();
     $('pm-structure').hidden = !['tensegrity', 'voyage-rigging'].includes(shape.key) || dialog.dataset.mapState !== 'explored';
     if (engine) {
       engine.setShape(shape.key);
@@ -185,6 +268,7 @@
     }));
     $('pm-progress').textContent = `${visited.size} of ${trail.length} explored`;
     if (engine) engine.setSelected(chosen);
+    syncSubjectMatch();
     if (fromPin && compact.matches) {
       $('pm-stop-title').focus({ preventScroll: true });
       journal.scrollIntoView({ block: 'start', behavior: media.matches ? 'auto' : 'smooth' });

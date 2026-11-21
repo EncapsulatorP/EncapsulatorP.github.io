@@ -1,0 +1,282 @@
+/* Shared paper-and-teal skin for the entrance, reading rooms and standalone labs.
+ * Load after the room styles. Plot palettes and evidence categories stay distinct.
+ */
+:root {
+  --atlas-paper: #f5f2eb;
+  --atlas-surface: #fffdf8;
+  --atlas-tint: #e9eee5;
+  --atlas-ink: #182b35;
+  --atlas-muted: #596d69;
+  --atlas-accent: #236b67;
+  --atlas-line: #d8ddd2;
+  --atlas-deep: #163b43;
+  --atlas-deep-panel: #203f47;
+  --atlas-on-deep: #edf4eb;
+  --atlas-muted-on-deep: #bfd2c8;
+  --atlas-accent-on-deep: #b6e0d2;
+  --paper: var(--atlas-paper);
+  --tint: var(--atlas-tint);
+  --card: var(--atlas-surface);
+  --ink: var(--atlas-ink);
+  --soft: var(--atlas-muted);
+  --muted: var(--atlas-muted);
+  --blk: var(--atlas-deep);
+  --coral: var(--atlas-accent);
+  --lime2: #dce9d6;
+  --prism: linear-gradient(90deg, #236b67, #7ba394, #b7b28b);
+  --pm-ink: var(--atlas-ink);
+  --pm-text: var(--atlas-ink);
+  --pm-night: var(--atlas-paper);
+  --pm-muted: var(--atlas-muted);
+  --pm-line: var(--atlas-line);
+  --vf-ink: var(--atlas-ink);
+  --vf-paper: var(--atlas-paper);
+  --vf-edge: var(--atlas-line);
+  --vf-sea: var(--atlas-deep);
+  color-scheme: light;
+}
+
+html, body { background: var(--atlas-paper); color: var(--atlas-ink); }
+body { accent-color: var(--atlas-accent); }
+.page, .page:not(.atlas-page), .atlas-page, [data-page="cabinet"] {
+  --at-ink: var(--atlas-ink);
+  --at-soft: var(--atlas-muted);
+  --at-paper: var(--atlas-paper);
+  --at-line: var(--atlas-line);
+  --at-teal: var(--atlas-accent);
+  --cc-ink: var(--atlas-ink);
+  --cc-muted: var(--atlas-muted);
+  --cc-line: var(--atlas-line);
+  --cc-navy: var(--atlas-deep);
+  background: var(--atlas-paper);
+  color: var(--atlas-ink);
+}
+.bg-cream { background: var(--atlas-paper); }
+.bg-tint { background: var(--atlas-tint); }
+.bg-dark { background: var(--atlas-deep); color: var(--atlas-on-deep); }
+.page:not(.atlas-page) .kick, .kick, .at-eyebrow, .cc-eyebrow { color: var(--atlas-accent); }
+.page :focus-visible, .atlas-page :focus-visible, .pm-dialog :focus-visible {
+  outline-color: var(--atlas-accent);
+  outline-offset: 4px;
+}
+
+/* The mobile menu and the arrival dialog now share the same physical surface. */
+.nav {
+  background: var(--atlas-paper);
+  border-bottom: 1px solid var(--atlas-line);
+  border-image: none;
+  box-shadow: 0 4px 18px #193c3610;
+}
+.nav .lg { color: var(--atlas-ink); }
+.nav .lg b { background: #e2e9dc; color: var(--atlas-ink); }
+.nav a, .nav .tr-nav-primary a, .nav .tr-nav-menu a { color: var(--atlas-muted); }
+.nav a:hover, .nav a:focus-visible { color: var(--atlas-accent); }
+.nav .tr-nav-primary a[aria-current="page"], .nav .tr-nav-menu a[aria-current="page"] {
+  background: var(--atlas-accent); color: var(--atlas-surface);
+}
+.tr-nav-more summary, .tr-mobile-nav {
+  background: var(--atlas-surface); color: var(--atlas-ink); border-color: #a8bdb2;
+}
+.tr-mobile-nav, .tr-mobile-nav option { color-scheme: light; }
+.tr-mobile-nav option { background: var(--atlas-surface); color: var(--atlas-ink); }
+.tr-nav-more summary::after { color: var(--atlas-accent); }
+.tr-nav-menu { background: var(--atlas-surface); border-color: var(--atlas-line); box-shadow: 0 12px 32px #173c4326; }
+.nav .tr-nav-menu a:hover { background: var(--atlas-tint); color: var(--atlas-accent); }
+.tr-skip { background: var(--atlas-accent); color: var(--atlas-surface); }
+
+.pm-dialog { background: var(--atlas-paper); border-color: var(--atlas-line); scrollbar-color: #b7c6bb var(--atlas-paper); }
+.pm-dialog::backdrop { background: #173b43c2; }
+.pm-stage { background: #eee9de; }
+.pm-find, .pm-table-models button, .pm-back-table { background: var(--atlas-surface); }
+.pm-style-switch, .pm-structure, .pm-button[aria-pressed="true"] { background: var(--atlas-tint); }
+.pm-style-switch button[aria-pressed="true"] { background: var(--atlas-surface); }
+.pm-unfold-controls { background: linear-gradient(110deg, var(--atlas-surface), var(--atlas-tint)); }
+.pm-button { min-height: 40px; border-color: #b8c7bc; }
+.pm-launch, .pm-unfold, .pm-story-link { background: var(--atlas-deep); border-color: var(--atlas-deep); }
+.pm-launch:hover, .pm-unfold:hover, .pm-story-link:hover { background: var(--atlas-accent); }
+.pm-style-switch button, .pm-style-switch button span,
+.pm-table-credit, .pm-footer, .pm-journal-heading span, #pm-progress,
+.pm-timeline button .pm-date, .pm-shape-notes summary span,
+.pm-shape-notes .pm-shape-boundary, .pm-reference > summary span,
+.pm-unfold-stages, .pm-unfold-bottom p, .pm-explanation h4,
+.pm-stage-hint { color: var(--atlas-muted); }
+.pm-style-switch button span { opacity: 1; }
+.pm-style-switch button[aria-pressed="true"] { color: var(--atlas-accent); }
+
+/* Reading-room entrances keep one paper tone instead of unrelated blue skins. */
+.at-hero, .tr-hero, .cc-hero, .gb-lab, .pirate-chest-head,
+.page[data-page="lemmas"] #lemmas, .page[data-page="towers"] #tetra {
+  background: linear-gradient(125deg, var(--atlas-paper), #e8eee5);
+  color: var(--atlas-ink);
+  border-bottom-color: var(--atlas-line);
+}
+.at-hero h2, .tr-hero h1, .tr-hero h2, .cc-hero h2, .gb-intro h2,
+.pirate-chest-head h2, .page[data-page="lemmas"] h2.t,
+.page[data-page="towers"] #tetra h2.t { color: var(--atlas-ink); text-shadow: none; }
+.at-hero h2 em, .tr-hero h1 em, .tr-hero h2 em, .cc-hero h2 em,
+.gb-intro h2 em, .pirate-chest-head h2 em, .page[data-page="towers"] #tetra h2.t em {
+  color: var(--atlas-accent); text-shadow: none;
+}
+.at-hero .at-eyebrow, .page:not(.atlas-page) .tr-hero .kick,
+.cc-hero .cc-eyebrow, .gb-eyebrow, .page[data-page="lemmas"] #lemmas .kick,
+.page[data-page="towers"] #tetra .kick { color: var(--atlas-accent); }
+.at-intro, .tr-hero p, .cc-intro, .gb-deck, .gb-intro-note p,
+.pirate-chest-head p, .pirate-chest-head .chest-invitation,
+.page[data-page="lemmas"] #lemmas .lead, .page[data-page="towers"] #tetra .lead,
+.page[data-page="towers"] #tetra .lead b { color: var(--atlas-muted); }
+.at-hero-note, .gb-intro-note { border-color: #b6c6b9; color: var(--atlas-ink); }
+.at-hero-note > p, .gb-intro-note strong { color: var(--atlas-ink); }
+.at-note-index, .at-metrics span, .at-edition { color: var(--atlas-muted); }
+.at-metrics strong, .gb-evidence, .gb-intro-note a { color: var(--atlas-accent); }
+.at-hero-link, .at-credit-jump, .tr-hero-links a,
+.vf-header-copy .cc-doors a, .cc-doors a, .cc-doors a:nth-child(2) {
+  background: var(--atlas-surface); color: var(--atlas-accent); border-color: #acbfb2;
+}
+.at-hero-link:hover, .at-credit-jump:hover, .tr-hero-links a:hover,
+.cc-doors a:hover { background: var(--atlas-tint); color: var(--atlas-ink); border-color: var(--atlas-accent); }
+.cc-doors strong, .cc-doors small, .cc-door-symbol,
+.cc-doors a:nth-child(2) .cc-door-symbol, .cc-doors b { color: var(--atlas-accent); }
+.at-stripe { background: repeating-linear-gradient(105deg,#254b46 0 5px,#e7e9db 5px 10px,#254b46 10px 13px,#e7e9db 13px 26px); border-bottom-color: #b5bd98; }
+
+/* Explanatory surfaces: warm paper; semantic status and graph colors unchanged. */
+.card, .cell, .at-entry, .at-entry.at-open, .at-lab-stage, .tr-reading-details,
+.cc-details, .at-filters, .story-filters, .pirate-chest .story-filters,
+.page[data-page="roadmap"] .rm-steps li {
+  background: var(--atlas-surface); border-color: var(--atlas-line);
+}
+.at-entry:hover { border-color: #8cae9f; box-shadow: 0 6px 22px #2c5c4312; }
+.at-entry h4, .at-section-heading h3, .cc-exhibit-heading h3, .cc-why h4,
+.tr-subheading, .tr-reading-details > summary { color: var(--atlas-ink); }
+.at-entry-summary, .at-entry-why, .at-family, .at-caption, .at-live,
+.at-featured-copy .at-featured-context, .cc-section-intro, .cc-why p,
+.cc-details p, .tr-room-intro, .tr-reflection-line, .tr-repo-count {
+  color: var(--atlas-muted);
+}
+.at-entry .at-formula, .at-formula, .cc-details .cc-equation,
+.vf-instrument, .vf-reading-route { background: var(--atlas-paper); border-color: var(--atlas-line); color: var(--atlas-ink); }
+.at-entry details > summary, .pirate-chest .story > .story-toggle {
+  background: var(--atlas-tint); border-color: #bbcdbf; color: var(--atlas-accent);
+}
+.at-entry details > summary:hover { background: #dde8dc; border-color: #91b09b; }
+.at-entry details[open] > summary { background: var(--atlas-accent); color: var(--atlas-surface); border-color: var(--atlas-accent); }
+.at-entry details > summary::after { color: inherit; }
+.at-filters label, .at-results-line p, .at-results-line a,
+.at-range-label, .at-range-label output, .at-control-label,
+.cc-details summary, .cc-inline-formula, .cc-source-links a { color: var(--atlas-muted); }
+.at-filters input, .at-filters select, .at-small-button, .tr-repo-filter select,
+.tr-subnav a, .pirate-chest .story-jumps a {
+  background: var(--atlas-surface); color: var(--atlas-ink); border-color: #b4c7b9;
+}
+.at-lab-tabs, .at-values li { background: var(--atlas-tint); }
+.at-lab-tabs button, .at-lab-tabs button span, .at-values summary,
+.at-values li, .at-exhibit-copy .at-rule { color: var(--atlas-accent); }
+.at-lab-tabs button[aria-selected="true"] { background: var(--atlas-deep); color: var(--atlas-muted-on-deep); }
+.at-lab-tabs button[aria-selected="true"] span { color: var(--atlas-on-deep); }
+.page[data-page="collatz"] #embed, .page[data-page="roadmap"] #roadmap,
+.page[data-page="buried-chat-stories"] .pirate-chest { background: var(--atlas-paper); }
+
+.tr-route-grid a, .tr-route-grid a:nth-child(3n+2), .tr-route-grid a:nth-child(3n),
+.tr-library-map article, .tr-proof-path > div, .gb-discoveries article {
+  background: var(--atlas-surface); color: var(--atlas-ink); border-color: #b7c8bb;
+}
+.tr-route-grid p, .tr-library-map p, .tr-proof-path p, .gb-discoveries p { color: var(--atlas-muted); }
+.tr-route-grid small, .tr-route-grid b, .tr-library-map small,
+.tr-library-map a, .tr-proof-path span, .gb-discovery-index,
+.gb-discoveries a, .gb-method summary, .gb-method p { color: var(--atlas-accent); }
+.gb-discoveries h3 { color: var(--atlas-ink); }
+.tr-mini-art { background: var(--atlas-deep); border-radius: 7px; }
+.tr-orbit-emblem { background: var(--atlas-deep); border-radius: 18px; padding: 10px; }
+
+/* Mathematical stages use one dark teal, retaining their high-contrast marks. */
+.at-featured, .at-signatures, .vf-header-model, .gb-bench, .gb-stage,
+.cc-instrument, .cc-console, .tr-panel, .page:not(.atlas-page) .screen,
+.page[data-page="collatz"] .cm-card {
+  background: var(--atlas-deep); border-color: #547c72; color: var(--atlas-on-deep);
+}
+.at-priority-grid > a, .at-priority-grid > a:hover, .at-route-grid > a,
+.at-route-grid > a:nth-child(2n), .at-collaborator-grid article,
+.at-signature-open, .gb-toolbar, .gb-controls, .cc-mode-picker,
+.cc-readout, .tr-readout div { background: var(--atlas-deep-panel); border-color: #53776f; }
+.at-priority-grid > a, .at-route-grid > a { color: var(--atlas-on-deep); }
+.at-featured-copy h3, .at-priority-heading h4, .at-proof-questions h4,
+.at-priority-grid strong, .at-route-heading h4, .at-route-grid strong {
+  color: var(--atlas-on-deep); text-shadow: none;
+}
+.at-featured-copy > p, .at-priority-heading p, .at-priority-grid > a > span,
+.at-priority-grid p, .at-route-heading p, .at-route-grid small,
+.at-model-notes summary, .at-model-notes p { color: var(--atlas-muted-on-deep); }
+.at-featured .at-eyebrow, .at-priority-grid b, .at-route-grid b,
+.at-proof-questions a, .page .bg-dark .kick,
+.page:not(.atlas-page) .tr-panel .kick, .page[data-page="home"] .hero .ky {
+  color: var(--atlas-accent-on-deep);
+}
+.at-proof-questions a:hover { color: var(--atlas-on-deep); }
+.page[data-page="home"] .hero h1 em { background: none; color: var(--atlas-accent-on-deep); }
+.at-featured-copy .at-featured-context { color: var(--atlas-muted-on-deep); }
+.at-featured-link { background: #dce9d6; color: var(--atlas-deep); border-color: #dce9d6; box-shadow: none; }
+.at-featured-link:hover { background: var(--atlas-on-deep); border-color: var(--atlas-on-deep); box-shadow: none; }
+.at-model-notes, .at-proof-questions, .at-signature-pair, .at-signature-owner,
+.at-credit-provenance { border-color: #54776d; }
+.at-featured :focus-visible, .at-signatures :focus-visible, .vf-header-model :focus-visible,
+.gb-bench :focus-visible, .cc-instrument :focus-visible, .tr-panel :focus-visible { outline-color: #d4e8a9; }
+.gb-bench { --gb-ink: var(--atlas-on-deep); --gb-dim: var(--atlas-muted-on-deep); }
+.gb-lab > .gb-wrap > .gb-method { border-color: var(--atlas-line); }
+
+.page[data-page="collatz"] .cm-kicker, .page[data-page="collatz"] .cm-title em,
+.page[data-page="collatz"] .cm-link { color: var(--atlas-accent); }
+.page[data-page="collatz"] .cm-intro, .page[data-page="collatz"] .cm-note { color: var(--atlas-muted); }
+.page[data-page="collatz"] .cm-controls button, .page[data-page="collatz"] .cm-presets button {
+  background: var(--atlas-deep-panel); color: var(--atlas-on-deep); border-color: #53776f;
+}
+.page[data-page="collatz"] .cm-presets button[aria-pressed="true"] {
+  background: var(--atlas-tint); color: var(--atlas-ink); border-color: #98b4a3;
+}
+
+.page[data-page="lemmas"] .loot, .page[data-page="lemmas"] .dispatch,
+.page[data-page="towers"] .ttfact, .page[data-page="towers"] .eqline,
+.page[data-page="towers"] #tetra .readbar > div, .page[data-page="towers"] .pchip {
+  background: var(--atlas-surface); color: var(--atlas-ink); border-color: #b7c8bb;
+}
+.page[data-page="lemmas"] .loot h3, .page[data-page="lemmas"] .loot .formula,
+.page[data-page="towers"] .ttfact b, .page[data-page="towers"] .eqline,
+.page[data-page="towers"] #tetra .readbar .v { color: var(--atlas-ink) !important; }
+.page[data-page="lemmas"] .loot p, .page[data-page="lemmas"] .dispatch p,
+.page[data-page="towers"] .ttfact p, .page[data-page="towers"] #tetra .readbar .k,
+.page[data-page="towers"] #tetra .cap, .page[data-page="towers"] .ttctl .lbl { color: var(--atlas-muted); }
+.page[data-page="lemmas"] .loot .serial, .page[data-page="lemmas"] .loot .status,
+.page[data-page="lemmas"] .loot summary, .page[data-page="towers"] .ttfact .n,
+.page[data-page="towers"] .eqline .m, .page[data-page="towers"] .eqline .p { color: var(--atlas-accent); }
+.page[data-page="towers"] .ttwarn { color: #675b36; background: #f2eddb; border-color: #b7a871; }
+
+/* Curated connections: labels describe the relation, not the evidence level. */
+.pm-connection {
+  margin: 14px 0 0; padding: 15px 16px;
+  background: var(--atlas-surface); border: 1px solid var(--atlas-line);
+  border-left: 3px solid var(--atlas-accent); border-radius: 9px;
+}
+.pm-connection[data-connection-kind="study"] { border-left-color: #a39774; }
+.pm-connection .pm-kicker { color: var(--atlas-accent); font-size: 9px; letter-spacing: .07em; }
+.pm-connection h3 { color: var(--atlas-ink); font: 500 17px/1.3 "IBM Plex Sans",system-ui,sans-serif; margin: 7px 0; letter-spacing: -.02em; }
+.pm-connection p:not(.pm-kicker) { color: var(--atlas-muted); font-size: 11px; line-height: 1.65; margin: 8px 0 12px; }
+.pm-connection-actions { display: flex; flex-wrap: wrap; gap: 7px; }
+.pm-connection-actions .pm-button { min-height: 39px; font-size: 11px; text-align: left; text-decoration: none; }
+.pm-subject-match { margin-top: 18px; padding-top: 13px; border-top: 1px solid var(--atlas-line); }
+.pm-find .pm-subject-match p { font-size: 11px; line-height: 1.65; margin: 0 0 10px; }
+.pm-subject-match .pm-button { font-size: 11px; }
+
+@media (max-width: 760px) {
+  html, body, .nav, .pm-dialog { background: var(--atlas-paper); }
+  .pm-dialog { border-radius: 18px; }
+  .pm-header { gap: 11px; }
+  .pm-header-actions { gap: 6px; }
+  .pm-connection { padding: 13px; }
+  .pm-connection-actions { display: grid; grid-template-columns: minmax(0,1fr); }
+  .pm-connection-actions .pm-button { justify-content: space-between; white-space: normal; }
+  .pm-connection h3 { font-size: 16px; }
+  .pm-subject-match .pm-button { max-width: 100%; white-space: normal; }
+  .at-note-index, .at-metrics span, .at-edition { font-size: 9px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pm-connection *, .pm-subject-match * { transition: none; }
+}
