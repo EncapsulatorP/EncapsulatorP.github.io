@@ -26,7 +26,7 @@ The trail dates identify the recovered conversation periods or edition context a
 
 The two generic atlas links point to the [actual source repository](https://github.com/EncapsulatorP/EncapsulatorP.github.io). All other secondary URLs are already present in `atlas/catalog.json` or the existing story links. The embedded `assets/research-atlas-data.js` carries the matching catalog entries.
 
-## Paper studio · five forms
+## Paper studio · eight forms
 
 ### Origami chart — `origami`
 
@@ -54,7 +54,7 @@ Those historical credits recognize Snelson, Fuller and Emmerich in their respect
 
 An original stepped navigation layout for the same trail. Terrace height does not measure truth, performance, chronology or physical energy. Its source is the [atlas navigation drawing](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js).
 
-## Origami voyages · five scenes
+## Origami voyages · eight scenes
 
 This half of the collection follows Zolton’s supplied paper-polyhedron images and the sailing boat in the supplied Neon prototype. Each scene uses an opened chart, a printed route and two small folded-paper boats built as actual 3D meshes. The moving bodies are scenic interpretations, not experiments or asserted physical models.
 
@@ -68,7 +68,7 @@ This half of the collection follows Zolton’s supplied paper-polyhedron images 
 
 All nine stations stay attached to chart material coordinates. The boats follow the printed route, and geometry can occlude stations naturally. Camera movement, folding and route motion are visual controls; they never modify a theorem’s status or a recorded benchmark.
 
-The two collections have equal size: five studio forms and five voyages. New visitors begin at the workbench with the open-chart voyage moving in the live preview. A reader’s collection and last form are stored locally; the Next form button cycles within that collection. Switching collections retains the corresponding body. This is a comparison-ready showcase, not a completed traffic experiment. See [the experiment plan](rendering-experiment.md).
+The two collections have equal size: eight studio forms and eight voyages. New visitors begin at the workbench with the globe harbour moving in the live preview. A reader’s collection and last form are stored locally; the Next form button cycles within that collection. Switching collections retains the corresponding body. This is a comparison-ready showcase, not a completed traffic experiment. See [the experiment plan](rendering-experiment.md).
 
 ## Edition credits
 
@@ -86,7 +86,7 @@ Validation checks the data contract and the existing source material:
 1. The trail has nine distinct IDs and retains its original four treasure, three trap and two wildcard markers.
 2. Each subject URL resolves either to an existing `index.html` ID or to an existing catalog entry handled by the atlas’s `#atlas?entry=` route.
 3. Each secondary URL names a repository already represented by the catalog. Direct source URLs are checked against the catalog or existing page links; the two explicitly labeled atlas-source links use that repository’s root.
-4. The collection has five studio forms and five voyage scenes. Every form uses the same nine subject destinations. Studio keys are `origami`, `sphere`, `portal`, `tensegrity` and `terrace`; voyage keys are listed below.
+4. The collection has eight studio forms and eight voyage scenes. Every form uses the same nine subject destinations. Studio keys are `origami`, `sphere`, `portal`, `tensegrity`, `terrace`, `noperthedron`, `neck` and `klein`; voyage keys are listed below.
 
 These are content and navigation checks. They introduce no new numerical experiment or claim about the renderer’s physical accuracy.
 
@@ -96,6 +96,13 @@ These are content and navigation checks. They introduce no new numerical experim
 
 Zolton supplied the photographic paper-model workbench and shared a Claude artifact on 21 November 2026. The artifact was inspected in its rendered interface: selecting a body launches an illustrative opening, reveals a chart, and offers **Back to the table**. This edition credits Claude for that interaction direction. It implements its own table chooser, live 3D preview and opening animation in the existing renderer. The reference's additional scientific stories, dates and surgery claims were not imported.
 
-The original supplied photograph is preserved as `assets/paper-workbench-reference.png`. The artifact credits that image to Zolton with Gemini. The three photo hotspots refer to visible bodies; the row of five model choices also keeps tensegrity and terraced landforms immediately available. Hover or keyboard focus previews a form. A click opens its chart and subject explanation. Both five-member collections retain the same nine subject destinations.
+The original supplied photograph is preserved as `assets/paper-workbench-reference.png`. The artifact credits that image to Zolton with Gemini. The three photo hotspots refer to visible bodies; the row of eight model choices also keeps tensegrity and terraced landforms immediately available. Hover or keyboard focus previews a form. A click opens its chart and subject explanation. Both eight-member collections retain the same nine subject destinations.
 
-The opening animation unfolds the creased paper chart in all five voyage scenes and opens the standalone accordion. The sphere, hollow body and tensegrity remain their own forms; no physical surgery or rigid-folding theorem is asserted for them. Reduced motion skips the opening. Pause and direct manipulation remain available.
+The current edition opens the bodies themselves: the globe peels, the hollow portal releases its panels, the Noperthedron unfolds its face tree, the neck separates into lobes, and the Klein-bottle immersion opens into a marked rectangle. Each appears in both collections. The accordion opens its creases; tensegrity and landforms retain their structure. The table preview cycles automatically. A slider and Shift-drag scrub both directions; Pause and reduced motion remain available. See the [shape source ledger](shape-lab-sources.md) for the exact distinctions between a geometric illustration, a hinged face layout and a mathematical theorem.
+
+
+## Added bodies and their sources
+
+The Noperthedron, neck surgery and Klein bottle have separate entries in the [shape source ledger](shape-lab-sources.md). Each is available in Paper studio and in Origami voyages as `voyage-noperthedron`, `voyage-neck` and `voyage-klein`. The source photograph does not depict these three additions; they are reached through the labeled model choices. No new research dates or evidence labels were inferred from the artwork.
+
+The registry and geometry checks form the first step toward the [shape-generation roadmap](shape-generation-roadmap.md). Automated candidate generation and visitor-based promotion are future work.

@@ -221,6 +221,58 @@
     route: [0.91, 0.67, 0.36], coast: [0.88, 0.89, 0.79],
     interior: [0.29, 0.37, 0.40]
   };
+  // Body transformations are independent of rendering and animation. The pure
+  // registry can also be sampled by the geometry validator / future generator.
+  const bodyKeys = { sphere: 'sphere', portal: 'portal', noperthedron: 'noperthedron', neck: 'neck', klein: 'klein', 'voyage-globe': 'sphere', 'voyage-portal': 'portal', 'voyage-noperthedron': 'noperthedron', 'voyage-neck': 'neck', 'voyage-klein': 'klein' };
+  const sceneKeys = ['origami', 'sphere', 'portal', 'tensegrity', 'terrace', 'noperthedron', 'neck', 'klein', 'voyage-chart', 'voyage-globe', 'voyage-portal', 'voyage-rigging', 'voyage-islands', 'voyage-noperthedron', 'voyage-neck', 'voyage-klein'];
+  const hasShapeLab = () => !!(window.PaperShapeLab && typeof window.PaperShapeLab.build === 'function');
+  function bodyMesh(key, progress, fixedCamera = false) {
+    const model = window.PaperShapeLab.build(key, clamp(progress, 0, 1)), mesh = new Mesh();
+    model.faces.forEach(face => {
+      const points = face.points, color = palette[face.colorKey] || palette.paper;
+      const mat = material(color, Number.isFinite(face.grid) ? face.grid : 0.22);
+      const uv = face.uv || points.map(p => [(p[0] + 3) / 6, (p[2] + 3) / 6]);
+      // Some parameter surfaces meet at a pole. Do not submit a zero-area
+      // triangle or a zero normal to the lighting and visibility passes.
+      for (let i = 1; i < points.length - 1; i++) {
+        if (Math.hypot(...cross(sub(points[i], points[0]), sub(points[i + 1], points[0]))) > 1e-10)
+          mesh.triangle(points[0], points[i], points[i + 1], mat, [uv[0], uv[i], uv[i + 1]]);
+      }
+      if (face.seams) for (let i = 0; i < points.length; i++) mesh.seam(points[i], points[(i + 1) % points.length], typeof face.seams === 'number' ? face.seams : 0.10);
+    });
+    (model.landmarks || []).forEach(mark => { mesh.pin(mark.position, unit(mark.normal)); mesh.landmarks[mesh.landmarks.length - 1].doubleSided = !!mark.doubleSided; });
+    // A rigid face tree may grow to several times its closed diameter. Keep
+    // those two studio solids large by framing their current faces. The hinge
+    // paths, extrema and camera fit are continuous in opening progress, so the
+    // camera gently reveals room for the net. Voyage compositions instead use
+    // the complete fixed envelope to keep the surrounding chart still.
+    const followFaces = !fixedCamera && (key === 'noperthedron' || key === 'portal');
+    mesh.cameraBounds = followFaces ? model.bounds : model.cameraBounds;
+    mesh.cameraPoints = followFaces ? model.faces.flatMap(face => face.points) : model.cameraPoints;
+    mesh.cameraFitMargin = 0.84;
+    return mesh;
+  }
+  let accordionEnvelope;
+  function openingSheet(progress) {
+    const mesh = accordion(1 - progress);
+    if (!accordionEnvelope) {
+      // A fixed swept envelope prevents the camera from zooming as paper opens.
+      const points = [];
+      for (let i = 0; i <= 32; i++) {
+        const body = accordion(i / 32);
+        body.triangles.forEach(tri => tri.forEach(p => points.push(p)));
+      }
+      const bounds = [[Infinity, Infinity, Infinity], [-Infinity, -Infinity, -Infinity]];
+      points.forEach(p => p.forEach((v, axis) => { bounds[0][axis] = Math.min(bounds[0][axis], v - 0.004); bounds[1][axis] = Math.max(bounds[1][axis], v + 0.004); }));
+      // These convex box corners contain every sampled fold and the tiny
+      // interpolation margin, without including an unrelated floor rectangle.
+      const corners = [];
+      for (let x = 0; x < 2; x++) for (let y = 0; y < 2; y++) for (let z = 0; z < 2; z++) corners.push([bounds[x][0], bounds[y][1], bounds[z][2]]);
+      accordionEnvelope = { points: corners, bounds };
+    }
+    mesh.cameraPoints = accordionEnvelope.points; mesh.cameraBounds = accordionEnvelope.bounds; mesh.cameraFitMargin = 0.84;
+    return mesh;
+  }
   const voyageCache = new Map();
   const voyageChartCache = new Map();
   const voyageCameraCache = new Map();
@@ -458,7 +510,7 @@
     mesh.landmarks = mesh.landmarks.map(mark => ({ position: mul(mark.position, scale), normal: mark.normal.slice() }));
     mesh.bounds = mesh.bounds.map(p => mul(p, scale));
   }
-  function voyageCameraEnvelope(key, propVertices) {
+  function voyageCameraEnvelope(key, propVertices, bodyEnvelope = null) {
     if (voyageCameraCache.has(key)) return voyageCameraCache.get(key);
     const points = [], low = chartSurface(key === 'voyage-chart' ? 0 : 0.28), high = chartSurface(key === 'voyage-chart' ? 1 : 0.28);
     // Chart corners and crests stay low. Empty space above the outer corners is
@@ -480,7 +532,16 @@
       for (let i = 0; i < count; i++) { const a = i * TAU / count; points.push([origin[0] + radius * Math.cos(a), y, origin[2] + radius * Math.sin(a)]); }
     };
     const baseLow = low.point(0.5, 0.5)[1] + 0.025, baseHigh = high.point(0.5, 0.5)[1] + 0.025;
-    if (key === 'voyage-chart') {
+    if (bodyEnvelope) {
+      // A rotational hull of the complete unfolding keeps every phase framed.
+      // This hull is cached per model and never follows the animated mesh.
+      const levels = new Map();
+      bodyEnvelope.forEach(p => {
+        const label = Math.round(p[1] * 40), previous = levels.get(label), radius = Math.hypot(p[0], p[2] + 0.10);
+        if (!previous || radius > previous.radius) levels.set(label, { y: label / 40, radius });
+      });
+      levels.forEach(({ y, radius }) => { circle(radius + 0.008, y - 0.014, [0, 0, -0.10]); circle(radius + 0.008, y + 0.014, [0, 0, -0.10]); });
+    } else if (key === 'voyage-chart') {
       for (const [x, z, yaw, pitch] of [[-0.65, -0.23, -0.22, 0.12], [0.64, -0.42, 0.30, -0.09]]) {
         const radius = Math.hypot(0.72, 0.077) * 0.86 / Math.cos(Math.PI / 32) + 0.004;
         const depth = (0.72 * Math.abs(Math.sin(pitch)) + 0.077 * Math.cos(pitch)) * 0.86 + 0.004;
@@ -514,19 +575,29 @@
     }
     voyageCameraCache.set(key, points); return points;
   }
-  function voyageScene(key, fold, time, openingProgress = null) {
+  function voyageScene(key, fold, time, openingProgress = null, unfoldProgress = 0) {
     let cached = voyageChartCache.get('master');
     if (!cached) { cached = voyageChart(0.28); voyageChartCache.set('master', cached); }
     // Public setShape normally prepares this envelope first. Preserve the same
     // invariant if an opening is requested before a regular scene is built.
-    if (openingProgress !== null && !voyageCameraCache.has(key)) voyageScene(key, fold, time, null);
+    if (openingProgress !== null && !voyageCameraCache.has(key)) voyageScene(key, fold, time, null, unfoldProgress);
     // Coastline clipping is performed once. Animated folds only transform the
     // existing paper facets, keeping the mobile geometry update bounded.
     const finalFold = key === 'voyage-chart' ? fold : 0.28, normalAngle = 0.055 + finalFold * 0.34;
     const openingAngle = openingProgress === null ? null : normalAngle + (0.98 - normalAngle) * (1 - openingProgress);
     const { chart, mesh } = key === 'voyage-chart' || openingAngle !== null ? refoldChart(cached, finalFold, openingAngle) : { chart: cached.chart, mesh: copyPaperMesh(cached.mesh) };
     const turn = time * TAU / 34, base = chart.point(0.5, 0.5)[1] + 0.025, propStart = mesh.vertices.length;
-    if (key === 'voyage-chart') {
+    let bodyEnvelope = null;
+    const labKey = bodyKeys[key];
+    if (labKey && hasShapeLab()) {
+      const body = bodyMesh(labKey, unfoldProgress, true), scale = 0.61, origin = [0, base + 0.055, -0.10];
+      placeMesh(mesh, body, origin, scale, turn * 0.60 + 0.16);
+      if (!voyageCameraCache.has(key)) {
+        const b = body.cameraBounds || body.bounds, points = body.cameraPoints || [];
+        if (!points.length) for (let x = 0; x < 2; x++) for (let y = 0; y < 2; y++) for (let z = 0; z < 2; z++) points.push([b[x][0], b[y][1], b[z][2]]);
+        bodyEnvelope = points.map(p => add(origin, mul(p, scale)));
+      }
+    } else if (key === 'voyage-chart') {
       const wheel = voyagePart('wheel', paperWheel);
       foldedStand(mesh, chart, -0.65, -0.23, base, 0.58, 0.44, 0.19); foldedStand(mesh, chart, 0.64, -0.42, base, 0.58, 0.44, 0.19);
       placeMesh(mesh, wheel, [-0.65, base + 0.80, -0.23], 0.86, -0.22, 0.12, turn);
@@ -551,7 +622,7 @@
       const a = [-0.22, base + 0.51, -0.45], b = [0.67, base + 0.51, -0.44], c = [0.56, base + 0.51, 0.17], peak = [0.31, base + 1.10, -0.18];
       mesh.sheet([a, peak, b], material(palette.ivory, 0.06), undefined, 0.016); mesh.sheet([b, peak, c], material(palette.paper, 0.06), undefined, 0.016); mesh.sheet([c, peak, a], material(voyageColors.shallows, 0.05), undefined, 0.016);
     }
-    mesh.cameraPoints = voyageCameraEnvelope(key, voyageCameraCache.has(key) ? [] : mesh.vertices.slice(propStart));
+    mesh.cameraPoints = voyageCameraEnvelope(key, voyageCameraCache.has(key) ? [] : mesh.vertices.slice(propStart), bodyEnvelope);
     sailBoat(mesh, chart, voyagePart('boat-blue', () => paperBoat(voyageColors.sea)), time * TAU / 30 + 0.65, 0.43);
     sailBoat(mesh, chart, voyagePart('boat-copper', () => paperBoat(palette.copper)), time * TAU / 30 + 0.65 + Math.PI * 1.12, 0.35);
     // A brief uniform stage reveal accompanies the real hinge opening. All
@@ -561,7 +632,7 @@
     // The bounds provide an initial centre; cameraPoints provide the tight,
     // time-independent fit without fictitious elevated outer corners.
     const normalChart = openingProgress === null ? chart : chartSurface(finalFold), normalBase = normalChart.point(0.5, 0.5)[1] + 0.025;
-    const top = key === 'voyage-islands' ? normalBase + 1.30 : key === 'voyage-chart' ? normalBase + 1.57 : normalBase + 2.00;
+    const top = key === 'voyage-islands' ? normalBase + 1.30 : key === 'voyage-chart' ? normalBase + 1.57 : Math.max(normalBase + 2.00, ...mesh.cameraPoints.map(p => p[1]));
     mesh.cameraBounds = [[-normalChart.width / 2 - 0.03, 0.02, -normalChart.depth / 2 - 0.03], [normalChart.width / 2 + 0.03, top, normalChart.depth / 2 + 0.03]];
     return mesh;
   }
@@ -672,6 +743,7 @@
       this._shape = 'origami'; this._fold = 0.62; this._currentFold = this._fold; this._phase = 0;
       this._voyageTime = 0; this._voyageFrame = -1; this._sceneHz = 24;
       this._opening = null; this._openingFrame = -1;
+      this._unfoldProgress = 0.38; this._unfoldAnimation = null; this._unfoldPreview = false; this._unfoldTime = 0; this._unfoldFrame = -1;
       this._yaw = 0.44; this._pitch = 0.60; this._zoom = 1; this._selected = 0;
       this._parallax = [0, 0]; this._parallaxTarget = [0, 0];
       this._motion = !this._reduced; this._motionOverride = false; this._active = true; this._visible = true; this._destroyed = false; this._lost = false;
@@ -718,15 +790,12 @@
       this._maxAttributes = gl.getParameter(gl.MAX_VERTEX_ATTRIBS);
     }
     _makeScene() {
-      const makers = { origami: () => accordion(this._currentFold), sphere: globe, portal, tensegrity, terrace };
+      const makers = { sphere: globe, portal, tensegrity, terrace, noperthedron: globe, neck: globe, klein: portal };
       const opening = this._opening ? this._openingProgress() : null;
-      if (this._isVoyage()) this._mesh = voyageScene(this._shape, this._currentFold, this._voyageTime, opening);
-      else if (this._shape === 'origami' && this._opening) {
-        this._mesh = accordion(1 + (this._currentFold - 1) * opening);
-        scalePaperScene(this._mesh, 0.70 + 0.30 * opening);
-        this._mesh.cameraPoints = this._opening.cameraPoints; this._mesh.cameraBounds = this._opening.cameraBounds;
-        this._mesh.cameraFixedCenter = true; this._mesh.cameraFitMargin = 0.79;
-      } else this._mesh = makers[this._shape]();
+      if (this._isVoyage()) this._mesh = voyageScene(this._shape, this._currentFold, this._voyageTime, opening, this._unfoldProgress);
+      else if (this._shape === 'origami') this._mesh = openingSheet(this._unfoldProgress);
+      else if (bodyKeys[this._shape] && hasShapeLab()) this._mesh = bodyMesh(bodyKeys[this._shape], this._unfoldProgress);
+      else this._mesh = makers[this._shape]();
       this._center = average(this._mesh.cameraBounds || this._mesh.bounds);
       // The floor receives shadows but never writes to the shadow map. Including
       // its huge coplanar triangles creates sampling stripes / self-shadow moire.
@@ -739,10 +808,13 @@
     _selection() {
       const data = [], mark = this._mesh.landmarks[this._selected];
       if (mark) {
-        const [a, b] = tangent(mark.normal), center = add(mark.position, mul(mark.normal, 0.006));
-        for (let i = 0; i < 48; i++) {
-          const p = angle => add(center, add(mul(a, 0.103 * Math.cos(angle)), mul(b, 0.103 * Math.sin(angle))));
-          data.push(...p(i * TAU / 48), 0.70, 0.40, 0.18, 0.66, ...p((i + 1) * TAU / 48), 0.70, 0.40, 0.18, 0.66);
+        const [a, b] = tangent(mark.normal);
+        for (const side of mark.doubleSided ? [1, -1] : [1]) {
+          const center = add(mark.position, mul(mark.normal, side > 0 ? 0.006 : -0.030));
+          for (let i = 0; i < 48; i++) {
+            const p = angle => add(center, add(mul(a, 0.103 * Math.cos(angle)), mul(b, 0.103 * Math.sin(angle))));
+            data.push(...p(i * TAU / 48), 0.70, 0.40, 0.18, 0.66, ...p((i + 1) * TAU / 48), 0.70, 0.40, 0.18, 0.66);
+          }
         }
       }
       this._selectionCount = data.length / 7;
@@ -809,7 +881,7 @@
     _project(camera, rect) {
       const points = this._mesh.landmarks.map(mark => {
         const p = project(camera.matrix, mark.position), toCamera = sub(camera.eye, mark.position), distance = Math.hypot(...toCamera);
-        let visible = p[3] > 0 && distance > 0.01 && dot(mark.normal, toCamera) > 0.005;
+        let visible = p[3] > 0 && distance > 0.01 && (mark.doubleSided || dot(mark.normal, toCamera) > 0.005);
         const x = p[0] / p[3] * 0.5 + 0.5, y = 0.5 - p[1] / p[3] * 0.5, depth = p[2] / p[3] * 0.5 + 0.5;
         visible = visible && x >= 0 && x <= 1 && y >= 0 && y <= 1 && depth > 0 && depth < 1;
         if (visible) { const ray = mul(toCamera, -1 / distance); visible = !this._mesh.triangles.some(tri => hitTriangle(camera.eye, ray, tri, distance)); }
@@ -821,6 +893,19 @@
     _motionEnabled() { return this._motion && (!this._reduced || this._motionOverride); }
     _isVoyage() { return this._shape.startsWith('voyage-'); }
     _isFoldable() { return this._shape === 'origami' || this._shape === 'voyage-chart'; }
+    _isUnfoldable() { return this._isFoldable() || (!!bodyKeys[this._shape] && hasShapeLab()); }
+    _syncUnfoldFold() { if (this._isFoldable()) { this._currentFold = 1 - this._unfoldProgress; this._fold = this._currentFold; } }
+    _cancelUnfold() { this._unfoldAnimation = null; this._unfoldFrame = -1; }
+    _previewProgress(time) {
+      // Endpoint holds let a visitor read the object before and after opening.
+      const phase = ((time % 14) + 14) % 14;
+      const smooth = t => t * t * (3 - 2 * t);
+      if (phase < 1.5) return 0;
+      if (phase < 6) return smooth((phase - 1.5) / 4.5);
+      if (phase < 8) return 1;
+      if (phase < 12.5) return 1 - smooth((phase - 8) / 4.5);
+      return 0;
+    }
     _openingProgress() { const t = this._opening ? clamp(this._opening.elapsed / this._opening.duration, 0, 1) : 1; return 1 - Math.pow(1 - t, 3); }
     _cancelOpening(rebuild = true) {
       if (!this._opening) return;
@@ -828,7 +913,7 @@
       if (rebuild) this._makeScene();
     }
     _viewInfo(rect) {
-      return { shape: this._shape, family: this._isVoyage() ? 'voyage' : 'studio', fold: this._currentFold, foldable: this._isFoldable(), opening: !!this._opening, openingProgress: this._openingProgress(), yaw: (this._yaw / RAD % 360 + 360) % 360, pitch: this._pitch / RAD, zoom: this._zoom, motion: this._motionEnabled(), active: this._active, width: rect.width, height: rect.height, renderer: 'WebGL' };
+      return { shape: this._shape, family: this._isVoyage() ? 'voyage' : 'studio', fold: this._currentFold, foldable: this._isFoldable(), opening: !!this._opening, openingProgress: this._openingProgress(), unfoldProgress: this._unfoldProgress, unfoldable: this._isUnfoldable(), unfolding: !!this._unfoldAnimation, unfoldPreview: this._unfoldPreview, yaw: (this._yaw / RAD % 360 + 360) % 360, pitch: this._pitch / RAD, zoom: this._zoom, motion: this._motionEnabled(), active: this._active, width: rect.width, height: rect.height, renderer: 'WebGL' };
     }
     _reportUnavailable(error, status) {
       const points = Array.from({ length: 9 }, (_, i) => ({ ...((this._lastProjection || [])[i] || { x: 0.5, y: 0.5, depth: 1 }), visible: false }));
@@ -866,28 +951,42 @@
       this._frameId = 0; if (!this._canDraw()) return;
       const dt = this._lastTime ? Math.min((time - this._lastTime) / 1000, 0.05) : 0; this._lastTime = time;
       const moving = this._motionEnabled() && this._pointers.size === 0 && time >= this._pausedUntil;
+      let geometryChanged = false;
       if (moving && this._opening) {
         this._opening.elapsed = Math.min(this._opening.duration, this._opening.elapsed + dt);
         const finished = this._opening.elapsed >= this._opening.duration, step = Math.floor(this._opening.elapsed * this._sceneHz);
-        if (finished || step !== this._openingFrame) { this._openingFrame = step; if (finished) this._opening = null; this._makeScene(); }
-      } else if (moving) {
-        this._yaw += dt * TAU / 48; this._phase += dt * TAU / 16;
-        if (this._isVoyage()) {
-          this._voyageTime += dt;
-          // Geometry and its shadow map update at most 24 times per second
-          // (18 in narrow views), while
-          // orbit, pointer response and pin projection remain display-paced.
-          const step = Math.floor(this._voyageTime * this._sceneHz);
-          if (step !== this._voyageFrame) {
-            this._voyageFrame = step;
-            if (this._isFoldable()) { const amplitude = Math.min(0.10, this._fold * 0.5, (1 - this._fold) * 0.5); this._currentFold = this._fold + amplitude * Math.sin(this._phase); }
-            this._makeScene();
-          }
-        } else if (this._shape === 'origami') {
-          const amplitude = Math.min(0.12, this._fold * 0.5, (1 - this._fold) * 0.5), value = this._fold + amplitude * Math.sin(this._phase);
-          if (Math.abs(value - this._currentFold) > 0.0002) { this._currentFold = value; this._makeScene(); }
+        if (finished || step !== this._openingFrame) { this._openingFrame = step; if (finished) this._opening = null; geometryChanged = true; }
+      }
+      if (moving && this._unfoldAnimation) {
+        const animation = this._unfoldAnimation;
+        animation.elapsed = Math.min(animation.duration, animation.elapsed + dt);
+        const t = animation.elapsed / animation.duration, eased = t * t * (3 - 2 * t);
+        const step = Math.floor(animation.elapsed * this._sceneHz), finished = t >= 1;
+        if (finished || step !== this._unfoldFrame) {
+          this._unfoldFrame = step; this._unfoldProgress = animation.from + (animation.to - animation.from) * eased;
+          this._syncUnfoldFold(); geometryChanged = true;
+          if (finished) this._unfoldAnimation = null;
+        }
+      } else if (moving && this._unfoldPreview && this._isUnfoldable()) {
+        this._unfoldTime += dt;
+        const step = Math.floor(this._unfoldTime * this._sceneHz);
+        if (step !== this._unfoldFrame) {
+          this._unfoldFrame = step;
+          const progress = this._previewProgress(this._unfoldTime);
+          if (Math.abs(progress - this._unfoldProgress) > 0.00001) { this._unfoldProgress = progress; this._syncUnfoldFold(); geometryChanged = true; }
         }
       }
+      if (moving) {
+        // A deliberate unfold keeps its camera still; autonomous table previews
+        // turn gently while the body opens. Direct manipulation remains exact.
+        if (!this._opening && !this._unfoldAnimation) { this._yaw += dt * TAU / 72; this._phase += dt * TAU / 16; }
+        if (this._isVoyage()) {
+          this._voyageTime += dt;
+          const step = Math.floor(this._voyageTime * this._sceneHz);
+          if (step !== this._voyageFrame) { this._voyageFrame = step; geometryChanged = true; }
+        }
+      }
+      if (geometryChanged) this._makeScene();
       const parallaxMoving = this._updateParallax(dt);
       this._draw();
       if (this._motionEnabled() || parallaxMoving) this._request();
@@ -901,6 +1000,7 @@
         // Begin a drag from the displayed view, without snapping out of hover.
         this._yaw += this._parallax[0]; this._pitch = clamp(this._pitch + this._parallax[1], 0.10, 1.35); this._setParallax(0, 0, true);
         this._pointers.set(event.pointerId, [event.clientX, event.clientY]);
+        this._unfoldDrag = !!event.shiftKey && this._isUnfoldable();
         try { canvas.setPointerCapture(event.pointerId); } catch (_) { /* detached canvas */ }
         this._pinch = 0; this._interaction('orbit-start');
       });
@@ -909,8 +1009,12 @@
         if (!this._pointers.has(event.pointerId)) { this._followPointer(event); return; }
         const before = this._pointers.get(event.pointerId); this._pointers.set(event.pointerId, [event.clientX, event.clientY]);
         if (this._pointers.size === 1) {
-          const rect = canvas.getBoundingClientRect(); this._yaw -= (event.clientX - before[0]) / Math.max(rect.width, 1) * TAU;
-          this._pitch = clamp(this._pitch + (event.clientY - before[1]) / Math.max(rect.height, 1) * Math.PI, 0.10, 1.35);
+          const rect = canvas.getBoundingClientRect();
+          if (this._unfoldDrag) this.setUnfold(this._unfoldProgress + (event.clientX - before[0]) / Math.max(rect.width, 1) * 1.8);
+          else {
+            this._yaw -= (event.clientX - before[0]) / Math.max(rect.width, 1) * TAU;
+            this._pitch = clamp(this._pitch + (event.clientY - before[1]) / Math.max(rect.height, 1) * Math.PI, 0.10, 1.35);
+          }
         } else {
           const [a, b] = Array.from(this._pointers.values()), distance = Math.hypot(a[0] - b[0], a[1] - b[1]);
           if (this._pinch) this._zoom = clamp(this._zoom * distance / this._pinch, 0.55, 2.1); this._pinch = distance;
@@ -918,14 +1022,15 @@
         this._interaction('orbit');
       });
       this._listen(canvas, 'pointerleave', () => { this._setParallax(0, 0); this._request(); });
-      const release = event => { if (!this._pointers.delete(event.pointerId)) return; this._pinch = 0; if (this._canDraw()) this._interaction('orbit-end'); };
+      const release = event => { if (!this._pointers.delete(event.pointerId)) return; this._pinch = 0; this._unfoldDrag = false; if (this._canDraw()) this._interaction('orbit-end'); };
       this._listen(canvas, 'pointerup', release); this._listen(canvas, 'pointercancel', release); this._listen(canvas, 'lostpointercapture', release);
       this._listen(canvas, 'wheel', event => { if (!this._canDraw()) return; event.preventDefault(); const scale = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? 400 : 1; this.zoomBy(Math.exp(-event.deltaY * scale * 0.0012)); this._interaction('zoom'); }, { passive: false });
       this._listen(canvas, 'keydown', event => {
         if (!this._canDraw()) return;
         const keys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', '+', '=', '-', '_', 'Home', '0']; if (!keys.includes(event.key)) return;
         event.preventDefault();
-        if (event.key === 'ArrowLeft') this._yaw -= 7 * RAD; else if (event.key === 'ArrowRight') this._yaw += 7 * RAD;
+        if (event.shiftKey && this._isUnfoldable() && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) this.setUnfold(this._unfoldProgress + (event.key === 'ArrowRight' ? 0.05 : -0.05));
+        else if (event.key === 'ArrowLeft') this._yaw -= 7 * RAD; else if (event.key === 'ArrowRight') this._yaw += 7 * RAD;
         else if (event.key === 'ArrowUp') this._pitch = clamp(this._pitch + 0.08, 0.10, 1.35); else if (event.key === 'ArrowDown') this._pitch = clamp(this._pitch - 0.08, 0.10, 1.35);
         else if (event.key === '+' || event.key === '=') this.zoomBy(1.1); else if (event.key === '-' || event.key === '_') this.zoomBy(1 / 1.1); else this.reset();
         this._interaction('keyboard');
@@ -939,18 +1044,58 @@
         this._intersectionObserver = new IntersectionObserver(entries => { this._visible = entries[0].isIntersecting; if (this._visible) this._request(); else this._stop(); }, { threshold: 0 }); this._intersectionObserver.observe(canvas);
       }
     }
-    setShape(key) { if (this._destroyed || !['origami', 'sphere', 'portal', 'tensegrity', 'terrace', 'voyage-chart', 'voyage-globe', 'voyage-portal', 'voyage-rigging', 'voyage-islands'].includes(key)) return; this._cancelOpening(false); this._shape = key; this._distance = 0; this._currentFold = this._fold; this._phase = 0; this._voyageTime = 0; this._voyageFrame = -1; this._makeScene(); this._request(); }
+    setShape(key) {
+      if (this._destroyed || !sceneKeys.includes(key)) return;
+      this._cancelOpening(false); this._cancelUnfold(); this._shape = key; this._distance = 0;
+      this._currentFold = this._fold; this._unfoldProgress = this._isFoldable() ? 1 - this._fold : 0;
+      this._phase = 0; this._voyageTime = 0; this._voyageFrame = -1; this._unfoldTime = 0;
+      if (this._unfoldPreview && this._isUnfoldable() && this._motionEnabled()) { this._unfoldProgress = 0; this._syncUnfoldFold(); }
+      this._makeScene(); this._request();
+    }
     setSelected(index) { if (this._destroyed || !Number.isInteger(index) || index < 0 || index > 8) return; this._selected = index; this._selection(); this._request(); }
-    setFold(value) { if (this._destroyed || !Number.isFinite(Number(value))) return; this._cancelOpening(false); this._fold = clamp(Number(value), 0, 1); this._currentFold = this._fold; this._phase = 0; this._pausedUntil = performance.now() + 2500; if (this._isFoldable() || this._isVoyage()) this._makeScene(); this._request(); }
-    playOpening() {
-      if (this._destroyed || this._reduced || !this._motionEnabled() || (!this._isVoyage() && this._shape !== 'origami')) return false;
-      this._cancelOpening(false);
-      this._opening = { elapsed: 0, duration: 1.75 };
-      if (this._shape === 'origami') {
-        const finalMesh = accordion(this._currentFold);
-        this._opening.cameraPoints = finalMesh.triangles.flatMap(tri => tri);
-        this._opening.cameraBounds = finalMesh.bounds.map(p => p.slice());
+    setFold(value) {
+      if (this._destroyed || !Number.isFinite(Number(value))) return;
+      this._cancelOpening(false); this._cancelUnfold(); this._fold = clamp(Number(value), 0, 1); this._currentFold = this._fold;
+      if (this._isFoldable()) { this._unfoldPreview = false; this._unfoldProgress = 1 - this._fold; }
+      this._phase = 0; this._pausedUntil = performance.now() + 2500;
+      if (this._isFoldable() || this._isVoyage()) this._makeScene(); this._request();
+    }
+    setUnfold(value) {
+      if (this._destroyed || !this._isUnfoldable() || !Number.isFinite(Number(value))) return false;
+      this._cancelOpening(false); this._cancelUnfold(); this._unfoldPreview = false;
+      this._unfoldProgress = clamp(Number(value), 0, 1); this._syncUnfoldFold();
+      this._pausedUntil = performance.now() + 3500; this._makeScene(); this._request(); return true;
+    }
+    setUnfoldPreview(value) {
+      if (this._destroyed) return;
+      this._cancelUnfold(); this._unfoldPreview = !!value; this._unfoldTime = 0;
+      if (value && this._isUnfoldable() && this._motionEnabled()) {
+        this._cancelOpening(false); this._unfoldProgress = 0; this._syncUnfoldFold(); this._pausedUntil = 0; this._makeScene();
       }
+      this._lastTime = 0; this._request();
+    }
+    playUnfold(direction = 1) {
+      if (this._destroyed || !this._isUnfoldable()) return false;
+      const to = direction < 0 ? 0 : 1;
+      if (!this._motionEnabled()) { this.setUnfold(to); return false; }
+      this._cancelOpening(false); this._cancelUnfold(); this._unfoldPreview = false;
+      // Replaying at an endpoint starts at the opposite endpoint. Between them,
+      // reversing uses the displayed shape and never jumps to another frame.
+      if (Math.abs(this._unfoldProgress - to) < 0.00001) this._unfoldProgress = 1 - to;
+      this._syncUnfoldFold();
+      this._unfoldAnimation = { from: this._unfoldProgress, to, elapsed: 0, duration: Math.max(1.2, Math.abs(to - this._unfoldProgress) * 4.5) };
+      this._unfoldFrame = -1; this._pausedUntil = 0; this._lastTime = 0;
+      this._makeScene(); this._request(); return true;
+    }
+    playOpening() {
+      if (this._destroyed) return false;
+      if (this._isUnfoldable()) {
+        this._unfoldPreview = false;
+        if (this._reduced && !this._motionOverride || !this._motionEnabled()) { this.setUnfold(1); return false; }
+        this._unfoldProgress = 0; this._syncUnfoldFold(); return this.playUnfold(1);
+      }
+      if (this._reduced && !this._motionOverride || !this._motionEnabled() || !this._isVoyage()) return false;
+      this._cancelOpening(false); this._opening = { elapsed: 0, duration: 1.75 };
       this._openingFrame = -1; this._pausedUntil = 0; this._lastTime = 0;
       this._makeScene(); this._request(); return true;
     }
@@ -966,7 +1111,7 @@
     setActive(value) { if (this._destroyed) return; this._active = !!value; if (this._active) this._request(); else this._stop(); }
     setYaw(degrees) { if (this._destroyed || !Number.isFinite(Number(degrees))) return; this._cancelOpening(); this._yaw = Number(degrees) * RAD; this._pausedUntil = performance.now() + 2500; this._request(); }
     zoomBy(factor) { if (this._destroyed || !Number.isFinite(Number(factor)) || Number(factor) <= 0) return; this._cancelOpening(); this._zoom = clamp(this._zoom * Number(factor), 0.55, 2.1); this._request(); }
-    reset() { if (this._destroyed) return; this._cancelOpening(false); this._yaw = 0.44; this._pitch = 0.60; this._zoom = 1; this._distance = 0; this._fold = 0.62; this._currentFold = this._fold; this._phase = 0; this._voyageTime = 0; this._voyageFrame = -1; this._setParallax(0, 0, true); this._pausedUntil = performance.now() + 2000; if (this._isFoldable() || this._isVoyage()) this._makeScene(); this._request(); }
+    reset() { if (this._destroyed) return; this._cancelOpening(false); this._cancelUnfold(); this._yaw = 0.44; this._pitch = 0.60; this._zoom = 1; this._distance = 0; this._fold = 0.62; this._currentFold = this._fold; this._unfoldProgress = this._isFoldable() ? 0.38 : 0; this._unfoldTime = 0; this._phase = 0; this._voyageTime = 0; this._voyageFrame = -1; this._setParallax(0, 0, true); this._pausedUntil = performance.now() + 2000; this._makeScene(); this._request(); }
     destroy() {
       if (this._destroyed) return; this._destroyed = true; this._stop();
       (this._listeners || []).forEach(remove => remove()); if (this._resizeObserver) this._resizeObserver.disconnect(); if (this._intersectionObserver) this._intersectionObserver.disconnect();

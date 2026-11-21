@@ -1,5 +1,54 @@
 # Paper atlas and visual reading rooms · release checks
 
+## Body-opening update · 21 November 2026
+
+The collection now has **eight studio bodies and eight matching voyages**. Twelve
+scenes have a reversible opening: origami, globe, hollow portal, Noperthedron,
+neck-surgery illustration and Klein-bottle immersion in both collections.
+Tensegrity and terraces retain their geometry. The nine research destinations and
+their evidence labels are unchanged.
+
+The uploaded Claude source supplied the missing body-opening direction. The new
+pure geometry module is separate from the renderer and interface. Automatic table
+previews, a native slider, Shift-drag and Shift-arrow controls make intermediate
+states directly inspectable. Refold and Open again work in either direction;
+Pause holds the current state. Initial reduced motion skips automatic unfolding,
+while an explicit Play choice can enable it.
+
+The connected-browser preview showed the Klein bottle closed and halfway open,
+the Noperthedron closed and fully unfolded, and the hollow portal. Reviewing the
+closed Noperthedron revealed that a fixed full-net envelope made it too small.
+Studio Noperthedron and portal now fit the current faces continuously; the camera
+pulls back as they open. The other unfolding scenes retain fixed camera envelopes.
+The enlarged closed polyhedron was checked in the rendered preview afterwards.
+
+At a 390 px responsive frame, all eight body choices fit without horizontal
+overflow. The phone workbench makes the reference photograph expandable so the
+live model appears sooner. The desktop retains the full photographic table.
+
+Reproducible checks:
+
+- `node atlas/verify_shape_catalog.cjs`: sixteen scenes, eight complete body pairs,
+  twelve openings and the nine original subject destinations; 130 sampled models,
+  56,472 faces and 1,170 landmarks; face rigidity, hinge adjacency and Klein seam
+  pairing, plus closed/open endpoint topology.
+- `node atlas/verify_unfolding_engine.cjs`: 3,024 view/progress cases, 146,898 triangle
+  instances, finite geometry and unit normals; maximum sampled viewport extent
+  0.8705; pause, reversal, replay, visibility, reduced-motion override and graphics
+  context lifecycle. The two hinged studio bodies exceed 260 px in height in the
+  specified 600 × 510 stage test.
+- JavaScript syntax and `git diff --check`.
+
+The new **Paper shapes** workflow runs those checks for relevant changes. It does
+not generate candidates or promote designs automatically. The
+[shape-generation roadmap](shape-generation-roadmap.md) records that next step.
+The [shape source ledger](shape-lab-sources.md) distinguishes the authors' theorem,
+the rounded visual mesh, the illustrative surface morphs and the surgery analogy.
+These geometry tests are neither rendered screenshots nor mathematical proof of
+nonoverlap, physical stability or Ricci flow.
+
+## Earlier workbench release
+
 **Edition:** 21 November 2026. **Integrated preview:** `625c53b737e26ab9af6c5a43ce13d608340916d3`.
 
 ## Delivered experience

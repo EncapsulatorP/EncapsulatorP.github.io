@@ -227,7 +227,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <link rel="stylesheet" href="assets/treasure-rooms.css">
 <link rel="stylesheet" href="assets/goldbach-lab.css">
 <link rel="stylesheet" href="assets/curious-cabinet.css">
-<link rel="stylesheet" href="assets/paper-atlas.css?v=paper-20261121-r7">
+<link rel="stylesheet" href="assets/paper-atlas.css?v=unfold-20261121-r3">
 <link rel="stylesheet" href="assets/visual-first.css?v=visual-20261121-r2">
 <meta name="description" content="Explore EncapsulatorP’s research atlas: Omega Stability, prime pairs, recursive towers, complex worlds and 45 source-linked mathematical threads.">
 </head>
@@ -1154,26 +1154,29 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
       <div class="pm-header-actions"><button class="pm-button pm-back-table" id="pm-back-table" type="button" hidden><span aria-hidden="true">↶</span> Back to the table</button><button class="pm-button pm-close" id="pm-close" type="button"><span id="pm-close-caption">Skip to atlas</span></button></div>
     </header>
     <section class="pm-table" id="pm-table" aria-labelledby="pm-table-title" hidden>
-      <div class="pm-table-intro"><p class="pm-kicker">The workbench</p><h3 id="pm-table-title" tabindex="-1">Pick up a possibility.</h3><p>Move over a shape to see it in motion. Choose one to open its map.</p></div>
-      <div class="pm-table-photo">
-        <img src="assets/paper-workbench-reference.png" width="1024" height="572" alt="Paper bodies on a wooden workbench: a gridded globe, an ivory hollow polyhedron, blue and copper origami, and small star-shaped models." loading="eager">
-        <button type="button" class="pm-table-hotspot pm-table-globe" data-table-form="sphere" aria-label="Preview and open the globe"><span>Globe</span></button>
-        <button type="button" class="pm-table-hotspot pm-table-portal" data-table-form="portal" aria-label="Preview and open the hollow body"><span>Hollow body</span></button>
-        <button type="button" class="pm-table-hotspot pm-table-origami" data-table-form="origami" aria-label="Preview and unfold the origami"><span>Origami</span></button>
-      </div>
+      <div class="pm-table-intro"><p class="pm-kicker">The workbench</p><h3 id="pm-table-title" tabindex="-1">Worlds inside the fold.</h3><p>Move over a body. Watch it peel, hinge or open its seams. Pick it up and follow the discoveries inside.</p></div>
       <div class="pm-table-models" role="group" aria-label="Choose a body from the table">
         <button type="button" data-table-form="origami"><svg viewBox="0 0 64 42" aria-hidden="true"><path d="M4 31 16 7 29 31 42 7 60 31 46 36 32 20 18 36Z" fill="#287388" stroke="#f6f1df"/><path d="M16 7 18 36 32 20 42 7 46 36" fill="none" stroke="#c88c57"/></svg><span>Origami</span></button>
         <button type="button" data-table-form="sphere"><svg viewBox="0 0 64 42" aria-hidden="true"><circle cx="32" cy="21" r="18" fill="#e7e0cd" stroke="#687c72"/><ellipse cx="32" cy="21" rx="8" ry="18" fill="none" stroke="#8c9a8d"/><path d="M15 15Q32 22 49 15M15 27Q32 20 49 27M14 21H50" fill="none" stroke="#8c9a8d"/></svg><span>Globe</span></button>
         <button type="button" data-table-form="portal"><svg viewBox="0 0 64 42" aria-hidden="true"><path d="M18 3H43L55 21 43 39H18L8 21ZM24 12 18 21 24 30H37L44 21 37 12Z" fill="#d5c9ad" fill-rule="evenodd" stroke="#819087"/><path d="M18 3 24 12M43 3 37 12M55 21 44 21M43 39 37 30M18 39 24 30M8 21H18" stroke="#faf5e8"/></svg><span>Hollow body</span></button>
         <button type="button" data-table-form="tensegrity"><svg viewBox="0 0 64 42" aria-hidden="true"><path d="M13 32 48 32 33 7 13 32M48 32 19 8 33 7M19 8 43 7 13 32" fill="none" stroke="#428d8a" stroke-width="1.2"/><path d="M13 32 43 7M48 32 19 8M34 35 33 7" stroke="#ae744c" stroke-width="3"/></svg><span>Tensegrity</span></button>
         <button type="button" data-table-form="terrace"><svg viewBox="0 0 64 42" aria-hidden="true"><path d="M5 29 24 19 58 28 40 39Z" fill="#a4b8a9"/><path d="M10 23 27 14 53 22 38 31Z" fill="#d3d9c7"/><path d="M18 17 30 9 47 16 35 24Z" fill="#f4eddc"/><path d="M25 11 32 2 38 15Z" fill="#5d8d8e"/></svg><span>Landforms</span></button>
+        <button type="button" data-table-form="noperthedron"><svg viewBox="0 0 64 42" aria-hidden="true"><path d="M13 12 30 3 49 10 54 27 36 39 15 32 8 22Z" fill="#e9dabc" stroke="#847d69"/><path d="M13 12 36 17 30 3M49 10 36 17 54 27M36 17 36 39M36 17 15 32M8 22 36 17" fill="none" stroke="#bf9369"/><path d="M13 12 15 32 30 3 54 27" fill="none" stroke="#fff9e3"/></svg><span>Noperthedron</span></button>
+        <button type="button" data-table-form="neck"><svg viewBox="0 0 64 42" aria-hidden="true"><path d="M7 21C7 4 24 3 29 16Q32 23 35 16C40 3 57 4 57 21S40 39 35 26Q32 19 29 26C24 39 7 38 7 21Z" fill="#c4dcd3" stroke="#5d9085"/><path d="M32 4V38" stroke="#ce8b57" stroke-dasharray="3 3"/><ellipse cx="18" cy="21" rx="5" ry="13" fill="none" stroke="#f9f1de"/><ellipse cx="46" cy="21" rx="5" ry="13" fill="none" stroke="#f9f1de"/></svg><span>Neck surgery</span></button>
+        <button type="button" data-table-form="klein"><svg viewBox="0 0 64 42" aria-hidden="true"><path d="M19 32C4 24 17 9 26 11L39 13C51 14 54 5 43 4C33 3 32 11 38 21C48 37 32 43 19 32Z" fill="#b9dcd8" stroke="#4a8582" stroke-width="2"/><path d="M20 15C13 27 28 37 34 31S33 21 30 16M39 7C35 15 47 22 41 31" fill="none" stroke="#fcf6e5" stroke-width="1.5"/></svg><span>Klein bottle</span></button>
       </div>
-      <p class="pm-table-note">Five bodies. Two collections. The same nine discoveries.</p>
+      <details class="pm-reference" id="pm-reference" open><summary>The reference workbench <span>Open the photograph</span></summary><div class="pm-table-photo">
+        <img src="assets/paper-workbench-reference.png" width="1024" height="572" alt="Paper bodies on a wooden workbench: a gridded globe, an ivory hollow polyhedron, blue and copper origami, and small star-shaped models." loading="eager">
+        <button type="button" class="pm-table-hotspot pm-table-globe" data-table-form="sphere" aria-label="Preview and open the globe"><span>Globe</span></button>
+        <button type="button" class="pm-table-hotspot pm-table-portal" data-table-form="portal" aria-label="Preview and open the hollow body"><span>Hollow body</span></button>
+        <button type="button" class="pm-table-hotspot pm-table-origami" data-table-form="origami" aria-label="Preview and unfold the origami"><span>Origami</span></button>
+      </div></details>
+      <p class="pm-table-note">Eight bodies. Two collections. The same nine discoveries.</p>
       <p class="pm-table-credit">Image supplied by Zolton · Gemini. Table journey inspired by Claude.</p>
     </section>
     <div class="pm-layout">
       <div class="pm-chart">
-        <div class="pm-style-switch" role="group" aria-label="Choose the map collection"><button type="button" id="pm-family-voyage" aria-pressed="true">Origami voyages <span>05 scenes</span></button><button type="button" id="pm-family-studio" aria-pressed="false">Paper studio <span>05 forms</span></button></div>
+        <div class="pm-style-switch" role="group" aria-label="Choose the map collection"><button type="button" id="pm-family-voyage" aria-pressed="true">Origami voyages <span>08 scenes</span></button><button type="button" id="pm-family-studio" aria-pressed="false">Paper studio <span>08 forms</span></button></div>
         <div class="pm-toolbar" id="pm-toolbar" hidden>
           <div class="pm-field pm-shape-field"><label for="pm-shape-select">Choose a form</label><select id="pm-shape-select"></select></div>
           <button class="pm-button" id="pm-motion" type="button" aria-pressed="true">Pause motion</button>
@@ -1183,7 +1186,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
           <canvas id="pm-canvas" width="1200" height="900" aria-label="Rotatable paper map. Use the numbered landmarks or the research trail to read each subject."></canvas>
           <div class="pm-stage-heading"><strong id="pm-stage-kicker">Charted discoveries / 01—09</strong><span id="pm-shape" aria-live="polite"></span></div>
           <ol class="pm-pins" id="pm-pins" aria-label="Landmarks on the paper map" hidden></ol>
-          <p class="pm-stage-hint">Drag to orbit · choose a numbered landmark</p>
+          <p class="pm-stage-hint" id="pm-stage-hint">Drag to orbit · choose a numbered landmark</p>
           <div class="pm-stage-controls" aria-label="Map view controls"><button type="button" class="pm-button" id="pm-zoom-in">Zoom in</button><button type="button" class="pm-button" id="pm-zoom-out">Zoom out</button><button type="button" class="pm-button" id="pm-reset">Reset</button></div>
           <p class="pm-render-fallback" id="pm-render-fallback" hidden>The 3D map is unavailable on this device. Every subject is still available in the research trail.</p>
           <button class="pm-landing" id="pm-reveal" type="button" autofocus>
@@ -1192,8 +1195,15 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
             <span class="pm-landing-note">Choose a landmark. Follow its thread.</span>
           </button>
         </div>
+        <section class="pm-unfold-controls" id="pm-unfold-controls" aria-label="Open the shape" hidden>
+          <div class="pm-unfold-top"><label id="pm-unfold-name" for="pm-unfold-progress">Open the shape</label><span id="pm-unfold-phase">Closed form</span><output id="pm-unfold-value" for="pm-unfold-progress">0%</output></div>
+          <input id="pm-unfold-progress" type="range" min="0" max="100" step="1" value="0" aria-label="Shape opening" aria-describedby="pm-unfold-help">
+          <div class="pm-unfold-stages" id="pm-unfold-stages" aria-hidden="true"><span>Closed form</span><span>Opening</span><span>Open form</span></div>
+          <div class="pm-unfold-bottom"><p id="pm-unfold-help">Slide through the transformation. Shift + drag works on the model too.</p><div><button type="button" class="pm-button" id="pm-refold">Refold</button><button type="button" class="pm-button" id="pm-open-body">Open again</button></div></div>
+        </section>
         <div class="pm-fold-row" id="pm-fold-row" hidden><label for="pm-fold">Unfold</label><input id="pm-fold" type="range" min="0" max="100" value="52" aria-label="Paper fold"><span>Fold</span><output for="pm-fold" id="pm-fold-value">52%</output></div>
         <div class="pm-chart-bar"><p class="pm-map-description" id="pm-description"></p><a class="pm-credit-link" id="pm-credit-link" href="#map-credits">Map credits</a></div>
+        <details class="pm-shape-notes" id="pm-shape-notes" hidden><summary>Inside this form <span>Geometry &amp; source</span></summary><p id="pm-shape-meaning"></p><p class="pm-shape-boundary" id="pm-shape-boundary"></p><a id="pm-shape-source" href="atlas/shape-lab-sources.md" target="_blank" rel="noopener noreferrer">Read the source</a><a class="pm-shape-ledger" href="atlas/shape-lab-sources.md" target="_blank" rel="noopener noreferrer">All shape notes ↗</a></details>
         <div class="pm-structure" id="pm-structure" hidden><p><span class="pm-cable-key">Nine cables · pull</span><span class="pm-strut-key">Three struts · push</span></p><details><summary>How the ideal joints balance</summary><p>The triangular rings are 30° apart. Ring cables have force density 1/√3, cross-ring cables +1, and struts −1. Each joint’s weighted vectors sum to zero in this ideal model.</p></details></div>
         <ul class="pm-legend" id="pm-legend" hidden><li data-kind="treasure"><b>Treasure</b> · exact result</li><li data-kind="wildcard"><b>Wildcard</b> · open exploration</li><li data-kind="trap"><b>Trap</b> · a useful correction</li></ul>
       </div>
@@ -1535,8 +1545,9 @@ window.addEventListener('hashchange',show);show();
 <script src="assets/curious-cabinet.js"></script>
 <script src="assets/kesten-goldie.js?v=visual-20261121-r2"></script>
 <script src="assets/visual-first.js?v=visual-20261121-r2"></script>
-<script src="assets/pirate-map-data.js?v=paper-20261121-r7"></script>
-<script src="assets/paper-map-engine.js?v=paper-20261121-r7"></script>
-<script src="assets/paper-atlas.js?v=paper-20261121-r7"></script>
+<script src="assets/pirate-map-data.js?v=unfold-20261121-r3"></script>
+<script src="assets/paper-shape-lab.js?v=unfold-20261121-r3"></script>
+<script src="assets/paper-map-engine.js?v=unfold-20261121-r3"></script>
+<script src="assets/paper-atlas.js?v=unfold-20261121-r3"></script>
 </body></html>
 

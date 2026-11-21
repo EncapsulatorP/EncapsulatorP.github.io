@@ -1,5 +1,5 @@
 /* Paper-map content: subject links first, source links second.
- * Evidence and credits: atlas/paper-map-sources.md
+ * Evidence and credits: atlas/paper-map-sources.md and atlas/shape-lab-sources.md
  */
 window.PIRATE_MAP_DATA = {
   "trail": [
@@ -129,25 +129,52 @@ window.PIRATE_MAP_DATA = {
       "sourceLabel": "Atlas fold drawing",
       "sourceUrl": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js",
       "family": "studio",
-      "foldable": true
+      "foldable": true,
+      "unfoldLabel": "Release the creases",
+      "phases": [
+        "Folded paper",
+        "Creases opening",
+        "Open sheet"
+      ],
+      "lesson": "A folded sheet can become a chart. The same nine landmarks move with its material coordinates, so every stop keeps its identity while the sheet opens.",
+      "boundary": "This is an illustrative accordion deformation. No rigid Miura mechanism or paper-engineering specification is claimed.",
+      "unfoldable": true
     },
     {
       "key": "sphere",
       "name": "Riemann sphere",
-      "description": "A paper globe inspired by the complex plane with one point at infinity.",
+      "description": "A globe peels from the pole and opens into a round chart; slide to explore every stage.",
       "sourceLabel": "Stereographic projection · Jason Murphy",
       "sourceUrl": "https://pages.uoregon.edu/jamu/Math5351-lecture-notes.pdf",
       "family": "studio",
-      "foldable": false
+      "foldable": false,
+      "unfoldLabel": "Peel the globe",
+      "phases": [
+        "Globe",
+        "Peeling from the pole",
+        "Round chart"
+      ],
+      "lesson": "The Riemann sphere represents the complex plane together with one point at infinity. Here a separate visual transformation opens the globe into a round chart, keeping a continuous trail of landmarks.",
+      "boundary": "Peeling stretches the displayed surface. It is an illustrative cut-and-flatten animation, not stereographic projection or an isometric paper unfolding.",
+      "unfoldable": true
     },
     {
       "key": "portal",
       "name": "Rupert-inspired portal",
-      "description": "An oblique opening through a faceted paper body, inspired by the cube-passage question.",
+      "description": "A hollow paper body opens its faces, revealing the trail through its changing geometry.",
       "sourceLabel": "O. Bottema · A Problem of Pieter Nieuwland",
       "sourceUrl": "https://cms.math.ca/wp-content/uploads/crux-pdfs/Crux_v4n04_Apr.pdf",
       "family": "studio",
-      "foldable": false
+      "foldable": false,
+      "unfoldLabel": "Unhinge the portal",
+      "phases": [
+        "Hollow body",
+        "Faces opening",
+        "Open face layout"
+      ],
+      "lesson": "A hollow paper body suggests the cube-passage question: can a copy pass through a suitable opening? Its face layout gives us another way to arrange the research trail.",
+      "boundary": "This decorative body is not a passage certificate. The animation does not establish a Rupert property or a maximum passage ratio.",
+      "unfoldable": true
     },
     {
       "key": "tensegrity",
@@ -156,7 +183,9 @@ window.PIRATE_MAP_DATA = {
       "sourceLabel": "Tensegrity mathematics · Cornell",
       "sourceUrl": "https://pi.math.cornell.edu/~back/amsci_tenseg_scan.pdf",
       "family": "studio",
-      "foldable": false
+      "foldable": false,
+      "lesson": "Three compression struts and nine tension cables form this ideal tensegrity prism. Its joints satisfy the stated force-density balance; orbit the model to see how the members connect.",
+      "boundary": "A balanced geometric drawing is not a load-capacity or prestress-stability certificate."
     },
     {
       "key": "terrace",
@@ -165,7 +194,63 @@ window.PIRATE_MAP_DATA = {
       "sourceLabel": "Atlas navigation drawing",
       "sourceUrl": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js",
       "family": "studio",
-      "foldable": false
+      "foldable": false,
+      "lesson": "Terraces and islands arrange the same nine subject destinations. Their heights are an artistic choice, not an evidence or performance score.",
+      "boundary": "This form remains a landscape while the view moves around it."
+    },
+    {
+      "key": "noperthedron",
+      "name": "Noperthedron",
+      "description": "A many-faceted body releases into a spreading layout of hinged faces.",
+      "family": "studio",
+      "foldable": false,
+      "sourceLabel": "Steininger & Yurkevich · original construction",
+      "sourceUrl": "https://arxiv.org/abs/2508.18475",
+      "unfoldLabel": "Unfold the Noperthedron",
+      "phases": [
+        "152 faces",
+        "Hinges releasing",
+        "Face layout"
+      ],
+      "lesson": "Steininger and Yurkevich constructed a convex polyhedron without Rupert’s property. The supplied visual mesh has 90 vertices and 152 faces. Its faces open along a spanning tree of shared edges.",
+      "boundary": "The display uses rounded coordinates. The theorem belongs to the authors’ exact construction; neither this rendering nor its hinged layout certifies non-passage or a non-overlapping paper net.",
+      "unfoldable": true
+    },
+    {
+      "key": "neck",
+      "name": "Neck surgery",
+      "description": "A narrow neck pinches, separates and opens into two chart-like lobes.",
+      "family": "studio",
+      "foldable": false,
+      "sourceLabel": "Perelman · Ricci flow with surgery on three-manifolds",
+      "sourceUrl": "https://arxiv.org/abs/math/0303109",
+      "unfoldLabel": "Pinch, cut and open",
+      "phases": [
+        "Joined lobes",
+        "Pinch · separate",
+        "Two open charts"
+      ],
+      "lesson": "A narrow neck shrinks, the lobes separate, and each opens into a chart. This is a visual doorway into the neck-and-cap idea associated with Hamilton–Perelman Ricci-flow surgery.",
+      "boundary": "This two-dimensional surface cartoon does not compute Ricci flow. Perelman’s surgery concerns three-manifolds; the animation provides no physical prediction.",
+      "unfoldable": true
+    },
+    {
+      "key": "klein",
+      "name": "Klein bottle",
+      "description": "A one-sided surface, shown as a 3D immersion, opens into a rectangle with paired seams.",
+      "family": "studio",
+      "foldable": false,
+      "sourceLabel": "C. McMullen · topology of surfaces",
+      "sourceUrl": "https://legacy-www.math.harvard.edu/~ctm/papers/home/text/class/harvard/131/course/course.pdf",
+      "unfoldLabel": "Open the Klein bottle",
+      "phases": [
+        "Klein immersion",
+        "Cutting the seams",
+        "Marked sheet"
+      ],
+      "lesson": "A Klein bottle can be described by a rectangle with opposite edges identified: one pair in the same direction and the other reversed. Follow the marked seams as the displayed bottle opens back into that rectangle.",
+      "boundary": "A Klein bottle has no self-intersection as an abstract surface. The crossing is a feature of its immersion in three-dimensional space. The cut-and-open morph changes the displayed seams; it is not a physical bottle turning into a flat sheet.",
+      "unfoldable": true
     },
     {
       "key": "voyage-chart",
@@ -173,17 +258,35 @@ window.PIRATE_MAP_DATA = {
       "description": "An opened paper chart, turning geometric wheels and two folded boats tracing a route between the discoveries.",
       "family": "voyage",
       "foldable": true,
-      "sourceLabel": "Zolton’s paper-voyage direction · current 3D implementation",
-      "sourceUrl": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js"
+      "sourceLabel": "Atlas fold drawing",
+      "sourceUrl": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js",
+      "unfoldLabel": "Release the creases",
+      "phases": [
+        "Folded paper",
+        "Creases opening",
+        "Open sheet"
+      ],
+      "lesson": "A folded sheet can become a chart. The same nine landmarks move with its material coordinates, so every stop keeps its identity while the sheet opens.",
+      "boundary": "This is an illustrative accordion deformation. No rigid Miura mechanism or paper-engineering specification is claimed.",
+      "unfoldable": true
     },
     {
       "key": "voyage-globe",
       "name": "The globe harbour",
-      "description": "A faceted cartographic globe above an open chart, with tiny paper boats following the printed voyage.",
+      "description": "A globe peels open over the chart while paper boats follow the printed voyage.",
       "family": "voyage",
       "foldable": false,
-      "sourceLabel": "Zolton’s paper-voyage direction · current 3D implementation",
-      "sourceUrl": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js"
+      "sourceLabel": "Stereographic projection · Jason Murphy",
+      "sourceUrl": "https://pages.uoregon.edu/jamu/Math5351-lecture-notes.pdf",
+      "unfoldLabel": "Peel the globe",
+      "phases": [
+        "Globe",
+        "Peeling from the pole",
+        "Round chart"
+      ],
+      "lesson": "The Riemann sphere represents the complex plane together with one point at infinity. Here a separate visual transformation opens the globe into a round chart, keeping a continuous trail of landmarks.",
+      "boundary": "Peeling stretches the displayed surface. It is an illustrative cut-and-flatten animation, not stereographic projection or an isometric paper unfolding.",
+      "unfoldable": true
     },
     {
       "key": "voyage-portal",
@@ -191,8 +294,17 @@ window.PIRATE_MAP_DATA = {
       "description": "A hollow paper portal on a folded sea chart. The boats and passage are an imaginative setting for exploring the research.",
       "family": "voyage",
       "foldable": false,
-      "sourceLabel": "Zolton’s paper-voyage direction · current 3D implementation",
-      "sourceUrl": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js"
+      "sourceLabel": "O. Bottema · A Problem of Pieter Nieuwland",
+      "sourceUrl": "https://cms.math.ca/wp-content/uploads/crux-pdfs/Crux_v4n04_Apr.pdf",
+      "unfoldLabel": "Unhinge the portal",
+      "phases": [
+        "Hollow body",
+        "Faces opening",
+        "Open face layout"
+      ],
+      "lesson": "A hollow paper body suggests the cube-passage question: can a copy pass through a suitable opening? Its face layout gives us another way to arrange the research trail.",
+      "boundary": "This decorative body is not a passage certificate. The animation does not establish a Rupert property or a maximum passage ratio.",
+      "unfoldable": true
     },
     {
       "key": "voyage-rigging",
@@ -201,7 +313,9 @@ window.PIRATE_MAP_DATA = {
       "family": "voyage",
       "foldable": false,
       "sourceLabel": "Zolton’s paper-voyage direction · current 3D implementation",
-      "sourceUrl": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js"
+      "sourceUrl": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js",
+      "lesson": "Three compression struts and nine tension cables form this ideal tensegrity prism. Its joints satisfy the stated force-density balance; orbit the model to see how the members connect.",
+      "boundary": "A balanced geometric drawing is not a load-capacity or prestress-stability certificate."
     },
     {
       "key": "voyage-islands",
@@ -210,7 +324,63 @@ window.PIRATE_MAP_DATA = {
       "family": "voyage",
       "foldable": false,
       "sourceLabel": "Zolton’s paper-voyage direction · current 3D implementation",
-      "sourceUrl": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js"
+      "sourceUrl": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/assets/paper-map-engine.js",
+      "lesson": "Terraces and islands arrange the same nine subject destinations. Their heights are an artistic choice, not an evidence or performance score.",
+      "boundary": "This form remains a landscape while the view moves around it."
+    },
+    {
+      "key": "voyage-noperthedron",
+      "name": "A hundred and fifty-two sails",
+      "description": "A Noperthedron unfolds its face tree above the chart while paper boats follow the discoveries.",
+      "family": "voyage",
+      "foldable": false,
+      "sourceLabel": "Steininger & Yurkevich · original construction",
+      "sourceUrl": "https://arxiv.org/abs/2508.18475",
+      "unfoldLabel": "Unfold the Noperthedron",
+      "phases": [
+        "152 faces",
+        "Hinges releasing",
+        "Face layout"
+      ],
+      "lesson": "Steininger and Yurkevich constructed a convex polyhedron without Rupert’s property. The supplied visual mesh has 90 vertices and 152 faces. Its faces open along a spanning tree of shared edges.",
+      "boundary": "The display uses rounded coordinates. The theorem belongs to the authors’ exact construction; neither this rendering nor its hinged layout certifies non-passage or a non-overlapping paper net.",
+      "unfoldable": true
+    },
+    {
+      "key": "voyage-neck",
+      "name": "Two seas from one neck",
+      "description": "An illustrative neck surgery opens two lobes above a shared route.",
+      "family": "voyage",
+      "foldable": false,
+      "sourceLabel": "Perelman · Ricci flow with surgery on three-manifolds",
+      "sourceUrl": "https://arxiv.org/abs/math/0303109",
+      "unfoldLabel": "Pinch, cut and open",
+      "phases": [
+        "Joined lobes",
+        "Pinch · separate",
+        "Two open charts"
+      ],
+      "lesson": "A narrow neck shrinks, the lobes separate, and each opens into a chart. This is a visual doorway into the neck-and-cap idea associated with Hamilton–Perelman Ricci-flow surgery.",
+      "boundary": "This two-dimensional surface cartoon does not compute Ricci flow. Perelman’s surgery concerns three-manifolds; the animation provides no physical prediction.",
+      "unfoldable": true
+    },
+    {
+      "key": "voyage-klein",
+      "name": "The one-sided voyage",
+      "description": "A Klein-bottle immersion opens its marked seams above the paper sea.",
+      "family": "voyage",
+      "foldable": false,
+      "sourceLabel": "C. McMullen · topology of surfaces",
+      "sourceUrl": "https://legacy-www.math.harvard.edu/~ctm/papers/home/text/class/harvard/131/course/course.pdf",
+      "unfoldLabel": "Open the Klein bottle",
+      "phases": [
+        "Klein immersion",
+        "Cutting the seams",
+        "Marked sheet"
+      ],
+      "lesson": "A Klein bottle can be described by a rectangle with opposite edges identified: one pair in the same direction and the other reversed. Follow the marked seams as the displayed bottle opens back into that rectangle.",
+      "boundary": "A Klein bottle has no self-intersection as an abstract surface. The crossing is a feature of its immersion in three-dimensional space. The cut-and-open morph changes the displayed seams; it is not a physical bottle turning into a flat sheet.",
+      "unfoldable": true
     }
   ],
   "credits": [
@@ -223,6 +393,11 @@ window.PIRATE_MAP_DATA = {
       "name": "Neon (Gemini)",
       "role": "Supplied prototype signature",
       "note": "This is the signature recorded on the uploaded prototype. It is preserved as supplied, without treating it as authenticated model identity."
+    },
+    {
+      "name": "Claude",
+      "role": "Supplied unfolding reference",
+      "note": "The uploaded cut-a-shape-open prototype supplied the globe peel, Noperthedron face tree, accordion and neck-surgery reference. The current renderer adapts these ideas and credits their mathematical sources separately."
     },
     {
       "name": "ChatGPT",

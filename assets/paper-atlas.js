@@ -7,6 +7,8 @@
   const { trail, shapes } = data;
   const media = window.matchMedia('(prefers-reduced-motion: reduce)');
   const compact = window.matchMedia('(max-width: 760px)');
+  $('pm-reference').open = !compact.matches;
+  compact.addEventListener('change', () => { $('pm-reference').open = !compact.matches; });
   const canvas = $('pm-canvas');
   const pins = $('pm-pins');
   const timeline = $('pm-timeline');
@@ -22,14 +24,48 @@
     sphere: { studio: 'sphere', voyage: 'voyage-globe' },
     portal: { studio: 'portal', voyage: 'voyage-portal' },
     tensegrity: { studio: 'tensegrity', voyage: 'voyage-rigging' },
-    terrace: { studio: 'terrace', voyage: 'voyage-islands' }
+    terrace: { studio: 'terrace', voyage: 'voyage-islands' },
+    noperthedron: { studio: 'noperthedron', voyage: 'voyage-noperthedron' },
+    neck: { studio: 'neck', voyage: 'voyage-neck' },
+    klein: { studio: 'klein', voyage: 'voyage-klein' }
   };
   const tableButtons = Array.from(dialog.querySelectorAll('[data-table-form]'));
   const kindNames = { treasure: 'Treasure', wildcard: 'Wildcard', trap: 'Trap' };
   const visited = new Set();
   let chosen = 0, shapeIndex = 0, family = 'voyage', engine = null, opener = null;
   let leavingForLink = false, motion = !media.matches, hoveringPin = false;
-  let latestProjection = [], foldFrame = 0, rendererAvailable = null;
+  let latestProjection = [], foldFrame = 0, rendererAvailable = null, lastUnfoldPercent = -1;
+
+  function syncUnfold(info) {
+    if (!info || !shapes[shapeIndex].unfoldable) return;
+    const percent = Math.round(Math.max(0, Math.min(1, info.unfoldProgress || 0)) * 100);
+    if (percent === lastUnfoldPercent) return;
+    lastUnfoldPercent = percent;
+    $('pm-unfold-progress').value = String(percent);
+    $('pm-unfold-value').value = `${percent}%`;
+    const phases = shapes[shapeIndex].phases || ['Closed form', 'Opening', 'Open form'];
+    const phase = percent < 8 ? 0 : percent > 92 ? 2 : 1;
+    $('pm-unfold-phase').textContent = phases[phase];
+    $('pm-unfold-progress').setAttribute('aria-valuetext', `${percent}% open, ${phases[phase]}`);
+    Array.from($('pm-unfold-stages').children).forEach((label, i) => { label.dataset.active = String(i === phase); });
+  }
+  function syncShapeNotes(shape) {
+    $('pm-unfold-controls').hidden = !shape.unfoldable;
+    $('pm-unfold-controls').setAttribute('aria-label', shape.unfoldLabel || 'Open the shape');
+    $('pm-unfold-name').textContent = shape.unfoldLabel || 'Open the shape';
+    $('pm-unfold-stages').replaceChildren();
+    (shape.phases || ['Closed form', 'Opening', 'Open form']).forEach(label => {
+      const item = document.createElement('span'); item.textContent = label; $('pm-unfold-stages').append(item);
+    });
+    $('pm-shape-notes').hidden = !shape.lesson;
+    $('pm-shape-meaning').textContent = shape.lesson || '';
+    $('pm-shape-boundary').textContent = shape.boundary || '';
+    $('pm-shape-source').href = shape.sourceUrl;
+    $('pm-shape-source').textContent = shape.sourceLabel;
+    $('pm-stage-hint').textContent = shape.unfoldable ? 'Drag to orbit · Shift + drag to unfold' : 'Drag to orbit · choose a numbered landmark';
+    lastUnfoldPercent = -1;
+    syncUnfold({ unfoldProgress: 0 });
+  }
 
   function matches(stop) {
     return (topicFilter.value === 'all' || topicFilter.value === stop.topic) &&
@@ -60,11 +96,12 @@
         onProject(points, info) {
           latestProjection = points;
           refreshPins();
+          syncUnfold(info);
           if (info && typeof info.available === 'boolean' && info.available !== rendererAvailable) {
             rendererAvailable = info.available;
             $('pm-render-fallback').hidden = info.available;
             pins.hidden = !info.available || dialog.dataset.mapState === 'table';
-            ['pm-motion', 'pm-zoom-in', 'pm-zoom-out', 'pm-reset', 'pm-fold'].forEach(id => { $(id).disabled = !info.available; });
+            ['pm-motion', 'pm-zoom-in', 'pm-zoom-out', 'pm-reset', 'pm-fold', 'pm-unfold-progress', 'pm-refold', 'pm-open-body'].forEach(id => { $(id).disabled = !info.available; });
           }
         },
         onInteraction() { hoveringPin = false; }
@@ -74,7 +111,7 @@
       $('pm-render-fallback').hidden = false;
       canvas.hidden = true;
       pins.hidden = true;
-      ['pm-motion', 'pm-zoom-in', 'pm-zoom-out', 'pm-reset', 'pm-fold'].forEach(id => { $(id).disabled = true; });
+      ['pm-motion', 'pm-zoom-in', 'pm-zoom-out', 'pm-reset', 'pm-fold', 'pm-unfold-progress', 'pm-refold', 'pm-open-body'].forEach(id => { $(id).disabled = true; });
       $('pm-reveal').hidden = true;
       dialog.dataset.renderer = 'unavailable';
       console.warn('Paper atlas: the subject trail is available without the 3D renderer.', error.message);
@@ -88,21 +125,27 @@
     dialog.dataset.shape = shape.key;
     const body = Object.keys(bodyKeys).find(name => Object.values(bodyKeys[name]).includes(shape.key));
     tableButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.tableForm === body)));
-    $('pm-unfold-label').textContent = family === 'voyage' || shape.foldable ? 'Unfold this map' : 'Explore this form';
+    $('pm-unfold-label').textContent = shape.unfoldable ? 'Open this shape' : 'Explore this form';
     ['voyage', 'studio'].forEach(name => { $(`pm-family-${name}`).setAttribute('aria-pressed', String(name === family)); });
-    shapeSelect.replaceChildren();
-    shapes.filter(item => (item.family || 'studio') === family).forEach(item => {
-      const option = document.createElement('option'); option.value = item.key; option.textContent = item.name; shapeSelect.append(option);
-    });
+    if (shapeSelect.dataset.family !== family) {
+      shapeSelect.replaceChildren();
+      shapes.filter(item => (item.family || 'studio') === family).forEach(item => {
+        const option = document.createElement('option'); option.value = item.key; option.textContent = item.name; shapeSelect.append(option);
+      });
+      shapeSelect.dataset.family = family;
+    }
     shapeSelect.value = shape.key;
     $('pm-shape').textContent = shape.name;
     $('pm-description').textContent = shape.description;
-    $('pm-fold-row').hidden = !shape.foldable || dialog.dataset.mapState !== 'explored';
+    $('pm-fold-row').hidden = !shape.foldable || shape.unfoldable || dialog.dataset.mapState !== 'explored';
+    syncShapeNotes(shape);
     $('pm-structure').hidden = !['tensegrity', 'voyage-rigging'].includes(shape.key) || dialog.dataset.mapState !== 'explored';
     if (engine) {
       engine.setShape(shape.key);
       engine.setSelected(chosen);
       engine.setFold(Number($('pm-fold').value) / 100);
+      if (typeof engine.setUnfoldPreview === 'function') engine.setUnfoldPreview(dialog.dataset.mapState === 'table');
+      if (dialog.dataset.mapState === 'explored' && shape.unfoldable) engine.playOpening();
     }
     try { localStorage.setItem(storageKey, shape.key); localStorage.setItem(familyStorageKey, family); } catch (_) {}
   }
@@ -199,11 +242,14 @@
     $('pm-reveal').hidden = true;
     [$('pm-toolbar'), journal, $('pm-legend')].forEach(el => { el.hidden = false; });
     pins.hidden = !engine || rendererAvailable === false;
-    $('pm-fold-row').hidden = !shapes[shapeIndex].foldable;
+    $('pm-fold-row').hidden = !shapes[shapeIndex].foldable || shapes[shapeIndex].unfoldable;
     $('pm-structure').hidden = !['tensegrity', 'voyage-rigging'].includes(shapes[shapeIndex].key);
     selectStop(chosen);
     filterStops();
-    if (engine && typeof engine.playOpening === 'function') engine.playOpening();
+    if (engine) {
+      if (typeof engine.setUnfoldPreview === 'function') engine.setUnfoldPreview(false);
+      if (typeof engine.playOpening === 'function') engine.playOpening();
+    }
     dialog.scrollTop = 0;
     shapeSelect.focus({ preventScroll: true });
   }
@@ -218,7 +264,12 @@
     $('pm-toolbar').hidden = false;
     $('pm-reveal').hidden = false;
     pins.hidden = true;
-    if (engine) { engine.setShape(shapes[shapeIndex].key); engine.setFold(Number($('pm-fold').value) / 100); syncMotion(); }
+    if (engine) {
+      engine.setShape(shapes[shapeIndex].key);
+      engine.setFold(Number($('pm-fold').value) / 100);
+      if (typeof engine.setUnfoldPreview === 'function') engine.setUnfoldPreview(true);
+      syncMotion();
+    }
     dialog.scrollTop = 0;
     if (focus) $('pm-table-title').focus({ preventScroll: true });
   }
@@ -238,7 +289,7 @@
     dialog.scrollTop = 0;
     document.documentElement.classList.add('pm-open');
     initEngine();
-    let next = shapes.findIndex(shape => shape.key === 'voyage-chart');
+    let next = shapes.findIndex(shape => shape.key === 'voyage-globe');
     try {
       const savedFamily = localStorage.getItem(familyStorageKey);
       const members = shapes.map((shape, i) => ({ shape, i })).filter(item => item.shape.family === savedFamily);
@@ -291,11 +342,23 @@
     $('pm-fold').value = '62';
     $('pm-fold-value').value = '62%';
     if (engine) engine.reset();
+    if (engine && typeof engine.setUnfoldPreview === 'function') engine.setUnfoldPreview(dialog.dataset.mapState === 'table');
   });
   $('pm-fold').addEventListener('input', () => {
     cancelAnimationFrame(foldFrame);
     $('pm-fold-value').value = `${$('pm-fold').value}%`;
     if (engine) engine.setFold(Number($('pm-fold').value) / 100);
+  });
+  $('pm-unfold-progress').addEventListener('input', () => {
+    if (!engine || typeof engine.setUnfold !== 'function') return;
+    engine.setUnfold(Number($('pm-unfold-progress').value) / 100);
+  });
+  [['pm-refold', -1], ['pm-open-body', 1]].forEach(([id, direction]) => {
+    $(id).addEventListener('click', () => {
+      if (!engine || typeof engine.playUnfold !== 'function') return;
+      if (!motion) engine.setUnfold(direction > 0 ? 1 : 0);
+      else engine.playUnfold(direction);
+    });
   });
   topicFilter.addEventListener('change', filterStops);
   kindFilter.addEventListener('change', filterStops);

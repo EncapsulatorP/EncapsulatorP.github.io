@@ -116,6 +116,19 @@ Four threads reopened.
 
 ## Signed atlas edition
 
+### Paper bodies that open
+
+The [workbench](https://encapsulatorp.github.io/#paper-table) has eight paper bodies
+in each of two collections. A globe peels, the hollow portal and Noperthedron
+release their faces, an illustrative neck separates, and a Klein-bottle immersion
+opens its marked seams. Origami releases its creases; both tensegrity maps remain.
+The nine subject links lead to the explanations and then their sources.
+
+The [shape source ledger](atlas/shape-lab-sources.md) credits the supplied Claude
+reference and the original mathematical sources. The Paper shapes workflow checks
+new geometry and interactions. The [generation roadmap](atlas/shape-generation-roadmap.md)
+describes how a future optimizer could propose more bodies for review.
+
 EncapsulatorP is an independent research project led by Zolton. OpenAI’s ChatGPT and Codex assisted with selected calculations, writing, and implementation. Each atlas entry shows its evidence level and sources.
 
 ### AI assistance · ChatGPT
