@@ -1,0 +1,4 @@
+# Matplotlib bundles the embedded DejaVu and mathematical glyph fonts.
+# The renderer uses MathText, not an external TeX distribution.
+matplotlib==3.10.8
+reportlab==4.4.9

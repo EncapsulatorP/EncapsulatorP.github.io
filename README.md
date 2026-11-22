@@ -108,6 +108,15 @@ clickable contents, related-entry links and PDF bookmarks. Commit the regenerate
 `atlas/README.pdf` with content updates. The renderer's docstring includes Ubuntu
 setup commands and its `--font-dir` option supports another font installation.
 
+The [Logistic vanishing terms note](atlas/logistic-vanishing-terms.pdf) is maintained in
+[its structured source](atlas/logistic-vanishing-terms.json). Rebuild its PDF and
+[Markdown reading copy](atlas/logistic-vanishing-terms.md) with:
+
+```sh
+python3 -m pip install -r atlas/logistic-pdf-requirements.txt
+python3 atlas/build_logistic_vanishing_pdf.py
+```
+
 The browser loads local assets without a data-fetch dependency. Existing
 analytics and visual exhibits remain part of the showcase.
 
@@ -117,11 +126,12 @@ analytics and visual exhibits remain part of the showcase.
 
 ## The Pirate Chest · Orbital Treasures
 
-Four threads reopened.
+Recovered threads and checked notes.
 
 - [The Ω series](https://encapsulatorp.github.io/#buried-omega-feedback) follows the Omega fixed point from a feedback loop to two prime layers whose order leaves a measurable second harmonic in the model.
 - [The Collatz–Riemann hint that turned around](https://encapsulatorp.github.io/#buried-collatz-riemann-reversal) traces the failed singularity argument back to something exact. The known 1–4–2 cycle produces a pole in its own orbit series, with Abel limit $7/12$ after normalization.
 - [The bubble versals tube](https://encapsulatorp.github.io/#buried-bubble-tube) pairs a model of sideways collapse and axial transport with the quarter-turn kernel behind the Catalan integral.
+- [Logistic vanishing terms](https://encapsulatorp.github.io/#buried-logistic-vanishing) links the exact logistic two-cycle calculation, recovered notes on exponential maps, Schanuel and Mahler, and a review of the written proofs. [Read the note and proof review (PDF)](atlas/logistic-vanishing-terms.pdf).
 - [XO₂, the two-sheet geometron](https://encapsulatorp.github.io/#buried-xo2) lets you flip the square-root sheet at the same input and compare what the zeta-based kernel returns.
 
 *Signed, GPT Sol and Zolton*
@@ -174,3 +184,4 @@ not replace the earlier signatures or alter their attribution.
 
 Each research entry keeps its evidence level and original source trail.
 Classical identities retain their literature context; inclusion does not claim priority.
+
