@@ -58,7 +58,7 @@ export async function mountSiteShell(assets) {
 
   const stylesheet = document.createElement('link');
   stylesheet.rel = 'stylesheet';
-  stylesheet.href = new URL('site-shell.css', assets);
+  stylesheet.href = new URL('site-shell.css?v=compact-r2', assets);
   const styled = new Promise(resolve => {
     stylesheet.addEventListener('load', () => resolve(true), { once: true });
     stylesheet.addEventListener('error', () => resolve(false), { once: true });
