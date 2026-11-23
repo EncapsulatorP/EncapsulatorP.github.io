@@ -120,10 +120,13 @@ and the existing browser catalogue. The original evidence labels are preserved:
 keep their own stated scope.
 
 The reading edition uses white pages and an azure / sapphire / cyan / indigo /
-violet spectrum. Exact prose reveals from authentic deterministic Zyntalic into
-its preserved English source. Formulas, source credits and hypotheses remain
-available. Reduced motion and **Plain reading** provide immediate English.
-Rejected claims have separate muted pages; their true corrections survive.
+violet spectrum. Each page begins with its full reading content concealed, then
+reveals the original English and mathematics in a downward cascade. Reviewed
+prose uses authentic deterministic Zyntalic; equations, artwork and other source
+blocks use temporary visual masks that restore their exact originals. Evidence
+labels retain their stated scope throughout. Reduced motion and **Plain reading**
+provide immediate English. Rejected claims have separate muted pages; their true
+corrections survive.
 
 Rebuild the complete collection, focused notes and authentic language data:
 
@@ -142,11 +145,12 @@ skill's supplied runner. The compressed cache retains the exact English, complet
 records, context tails, sidecars, warnings and engine version. Visible context
 tails are omitted from the animation; no invented replacement language is used.
 
-**Export GIF** encodes the current document locally, paginates every block, and
-uses the same word/letter animation as the reader. The complete atlas and each
-individual entry have their own export. The GIF is a visual recording; selectable
-mathematics, navigation and source links remain in HTML. No account or upload is
-needed to export. No first-party PDF documents are built or served.
+**Export GIF** encodes the complete current document locally, paginates every
+block, and uses the same full-content cascade as the reader. The original
+EncapsulatorP logo appears on every GIF page and frame. The complete atlas and
+each individual entry have their own export. The GIF is a visual recording;
+selectable mathematics, navigation and source links remain in HTML. No account
+or upload is needed to export. No first-party PDF documents are built or served.
 
 The [complete logistic note](atlas/logistic-vanishing-terms.html) and its
 [structured source](atlas/logistic-vanishing-terms.json) preserve every section,

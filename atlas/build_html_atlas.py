@@ -35,6 +35,8 @@ READ_EVIDENCE = (
     "Exploratory constructions and conjectural directions include the next concrete question. "
     "Classical identities are credited as mathematical background; no priority claim follows from inclusion."
 )
+REVEAL_PREPAINT = '''<style>html.ar-reveal-pending #reader-content,html.ar-reveal-pending [data-reader-reveal]{visibility:hidden!important}</style>
+<script>(function(){try{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('ar-reveal-pending');window.setTimeout(function(){document.documentElement.classList.remove('ar-reveal-pending');},8000);}}catch(e){document.documentElement.classList.remove('ar-reveal-pending');}}());</script>'''
 
 
 def esc(value):
@@ -57,6 +59,7 @@ def html_link(url):
 
 def shell(title, description, content, config, depth=1, canonical="README.html", source=None, extra=""):
     prefix = "../" * depth
+    config = {**config, "logoSrc": f"{prefix}assets/logo-encapsulatorp-512.png"}
     source_script = f'<script type="application/json" id="catalog-source">{script_json(source)}</script>' if source is not None else ""
     return f'''<!doctype html>
 <html lang="en">
@@ -65,6 +68,7 @@ def shell(title, description, content, config, depth=1, canonical="README.html",
 <meta name="description" content="{esc(description)}">
 <meta name="theme-color" content="#ffffff">
 <title>{esc(title)} · EncapsulatorP</title>
+{REVEAL_PREPAINT}
 <link rel="canonical" href="https://encapsulatorp.github.io/atlas/{esc(canonical)}">
 <link rel="icon" href="{prefix}assets/favicon-32.png">
 <link rel="stylesheet" href="{prefix}assets/atlas-reader.css">
@@ -74,16 +78,16 @@ def shell(title, description, content, config, depth=1, canonical="README.html",
 <script src="{prefix}assets/atlas-reader-init.js" defer></script>
 </head>
 <body data-reader-status="{esc(config.get('status', 'collection'))}">
-<a class="reader-skip" href="#reader-content">Skip to the document</a>
+<a class="reader-skip" data-reader-chrome href="#reader-content">Skip to the document</a>
 <header class="reader-header">
-  <a class="reader-brand" href="{prefix}#interactive?topic=goldbach-involution"><span class="reader-mark" aria-hidden="true">◇</span><span>ENCAPSULATORP<small>THE PIRATE CHEST · READING ROOM</small></span></a>
-  <nav aria-label="Reading navigation"><a href="{prefix}#interactive?topic=goldbach-involution">Main menu</a><a href="{prefix}atlas/README.html#contents">Atlas contents</a><a href="{prefix}treasure-hunt/">Proof board</a></nav>
+  <a class="reader-brand" data-reader-chrome href="{prefix}#interactive?topic=goldbach-involution"><img src="{esc(config['logoSrc'])}" alt="EncapsulatorP" width="64" height="64"><span>ENCAPSULATORP<small>THE PIRATE CHEST · READING ROOM</small></span></a>
+  <nav data-reader-chrome aria-label="Reading navigation"><a href="{prefix}#interactive?topic=goldbach-involution">Main menu</a><a href="{prefix}atlas/README.html#contents">Atlas contents</a><a href="{prefix}treasure-hunt/">Proof board</a></nav>
 </header>
 <div class="reader-shell">
-<div id="reader-tools" class="reader-tools" aria-label="Reading and export controls"></div>
+<div id="reader-tools" class="reader-tools" data-reader-chrome aria-label="Reading and export controls"></div>
 <main id="reader-content">{content}</main>
 {extra}
-<footer class="reader-footer"><p>Research direction: Zolton / EncapsulatorP. Contributor and source credits are retained with each entry.</p><a href="{prefix}#interactive?topic=goldbach-involution">Return to the main menu <span aria-hidden="true">↗</span></a></footer>
+<footer class="reader-footer"><p data-reader-reveal>Research direction: Zolton / EncapsulatorP. Contributor and source credits are retained with each entry.</p><a data-reader-chrome href="{prefix}#interactive?topic=goldbach-involution">Return to the main menu <span aria-hidden="true">↗</span></a></footer>
 </div>
 {source_script}
 <script type="application/json" id="reader-config">{script_json(config)}</script>

@@ -173,6 +173,8 @@ TRANSLATION_IDENTITY = {
     "wheel_sha256": "4389e91e55a97a977df4efc796a6e38706e3c15a323fb9d98dd2a58ef2696f0a",
 }
 CONTEXT_TAIL = re.compile(r"\s*⟦ctx:[^⟧]*⟧")
+APPROVED_LOGO = "assets/logo-encapsulatorp-512.png"
+APPROVED_LOGO_SHA256 = "9b28152f5f5f8e59f0b1a6e24e31cc8191ec46097a4ab5bbbb80d7441e194d27"
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
 
 
@@ -798,6 +800,81 @@ class Verifier:
                                f"{relative}: live first-party PDF href remains: {href}")
         self.counts["live_html_pdf_route_scan"] = count
 
+    def legacy_pdf_routes(self):
+        """Old citations must land on their exact surviving section, not an index.
+
+        The frozen main branch contained 14 PDF paths. The canonical top-level
+        logistic-collapse route is an additional historical alias. Neither this
+        delivery check nor its aliases alter the mathematical content baseline.
+        """
+        relative = "404.html"
+        doc = self.document(relative)
+        if doc is None:
+            return
+        marked = doc.find(tag="script", attr="id", value="legacy-pdf-routes")
+        routes = None
+        try:
+            if marked:
+                routes = json.loads(marked[0].text(scripts=True))
+            else:
+                scripts = "\n".join(node.text(scripts=True) for node in doc.find(tag="script"))
+                declaration = re.search(r"\b(?:var|let|const)\s+routes\s*=\s*(\{)", scripts)
+                if declaration:
+                    routes, _ = json.JSONDecoder().raw_decode(scripts[declaration.start(1):])
+        except ValueError as error:
+            self.check(False, f"404.html: invalid legacy PDF route data: {error}")
+            return
+        if not self.check(isinstance(routes, dict), "404.html: missing explicit legacy PDF route whitelist"):
+            return
+        expected = {
+            "/atlas/README.pdf": {
+                "to": "/atlas/README.html",
+                "pages": {**{str(i): "contents" for i in range(1, 5)},
+                          **{str(i + 5): eid for i, eid in enumerate(BASELINE_DATA["entries"])}}
+            }
+        }
+        for output, source_path in BASELINE_DATA["structured_outputs"].items():
+            source = self.read_json(source_path)
+            if source:
+                expected["/" + str(Path(output).with_suffix(".pdf"))] = {
+                    "to": "/" + output,
+                    "pages": {str(i + 1): page["id"] for i, page in enumerate(source["pages"])}
+                }
+        for old_path, required in expected.items():
+            route = routes.get(old_path)
+            if not self.check(isinstance(route, dict), f"404.html: missing legacy PDF route {old_path}"):
+                continue
+            self.check(route.get("to") == required["to"], f"404.html: legacy PDF route changed destination: {old_path}")
+            self.check(route.get("pages") == required["pages"], f"404.html: legacy PDF page-to-section mapping changed: {old_path}")
+            destination = self.document(required["to"].lstrip("/"))
+            if destination:
+                ids = {node.attrs["id"] for node in destination.find(attr="id")}
+                self.check(set(required["pages"].values()) <= ids,
+                           f"404.html: {old_path} points to missing section anchors")
+        self.counts["baseline_legacy_pdf_routes"] = 14
+        self.counts["additional_canonical_pdf_aliases"] = 1
+        self.counts["legacy_pdf_page_destinations"] = sum(len(route["pages"]) for route in expected.values())
+
+    def full_reveal_contract(self):
+        """Check boot/provenance inputs; runtime tests verify timing and pixels."""
+        logo = self.root / APPROVED_LOGO
+        self.check(logo.is_file() and hashlib.sha256(logo.read_bytes()).hexdigest() == APPROVED_LOGO_SHA256,
+                   "The approved EncapsulatorP logo was changed or removed")
+        for relative, config in self.configs.items():
+            target, _ = self.local_target(relative, config.get("logoSrc", ""))
+            self.check(target == APPROVED_LOGO, f"{relative}: GIF export lacks the approved actual logo")
+            doc = self.documents[relative]
+            heads = doc.find(tag="head")
+            if not self.check(len(heads) == 1, f"{relative}: missing head for pre-paint masking"):
+                continue
+            boot = "\n".join(node.text(scripts=True) for node in heads[0].find(tag="script") if not node.attrs.get("src"))
+            styles = "\n".join(node.text(scripts=True) for node in heads[0].find(tag="style"))
+            self.check("ar-reveal-pending" in boot and "ar-reveal-pending" in styles,
+                       f"{relative}: full-text reveal has no head-time pending cloak; English can flash before boot")
+            self.check("prefers-reduced-motion" in boot and "setTimeout" in boot,
+                       f"{relative}: pre-paint cloak lacks reduced-motion handling or fail-open recovery")
+        self.counts["readers_with_full_reveal_contract"] = len(self.configs)
+
     def local_target(self, relative, href):
         parsed = urlsplit(href)
         if parsed.hostname and parsed.hostname not in SITE_HOSTS:
@@ -858,6 +935,8 @@ class Verifier:
             self.structured_html()
             self.translations()
             self.live_pdf_routes()
+            self.legacy_pdf_routes()
+            self.full_reveal_contract()
             self.links()
         return {
             "ok": not self.errors, "baseline_commit": BASELINE_DATA["commit"],

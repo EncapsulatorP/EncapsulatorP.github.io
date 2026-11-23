@@ -41,6 +41,12 @@ COLLECTION_EXACT_SECTIONS = {
 }
 SECTION_STATUS = {"schanuel-proof": "conditional", "review-finding": "review"}
 
+# Hide reading content before first paint; the runtime installs its visual masks
+# synchronously before releasing this cloak. Reduced motion and failed scripts
+# retain the complete ordinary HTML through the fail-open path.
+REVEAL_PREPAINT = '''<style>html.ar-reveal-pending #reader-content,html.ar-reveal-pending [data-reader-reveal]{visibility:hidden!important}</style>
+<script>(function(){try{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('ar-reveal-pending');window.setTimeout(function(){document.documentElement.classList.remove('ar-reveal-pending');},8000);}}catch(e){document.documentElement.classList.remove('ar-reveal-pending');}}());</script>'''
+
 
 def esc(value) -> str:
     return html.escape(str(value), quote=True)
@@ -457,6 +463,7 @@ def render_document(source: Path, output: Path, *, status: str | None = None,
         "id": document, "entryId": document, "title": data["title"], "status": status,
         "kind": kind, "root": "#reader-content", "controls": "#reader-tools",
         "sourceLabel": "Complete structured source", "sourceUrl": relative_url(source, output),
+        "logoSrc": relative_url(ROOT / "assets/logo-encapsulatorp-512.png", output),
         "returnUrl": return_url, "passages": passages, "gifBlocks": gif_blocks,
     }
     metadata = {key: value for key, value in data.items() if key != "pages"}
@@ -480,23 +487,27 @@ def render_document(source: Path, output: Path, *, status: str | None = None,
 <meta name="description" content="{esc(data.get('subtitle') or data['title'])}">
 <meta name="color-scheme" content="light"><link rel="canonical" href="https://encapsulatorp.github.io/{esc(output.relative_to(ROOT).as_posix())}">
 <title>{html.escape(data['title'])} · EncapsulatorP</title>
+{REVEAL_PREPAINT}
 <link rel="stylesheet" href="{esc(css)}"><link rel="stylesheet" href="{esc(reveal_css)}">
 </head><body class="atlas-reader" data-reader-status="{esc(status)}">
-<a class="reader-skip" href="#reader-content">Skip to the complete text</a>
+<a class="reader-skip" data-reader-chrome href="#reader-content">Skip to the complete text</a>
 <div class="reader-shell"><header class="reader-header">
-<nav class="reader-nav" aria-label="Reading routes"><a href="{esc(return_url)}">Interactive space</a><a href="{esc(collection)}">Complete atlas</a><a href="{esc(board)}">Proof board</a></nav>
+<a class="reader-brand" data-reader-chrome href="{esc(return_url)}"><img src="{esc(config['logoSrc'])}" alt="EncapsulatorP" width="64" height="64"></a>
+<nav class="reader-nav" data-reader-chrome aria-label="Reading routes"><a href="{esc(return_url)}">Interactive space</a><a href="{esc(collection)}">Complete atlas</a><a href="{esc(board)}">Proof board</a></nav>
+<div data-reader-reveal>
 <p class="reader-kicker">ENCAPSULATORP · {html.escape(status_label)}</p>{title}
 {('<p class="reader-subtitle">' + html.escape(data['subtitle']) + '</p>') if data.get('subtitle') else ''}
 <p class="reader-byline">{html.escape(byline)}</p>
-<div id="reader-tools" class="reader-toolbar reader-tools" aria-label="Reading and export controls"></div>
+</div>
+<div id="reader-tools" class="reader-toolbar reader-tools" data-reader-chrome aria-label="Reading and export controls"></div>
 <noscript><p>The complete English text and formulas below are available without JavaScript.</p></noscript>
-<details class="reader-contents"><summary>Contents · {len(pages)} sections</summary><ol>{toc}</ol></details>
+<details class="reader-contents" data-reader-reveal><summary>Contents · {len(pages)} sections</summary><ol>{toc}</ol></details>
 </header>
 <main id="reader-content" class="reader-content reader-document" data-source-document="{esc(source_rel)}">
 {complete_sections}
-</main><footer class="reader-footer"><p><a href="{esc(relative_url(source, output))}">Structured source</a>{md_link}</p>
-<details class="reader-provenance" data-archival-provenance><summary>Credits and source-version record</summary><pre>{html.escape(json.dumps(metadata, ensure_ascii=False, indent=2))}</pre></details>
-<p><a href="{esc(return_url)}">Return to the interactive space</a></p></footer></div>
+</main><footer class="reader-footer"><p data-reader-chrome><a href="{esc(relative_url(source, output))}">Structured source</a>{md_link}</p>
+<details class="reader-provenance" data-reader-reveal data-archival-provenance><summary>Credits and source-version record</summary><pre>{html.escape(json.dumps(metadata, ensure_ascii=False, indent=2))}</pre></details>
+<p data-reader-chrome><a href="{esc(return_url)}">Return to the interactive space</a></p></footer></div>
 <script type="application/json" id="reader-source">{script_json(data)}</script>
 <script type="application/json" id="reader-config">{script_json(config)}</script>
 <script src="{esc(gif_js)}" defer></script><script src="{esc(reveal_js)}" defer></script>

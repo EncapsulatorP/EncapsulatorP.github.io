@@ -30,7 +30,7 @@ The following pages give the complete derivation from the stated definitions. Th
 
 [Historical collection source · original edition](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#mahler-remainder)
 
-[Established dyadic/zeta ratio · companion proof, page 6](https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.pdf#page=6)
+[Established dyadic/zeta ratio · companion proof, page 6](https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.html#coefficient-decay)
 
 [Return to the Treasure Chest](https://encapsulatorp.github.io/#buried-logistic-vanishing)
 

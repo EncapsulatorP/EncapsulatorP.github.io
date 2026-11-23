@@ -20,9 +20,20 @@ async function main() {
     throw new Error('Usage: node atlas/export_gif.cjs atlas/README.html output.gif [--quick] [--loop]');
   }
   const inputPath = path.resolve(input);
-  const match = fs.readFileSync(inputPath, 'utf8').match(/<script\b[^>]*\bid=["']reader-config["'][^>]*>([\s\S]*?)<\/script>/);
+  const html = fs.readFileSync(inputPath, 'utf8');
+  const match = html.match(/<script\b[^>]*\bid=["']reader-config["'][^>]*>([\s\S]*?)<\/script>/);
   if (!match) throw new Error('The selected HTML has no complete reader configuration.');
   const config = JSON.parse(match[1]);
+  config.logoSrc ||= pathToFileURL(path.join(__dirname, '..', 'assets', 'logo-encapsulatorp-512.png')).href;
+  for (const block of config.gifBlocks || []) {
+    if (!block.image && block.imageDomId) {
+      const id = String(block.imageDomId).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const tag = html.match(new RegExp('<img\\b[^>]*\\bid=["\']' + id + '["\'][^>]*>', 'i'));
+      const source = tag && tag[0].match(/\bsrc=["']([^"']+)["']/i);
+      if (!source) throw new Error('The complete page image is missing: ' + block.imageDomId);
+      block.image = source[1].replace(/&amp;/g, '&');
+    }
+  }
   const { createCanvas, loadImage } = dependency('@napi-rs/canvas');
   const signal = new AbortController();
   process.on('SIGINT', () => signal.abort());
@@ -33,6 +44,7 @@ async function main() {
     baseURL: pathToFileURL(inputPath).href,
     resolveImage: value => {
       const url = new URL(value, pathToFileURL(inputPath));
+      if (/^data:image\/(?:svg\+xml|png|jpeg);base64,/i.test(value)) return value;
       if (url.protocol !== 'file:') throw new Error('CLI exports accept only local image assets.');
       return fileURLToPath(url);
     },

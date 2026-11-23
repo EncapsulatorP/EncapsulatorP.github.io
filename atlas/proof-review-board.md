@@ -12,7 +12,7 @@ Source commit: `f165f366bfd416c92042f56139ece377bb4b42d8`
 
 *A / B / C · Review and navigation*
 
-[![Three exact views of the logistic two-cycle at r = 1 + square root of 6: exchanged orbit points, a rescaled paired quarter-turn matrix, and zero derivative of the fourth-return displacement.](assets/logistic-proof.png)](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf)
+[![Three exact views of the logistic two-cycle at r = 1 + square root of 6: exchanged orbit points, a rescaled paired quarter-turn matrix, and zero derivative of the fourth-return displacement.](assets/logistic-proof.png)](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.html)
 
 | A · Audit | B · Statements | C · Final board | S · Later work |
 | --- | --- | --- | --- |
@@ -38,7 +38,7 @@ $$
 
 The full PDF already prints the derivative prime. The reported statement without it is not reproduced.
 
-[Check the formula in its focused note](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf)
+[Check the formula in its focused note](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.html)
 
 ### A2. Exactly N terms
 
@@ -50,7 +50,7 @@ $$
 
 Both upper limits already read N−1. Extraction fragments the equation, so the revision preserves a complete readable formula.
 
-[Check the formula in its focused note](https://encapsulatorp.github.io/atlas/proofs/fractional-exponential-maps.pdf)
+[Check the formula in its focused note](https://encapsulatorp.github.io/atlas/proofs/fractional-exponential-maps.html)
 
 ### A3. Ceiling and floor
 
@@ -62,7 +62,7 @@ $$
 
 The numerator already uses ceiling and the final exponent uses floor. The formula covers odd and even lengths.
 
-[Check the formula in its focused note](https://encapsulatorp.github.io/atlas/proofs/palindrome-counting.pdf)
+[Check the formula in its focused note](https://encapsulatorp.github.io/atlas/proofs/palindrome-counting.html)
 
 ### A4. The nested exponent
 
@@ -74,7 +74,7 @@ $$
 
 The printed exponent is 2^n. Copying the PDF can flatten it to 2n; this loss of mathematical structure was reproduced.
 
-[Check the formula in its focused note](https://encapsulatorp.github.io/atlas/proofs/dyadic-remainder.pdf)
+[Check the formula in its focused note](https://encapsulatorp.github.io/atlas/proofs/dyadic-remainder.html)
 
 <a id="audit-source"></a>
 
@@ -92,7 +92,7 @@ $$
 
 Both the source and inspected PDF say π. The reported n substitution is absent from the inspected versions.
 
-[Check the formula in its focused note](https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.pdf)
+[Check the formula in its focused note](https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.html)
 
 ### A6. The input iπ
 
@@ -104,7 +104,7 @@ $$
 
 The coefficient sentence and assumption box already say iπ. These complex inputs belong to the conditional argument.
 
-[Check the formula in its focused note](https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.pdf)
+[Check the formula in its focused note](https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.html)
 
 ### A7. One coefficient c
 
@@ -116,7 +116,7 @@ $$
 
 The printed letter is lowercase c. The signed Bernoulli expression equals the same positive rational coefficient.
 
-[Check the formula in its focused note](https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.pdf)
+[Check the formula in its focused note](https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.html)
 
 ### A8. The continuum exponent
 
@@ -128,7 +128,7 @@ $$
 
 The source and rendered exponent use aleph-zero. The reported N-zero substitution is not reproduced.
 
-[Check the formula in its focused note](https://encapsulatorp.github.io/atlas/proofs/dimensions-and-fragments.pdf)
+[Check the formula in its focused note](https://encapsulatorp.github.io/atlas/proofs/dimensions-and-fragments.html)
 
 ### A9. The prime-polynomial section
 
@@ -140,7 +140,7 @@ $$
 
 The full section is present on page 14 of the 16-page edition and page 15 of the illustrated edition. The exact excerpt received by the earlier reviewer is unknown.
 
-[Check the formula in its focused note](https://encapsulatorp.github.io/atlas/proofs/prime-polynomial-counts.pdf)
+[Check the formula in its focused note](https://encapsulatorp.github.io/atlas/proofs/prime-polynomial-counts.html)
 
 <a id="statements-1-4"></a>
 
@@ -166,7 +166,7 @@ $$
 
 Polynomial algebra also proves that fᵣ exchanges these two distinct nontrivial points.
 
-[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf)
+[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.html)
 
 ### B2. Paired quarter-turn matrix
 
@@ -182,7 +182,7 @@ $$
 
 This explicitly defined linear matrix has rank 2. The conjugacy is a coordinate rescaling; C is not Euclidean orthogonal in the original coordinates.
 
-[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf)
+[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.html)
 
 ### B3. Vanishing derivative of the return displacement
 
@@ -194,7 +194,7 @@ $$
 
 These identities concern the stated cycle points. At the separate critical point 1/2, fᵣ′(1/2) = 0 while fᵣ(1/2) = r/4.
 
-[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf)
+[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.html)
 
 ### B4. Zero cycle Lyapunov exponent
 
@@ -206,7 +206,7 @@ $$
 
 A zero exponent leaves nonlinear stability undecided. The later cubic attraction argument is presented separately on page 9.
 
-[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf)
+[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.html)
 
 <a id="statements-5-8"></a>
 
@@ -224,7 +224,7 @@ $$
 
 The means μadd,N and μmul,N belong to separate orbit segments. Ordinary derivatives fail at jumps; the note specifies endpoint conventions. Infinite-time formulas require convergent means.
 
-[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/fractional-exponential-maps.pdf)
+[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/fractional-exponential-maps.html)
 
 ### B6. Dimension and cardinality
 
@@ -236,7 +236,7 @@ $$
 
 Products, tensor products, changes of scalar field and cardinality answer different mathematical questions.
 
-[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/dimensions-and-fragments.pdf)
+[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/dimensions-and-fragments.html)
 
 ### B7. Cubic factorization and odd-step conventions
 
@@ -248,7 +248,7 @@ $$
 
 3n + 1 and (3n + 1)/2 are distinct odd-step conventions. The latter divides once; the full odd-to-odd step removes all factors of two. T₀–T₃ still need definitions and a connecting map.
 
-[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/dimensions-and-fragments.pdf)
+[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/dimensions-and-fragments.html)
 
 ### B8. Exact reduction of Z(p)
 
@@ -260,7 +260,7 @@ $$
 
 Euler’s even-zeta evaluation supplies the coefficient. The signed Bernoulli expression in A7 gives the same lowercase c. At p = 2, ζ(1) has a pole.
 
-[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.pdf)
+[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.html)
 
 <a id="statements-9-11"></a>
 
@@ -280,7 +280,7 @@ $$
 
 E is generated over Q by these inputs and their exponentials. The imaginary part isolates iπ in a rational linear relation. Transcendence of π handles the distinct real powers; adjoining i is algebraic.
 
-[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.pdf)
+[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.html)
 
 ### B10. Dyadic series and vanishing remainder
 
@@ -298,7 +298,7 @@ $$
 
 Absolute convergence, an index shift and t − t²/2 ≤ 1 − exp(−t) ≤ t prove the stated bound. C belongs to the specified dyadic path.
 
-[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/dyadic-remainder.pdf)
+[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/dyadic-remainder.html)
 
 ### B11. Ordinary palindrome count
 
@@ -310,7 +310,7 @@ $$
 
 This counts ordinary reversal for odd and even n. With a fixed-point-free complement pairing, reverse-complement palindromes instead require even n and have probability q^(−n/2).
 
-[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/palindrome-counting.pdf)
+[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/palindrome-counting.html)
 
 <a id="statements-12-14"></a>
 
@@ -338,7 +338,7 @@ $$
 
 Banach’s theorem applies to this defined alternating-sign iteration. The residual-to-error estimate uses exact arithmetic.
 
-[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/alternating-towers.pdf)
+[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/alternating-towers.html)
 
 ### B13. Sharp height and number of bases
 
@@ -352,7 +352,7 @@ $$
 
 Strict increase of v log v and the two branches of t exp(−t) give the classification. cpeak is the maximizing base.
 
-[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/alternating-towers.pdf)
+[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/alternating-towers.html)
 
 ### B14. Finite prime-polynomial counting
 
@@ -364,7 +364,7 @@ $$
 
 G counts ordered pairs; D(N) is 1 exactly when N/2 is an integer prime; U counts unordered pairs. T counts prime pairs p,p+2 with p ≤ X. The full section is present in both inspected editions.
 
-[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/prime-polynomial-counts.pdf)
+[Read the complete proof note](https://encapsulatorp.github.io/atlas/proofs/prime-polynomial-counts.html)
 
 <a id="final-board"></a>
 
@@ -376,16 +376,16 @@ This board collects the surviving arguments. The numbered B entries state their 
 
 | Reviewed argument | Verdict and boundary |
 | --- | --- |
-| **Logistic algebra and paired quarter-turn**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf) | **VALID.** Factorization, cycle exchange, multiplier, matrix conjugacy and return-derivative identities hold for their specified objects and points. |
-| **Cycle Lyapunov exponent**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf) | **VALID.** The exact r* two-cycle has exponent zero. The later cubic proof supplies its nonlinear attraction argument. |
-| **Two constructions of six**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/fractional-exponential-maps.pdf) | **VALID.** Finite branch averages use exactly N terms. Infinite-time comparisons require limiting means; a common measure or conjugacy is still unproved. |
-| **Dimension, cardinality and recorded fragments**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/dimensions-and-fragments.pdf) | **VALID.** Dimension, cardinality and cubic identities are valid. A proposed connecting map and the labels T₀–T₃ still need definitions. |
-| **Z(p) reduction**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.pdf) | **VALID.** For odd p ≥ 3, the positive rational Bernoulli coefficient and exponential expression are exact; lowercase c is consistent. |
-| **Schanuel deduction**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.pdf) | **CONDITIONAL.** Algebraic independence follows under full complex Schanuel for distinct odd exponents. The assumption remains part of the proposition. |
-| **Dyadic remainder**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/dyadic-remainder.pdf) | **VALID.** For the defined series and dyadic path, the functional equation, exact tail and geometric bounds hold. The exponent is 2^n. |
-| **Palindrome counting**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/palindrome-counting.pdf) | **VALID.** The uniform-string ceiling/floor count covers odd and even lengths. Ordinary reversal and reverse complementation are distinct models. |
-| **Alternating towers**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/alternating-towers.pdf) | **VALID.** The defined alternating iteration has global convergence, a sharp height envelope and the stated complete count of bases. |
-| **Prime-polynomial counts**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/prime-polynomial-counts.pdf) | **VALID.** Finite polynomial identities count ordered, unordered and translated prime pairs. The full section is present in both inspected editions. |
+| **Logistic algebra and paired quarter-turn**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.html) | **VALID.** Factorization, cycle exchange, multiplier, matrix conjugacy and return-derivative identities hold for their specified objects and points. |
+| **Cycle Lyapunov exponent**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.html) | **VALID.** The exact r* two-cycle has exponent zero. The later cubic proof supplies its nonlinear attraction argument. |
+| **Two constructions of six**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/fractional-exponential-maps.html) | **VALID.** Finite branch averages use exactly N terms. Infinite-time comparisons require limiting means; a common measure or conjugacy is still unproved. |
+| **Dimension, cardinality and recorded fragments**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/dimensions-and-fragments.html) | **VALID.** Dimension, cardinality and cubic identities are valid. A proposed connecting map and the labels T₀–T₃ still need definitions. |
+| **Z(p) reduction**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.html) | **VALID.** For odd p ≥ 3, the positive rational Bernoulli coefficient and exponential expression are exact; lowercase c is consistent. |
+| **Schanuel deduction**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.html) | **CONDITIONAL.** Algebraic independence follows under full complex Schanuel for distinct odd exponents. The assumption remains part of the proposition. |
+| **Dyadic remainder**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/dyadic-remainder.html) | **VALID.** For the defined series and dyadic path, the functional equation, exact tail and geometric bounds hold. The exponent is 2^n. |
+| **Palindrome counting**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/palindrome-counting.html) | **VALID.** The uniform-string ceiling/floor count covers odd and even lengths. Ordinary reversal and reverse complementation are distinct models. |
+| **Alternating towers**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/alternating-towers.html) | **VALID.** The defined alternating iteration has global convergence, a sharp height envelope and the stated complete count of bases. |
+| **Prime-polynomial counts**<br>[Full note](https://encapsulatorp.github.io/atlas/proofs/prime-polynomial-counts.html) | **VALID.** Finite polynomial identities count ordered, unordered and translated prime pairs. The full section is present in both inspected editions. |
 
 <a id="later-cubic"></a>
 
@@ -407,7 +407,7 @@ $$
 
 This later derivation is separate from the earlier collected-proof review. The exact quartic coefficients and composed cubic were independently checked symbolically.
 
-[Read the later derivation and its proof](https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.pdf)
+[Read the later derivation and its proof](https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.html)
 
 ### S2. Local attraction and its rate
 
@@ -421,7 +421,7 @@ $$
 
 This supplies the nonlinear stability argument. One n-step equals four original logistic updates; the conclusion is local.
 
-[Read the later derivation and its proof](https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.pdf)
+[Read the later derivation and its proof](https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.html)
 
 ### The logical step that supplies attraction
 
@@ -431,7 +431,7 @@ $$
 
 Because K± is positive, sufficiently small nonzero h retains its sign and decreases in absolute value. The cubic coefficient gives the attraction and the slow inverse-square-root rate. The paired matrix remains invertible; this is a local statement about the scalar return displacement.
 
-[Return to the earlier derivative and matrix identities](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf)
+[Return to the earlier derivative and matrix identities](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.html)
 
 <a id="later-connections"></a>
 
@@ -451,7 +451,7 @@ $$
 
 The dyadic bound and a separate zeta-tail estimate prove an asymptotic comparison. It does not define a shared dynamical system.
 
-[Read the later derivation and its proof](https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.pdf)
+[Read the later derivation and its proof](https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.html)
 
 ### S4. Defined geometric model for the next connection
 
@@ -469,7 +469,7 @@ $$
 
 This explicitly defined model has a proved attraction property. A physical brane interpretation and a full logistic–Hopf conjugacy remain separate open questions.
 
-[Read the later derivation and its proof](https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.pdf)
+[Read the later derivation and its proof](https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.html)
 
 ### Next logical steps
 

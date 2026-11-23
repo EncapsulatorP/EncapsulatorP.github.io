@@ -42,3 +42,7 @@ body.atlas-reader .reader-provenance{margin:22px 0}
 body.atlas-reader .reader-provenance summary{cursor:pointer}
 body.atlas-reader .reader-provenance pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.65}
 @media(max-width:780px){body.atlas-reader .reader-header{padding:26px 0}body.atlas-reader .reader-nav{gap:16px;margin-bottom:30px}body.atlas-reader .reader-subtitle{font-size:18px}body.atlas-reader .reader-contents ol{columns:1}body.atlas-reader .reader-section{padding:26px 0 32px}}
+
+/* Visible brand artwork across all reading editions. */
+.reader-brand > img{display:block;width:64px;height:64px;object-fit:contain;flex:0 0 64px}
+body.atlas-reader .reader-header > .reader-brand{display:inline-flex;margin-bottom:18px}

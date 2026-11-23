@@ -7,8 +7,11 @@
       var config = JSON.parse(data.textContent);
       window.atlasReader = window.AtlasReveal.mount(config);
     } catch (error) {
+      window.AtlasReveal.restorePlainDOM(document);
       console.warn('The English reading edition remains available.', error);
     }
+  } else {
+    document.documentElement.classList.remove('ar-reveal-pending');
   }
   var filter = document.getElementById('contents-filter');
   if (filter) {
