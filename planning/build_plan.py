@@ -76,7 +76,18 @@ def src(items):
     return ' · '.join(link(s['label'],s['url']) for s in items)
 
 blocks=[]
+near_term = (
+    "## Next to build\n\n"
+    "1. **Validatron first.** Start with the 48 admissible lanes modulo 210. Retrieve its statement and premises, attempt a Lean proof, "
+    "and record the checker result, runtime, and model cost. Use failures to guide a new proof attempt "
+    "or a narrower statement.\n"
+    "2. **Playable proof applications · planned.** Use the [existing flying cubic quest]"
+    "(https://encapsulatorp.github.io/treasure-hunt/quest/) as a prototype. "
+    "Players should change a parameter, commit to a prediction, and test where the conclusion survives. "
+    "Link each game to the precise statement and proof."
+)
 blocks.append(f"**Organization decision record · {plan['edition']}**\n\n{plan['summary']}\n\n**{link('Open the interactive Pirates Plan',plan['publicUrl'])}** · {link('Canonical roadmap data','https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/planning/roadmap.json')}\n\n{plan['scope']}")
+blocks.append(near_term)
 blocks.append('# How we will use this\n\n'+plan['capacity']+'\n\n'+plan['scoring']['description']+'\n\n**Priority bands:** P0 shared foundations; P1 next research queue; P2 conditional follow-on; P3 exploratory or source-recovery work. Every repository is covered. Queue inclusion does not mean all work is active.\n\n**Link labels:** Existing navigation means a checked hyperlink; shared object means inspected independent work on a named object; proposed reuse carries an experiment or adapter to build; analogy preserves an interesting question without asserting an identity. No operational imported computation between the audited organization main branches was established. The optional Goldbach tower adapter remains unresolved.\n\nThe audit reviewed every README and tree plus selected core files. It did not rerun every repository test suite or certify every historical result.')
 key=['# Read the connection map','', 'The complete inventory and the research graph answer different questions: every current organization repository is registered, while connections record the documented, proposed and speculative bridges identified so far.','', '| Evidence level | Line pattern | Meaning |','| --- | --- | --- |']
 for level in plan.get('evidenceKey', []):

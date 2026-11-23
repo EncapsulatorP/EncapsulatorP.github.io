@@ -137,7 +137,14 @@
     var params = new URLSearchParams(hash.includes('?') ? hash.slice(hash.indexOf('?') + 1) : '');
     var selected = params.get('entry');
     cards.forEach(function (item, id) { item.article.classList.toggle('at-selected', id === selected); });
-    if (!selected || !cards.has(selected)) return;
+    var evidence = params.get('evidence');
+    if (!selected || !cards.has(selected)) {
+      if (!statusOrder.includes(evidence)) return;
+      search.value = ''; family.value = ''; status.value = evidence;
+      filter();
+      status.scrollIntoView({ block: 'center' });
+      return;
+    }
     resetFilters();
     var item = cards.get(selected);
     item.detail.open = true;

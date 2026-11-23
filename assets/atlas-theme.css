@@ -1,19 +1,7 @@
-/* Shared paper-and-teal skin for the entrance, reading rooms and standalone labs.
- * Load after the room styles. Plot palettes and evidence categories stay distinct.
- */
+@import url("atlas-palette.css");
+
+/* Shared skin for the entrance, reading rooms and standalone labs. */
 :root {
-  --atlas-paper: #f5f2eb;
-  --atlas-surface: #fffdf8;
-  --atlas-tint: #e9eee5;
-  --atlas-ink: #182b35;
-  --atlas-muted: #596d69;
-  --atlas-accent: #236b67;
-  --atlas-line: #d8ddd2;
-  --atlas-deep: #163b43;
-  --atlas-deep-panel: #203f47;
-  --atlas-on-deep: #edf4eb;
-  --atlas-muted-on-deep: #bfd2c8;
-  --atlas-accent-on-deep: #b6e0d2;
   --paper: var(--atlas-paper);
   --tint: var(--atlas-tint);
   --card: var(--atlas-surface);
@@ -22,8 +10,8 @@
   --muted: var(--atlas-muted);
   --blk: var(--atlas-deep);
   --coral: var(--atlas-accent);
-  --lime2: #dce9d6;
-  --prism: linear-gradient(90deg, #236b67, #7ba394, #b7b28b);
+  --lime2: #e1e5f6;
+  --prism: var(--atlas-stripe);
   --pm-ink: var(--atlas-ink);
   --pm-text: var(--atlas-ink);
   --pm-night: var(--atlas-paper);
@@ -68,14 +56,14 @@ body { accent-color: var(--atlas-accent); }
   box-shadow: 0 4px 18px #193c3610;
 }
 .nav .lg { color: var(--atlas-ink); }
-.nav .lg b { background: #e2e9dc; color: var(--atlas-ink); }
+.nav .lg b { background: #e5e7f4; color: var(--atlas-ink); }
 .nav a, .nav .tr-nav-primary a, .nav .tr-nav-menu a { color: var(--atlas-muted); }
 .nav a:hover, .nav a:focus-visible { color: var(--atlas-accent); }
 .nav .tr-nav-primary a[aria-current="page"], .nav .tr-nav-menu a[aria-current="page"] {
   background: var(--atlas-accent); color: var(--atlas-surface);
 }
 .tr-nav-more summary, .tr-mobile-nav {
-  background: var(--atlas-surface); color: var(--atlas-ink); border-color: #a8bdb2;
+  background: var(--atlas-surface); color: var(--atlas-ink); border-color: #a9b4cc;
 }
 .tr-mobile-nav, .tr-mobile-nav option { color-scheme: light; }
 .tr-mobile-nav option { background: var(--atlas-surface); color: var(--atlas-ink); }
@@ -84,14 +72,14 @@ body { accent-color: var(--atlas-accent); }
 .nav .tr-nav-menu a:hover { background: var(--atlas-tint); color: var(--atlas-accent); }
 .tr-skip { background: var(--atlas-accent); color: var(--atlas-surface); }
 
-.pm-dialog { background: var(--atlas-paper); border-color: var(--atlas-line); scrollbar-color: #b7c6bb var(--atlas-paper); }
-.pm-dialog::backdrop { background: #173b43c2; }
-.pm-stage { background: #eee9de; }
+.pm-dialog { background: var(--atlas-paper); border-color: var(--atlas-line); scrollbar-color: #aab4ce var(--atlas-paper); }
+.pm-dialog::backdrop { background: #142139c9; }
+.pm-stage { background: #f1eee7; }
 .pm-find, .pm-table-models button, .pm-back-table { background: var(--atlas-surface); }
 .pm-style-switch, .pm-structure, .pm-button[aria-pressed="true"] { background: var(--atlas-tint); }
 .pm-style-switch button[aria-pressed="true"] { background: var(--atlas-surface); }
 .pm-unfold-controls { background: linear-gradient(110deg, var(--atlas-surface), var(--atlas-tint)); }
-.pm-button { min-height: 40px; border-color: #b8c7bc; }
+.pm-button { min-height: 40px; border-color: #aeb9cf; }
 .pm-launch, .pm-unfold, .pm-story-link { background: var(--atlas-deep); border-color: var(--atlas-deep); }
 .pm-launch:hover, .pm-unfold:hover, .pm-story-link:hover { background: var(--atlas-accent); }
 .pm-style-switch button, .pm-style-switch button span,
@@ -106,7 +94,7 @@ body { accent-color: var(--atlas-accent); }
 /* Reading-room entrances keep one paper tone instead of unrelated blue skins. */
 .at-hero, .tr-hero, .cc-hero, .gb-lab, .pirate-chest-head,
 .page[data-page="lemmas"] #lemmas, .page[data-page="towers"] #tetra {
-  background: linear-gradient(125deg, var(--atlas-paper), #e8eee5);
+  background: linear-gradient(125deg, var(--atlas-paper), #eae8f5);
   color: var(--atlas-ink);
   border-bottom-color: var(--atlas-line);
 }
@@ -124,19 +112,19 @@ body { accent-color: var(--atlas-accent); }
 .pirate-chest-head p, .pirate-chest-head .chest-invitation,
 .page[data-page="lemmas"] #lemmas .lead, .page[data-page="towers"] #tetra .lead,
 .page[data-page="towers"] #tetra .lead b { color: var(--atlas-muted); }
-.at-hero-note, .gb-intro-note { border-color: #b6c6b9; color: var(--atlas-ink); }
+.at-hero-note, .gb-intro-note { border-color: #b7c1d8; color: var(--atlas-ink); }
 .at-hero-note > p, .gb-intro-note strong { color: var(--atlas-ink); }
 .at-note-index, .at-metrics span, .at-edition { color: var(--atlas-muted); }
 .at-metrics strong, .gb-evidence, .gb-intro-note a { color: var(--atlas-accent); }
 .at-hero-link, .at-credit-jump, .tr-hero-links a,
 .vf-header-copy .cc-doors a, .cc-doors a, .cc-doors a:nth-child(2) {
-  background: var(--atlas-surface); color: var(--atlas-accent); border-color: #acbfb2;
+  background: var(--atlas-surface); color: var(--atlas-accent); border-color: #a9b4cc;
 }
 .at-hero-link:hover, .at-credit-jump:hover, .tr-hero-links a:hover,
 .cc-doors a:hover { background: var(--atlas-tint); color: var(--atlas-ink); border-color: var(--atlas-accent); }
 .cc-doors strong, .cc-doors small, .cc-door-symbol,
 .cc-doors a:nth-child(2) .cc-door-symbol, .cc-doors b { color: var(--atlas-accent); }
-.at-stripe { background: repeating-linear-gradient(105deg,#254b46 0 5px,#e7e9db 5px 10px,#254b46 10px 13px,#e7e9db 13px 26px); border-bottom-color: #b5bd98; }
+.at-stripe { background: var(--atlas-stripe); border-bottom-color: #b5bd98; }
 
 /* Explanatory surfaces: warm paper; semantic status and graph colors unchanged. */
 .card, .cell, .at-entry, .at-entry.at-open, .at-lab-stage, .tr-reading-details,
@@ -155,9 +143,9 @@ body { accent-color: var(--atlas-accent); }
 .at-entry .at-formula, .at-formula, .cc-details .cc-equation,
 .vf-instrument, .vf-reading-route { background: var(--atlas-paper); border-color: var(--atlas-line); color: var(--atlas-ink); }
 .at-entry details > summary, .pirate-chest .story > .story-toggle {
-  background: var(--atlas-tint); border-color: #bbcdbf; color: var(--atlas-accent);
+  background: var(--atlas-tint); border-color: #bac3d9; color: var(--atlas-accent);
 }
-.at-entry details > summary:hover { background: #dde8dc; border-color: #91b09b; }
+.at-entry details > summary:hover { background: #e4e9f7; border-color: #91b09b; }
 .at-entry details[open] > summary { background: var(--atlas-accent); color: var(--atlas-surface); border-color: var(--atlas-accent); }
 .at-entry details > summary::after { color: inherit; }
 .at-filters label, .at-results-line p, .at-results-line a,
@@ -165,7 +153,7 @@ body { accent-color: var(--atlas-accent); }
 .cc-details summary, .cc-inline-formula, .cc-source-links a { color: var(--atlas-muted); }
 .at-filters input, .at-filters select, .at-small-button, .tr-repo-filter select,
 .tr-subnav a, .pirate-chest .story-jumps a {
-  background: var(--atlas-surface); color: var(--atlas-ink); border-color: #b4c7b9;
+  background: var(--atlas-surface); color: var(--atlas-ink); border-color: #b4bfd8;
 }
 .at-lab-tabs, .at-values li { background: var(--atlas-tint); }
 .at-lab-tabs button, .at-lab-tabs button span, .at-values summary,
@@ -177,7 +165,7 @@ body { accent-color: var(--atlas-accent); }
 
 .tr-route-grid a, .tr-route-grid a:nth-child(3n+2), .tr-route-grid a:nth-child(3n),
 .tr-library-map article, .tr-proof-path > div, .gb-discoveries article {
-  background: var(--atlas-surface); color: var(--atlas-ink); border-color: #b7c8bb;
+  background: var(--atlas-surface); color: var(--atlas-ink); border-color: #bcc6d8;
 }
 .tr-route-grid p, .tr-library-map p, .tr-proof-path p, .gb-discoveries p { color: var(--atlas-muted); }
 .tr-route-grid small, .tr-route-grid b, .tr-library-map small,
@@ -196,7 +184,7 @@ body { accent-color: var(--atlas-accent); }
 .at-priority-grid > a, .at-priority-grid > a:hover, .at-route-grid > a,
 .at-route-grid > a:nth-child(2n), .at-collaborator-grid article,
 .at-signature-open, .gb-toolbar, .gb-controls, .cc-mode-picker,
-.cc-readout, .tr-readout div { background: var(--atlas-deep-panel); border-color: #53776f; }
+.cc-readout, .tr-readout div { background: var(--atlas-deep-panel); border-color: #586e94; }
 .at-priority-grid > a, .at-route-grid > a { color: var(--atlas-on-deep); }
 .at-featured-copy h3, .at-priority-heading h4, .at-proof-questions h4,
 .at-priority-grid strong, .at-route-heading h4, .at-route-grid strong {
@@ -213,12 +201,12 @@ body { accent-color: var(--atlas-accent); }
 .at-proof-questions a:hover { color: var(--atlas-on-deep); }
 .page[data-page="home"] .hero h1 em { background: none; color: var(--atlas-accent-on-deep); }
 .at-featured-copy .at-featured-context { color: var(--atlas-muted-on-deep); }
-.at-featured-link { background: #dce9d6; color: var(--atlas-deep); border-color: #dce9d6; box-shadow: none; }
+.at-featured-link { background: #e1e5f6; color: var(--atlas-deep); border-color: #e1e5f6; box-shadow: none; }
 .at-featured-link:hover { background: var(--atlas-on-deep); border-color: var(--atlas-on-deep); box-shadow: none; }
 .at-model-notes, .at-proof-questions, .at-signature-pair, .at-signature-owner,
-.at-credit-provenance { border-color: #54776d; }
+.at-credit-provenance { border-color: #55698b; }
 .at-featured :focus-visible, .at-signatures :focus-visible, .vf-header-model :focus-visible,
-.gb-bench :focus-visible, .cc-instrument :focus-visible, .tr-panel :focus-visible { outline-color: #d4e8a9; }
+.gb-bench :focus-visible, .cc-instrument :focus-visible, .tr-panel :focus-visible { outline-color: #c5bbff; }
 .gb-bench { --gb-ink: var(--atlas-on-deep); --gb-dim: var(--atlas-muted-on-deep); }
 .gb-lab > .gb-wrap > .gb-method { border-color: var(--atlas-line); }
 
@@ -226,16 +214,16 @@ body { accent-color: var(--atlas-accent); }
 .page[data-page="collatz"] .cm-link { color: var(--atlas-accent); }
 .page[data-page="collatz"] .cm-intro, .page[data-page="collatz"] .cm-note { color: var(--atlas-muted); }
 .page[data-page="collatz"] .cm-controls button, .page[data-page="collatz"] .cm-presets button {
-  background: var(--atlas-deep-panel); color: var(--atlas-on-deep); border-color: #53776f;
+  background: var(--atlas-deep-panel); color: var(--atlas-on-deep); border-color: #586e94;
 }
 .page[data-page="collatz"] .cm-presets button[aria-pressed="true"] {
-  background: var(--atlas-tint); color: var(--atlas-ink); border-color: #98b4a3;
+  background: var(--atlas-tint); color: var(--atlas-ink); border-color: #a1b2d7;
 }
 
 .page[data-page="lemmas"] .loot, .page[data-page="lemmas"] .dispatch,
 .page[data-page="towers"] .ttfact, .page[data-page="towers"] .eqline,
 .page[data-page="towers"] #tetra .readbar > div, .page[data-page="towers"] .pchip {
-  background: var(--atlas-surface); color: var(--atlas-ink); border-color: #b7c8bb;
+  background: var(--atlas-surface); color: var(--atlas-ink); border-color: #bcc6d8;
 }
 .page[data-page="lemmas"] .loot h3, .page[data-page="lemmas"] .loot .formula,
 .page[data-page="towers"] .ttfact b, .page[data-page="towers"] .eqline,
@@ -285,3 +273,27 @@ body { accent-color: var(--atlas-accent); }
 @media(max-width:800px){.nav .tr-nav-primary a[data-tab="cabinet"],.nav .tr-nav-primary a[data-tab="collatz"],.nav .tr-nav-primary a[data-tab="towers"]{display:none}.nav .tr-nav-primary a[data-tab="interactive"]{display:block}}
 .pm-trio{padding:18px 20px;background:var(--atlas-surface);border:1px solid var(--atlas-line);border-radius:10px;margin-top:14px}.pm-trio h3{font:500 21px/1.25 Georgia,serif;color:var(--atlas-ink);margin:0 0 8px}.pm-trio>p{font:11px/1.75 system-ui,sans-serif;color:var(--atlas-muted);margin:0 0 15px}.pm-trio-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.pm-trio-buttons button{background:var(--atlas-paper);border:1px solid var(--atlas-line);border-top:3px solid var(--atlas-accent);border-radius:6px;padding:12px;text-align:left;cursor:pointer;color:var(--atlas-ink);min-width:0}.pm-trio-buttons button[data-kind="trap"]{border-top-color:#995931}.pm-trio-buttons button[data-kind="wildcard"]{border-top-color:#6c5790}.pm-trio-buttons span{display:block;color:var(--atlas-muted);font:600 9px/1.5 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em}.pm-trio-buttons strong{display:block;font:500 14px/1.4 Georgia,serif;margin-top:7px;overflow-wrap:anywhere}.pm-trio-buttons button:hover{background:var(--atlas-tint)}.pm-pin[data-essential="true"]{box-shadow:0 0 0 2px var(--atlas-paper),0 0 0 3px var(--atlas-accent)}
 @media(max-width:540px){.pm-trio{padding:16px}.pm-trio-buttons{grid-template-columns:1fr}.pm-trio-buttons button{display:flex;align-items:center;gap:12px;padding:11px}.pm-trio-buttons span{flex:0 0 65px}.pm-trio-buttons strong{margin-top:0}}
+
+/* The same paper and dark panels in the workbench, chest and research plan. */
+.tr-panel, .vf-header-model { background: var(--atlas-deep-panel); border-color: #526788; }
+.pirate-chest .pirate-chest-head { background: linear-gradient(125deg, #101d31, #252746); }
+.pp-page {
+  --pp-paper: var(--atlas-paper);
+  --pp-card: var(--atlas-surface);
+  --pp-line: var(--atlas-line);
+  --pp-ink: var(--atlas-ink);
+  --pp-soft: var(--atlas-muted);
+  --pp-deep: var(--atlas-deep);
+}
+.pp-subnav, .pp-filters { background: var(--atlas-tint); border-color: var(--atlas-line); }
+.pp-subnav a, .pp-filters label { color: var(--atlas-muted); }
+.pp-hero { background: linear-gradient(125deg, var(--atlas-deep), #272846); }
+.pp-map-shell, .pp-map-toolbar, .pp-evidence-key { background: var(--atlas-deep-panel); }
+.home-research-notes { max-width: 1200px; margin: 0 auto 2rem; border-block: 1px solid var(--atlas-line); }
+.home-research-notes > summary { padding: 1rem 24px; font-weight: 600; cursor: pointer; }
+.pp-near-term { margin-top: 24px; padding: 24px; background: var(--atlas-surface); border: 1px solid var(--atlas-line); border-top: 4px solid var(--atlas-accent); border-radius: 10px; }
+.pp-near-term h3, .pp-near-term h4 { margin-block: 0 .35rem; }
+.pp-near-term ol { padding-left: 1.35rem; margin: 1rem 0 0; }
+.pp-near-term li + li { margin-top: 1rem; }
+.pp-near-term p { margin: 0; max-width: 75ch; }
+.pp-near-term a { color: var(--atlas-accent); }
