@@ -60,6 +60,7 @@
   "/atlas/proofs/prime-polynomial-counts.html": "Prime polynomials count exactly",
   "/atlas/proofs/proof-review.html": "Review of the written proofs",
   "/atlas/proofs/schanuel-zeta-family.html": "The Z(p) family under Schanuel",
+  "/atlas/section.html": "Research Atlas",
   "/atlas/traps/logistic-global-identity.html": "Does a flat tangent return every point?",
   "/atlas/traps/mobius-false-converse.html": "Does the Möbius sign certify twins?",
   "/atlas/traps/tower-two-bases-at-ceiling.html": "Do two bases remain at the summit?",
@@ -240,6 +241,7 @@
    "/atlas/logistic-collapse-vanishing.html",
    "/atlas/logistic-vanishing-terms.html",
    "/atlas/proof-review-board.html",
+   "/atlas/section.html",
    "/atlas/treasure-hunt-guide.html"
   ],
   "Treasure hunt": [

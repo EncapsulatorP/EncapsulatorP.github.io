@@ -331,7 +331,8 @@ def is_credit(page_id: str, block: dict) -> bool:
 
 
 def render_document(source: Path, output: Path, *, status: str | None = None,
-                    document_id: str | None = None, kind: str = "proof") -> dict:
+                    document_id: str | None = None, kind: str = "proof",
+                    reading_note: str = "") -> dict:
     data = json.loads(source.read_text(encoding="utf-8"))
     pages = data["pages"]
     ids = [page["id"] for page in pages]
@@ -483,9 +484,11 @@ def render_document(source: Path, output: Path, *, status: str | None = None,
     collection = relative_url(ROOT / "atlas/README.html", output)
     board = relative_url(ROOT / "treasure-hunt/index.html", output)
     complete_sections = "\n".join(section_html)
+    description = reading_note or data.get("subtitle") or data["title"]
+    note_html = f'\n<p class="reader-subtitle">{html.escape(reading_note)}</p>' if reading_note else ""
     output.write_text(f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="{esc(data.get('subtitle') or data['title'])}">
+<meta name="description" content="{esc(description)}">
 <meta name="color-scheme" content="light"><link rel="canonical" href="https://encapsulatorp.github.io/{esc(output.relative_to(ROOT).as_posix())}">
 <title>{html.escape(data['title'])} · EncapsulatorP</title>
 {REVEAL_PREPAINT}
@@ -499,7 +502,7 @@ def render_document(source: Path, output: Path, *, status: str | None = None,
 <div data-reader-reveal>
 <p class="reader-kicker">ENCAPSULATORP · {html.escape(status_label)}</p>{title}
 {('<p class="reader-subtitle">' + html.escape(data['subtitle']) + '</p>') if data.get('subtitle') else ''}
-<p class="reader-byline">{html.escape(byline)}</p>
+<p class="reader-byline">{html.escape(byline)}</p>{note_html}
 </div>
 <div id="reader-tools" class="reader-toolbar reader-tools" data-reader-chrome aria-label="Reading and export controls"></div>
 <noscript><p>The complete English text and formulas below are available without JavaScript.</p></noscript>

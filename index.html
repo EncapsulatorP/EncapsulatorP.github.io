@@ -14,7 +14,7 @@
 <meta name="description" content="Explore EncapsulatorP’s research atlas: Omega Stability, prime pairs, recursive towers, complex worlds and 45 source-linked mathematical threads.">
 <script src="assets/pq-wordmark.js?v=violet-unify-1" defer></script>
 <link rel="stylesheet" href="assets/site-directory.css?v=titles-1">
-<script src="assets/site-directory.js?v=titles-1" defer></script>
+<script src="assets/site-directory.js?v=picard-titles-1" defer></script>
 </head>
 <body>
 
@@ -493,7 +493,13 @@
       </section>
       <section id="at-panel-towers" class="at-exhibit" role="tabpanel" aria-labelledby="at-tab-towers" hidden>
         <div class="at-exhibit-copy"><span class="at-status" data-status="finite">Finite numerical computation</span><h4>Two phases.<br>One coupled rule.</h4><p>Vary the positive base c. The lower and upper phases meet through u = c<sup>−v</sup> and v = c<sup>u</sup>.</p><p class="at-rule">v<sub>k+1</sub> = c<sup>(c<sup>−v<sub>k</sub></sup>)</sup><br>v<sub>0</sub> = 1 · 80 iterations</p>
-          <div class="at-enhanced" hidden><label class="at-range-label" for="at-tower-c">Base c <output id="at-tower-c-value" for="at-tower-c">1.11</output></label><input id="at-tower-c" class="at-range" type="range" min="1.01" max="2.4" step="0.001" value="1.11"><button class="at-small-button" type="button" id="at-tower-specimen">Return to c = 1.11</button><dl class="at-tower-values"><div><dt>Lower u</dt><dd id="at-tower-lower">—</dd></div><div><dt>Upper v</dt><dd id="at-tower-upper">—</dd></div></dl><p class="at-live" id="at-tower-summary" aria-live="polite"></p></div>
+          <div class="at-enhanced" hidden><label class="at-range-label" for="at-tower-c">Base c <output id="at-tower-c-value" for="at-tower-c">1.11</output></label><input id="at-tower-c" class="at-range" type="range" min="1.01" max="2.4" step="0.001" value="1.11"><button class="at-small-button" type="button" id="at-tower-specimen">Return to c = 1.11</button><dl class="at-tower-values"><div><dt>Lower u</dt><dd id="at-tower-lower">—</dd></div><div><dt>Upper v</dt><dd id="at-tower-upper">—</dd></div></dl><p class="at-live" id="at-tower-summary" aria-live="polite"></p>
+            <details class="at-values"><summary>Step through Picard iteration</summary>
+              <p>The upper phase alternates around its fixed point. <a href="atlas/proofs/alternating-towers.html#tower-convergence">Read the contraction proof</a>.</p>
+              <label class="at-range-label" for="at-tower-step">Iteration <output id="at-tower-step-value" for="at-tower-step">0</output></label>
+              <input id="at-tower-step" class="at-range" type="range" min="0" max="8" step="1" value="0">
+              <p class="at-live" id="at-tower-step-phases" aria-live="polite"></p>
+            </details></div>
         </div>
         <div class="at-exhibit-plot"><svg id="at-tower-plot" class="at-plot" viewBox="0 0 720 320" role="img" aria-label="Numerical lower and upper alternating-tower phases as the base changes"></svg><p class="at-caption"><span class="at-legend-dot at-teal"></span>Lower phase <span class="at-legend-dot at-violet"></span>Upper phase. Values are numerical approximations; the iteration residual is shown beside the control.</p></div>
       </section>
@@ -1472,7 +1478,7 @@ window.addEventListener('hashchange',show);show();
 })();
 </script>
 <script src="assets/research-atlas-data.js?v=coherent-20261121-r1"></script>
-<script src="assets/research-atlas.js?v=orbital-20261123"></script>
+<script src="assets/research-atlas.js?v=picard-1"></script>
 <script src="assets/treasure-rooms.js"></script>
 <script src="assets/goldbach-lab.js"></script>
 <script src="assets/curious-cabinet.js"></script>
@@ -1487,7 +1493,7 @@ window.addEventListener('hashchange',show);show();
 <script src="assets/atlas-study-analytics.js?v=study-20261121-r1"></script>
 <script src="assets/evidence-experiment.js?v=evidence-20261121-r2"></script>
 <script src="assets/recaman-explorer.js?v=recaman-20261121-r1"></script>
-<script src="assets/interactive-space.js?v=restore-20261121-r2"></script>
+<script src="assets/interactive-space.js?v=picard-1"></script>
 <script src="assets/pirates-plan-data.js?v=plan-20261121-r3"></script>
 <script src="assets/pirates-plan.js?v=plan-20261121-r3"></script>
 
