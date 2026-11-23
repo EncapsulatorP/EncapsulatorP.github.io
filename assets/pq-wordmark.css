@@ -1,0 +1,66 @@
+/* Wordmark at rest on paper, with an independent glyph control. */
+.pq-lockup {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 1px;
+  margin-inline-end: auto;
+  max-width: 100%;
+  background: #fffdf8;
+  border-radius: 9px;
+  vertical-align: middle;
+}
+
+.pq-lockup > a.pq-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 2px 0 2px 3px;
+  color: #284cad;
+  text-decoration: none;
+}
+
+.pq-brand img { display: block; flex: none; width: 27px; height: 27px; margin: 0; object-fit: contain; }
+.pq-brand .pq-word { display: block; width: 139px; max-width: 100%; height: 34px; }
+.pq-word-text { font: bold 20px Georgia, serif; }
+.pq-caption { margin: -3px 0 2px 3px; }
+
+.pq-lockup > .pq-trigger {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  width: 38px;
+  min-width: 38px;
+  height: 38px;
+  color: #284cad;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.pq-trigger .pq-letter { display: block; width: 33px; height: 33px; pointer-events: none; }
+.pq-lockup > .pq-trigger:hover { border-color: #d5d9e6; background: #eeedf6; }
+.pq-lockup > :focus-visible { outline: 2px solid #284cad; outline-offset: 1px; }
+.nav .pq-brand img { margin: 0 !important; }
+
+body.atlas-reader .reader-header > .pq-lockup {
+  margin-inline-end: 0;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 540px) {
+  .pq-brand .pq-word { width: 108px; height: auto; }
+  .pq-lockup > .pq-trigger { width: 34px; min-width: 34px; height: 34px; }
+  .pq-trigger .pq-letter { width: 29px; height: 29px; }
+}
+
+@media print {
+  .pq-lockup { background: transparent; }
+  .pq-lockup .pq-trigger { border: 0; }
+}
+
+.pq-page-brand { width: min(1120px, calc(100% - 40px)); margin: 12px auto; }
+.ev-index > .pq-page-brand { width: 100%; margin: 0 0 12px; }
