@@ -53,7 +53,7 @@ body { accent-color: var(--atlas-accent); }
   background: var(--atlas-paper);
   border-bottom: 1px solid var(--atlas-line);
   border-image: none;
-  box-shadow: 0 4px 18px #193c3610;
+  box-shadow: 0 4px 18px #284cad10;
 }
 .nav .lg { color: var(--atlas-ink); }
 .nav .lg b { background: #e5e7f4; color: var(--atlas-ink); }
@@ -68,7 +68,7 @@ body { accent-color: var(--atlas-accent); }
 .tr-mobile-nav, .tr-mobile-nav option { color-scheme: light; }
 .tr-mobile-nav option { background: var(--atlas-surface); color: var(--atlas-ink); }
 .tr-nav-more summary::after { color: var(--atlas-accent); }
-.tr-nav-menu { background: var(--atlas-surface); border-color: var(--atlas-line); box-shadow: 0 12px 32px #173c4326; }
+.tr-nav-menu { background: var(--atlas-surface); border-color: var(--atlas-line); box-shadow: 0 12px 32px #284cad26; }
 .nav .tr-nav-menu a:hover { background: var(--atlas-tint); color: var(--atlas-accent); }
 .tr-skip { background: var(--atlas-accent); color: var(--atlas-surface); }
 
@@ -124,7 +124,7 @@ body { accent-color: var(--atlas-accent); }
 .cc-doors a:hover { background: var(--atlas-tint); color: var(--atlas-ink); border-color: var(--atlas-accent); }
 .cc-doors strong, .cc-doors small, .cc-door-symbol,
 .cc-doors a:nth-child(2) .cc-door-symbol, .cc-doors b { color: var(--atlas-accent); }
-.at-stripe { background: var(--atlas-stripe); border-bottom-color: #b5bd98; }
+.at-stripe { background: var(--atlas-stripe); border-bottom-color: #aeb9d5; }
 
 /* Explanatory surfaces: warm paper; semantic status and graph colors unchanged. */
 .card, .cell, .at-entry, .at-entry.at-open, .at-lab-stage, .tr-reading-details,
@@ -132,7 +132,7 @@ body { accent-color: var(--atlas-accent); }
 .page[data-page="roadmap"] .rm-steps li {
   background: var(--atlas-surface); border-color: var(--atlas-line);
 }
-.at-entry:hover { border-color: #8cae9f; box-shadow: 0 6px 22px #2c5c4312; }
+.at-entry:hover { border-color: #9aaed8; box-shadow: 0 6px 22px #284cad12; }
 .at-entry h4, .at-section-heading h3, .cc-exhibit-heading h3, .cc-why h4,
 .tr-subheading, .tr-reading-details > summary { color: var(--atlas-ink); }
 .at-entry-summary, .at-entry-why, .at-family, .at-caption, .at-live,
@@ -145,7 +145,7 @@ body { accent-color: var(--atlas-accent); }
 .at-entry details > summary, .pirate-chest .story > .story-toggle {
   background: var(--atlas-tint); border-color: #bac3d9; color: var(--atlas-accent);
 }
-.at-entry details > summary:hover { background: #e4e9f7; border-color: #91b09b; }
+.at-entry details > summary:hover { background: #e4e9f7; border-color: #9aaed8; }
 .at-entry details[open] > summary { background: var(--atlas-accent); color: var(--atlas-surface); border-color: var(--atlas-accent); }
 .at-entry details > summary::after { color: inherit; }
 .at-filters label, .at-results-line p, .at-results-line a,
@@ -179,7 +179,7 @@ body { accent-color: var(--atlas-accent); }
 .at-featured, .at-signatures, .vf-header-model, .gb-bench, .gb-stage,
 .cc-instrument, .cc-console, .tr-panel, .page:not(.atlas-page) .screen,
 .page[data-page="collatz"] .cm-card {
-  background: var(--atlas-deep); border-color: #547c72; color: var(--atlas-on-deep);
+  background: var(--atlas-deep); border-color: #586e94; color: var(--atlas-on-deep);
 }
 .at-priority-grid > a, .at-priority-grid > a:hover, .at-route-grid > a,
 .at-route-grid > a:nth-child(2n), .at-collaborator-grid article,
