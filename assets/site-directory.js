@@ -17,7 +17,12 @@
     ['/', 'Home'], ['/map/', 'Site map'], ['/atlas/README.html', 'Complete atlas reader'],
     ['/interactive/', 'Interactive exhibits'], ['/recaman/', 'Recamán explorer'],
     ['/treasure-hunt/', 'Proof Board'], ['/treasure-hunt/quest/', 'Flying cubic quest'],
-    ['/evidence/', 'Evidence index']
+    ['/evidence/', 'Evidence index'],
+    ['/atlas/proofs/alternating-towers.html', 'Alternating real towers · Picard iteration']
+  ]);
+  const keywords = new Map([
+    ['/atlas/proofs/alternating-towers.html', 'Banach fixed point contraction'],
+    ['/interactive/', 'Gemini Neon Prime Forms coarse-graining RG lattice Hopf detector bifurcation']
   ]);
   const previewSize = 8;
   let active = 'all';
@@ -38,7 +43,7 @@
     const title = titles.get(path) || slug.replace(/\.html$/, '').replace(/[-_]/g, ' ')
       .replace(/\b[a-z]/g, letter => letter.toUpperCase());
     const href = new URL(path.replace(/^\/+/, ''), siteRoot).href;
-    const search = normalize(title + ' ' + path + ' ' + labels.get(group));
+    const search = normalize([title, path, labels.get(group), keywords.get(path)].join(' '));
     return { group, title, href, search };
   }
 
