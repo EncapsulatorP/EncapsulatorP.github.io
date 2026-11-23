@@ -3,6 +3,8 @@
   'use strict';
 
   const assetDirectory = new URL('.', document.currentScript.src);
+  if (document.documentElement.dataset.pqMounted) return;
+  document.documentElement.dataset.pqMounted = '1';
   const selector = '[data-pq-brand], .nav .lg, .top .brand, .site-nav .brand, .reader-header .reader-brand, .rx-route-brand';
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const sequence = [
@@ -116,23 +118,11 @@
     });
   }
 
-  if (document.currentScript.hasAttribute('data-pq-standalone') && window.top === window) {
-    const home = new URL('../', assetDirectory);
-    const header = document.createElement('header');
-    header.className = 'pq-page-brand';
-    const brand = document.createElement('a');
-    brand.setAttribute('data-pq-brand', '');
-    brand.href = home;
-    const logo = new Image(27, 27);
-    logo.src = new URL('assets/logo-encapsulatorp-96.png', home);
-    logo.alt = '';
-    brand.append(logo, 'EncapsulatorP');
-    header.append(brand);
-    document.body.prepend(header);
-  }
-
-  const links = document.querySelectorAll(selector);
-  if (!links.length) return;
+  const standalone = document.currentScript.hasAttribute('data-pq-standalone');
+  if (standalone && window.top !== window) return;
+  const shared = import(new URL('site-shell.js', assetDirectory))
+    .then(({ mountSiteShell }) => mountSiteShell(assetDirectory))
+    .catch(() => null);
   const style = document.createElement('link');
   style.rel = 'stylesheet';
   style.href = new URL('pq-wordmark.css', assetDirectory);
@@ -149,7 +139,9 @@
     script.addEventListener('error', () => resolve(false), { once: true });
     document.head.append(script);
   });
-  Promise.all([styled, engine]).then(ready => {
-    if (ready.every(Boolean)) links.forEach(mount);
+  Promise.all([styled, engine, shared]).then(([hasStyle, hasEngine, brand]) => {
+    if (!hasStyle || !hasEngine) return;
+    if (brand) mount(brand);
+    else document.querySelectorAll(selector).forEach(mount);
   });
 })();

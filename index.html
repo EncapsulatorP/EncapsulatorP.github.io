@@ -253,7 +253,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <link rel="stylesheet" href="assets/pirates-plan.css?v=plan-20261121-r3">
 <link rel="stylesheet" href="assets/treasure-entry.css?v=orbital-20261123">
 <link rel="stylesheet" href="assets/atlas-theme.css?v=paper-tabs">
-<script src="assets/pq-wordmark.js" defer></script>
+<script src="assets/pq-wordmark.js?v=atlas-shell-1" defer></script>
 </head>
 <body>
 
@@ -262,24 +262,23 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <main id="main-content" tabindex="-1">
 <div class="page" data-page="home">
 <header class="hero"><div class="bars"></div><div class="wrap">
-<img class="mark" src="assets/logo-encapsulatorp-512.png" alt="EncapsulatorP logo" width="84" height="84">
 <p class="ky">computational mathematics · a shared cabinet of curiosities</p>
 <h1>There is a thread<br><em>worth pulling.</em></h1>
 <p>An open research project exploring prime pairs, Collatz dynamics, recursive towers and mathematical intelligence. Ideas grow through exact arguments, computational experiments and connections across fields.</p>
-<p class="tag">prime-pair geometry · recursive dynamics · hibernating lemmas</p>
-<a class="atlas-home-launch" href="#atlas"><img src="assets/omega-stability-thread-cover.png" width="1200" height="630" alt="Omega Stability: a luminous path through power-tower layers"><span><small>NEW · THE RESEARCH ATLAS</small><strong>Follow a spark.<br>Open a whole thread.</strong><span>46 entries · working exhibits · proofs and next questions</span><b>Enter the atlas →</b></span></a>
+<p><a class="site-home-search" href="#site-map">Search the site ↓</a></p>
+<a class="atlas-home-launch" href="#atlas"><img src="assets/omega-stability-thread-cover.png" width="1200" height="630" alt="Omega Stability: a luminous path through power-tower layers"><span><small>THE RESEARCH ATLAS</small><strong>Follow a spark.<br>Open a whole thread.</strong><span>46 entries · working exhibits · proofs and next questions</span><b>Enter the atlas →</b></span></a>
 </div></header>
+<section class="home-site-map" id="site-map" aria-labelledby="site-map-title"><div class="wrap">
+<div class="home-site-map-head"><div><h2 id="site-map-title">Find a proof or experiment.</h2></div><label class="home-site-search">Search published content<input id="home-site-query" type="search" placeholder="Goldbach, tower, Collatz, logistic…" autocomplete="off"></label></div>
+<div id="home-site-groups" class="home-site-groups" aria-live="polite"><div class="home-site-group"><h3>Loading published routes…</h3></div></div>
+<div class="home-site-count" id="home-site-count"></div>
+</div></section>
+
 <section class="sec"><div class="wrap"><p class="kick">Choose the view that catches you</p><div class="tr-route-grid">
 <a href="#goldbach"><small>01 / Prime pairs</small><strong>Goldbach’s constellation</strong><svg class="tr-mini-art" viewBox="0 0 280 95" aria-hidden="true"><path d="M20 80H260M140 5V85" fill="none" stroke="#54738a"/><path d="M25 80A115 72 0 0 1 255 80M57 80A83 58 0 0 1 223 80M101 80A39 36 0 0 1 179 80" fill="none" stroke="#8be0d9" stroke-width="2"/><circle cx="101" cy="80" r="4" fill="#d3ef9b"/><circle cx="179" cy="80" r="4" fill="#d3ef9b"/></svg><p>Move between prime pairs. See one sum unfold into exact centres, gaps and products.</p><b>Open the observatory →</b></a>
 <a href="#cabinet"><small>02 / Two new windows</small><strong>Circles &amp; mirrored worlds</strong><svg class="tr-mini-art" viewBox="0 0 280 95" aria-hidden="true"><circle cx="140" cy="48" r="40" fill="none" stroke="#bdacf3" stroke-width="2"/><path d="M65 48H215M140 3V92" stroke="#45637d"/><circle cx="175" cy="29" r="4" fill="#84e9d2"/><circle cx="175" cy="67" r="4" fill="#84e9d2"/><circle cx="140" cy="48" r="5" fill="#e5d58a"/></svg><p>Put Catalan at the centre. Let two logistic strands merge, mirror or separate.</p><b>Enter the Curious Cabinet →</b></a>
 <a href="#pirate-chest"><small>03 / From the notebook</small><strong>The Pirate Chest</strong><svg class="tr-mini-art" viewBox="0 0 280 95" aria-hidden="true"><path d="M70 72L112 22L140 72L168 22L210 72M86 48H194" fill="none" stroke="#d3c49d" stroke-width="2"/><circle cx="140" cy="48" r="38" fill="none" stroke="#8c9ebf" stroke-dasharray="3 6"/><path d="M140 11V85M133 48H147" stroke="#b6e9d3" stroke-width="2"/></svg><p>Dagger towers, Shapiro rings and unfinished questions with their source trails still attached.</p><b>Pick up a treasure →</b></a>
 </div></div></section>
-
-<section class="home-site-map" id="site-map" aria-labelledby="site-map-title"><div class="wrap">
-<div class="home-site-map-head"><div><p class="kick">Everything published</p><h2 id="site-map-title">Find the work without knowing the maze.</h2><p>The same source as the Map tab: <code>sitemap.xml</code>. Search here for a proof, experiment, Atlas entry or evidence page without leaving the main tab.</p></div><label class="home-site-search">Search published content<input id="home-site-query" type="search" placeholder="Goldbach, tower, Collatz, logistic…" autocomplete="off"></label></div>
-<div id="home-site-groups" class="home-site-groups" aria-live="polite"><div class="home-site-group"><h3>Loading published routes…</h3></div></div>
-<div class="home-site-count" id="home-site-count"></div>
-</div></section>
 
 <details class="home-research-notes"><summary>Read the research notes and counterexamples</summary>
 <div class="ev-comparison" id="evidence-comparison"><div class="wrap" id="evidence-start"><p class="kick">The evidence board</p><p class="ev-intro">Follow an argument, inspect its boundary, or run a finite check. <a href="evidence/">Open the compact evidence index ↗</a></p></div><section class="sec bg-tint" id="home-mathematics" aria-labelledby="home-math-title"><div class="wrap">
@@ -1598,13 +1597,13 @@ window.addEventListener('resize',()=>{if(!canvas.closest('.page').classList.cont
 </script>
 <script>
 (function(){
-var alias={'pirates-plan':'pirates-plan','plan-timeline':'pirates-plan','plan-routes':'pirates-plan','repo-interlinks':'pirates-plan','repo-register':'pirates-plan','decision-targets':'pirates-plan','plan-bridges':'pirates-plan','paper-atlas':'atlas','paper-table':'atlas','kesten-goldie':'collatz','atlas-kesten-goldie':'atlas','map-credits':'map-credits',recaman:'recaman',interactive:'interactive','evidence-start':'home','evidence-comparison':'home','coordinate-primer':'home','disappointment-islands':'home',cabinet:'cabinet','catalan-disk':'cabinet','mirror-dynamics':'cabinet','goldbach-lab':'goldbach','tr-lemma-lab':'lemmas','tr-collatz-flight':'collatz','shapiro-view':'buried-chat-stories','physics-explorations':'archive',home:'home',atlas:'atlas','atlas-credits':'atlas','research-paths':'home','home-mathematics':'home',lemmas:'lemmas','positive-results':'lemmas',roadmap:'roadmap',goldbach:'goldbach',collatz:'collatz',embed:'collatz',scape:'collatz',towers:'towers',tetra:'towers',validatron:'validatron',archive:'archive','pirate-chest':'buried-chat-stories','buried-chat-stories':'buried-chat-stories'};
+var alias={'site-map':'home','pirates-plan':'pirates-plan','plan-timeline':'pirates-plan','plan-routes':'pirates-plan','repo-interlinks':'pirates-plan','repo-register':'pirates-plan','decision-targets':'pirates-plan','plan-bridges':'pirates-plan','paper-atlas':'atlas','paper-table':'atlas','kesten-goldie':'collatz','atlas-kesten-goldie':'atlas','map-credits':'map-credits',recaman:'recaman',interactive:'interactive','evidence-start':'home','evidence-comparison':'home','coordinate-primer':'home','disappointment-islands':'home',cabinet:'cabinet','catalan-disk':'cabinet','mirror-dynamics':'cabinet','goldbach-lab':'goldbach','tr-lemma-lab':'lemmas','tr-collatz-flight':'collatz','shapiro-view':'buried-chat-stories','physics-explorations':'archive',home:'home',atlas:'atlas','atlas-credits':'atlas','research-paths':'home','home-mathematics':'home',lemmas:'lemmas','positive-results':'lemmas',roadmap:'roadmap',goldbach:'goldbach',collatz:'collatz',embed:'collatz',scape:'collatz',towers:'towers',tetra:'towers',validatron:'validatron',archive:'archive','pirate-chest':'buried-chat-stories','buried-chat-stories':'buried-chat-stories'};
 var stories=Array.from(document.querySelectorAll('.story[id]'));
 stories.forEach(function(story){alias[story.id]='buried-chat-stories';});
 alias['early-birds']='buried-chat-stories';
 var pages=Array.from(document.querySelectorAll('.page')),tabs=Array.from(document.querySelectorAll('.nav a[data-tab]'));
 function show(){
- var id=(location.hash||'#atlas').slice(1).split('?')[0],name=alias[id]||'atlas';
+ var id=(location.hash||'#home').slice(1).split('?')[0],name=alias[id]||'atlas';
  pages.forEach(function(p){p.classList.toggle('on',p.dataset.page===name);});
  tabs.forEach(function(a){if(a.dataset.tab===name)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
  var el=(id!==name)&&document.getElementById(id);
@@ -1711,7 +1710,7 @@ window.addEventListener('hashchange',show);show();
 <script src="assets/pirate-map-data.js?v=coherent-20261121-r2"></script>
 <script src="assets/paper-shape-lab.js?v=unfold-20261121-r3"></script>
 <script src="assets/paper-map-engine.js?v=unfold-20261121-r3"></script>
-<script src="assets/paper-atlas.js?v=coherent-20261121-r3"></script>
+<script src="assets/paper-atlas.js?v=atlas-shell-1"></script>
 <script src="assets/stress-test-data.js?v=evidence-20261121-r1"></script>
 <script src="assets/evidence-board.js?v=evidence-20261121-r1"></script>
 <script src="assets/atlas-study-analytics.js?v=study-20261121-r1"></script>
