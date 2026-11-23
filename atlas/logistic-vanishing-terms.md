@@ -2,7 +2,7 @@
 
 A Treasure Chest note · recovered mathematics and written-proof review
 
-**Zolton / EncapsulatorP · editorial reconstruction and checks with ChatGPT / 22 November 2026**
+**Zolton / EncapsulatorP · editorial reconstruction and checks with ChatGPT / 23 November 2026**
 
 Source commit: `29f9232545aa112cd6ffa9fe1f3c0e85d093dedd`
 
@@ -26,13 +26,29 @@ $$
 
 The surrounding threads retain their own definitions and assumptions. The note includes the two constructions of six, real and complex dimensions, the Schanuel-dependent Z(p) family, a Mahler-type series with an exact geometric remainder, ordinary-palindrome counting, alternating towers and prime-polynomial identities.
 
-**Edition 1.0 · 22 November 2026**<br>Research direction and supplied material: **Zolton / EncapsulatorP**.<br>Editorial reconstruction, calculations and implementation: ChatGPT.
+**Edition 1.1 · 23 November 2026**<br>Research direction and supplied material: **Zolton / EncapsulatorP**.<br>Editorial reconstruction, calculations and implementation: ChatGPT.
 
 This is an edited mathematical reading copy of the submitted fragments and prior review. Superscripts and radicals lost during pasting have been restored where the equations determine them. Unassigned notation is retained explicitly.
 
 [Open this treasure on the website](https://encapsulatorp.github.io/#buried-logistic-vanishing)
 
 [Open the logistic quarter-turn Atlas entry](https://encapsulatorp.github.io/#atlas?entry=logistic-quarter-turn)
+
+<a id="logistic-proof-picture"></a>
+
+## Follow the orange arrow
+
+*VISUAL TREASURE · FOLLOW THE THREE STEPS*
+
+[![Three exact steps: two logistic-cycle points exchange places; the rescaled paired derivative arrow makes four quarter-turns; the fourth-return displacement has a flat tangent at the marked cycle point.](assets/logistic-proof.png)](https://encapsulatorp.github.io/atlas/assets/logistic-proof.apng)
+
+**Read it like a treasure map.** First, A and B swap places. Follow the orange arrow through four numbered moves. Then look for the flat dashed line at the centre of the curve.
+
+In that linear model, the arrow returns exactly after four moves. For the nonlinear map, the conclusion is local: the derivative of f<sup>∘4</sup> − id vanishes at the cycle points. The following pages give the complete algebra.
+
+[Watch the picture move · animated PNG (APNG)](https://encapsulatorp.github.io/atlas/assets/logistic-proof.apng)
+
+Click the picture or link to open the animation in a browser. The PDF itself displays the still illustration; the travelling arrows guide us between the discrete steps.
 
 <a id="reading-map"></a>
 

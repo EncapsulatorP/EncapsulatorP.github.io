@@ -117,6 +117,12 @@ python3 -m pip install -r atlas/logistic-pdf-requirements.txt
 python3 atlas/build_logistic_vanishing_pdf.py
 ```
 
+The note also includes an [illustrated proof](atlas/assets/logistic-proof.png) with a
+matching [animated PNG](atlas/assets/logistic-proof.apng). To rebuild both pictures
+before regenerating the PDF, run `python3 atlas/build_logistic_proof_visual.py`
+after installing [the visual dependencies](atlas/logistic-visual-requirements.txt). The PDF contains a still
+image linked to the browser animation.
+
 The browser loads local assets without a data-fetch dependency. Existing
 analytics and visual exhibits remain part of the showcase.
 

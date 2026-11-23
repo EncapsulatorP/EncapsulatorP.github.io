@@ -29,6 +29,7 @@ from matplotlib.mathtext import MathTextParser
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
+from reportlab.lib.utils import ImageReader
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen.canvas import Canvas
@@ -251,6 +252,32 @@ class Matrix(Flowable):
         c.restoreState()
 
 
+class LinkedFigure(Flowable):
+    """A sharp still image whose PDF link opens the matching browser animation."""
+
+    def __init__(self, path: Path, link_url: str | None = None, max_height: float = 470):
+        super().__init__()
+        self.reader = ImageReader(str(path))
+        self.image_width, self.image_height = self.reader.getSize()
+        self.link_url, self.max_height = link_url, max_height
+        self.spaceBefore, self.spaceAfter = 4, 10
+
+    def wrap(self, availWidth, availHeight):
+        scale = min(availWidth / self.image_width, self.max_height / self.image_height)
+        self.width = availWidth
+        self.draw_width = self.image_width * scale
+        self.height = self.image_height * scale
+        return self.width, self.height
+
+    def draw(self):
+        x = (self.width - self.draw_width) / 2
+        self.canv.drawImage(self.reader, x, 0, width=self.draw_width,
+                            height=self.height, mask="auto")
+        if self.link_url:
+            self.canv.linkURL(self.link_url, (x, 0, x + self.draw_width, self.height),
+                              relative=1, thickness=0)
+
+
 class Bookmark(Flowable):
     def __init__(self, key: str, title: str):
         super().__init__()
@@ -398,7 +425,7 @@ def page_decoration(canvas: Canvas, doc: BaseDocTemplate) -> None:
     canvas.restoreState()
 
 
-def build_pdf(data: dict, output: Path) -> None:
+def build_pdf(data: dict, output: Path, asset_base: Path = BASE) -> None:
     register_fonts()
     st = styles()
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -444,6 +471,9 @@ def build_pdf(data: dict, output: Path) -> None:
                     story.append(Equation(block["latex"]))
                 elif kind == "matrix":
                     story.append(Matrix(block.get("label", ""), block["cells"], block.get("tail", "")))
+                elif kind == "image":
+                    story.append(LinkedFigure(asset_base / block["path"],
+                                              block.get("link_url"), block.get("max_height", 470)))
                 elif kind == "table":
                     story.append(make_table(block, doc.width, st))
                 elif kind == "callout":
@@ -491,6 +521,12 @@ def build_markdown(data: dict, output: Path) -> None:
                 cells = r" \\ ".join(" & ".join(row) for row in block["cells"])
                 latex = block.get("label", "") + r"\begin{pmatrix}" + cells + r"\end{pmatrix}" + block.get("tail", "")
                 lines += ["$$", latex, "$$", ""]
+            elif kind == "image":
+                alt = block.get("alt", "Mathematical illustration").replace("[", r"\[").replace("]", r"\]")
+                figure = f'![{alt}]({block["path"]})'
+                if block.get("link_url"):
+                    figure = f'[{figure}]({block["link_url"]})'
+                lines += [figure, ""]
             elif kind == "callout":
                 text = inline_markdown(block["text"]).replace("\n", "\n> ")
                 lines += [f'> **{block["label"]} ({block.get("status", "open")}).** {text}', ""]
@@ -515,7 +551,7 @@ def main() -> int:
         data = json.loads(args.input.read_text(encoding="utf-8"))
         if not data.get("title") or not data.get("pages"):
             raise ValueError("Input requires a title and a nonempty pages array")
-        build_pdf(data, args.pdf)
+        build_pdf(data, args.pdf, asset_base=args.input.resolve().parent)
         build_markdown(data, args.markdown)
     except (OSError, ValueError, KeyError) as exc:
         parser.exit(2, f"Build failed: {exc}\n")
