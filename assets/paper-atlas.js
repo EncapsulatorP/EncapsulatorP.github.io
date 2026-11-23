@@ -520,5 +520,5 @@
     }
   });
   syncMotion();
-  if (['#paper-atlas', '#paper-table'].includes(location.hash)) openMap(null, location.hash === '#paper-atlas');
+  if (!location.hash || ['#paper-atlas', '#paper-table'].includes(location.hash)) openMap(null, location.hash === '#paper-atlas');
 })();
