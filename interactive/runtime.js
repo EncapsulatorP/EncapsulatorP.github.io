@@ -3,6 +3,14 @@
  */
 (function () {
   'use strict';
+
+  // The instrument also runs inside Atlas embeds. Add site chrome only when it owns the page.
+  if (window.top === window && document.querySelector('.ix-exhibit')) {
+    const wordmark = document.createElement('script');
+    wordmark.src = new URL('../assets/pq-wordmark.js', document.currentScript.src);
+    wordmark.setAttribute('data-pq-standalone', '');
+    document.head.append(wordmark);
+  }
   const root = document.getElementById('widget');
   if (!root) return;
   if (window.parent !== window) document.documentElement.classList.add('ix-embedded');

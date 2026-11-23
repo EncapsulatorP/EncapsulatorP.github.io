@@ -4,7 +4,15 @@
  */
 (function(root,factory){
   if(typeof module==='object'&&module.exports)module.exports=factory(require('./atlas-gif.js'));
-  else root.AtlasReveal=factory(root.AtlasGif);
+  else {
+    root.AtlasReveal=factory(root.AtlasGif);
+    const source = document.currentScript?.src;
+    if (source && document.querySelector('.reader-header .reader-brand')) {
+      const wordmark = document.createElement('script');
+      wordmark.src = new URL('pq-wordmark.js', source);
+      document.head.append(wordmark);
+    }
+  }
 })(typeof globalThis==='object'?globalThis:this,function(Gif){
   'use strict';
   const COOL=[[0,'#284cad'],[.24,'#1480c5'],[.46,'#078b9e'],[.69,'#5d65c7'],[.95,'#8054b5'],[1,'#6c9e95']];
