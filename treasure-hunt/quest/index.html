@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The flat tangent hides a cubic · a flying treasure hunt</title>
+<link rel="stylesheet" href="../../assets/atlas-palette.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;overflow:hidden;background:#ff9a2e;font-family:'Inter','Helvetica Neue','Segoe UI',Arial,sans-serif;color:#fff}
@@ -40,6 +41,16 @@ body.teen .kick,body.teen .cap small{color:#5ff0ff}body.teen h1 span{color:#5ff0
 body.teen .fx{background:linear-gradient(110deg,#5ff0ff,#e8fbff);box-shadow:0 0 2.6vh rgba(60,220,255,.55)}body.teen .bar{background:#0c0d12}body.teen .dots i.on{background:#5ff0ff;box-shadow:0 0 1.4vh #5ff0ff}
 body.teen .ctl button{background:rgba(14,16,24,.6)}body.teen .ctl button:hover{background:#5ff0ff;color:#0c0d12}body.teen .vig{background:radial-gradient(120% 90% at 50% 45%,transparent 50%,rgba(10,10,16,.7) 100%),linear-gradient(rgba(10,10,16,.45),transparent 22%,transparent 70%,rgba(10,10,16,.6))}
 #err{position:fixed;inset:0;display:none;place-items:center;text-align:center;padding:8vw;background:#0b4a34;font-size:18px;line-height:1.5}
+
+/* Shared chrome around the flying exhibit. */
+html,body{background:var(--atlas-deep);color:var(--atlas-on-deep)}
+.bar{background:var(--atlas-deep)}
+.vig{background:radial-gradient(120% 90% at 50% 45%,transparent 55%,#1421398c 100%),linear-gradient(#14213959,transparent 22%,transparent 70%,#1421398c)}
+.kick,.cap small{color:#d4c7ff}
+h1 span{color:#ffc782}
+.cap{background:#142139d9}
+.fx{background:linear-gradient(110deg,#c7d9ff,#d2b7ff 55%,#ffd19e);color:var(--atlas-ink)}
+.ctl button,.ctl>a{background:#142139d9!important}
 </style>
 </head>
 <body>

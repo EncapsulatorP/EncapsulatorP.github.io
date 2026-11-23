@@ -8,6 +8,11 @@ Every EncapsulatorP repository, the ideas connecting them, and the next work tha
 
 All 32 EncapsulatorP repositories visible in the complete organization inventory: 20 public and 12 private. Research purposes, links and planned work are disclosed here with the owner's authorization. Private source links still require repository access. External physics and upstream control projects are listed separately and are not counted as organization repos.
 
+## Next to build
+
+1. **Validatron first.** Start with the 48 admissible lanes modulo 210. Retrieve its statement and premises, attempt a Lean proof, and record the checker result, runtime, and model cost. Use failures to guide a new proof attempt or a narrower statement.
+2. **Playable proof applications · planned.** Use the [existing flying cubic quest](https://encapsulatorp.github.io/treasure-hunt/quest/) as a prototype. Players should change a parameter, commit to a prediction, and test where the conclusion survives. Link each game to the precise statement and proof.
+
 # How we will use this
 
 Planning assumption: 12 focused hours per week, with at most two active research capsules. Each two-week window has 18 hours of planned work and 6 hours for review or overruns. Stage labels on repositories, routes and edges are earliest review windows, not completion commitments. First-target effort totals 219–430 hours across the whole queue; these twelve weeks provide 108 planned hours plus 36 buffer hours. First-target effort bands sum to more than this quarter's capacity, so lower-ranked work advances only when a gate passes or a slot opens. No paid compute is committed by this plan.

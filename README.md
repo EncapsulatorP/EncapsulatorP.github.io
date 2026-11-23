@@ -199,9 +199,9 @@ reference and the original mathematical sources. The Paper shapes workflow check
 new geometry and interactions. The [generation roadmap](atlas/shape-generation-roadmap.md)
 describes how a future optimizer could propose more bodies for review.
 
-EncapsulatorP is an independent research project led by Zolton. OpenAI’s ChatGPT and Codex assisted with selected calculations, writing, and implementation. Each atlas entry shows its evidence level and sources.
+EncapsulatorP is an independent project. Zolton leads the research and co-authors the atlas with the language models credited here. The notes record each contribution, with the evidence and sources attached to each result.
 
-### AI assistance · ChatGPT
+### AI co-author · ChatGPT
 
 **GPT-6 Astra Pro · 21 November 2026**
 
