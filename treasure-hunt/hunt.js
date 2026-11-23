@@ -60,8 +60,8 @@
     add('p',note.equation,'formula');
     add('p',note.text);
     const next=add('p','','next-task');const strong=document.createElement('strong');strong.textContent='Next sound step';next.append(strong,document.createTextNode(note.next));
-    const pdf=add('a','Open this reading note · PDF ↗');pdf.href=ROOT+note.pdf+'.pdf';
-    const source=add('a',note.source[0]+' ↗','trail-source');source.href=note.source[1];
+    const pdf=add('a','Open this reading note · PDF →');pdf.href=ROOT+note.pdf+'.pdf';
+    const source=add('a',note.source[0]+' →','trail-source');source.href=note.source[1];
   }
   function selectTrail(key){
     selectedTrail=key;const trail=trails[key];
@@ -102,7 +102,7 @@
   turn.append(svg('circle',{cx:ox,cy:oy,r:radius,fill:'#fff8f1',stroke:'#ffdec7','stroke-width':1.5}),svg('line',{x1:ox-135,y1:oy,x2:ox+135,y2:oy,class:'chart-axis'}),svg('line',{x1:ox,y1:oy-135,x2:ox,y2:oy+135,class:'chart-axis'}));
   const turnDirs=[[1,0],[0,-1],[-1,0],[0,1]];
   turnDirs.forEach(([x,y],i)=>{turn.append(svg('circle',{cx:ox+x*radius,cy:oy-y*radius,r:5,fill:'#f4cdb5'}));const labels=['right','down','left','up'];turn.append(svg('text',{x:ox+x*(radius+40),y:oy-y*(radius+32)+5,'text-anchor':'middle'},labels[i]));});
-  const arrow=svg('path',{fill:ORANGE});turn.append(arrow,svg('circle',{cx:ox,cy:oy,r:5,fill:INK}),svg('text',{x:260,y:321,'text-anchor':'middle',class:'plot-label'},'J: (x, y) ↦ (y, −x)'));
+  const arrow=svg('path',{fill:ORANGE});turn.append(arrow,svg('circle',{cx:ox,cy:oy,r:5,fill:INK}),svg('text',{x:260,y:321,'text-anchor':'middle',class:'plot-label'},'J sends (x, y) to (y, −x)'));
   let step=0,timer=null;
   function drawStep(){
     const odd=step%2===1,x=odd?xp:xm,y=odd?xm:xp;
@@ -141,7 +141,7 @@
   rem.append(svg('line',{x1:40,y1:130,x2:403,y2:130,class:'chart-axis'}),svg('line',{x1:221,y1:30,x2:221,y2:226,class:'chart-axis'}));
   for(const h of[-.04,.04])rem.append(svg('text',{x:rx(h),y:246,'text-anchor':'middle'},h.toFixed(2)));
   const curve=fn=>Array.from({length:161},(_,i)=>{const h=-.04+i*.08/160;return(i?'L':'M')+rx(h).toFixed(2)+','+ry(fn(h)).toFixed(2);}).join(' ');
-  rem.append(svg('path',{d:curve(h=>cubic*h*h*h),stroke:VIOLET,'stroke-width':1.6,'stroke-dasharray':'5 5',fill:'none'}),svg('path',{d:curve(remainder),stroke:ORANGE,'stroke-width':3,fill:'none'}),svg('circle',{cx:221,cy:130,r:5,fill:ORANGE}),svg('text',{x:236,y:119,class:'plot-label'},'flat here'),svg('text',{x:45,y:22,class:'plot-muted'},'return displacement G(h)'),svg('text',{x:407,y:245,'text-anchor':'end',class:'plot-muted'},'h'));
+  rem.append(svg('path',{d:curve(h=>cubic*h*h*h),stroke:VIOLET,'stroke-width':1.6,'stroke-dasharray':'5 5',fill:'none'}),svg('path',{d:curve(remainder),stroke:ORANGE,'stroke-width':3,fill:'none'}),svg('circle',{cx:221,cy:130,r:5,fill:ORANGE}),svg('text',{x:236,y:119,class:'plot-label'},'flat here'),svg('text',{x:45,y:22,class:'plot-muted'},'return displacement G(h)'),svg('text',{x:407,y:261,'text-anchor':'end',class:'plot-muted'},'offset h'));
 
   // The product model is explicitly new: angle transport times the scalar return.
   const aPlus=-r*(2+3*Math.sqrt(2)),bPlus=-2*r*r*(1+Math.sqrt(2));

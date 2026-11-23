@@ -22,5 +22,25 @@
   "transport_error_at_step_240": "0.00152262519370126025314921394798263144846529320203678884944274827852692256758477218920140941",
   "binary64_c615": "positive subnormal",
   "binary64_first_odd_zero": 647,
-  "assumptions": "No claim of a physical brane model or full conjugacy. Plots are numerical illustrations of written exact statements."
+  "assumptions": "No claim of a physical brane model or full conjugacy. Plots are numerical illustrations of written exact statements.",
+  "browser_checks": {
+    "url": "https://encapsulatorp.github.io/treasure-hunt/",
+    "viewport_width_css_px": 1348,
+    "horizontal_overflow": false,
+    "passed": [
+      "trail selection and exact leading-ratio detail",
+      "two logistic steps return phase but reverse derivative arrow",
+      "DNA search returns one palindrome note",
+      "conditional evidence filter returns one note",
+      "complementary-seed slider updates output",
+      "transverse model reaches step 240 / 960 logistic updates",
+      "sphere-eversion video plays from Commons, readyState4"
+    ],
+    "visual_fixes": [
+      "replace unsupported diagonal/mapsto arrow glyphs",
+      "separate offset-axis label from endpoint tick",
+      "fit complete geometry media and video controls inside figures"
+    ],
+    "mobile_scope": "Responsive CSS reviewed; mobile viewport was not available in this browser API."
+  }
 }

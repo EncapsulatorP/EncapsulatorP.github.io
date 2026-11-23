@@ -20,17 +20,19 @@ $$
 
 > **Proved pathwise bound (exact).** The proof concerns xₖ = exp(−2⁻ᵏ). It does not establish the same additive constant for every boundary approach or the arithmetic nature of f(exp(−1)).
 
-The double exponent 2ⁿ is essential. One index shift, repeated use of the functional equation and the inequality 0 ≤ 1 − exp(−t) ≤ t give the full argument.
+The double exponent 2ⁿ is essential. One index shift and elementary exponential bounds give the dyadic argument. The companion collapse note now proves Rₖ/(ζ(k) − 1) → 1 as integer k → ∞: this leading-ratio connection is established.
 
 ### One concrete next step
 
-Compare other explicitly defined approaches to the boundary while keeping path-dependent constants separate. Any link to a zeta remainder must be a new statement with its own bound.
+Quantify the finite-k relative error beyond the proved leading-ratio limit, or define a structural map and the property it preserves. A shared dynamical system or conjugacy remains open.
 
 ### Sources and related reading
 
 This note preserves the definitions and written derivation from the supplied mathematical fragments, reconstructed in the full collection. Its proof is given on the following page(s); no literature-priority claim is made.
 
 [Read the pinned collection source](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#mahler-remainder)
+
+[Established dyadic/zeta ratio · companion proof, page 6](https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.pdf#page=6)
 
 [Return to the Treasure Chest](https://encapsulatorp.github.io/#buried-logistic-vanishing)
 

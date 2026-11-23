@@ -92,10 +92,11 @@ NOTE_SPECS = [
         "summary": "The lacunary series f(x) = Σ x^(2ⁿ) obeys f(x) = x + f(x²). Along the specified dyadic path toward 1, subtracting k and a convergent constant leaves an explicit geometric tail.",
         "scope": "The proof concerns xₖ = exp(−2⁻ᵏ). It does not establish the same additive constant for every boundary approach or the arithmetic nature of f(exp(−1)).",
         "equation": r"0\le f(e^{-2^{-k}})-k-C\le2^{-k}",
-        "orientation": "The double exponent 2ⁿ is essential. One index shift, repeated use of the functional equation and the inequality 0 ≤ 1 − exp(−t) ≤ t give the full argument.",
-        "nextStep": "Compare other explicitly defined approaches to the boundary while keeping path-dependent constants separate. Any link to a zeta remainder must be a new statement with its own bound.",
+        "orientation": "The double exponent 2ⁿ is essential. One index shift and elementary exponential bounds give the dyadic argument. The companion collapse note now proves Rₖ/(ζ(k) − 1) → 1 as integer k → ∞: this leading-ratio connection is established.",
+        "nextStep": "Quantify the finite-k relative error beyond the proved leading-ratio limit, or define a structural map and the property it preserves. A shared dynamical system or conjugacy remains open.",
         "pages": ["mahler-remainder"], "sources": [],
-        "related": ["schanuel-zeta-family", "fractional-exponential-maps"],
+        "readingLinks": [{"text": "Established dyadic/zeta ratio · companion proof, page 6", "url": f"{SITE}/atlas/proofs/logistic-collapse-vanishing.pdf#page=6"}],
+        "related": ["logistic-collapse-vanishing", "schanuel-zeta-family", "fractional-exponential-maps"],
     },
     {
         "slug": "prime-polynomial-counts",
@@ -203,6 +204,8 @@ def opening(spec: dict, number: int) -> dict:
     if not spec["sources"]:
         blocks.append(p("This note preserves the definitions and written derivation from the supplied mathematical fragments, reconstructed in the full collection. Its proof is given on the following page(s); no literature-priority claim is made.", small=True))
     blocks.append(link("Read the pinned collection source", f"{REPO}/blob/{COLLECTION_COMMIT}/atlas/logistic-vanishing-terms.md#{spec['pages'][0]}"))
+    for reading in spec.get("readingLinks", []):
+        blocks.append(link(reading["text"], reading["url"]))
     if spec["kind"] == "review":
         by_slug = {item["slug"]: item for item in NOTE_SPECS}
         for slug in spec["related"]:

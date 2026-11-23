@@ -23,7 +23,7 @@ def main():
         <h3>{esc(note['title'])}</h3>
         <p>{esc(note['summary'])}</p>
         <p class="note-next"><strong>Next treasure</strong>{esc(note['nextStep'])}</p>
-        <div class="proof-links"><a href="../{esc(note['pdf'])}">Read the PDF ↗</a><a href="../{esc(note['markdown'])}">Text source</a><span>{note['pageCount']} pages</span></div>
+        <div class="proof-links"><a href="../{esc(note['pdf'])}">Read the PDF →</a><a href="../{esc(note['markdown'])}">Text source</a><span>{note['pageCount']} pages</span></div>
       </article>''')
     page = SITE / 'treasure-hunt' / 'index.html'
     text = page.read_text()
