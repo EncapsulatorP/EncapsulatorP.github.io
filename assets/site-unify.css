@@ -80,6 +80,7 @@ h1 em, h2 em, h2.t em, .hero h1 em, .atlas-title .title-accent {
 
 /* ---- Buttons that were sand/tan ----------------------------------------- */
 .vf-button, .vf-scope { background: var(--atlas-tint) !important; border-color: var(--atlas-line) !important; color: var(--atlas-ink) !important; }
+.vf-button[aria-pressed="true"] { background: var(--atlas-accent) !important; border-color: var(--atlas-accent) !important; color: #fff !important; }
 .vf-explore { background: #c9bbf3 !important; border-color: #c9bbf3 !important; color: #1d1546 !important; }
 .vf-explore:hover { background: #ddd3fa !important; }
 details.vf-proof { border-color: var(--atlas-line) !important; }
