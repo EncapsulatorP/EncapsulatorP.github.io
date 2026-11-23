@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A live, searchable map of the EncapsulatorP site generated from sitemap.xml.">
+<meta name="theme-color" content="#0A1222">
+<title>Map · EncapsulatorP</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F4F7FC;--card:#fff;--ink:#101B32;--soft:#465570;--muted:#697994;--blk:#0A1222;--blue:#557CDB;--violet:#948AC8;--cyan:#6FB6C3;--lime:#9BC8D8;--prism:linear-gradient(90deg,#A39BD5,#948AC8,#6FB6C3,#9BC8D8);--mw:1120px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 "IBM Plex Sans",system-ui,sans-serif}
+a{color:inherit}.top{position:sticky;top:0;z-index:4;background:var(--blk);border-bottom:3px solid transparent;border-image:var(--prism) 1}.topin{max-width:var(--mw);margin:auto;padding:11px 22px;display:flex;gap:20px;align-items:center}.brand{margin-right:auto;display:flex;align-items:center;gap:9px;color:#fff;text-decoration:none;font:600 12px "IBM Plex Mono",monospace;letter-spacing:.1em}.brand img{width:26px;height:26px}.top a:not(.brand){color:#d9e6ff;text-decoration:none;font:500 12px "IBM Plex Mono",monospace}.top a:hover{color:#bfe9ef}
+.hero{background:var(--blk);color:white;padding:82px 24px 58px}.heroin{max-width:var(--mw);margin:auto}.k{font:500 11px "IBM Plex Mono",monospace;letter-spacing:.2em;text-transform:uppercase;color:#9bc8d8}.hero h1{font:700 clamp(3rem,8vw,6rem)/.92 "Fraunces",serif;letter-spacing:-.035em;margin:14px 0 22px}.hero p{max-width:65ch;color:#dce6f6;font-size:1.08rem}.pplay{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font:500 12px "IBM Plex Mono",monospace;color:#b9c8df}.pplay b{color:white}.token{border:1px solid #344561;border-radius:999px;padding:5px 10px;background:#101b32}
+.wrap{max-width:var(--mw);margin:auto;padding:38px 24px 72px}.controls{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:end;margin-bottom:26px}.controls label{font:500 11px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.controls input{display:block;width:100%;margin-top:7px;border:1px solid #c9d5e8;border-radius:10px;background:#fff;color:var(--ink);padding:13px 14px;font:15px "IBM Plex Sans",sans-serif}.count{font:500 12px "IBM Plex Mono",monospace;color:var(--muted);padding-bottom:13px}.filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px}.filters button{border:1px solid #becce1;border-radius:999px;background:#fff;padding:7px 11px;color:#33435e;font:500 12px "IBM Plex Mono",monospace;cursor:pointer}.filters button[aria-pressed=true]{background:var(--blk);color:white;border-color:var(--blk)}
+.group{margin:42px 0}.group h2{font:700 2rem "Fraunces",serif;margin:0 0 14px}.group>p{color:var(--soft);max-width:70ch}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:var(--card);border:1px solid #d6dfec;border-radius:14px;padding:17px;text-decoration:none;min-height:124px;display:flex;flex-direction:column;transition:transform .14s,box-shadow .14s}.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(35,59,95,.10)}.card small{font:500 10px "IBM Plex Mono",monospace;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}.card strong{font-size:15px;line-height:1.35;margin:8px 0 4px}.card span{margin-top:auto;color:#62728a;font-size:12px;overflow-wrap:anywhere}.empty{border:1px dashed #b9c7da;border-radius:12px;padding:22px;color:var(--soft)}footer{border-top:1px solid #d6dfec;padding:26px 24px;color:var(--muted);font-size:13px}footer div{max-width:var(--mw);margin:auto}
+@media(max-width:850px){.grid{grid-template-columns:1fr 1fr}.controls{grid-template-columns:1fr}.count{padding:0}.topin{gap:13px}.top a:not(.brand){font-size:11px}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.hero{padding-top:58px}.topin{overflow-x:auto}.brand{min-width:max-content}}
+</style>
+</head>
+<body>
+<nav class="top" aria-label="Primary"><div class="topin">
+<a class="brand" href="../"><img src="../assets/logo-encapsulatorp-96.png" alt=""><span>ENCAPSULATORP</span></a>
+<a href="../">Home</a><a href="../atlas/README.html">Atlas</a><a href="../treasure-hunt/">Treasure Hunt</a><a href="../evidence/">Evidence</a>
+</div></nav>
+<header class="hero"><div class="heroin">
+<div class="k">one live index · generated from sitemap.xml</div>
+<h1>The whole site,<br>without the maze.</h1>
+<p>This map is not another manually curated menu. It reads the current sitemap and turns every published route into a searchable, grouped index.</p>
+<div class="pplay" aria-label="EncapsulatorP identity variations"><b>EncapsulatorP</b><span>can open as</span><span class="token">p + q</span><span class="token">p·q</span><span class="token">P ? NP</span><span class="token">pq = m² − d²</span></div>
+</div></header>
+<main class="wrap">
+<div class="controls"><label>Find anything<input id="q" type="search" placeholder="Goldbach, towers, Collatz, proof, logistic…" autocomplete="off"></label><div class="count" id="count">Loading sitemap…</div></div>
+<div class="filters" id="filters" aria-label="Map filters"></div>
+<div id="map"><div class="empty">Reading sitemap.xml…</div></div>
+</main>
+<footer><div>Source of truth: <code>/sitemap.xml</code>. New published routes appear here automatically when the sitemap changes.</div></footer>
+<script>
+(() => {
+  const labels={
+    home:["Main","Front door and core overview."],
+    atlas:["Atlas","Research entries, proof notes and long-form reading."],
+    interactive:["Interactive","Explorers, visual experiments and movable mathematics."],
+    treasure:["Treasure Hunt","Game-like proof and discovery routes."],
+    evidence:["Evidence","Compact evidence and validation views."],
+    other:["Other","Published routes that do not fit the main families."]
+  };
+  const order=["home","atlas","interactive","treasure","evidence","other"];
+  const classify=p=>p==="/"?"home":p.startsWith("/atlas/")?"atlas":p.startsWith("/interactive/")||p==="/recaman/"?"interactive":p.startsWith("/treasure-hunt/")?"treasure":p.startsWith("/evidence/")?"evidence":"other";
+  const humanize=p=>{
+    if(p==="/") return "EncapsulatorP home";
+    const raw=p.replace(/^\//,"").replace(/\/$/,"").split("/").pop().replace(/\.html$/,"");
+    return raw.replace(/[-_]/g," ").replace(/\b\w/g,c=>c.toUpperCase());
+  };
+  const q=document.getElementById("q"),map=document.getElementById("map"),count=document.getElementById("count"),filters=document.getElementById("filters");
+  let rows=[],active="all";
+  const render=()=>{
+    const term=q.value.trim().toLowerCase();
+    const visible=rows.filter(r=>(active==="all"||r.group===active)&&(!term||(r.title+" "+r.path).toLowerCase().includes(term)));
+    count.textContent=visible.length+" route"+(visible.length===1?"":"s");
+    if(!visible.length){map.innerHTML='<div class="empty">No matching published route.</div>';return}
+    map.innerHTML=order.map(g=>{
+      const items=visible.filter(r=>r.group===g); if(!items.length)return "";
+      return '<section class="group"><h2>'+labels[g][0]+'</h2><p>'+labels[g][1]+'</p><div class="grid">'+items.map(r=>'<a class="card" href="'+r.url+'"><small>'+g+'</small><strong>'+r.title+'</strong><span>'+r.path+'</span></a>').join("")+'</div></section>';
+    }).join("");
+  };
+  const button=(key,name)=>{
+    const b=document.createElement("button");b.type="button";b.textContent=name;b.dataset.group=key;b.setAttribute("aria-pressed",key===active);
+    b.onclick=()=>{active=key;[...filters.children].forEach(x=>x.setAttribute("aria-pressed",x===b));render()};filters.appendChild(b);
+  };
+  fetch("../sitemap.xml",{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error("sitemap unavailable");return r.text()}).then(text=>{
+    const xml=new DOMParser().parseFromString(text,"application/xml");
+    rows=[...xml.querySelectorAll("url > loc")].map(n=>{
+      const url=n.textContent.trim(),u=new URL(url),path=u.pathname.replace(/^\/EncapsulatorP\.github\.io/,"")||"/";
+      return {url,title:humanize(path),path,group:classify(path)};
+    });
+    button("all","All");order.forEach(g=>{if(rows.some(r=>r.group===g))button(g,labels[g][0])});q.addEventListener("input",render);render();
+  }).catch(err=>{count.textContent="Map unavailable";map.innerHTML='<div class="empty">Could not read sitemap.xml. The site itself is still available from the links above.</div>';console.warn(err)});
+})();
+</script>
+</body>
+</html>

@@ -19,6 +19,8 @@
     var items = Array.from(document.querySelectorAll('[data-contents-item]'));
     var empty = document.getElementById('contents-empty');
     filter.addEventListener('input', function () {
+      var fullIndex = document.querySelector('.atlas-full-index');
+      if (fullIndex && filter.value.trim()) fullIndex.open = true;
       var terms = filter.value.normalize('NFKD').toLowerCase().trim().split(/\s+/).filter(Boolean);
       var visible = 0;
       items.forEach(function (item) {
