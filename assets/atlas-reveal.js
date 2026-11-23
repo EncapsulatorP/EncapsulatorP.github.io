@@ -15,7 +15,7 @@
   }
 })(typeof globalThis==='object'?globalThis:this,function(Gif){
   'use strict';
-  const COOL=[[0,'#284cad'],[.24,'#1480c5'],[.46,'#078b9e'],[.69,'#5d65c7'],[.95,'#8054b5'],[1,'#6c9e95']];
+  const COOL=[[0,'#FFF44F'],[.5,'#C9F800'],[1,'#7FEF2D']];
   const DULL=[[0,'#65717c'],[.35,'#827481'],[.7,'#887a75'],[1,'#706679']];
   // This alphabet is a transient visual mask, never an asserted translation.
   // Authentic prose endpoints come only from config.passages[].zyntalic.
@@ -34,7 +34,7 @@
   // and numerical computations, asymptotics, reviews of them, and refuted claims (folded instead).
   const PLAIN_STATUSES=new Set(['exact','proved','proven','proof','theorem','treasure','finite','numerical','asymptotic','conditional','review','reference','collection','false','trap','refuted','disproved']);
   function isPlainStatus(status){return PLAIN_STATUSES.has(String(status||'').toLowerCase())}
-  function colourAt(fraction,kind='treasure'){const stops=kind==='treasure'?COOL:DULL,t=clamp(fraction);for(let i=1;i<stops.length;i++)if(t<=stops[i][0])return mix(hex(stops[i-1][1]),hex(stops[i][1]),(t-stops[i-1][0])/(stops[i][0]-stops[i-1][0]));return hex(stops.at(-1)[1])}
+  function colourAt(fraction,kind='treasure'){const stops=kind==='trap'?DULL:COOL,t=clamp(fraction);for(let i=1;i<stops.length;i++)if(t<=stops[i][0])return mix(hex(stops[i-1][1]),hex(stops[i][1]),(t-stops[i-1][0])/(stops[i][0]-stops[i-1][0]));return hex(stops.at(-1)[1])}
   function hash(value){value|=0;value=Math.imul(value^(value>>>16),0x45d9f3b);value=Math.imul(value^(value>>>16),0x45d9f3b);return(value^(value>>>16))>>>0}
   function seedFor(s){let n=2166136261;for(const c of String(s))n=hash(n+c.codePointAt(0));return n}
   function visualMask(text,seed=1){return Array.from(String(text)).map((c,i)=>/\s/u.test(c)?c:MASK_ALPHABET[hash(seed+i*977)%MASK_ALPHABET.length]).join('')}
