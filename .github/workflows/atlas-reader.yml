@@ -1,0 +1,48 @@
+name: HTML atlas and GIF reader
+
+on:
+  push:
+    paths:
+      - 'atlas/**'
+      - 'assets/atlas-*.js'
+      - 'assets/atlas-*.css'
+      - 'index.html'
+      - 'treasure-hunt/**'
+      - 'package*.json'
+      - '.github/workflows/atlas-reader.yml'
+  pull_request:
+    paths:
+      - 'atlas/**'
+      - 'assets/atlas-*.js'
+      - 'assets/atlas-*.css'
+      - 'index.html'
+      - 'treasure-hunt/**'
+      - 'package*.json'
+      - '.github/workflows/atlas-reader.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preserve-and-animate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Preserve every source, equation and evidence label
+        run: python3 atlas/verify_html_semantics.py
+      - name: Check playback and complete GIF exports
+        run: node atlas/verify_reader.cjs
+      - name: Parse the browser components
+        run: |
+          node --check assets/atlas-gif.js
+          node --check assets/atlas-reveal.js
+          node --check assets/atlas-reader-init.js
+          node --check assets/research-atlas.js
+          node --check treasure-hunt/hunt.js

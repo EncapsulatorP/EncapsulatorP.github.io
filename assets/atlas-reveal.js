@@ -1,0 +1,283 @@
+/* Atlas reading/reveal engine and complete-entry local GIF export.
+ * Browser and Node Canvas use the same pure layout and frame renderer.
+ * Ordinary source HTML remains complete when JavaScript is unavailable.
+ */
+(function(root,factory){
+  if(typeof module==='object'&&module.exports)module.exports=factory(require('./atlas-gif.js'));
+  else root.AtlasReveal=factory(root.AtlasGif);
+})(typeof globalThis==='object'?globalThis:this,function(Gif){
+  'use strict';
+  const COOL=[[0,'#284cad'],[.24,'#1480c5'],[.46,'#078b9e'],[.69,'#5d65c7'],[.95,'#8054b5'],[1,'#6c9e95']];
+  const DULL=[[0,'#65717c'],[.35,'#827481'],[.7,'#887a75'],[1,'#706679']];
+  const clamp=(n,a=0,b=1)=>Math.max(a,Math.min(b,n));
+  const smooth=n=>{n=clamp(n);return n*n*(3-2*n)};
+  const normalize=s=>String(s??'').replace(/\s+/gu,' ').trim();
+  const words=s=>normalize(s).split(' ').filter(Boolean);
+  const blockTokens=b=>b.type==='math'&&!b.image?String(b.text||'').replace(/\r\n?/g,'\n').split(/(\n)/).flatMap(s=>s==='\n'?['\n']:words(s)):words(b.text);
+  const hex=s=>[1,3,5].map(i=>parseInt(s.slice(i,i+2),16));
+  const rgb=a=>'rgb('+a.map(Math.round).join(',')+')';
+  const mix=(a,b,t)=>a.map((v,i)=>v+(b[i]-v)*t);
+  function evidenceKind(status){const s=String(status||'').toLowerCase();if(['exact','proved','proven','proof','treasure','theorem'].includes(s))return'treasure';if(['false','trap','refuted','disproved'].includes(s))return'trap';return'neutral'}
+  function evidenceLabel(s){return {exact:'Exact result',proved:'Proved result',proven:'Proved result',proof:'Proof',theorem:'Theorem',false:'Refuted extension',refuted:'Refuted extension',disproved:'Disproved claim',trap:'Scope trap',exploratory:'Exploratory',conjectural:'Conjectural',conditional:'Conditional',collection:'Evidence collection',numerical:'Numerical observation'}[String(s||'').toLowerCase()]||String(s||'Evidence note')}
+  function colourAt(fraction,kind='treasure'){const stops=kind==='trap'?DULL:COOL,t=clamp(fraction);for(let i=1;i<stops.length;i++)if(t<=stops[i][0])return mix(hex(stops[i-1][1]),hex(stops[i][1]),(t-stops[i-1][0])/(stops[i][0]-stops[i-1][0]));return hex(stops.at(-1)[1])}
+  function hash(value){value|=0;value=Math.imul(value^(value>>>16),0x45d9f3b);value=Math.imul(value^(value>>>16),0x45d9f3b);return(value^(value>>>16))>>>0}
+  function seedFor(s){let n=2166136261;for(const c of String(s))n=hash(n+c.codePointAt(0));return n}
+  function morphText(source,target,progress,tick=0,seed=1){
+    const p=clamp(progress);if(p===0)return String(source);if(p===1)return String(target);
+    const from=Array.from(source),to=Array.from(target),pool=from.filter(c=>/\p{L}/u.test(c)),length=Math.max(from.length,to.length),out=[];
+    for(let i=0;i<length;i++){const h=hash(seed+i*977),begin=.43*(i/Math.max(1,length))+.1*(h%1000)/1000,end=Math.min(.99,begin+.3+.13*((h>>>10)%1000)/1000);if(p<begin)out.push(from[i]||'');else if(p>=end)out.push(to[i]||'');else{const c=to[i]||from[i]||'';out.push(/\s/u.test(c)||!(/\p{L}/u.test(c))?c:(pool.length?pool[hash(h+tick*331)%pool.length]:c))}}
+    return out.join('');
+  }
+  function makePalette(){
+    const out=[];for(let i=0;i<32;i++)out.push(...Array(3).fill(Math.round(i*255/31)));
+    for(const kind of ['treasure','trap'])for(let h=0;h<16;h++)for(const alpha of [1,.7,.4,.15])out.push(...mix([255,255,255],colourAt(h/15,kind),alpha).map(Math.round));
+    while(out.length<768)out.push(255,255,255);return new Uint8Array(out.slice(0,768));
+  }
+  function createCanvasDefault(w,h){if(typeof document==='undefined')throw new Error('Inject createCanvas(width,height) in Node.');const c=document.createElement('canvas');c.width=w;c.height=h;return c}
+  function font(ctx,size,type='paragraph',family='"DejaVu Sans",Arial,sans-serif'){ctx.font=(type==='heading'?'600 ':'')+size+'px '+(type==='math'?'"DejaVu Sans Mono",monospace':type==='heading'?'Georgia,"DejaVu Serif",serif':family);ctx.textBaseline='top'}
+  function wrap(ctx,text,width){
+    if(String(text).includes('\n'))return String(text).split('\n').flatMap(line=>wrap(ctx,line,width));
+    const output=[];let line='';
+    for(const word of words(text)){
+      if(ctx.measureText(word).width>width){if(line){output.push(line);line=''}let part='';for(const c of Array.from(word)){if(part&&ctx.measureText(part+c).width>width){output.push(part);part=''}part+=c}line=part;continue}
+      const trial=line?line+' '+word:word;if(line&&ctx.measureText(trial).width>width){output.push(line);line=word}else line=trial;
+    }
+    if(line||!output.length)output.push(line);return output;
+  }
+  function passageMap(config){return new Map((config.passages||[]).map(p=>[p.id,p]))}
+  function buildGifPlan(config,options={}){
+    const width=options.width||760,height=options.height||1040,padding=options.padding||44,family=options.fontFamily||'"DejaVu Sans",Arial,sans-serif';
+    if(width<320||height<400)throw new RangeError('GIF portrait pages must be at least 320 × 400 pixels.');
+    const make=options.createCanvas||createCanvasDefault,canvas=make(width,height),ctx=canvas.getContext('2d'),contentWidth=width-padding*2;
+    const title=String(config.title||config.entryId||config.id||'Atlas entry'),sourceLabel=String(config.sourceLabel||''),sourceUrl=String(config.sourceUrl||'');
+    font(ctx,23,'heading',family);const titleLines=wrap(ctx,title,contentWidth);const headerHeight=padding+titleLines.length*30+42;
+    font(ctx,10,'caption',family);const footerLines=wrap(ctx,[sourceLabel,sourceUrl].filter(Boolean).join(' · '),contentWidth);const footerHeight=30+footerLines.length*14;
+    const bottom=height-padding-footerHeight;if(headerHeight+110>=bottom)throw new RangeError('Entry title/source labels leave no usable GIF text area.');
+    const preparedImages=options.preparedImages||new Map();
+    const supplied=config.gifBlocks||[];if(!supplied.length)throw new Error('Complete-entry GIF export requires nonempty gifBlocks.');
+    const passages=passageMap(config),input=supplied.map((b,index)=>({...b,text:String(b.text??''),originalIndex:index})),units=[];
+    let lastStatus='';
+    for(const b of input){if(!normalize(b.text)&&!b.image)continue;const status=b.status||b.evidence||config.status||'exploratory';if(status!==lastStatus){units.push({type:'caption',text:'Evidence: '+evidenceLabel(status),status,originalIndex:-1});lastStatus=status}if(b.sourceLabel)units.push({type:'caption',text:'Source: '+b.sourceLabel,status,originalIndex:-1});units.push({...b,status})}
+    const pages=[];let current={chunks:[],wordCount:0,animated:false},y=headerHeight;
+    const commit=()=>{if(current.chunks.length)pages.push(current);current={chunks:[],wordCount:0,animated:false};y=headerHeight};
+    for(let unitIndex=0;unitIndex<units.length;unitIndex++){const b=units[unitIndex];
+      if(b.image){
+        const image=preparedImages.get(b.image);if(!image)throw new Error('GIF image has not been prepared: '+b.image);
+        const iw=Number(b.width)||image.naturalWidth||image.width,ih=Number(b.height)||image.naturalHeight||image.height;
+        if(!(iw>0&&ih>0))throw new Error('GIF image has invalid natural dimensions: '+b.image);
+        const scale=Math.min(1,contentWidth/iw,(bottom-headerHeight-16)/ih),w=iw*scale,h=ih*scale;
+        if(y+h+16>bottom)commit();
+        const count=Math.max(1,words(b.text).length);
+        current.chunks.push({type:'image',imageKey:b.image,image,text:b.text,alt:b.alt||b.text,status:b.status,kind:'neutral',originalIndex:b.originalIndex,wordStart:0,wordEnd:count,wordTotal:count,x:padding+(contentWidth-w)/2,y,width:w,height:h});
+        current.wordCount+=Math.min(count,70);y+=h+16;
+        const caption=b.caption||(b.type==='caption'?b.text:'');if(normalize(caption))units.splice(unitIndex+1,0,{type:'caption',text:caption,status:b.status,originalIndex:-1});
+        continue;
+      }
+      const type=['heading','math','caption'].includes(b.type)?b.type:'paragraph',size=type==='heading'?22:type==='caption'?12:17.5,leading=size*1.48,gap=type==='heading'?14:12;
+      const englishWords=blockTokens(b),ref=passages.get(b.passageId),status=b.status||config.status,kind=evidenceKind(status);
+      const match=ref&&ref.zyntalic&&normalize(ref.english)===normalize(b.sourceEnglish??b.text);
+      const animate=(kind==='treasure'||(kind==='trap'&&evidenceKind(config.status)==='trap'&&b.role!=='correction'))&&Boolean(match);
+      const sourceWords=animate?words(ref.zyntalic):englishWords;let start=0;
+      while(start<englishWords.length){
+        if(y+leading+gap>bottom){commit();continue}
+        const available=bottom-y-gap;let low=start+1,high=englishWords.length,best=start,bestHeight=0;
+        font(ctx,size,type,family);
+        while(low<=high){const end=(low+high)>>>1,s0=Math.round(sourceWords.length*start/englishWords.length),s1=Math.round(sourceWords.length*end/englishWords.length),et=englishWords.slice(start,end).join(' '),zt=sourceWords.slice(s0,s1).join(' '),h=Math.max(wrap(ctx,et,contentWidth).length,wrap(ctx,zt,contentWidth).length)*leading;if(h<=available){best=end;bestHeight=h;low=end+1}else high=end-1}
+        if(best===start){if(current.chunks.length){commit();continue}throw new RangeError('A text token is taller than one GIF page; split that semantic block without dropping its content.');}
+        const s0=Math.round(sourceWords.length*start/englishWords.length),s1=Math.round(sourceWords.length*best/englishWords.length);
+        const chunk={type,status,kind:animate?kind:'neutral',role:b.role||'',text:englishWords.slice(start,best).join(' '),zyntalic:sourceWords.slice(s0,s1).join(' '),originalIndex:b.originalIndex,wordStart:start,wordEnd:best,wordTotal:englishWords.length,passageId:b.passageId||'',x:padding,y,width:contentWidth,height:bestHeight,size,leading,seed:seedFor((config.entryId||config.id||title)+'|'+b.originalIndex+'|'+start)};
+        current.chunks.push(chunk);current.wordCount+=best-start;current.animated ||=animate;y+=bestHeight+gap;start=best;if(start<englishWords.length)commit();
+      }
+    }
+    commit();
+    const baseReadMs=options.readHoldMs??4500,readPerWordMs=options.readPerWordMs??180;
+    for(const [i,page]of pages.entries()){
+      page.index=i;page.readMs=Math.max(baseReadMs,Math.min(90000,page.wordCount*readPerWordMs));page.kind=evidenceKind(config.status)==='trap'?'trap':'treasure';
+      page.transitionMs=page.animated?(page.kind==='trap'?4200:3000):0;
+      page.durationMs=page.transitionMs+page.readMs;
+      const times=[];
+      if(!page.animated)times.push({time:page.durationMs,delayMs:page.readMs});
+      else if(page.kind==='trap'){
+        times.push({time:0,delayMs:Math.max(1800,Math.min(page.readMs,12000))});
+        for(let t=1800;t<4200;t+=100)times.push({time:t,delayMs:100});times.push({time:4200,delayMs:page.readMs});
+      }else{times.push({time:0,delayMs:700});for(let t=700;t<3000;t+=100)times.push({time:t,delayMs:100});times.push({time:3000,delayMs:page.readMs});}
+      page.frames=times;
+    }
+    const coverage=input.filter(b=>normalize(b.text)||b.image).map(b=>({blockIndex:b.originalIndex,kind:b.image?'image':'text',words:b.image?Math.max(1,words(b.text).length):blockTokens(b).length,parts:pages.flatMap((p,page)=>p.chunks.filter(c=>c.originalIndex===b.originalIndex).map(c=>({page,start:c.wordStart,end:c.wordEnd}))) }));
+    for(const c of coverage){let end=0;for(const p of c.parts){if(p.start!==end)throw new Error('GIF block coverage is discontinuous.');end=p.end}if(end!==c.words)throw new Error('GIF block coverage is incomplete.')}
+    return {width,height,padding,family,title,titleLines,headerHeight,footerLines,footerHeight,sourceLabel,sourceUrl,status:config.status||'exploratory',entryId:config.entryId||config.id||'atlas-entry',pages,coverage,inputBlockCount:coverage.length,frameCount:pages.reduce((n,p)=>n+p.frames.length,0),durationMs:pages.reduce((n,p)=>n+p.frames.reduce((v,f)=>v+f.delayMs,0),0),palette:makePalette()};
+  }
+  function drawText(ctx,text,x,y,width,{size=17.5,leading=size*1.48,type='paragraph',family,colour='#24252b',gradient=null,maxHeight=Infinity,alpha=1}={}){
+    font(ctx,size,type,family);let lines=wrap(ctx,text,width);while(lines.length*leading>maxHeight&&size>8){size-=.3;leading=size*1.48;font(ctx,size,type,family);lines=wrap(ctx,text,width)}
+    if(lines.length*leading>maxHeight+.5)throw new RangeError('Intermediate GIF text does not fit its reserved block.');
+    ctx.save();ctx.globalAlpha=alpha;
+    for(const [i,line] of lines.entries()){
+      if(!gradient){ctx.fillStyle=colour;ctx.fillText(line,x,y+i*leading);continue}
+      let at=x;for(const word of line.split(' ')){const w=ctx.measureText(word).width;ctx.fillStyle=rgb(colourAt((at-x+w/2)/Math.max(1,width),gradient));ctx.fillText(word,at,y+i*leading);at+=w+ctx.measureText(' ').width}
+    }
+    ctx.restore();return lines.length*leading;
+  }
+  function renderGifFrame(plan,pageIndex,time,canvas){
+    const page=plan.pages[pageIndex];if(!page)throw new RangeError('Unknown GIF page.');canvas.width=plan.width;canvas.height=plan.height;const ctx=canvas.getContext('2d');
+    ctx.fillStyle='#fff';ctx.fillRect(0,0,plan.width,plan.height);ctx.fillStyle=page.kind==='trap'?'#8a808d':'#5b7bbb';ctx.fillRect(plan.padding,24,plan.width-plan.padding*2,2);
+    drawText(ctx,plan.title,plan.padding,plan.padding,plan.width-plan.padding*2,{size:23,leading:30,type:'heading',family:plan.family});
+    drawText(ctx,evidenceLabel(plan.status)+'  ·  Part '+(pageIndex+1)+' / '+plan.pages.length,plan.padding,plan.headerHeight-28,plan.width-plan.padding*2,{size:11,leading:16,type:'caption',family:plan.family,colour:'#6b7280'});
+    for(const chunk of page.chunks){
+      if(chunk.type==='image'){ctx.drawImage(chunk.image,chunk.x,chunk.y,chunk.width,chunk.height);continue}
+      let text=chunk.text,gradient=null,alpha=1;
+      if(chunk.kind==='treasure'){const p=smooth((time-700)/2000);text=morphText(chunk.zyntalic,chunk.text,p,Math.floor(time/45),chunk.seed);if(p<1)gradient='treasure'}
+      else if(chunk.kind==='trap'){const p=smooth((time-1800)/1600);text=morphText(chunk.text,chunk.zyntalic,p,Math.floor(time/45),chunk.seed);if(p>0)gradient='trap';alpha=1-smooth((time-3700)/500)}
+      drawText(ctx,text,chunk.x,chunk.y,chunk.width,{size:chunk.size,leading:chunk.leading,type:chunk.type,family:plan.family,colour:chunk.type==='caption'?'#707784':'#24252b',gradient,maxHeight:chunk.height,alpha});
+    }
+    const fy=plan.height-plan.padding-plan.footerHeight+12;ctx.fillStyle='#e4e7ee';ctx.fillRect(plan.padding,fy-13,plan.width-plan.padding*2,1);
+    drawText(ctx,plan.footerLines.join('\n'),plan.padding,fy,plan.width-plan.padding*2,{size:10,leading:14,type:'caption',family:plan.family,colour:'#737a86'});
+    const state=page.kind==='trap'&&time>=4200?'Scope correction retained':page.animated&&time<2700?'Passage resolving':'English reading';
+    const finalNote='ENCAPSULATORP · READING EDITION · '+state;
+    drawText(ctx,finalNote,plan.padding,plan.height-plan.padding-13,plan.width-plan.padding*2,{size:10,leading:14,type:'caption',family:plan.family,colour:'#737a86'});return canvas;
+  }
+  async function exportGifData(config,options={}){
+    if(!Gif)throw new Error('Load atlas-gif.js before atlas-reveal.js.');
+    const check=()=>{if(options.signal?.aborted){const e=new Error('GIF export cancelled.');e.name='AbortError';throw e}};check();
+    const preparedImages=new Map(options.preparedImages||[]),images=[...new Set((config.gifBlocks||[]).map(b=>b.image).filter(Boolean))];
+    const load=options.loadImage||((url)=>new Promise((resolve,reject)=>{if(typeof Image==='undefined'){reject(new Error('Inject loadImage(url) for Node GIF images.'));return}const image=new Image();image.onload=()=>resolve(image);image.onerror=()=>reject(new Error('Could not load local GIF image: '+url));image.src=url}));
+    for(let i=0;i<images.length;i++){
+      check();const key=images[i];if(!preparedImages.has(key)){
+        const base=options.baseURL||config.baseURL||(typeof document!=='undefined'?document.baseURI:null);
+        const resolved=options.resolveImage?options.resolveImage(key,config):base?new URL(key,base).href:key;
+        preparedImages.set(key,await load(resolved));
+      }
+      options.onProgress?.({phase:'images',page:0,pages:0,frame:i+1,frames:images.length,fraction:images.length?(i+1)/images.length:1});
+    }
+    check();const make=options.createCanvas||createCanvasDefault,plan=buildGifPlan(config,{...options,preparedImages,createCanvas:make}),canvas=make(plan.width,plan.height),encoder=new Gif.Encoder(plan.width,plan.height,{palette:plan.palette,loop:options.loop??null,background:31}),quantize=Gif.makeQuantizer(plan.palette);
+    let previous=null,frame=0;
+    check();options.onProgress?.({phase:'layout',page:0,pages:plan.pages.length,frame:0,frames:plan.frameCount,fraction:0,durationMs:plan.durationMs,width:plan.width,height:plan.height});
+    for(const page of plan.pages)for(const step of page.frames){
+      check();renderGifFrame(plan,page.index,step.time,canvas);const indices=quantize(canvas.getContext('2d').getImageData(0,0,plan.width,plan.height).data),d=Gif.delta(previous,indices,plan.width,plan.height);encoder.addFrame(d.indices,{...d,delay:Math.round(step.delayMs/10)});previous=indices;frame++;
+      options.onProgress?.({phase:'encoding',page:page.index+1,pages:plan.pages.length,frame,frames:plan.frameCount,fraction:frame/plan.frameCount});
+      await new Promise(resolve=>setTimeout(resolve,0));
+    }
+    check();const bytes=encoder.finish(),fileName=String(config.entryId||config.id||'atlas-entry').replace(/[^a-z0-9_-]+/gi,'-')+'.gif';
+    return {bytes,mime:'image/gif',fileName,summary:{pages:plan.pages.length,blocks:plan.inputBlockCount,frames:plan.frameCount,durationMs:plan.durationMs,coverage:plan.coverage,width:plan.width,height:plan.height}};
+  }
+
+  // Browser integration is defined below; no DOM is touched when required in Node.
+  function mount(config={}){return mountBrowser(config)}
+  let mountBrowser=()=>{throw new Error('Browser integration has not been initialized.');};
+  const api={mount,evidenceKind,evidenceLabel,colourAt,morphText,makePalette,buildGifPlan,renderGifFrame,exportGifData};
+  function semanticText(node){
+    if(node.nodeType===3)return node.nodeValue||'';
+    if(node.nodeType!==1)return'';
+    if(node.hasAttribute?.('data-gif-text'))return node.getAttribute('data-gif-text');
+    if(node.matches?.('svg,img'))return node.getAttribute('aria-label')||node.getAttribute('alt')||node.getAttribute('data-tex')||'';
+    const body=Array.from(node.childNodes||[]).map(semanticText).join('');
+    if(node.tagName==='SUP')return'^('+body+')';if(node.tagName==='SUB')return'_('+body+')';if(node.tagName==='BR')return'\n';
+    if(['TD','TH'].includes(node.tagName))return body+' | ';if(node.tagName==='TR')return body+'\n';return body;
+  }
+  api.semanticText=semanticText;
+  function deriveGifBlocks(root,status){
+    const nodes=Array.from(root.querySelectorAll('h1,h2,h3,h4,p,li,pre,table,[data-gif-math]'));
+    return nodes.filter(el=>!el.closest('.ar-controls,[data-ar-ignore]')&&!nodes.some(other=>other!==el&&other.contains(el))).map(el=>({type:el.matches('[data-gif-math],pre')?'math':/^H[1-4]$/.test(el.tagName)?'heading':'paragraph',text:semanticText(el),passageId:el.dataset.passageId,status:el.dataset.evidence||status}));
+  }
+  mountBrowser=function(config={}){
+    if(typeof document==='undefined')throw new Error('mount() requires a DOM; use the injected Canvas export functions in Node.');
+    const root=typeof config.root==='string'?document.querySelector(config.root):(config.root||document.querySelector('#reader-content'));
+    if(!root)throw new Error('Atlas reader content root was not found.');if(root.__atlasReveal)return root.__atlasReveal;
+    const doc=root.ownerDocument||document,win=doc.defaultView||window,media=win.matchMedia('(prefers-reduced-motion: reduce)'),collection=config.status==='collection';
+    const entryId=config.entryId||config.id||root.id||'atlas-entry';
+    const fallbackPassages=Array.from(root.querySelectorAll('[data-zyntalic]')).map(el=>({id:el.dataset.passageId,english:semanticText(el),zyntalic:el.dataset.zyntalic,status:el.dataset.evidence||config.status}));
+    const spec={...config,entryId,passages:config.passages||fallbackPassages,gifBlocks:config.gifBlocks?.length?config.gifBlocks:deriveGifBlocks(root,config.status)};
+    const warnings=[],records=[],visible=new Set(),running=new Set(),protectedSelector='math,.math,.katex,.MathJax,svg,sup,sub,code,pre,script,style,[data-ar-ignore],.ar-controls,.ar-sr-only';
+    let raf=0,lastClock=null,playing=false,elapsed=0,plainMode=media.matches,exportController=null,observer=null,destroyed=false;
+    const escapeSelector=s=>String(s).replace(/\\/g,'\\\\').replace(/"/g,'\\"');
+    for(const p of spec.passages){
+      const kind=evidenceKind(p.status||spec.status);if(!p.zyntalic||kind==='neutral'||(collection&&kind!=='treasure')||(kind==='trap'&&evidenceKind(spec.status)!=='trap'))continue;
+      let el;try{el=root.querySelector(p.selector||`[data-passage-id="${escapeSelector(p.id)}"]`)}catch{warnings.push('Invalid selector for '+p.id);continue}
+      if(!el){warnings.push('Missing passage '+p.id);continue}
+      const walker=doc.createTreeWalker(el,4,{acceptNode:n=>n.parentElement?.closest(protectedSelector)?2:1}),nodes=[];let node;
+      while((node=walker.nextNode()))nodes.push(node);const english=nodes.map(n=>n.nodeValue).join('');
+      if(p.english&&normalize(p.english)!==normalize(english)&&normalize(p.english)!==normalize(el.textContent)&&normalize(p.english)!==normalize(semanticText(el))){warnings.push('English source mismatch; left readable: '+p.id);continue}
+      if(!nodes.length){warnings.push('No eligible prose text in '+p.id);continue}
+      const r={id:p.id,el,kind,source:String(p.zyntalic),target:english,originalNodes:nodes,groups:[],prepared:false,done:plainMode,elapsed:0,seed:seedFor(entryId+'|'+p.id),index:records.length};records.push(r);
+    }
+    const singleKind=evidenceKind(spec.status),stagger=records.length>1?Math.min(120,3600/(records.length-1)):0,hold=singleKind==='trap'?1800:850,changeMs=2100;
+    const transitionEnd=hold+Math.max(0,records.length-1)*stagger+changeMs,durationMs=records.length?(transitionEnd+(singleKind==='trap'?1300:700)):0;
+    function prepare(r){
+      if(r.prepared)return;r.prepared=true;r.el.classList.add('ar-morph');r.el.dataset.arKind=r.kind;
+      const source=Array.from(r.source),total=r.originalNodes.reduce((n,node)=>n+Array.from(node.nodeValue).length,0),wordPositions=[];let word=0;
+      for(let i=0;i<source.length;i++){wordPositions.push(word);if(/\s/u.test(source[i])&&i&& !/\s/u.test(source[i-1]))word++}
+      let consumed=0,sourceAt=0;
+      for(const original of r.originalNodes){
+        const text=original.nodeValue,targetChars=Array.from(text);consumed+=targetChars.length;const sourceEnd=Math.round(source.length*consumed/Math.max(1,total)),sourceChars=source.slice(sourceAt,sourceEnd),wrapper=doc.createElement('span'),glyphs=[];
+        wrapper.className='ar-fragment';wrapper.setAttribute('aria-hidden','true');
+        for(let i=0;i<Math.max(sourceChars.length,targetChars.length);i++){const span=doc.createElement('span'),textNode=doc.createTextNode('');span.className='ar-glyph';span.style.setProperty('--ar-word-color',rgb(colourAt((wordPositions[Math.min(source.length-1,sourceAt+i)]||0)/Math.max(1,word),r.kind)));span.append(textNode);wrapper.append(span);glyphs.push(textNode)}
+        original.parentNode.replaceChild(wrapper,original);r.groups.push({wrapper,glyphs,source:sourceChars.join(''),target:text,seed:r.seed+sourceAt});sourceAt=sourceEnd;
+      }
+      const accessible=doc.createElement('span');accessible.className='ar-sr-only';accessible.textContent=r.target;r.el.append(accessible);
+    }
+    function renderRecord(r,p,tick){
+      prepare(r);const reverse=r.kind==='trap';
+      for(const group of r.groups){const value=Array.from(morphText(reverse?group.target:group.source,reverse?group.source:group.target,p,tick,group.seed));for(let i=0;i<group.glyphs.length;i++){const c=value[i]||'';if(group.glyphs[i].nodeValue!==c)group.glyphs[i].nodeValue=c}}
+      r.el.dataset.arPhase=(reverse?p===0:p===1)?'english':(p===0||p===1?'zyntalic':'resolving');
+    }
+    function englishRecord(r){if(!r.prepared)return;for(const group of r.groups){const target=Array.from(group.target);for(let i=0;i<group.glyphs.length;i++)group.glyphs[i].nodeValue=target[i]||''}r.el.dataset.arPhase='english'}
+    const controls=typeof spec.controls==='string'?doc.querySelector(spec.controls):spec.controls||doc.querySelector('#reader-tools');
+    let tools=controls,createdTools=false;if(!tools){tools=doc.createElement('div');root.parentNode.insertBefore(tools,root);createdTools=true}tools.classList.add('ar-controls');
+    const addButton=(action,label)=>{const b=doc.createElement('button');b.type='button';b.dataset.readerAction=action;b.textContent=label;tools.append(b);return b};
+    if(!tools.querySelector('[data-reader-action]')){if(records.length){addButton('play','Pause');addButton('replay','Replay');addButton('plain','Read English')}addButton('gif','Export this entry as GIF');const cancel=addButton('cancel-gif','Cancel export');cancel.hidden=true}
+    if(!tools.querySelector('[data-reader-gif-pace]')){
+      const label=doc.createElement('label');label.className='ar-gif-pace';label.append(doc.createTextNode('GIF pace '));
+      const select=doc.createElement('select');select.dataset.readerGifPace='';select.setAttribute('aria-label','GIF pace');
+      for(const [value,text] of [['preview','Preview'],['reading','Reading']]){const option=doc.createElement('option');option.value=value;option.textContent=text;select.append(option)}select.value='preview';label.append(select);
+      const exportButton=tools.querySelector('[data-reader-action="gif"]');if(exportButton)tools.insertBefore(label,exportButton);else tools.append(label);
+    }
+    let progress=tools.querySelector('[data-reader-export-status]');if(!progress){progress=doc.createElement('span');progress.dataset.readerExportStatus='';progress.className='ar-export-status';progress.setAttribute('role','status');progress.setAttribute('aria-live','polite');tools.append(progress)}
+    let stateLabel=tools.querySelector('[data-reader-state]');if(!stateLabel){stateLabel=doc.createElement('span');stateLabel.dataset.readerState='';stateLabel.className='ar-status';tools.append(stateLabel)}
+    const returnPanel=doc.createElement('aside');returnPanel.className='ar-return-panel';returnPanel.hidden=true;
+    const returnText=doc.createElement('p');returnText.textContent='This false extension has vanished. Its correction remains available.';const back=doc.createElement('a');back.href=spec.returnUrl||spec.menuHref||'/atlas/README.html';back.textContent='Return to the atlas';returnPanel.append(returnText,back);if(singleKind==='trap')root.append(returnPanel);
+    const trapTargets=singleKind==='trap'?(spec.trapSelector?Array.from(root.querySelectorAll(spec.trapSelector)):records.map(r=>r.el)):[];
+    const correction=spec.correctionSelector?root.querySelector(spec.correctionSelector):null;
+    function trapState(ms,forcePlain=false){if(singleKind!=='trap')return;const fade=forcePlain?0:smooth((ms-transitionEnd-600)/700),done=fade>=1;for(const el of trapTargets){el.style.opacity=String(1-fade);el.hidden=done}returnPanel.hidden=!done;if(correction){correction.hidden=false;if(done&&correction.tagName==='DETAILS')correction.open=true}}
+    function setStateLabel(){stateLabel.textContent=plainMode?'English reading':collection?'Reveals as passages enter view':playing?'Revealing passage':'Paused / readable';tools.querySelectorAll('[data-reader-action="play"]').forEach(b=>b.textContent=playing?'Pause':'Play')}
+    function stop(){playing=false;if(raf)win.cancelAnimationFrame(raf);raf=0;lastClock=null;setStateLabel()}
+    function renderSingle(ms){elapsed=clamp(ms,0,durationMs);records.forEach(r=>renderRecord(r,smooth((elapsed-hold-r.index*stagger)/changeMs),Math.floor(elapsed/45)));trapState(elapsed)}
+    function schedule(){if(destroyed||!playing||raf)return;if(collection&&!running.size)return;raf=win.requestAnimationFrame(frame)}
+    function frame(now){raf=0;if(!playing||destroyed)return;const dt=lastClock===null?0:Math.max(0,now-lastClock);lastClock=now;
+      if(collection){for(const r of [...running]){if(!visible.has(r)){running.delete(r);continue}r.elapsed+=dt;renderRecord(r,smooth((r.elapsed-850)/2100),Math.floor(r.elapsed/45));if(r.elapsed>=2950){r.done=true;running.delete(r)}}if(!running.size)lastClock=null}
+      else{renderSingle(elapsed+dt);if(elapsed>=durationMs){stop();return}}schedule();
+    }
+    function plain(){stop();plainMode=true;for(const r of records){englishRecord(r);r.done=true}running.clear();trapState(0,true);setStateLabel();return snapshot()}
+    function replay(){stop();if(media.matches)return plain();plainMode=false;elapsed=0;for(const r of records){r.done=false;r.elapsed=0;if(collection&&!visible.has(r))englishRecord(r)}if(collection){for(const r of visible){renderRecord(r,0,0);running.add(r)}}else renderSingle(0);playing=Boolean(records.length);setStateLabel();schedule();return snapshot()}
+    function play(){if(media.matches)return plain();if(plainMode||(!collection&&elapsed>=durationMs))return replay();playing=Boolean(records.length);if(collection)for(const r of visible)if(!r.done)running.add(r);setStateLabel();schedule();return snapshot()}
+    function renderAt(ms){if(!Number.isFinite(Number(ms)))throw new TypeError('renderAt(ms) requires a finite value.');stop();plainMode=false;if(collection){for(const r of records){r.elapsed=Math.max(0,Number(ms));renderRecord(r,smooth((r.elapsed-850)/2100),Math.floor(r.elapsed/45));r.done=r.elapsed>=2950}}else renderSingle(Number(ms));return snapshot()}
+    function snapshot(){return {entryId,status:spec.status,playing,plain:plainMode,elapsed,durationMs,passages:records.length,prepared:records.filter(r=>r.prepared).length,visible:visible.size,exporting:Boolean(exportController),warnings:[...warnings]}}
+    async function exportCurrent(options={}){
+      if(exportController)throw new Error('An export is already running.');stop();exportController=new AbortController();const own=exportController;let download;
+      tools.querySelectorAll('[data-reader-action="gif"]').forEach(b=>b.disabled=true);tools.querySelectorAll('[data-reader-action="cancel-gif"]').forEach(b=>b.hidden=false);
+      try{
+        let estimate='';
+        const pacing=tools.querySelector('[data-reader-gif-pace]')?.value==='reading'?{}:{readHoldMs:3500,readPerWordMs:0};
+        const result=await exportGifData(spec,{...pacing,...options,signal:own.signal,onProgress:p=>{if(p.phase==='layout')estimate=p.pages+' pages · about '+Math.max(1,Math.round(p.durationMs/60000))+' min playback';progress.textContent=p.phase==='images'?'Preparing images · '+Math.round(p.fraction*100)+'%':estimate+' · encoding page '+p.page+'/'+p.pages+' · '+Math.round(p.fraction*100)+'%';options.onProgress?.(p)}});
+        if(own.signal.aborted)throw Object.assign(new Error('GIF export cancelled.'),{name:'AbortError'});
+        const blob=new Blob([result.bytes],{type:result.mime}),url=URL.createObjectURL(blob);download=doc.createElement('a');download.href=url;download.download=result.fileName;download.className='ar-export-link';download.textContent='Download GIF · '+result.summary.pages+' pages';progress.replaceChildren(download);download.click();win.setTimeout(()=>URL.revokeObjectURL(url),60000);return result;
+      }catch(error){progress.textContent=error.name==='AbortError'?'GIF export cancelled.':'GIF export could not finish: '+error.message;throw error}
+      finally{exportController=null;tools.querySelectorAll('[data-reader-action="gif"]').forEach(b=>b.disabled=false);tools.querySelectorAll('[data-reader-action="cancel-gif"]').forEach(b=>b.hidden=true)}
+    }
+    function cancelExport(){exportController?.abort()}
+    const handlers={play:()=>playing?stop():play(),pause:stop,replay,plain,gif:()=>exportCurrent().catch(()=>{}),'cancel-gif':cancelExport};
+    tools.querySelectorAll('[data-reader-action]').forEach(b=>b.addEventListener('click',()=>handlers[b.dataset.readerAction]?.()));
+    if(collection&&typeof win.IntersectionObserver==='function'){
+      observer=new win.IntersectionObserver(entries=>{for(const entry of entries){const r=records.find(x=>x.el===entry.target);if(!r)continue;if(entry.isIntersecting){visible.add(r);if(!plainMode&&!r.done){prepare(r);renderRecord(r,smooth((r.elapsed-850)/2100),Math.floor(r.elapsed/45));running.add(r)}}else{visible.delete(r);running.delete(r)}}if(!running.size){if(raf)win.cancelAnimationFrame(raf);raf=0;lastClock=null}else schedule()},{rootMargin:'0px 0px 70px 0px',threshold:.02});
+      records.forEach(r=>observer.observe(r.el));playing=!plainMode&&Boolean(records.length);
+    }else if(!collection&&records.length){if(plainMode)plain();else replay()}
+    let printState=null;const beforePrint=()=>{printState={playing,elapsed,plain:plainMode};plain()},afterPrint=()=>{if(!printState)return;const s=printState;printState=null;if(s.plain)return;if(collection){plainMode=false;for(const r of records)r.done=false;if(s.playing)play()}else{renderAt(s.elapsed);if(s.playing)play()}};
+    win.addEventListener('beforeprint',beforePrint);win.addEventListener('afterprint',afterPrint);media.addEventListener?.('change',()=>{if(media.matches)plain()});
+    doc.addEventListener('visibilitychange',()=>{if(doc.hidden)stop()});setStateLabel();
+    const instance={config:spec,play,pause:stop,replay,plain,renderAt,snapshot,exportGif:exportCurrent,cancelExport,get durationMs(){return durationMs},destroy(){plain();cancelExport();observer?.disconnect();destroyed=true;win.removeEventListener('beforeprint',beforePrint);win.removeEventListener('afterprint',afterPrint);if(createdTools)tools.remove();delete root.__atlasReveal}};
+    root.__atlasReveal=instance;return instance;
+  };
+  if(typeof document!=='undefined'){
+    const boot=()=>{const node=document.getElementById('reader-config')||document.getElementById('reader-data');if(!node)return;try{const config=JSON.parse(node.textContent);if(!config.root)config.root='#reader-content';if(!config.controls)config.controls='#reader-tools';window.atlasReveal=api.mount(config)}catch(error){console.error('Atlas reader remains available as plain HTML:',error)}};
+    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+  }
+  return api;
+});

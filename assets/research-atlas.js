@@ -102,6 +102,9 @@
     var permalink = node('a', 'at-entry-permalink', 'Link to this entry ↗');
     permalink.href = '#atlas?entry=' + encodeURIComponent(entry.id);
     detail.append(permalink);
+    var reader = node('a', 'at-entry-permalink', 'Read with Zyntalic reveal · export GIF ↗');
+    reader.href = 'atlas/entries/' + encodeURIComponent(entry.id) + '.html';
+    detail.append(reader);
     body.append(detail); article.append(body);
     var haystack = normal([entry.title, entry.family, entry.summary, entry.formula, entry.why, entry.detail, entry.next, entry.origin].flat().join(' '));
     cards.set(entry.id, { article: article, detail: detail, haystack: haystack, entry: entry });

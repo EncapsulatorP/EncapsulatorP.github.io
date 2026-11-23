@@ -74,6 +74,9 @@ def build():
               "`python3 atlas/build_catalog.py` validates and rebuilds this reading copy and the browser data from `atlas/catalog.json`.", "",
               "[Written arguments](mathematical-notes.md) · [Recovered bridges](recovered-bridges.md) · [Recovery provenance](recovery-notes.md)", ""]
     (ROOT / "atlas/README.md").write_text("\n".join(lines))
+    from build_html_atlas import build_catalog_html, build_traps
+    build_catalog_html()
+    build_traps()
     print(json.dumps({"entries": len(entries), "families": len(set(e['family'] for e in entries)), "evidence": counts}, sort_keys=True))
 
 

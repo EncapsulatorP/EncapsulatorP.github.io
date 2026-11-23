@@ -5,5 +5,12 @@
   "dependencies": {
     "@primer/css": "17.0.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@napi-rs/canvas": "0.1.100"
+  },
+  "scripts": {
+    "check:reader": "node atlas/verify_reader.cjs",
+    "export:gif": "node atlas/export_gif.cjs"
+  }
 }

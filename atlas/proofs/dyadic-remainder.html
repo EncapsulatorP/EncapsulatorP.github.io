@@ -1,0 +1,2690 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A focused reading note from the Pirate Chest">
+<meta name="color-scheme" content="light"><link rel="canonical" href="https://encapsulatorp.github.io/atlas/proofs/dyadic-remainder.html">
+<title>A dyadic vanishing remainder · EncapsulatorP</title>
+<link rel="stylesheet" href="../../assets/atlas-reader.css"><link rel="stylesheet" href="../../assets/atlas-reveal.css">
+</head><body class="atlas-reader" data-reader-status="exact">
+<a class="reader-skip" href="#reader-content">Skip to the complete text</a>
+<div class="reader-shell"><header class="reader-header">
+<nav class="reader-nav" aria-label="Reading routes"><a href="../../index.html#interactive?topic=goldbach-involution">Interactive space</a><a href="../README.html">Complete atlas</a><a href="../../treasure-hunt/index.html">Proof board</a></nav>
+<p class="reader-kicker">ENCAPSULATORP · Proved pathwise bound</p><h1 class="reader-title">A dyadic vanishing remainder</h1>
+<p class="reader-subtitle">A focused reading note from the Pirate Chest</p>
+<p class="reader-byline">Zolton / EncapsulatorP · with ChatGPT · 23 November 2026</p>
+<div id="reader-tools" class="reader-toolbar reader-tools" aria-label="Reading and export controls"></div>
+<noscript><p>The complete English text and formulas below are available without JavaScript.</p></noscript>
+<details class="reader-contents"><summary>Contents · 2 sections</summary><ol><li><a href="#dyadic-remainder-orientation">A dyadic vanishing remainder</a></li><li><a href="#mahler-remainder">A dyadic path with a vanishing remainder</a></li></ol></details>
+</header>
+<main id="reader-content" class="reader-content reader-document" data-source-document="atlas/proofs/dyadic-remainder.json">
+<section class="reader-section" id="dyadic-remainder-orientation" data-source-page="dyadic-remainder-orientation" data-source-index="0" data-source-status="exact"><span id="page-1" class="reader-page-anchor" aria-hidden="true"></span><p class="reader-kicker">NOTE 03 · PROVED PATHWISE BOUND</p><h2 class="reader-section-title" data-zyntalic data-passage-id="dyadic-remainder--dyadic-remainder-orientation--title">A dyadic vanishing remainder</h2><p class="reader-paragraph" data-zyntalic data-passage-id="dyadic-remainder--dyadic-remainder-orientation--b0" data-source-block="0" data-source-type="p">The lacunary series f(x) = Σ x^(2^n), where 2^n means 2 raised to n, obeys f(x) = x + f(x²). Along the specified dyadic path toward 1, subtracting k and a convergent constant leaves an explicit tail.</p>
+<div class="reader-equation" data-latex="0\le f(e^{-2^{-k}})-k-C\le2^{-k}" data-source-block="1" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="0\le f(e^{-2^{-k}})-k-C\le2^{-k}" xmlns:xlink="http://www.w3.org/1999/xlink" width="219pt" height="22pt" viewBox="0 0 219 22" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-2ac6e32a238f4e-figure_1">
+  <g id="math-2ac6e32a238f4e-patch_1">
+   <path d="M 0 22
+L 219 22
+L 219 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-2ac6e32a238f4e-text_1">
+   <!-- $0\leq f(e^{-2^{-k}})-k-C\leq2^{-k}$ -->
+   <g style="fill: #202520" transform="translate(0 18) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-2ac6e32a238f4e-DejaVuSerif-30" d="M 2034 219
+Q 2513 219 2750 744
+Q 2988 1269 2988 2328
+Q 2988 3391 2750 3916
+Q 2513 4441 2034 4441
+Q 1556 4441 1318 3916
+Q 1081 3391 1081 2328
+Q 1081 1269 1318 744
+Q 1556 219 2034 219
+z
+M 2034 -91
+Q 1275 -91 848 546
+Q 422 1184 422 2328
+Q 422 3475 848 4112
+Q 1275 4750 2034 4750
+Q 2797 4750 3222 4112
+Q 3647 3475 3647 2328
+Q 3647 1184 3222 546
+Q 2797 -91 2034 -91
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2ac6e32a238f4e-DejaVuSerif-2264" d="M 4684 3206
+L 1388 2309
+L 4684 1416
+L 4684 897
+L 678 2047
+L 678 2578
+L 4684 3725
+L 4684 3206
+z
+M 678 488
+L 4684 488
+L 4684 0
+L 678 0
+L 678 488
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2ac6e32a238f4e-DejaVuSerif-Italic-66" d="M 3191 4078
+L 2888 4078
+Q 2900 4144 2900 4203
+Q 2900 4347 2825 4434
+Q 2719 4556 2472 4556
+Q 2150 4556 1984 4379
+Q 1819 4203 1731 3750
+L 1647 3322
+L 2575 3322
+L 2509 2988
+L 1581 2988
+L 963 -206
+Q 853 -763 509 -1047
+Q 166 -1331 -394 -1331
+L -356 -1025
+Q -28 -1025 131 -850
+Q 297 -663 388 -206
+L 1006 2988
+L 456 2988
+L 522 3322
+L 1072 3322
+L 1153 3738
+Q 1263 4297 1606 4578
+Q 1950 4863 2509 4863
+Q 2719 4863 2920 4825
+Q 3122 4788 3316 4709
+L 3191 4078
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2ac6e32a238f4e-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2ac6e32a238f4e-DejaVuSerif-Italic-65" d="M 938 1275
+Q 925 1156 925 1050
+Q 925 756 1031 563
+Q 1216 219 1709 219
+Q 2072 219 2250 328
+Q 2569 525 2644 778
+L 3066 778
+Q 2941 381 2475 103
+Q 2150 -91 1506 -91
+Q 863 -91 516 388
+Q 272 722 272 1206
+Q 272 1419 319 1659
+Q 472 2450 1000 2931
+Q 1528 3413 2278 3413
+Q 3500 3413 3500 2547
+Q 3500 1913 2859 1603
+Q 2206 1288 938 1275
+z
+M 2541 1975
+Q 2891 2181 2891 2569
+Q 2891 3103 2181 3103
+Q 1763 3103 1472 2784
+Q 1181 2466 1003 1606
+Q 2006 1653 2541 1975
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2ac6e32a238f4e-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2ac6e32a238f4e-DejaVuSerif-32" d="M 819 3553
+L 469 3553
+L 469 4384
+Q 803 4563 1142 4656
+Q 1481 4750 1806 4750
+Q 2534 4750 2956 4397
+Q 3378 4044 3378 3438
+Q 3378 2753 2422 1800
+Q 2347 1728 2309 1691
+L 1131 513
+L 3078 513
+L 3078 1088
+L 3444 1088
+L 3444 0
+L 434 0
+L 434 341
+L 1850 1753
+Q 2319 2222 2519 2614
+Q 2719 3006 2719 3438
+Q 2719 3909 2473 4175
+Q 2228 4441 1797 4441
+Q 1350 4441 1106 4219
+Q 863 3997 819 3553
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2ac6e32a238f4e-DejaVuSerif-Italic-6b" d="M 2113 2075
+L 3034 331
+L 3513 331
+L 3450 0
+L 2528 0
+L 1622 1697
+L 1088 1275
+L 841 0
+L 266 0
+L 1147 4531
+L 594 4531
+L 656 4863
+L 1784 4863
+L 1169 1697
+L 2822 2988
+L 2344 2988
+L 2406 3322
+L 3341 3322
+L 3278 2988
+L 2113 2075
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2ac6e32a238f4e-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2ac6e32a238f4e-DejaVuSerif-Italic-43" d="M 4300 1234
+Q 3966 581 3414 245
+Q 2863 -91 2119 -91
+Q 1663 -91 1303 65
+Q 944 222 700 525
+Q 419 875 334 1320
+Q 250 1766 359 2328
+Q 572 3416 1330 4083
+Q 2088 4750 3116 4750
+Q 3497 4750 3908 4650
+Q 4319 4550 4775 4347
+L 4569 3272
+L 4216 3272
+Q 4213 3859 3919 4137
+Q 3625 4416 2997 4416
+Q 2250 4416 1762 3886
+Q 1275 3356 1075 2328
+Q 875 1303 1156 773
+Q 1438 244 2184 244
+Q 2706 244 3092 492
+Q 3478 741 3725 1234
+L 4300 1234
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-2ac6e32a238f4e-DejaVuSerif-30" transform="translate(0 0.999219)"/>
+    <use xlink:href="#math-2ac6e32a238f4e-DejaVuSerif-2264" transform="translate(82.587891 0.999219)"/>
+    <use xlink:href="#math-2ac6e32a238f4e-DejaVuSerif-Italic-66" transform="translate(185.341797 0.999219)"/>
+    <use xlink:href="#math-2ac6e32a238f4e-DejaVuSerif-28" transform="translate(222.353516 0.999219)"/>
+    <use xlink:href="#math-2ac6e32a238f4e-DejaVuSerif-Italic-65" transform="translate(261.367188 0.999219)"/>
+    <use xlink:href="#math-2ac6e32a238f4e-DejaVuSerif-2212" transform="translate(324.984948 37.333594) scale(0.7)"/>
+    <use xlink:href="#math-2ac6e32a238f4e-DejaVuSerif-32" transform="translate(383.637292 37.333594) scale(0.7)"/>
+    <use xlink:href="#math-2ac6e32a238f4e-DejaVuSerif-2212" transform="translate(428.809276 62.767656) scale(0.49)"/>
+    <use xlink:href="#math-2ac6e32a238f4e-DejaVuSerif-Italic-6b" transform="translate(469.865917 62.767656) scale(0.49)"/>
+    <use xlink:href="#math-2ac6e32a238f4e-DejaVuSerif-29" transform="translate(503.969842 0.999219)"/>
+    <use xlink:href="#math-2ac6e32a238f4e-DejaVuSerif-2212" transform="translate(561.948358 0.999219)"/>
+    <use xlink:href="#math-2ac6e32a238f4e-DejaVuSerif-Italic-6b" transform="translate(664.702264 0.999219)"/>
+    <use xlink:href="#math-2ac6e32a238f4e-DejaVuSerif-2212" transform="translate(744.262811 0.999219)"/>
+    <use xlink:href="#math-2ac6e32a238f4e-DejaVuSerif-Italic-43" transform="translate(847.016717 0.999219)"/>
+    <use xlink:href="#math-2ac6e32a238f4e-DejaVuSerif-2264" transform="translate(942.495233 0.999219)"/>
+    <use xlink:href="#math-2ac6e32a238f4e-DejaVuSerif-32" transform="translate(1045.249139 0.999219)"/>
+    <use xlink:href="#math-2ac6e32a238f4e-DejaVuSerif-2212" transform="translate(1109.780546 37.333594) scale(0.7)"/>
+    <use xlink:href="#math-2ac6e32a238f4e-DejaVuSerif-Italic-6b" transform="translate(1168.432889 37.333594) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>0\le f(e^{-2^{-k}})-k-C\le2^{-k}</code></pre></details></div>
+<aside class="reader-callout" data-status="exact" data-source-block="2" data-source-type="callout"><p class="reader-callout-label">Proved pathwise bound</p><p class="reader-callout-text" data-zyntalic data-passage-id="dyadic-remainder--dyadic-remainder-orientation--b2">The proof concerns x_k = exp(−2^(−k)). Its additive constant belongs to that path; the arithmetic classification of f(exp(−1)) is a separate question.</p></aside>
+<p class="reader-paragraph" data-zyntalic data-passage-id="dyadic-remainder--dyadic-remainder-orientation--b3" data-source-block="3" data-source-type="p">An index shift and elementary exponential bounds give the dyadic argument. A later companion proof establishes R_k/(ζ(k) − 1) → 1 as integer k → ∞; it is an asymptotic comparison of two separately defined sequences.</p>
+<h3 class="reader-subheading" data-zyntalic data-passage-id="dyadic-remainder--dyadic-remainder-orientation--b4" data-source-block="4" data-source-type="h">One concrete next step</h3>
+<p class="reader-paragraph" data-zyntalic data-passage-id="dyadic-remainder--dyadic-remainder-orientation--b5" data-source-block="5" data-source-type="p">Quantify the finite-k relative error beyond the proved leading-ratio limit, or define a structural map and the property it preserves. A shared dynamical system or conjugacy remains open.</p>
+<h3 class="reader-subheading" data-source-block="6" data-source-type="h">Sources and related reading</h3>
+<p class="reader-paragraph reader-small" data-source-block="7" data-source-type="p">The following pages give the complete derivation from the stated definitions. The historical collection records the original fragments and argument.</p>
+<p class="reader-source-link" data-source-block="8" data-source-type="link"><a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#mahler-remainder">Historical collection source · original edition</a></p>
+<p class="reader-source-link" data-source-block="9" data-source-type="link"><a href="https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.html#coefficient-decay">Established dyadic/zeta ratio · companion proof, page 6</a></p>
+<p class="reader-source-link" data-source-block="10" data-source-type="link"><a href="https://encapsulatorp.github.io/#buried-logistic-vanishing">Return to the Treasure Chest</a></p></section>
+<section class="reader-section" id="mahler-remainder" data-source-page="mahler-remainder" data-source-index="1" data-source-status="exact"><span id="page-2" class="reader-page-anchor" aria-hidden="true"></span><p class="reader-kicker">01 · LACUNARY SERIES; ELEMENTARY PROOF</p><h2 class="reader-section-title" data-zyntalic data-passage-id="dyadic-remainder--mahler-remainder--title">A dyadic path with a vanishing remainder</h2><p class="reader-paragraph" data-zyntalic data-passage-id="dyadic-remainder--mahler-remainder--b0" data-source-block="0" data-source-type="p">Define the lacunary series using the exponent 2^n, meaning 2 raised to n:</p>
+<div class="reader-equation" data-latex="f(x)=\sum_{n=0}^{\infty}x^{2^n},\qquad |x|&lt;1,\qquad f(x)=x+f(x^2)." data-source-block="1" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="f(x)=\sum_{n=0}^{\infty}x^{2^n},\qquad |x|&lt;1,\qquad f(x)=x+f(x^2)." xmlns:xlink="http://www.w3.org/1999/xlink" width="387pt" height="46pt" viewBox="0 0 387 46" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-0c6103ddaf3bb8-figure_1">
+  <g id="math-0c6103ddaf3bb8-patch_1">
+   <path d="M 0 46
+L 387 46
+L 387 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-0c6103ddaf3bb8-text_1">
+   <!-- $f(x)=\sum_{n=0}^{\infty}x^{2^n},\qquad |x|&lt;1,\qquad f(x)=x+f(x^2).$ -->
+   <g style="fill: #202520" transform="translate(0 28) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-0c6103ddaf3bb8-DejaVuSerif-Italic-66" d="M 3191 4078
+L 2888 4078
+Q 2900 4144 2900 4203
+Q 2900 4347 2825 4434
+Q 2719 4556 2472 4556
+Q 2150 4556 1984 4379
+Q 1819 4203 1731 3750
+L 1647 3322
+L 2575 3322
+L 2509 2988
+L 1581 2988
+L 963 -206
+Q 853 -763 509 -1047
+Q 166 -1331 -394 -1331
+L -356 -1025
+Q -28 -1025 131 -850
+Q 297 -663 388 -206
+L 1006 2988
+L 456 2988
+L 522 3322
+L 1072 3322
+L 1153 3738
+Q 1263 4297 1606 4578
+Q 1950 4863 2509 4863
+Q 2719 4863 2920 4825
+Q 3122 4788 3316 4709
+L 3191 4078
+z
+" transform="scale(0.015625)"/>
+     <path id="math-0c6103ddaf3bb8-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-0c6103ddaf3bb8-DejaVuSerif-Italic-78" d="M 409 0
+L 19 0
+L 1484 1594
+L 747 2988
+L 338 2988
+L 400 3322
+L 1244 3322
+L 1934 2028
+L 3125 3322
+L 3516 3322
+L 2078 1759
+L 2838 331
+L 3272 331
+L 3209 0
+L 2338 0
+L 1631 1325
+L 409 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-0c6103ddaf3bb8-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-0c6103ddaf3bb8-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-0c6103ddaf3bb8-DejaVuSerif-221e" d="M 2859 1747
+Q 3016 1469 3223 1330
+Q 3431 1191 3694 1191
+Q 4009 1191 4209 1402
+Q 4409 1613 4409 1941
+Q 4409 2256 4225 2465
+Q 4041 2675 3763 2675
+Q 3509 2675 3304 2467
+Q 3100 2259 2859 1747
+z
+M 2478 2081
+Q 2325 2356 2117 2493
+Q 1909 2631 1644 2631
+Q 1328 2631 1128 2423
+Q 928 2216 928 1888
+Q 928 1572 1112 1362
+Q 1297 1153 1575 1153
+Q 1828 1153 2033 1359
+Q 2238 1566 2478 2081
+z
+M 2700 1509
+Q 2478 1084 2236 887
+Q 1994 691 1697 691
+Q 1275 691 983 1041
+Q 691 1391 691 1906
+Q 691 2453 952 2790
+Q 1213 3128 1631 3128
+Q 1928 3128 2162 2936
+Q 2397 2744 2631 2303
+Q 2844 2734 3091 2939
+Q 3338 3144 3641 3144
+Q 4056 3144 4351 2791
+Q 4647 2438 4647 1919
+Q 4647 1375 4386 1039
+Q 4125 703 3706 703
+Q 3409 703 3179 886
+Q 2950 1069 2700 1509
+z
+" transform="scale(0.015625)"/>
+     <path id="math-0c6103ddaf3bb8-DejaVuSerifDisplay-2211" d="M 72 6509
+L 5206 6509
+L 5694 4897
+L 5347 4897
+L 5025 5900
+Q 4975 6050 4840 6115
+Q 4706 6181 4406 6181
+L 1356 6181
+L 4931 2506
+L 4931 2344
+L 1288 -906
+L 5197 -906
+Q 5475 -903 5554 -847
+Q 5634 -791 5684 -628
+L 6003 388
+L 6347 388
+L 5694 -1738
+L 72 -1738
+L 72 -1556
+L 4138 2047
+L 72 6272
+L 72 6509
+z
+" transform="scale(0.015625)"/>
+     <path id="math-0c6103ddaf3bb8-DejaVuSerif-Italic-6e" d="M 450 0
+L 1031 2988
+L 481 2988
+L 544 3322
+L 1669 3322
+L 1556 2731
+Q 1781 3069 2068 3241
+Q 2356 3413 2694 3413
+Q 3244 3413 3444 3097
+Q 3563 2906 3563 2588
+Q 3563 2378 3509 2113
+L 3163 331
+L 3675 331
+L 3613 0
+L 2522 0
+L 2897 1931
+Q 2959 2253 2959 2469
+Q 2959 2659 2909 2769
+Q 2803 2994 2425 2994
+Q 2025 2994 1759 2701
+Q 1494 2409 1384 1850
+L 1025 0
+L 450 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-0c6103ddaf3bb8-DejaVuSerif-30" d="M 2034 219
+Q 2513 219 2750 744
+Q 2988 1269 2988 2328
+Q 2988 3391 2750 3916
+Q 2513 4441 2034 4441
+Q 1556 4441 1318 3916
+Q 1081 3391 1081 2328
+Q 1081 1269 1318 744
+Q 1556 219 2034 219
+z
+M 2034 -91
+Q 1275 -91 848 546
+Q 422 1184 422 2328
+Q 422 3475 848 4112
+Q 1275 4750 2034 4750
+Q 2797 4750 3222 4112
+Q 3647 3475 3647 2328
+Q 3647 1184 3222 546
+Q 2797 -91 2034 -91
+z
+" transform="scale(0.015625)"/>
+     <path id="math-0c6103ddaf3bb8-DejaVuSerif-32" d="M 819 3553
+L 469 3553
+L 469 4384
+Q 803 4563 1142 4656
+Q 1481 4750 1806 4750
+Q 2534 4750 2956 4397
+Q 3378 4044 3378 3438
+Q 3378 2753 2422 1800
+Q 2347 1728 2309 1691
+L 1131 513
+L 3078 513
+L 3078 1088
+L 3444 1088
+L 3444 0
+L 434 0
+L 434 341
+L 1850 1753
+Q 2319 2222 2519 2614
+Q 2719 3006 2719 3438
+Q 2719 3909 2473 4175
+Q 2228 4441 1797 4441
+Q 1350 4441 1106 4219
+Q 863 3997 819 3553
+z
+" transform="scale(0.015625)"/>
+     <path id="math-0c6103ddaf3bb8-DejaVuSerif-2c" d="M 231 -622
+Q 525 -406 662 -114
+Q 800 178 800 594
+L 800 709
+L 1416 709
+Q 1391 175 1164 -208
+Q 938 -591 481 -872
+L 231 -622
+z
+" transform="scale(0.015625)"/>
+     <path id="math-0c6103ddaf3bb8-DejaVuSerif-7c" d="M 1331 4891
+L 1331 -1509
+L 825 -1509
+L 825 4891
+L 1331 4891
+z
+" transform="scale(0.015625)"/>
+     <path id="math-0c6103ddaf3bb8-DejaVuSerif-3c" d="M 4684 3188
+L 1441 2003
+L 4684 825
+L 4684 294
+L 678 1747
+L 678 2266
+L 4684 3719
+L 4684 3188
+z
+" transform="scale(0.015625)"/>
+     <path id="math-0c6103ddaf3bb8-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-0c6103ddaf3bb8-DejaVuSerif-2b" d="M 2931 4013
+L 2931 2259
+L 4684 2259
+L 4684 1753
+L 2931 1753
+L 2931 0
+L 2431 0
+L 2431 1753
+L 678 1753
+L 678 2259
+L 2431 2259
+L 2431 4013
+L 2931 4013
+z
+" transform="scale(0.015625)"/>
+     <path id="math-0c6103ddaf3bb8-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-Italic-66" transform="translate(0 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-28" transform="translate(37.011719 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-Italic-78" transform="translate(76.025391 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-29" transform="translate(132.421875 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-3d" transform="translate(190.400391 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-221e" transform="translate(351.154297 120.6125) scale(0.7)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerifDisplay-2211" transform="translate(331.154297 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-Italic-6e" transform="translate(293.154297 -97.7) scale(0.7)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-3d" transform="translate(351.512695 -97.7) scale(0.7)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-30" transform="translate(423.44043 -97.7) scale(0.7)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-Italic-78" transform="translate(467.976562 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-32" transform="translate(528.612057 36.49375) scale(0.7)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-Italic-6e" transform="translate(573.784042 61.927813) scale(0.49)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-2c" transform="translate(609.754178 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-7c" transform="translate(850.154569 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-Italic-78" transform="translate(883.845975 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-7c" transform="translate(940.24246 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-3c" transform="translate(992.89871 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-31" transform="translate(1095.652616 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-2c" transform="translate(1159.275663 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-Italic-66" transform="translate(1399.676053 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-28" transform="translate(1436.687772 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-Italic-78" transform="translate(1475.701444 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-29" transform="translate(1532.097928 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-3d" transform="translate(1590.076444 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-Italic-78" transform="translate(1692.83035 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-2b" transform="translate(1768.191678 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-Italic-66" transform="translate(1870.945585 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-28" transform="translate(1907.957303 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-Italic-78" transform="translate(1946.970975 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-32" transform="translate(2007.60647 36.49375) scale(0.7)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-29" transform="translate(2054.737915 0.159375)"/>
+    <use xlink:href="#math-0c6103ddaf3bb8-DejaVuSerif-2e" transform="translate(2093.751587 0.159375)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>f(x)=\sum_{n=0}^{\infty}x^{2^n},\qquad |x|&lt;1,\qquad f(x)=x+f(x^2).</code></pre></details></div>
+<p class="reader-paragraph" data-zyntalic data-passage-id="dyadic-remainder--mahler-remainder--b2" data-source-block="2" data-source-type="p">For every integer n ≥ 0, 2^n ≥ n + 1. When |x| &lt; 1, comparison with the geometric series Σ |x|^(n+1) proves absolute convergence. An index shift then proves the functional equation.</p>
+<div class="reader-equation" data-latex="x_k=e^{-2^{-k}},\quad k=0,1,2,\ldots,\qquad x_k^2=x_{k-1}\quad(k\ge1)." data-source-block="3" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="x_k=e^{-2^{-k}},\quad k=0,1,2,\ldots,\qquad x_k^2=x_{k-1}\quad(k\ge1)." xmlns:xlink="http://www.w3.org/1999/xlink" width="434pt" height="23pt" viewBox="0 0 434 23" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-a78d1ec5174bd0-figure_1">
+  <g id="math-a78d1ec5174bd0-patch_1">
+   <path d="M 0 23
+L 434 23
+L 434 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-a78d1ec5174bd0-text_1">
+   <!-- $x_k=e^{-2^{-k}},\quad k=0,1,2,\ldots,\qquad x_k^2=x_{k-1}\quad(k\geq1).$ -->
+   <g style="fill: #202520" transform="translate(0 18) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-a78d1ec5174bd0-DejaVuSerif-Italic-78" d="M 409 0
+L 19 0
+L 1484 1594
+L 747 2988
+L 338 2988
+L 400 3322
+L 1244 3322
+L 1934 2028
+L 3125 3322
+L 3516 3322
+L 2078 1759
+L 2838 331
+L 3272 331
+L 3209 0
+L 2338 0
+L 1631 1325
+L 409 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a78d1ec5174bd0-DejaVuSerif-Italic-6b" d="M 2113 2075
+L 3034 331
+L 3513 331
+L 3450 0
+L 2528 0
+L 1622 1697
+L 1088 1275
+L 841 0
+L 266 0
+L 1147 4531
+L 594 4531
+L 656 4863
+L 1784 4863
+L 1169 1697
+L 2822 2988
+L 2344 2988
+L 2406 3322
+L 3341 3322
+L 3278 2988
+L 2113 2075
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a78d1ec5174bd0-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a78d1ec5174bd0-DejaVuSerif-Italic-65" d="M 938 1275
+Q 925 1156 925 1050
+Q 925 756 1031 563
+Q 1216 219 1709 219
+Q 2072 219 2250 328
+Q 2569 525 2644 778
+L 3066 778
+Q 2941 381 2475 103
+Q 2150 -91 1506 -91
+Q 863 -91 516 388
+Q 272 722 272 1206
+Q 272 1419 319 1659
+Q 472 2450 1000 2931
+Q 1528 3413 2278 3413
+Q 3500 3413 3500 2547
+Q 3500 1913 2859 1603
+Q 2206 1288 938 1275
+z
+M 2541 1975
+Q 2891 2181 2891 2569
+Q 2891 3103 2181 3103
+Q 1763 3103 1472 2784
+Q 1181 2466 1003 1606
+Q 2006 1653 2541 1975
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a78d1ec5174bd0-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a78d1ec5174bd0-DejaVuSerif-32" d="M 819 3553
+L 469 3553
+L 469 4384
+Q 803 4563 1142 4656
+Q 1481 4750 1806 4750
+Q 2534 4750 2956 4397
+Q 3378 4044 3378 3438
+Q 3378 2753 2422 1800
+Q 2347 1728 2309 1691
+L 1131 513
+L 3078 513
+L 3078 1088
+L 3444 1088
+L 3444 0
+L 434 0
+L 434 341
+L 1850 1753
+Q 2319 2222 2519 2614
+Q 2719 3006 2719 3438
+Q 2719 3909 2473 4175
+Q 2228 4441 1797 4441
+Q 1350 4441 1106 4219
+Q 863 3997 819 3553
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a78d1ec5174bd0-DejaVuSerif-2c" d="M 231 -622
+Q 525 -406 662 -114
+Q 800 178 800 594
+L 800 709
+L 1416 709
+Q 1391 175 1164 -208
+Q 938 -591 481 -872
+L 231 -622
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a78d1ec5174bd0-DejaVuSerif-30" d="M 2034 219
+Q 2513 219 2750 744
+Q 2988 1269 2988 2328
+Q 2988 3391 2750 3916
+Q 2513 4441 2034 4441
+Q 1556 4441 1318 3916
+Q 1081 3391 1081 2328
+Q 1081 1269 1318 744
+Q 1556 219 2034 219
+z
+M 2034 -91
+Q 1275 -91 848 546
+Q 422 1184 422 2328
+Q 422 3475 848 4112
+Q 1275 4750 2034 4750
+Q 2797 4750 3222 4112
+Q 3647 3475 3647 2328
+Q 3647 1184 3222 546
+Q 2797 -91 2034 -91
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a78d1ec5174bd0-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a78d1ec5174bd0-DejaVuSerif-2026" d="M 4916 325
+Q 4916 500 5036 622
+Q 5156 744 5331 744
+Q 5503 744 5625 622
+Q 5747 500 5747 325
+Q 5747 153 5625 31
+Q 5503 -91 5331 -91
+Q 5153 -91 5034 29
+Q 4916 150 4916 325
+z
+M 2784 325
+Q 2784 500 2904 622
+Q 3025 744 3200 744
+Q 3372 744 3494 622
+Q 3616 500 3616 325
+Q 3616 153 3494 31
+Q 3372 -91 3200 -91
+Q 3022 -91 2903 29
+Q 2784 150 2784 325
+z
+M 653 325
+Q 653 500 773 622
+Q 894 744 1069 744
+Q 1241 744 1362 622
+Q 1484 500 1484 325
+Q 1484 153 1362 31
+Q 1241 -91 1069 -91
+Q 891 -91 772 29
+Q 653 150 653 325
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a78d1ec5174bd0-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a78d1ec5174bd0-DejaVuSerif-2265" d="M 4684 488
+L 4684 0
+L 678 0
+L 678 488
+L 4684 488
+z
+M 678 3206
+L 678 3725
+L 4684 2578
+L 4684 2047
+L 678 897
+L 678 1416
+L 3975 2309
+L 678 3206
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a78d1ec5174bd0-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a78d1ec5174bd0-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-Italic-78" transform="translate(0 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-Italic-6b" transform="translate(56.396484 -14.572656) scale(0.7)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-3d" transform="translate(120.373633 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-Italic-65" transform="translate(223.127539 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-2212" transform="translate(286.745299 37.333594) scale(0.7)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-32" transform="translate(345.397643 37.333594) scale(0.7)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-2212" transform="translate(390.569628 62.767656) scale(0.49)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-Italic-6b" transform="translate(431.626268 62.767656) scale(0.49)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-2c" transform="translate(465.730194 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-Italic-6b" transform="translate(611.306366 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-3d" transform="translate(690.866913 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-30" transform="translate(793.620819 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-2c" transform="translate(857.243866 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-31" transform="translate(907.995819 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-2c" transform="translate(971.618866 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-32" transform="translate(1022.370819 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-2c" transform="translate(1085.993866 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-2026" transform="translate(1136.745819 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-2c" transform="translate(1236.745819 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-Italic-78" transform="translate(1477.14621 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-32" transform="translate(1537.781704 40.735156) scale(0.7)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-Italic-6b" transform="translate(1533.542694 -24.953906) scale(0.7)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-3d" transform="translate(1603.877993 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-Italic-78" transform="translate(1706.6319 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-Italic-6b" transform="translate(1763.028384 -14.572656) scale(0.7)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-2212" transform="translate(1818.720767 -14.572656) scale(0.7)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-31" transform="translate(1890.648501 -14.572656) scale(0.7)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-28" transform="translate(2032.604165 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-Italic-6b" transform="translate(2071.617837 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-2265" transform="translate(2151.178384 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-31" transform="translate(2253.93229 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-29" transform="translate(2317.555337 0.999219)"/>
+    <use xlink:href="#math-a78d1ec5174bd0-DejaVuSerif-2e" transform="translate(2356.569009 0.999219)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>x_k=e^{-2^{-k}},\quad k=0,1,2,\ldots,\qquad x_k^2=x_{k-1}\quad(k\ge1).</code></pre></details></div>
+<p class="reader-paragraph" data-zyntalic data-passage-id="dyadic-remainder--mahler-remainder--b4" data-source-block="4" data-source-type="p">Repeated substitution in the functional equation gives</p>
+<div class="reader-equation" data-latex="f(x_k)=f(e^{-1})+\sum_{j=1}^{k}e^{-2^{-j}}." data-source-block="5" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="f(x_k)=f(e^{-1})+\sum_{j=1}^{k}e^{-2^{-j}}." xmlns:xlink="http://www.w3.org/1999/xlink" width="212pt" height="53pt" viewBox="0 0 212 53" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-e5e6be17f05f51-figure_1">
+  <g id="math-e5e6be17f05f51-patch_1">
+   <path d="M 0 53
+L 212 53
+L 212 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-e5e6be17f05f51-text_1">
+   <!-- $f(x_k)=f(e^{-1})+\sum_{j=1}^{k}e^{-2^{-j}}.$ -->
+   <g style="fill: #202520" transform="translate(0 32) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-e5e6be17f05f51-DejaVuSerif-Italic-66" d="M 3191 4078
+L 2888 4078
+Q 2900 4144 2900 4203
+Q 2900 4347 2825 4434
+Q 2719 4556 2472 4556
+Q 2150 4556 1984 4379
+Q 1819 4203 1731 3750
+L 1647 3322
+L 2575 3322
+L 2509 2988
+L 1581 2988
+L 963 -206
+Q 853 -763 509 -1047
+Q 166 -1331 -394 -1331
+L -356 -1025
+Q -28 -1025 131 -850
+Q 297 -663 388 -206
+L 1006 2988
+L 456 2988
+L 522 3322
+L 1072 3322
+L 1153 3738
+Q 1263 4297 1606 4578
+Q 1950 4863 2509 4863
+Q 2719 4863 2920 4825
+Q 3122 4788 3316 4709
+L 3191 4078
+z
+" transform="scale(0.015625)"/>
+     <path id="math-e5e6be17f05f51-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-e5e6be17f05f51-DejaVuSerif-Italic-78" d="M 409 0
+L 19 0
+L 1484 1594
+L 747 2988
+L 338 2988
+L 400 3322
+L 1244 3322
+L 1934 2028
+L 3125 3322
+L 3516 3322
+L 2078 1759
+L 2838 331
+L 3272 331
+L 3209 0
+L 2338 0
+L 1631 1325
+L 409 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-e5e6be17f05f51-DejaVuSerif-Italic-6b" d="M 2113 2075
+L 3034 331
+L 3513 331
+L 3450 0
+L 2528 0
+L 1622 1697
+L 1088 1275
+L 841 0
+L 266 0
+L 1147 4531
+L 594 4531
+L 656 4863
+L 1784 4863
+L 1169 1697
+L 2822 2988
+L 2344 2988
+L 2406 3322
+L 3341 3322
+L 3278 2988
+L 2113 2075
+z
+" transform="scale(0.015625)"/>
+     <path id="math-e5e6be17f05f51-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-e5e6be17f05f51-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-e5e6be17f05f51-DejaVuSerif-Italic-65" d="M 938 1275
+Q 925 1156 925 1050
+Q 925 756 1031 563
+Q 1216 219 1709 219
+Q 2072 219 2250 328
+Q 2569 525 2644 778
+L 3066 778
+Q 2941 381 2475 103
+Q 2150 -91 1506 -91
+Q 863 -91 516 388
+Q 272 722 272 1206
+Q 272 1419 319 1659
+Q 472 2450 1000 2931
+Q 1528 3413 2278 3413
+Q 3500 3413 3500 2547
+Q 3500 1913 2859 1603
+Q 2206 1288 938 1275
+z
+M 2541 1975
+Q 2891 2181 2891 2569
+Q 2891 3103 2181 3103
+Q 1763 3103 1472 2784
+Q 1181 2466 1003 1606
+Q 2006 1653 2541 1975
+z
+" transform="scale(0.015625)"/>
+     <path id="math-e5e6be17f05f51-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-e5e6be17f05f51-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-e5e6be17f05f51-DejaVuSerif-2b" d="M 2931 4013
+L 2931 2259
+L 4684 2259
+L 4684 1753
+L 2931 1753
+L 2931 0
+L 2431 0
+L 2431 1753
+L 678 1753
+L 678 2259
+L 2431 2259
+L 2431 4013
+L 2931 4013
+z
+" transform="scale(0.015625)"/>
+     <path id="math-e5e6be17f05f51-DejaVuSerifDisplay-2211" d="M 72 6509
+L 5206 6509
+L 5694 4897
+L 5347 4897
+L 5025 5900
+Q 4975 6050 4840 6115
+Q 4706 6181 4406 6181
+L 1356 6181
+L 4931 2506
+L 4931 2344
+L 1288 -906
+L 5197 -906
+Q 5475 -903 5554 -847
+Q 5634 -791 5684 -628
+L 6003 388
+L 6347 388
+L 5694 -1738
+L 72 -1738
+L 72 -1556
+L 4138 2047
+L 72 6272
+L 72 6509
+z
+" transform="scale(0.015625)"/>
+     <path id="math-e5e6be17f05f51-DejaVuSerif-Italic-6a" d="M 1172 4353
+Q 1197 4497 1323 4603
+Q 1450 4709 1597 4709
+Q 1741 4709 1825 4603
+Q 1888 4522 1888 4422
+Q 1888 4388 1881 4353
+Q 1850 4206 1729 4103
+Q 1609 4000 1459 4000
+Q 1313 4000 1225 4103
+Q 1163 4181 1163 4281
+Q 1163 4316 1172 4353
+z
+M 1047 2988
+L 503 2988
+L 566 3322
+L 1684 3322
+L 978 -325
+Q 878 -838 515 -1130
+Q 153 -1422 -381 -1422
+Q -606 -1422 -800 -1370
+Q -994 -1319 -1169 -1216
+L -1034 -531
+L -738 -531
+Q -747 -609 -747 -675
+Q -747 -869 -669 -972
+Q -563 -1113 -306 -1113
+Q -22 -1113 150 -920
+Q 322 -728 403 -325
+L 1047 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-e5e6be17f05f51-DejaVuSerif-32" d="M 819 3553
+L 469 3553
+L 469 4384
+Q 803 4563 1142 4656
+Q 1481 4750 1806 4750
+Q 2534 4750 2956 4397
+Q 3378 4044 3378 3438
+Q 3378 2753 2422 1800
+Q 2347 1728 2309 1691
+L 1131 513
+L 3078 513
+L 3078 1088
+L 3444 1088
+L 3444 0
+L 434 0
+L 434 341
+L 1850 1753
+Q 2319 2222 2519 2614
+Q 2719 3006 2719 3438
+Q 2719 3909 2473 4175
+Q 2228 4441 1797 4441
+Q 1350 4441 1106 4219
+Q 863 3997 819 3553
+z
+" transform="scale(0.015625)"/>
+     <path id="math-e5e6be17f05f51-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-Italic-66" transform="translate(0 0.357813)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-28" transform="translate(37.011719 0.357813)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-Italic-78" transform="translate(76.025391 0.357813)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-Italic-6b" transform="translate(132.421875 -15.214062) scale(0.7)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-29" transform="translate(177.43418 0.357813)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-3d" transform="translate(235.412695 0.357813)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-Italic-66" transform="translate(338.166602 0.357813)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-28" transform="translate(375.17832 0.357813)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-Italic-65" transform="translate(414.191992 0.357813)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-2212" transform="translate(477.809753 36.692188) scale(0.7)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-31" transform="translate(536.462096 36.692188) scale(0.7)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-29" transform="translate(583.593542 0.357813)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-2b" transform="translate(641.572057 0.357813)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-Italic-6b" transform="translate(799.325964 120.810937) scale(0.7)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerifDisplay-2211" transform="translate(771.325964 0.357812)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-Italic-6a" transform="translate(744.325964 -97.501562) scale(0.7)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-3d" transform="translate(779.305456 -97.501562) scale(0.7)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-31" transform="translate(851.23319 -97.501562) scale(0.7)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-Italic-65" transform="translate(895.769323 0.357813)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-2212" transform="translate(959.387083 36.692188) scale(0.7)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-32" transform="translate(1018.039427 36.692188) scale(0.7)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-2212" transform="translate(1063.211411 62.12625) scale(0.49)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-Italic-6a" transform="translate(1104.268052 62.12625) scale(0.49)"/>
+    <use xlink:href="#math-e5e6be17f05f51-DejaVuSerif-2e" transform="translate(1123.872954 0.357813)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>f(x_k)=f(e^{-1})+\sum_{j=1}^{k}e^{-2^{-j}}.</code></pre></details></div>
+<p class="reader-paragraph" data-zyntalic data-passage-id="dyadic-remainder--mahler-remainder--b6" data-source-block="6" data-source-type="p">Define the finite constant</p>
+<div class="reader-equation" data-latex="C=f(e^{-1})+\sum_{j=1}^{\infty}(e^{-2^{-j}}-1)." data-source-block="7" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="C=f(e^{-1})+\sum_{j=1}^{\infty}(e^{-2^{-j}}-1)." xmlns:xlink="http://www.w3.org/1999/xlink" width="234pt" height="49pt" viewBox="0 0 234 49" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-174ad772ca9130-figure_1">
+  <g id="math-174ad772ca9130-patch_1">
+   <path d="M 0 49
+L 234 49
+L 234 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-174ad772ca9130-text_1">
+   <!-- $C=f(e^{-1})+\sum_{j=1}^{\infty}(e^{-2^{-j}}-1).$ -->
+   <g style="fill: #202520" transform="translate(0 28) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-174ad772ca9130-DejaVuSerif-Italic-43" d="M 4300 1234
+Q 3966 581 3414 245
+Q 2863 -91 2119 -91
+Q 1663 -91 1303 65
+Q 944 222 700 525
+Q 419 875 334 1320
+Q 250 1766 359 2328
+Q 572 3416 1330 4083
+Q 2088 4750 3116 4750
+Q 3497 4750 3908 4650
+Q 4319 4550 4775 4347
+L 4569 3272
+L 4216 3272
+Q 4213 3859 3919 4137
+Q 3625 4416 2997 4416
+Q 2250 4416 1762 3886
+Q 1275 3356 1075 2328
+Q 875 1303 1156 773
+Q 1438 244 2184 244
+Q 2706 244 3092 492
+Q 3478 741 3725 1234
+L 4300 1234
+z
+" transform="scale(0.015625)"/>
+     <path id="math-174ad772ca9130-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-174ad772ca9130-DejaVuSerif-Italic-66" d="M 3191 4078
+L 2888 4078
+Q 2900 4144 2900 4203
+Q 2900 4347 2825 4434
+Q 2719 4556 2472 4556
+Q 2150 4556 1984 4379
+Q 1819 4203 1731 3750
+L 1647 3322
+L 2575 3322
+L 2509 2988
+L 1581 2988
+L 963 -206
+Q 853 -763 509 -1047
+Q 166 -1331 -394 -1331
+L -356 -1025
+Q -28 -1025 131 -850
+Q 297 -663 388 -206
+L 1006 2988
+L 456 2988
+L 522 3322
+L 1072 3322
+L 1153 3738
+Q 1263 4297 1606 4578
+Q 1950 4863 2509 4863
+Q 2719 4863 2920 4825
+Q 3122 4788 3316 4709
+L 3191 4078
+z
+" transform="scale(0.015625)"/>
+     <path id="math-174ad772ca9130-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-174ad772ca9130-DejaVuSerif-Italic-65" d="M 938 1275
+Q 925 1156 925 1050
+Q 925 756 1031 563
+Q 1216 219 1709 219
+Q 2072 219 2250 328
+Q 2569 525 2644 778
+L 3066 778
+Q 2941 381 2475 103
+Q 2150 -91 1506 -91
+Q 863 -91 516 388
+Q 272 722 272 1206
+Q 272 1419 319 1659
+Q 472 2450 1000 2931
+Q 1528 3413 2278 3413
+Q 3500 3413 3500 2547
+Q 3500 1913 2859 1603
+Q 2206 1288 938 1275
+z
+M 2541 1975
+Q 2891 2181 2891 2569
+Q 2891 3103 2181 3103
+Q 1763 3103 1472 2784
+Q 1181 2466 1003 1606
+Q 2006 1653 2541 1975
+z
+" transform="scale(0.015625)"/>
+     <path id="math-174ad772ca9130-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-174ad772ca9130-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-174ad772ca9130-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-174ad772ca9130-DejaVuSerif-2b" d="M 2931 4013
+L 2931 2259
+L 4684 2259
+L 4684 1753
+L 2931 1753
+L 2931 0
+L 2431 0
+L 2431 1753
+L 678 1753
+L 678 2259
+L 2431 2259
+L 2431 4013
+L 2931 4013
+z
+" transform="scale(0.015625)"/>
+     <path id="math-174ad772ca9130-DejaVuSerif-221e" d="M 2859 1747
+Q 3016 1469 3223 1330
+Q 3431 1191 3694 1191
+Q 4009 1191 4209 1402
+Q 4409 1613 4409 1941
+Q 4409 2256 4225 2465
+Q 4041 2675 3763 2675
+Q 3509 2675 3304 2467
+Q 3100 2259 2859 1747
+z
+M 2478 2081
+Q 2325 2356 2117 2493
+Q 1909 2631 1644 2631
+Q 1328 2631 1128 2423
+Q 928 2216 928 1888
+Q 928 1572 1112 1362
+Q 1297 1153 1575 1153
+Q 1828 1153 2033 1359
+Q 2238 1566 2478 2081
+z
+M 2700 1509
+Q 2478 1084 2236 887
+Q 1994 691 1697 691
+Q 1275 691 983 1041
+Q 691 1391 691 1906
+Q 691 2453 952 2790
+Q 1213 3128 1631 3128
+Q 1928 3128 2162 2936
+Q 2397 2744 2631 2303
+Q 2844 2734 3091 2939
+Q 3338 3144 3641 3144
+Q 4056 3144 4351 2791
+Q 4647 2438 4647 1919
+Q 4647 1375 4386 1039
+Q 4125 703 3706 703
+Q 3409 703 3179 886
+Q 2950 1069 2700 1509
+z
+" transform="scale(0.015625)"/>
+     <path id="math-174ad772ca9130-DejaVuSerifDisplay-2211" d="M 72 6509
+L 5206 6509
+L 5694 4897
+L 5347 4897
+L 5025 5900
+Q 4975 6050 4840 6115
+Q 4706 6181 4406 6181
+L 1356 6181
+L 4931 2506
+L 4931 2344
+L 1288 -906
+L 5197 -906
+Q 5475 -903 5554 -847
+Q 5634 -791 5684 -628
+L 6003 388
+L 6347 388
+L 5694 -1738
+L 72 -1738
+L 72 -1556
+L 4138 2047
+L 72 6272
+L 72 6509
+z
+" transform="scale(0.015625)"/>
+     <path id="math-174ad772ca9130-DejaVuSerif-Italic-6a" d="M 1172 4353
+Q 1197 4497 1323 4603
+Q 1450 4709 1597 4709
+Q 1741 4709 1825 4603
+Q 1888 4522 1888 4422
+Q 1888 4388 1881 4353
+Q 1850 4206 1729 4103
+Q 1609 4000 1459 4000
+Q 1313 4000 1225 4103
+Q 1163 4181 1163 4281
+Q 1163 4316 1172 4353
+z
+M 1047 2988
+L 503 2988
+L 566 3322
+L 1684 3322
+L 978 -325
+Q 878 -838 515 -1130
+Q 153 -1422 -381 -1422
+Q -606 -1422 -800 -1370
+Q -994 -1319 -1169 -1216
+L -1034 -531
+L -738 -531
+Q -747 -609 -747 -675
+Q -747 -869 -669 -972
+Q -563 -1113 -306 -1113
+Q -22 -1113 150 -920
+Q 322 -728 403 -325
+L 1047 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-174ad772ca9130-DejaVuSerif-32" d="M 819 3553
+L 469 3553
+L 469 4384
+Q 803 4563 1142 4656
+Q 1481 4750 1806 4750
+Q 2534 4750 2956 4397
+Q 3378 4044 3378 3438
+Q 3378 2753 2422 1800
+Q 2347 1728 2309 1691
+L 1131 513
+L 3078 513
+L 3078 1088
+L 3444 1088
+L 3444 0
+L 434 0
+L 434 341
+L 1850 1753
+Q 2319 2222 2519 2614
+Q 2719 3006 2719 3438
+Q 2719 3909 2473 4175
+Q 2228 4441 1797 4441
+Q 1350 4441 1106 4219
+Q 863 3997 819 3553
+z
+" transform="scale(0.015625)"/>
+     <path id="math-174ad772ca9130-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-Italic-43" transform="translate(0 0.159375)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-3d" transform="translate(95.478516 0.159375)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-Italic-66" transform="translate(198.232422 0.159375)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-28" transform="translate(235.244141 0.159375)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-Italic-65" transform="translate(274.257812 0.159375)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-2212" transform="translate(337.875573 36.49375) scale(0.7)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-31" transform="translate(396.527917 36.49375) scale(0.7)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-29" transform="translate(443.659362 0.159375)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-2b" transform="translate(501.637878 0.159375)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-221e" transform="translate(651.391784 120.6125) scale(0.7)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerifDisplay-2211" transform="translate(631.391784 0.159375)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-Italic-6a" transform="translate(604.391784 -97.7) scale(0.7)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-3d" transform="translate(639.371276 -97.7) scale(0.7)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-31" transform="translate(711.29901 -97.7) scale(0.7)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-28" transform="translate(755.835143 0.159375)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-Italic-65" transform="translate(794.848815 0.159375)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-2212" transform="translate(858.466576 36.49375) scale(0.7)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-32" transform="translate(917.118919 36.49375) scale(0.7)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-2212" transform="translate(962.290904 61.927813) scale(0.49)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-Italic-6a" transform="translate(1003.347544 61.927813) scale(0.49)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-2212" transform="translate(1041.91729 0.159375)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-31" transform="translate(1144.671197 0.159375)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-29" transform="translate(1208.294243 0.159375)"/>
+    <use xlink:href="#math-174ad772ca9130-DejaVuSerif-2e" transform="translate(1247.307915 0.159375)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>C=f(e^{-1})+\sum_{j=1}^{\infty}(e^{-2^{-j}}-1).</code></pre></details></div>
+<p class="reader-paragraph" data-zyntalic data-passage-id="dyadic-remainder--mahler-remainder--b8" data-source-block="8" data-source-type="p">The second series converges absolutely because 0 ≤ 1 − exp(−t) ≤ t for t ≥ 0. Subtraction gives the exact tail</p>
+<div class="reader-equation" data-latex="R_k:=f(x_k)-k-C=\sum_{j=k+1}^{\infty}(1-e^{-2^{-j}})." data-source-block="9" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="R_k:=f(x_k)-k-C=\sum_{j=k+1}^{\infty}(1-e^{-2^{-j}})." xmlns:xlink="http://www.w3.org/1999/xlink" width="334pt" height="49pt" viewBox="0 0 334 49" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-4e546bd59dcff7-figure_1">
+  <g id="math-4e546bd59dcff7-patch_1">
+   <path d="M 0 49
+L 334 49
+L 334 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-4e546bd59dcff7-text_1">
+   <!-- $R_k:=f(x_k)-k-C=\sum_{j=k+1}^{\infty}(1-e^{-2^{-j}}).$ -->
+   <g style="fill: #202520" transform="translate(0 28) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-4e546bd59dcff7-DejaVuSerif-Italic-52" d="M 3066 2316
+Q 3272 2256 3403 2114
+Q 3534 1972 3609 1716
+L 4016 331
+L 4584 331
+L 4522 0
+L 3422 0
+L 2981 1484
+Q 2856 1916 2706 2042
+Q 2556 2169 2250 2169
+L 1553 2169
+L 1194 331
+L 1853 331
+L 1791 0
+L -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 3175 4666
+Q 3856 4666 4164 4341
+Q 4472 4016 4356 3419
+Q 4263 2938 3938 2661
+Q 3613 2384 3066 2316
+z
+M 1619 2503
+L 2541 2503
+Q 3013 2503 3280 2726
+Q 3547 2950 3639 3419
+Q 3731 3888 3548 4109
+Q 3366 4331 2894 4331
+L 1972 4331
+L 1619 2503
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e546bd59dcff7-DejaVuSerif-Italic-6b" d="M 2113 2075
+L 3034 331
+L 3513 331
+L 3450 0
+L 2528 0
+L 1622 1697
+L 1088 1275
+L 841 0
+L 266 0
+L 1147 4531
+L 594 4531
+L 656 4863
+L 1784 4863
+L 1169 1697
+L 2822 2988
+L 2344 2988
+L 2406 3322
+L 3341 3322
+L 3278 2988
+L 2113 2075
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e546bd59dcff7-DejaVuSerif-3a" d="M 666 325
+Q 666 500 786 622
+Q 906 744 1081 744
+Q 1256 744 1376 622
+Q 1497 500 1497 325
+Q 1497 150 1378 29
+Q 1259 -91 1081 -91
+Q 903 -91 784 29
+Q 666 150 666 325
+z
+M 666 2363
+Q 666 2538 786 2658
+Q 906 2778 1081 2778
+Q 1259 2778 1378 2659
+Q 1497 2541 1497 2363
+Q 1497 2184 1378 2065
+Q 1259 1947 1081 1947
+Q 906 1947 786 2067
+Q 666 2188 666 2363
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e546bd59dcff7-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e546bd59dcff7-DejaVuSerif-Italic-66" d="M 3191 4078
+L 2888 4078
+Q 2900 4144 2900 4203
+Q 2900 4347 2825 4434
+Q 2719 4556 2472 4556
+Q 2150 4556 1984 4379
+Q 1819 4203 1731 3750
+L 1647 3322
+L 2575 3322
+L 2509 2988
+L 1581 2988
+L 963 -206
+Q 853 -763 509 -1047
+Q 166 -1331 -394 -1331
+L -356 -1025
+Q -28 -1025 131 -850
+Q 297 -663 388 -206
+L 1006 2988
+L 456 2988
+L 522 3322
+L 1072 3322
+L 1153 3738
+Q 1263 4297 1606 4578
+Q 1950 4863 2509 4863
+Q 2719 4863 2920 4825
+Q 3122 4788 3316 4709
+L 3191 4078
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e546bd59dcff7-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e546bd59dcff7-DejaVuSerif-Italic-78" d="M 409 0
+L 19 0
+L 1484 1594
+L 747 2988
+L 338 2988
+L 400 3322
+L 1244 3322
+L 1934 2028
+L 3125 3322
+L 3516 3322
+L 2078 1759
+L 2838 331
+L 3272 331
+L 3209 0
+L 2338 0
+L 1631 1325
+L 409 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e546bd59dcff7-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e546bd59dcff7-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e546bd59dcff7-DejaVuSerif-Italic-43" d="M 4300 1234
+Q 3966 581 3414 245
+Q 2863 -91 2119 -91
+Q 1663 -91 1303 65
+Q 944 222 700 525
+Q 419 875 334 1320
+Q 250 1766 359 2328
+Q 572 3416 1330 4083
+Q 2088 4750 3116 4750
+Q 3497 4750 3908 4650
+Q 4319 4550 4775 4347
+L 4569 3272
+L 4216 3272
+Q 4213 3859 3919 4137
+Q 3625 4416 2997 4416
+Q 2250 4416 1762 3886
+Q 1275 3356 1075 2328
+Q 875 1303 1156 773
+Q 1438 244 2184 244
+Q 2706 244 3092 492
+Q 3478 741 3725 1234
+L 4300 1234
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e546bd59dcff7-DejaVuSerif-221e" d="M 2859 1747
+Q 3016 1469 3223 1330
+Q 3431 1191 3694 1191
+Q 4009 1191 4209 1402
+Q 4409 1613 4409 1941
+Q 4409 2256 4225 2465
+Q 4041 2675 3763 2675
+Q 3509 2675 3304 2467
+Q 3100 2259 2859 1747
+z
+M 2478 2081
+Q 2325 2356 2117 2493
+Q 1909 2631 1644 2631
+Q 1328 2631 1128 2423
+Q 928 2216 928 1888
+Q 928 1572 1112 1362
+Q 1297 1153 1575 1153
+Q 1828 1153 2033 1359
+Q 2238 1566 2478 2081
+z
+M 2700 1509
+Q 2478 1084 2236 887
+Q 1994 691 1697 691
+Q 1275 691 983 1041
+Q 691 1391 691 1906
+Q 691 2453 952 2790
+Q 1213 3128 1631 3128
+Q 1928 3128 2162 2936
+Q 2397 2744 2631 2303
+Q 2844 2734 3091 2939
+Q 3338 3144 3641 3144
+Q 4056 3144 4351 2791
+Q 4647 2438 4647 1919
+Q 4647 1375 4386 1039
+Q 4125 703 3706 703
+Q 3409 703 3179 886
+Q 2950 1069 2700 1509
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e546bd59dcff7-DejaVuSerifDisplay-2211" d="M 72 6509
+L 5206 6509
+L 5694 4897
+L 5347 4897
+L 5025 5900
+Q 4975 6050 4840 6115
+Q 4706 6181 4406 6181
+L 1356 6181
+L 4931 2506
+L 4931 2344
+L 1288 -906
+L 5197 -906
+Q 5475 -903 5554 -847
+Q 5634 -791 5684 -628
+L 6003 388
+L 6347 388
+L 5694 -1738
+L 72 -1738
+L 72 -1556
+L 4138 2047
+L 72 6272
+L 72 6509
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e546bd59dcff7-DejaVuSerif-Italic-6a" d="M 1172 4353
+Q 1197 4497 1323 4603
+Q 1450 4709 1597 4709
+Q 1741 4709 1825 4603
+Q 1888 4522 1888 4422
+Q 1888 4388 1881 4353
+Q 1850 4206 1729 4103
+Q 1609 4000 1459 4000
+Q 1313 4000 1225 4103
+Q 1163 4181 1163 4281
+Q 1163 4316 1172 4353
+z
+M 1047 2988
+L 503 2988
+L 566 3322
+L 1684 3322
+L 978 -325
+Q 878 -838 515 -1130
+Q 153 -1422 -381 -1422
+Q -606 -1422 -800 -1370
+Q -994 -1319 -1169 -1216
+L -1034 -531
+L -738 -531
+Q -747 -609 -747 -675
+Q -747 -869 -669 -972
+Q -563 -1113 -306 -1113
+Q -22 -1113 150 -920
+Q 322 -728 403 -325
+L 1047 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e546bd59dcff7-DejaVuSerif-2b" d="M 2931 4013
+L 2931 2259
+L 4684 2259
+L 4684 1753
+L 2931 1753
+L 2931 0
+L 2431 0
+L 2431 1753
+L 678 1753
+L 678 2259
+L 2431 2259
+L 2431 4013
+L 2931 4013
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e546bd59dcff7-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e546bd59dcff7-DejaVuSerif-Italic-65" d="M 938 1275
+Q 925 1156 925 1050
+Q 925 756 1031 563
+Q 1216 219 1709 219
+Q 2072 219 2250 328
+Q 2569 525 2644 778
+L 3066 778
+Q 2941 381 2475 103
+Q 2150 -91 1506 -91
+Q 863 -91 516 388
+Q 272 722 272 1206
+Q 272 1419 319 1659
+Q 472 2450 1000 2931
+Q 1528 3413 2278 3413
+Q 3500 3413 3500 2547
+Q 3500 1913 2859 1603
+Q 2206 1288 938 1275
+z
+M 2541 1975
+Q 2891 2181 2891 2569
+Q 2891 3103 2181 3103
+Q 1763 3103 1472 2784
+Q 1181 2466 1003 1606
+Q 2006 1653 2541 1975
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e546bd59dcff7-DejaVuSerif-32" d="M 819 3553
+L 469 3553
+L 469 4384
+Q 803 4563 1142 4656
+Q 1481 4750 1806 4750
+Q 2534 4750 2956 4397
+Q 3378 4044 3378 3438
+Q 3378 2753 2422 1800
+Q 2347 1728 2309 1691
+L 1131 513
+L 3078 513
+L 3078 1088
+L 3444 1088
+L 3444 0
+L 434 0
+L 434 341
+L 1850 1753
+Q 2319 2222 2519 2614
+Q 2719 3006 2719 3438
+Q 2719 3909 2473 4175
+Q 2228 4441 1797 4441
+Q 1350 4441 1106 4219
+Q 863 3997 819 3553
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e546bd59dcff7-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-Italic-52" transform="translate(0 0.159375)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-Italic-6b" transform="translate(75.292969 -15.4125) scale(0.7)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-3a" transform="translate(139.270117 0.159375)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-3d" transform="translate(210.891211 0.159375)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-Italic-66" transform="translate(313.645117 0.159375)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-28" transform="translate(350.656836 0.159375)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-Italic-78" transform="translate(389.670508 0.159375)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-Italic-6b" transform="translate(446.066992 -15.4125) scale(0.7)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-29" transform="translate(491.079297 0.159375)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-2212" transform="translate(549.057812 0.159375)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-Italic-6b" transform="translate(651.811719 0.159375)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-2212" transform="translate(731.372266 0.159375)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-Italic-43" transform="translate(834.126172 0.159375)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-3d" transform="translate(929.604687 0.159375)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-221e" transform="translate(1142.358594 120.6125) scale(0.7)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerifDisplay-2211" transform="translate(1123.358594 0.159375)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-Italic-6a" transform="translate(1032.358594 -98.935937) scale(0.7)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-3d" transform="translate(1067.338086 -98.935937) scale(0.7)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-Italic-6b" transform="translate(1139.26582 -98.935937) scale(0.7)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-2b" transform="translate(1194.958203 -98.935937) scale(0.7)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-31" transform="translate(1266.885937 -98.935937) scale(0.7)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-28" transform="translate(1311.42207 0.159375)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-31" transform="translate(1350.435742 0.159375)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-2212" transform="translate(1433.023633 0.159375)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-Italic-65" transform="translate(1535.777539 0.159375)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-2212" transform="translate(1599.395299 36.49375) scale(0.7)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-32" transform="translate(1658.047643 36.49375) scale(0.7)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-2212" transform="translate(1703.219628 61.927813) scale(0.49)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-Italic-6a" transform="translate(1744.276268 61.927813) scale(0.49)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-29" transform="translate(1763.881171 0.159375)"/>
+    <use xlink:href="#math-4e546bd59dcff7-DejaVuSerif-2e" transform="translate(1802.894842 0.159375)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>R_k:=f(x_k)-k-C=\sum_{j=k+1}^{\infty}(1-e^{-2^{-j}}).</code></pre></details></div>
+<div class="reader-equation" data-latex="0\le R_k\le\sum_{j=k+1}^{\infty}2^{-j}=2^{-k}." data-source-block="10" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="0\le R_k\le\sum_{j=k+1}^{\infty}2^{-j}=2^{-k}." xmlns:xlink="http://www.w3.org/1999/xlink" width="216pt" height="49pt" viewBox="0 0 216 49" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-a1d5f3d8a50c06-figure_1">
+  <g id="math-a1d5f3d8a50c06-patch_1">
+   <path d="M 0 49
+L 216 49
+L 216 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-a1d5f3d8a50c06-text_1">
+   <!-- $0\leq R_k\leq\sum_{j=k+1}^{\infty}2^{-j}=2^{-k}.$ -->
+   <g style="fill: #202520" transform="translate(0 28) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-a1d5f3d8a50c06-DejaVuSerif-30" d="M 2034 219
+Q 2513 219 2750 744
+Q 2988 1269 2988 2328
+Q 2988 3391 2750 3916
+Q 2513 4441 2034 4441
+Q 1556 4441 1318 3916
+Q 1081 3391 1081 2328
+Q 1081 1269 1318 744
+Q 1556 219 2034 219
+z
+M 2034 -91
+Q 1275 -91 848 546
+Q 422 1184 422 2328
+Q 422 3475 848 4112
+Q 1275 4750 2034 4750
+Q 2797 4750 3222 4112
+Q 3647 3475 3647 2328
+Q 3647 1184 3222 546
+Q 2797 -91 2034 -91
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a1d5f3d8a50c06-DejaVuSerif-2264" d="M 4684 3206
+L 1388 2309
+L 4684 1416
+L 4684 897
+L 678 2047
+L 678 2578
+L 4684 3725
+L 4684 3206
+z
+M 678 488
+L 4684 488
+L 4684 0
+L 678 0
+L 678 488
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a1d5f3d8a50c06-DejaVuSerif-Italic-52" d="M 3066 2316
+Q 3272 2256 3403 2114
+Q 3534 1972 3609 1716
+L 4016 331
+L 4584 331
+L 4522 0
+L 3422 0
+L 2981 1484
+Q 2856 1916 2706 2042
+Q 2556 2169 2250 2169
+L 1553 2169
+L 1194 331
+L 1853 331
+L 1791 0
+L -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 3175 4666
+Q 3856 4666 4164 4341
+Q 4472 4016 4356 3419
+Q 4263 2938 3938 2661
+Q 3613 2384 3066 2316
+z
+M 1619 2503
+L 2541 2503
+Q 3013 2503 3280 2726
+Q 3547 2950 3639 3419
+Q 3731 3888 3548 4109
+Q 3366 4331 2894 4331
+L 1972 4331
+L 1619 2503
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a1d5f3d8a50c06-DejaVuSerif-Italic-6b" d="M 2113 2075
+L 3034 331
+L 3513 331
+L 3450 0
+L 2528 0
+L 1622 1697
+L 1088 1275
+L 841 0
+L 266 0
+L 1147 4531
+L 594 4531
+L 656 4863
+L 1784 4863
+L 1169 1697
+L 2822 2988
+L 2344 2988
+L 2406 3322
+L 3341 3322
+L 3278 2988
+L 2113 2075
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a1d5f3d8a50c06-DejaVuSerif-221e" d="M 2859 1747
+Q 3016 1469 3223 1330
+Q 3431 1191 3694 1191
+Q 4009 1191 4209 1402
+Q 4409 1613 4409 1941
+Q 4409 2256 4225 2465
+Q 4041 2675 3763 2675
+Q 3509 2675 3304 2467
+Q 3100 2259 2859 1747
+z
+M 2478 2081
+Q 2325 2356 2117 2493
+Q 1909 2631 1644 2631
+Q 1328 2631 1128 2423
+Q 928 2216 928 1888
+Q 928 1572 1112 1362
+Q 1297 1153 1575 1153
+Q 1828 1153 2033 1359
+Q 2238 1566 2478 2081
+z
+M 2700 1509
+Q 2478 1084 2236 887
+Q 1994 691 1697 691
+Q 1275 691 983 1041
+Q 691 1391 691 1906
+Q 691 2453 952 2790
+Q 1213 3128 1631 3128
+Q 1928 3128 2162 2936
+Q 2397 2744 2631 2303
+Q 2844 2734 3091 2939
+Q 3338 3144 3641 3144
+Q 4056 3144 4351 2791
+Q 4647 2438 4647 1919
+Q 4647 1375 4386 1039
+Q 4125 703 3706 703
+Q 3409 703 3179 886
+Q 2950 1069 2700 1509
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a1d5f3d8a50c06-DejaVuSerifDisplay-2211" d="M 72 6509
+L 5206 6509
+L 5694 4897
+L 5347 4897
+L 5025 5900
+Q 4975 6050 4840 6115
+Q 4706 6181 4406 6181
+L 1356 6181
+L 4931 2506
+L 4931 2344
+L 1288 -906
+L 5197 -906
+Q 5475 -903 5554 -847
+Q 5634 -791 5684 -628
+L 6003 388
+L 6347 388
+L 5694 -1738
+L 72 -1738
+L 72 -1556
+L 4138 2047
+L 72 6272
+L 72 6509
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a1d5f3d8a50c06-DejaVuSerif-Italic-6a" d="M 1172 4353
+Q 1197 4497 1323 4603
+Q 1450 4709 1597 4709
+Q 1741 4709 1825 4603
+Q 1888 4522 1888 4422
+Q 1888 4388 1881 4353
+Q 1850 4206 1729 4103
+Q 1609 4000 1459 4000
+Q 1313 4000 1225 4103
+Q 1163 4181 1163 4281
+Q 1163 4316 1172 4353
+z
+M 1047 2988
+L 503 2988
+L 566 3322
+L 1684 3322
+L 978 -325
+Q 878 -838 515 -1130
+Q 153 -1422 -381 -1422
+Q -606 -1422 -800 -1370
+Q -994 -1319 -1169 -1216
+L -1034 -531
+L -738 -531
+Q -747 -609 -747 -675
+Q -747 -869 -669 -972
+Q -563 -1113 -306 -1113
+Q -22 -1113 150 -920
+Q 322 -728 403 -325
+L 1047 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a1d5f3d8a50c06-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a1d5f3d8a50c06-DejaVuSerif-2b" d="M 2931 4013
+L 2931 2259
+L 4684 2259
+L 4684 1753
+L 2931 1753
+L 2931 0
+L 2431 0
+L 2431 1753
+L 678 1753
+L 678 2259
+L 2431 2259
+L 2431 4013
+L 2931 4013
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a1d5f3d8a50c06-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a1d5f3d8a50c06-DejaVuSerif-32" d="M 819 3553
+L 469 3553
+L 469 4384
+Q 803 4563 1142 4656
+Q 1481 4750 1806 4750
+Q 2534 4750 2956 4397
+Q 3378 4044 3378 3438
+Q 3378 2753 2422 1800
+Q 2347 1728 2309 1691
+L 1131 513
+L 3078 513
+L 3078 1088
+L 3444 1088
+L 3444 0
+L 434 0
+L 434 341
+L 1850 1753
+Q 2319 2222 2519 2614
+Q 2719 3006 2719 3438
+Q 2719 3909 2473 4175
+Q 2228 4441 1797 4441
+Q 1350 4441 1106 4219
+Q 863 3997 819 3553
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a1d5f3d8a50c06-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a1d5f3d8a50c06-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerif-30" transform="translate(0 0.159375)"/>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerif-2264" transform="translate(82.587891 0.159375)"/>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerif-Italic-52" transform="translate(185.341797 0.159375)"/>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerif-Italic-6b" transform="translate(260.634766 -15.4125) scale(0.7)"/>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerif-2264" transform="translate(324.611914 0.159375)"/>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerif-221e" transform="translate(537.36582 120.6125) scale(0.7)"/>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerifDisplay-2211" transform="translate(518.36582 0.159375)"/>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerif-Italic-6a" transform="translate(427.36582 -98.935937) scale(0.7)"/>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerif-3d" transform="translate(462.345312 -98.935937) scale(0.7)"/>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerif-Italic-6b" transform="translate(534.273047 -98.935937) scale(0.7)"/>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerif-2b" transform="translate(589.96543 -98.935937) scale(0.7)"/>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerif-31" transform="translate(661.893164 -98.935937) scale(0.7)"/>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerif-32" transform="translate(706.429297 0.159375)"/>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerif-2212" transform="translate(770.960703 36.49375) scale(0.7)"/>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerif-Italic-6a" transform="translate(829.613047 36.49375) scale(0.7)"/>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerif-3d" transform="translate(872.877305 0.159375)"/>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerif-32" transform="translate(975.631211 0.159375)"/>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerif-2212" transform="translate(1040.162617 36.49375) scale(0.7)"/>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerif-Italic-6b" transform="translate(1098.814961 36.49375) scale(0.7)"/>
+    <use xlink:href="#math-a1d5f3d8a50c06-DejaVuSerif-2e" transform="translate(1143.827266 0.159375)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>0\le R_k\le\sum_{j=k+1}^{\infty}2^{-j}=2^{-k}.</code></pre></details></div>
+<p class="reader-paragraph" data-zyntalic data-passage-id="dyadic-remainder--mahler-remainder--b11" data-source-block="11" data-source-type="p">The inequality t − t²/2 ≤ 1 − exp(−t) gives the sharper lower bound:</p>
+<div class="reader-equation" data-latex="2^{-k}-\frac{4^{-k}}6\le R_k\le2^{-k}." data-source-block="12" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="2^{-k}-\frac{4^{-k}}6\le R_k\le2^{-k}." xmlns:xlink="http://www.w3.org/1999/xlink" width="181pt" height="28pt" viewBox="0 0 181 28" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-71a451243eca2c-figure_1">
+  <g id="math-71a451243eca2c-patch_1">
+   <path d="M 0 28
+L 181 28
+L 181 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-71a451243eca2c-text_1">
+   <!-- $2^{-k}-\frac{4^{-k}}{6}\leq R_k\leq2^{-k}.$ -->
+   <g style="fill: #202520" transform="translate(0 20) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-71a451243eca2c-DejaVuSerif-32" d="M 819 3553
+L 469 3553
+L 469 4384
+Q 803 4563 1142 4656
+Q 1481 4750 1806 4750
+Q 2534 4750 2956 4397
+Q 3378 4044 3378 3438
+Q 3378 2753 2422 1800
+Q 2347 1728 2309 1691
+L 1131 513
+L 3078 513
+L 3078 1088
+L 3444 1088
+L 3444 0
+L 434 0
+L 434 341
+L 1850 1753
+Q 2319 2222 2519 2614
+Q 2719 3006 2719 3438
+Q 2719 3909 2473 4175
+Q 2228 4441 1797 4441
+Q 1350 4441 1106 4219
+Q 863 3997 819 3553
+z
+" transform="scale(0.015625)"/>
+     <path id="math-71a451243eca2c-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-71a451243eca2c-DejaVuSerif-Italic-6b" d="M 2113 2075
+L 3034 331
+L 3513 331
+L 3450 0
+L 2528 0
+L 1622 1697
+L 1088 1275
+L 841 0
+L 266 0
+L 1147 4531
+L 594 4531
+L 656 4863
+L 1784 4863
+L 1169 1697
+L 2822 2988
+L 2344 2988
+L 2406 3322
+L 3341 3322
+L 3278 2988
+L 2113 2075
+z
+" transform="scale(0.015625)"/>
+     <path id="math-71a451243eca2c-DejaVuSerif-34" d="M 2234 1581
+L 2234 4063
+L 641 1581
+L 2234 1581
+z
+M 3609 0
+L 1484 0
+L 1484 331
+L 2234 331
+L 2234 1247
+L 197 1247
+L 197 1588
+L 2241 4750
+L 2859 4750
+L 2859 1581
+L 3750 1581
+L 3750 1247
+L 2859 1247
+L 2859 331
+L 3609 331
+L 3609 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-71a451243eca2c-DejaVuSerif-36" d="M 2094 219
+Q 2534 219 2771 542
+Q 3009 866 3009 1472
+Q 3009 2078 2771 2401
+Q 2534 2725 2094 2725
+Q 1647 2725 1412 2412
+Q 1178 2100 1178 1509
+Q 1178 888 1415 553
+Q 1653 219 2094 219
+z
+M 1075 2569
+Q 1288 2803 1556 2918
+Q 1825 3034 2163 3034
+Q 2859 3034 3264 2615
+Q 3669 2197 3669 1472
+Q 3669 763 3233 336
+Q 2797 -91 2069 -91
+Q 1278 -91 853 498
+Q 428 1088 428 2181
+Q 428 3406 931 4078
+Q 1434 4750 2350 4750
+Q 2597 4750 2869 4703
+Q 3141 4656 3425 4563
+L 3425 3794
+L 3072 3794
+Q 3034 4109 2831 4275
+Q 2628 4441 2284 4441
+Q 1678 4441 1381 3981
+Q 1084 3522 1075 2569
+z
+" transform="scale(0.015625)"/>
+     <path id="math-71a451243eca2c-DejaVuSerif-2264" d="M 4684 3206
+L 1388 2309
+L 4684 1416
+L 4684 897
+L 678 2047
+L 678 2578
+L 4684 3725
+L 4684 3206
+z
+M 678 488
+L 4684 488
+L 4684 0
+L 678 0
+L 678 488
+z
+" transform="scale(0.015625)"/>
+     <path id="math-71a451243eca2c-DejaVuSerif-Italic-52" d="M 3066 2316
+Q 3272 2256 3403 2114
+Q 3534 1972 3609 1716
+L 4016 331
+L 4584 331
+L 4522 0
+L 3422 0
+L 2981 1484
+Q 2856 1916 2706 2042
+Q 2556 2169 2250 2169
+L 1553 2169
+L 1194 331
+L 1853 331
+L 1791 0
+L -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 3175 4666
+Q 3856 4666 4164 4341
+Q 4472 4016 4356 3419
+Q 4263 2938 3938 2661
+Q 3613 2384 3066 2316
+z
+M 1619 2503
+L 2541 2503
+Q 3013 2503 3280 2726
+Q 3547 2950 3639 3419
+Q 3731 3888 3548 4109
+Q 3366 4331 2894 4331
+L 1972 4331
+L 1619 2503
+z
+" transform="scale(0.015625)"/>
+     <path id="math-71a451243eca2c-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-71a451243eca2c-DejaVuSerif-32" transform="translate(0 0.482031)"/>
+    <use xlink:href="#math-71a451243eca2c-DejaVuSerif-2212" transform="translate(64.531406 36.816406) scale(0.7)"/>
+    <use xlink:href="#math-71a451243eca2c-DejaVuSerif-Italic-6b" transform="translate(123.18375 36.816406) scale(0.7)"/>
+    <use xlink:href="#math-71a451243eca2c-DejaVuSerif-2212" transform="translate(187.160898 0.482031)"/>
+    <use xlink:href="#math-71a451243eca2c-DejaVuSerif-34" transform="translate(289.914805 44.333594) scale(0.7)"/>
+    <use xlink:href="#math-71a451243eca2c-DejaVuSerif-2212" transform="translate(335.086789 69.767656) scale(0.49)"/>
+    <use xlink:href="#math-71a451243eca2c-DejaVuSerif-Italic-6b" transform="translate(376.14343 69.767656) scale(0.49)"/>
+    <use xlink:href="#math-71a451243eca2c-DejaVuSerif-36" transform="translate(326.914805 -38.869531) scale(0.7)"/>
+    <use xlink:href="#math-71a451243eca2c-DejaVuSerif-2264" transform="translate(439.116887 0.482031)"/>
+    <use xlink:href="#math-71a451243eca2c-DejaVuSerif-Italic-52" transform="translate(541.870793 0.482031)"/>
+    <use xlink:href="#math-71a451243eca2c-DejaVuSerif-Italic-6b" transform="translate(617.163762 -15.089844) scale(0.7)"/>
+    <use xlink:href="#math-71a451243eca2c-DejaVuSerif-2264" transform="translate(681.14091 0.482031)"/>
+    <use xlink:href="#math-71a451243eca2c-DejaVuSerif-32" transform="translate(783.894816 0.482031)"/>
+    <use xlink:href="#math-71a451243eca2c-DejaVuSerif-2212" transform="translate(848.426223 36.816406) scale(0.7)"/>
+    <use xlink:href="#math-71a451243eca2c-DejaVuSerif-Italic-6b" transform="translate(907.078566 36.816406) scale(0.7)"/>
+    <use xlink:href="#math-71a451243eca2c-DejaVuSerif-2e" transform="translate(952.090871 0.482031)"/>
+    <path d="M 289.914805 19.333594
+L 289.914805 25.583594
+L 407.652043 25.583594
+L 407.652043 19.333594
+L 289.914805 19.333594
+z
+"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>2^{-k}-\frac{4^{-k}}6\le R_k\le2^{-k}.</code></pre></details></div>
+<p class="reader-paragraph" data-zyntalic data-passage-id="dyadic-remainder--mahler-remainder--b13" data-source-block="13" data-source-type="p">Numerically, f(exp(−1)) ≈ 0.52186593845987908905 and C ≈ −0.33274738243289922501. These decimals illustrate the exact identities; the inequalities above supply the proof.</p>
+<aside class="reader-callout" data-status="exact" data-source-block="14" data-source-type="callout"><p class="reader-callout-label">Scope of the limit</p><p class="reader-callout-text" data-zyntalic data-passage-id="dyadic-remainder--mahler-remainder--b14">Along x_k = exp(−2^(−k)), the remainder bound gives f(x_k) = k + C + O(2^(−k)). The constant C belongs to this specified path. The arithmetic classification of f(exp(−1)) remains a separate question.</p></aside>
+<p class="reader-paragraph" data-zyntalic data-passage-id="dyadic-remainder--mahler-remainder--b15" data-source-block="15" data-source-type="p">The input exp(−1) is transcendental. A Mahler-value theorem requiring algebraic input therefore needs different hypotheses before it can apply here.</p></section>
+</main><footer class="reader-footer"><p><a href="dyadic-remainder.json">Structured source</a> · <a href="dyadic-remainder.md">Markdown source</a></p>
+<details class="reader-provenance" data-archival-provenance><summary>Credits and source-version record</summary><pre>{
+  &quot;title&quot;: &quot;A dyadic vanishing remainder&quot;,
+  &quot;subtitle&quot;: &quot;A focused reading note from the Pirate Chest&quot;,
+  &quot;date&quot;: &quot;23 November 2026&quot;,
+  &quot;author&quot;: &quot;Zolton / EncapsulatorP · with ChatGPT&quot;,
+  &quot;historical_source_commit&quot;: &quot;cc3f20117eaead570db6077377a43a92c0bfc652&quot;,
+  &quot;reviewed_proof_commit&quot;: &quot;29f9232545aa112cd6ffa9fe1f3c0e85d093dedd&quot;,
+  &quot;status&quot;: &quot;exact&quot;,
+  &quot;statusLabel&quot;: &quot;Proved pathwise bound&quot;
+}</pre></details>
+<p><a href="../../index.html#interactive?topic=goldbach-involution">Return to the interactive space</a></p></footer></div>
+<script type="application/json" id="reader-source">{
+  "title": "A dyadic vanishing remainder",
+  "subtitle": "A focused reading note from the Pirate Chest",
+  "date": "23 November 2026",
+  "author": "Zolton / EncapsulatorP · with ChatGPT",
+  "historical_source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
+  "reviewed_proof_commit": "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd",
+  "status": "exact",
+  "statusLabel": "Proved pathwise bound",
+  "pages": [
+    {
+      "id": "dyadic-remainder-orientation",
+      "title": "A dyadic vanishing remainder",
+      "kicker": "NOTE 03 · PROVED PATHWISE BOUND",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The lacunary series f(x) = Σ x^(2^n), where 2^n means 2 raised to n, obeys f(x) = x + f(x²). Along the specified dyadic path toward 1, subtracting k and a convergent constant leaves an explicit tail."
+        },
+        {
+          "type": "eq",
+          "latex": "0\\le f(e^{-2^{-k}})-k-C\\le2^{-k}"
+        },
+        {
+          "type": "callout",
+          "label": "Proved pathwise bound",
+          "status": "exact",
+          "text": "The proof concerns x_k = exp(−2^(−k)). Its additive constant belongs to that path; the arithmetic classification of f(exp(−1)) is a separate question."
+        },
+        {
+          "type": "p",
+          "text": "An index shift and elementary exponential bounds give the dyadic argument. A later companion proof establishes R_k/(ζ(k) − 1) → 1 as integer k → ∞; it is an asymptotic comparison of two separately defined sequences."
+        },
+        {
+          "type": "h",
+          "text": "One concrete next step"
+        },
+        {
+          "type": "p",
+          "text": "Quantify the finite-k relative error beyond the proved leading-ratio limit, or define a structural map and the property it preserves. A shared dynamical system or conjugacy remains open."
+        },
+        {
+          "type": "h",
+          "text": "Sources and related reading"
+        },
+        {
+          "type": "p",
+          "text": "The following pages give the complete derivation from the stated definitions. The historical collection records the original fragments and argument.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Historical collection source · original edition",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#mahler-remainder"
+        },
+        {
+          "type": "link",
+          "text": "Established dyadic/zeta ratio · companion proof, page 6",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.pdf#page=6"
+        },
+        {
+          "type": "link",
+          "text": "Return to the Treasure Chest",
+          "url": "https://encapsulatorp.github.io/#buried-logistic-vanishing"
+        }
+      ]
+    },
+    {
+      "id": "mahler-remainder",
+      "title": "A dyadic path with a vanishing remainder",
+      "kicker": "01 · LACUNARY SERIES; ELEMENTARY PROOF",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Define the lacunary series using the exponent 2^n, meaning 2 raised to n:"
+        },
+        {
+          "type": "eq",
+          "latex": "f(x)=\\sum_{n=0}^{\\infty}x^{2^n},\\qquad |x|<1,\\qquad f(x)=x+f(x^2)."
+        },
+        {
+          "type": "p",
+          "text": "For every integer n ≥ 0, 2^n ≥ n + 1. When |x| &lt; 1, comparison with the geometric series Σ |x|^(n+1) proves absolute convergence. An index shift then proves the functional equation."
+        },
+        {
+          "type": "eq",
+          "latex": "x_k=e^{-2^{-k}},\\quad k=0,1,2,\\ldots,\\qquad x_k^2=x_{k-1}\\quad(k\\ge1)."
+        },
+        {
+          "type": "p",
+          "text": "Repeated substitution in the functional equation gives"
+        },
+        {
+          "type": "eq",
+          "latex": "f(x_k)=f(e^{-1})+\\sum_{j=1}^{k}e^{-2^{-j}}."
+        },
+        {
+          "type": "p",
+          "text": "Define the finite constant"
+        },
+        {
+          "type": "eq",
+          "latex": "C=f(e^{-1})+\\sum_{j=1}^{\\infty}(e^{-2^{-j}}-1)."
+        },
+        {
+          "type": "p",
+          "text": "The second series converges absolutely because 0 ≤ 1 − exp(−t) ≤ t for t ≥ 0. Subtraction gives the exact tail"
+        },
+        {
+          "type": "eq",
+          "latex": "R_k:=f(x_k)-k-C=\\sum_{j=k+1}^{\\infty}(1-e^{-2^{-j}})."
+        },
+        {
+          "type": "eq",
+          "latex": "0\\le R_k\\le\\sum_{j=k+1}^{\\infty}2^{-j}=2^{-k}."
+        },
+        {
+          "type": "p",
+          "text": "The inequality t − t²/2 ≤ 1 − exp(−t) gives the sharper lower bound:"
+        },
+        {
+          "type": "eq",
+          "latex": "2^{-k}-\\frac{4^{-k}}6\\le R_k\\le2^{-k}."
+        },
+        {
+          "type": "p",
+          "text": "Numerically, f(exp(−1)) ≈ 0.52186593845987908905 and C ≈ −0.33274738243289922501. These decimals illustrate the exact identities; the inequalities above supply the proof."
+        },
+        {
+          "type": "callout",
+          "label": "Scope of the limit",
+          "text": "Along x_k = exp(−2^(−k)), the remainder bound gives f(x_k) = k + C + O(2^(−k)). The constant C belongs to this specified path. The arithmetic classification of f(exp(−1)) remains a separate question.",
+          "status": "exact"
+        },
+        {
+          "type": "p",
+          "text": "The input exp(−1) is transcendental. A Mahler-value theorem requiring algebraic input therefore needs different hypotheses before it can apply here."
+        }
+      ]
+    }
+  ]
+}</script>
+<script type="application/json" id="reader-config">{"id":"dyadic-remainder","entryId":"dyadic-remainder","title":"A dyadic vanishing remainder","status":"exact","kind":"proof","root":"#reader-content","controls":"#reader-tools","sourceLabel":"Complete structured source","sourceUrl":"dyadic-remainder.json","returnUrl":"../../index.html#interactive?topic=goldbach-involution","passages":[{"id":"dyadic-remainder--dyadic-remainder-orientation--title","english":"A dyadic vanishing remainder","status":"exact","zyntalic":"źerlożzik sąbąrzbawen źąśóżłuja riżyśurzfysti; fybofwu źąśóżłuja sąbąrzbawen żocukćźęis.","sourceSha256":"9066c766aaa49516044f6679da7fbeb4506b2263a54e2091add287db3542a45f"},{"id":"dyadic-remainder--dyadic-remainder-orientation--b0","english":"The lacunary series f(x) = Σ x^(2^n), where 2^n means 2 raised to n, obeys f(x) = x + f(x²). Along the specified dyadic path toward 1, subtracting k and a convergent constant leaves an explicit tail.","status":"exact","zyntalic":"mąhńoródja takęzhoćfonar jęlóżyżja ra\nfońdęrios rihódożbub tilkilźó taśęźbiśćńium / źąćbóććtęmor tilkilźó rihódożbub nahuzećrzju.","sourceSha256":"81267c50a83d35b0411f3d3c03de2a6979d81a20277e7b06296ae48f4aa77eb7"},{"id":"dyadic-remainder--dyadic-remainder-orientation--b2","english":"The proof concerns x_k = exp(−2^(−k)). Its additive constant belongs to that path; the arithmetic classification of f(exp(−1)) is a separate question.","status":"exact","zyntalic":"góźzęhćżetul nacęcędeek sąfmąźoum luźalgićókis; popgęńłęis sąfmąźoum nacęcędeek rihaćiżźąń.\nnajatduwnoz rihódożbub luźęwaćcęc lujajeśója na żępżyłu luźęwaćcęc rihódożbub veńegfedząśul.","sourceSha256":"8fb92b568eb7cf47d950952b7499bd608966fb5ae5225e8ea67e05d2e9c3da13"},{"id":"dyadic-remainder--dyadic-remainder-orientation--b3","english":"An index shift and elementary exponential bounds give the dyadic argument. A later companion proof establishes R_k/(ζ(k) − 1) → 1 as integer k → ∞; it is an asymptotic comparison of two separately defined sequences.","status":"exact","zyntalic":"fugęługja naćójćalżżója taśósaczurum źętijutul ve źęłenyos taśósaczurum naćójćalżżója lusókóśććożen.\njubóżdója zukąrzżę źórhugńolar","sourceSha256":"c5eb26a658ca54eb2cb3cea6b1ef3e86b5ab4afa2ec772a49f2b6d62babd17b5"},{"id":"dyadic-remainder--dyadic-remainder-orientation--b4","english":"One concrete next step","status":"exact","zyntalic":"jacyłyz źesęćłułul bazusżłycti","sourceSha256":"794050a9dca2bb1602bfeb0e2a90829da94794bba10d7c0ae673088fc29dced3"},{"id":"dyadic-remainder--dyadic-remainder-orientation--b5","english":"Quantify the finite-k relative error beyond the proved leading-ratio limit, or define a structural map and the property it preserves. A shared dynamical system or conjugacy remains open.","status":"exact","zyntalic":"vezikśyźęc cyrlicfęł wosląćzóis tawlódłorul · cytydicum wosląćzóis cyrlicfęł tężótćsoar.\nnezcępśćjągor źehpynacum nafażiren ra","sourceSha256":"abfa03a66f219af2385d36d1b90f2e55bc159127d61fe61d0daf100d5fca1143"},{"id":"dyadic-remainder--mahler-remainder--title","english":"A dyadic path with a vanishing remainder","status":"exact","zyntalic":"hizizżlaum ripyzyćtok śęsfyżrą riżarhęlółis; dęńłęfpąken śęsfyżrą ripyzyćtok dęćsynkucti.","sourceSha256":"5538c6a87e7dce1553f09a502d10b6cb9e6958cb3cb17104fd2f66bceaa0dfee"},{"id":"dyadic-remainder--mahler-remainder--b0","english":"Define the lacunary series using the exponent 2^n, meaning 2 raised to n:","status":"exact","zyntalic":"źiżzarduja zómzęrło śohómżśu fałluhhą · digźóźćźija śohómżśu zómzęrło źąlujryen.","sourceSha256":"7496ea8a163eec304f00bd78e558d23b0dce5737f18297720eaa48857d455db6"},{"id":"dyadic-remainder--mahler-remainder--b2","english":"For every integer n ≥ 0, 2^n ≥ n + 1. When |x| \u003c 1, comparison with the geometric series Σ |x|^(n+1) proves absolute convergence. An index shift then proves the functional equation.","status":"exact","zyntalic":"meńkożebti ńywręcććyźos ręćhóbtucja\ntakąkiżpiżti riźalónąbti tasęwgopśij ne\nkimźesboar naćójćalżżója taśósaczurum nahuzećrzju; hóggękężek taśósaczurum naćójćalżżója lośsiźef.","sourceSha256":"a470762aa41f552ec893ef54b240b9646cb60eddbb1d41b552b936de0f151974"},{"id":"dyadic-remainder--mahler-remainder--b4","english":"Repeated substitution in the functional equation gives","status":"exact","zyntalic":"łówoćęwen najeńożjifis źypążnyor coźwypemja · nojśąmpą źypążnyor najeńożjifis nerkydrzźoźum.","sourceSha256":"0ec72cf2f2dc7280f1fc5c77457aff422312b714bb1ec42b95f9cb947eac720c"},{"id":"dyadic-remainder--mahler-remainder--b6","english":"Define the finite constant","status":"exact","zyntalic":"źufóżżelum sośojćóor rihódożbub jułeżcuźis lu źęrńaświc rihódożbub sośojćóor nęśóćśćdepis.","sourceSha256":"f09f5108b34ce9acf4d5c6f008e4eacd48e61a51de155278a9b597fd29cd7895"},{"id":"dyadic-remainder--mahler-remainder--b8","english":"The second series converges absolutely because 0 ≤ 1 − exp(−t) ≤ t for t ≥ 0. Subtraction gives the exact tail","status":"exact","zyntalic":"wąźźiżuti raźyśdukum luźęwaćcęc łusiżjaor; natóżąćźęti luźęwaćcęc raźyśdukum jąprąłdócar.\nveźóhśądnóar ńopmeżsezen syhybąjżyc retsędóź na sykecążśyżum syhybąjżyc ńopmeżsezen riśanbogyź.","sourceSha256":"e196a1a34fe104e7900aae6228f23f7a8737fd2313f3069278e87e6c52d318b2"},{"id":"dyadic-remainder--mahler-remainder--b11","english":"The inequality t − t²/2 ≤ 1 − exp(−t) gives the sharper lower bound:","status":"exact","zyntalic":"mogułońen kyśłozsożum syźóppaśaar lutóźćubjuzti na cilrymiźul syźóppaśaar kyśłozsożum syłuwcytty.","sourceSha256":"d7542e9de9d34ee0cfb9f802134fd4c6e7a036b1978c377ca6a4956344b8ed10"},{"id":"dyadic-remainder--mahler-remainder--b13","english":"Numerically, f(exp(−1)) ≈ 0.52186593845987908905 and C ≈ −0.33274738243289922501. These decimals illustrate the exact identities; the inequalities above supply the proof.","status":"exact","zyntalic":"nakukźązłaul bapągitor luźęwaćcęc śęnńyląor / cyńuhżo luźęwaćcęc bapągitor riłipśegęsek.\nnojśąmpą natózćącućor tyńina rąźiłsóum na popgęńłęis tyńina natózćącućor syćęsdójćcę.","sourceSha256":"bd668c81ce633666df483033d8ed9e48445789957285a6806a945220652d116a"},{"id":"dyadic-remainder--mahler-remainder--b14","english":"Along x_k = exp(−2^(−k)), the remainder bound gives f(x_k) = k + C + O(2^(−k)). The constant C belongs to this specified path. The arithmetic classification of f(exp(−1)) remains a separate question.","status":"exact","zyntalic":"tagóknójńófum luźęwaćcęc sąbąrzbawen japłófńożar; tajebóźekis sąbąrzbawen luźęwaćcęc ńójćyzął.\nluńibifbiti ribożnabfilti jęręcrzźęum silźyżći · pozmipuja jęręcrzźęum ribożnabfilti źońźapóris.\nwózatawti luźęwaćcęc zuzbihśćżoti luźalgićókis / luźefądćąźum zuzbihśćżoti luźęwaćcęc łożuźśćnęsen.","sourceSha256":"635db92edc734b45f1c3b87f07491ed474a46764aedc437f4680076b543604de"},{"id":"dyadic-remainder--mahler-remainder--b15","english":"The input exp(−1) is transcendental. A Mahler-value theorem requiring algebraic input therefore needs different hypotheses before it can apply here.","status":"exact","zyntalic":"łęranheti gądecrzfóz źepitgąlek tanańsagćruja; małęnuz źepitgąlek gądecrzfóz lużónróśććeos.\nkąfobien gądecrzfóz źepitgąlek zagbąloti lu nezcępśćjągor źepitgąlek gądecrzfóz lusókóśććożen.","sourceSha256":"310ec2ed5db1e198c06d81f6654b0ca748c761810b90e63074f18318d3058d8c"}],"gifBlocks":[{"type":"heading","text":"A dyadic vanishing remainder"},{"type":"caption","text":"A focused reading note from the Pirate Chest"},{"type":"caption","text":"Zolton / EncapsulatorP · with ChatGPT · 23 November 2026"},{"type":"caption","text":"NOTE 03 · PROVED PATHWISE BOUND"},{"type":"heading","text":"A dyadic vanishing remainder","passageId":"dyadic-remainder--dyadic-remainder-orientation--title","sourceEnglish":"A dyadic vanishing remainder"},{"type":"paragraph","text":"The lacunary series f(x) = Σ x^(2^n), where 2^n means 2 raised to n, obeys f(x) = x + f(x²). Along the specified dyadic path toward 1, subtracting k and a convergent constant leaves an explicit tail.","passageId":"dyadic-remainder--dyadic-remainder-orientation--b0","sourceEnglish":"The lacunary series f(x) = Σ x^(2^n), where 2^n means 2 raised to n, obeys f(x) = x + f(x²). Along the specified dyadic path toward 1, subtracting k and a convergent constant leaves an explicit tail."},{"type":"math","text":"0\\le f(e^{-2^{-k}})-k-C\\le2^{-k}","image":"../assets/math/36ea3103f1d48912ec30a645209487e5d46a29d3fbbc3b229301a3bc259c347d.svg","width":219.0,"height":22.0},{"type":"caption","text":"Proved pathwise bound"},{"type":"paragraph","text":"The proof concerns x_k = exp(−2^(−k)). Its additive constant belongs to that path; the arithmetic classification of f(exp(−1)) is a separate question.","passageId":"dyadic-remainder--dyadic-remainder-orientation--b2","sourceEnglish":"The proof concerns x_k = exp(−2^(−k)). Its additive constant belongs to that path; the arithmetic classification of f(exp(−1)) is a separate question."},{"type":"paragraph","text":"An index shift and elementary exponential bounds give the dyadic argument. A later companion proof establishes R_k/(ζ(k) − 1) → 1 as integer k → ∞; it is an asymptotic comparison of two separately defined sequences.","passageId":"dyadic-remainder--dyadic-remainder-orientation--b3","sourceEnglish":"An index shift and elementary exponential bounds give the dyadic argument. A later companion proof establishes R_k/(ζ(k) − 1) → 1 as integer k → ∞; it is an asymptotic comparison of two separately defined sequences."},{"type":"heading","text":"One concrete next step","passageId":"dyadic-remainder--dyadic-remainder-orientation--b4","sourceEnglish":"One concrete next step"},{"type":"paragraph","text":"Quantify the finite-k relative error beyond the proved leading-ratio limit, or define a structural map and the property it preserves. A shared dynamical system or conjugacy remains open.","passageId":"dyadic-remainder--dyadic-remainder-orientation--b5","sourceEnglish":"Quantify the finite-k relative error beyond the proved leading-ratio limit, or define a structural map and the property it preserves. A shared dynamical system or conjugacy remains open."},{"type":"heading","text":"Sources and related reading"},{"type":"paragraph","text":"The following pages give the complete derivation from the stated definitions. The historical collection records the original fragments and argument."},{"type":"caption","text":"Historical collection source · original edition: https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#mahler-remainder"},{"type":"caption","text":"Established dyadic/zeta ratio · companion proof, page 6: https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.html#coefficient-decay"},{"type":"caption","text":"Return to the Treasure Chest: https://encapsulatorp.github.io/#buried-logistic-vanishing"},{"type":"caption","text":"01 · LACUNARY SERIES; ELEMENTARY PROOF"},{"type":"heading","text":"A dyadic path with a vanishing remainder","passageId":"dyadic-remainder--mahler-remainder--title","sourceEnglish":"A dyadic path with a vanishing remainder"},{"type":"paragraph","text":"Define the lacunary series using the exponent 2^n, meaning 2 raised to n:","passageId":"dyadic-remainder--mahler-remainder--b0","sourceEnglish":"Define the lacunary series using the exponent 2^n, meaning 2 raised to n:"},{"type":"math","text":"f(x)=\\sum_{n=0}^{\\infty}x^{2^n},\\qquad |x|\u003c1,\\qquad f(x)=x+f(x^2).","image":"../assets/math/33c935d14e70a0d49584013a1dd1a06d78bb431c73a67640a530b003025d8829.svg","width":387.0,"height":46.0},{"type":"paragraph","text":"For every integer n ≥ 0, 2^n ≥ n + 1. When |x| \u003c 1, comparison with the geometric series Σ |x|^(n+1) proves absolute convergence. An index shift then proves the functional equation.","passageId":"dyadic-remainder--mahler-remainder--b2","sourceEnglish":"For every integer n ≥ 0, 2^n ≥ n + 1. When |x| \u003c 1, comparison with the geometric series Σ |x|^(n+1) proves absolute convergence. An index shift then proves the functional equation."},{"type":"math","text":"x_k=e^{-2^{-k}},\\quad k=0,1,2,\\ldots,\\qquad x_k^2=x_{k-1}\\quad(k\\ge1).","image":"../assets/math/867da36a290e0d6cdd941c246e1e139b103486a6cf137fdc852e7d21f0db68e8.svg","width":434.0,"height":23.0},{"type":"paragraph","text":"Repeated substitution in the functional equation gives","passageId":"dyadic-remainder--mahler-remainder--b4","sourceEnglish":"Repeated substitution in the functional equation gives"},{"type":"math","text":"f(x_k)=f(e^{-1})+\\sum_{j=1}^{k}e^{-2^{-j}}.","image":"../assets/math/e4c8b3e8ff2e02eedad6fd96d7f1c5b964ce87a0bd217663f62bd94b45c70ec1.svg","width":212.0,"height":53.0},{"type":"paragraph","text":"Define the finite constant","passageId":"dyadic-remainder--mahler-remainder--b6","sourceEnglish":"Define the finite constant"},{"type":"math","text":"C=f(e^{-1})+\\sum_{j=1}^{\\infty}(e^{-2^{-j}}-1).","image":"../assets/math/d09fe9b0c6595e9ab966f97d49c31530c397e700b8282e024caaa207408696f9.svg","width":234.0,"height":49.0},{"type":"paragraph","text":"The second series converges absolutely because 0 ≤ 1 − exp(−t) ≤ t for t ≥ 0. Subtraction gives the exact tail","passageId":"dyadic-remainder--mahler-remainder--b8","sourceEnglish":"The second series converges absolutely because 0 ≤ 1 − exp(−t) ≤ t for t ≥ 0. Subtraction gives the exact tail"},{"type":"math","text":"R_k:=f(x_k)-k-C=\\sum_{j=k+1}^{\\infty}(1-e^{-2^{-j}}).","image":"../assets/math/f1a3fd9f8f27b2e96baba9593b995514fa8358bdc37ae1dfeb34e1c48710af42.svg","width":334.0,"height":49.0},{"type":"math","text":"0\\le R_k\\le\\sum_{j=k+1}^{\\infty}2^{-j}=2^{-k}.","image":"../assets/math/2c9cd8b695241112aae16dc21b84d0f5a336a005579ab0c6eec1e5659d9a14f2.svg","width":216.0,"height":49.0},{"type":"paragraph","text":"The inequality t − t²/2 ≤ 1 − exp(−t) gives the sharper lower bound:","passageId":"dyadic-remainder--mahler-remainder--b11","sourceEnglish":"The inequality t − t²/2 ≤ 1 − exp(−t) gives the sharper lower bound:"},{"type":"math","text":"2^{-k}-\\frac{4^{-k}}6\\le R_k\\le2^{-k}.","image":"../assets/math/afe348ffbf50d2dc818a658403fa81af419ed9faeed68e744a29d60fa32dcaa6.svg","width":181.0,"height":28.0},{"type":"paragraph","text":"Numerically, f(exp(−1)) ≈ 0.52186593845987908905 and C ≈ −0.33274738243289922501. These decimals illustrate the exact identities; the inequalities above supply the proof.","passageId":"dyadic-remainder--mahler-remainder--b13","sourceEnglish":"Numerically, f(exp(−1)) ≈ 0.52186593845987908905 and C ≈ −0.33274738243289922501. These decimals illustrate the exact identities; the inequalities above supply the proof."},{"type":"caption","text":"Scope of the limit"},{"type":"paragraph","text":"Along x_k = exp(−2^(−k)), the remainder bound gives f(x_k) = k + C + O(2^(−k)). The constant C belongs to this specified path. The arithmetic classification of f(exp(−1)) remains a separate question.","passageId":"dyadic-remainder--mahler-remainder--b14","sourceEnglish":"Along x_k = exp(−2^(−k)), the remainder bound gives f(x_k) = k + C + O(2^(−k)). The constant C belongs to this specified path. The arithmetic classification of f(exp(−1)) remains a separate question."},{"type":"paragraph","text":"The input exp(−1) is transcendental. A Mahler-value theorem requiring algebraic input therefore needs different hypotheses before it can apply here.","passageId":"dyadic-remainder--mahler-remainder--b15","sourceEnglish":"The input exp(−1) is transcendental. A Mahler-value theorem requiring algebraic input therefore needs different hypotheses before it can apply here."}],"translation":{"engine":"core","version":"0.4.0","mirror_rate":0.8,"wheel_sha256":"4389e91e55a97a977df4efc796a6e38706e3c15a323fb9d98dd2a58ef2696f0a","translation_note":"Each passage is an independent request; document-level state resets per passage.","readback_note":"The English endpoint is the preserved original source, not an automatically decoded translation.","display_note":"Context tails are omitted only from the visible surface; full targets, sidecars and returned Unicode remain in this file."},"translationRecord":"../../atlas/zyntalic-passages.json.gz"}</script>
+<script src="../../assets/atlas-gif.js" defer></script><script src="../../assets/atlas-reveal.js" defer></script>
+</body></html>

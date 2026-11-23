@@ -1,0 +1,1977 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A focused reading note from the Pirate Chest">
+<meta name="color-scheme" content="light"><link rel="canonical" href="https://encapsulatorp.github.io/atlas/proofs/palindrome-counting.html">
+<title>Palindrome counting · EncapsulatorP</title>
+<link rel="stylesheet" href="../../assets/atlas-reader.css"><link rel="stylesheet" href="../../assets/atlas-reveal.css">
+</head><body class="atlas-reader" data-reader-status="exact">
+<a class="reader-skip" href="#reader-content">Skip to the complete text</a>
+<div class="reader-shell"><header class="reader-header">
+<nav class="reader-nav" aria-label="Reading routes"><a href="../../index.html#interactive?topic=goldbach-involution">Interactive space</a><a href="../README.html">Complete atlas</a><a href="../../treasure-hunt/index.html">Proof board</a></nav>
+<p class="reader-kicker">ENCAPSULATORP · Exact count under a sampling model</p><h1 class="reader-title">Palindrome counting</h1>
+<p class="reader-subtitle">A focused reading note from the Pirate Chest</p>
+<p class="reader-byline">Zolton / EncapsulatorP · with ChatGPT · 23 November 2026</p>
+<div id="reader-tools" class="reader-toolbar reader-tools" aria-label="Reading and export controls"></div>
+<noscript><p>The complete English text and formulas below are available without JavaScript.</p></noscript>
+<details class="reader-contents"><summary>Contents · 2 sections</summary><ol><li><a href="#palindrome-counting-orientation">Palindrome counting</a></li><li><a href="#palindromes">Forty positions, four symbols</a></li></ol></details>
+</header>
+<main id="reader-content" class="reader-content reader-document" data-source-document="atlas/proofs/palindrome-counting.json">
+<section class="reader-section" id="palindrome-counting-orientation" data-source-page="palindrome-counting-orientation" data-source-index="0" data-source-status="exact"><span id="page-1" class="reader-page-anchor" aria-hidden="true"></span><p class="reader-kicker">NOTE 07 · EXACT COUNT UNDER A SAMPLING MODEL</p><h2 class="reader-section-title" data-zyntalic data-passage-id="palindrome-counting--palindrome-counting-orientation--title">Palindrome counting</h2><p class="reader-paragraph" data-zyntalic data-passage-id="palindrome-counting--palindrome-counting-orientation--b0" data-source-block="0" data-source-type="p">For independent uniform q-symbol strings of length n, ordinary palindromes have probability q^(−floor(n/2)). The example q = 4, n = 40 has probability exactly 2^(−40).</p>
+<div class="reader-equation" data-latex="\mathbb{P}(\mathrm{ordinary\ palindrome})=q^{-\lfloor n/2\rfloor}" data-source-block="1" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="\mathbb{P}(\mathrm{ordinary\ palindrome})=q^{-\lfloor n/2\rfloor}" xmlns:xlink="http://www.w3.org/1999/xlink" width="290pt" height="21pt" viewBox="0 0 290 21" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-643cbce015061d-figure_1">
+  <g id="math-643cbce015061d-patch_1">
+   <path d="M 0 21
+L 290 21
+L 290 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-643cbce015061d-text_1">
+   <!-- $\mathbb{P}(\mathrm{ordinary\ palindrome})=q^{-\lfloor n/2\rfloor}$ -->
+   <g style="fill: #202520" transform="translate(0 17) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-643cbce015061d-STIXGeneral-Italic-2119" d="M 1229 4179
+L 3360 4179
+Q 3827 4179 4108 3894
+Q 4390 3610 4390 3142
+Q 4390 2534 4032 2118
+Q 3571 1581 2605 1581
+L 1517 1581
+L 1094 0
+L 109 0
+L 1229 4179
+z
+M 3872 3808
+L 3354 1914
+Q 3718 2022 3936 2380
+Q 4154 2739 4154 3136
+Q 4154 3558 3872 3808
+z
+M 3110 1875
+L 3654 3878
+Q 3507 3942 3283 3942
+L 2150 3942
+L 1581 1818
+L 2598 1818
+Q 2938 1818 3110 1875
+z
+M 1907 3942
+L 1408 3942
+L 416 237
+L 915 237
+L 1907 3942
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-6f" d="M 1925 219
+Q 2388 219 2623 584
+Q 2859 950 2859 1663
+Q 2859 2375 2623 2739
+Q 2388 3103 1925 3103
+Q 1463 3103 1227 2739
+Q 991 2375 991 1663
+Q 991 950 1228 584
+Q 1466 219 1925 219
+z
+M 1925 -91
+Q 1200 -91 759 389
+Q 319 869 319 1663
+Q 319 2456 758 2934
+Q 1197 3413 1925 3413
+Q 2653 3413 3092 2934
+Q 3531 2456 3531 1663
+Q 3531 869 3092 389
+Q 2653 -91 1925 -91
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-72" d="M 3059 3328
+L 3059 2497
+L 2728 2497
+Q 2713 2744 2591 2866
+Q 2469 2988 2234 2988
+Q 1809 2988 1582 2694
+Q 1356 2400 1356 1850
+L 1356 331
+L 2022 331
+L 2022 0
+L 263 0
+L 263 331
+L 781 331
+L 781 2994
+L 231 2994
+L 231 3322
+L 1356 3322
+L 1356 2731
+Q 1525 3078 1790 3245
+Q 2056 3413 2438 3413
+Q 2578 3413 2733 3391
+Q 2888 3369 3059 3328
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-64" d="M 3359 331
+L 3909 331
+L 3909 0
+L 2784 0
+L 2784 519
+Q 2616 206 2355 57
+Q 2094 -91 1709 -91
+Q 1097 -91 708 395
+Q 319 881 319 1663
+Q 319 2444 706 2928
+Q 1094 3413 1709 3413
+Q 2094 3413 2355 3264
+Q 2616 3116 2784 2803
+L 2784 4531
+L 2241 4531
+L 2241 4863
+L 3359 4863
+L 3359 331
+z
+M 2784 1497
+L 2784 1825
+Q 2784 2422 2554 2737
+Q 2325 3053 1888 3053
+Q 1444 3053 1217 2703
+Q 991 2353 991 1663
+Q 991 975 1217 622
+Q 1444 269 1888 269
+Q 2325 269 2554 583
+Q 2784 897 2784 1497
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-69" d="M 622 4353
+Q 622 4497 726 4603
+Q 831 4709 978 4709
+Q 1122 4709 1226 4603
+Q 1331 4497 1331 4353
+Q 1331 4206 1228 4103
+Q 1125 4000 978 4000
+Q 831 4000 726 4103
+Q 622 4206 622 4353
+z
+M 1356 331
+L 1900 331
+L 1900 0
+L 231 0
+L 231 331
+L 781 331
+L 781 2988
+L 231 2988
+L 231 3322
+L 1356 3322
+L 1356 331
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-6e" d="M 263 0
+L 263 331
+L 781 331
+L 781 2988
+L 231 2988
+L 231 3322
+L 1356 3322
+L 1356 2731
+Q 1516 3069 1770 3241
+Q 2025 3413 2363 3413
+Q 2913 3413 3172 3097
+Q 3431 2781 3431 2113
+L 3431 331
+L 3944 331
+L 3944 0
+L 2356 0
+L 2356 331
+L 2853 331
+L 2853 1931
+Q 2853 2541 2703 2767
+Q 2553 2994 2175 2994
+Q 1775 2994 1565 2701
+Q 1356 2409 1356 1850
+L 1356 331
+L 1856 331
+L 1856 0
+L 263 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-61" d="M 2547 1044
+L 2547 1747
+L 1806 1747
+Q 1378 1747 1168 1562
+Q 959 1378 959 997
+Q 959 650 1171 447
+Q 1384 244 1747 244
+Q 2106 244 2326 466
+Q 2547 688 2547 1044
+z
+M 3122 2075
+L 3122 331
+L 3634 331
+L 3634 0
+L 2547 0
+L 2547 359
+Q 2356 128 2106 18
+Q 1856 -91 1522 -91
+Q 969 -91 644 203
+Q 319 497 319 997
+Q 319 1513 691 1797
+Q 1063 2081 1741 2081
+L 2547 2081
+L 2547 2309
+Q 2547 2688 2317 2895
+Q 2088 3103 1672 3103
+Q 1328 3103 1125 2947
+Q 922 2791 872 2484
+L 575 2484
+L 575 3156
+Q 875 3284 1158 3348
+Q 1441 3413 1709 3413
+Q 2400 3413 2761 3070
+Q 3122 2728 3122 2075
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-79" d="M 1381 -609
+L 1600 -56
+L 359 2988
+L -19 2988
+L -19 3322
+L 1509 3322
+L 1509 2988
+L 978 2988
+L 1913 703
+L 2847 2988
+L 2350 2988
+L 2350 3322
+L 3597 3322
+L 3597 2988
+L 3225 2988
+L 1703 -750
+Q 1547 -1138 1356 -1280
+Q 1166 -1422 819 -1422
+Q 672 -1422 517 -1397
+Q 363 -1372 206 -1325
+L 206 -691
+L 500 -691
+Q 519 -903 608 -995
+Q 697 -1088 884 -1088
+Q 1056 -1088 1161 -992
+Q 1266 -897 1381 -609
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-70" d="M 1313 1825
+L 1313 1497
+Q 1313 897 1542 583
+Q 1772 269 2209 269
+Q 2650 269 2876 622
+Q 3103 975 3103 1663
+Q 3103 2353 2876 2703
+Q 2650 3053 2209 3053
+Q 1772 3053 1542 2737
+Q 1313 2422 1313 1825
+z
+M 738 2988
+L 184 2988
+L 184 3322
+L 1313 3322
+L 1313 2803
+Q 1481 3116 1742 3264
+Q 2003 3413 2388 3413
+Q 3000 3413 3387 2928
+Q 3775 2444 3775 1663
+Q 3775 881 3387 395
+Q 3000 -91 2388 -91
+Q 2003 -91 1742 57
+Q 1481 206 1313 519
+L 1313 -997
+L 1856 -997
+L 1856 -1331
+L 184 -1331
+L 184 -997
+L 738 -997
+L 738 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-6c" d="M 1313 331
+L 1856 331
+L 1856 0
+L 184 0
+L 184 331
+L 738 331
+L 738 4531
+L 184 4531
+L 184 4863
+L 1313 4863
+L 1313 331
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-6d" d="M 3316 2675
+Q 3481 3041 3739 3227
+Q 3997 3413 4341 3413
+Q 4863 3413 5119 3089
+Q 5375 2766 5375 2113
+L 5375 331
+L 5894 331
+L 5894 0
+L 4300 0
+L 4300 331
+L 4800 331
+L 4800 2047
+Q 4800 2556 4650 2772
+Q 4500 2988 4153 2988
+Q 3769 2988 3567 2697
+Q 3366 2406 3366 1850
+L 3366 331
+L 3866 331
+L 3866 0
+L 2291 0
+L 2291 331
+L 2791 331
+L 2791 2069
+Q 2791 2566 2641 2777
+Q 2491 2988 2144 2988
+Q 1759 2988 1557 2697
+Q 1356 2406 1356 1850
+L 1356 331
+L 1856 331
+L 1856 0
+L 263 0
+L 263 331
+L 781 331
+L 781 2994
+L 231 2994
+L 231 3322
+L 1356 3322
+L 1356 2731
+Q 1516 3063 1762 3238
+Q 2009 3413 2322 3413
+Q 2709 3413 2968 3220
+Q 3228 3028 3316 2675
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-65" d="M 3469 1600
+L 991 1600
+L 991 1575
+Q 991 903 1244 561
+Q 1497 219 1991 219
+Q 2369 219 2611 417
+Q 2853 616 2950 1006
+L 3413 1006
+Q 3275 459 2904 184
+Q 2534 -91 1931 -91
+Q 1203 -91 761 389
+Q 319 869 319 1663
+Q 319 2450 753 2931
+Q 1188 3413 1894 3413
+Q 2647 3413 3050 2948
+Q 3453 2484 3469 1600
+z
+M 2791 1931
+Q 2772 2513 2545 2808
+Q 2319 3103 1894 3103
+Q 1497 3103 1269 2806
+Q 1041 2509 991 1931
+L 2791 1931
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-Italic-71" d="M 2684 519
+Q 2469 206 2206 56
+Q 1944 -91 1597 -91
+Q 1047 -91 769 281
+Q 594 516 575 841
+Q 563 1031 606 1256
+Q 822 2359 1588 2928
+Q 2241 3409 3006 3413
+Q 3613 3416 3803 3322
+L 2963 -1000
+L 3516 -1000
+L 3450 -1331
+L 2322 -1331
+L 2684 519
+z
+M 2916 3094
+Q 2316 3094 1850 2625
+Q 1388 2153 1219 1297
+Q 1172 1044 1184 853
+Q 1197 659 1275 528
+Q 1428 269 1828 269
+Q 2222 269 2489 583
+Q 2756 897 2872 1497
+L 3166 3003
+Q 3169 3094 2916 3094
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-230a" d="M 550 -844
+L 550 4863
+L 1147 4863
+L 1147 -513
+L 2003 -513
+L 2003 -844
+L 550 -844
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-Italic-6e" d="M 450 0
+L 1031 2988
+L 481 2988
+L 544 3322
+L 1669 3322
+L 1556 2731
+Q 1781 3069 2068 3241
+Q 2356 3413 2694 3413
+Q 3244 3413 3444 3097
+Q 3563 2906 3563 2588
+Q 3563 2378 3509 2113
+L 3163 331
+L 3675 331
+L 3613 0
+L 2522 0
+L 2897 1931
+Q 2959 2253 2959 2469
+Q 2959 2659 2909 2769
+Q 2803 2994 2425 2994
+Q 2025 2994 1759 2701
+Q 1494 2409 1384 1850
+L 1025 0
+L 450 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-2f" d="M 1656 4666
+L 2156 4666
+L 500 -594
+L 0 -594
+L 1656 4666
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-32" d="M 819 3553
+L 469 3553
+L 469 4384
+Q 803 4563 1142 4656
+Q 1481 4750 1806 4750
+Q 2534 4750 2956 4397
+Q 3378 4044 3378 3438
+Q 3378 2753 2422 1800
+Q 2347 1728 2309 1691
+L 1131 513
+L 3078 513
+L 3078 1088
+L 3444 1088
+L 3444 0
+L 434 0
+L 434 341
+L 1850 1753
+Q 2319 2222 2519 2614
+Q 2719 3006 2719 3438
+Q 2719 3909 2473 4175
+Q 2228 4441 1797 4441
+Q 1350 4441 1106 4219
+Q 863 3997 819 3553
+z
+" transform="scale(0.015625)"/>
+     <path id="math-643cbce015061d-DejaVuSerif-230b" d="M 1947 -844
+L 494 -844
+L 494 -513
+L 1350 -513
+L 1350 4863
+L 1947 4863
+L 1947 -844
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-643cbce015061d-STIXGeneral-Italic-2119" transform="translate(0 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-28" transform="translate(68.699982 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-6f" transform="translate(107.713654 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-72" transform="translate(167.918732 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-64" transform="translate(215.721466 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-69" transform="translate(279.735138 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-6e" transform="translate(311.71756 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-61" transform="translate(376.121857 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-72" transform="translate(435.740997 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-79" transform="translate(483.543732 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-70" transform="translate(571.645629 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-61" transform="translate(635.659301 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-6c" transform="translate(695.278442 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-69" transform="translate(727.260864 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-6e" transform="translate(759.243285 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-64" transform="translate(823.647582 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-72" transform="translate(887.661254 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-6f" transform="translate(935.463989 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-6d" transform="translate(995.669067 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-65" transform="translate(1090.493285 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-29" transform="translate(1149.672973 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-3d" transform="translate(1207.651489 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-Italic-71" transform="translate(1310.405395 0.476562)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-2212" transform="translate(1378.863702 36.810937) scale(0.7)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-230a" transform="translate(1437.516046 36.810937) scale(0.7)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-Italic-6e" transform="translate(1464.825616 36.810937) scale(0.7)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-2f" transform="translate(1509.908624 36.810937) scale(0.7)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-32" transform="translate(1533.492608 36.810937) scale(0.7)"/>
+    <use xlink:href="#math-643cbce015061d-DejaVuSerif-230b" transform="translate(1578.028741 36.810937) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>\mathbb{P}(\mathrm{ordinary\ palindrome})=q^{-\lfloor n/2\rfloor}</code></pre></details></div>
+<aside class="reader-callout" data-status="exact" data-source-block="2" data-source-type="callout"><p class="reader-callout-label">Exact count under a sampling model</p><p class="reader-callout-text" data-zyntalic data-passage-id="palindrome-counting--palindrome-counting-orientation--b2">The probability is tied to the stated sampling model. Forty is the sequence length in the example, not a proved limit on the size of a sustainable biological alphabet.</p></aside>
+<p class="reader-paragraph" data-zyntalic data-passage-id="palindrome-counting--palindrome-counting-orientation--b3" data-source-block="3" data-source-type="p">Count free positions in a reversed string, then distinguish ordinary reversal from reverse complementation. An expected number of independent complete-string draws is not a guarantee for overlapping windows.</p>
+<h3 class="reader-subheading" data-zyntalic data-passage-id="palindrome-counting--palindrome-counting-orientation--b4" data-source-block="4" data-source-type="h">One concrete next step</h3>
+<p class="reader-paragraph" data-zyntalic data-passage-id="palindrome-counting--palindrome-counting-orientation--b5" data-source-block="5" data-source-type="p">Before making a biophysical claim, specify a physical alphabet, pairing rule and measurable stability or decay criterion. The finite combinatorics supplies no biochemical feasibility result.</p>
+<h3 class="reader-subheading" data-source-block="6" data-source-type="h">Sources and related reading</h3>
+<p class="reader-paragraph reader-small" data-source-block="7" data-source-type="p">The following pages give the complete derivation from the stated definitions. The historical collection records the original fragments and argument.</p>
+<p class="reader-source-link" data-source-block="8" data-source-type="link"><a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#palindromes">Historical collection source · original edition</a></p>
+<p class="reader-source-link" data-source-block="9" data-source-type="link"><a href="https://encapsulatorp.github.io/#buried-logistic-vanishing">Return to the Treasure Chest</a></p></section>
+<section class="reader-section" id="palindromes" data-source-page="palindromes" data-source-index="1" data-source-status="exact"><span id="page-2" class="reader-page-anchor" aria-hidden="true"></span><p class="reader-kicker">01 · EXACT COUNTING AND THE BIOPHYSICS BOUNDARY</p><h2 class="reader-section-title" data-zyntalic data-passage-id="palindrome-counting--palindromes--title">Forty positions, four symbols</h2><p class="reader-paragraph" data-zyntalic data-passage-id="palindrome-counting--palindromes--b0" data-source-block="0" data-source-type="p">Choose symbols independently and uniformly from an alphabet of integer size q ≥ 2. For integer length n ≥ 1, an ordinary palindrome reads identically under reversal. There are ceiling(n/2) free positions, giving q^ceiling(n/2) palindromes among q^n strings.</p>
+<div class="reader-equation" data-latex="\mathbb{P}(\mathrm{ordinary\ palindrome})=\frac{q^{\lceil n/2\rceil}}{q^n}=q^{-\lfloor n/2\rfloor}." data-source-block="1" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="\mathbb{P}(\mathrm{ordinary\ palindrome})=\frac{q^{\lceil n/2\rceil}}{q^n}=q^{-\lfloor n/2\rfloor}." xmlns:xlink="http://www.w3.org/1999/xlink" width="353pt" height="32pt" viewBox="0 0 353 32" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-681df0e6d9c11a-figure_1">
+  <g id="math-681df0e6d9c11a-patch_1">
+   <path d="M 0 32
+L 353 32
+L 353 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-681df0e6d9c11a-text_1">
+   <!-- $\mathbb{P}(\mathrm{ordinary\ palindrome})=\frac{q^{\lceil n/2\rceil}}{q^n}=q^{-\lfloor n/2\rfloor}.$ -->
+   <g style="fill: #202520" transform="translate(0 22) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-681df0e6d9c11a-STIXGeneral-Italic-2119" d="M 1229 4179
+L 3360 4179
+Q 3827 4179 4108 3894
+Q 4390 3610 4390 3142
+Q 4390 2534 4032 2118
+Q 3571 1581 2605 1581
+L 1517 1581
+L 1094 0
+L 109 0
+L 1229 4179
+z
+M 3872 3808
+L 3354 1914
+Q 3718 2022 3936 2380
+Q 4154 2739 4154 3136
+Q 4154 3558 3872 3808
+z
+M 3110 1875
+L 3654 3878
+Q 3507 3942 3283 3942
+L 2150 3942
+L 1581 1818
+L 2598 1818
+Q 2938 1818 3110 1875
+z
+M 1907 3942
+L 1408 3942
+L 416 237
+L 915 237
+L 1907 3942
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-6f" d="M 1925 219
+Q 2388 219 2623 584
+Q 2859 950 2859 1663
+Q 2859 2375 2623 2739
+Q 2388 3103 1925 3103
+Q 1463 3103 1227 2739
+Q 991 2375 991 1663
+Q 991 950 1228 584
+Q 1466 219 1925 219
+z
+M 1925 -91
+Q 1200 -91 759 389
+Q 319 869 319 1663
+Q 319 2456 758 2934
+Q 1197 3413 1925 3413
+Q 2653 3413 3092 2934
+Q 3531 2456 3531 1663
+Q 3531 869 3092 389
+Q 2653 -91 1925 -91
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-72" d="M 3059 3328
+L 3059 2497
+L 2728 2497
+Q 2713 2744 2591 2866
+Q 2469 2988 2234 2988
+Q 1809 2988 1582 2694
+Q 1356 2400 1356 1850
+L 1356 331
+L 2022 331
+L 2022 0
+L 263 0
+L 263 331
+L 781 331
+L 781 2994
+L 231 2994
+L 231 3322
+L 1356 3322
+L 1356 2731
+Q 1525 3078 1790 3245
+Q 2056 3413 2438 3413
+Q 2578 3413 2733 3391
+Q 2888 3369 3059 3328
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-64" d="M 3359 331
+L 3909 331
+L 3909 0
+L 2784 0
+L 2784 519
+Q 2616 206 2355 57
+Q 2094 -91 1709 -91
+Q 1097 -91 708 395
+Q 319 881 319 1663
+Q 319 2444 706 2928
+Q 1094 3413 1709 3413
+Q 2094 3413 2355 3264
+Q 2616 3116 2784 2803
+L 2784 4531
+L 2241 4531
+L 2241 4863
+L 3359 4863
+L 3359 331
+z
+M 2784 1497
+L 2784 1825
+Q 2784 2422 2554 2737
+Q 2325 3053 1888 3053
+Q 1444 3053 1217 2703
+Q 991 2353 991 1663
+Q 991 975 1217 622
+Q 1444 269 1888 269
+Q 2325 269 2554 583
+Q 2784 897 2784 1497
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-69" d="M 622 4353
+Q 622 4497 726 4603
+Q 831 4709 978 4709
+Q 1122 4709 1226 4603
+Q 1331 4497 1331 4353
+Q 1331 4206 1228 4103
+Q 1125 4000 978 4000
+Q 831 4000 726 4103
+Q 622 4206 622 4353
+z
+M 1356 331
+L 1900 331
+L 1900 0
+L 231 0
+L 231 331
+L 781 331
+L 781 2988
+L 231 2988
+L 231 3322
+L 1356 3322
+L 1356 331
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-6e" d="M 263 0
+L 263 331
+L 781 331
+L 781 2988
+L 231 2988
+L 231 3322
+L 1356 3322
+L 1356 2731
+Q 1516 3069 1770 3241
+Q 2025 3413 2363 3413
+Q 2913 3413 3172 3097
+Q 3431 2781 3431 2113
+L 3431 331
+L 3944 331
+L 3944 0
+L 2356 0
+L 2356 331
+L 2853 331
+L 2853 1931
+Q 2853 2541 2703 2767
+Q 2553 2994 2175 2994
+Q 1775 2994 1565 2701
+Q 1356 2409 1356 1850
+L 1356 331
+L 1856 331
+L 1856 0
+L 263 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-61" d="M 2547 1044
+L 2547 1747
+L 1806 1747
+Q 1378 1747 1168 1562
+Q 959 1378 959 997
+Q 959 650 1171 447
+Q 1384 244 1747 244
+Q 2106 244 2326 466
+Q 2547 688 2547 1044
+z
+M 3122 2075
+L 3122 331
+L 3634 331
+L 3634 0
+L 2547 0
+L 2547 359
+Q 2356 128 2106 18
+Q 1856 -91 1522 -91
+Q 969 -91 644 203
+Q 319 497 319 997
+Q 319 1513 691 1797
+Q 1063 2081 1741 2081
+L 2547 2081
+L 2547 2309
+Q 2547 2688 2317 2895
+Q 2088 3103 1672 3103
+Q 1328 3103 1125 2947
+Q 922 2791 872 2484
+L 575 2484
+L 575 3156
+Q 875 3284 1158 3348
+Q 1441 3413 1709 3413
+Q 2400 3413 2761 3070
+Q 3122 2728 3122 2075
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-79" d="M 1381 -609
+L 1600 -56
+L 359 2988
+L -19 2988
+L -19 3322
+L 1509 3322
+L 1509 2988
+L 978 2988
+L 1913 703
+L 2847 2988
+L 2350 2988
+L 2350 3322
+L 3597 3322
+L 3597 2988
+L 3225 2988
+L 1703 -750
+Q 1547 -1138 1356 -1280
+Q 1166 -1422 819 -1422
+Q 672 -1422 517 -1397
+Q 363 -1372 206 -1325
+L 206 -691
+L 500 -691
+Q 519 -903 608 -995
+Q 697 -1088 884 -1088
+Q 1056 -1088 1161 -992
+Q 1266 -897 1381 -609
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-70" d="M 1313 1825
+L 1313 1497
+Q 1313 897 1542 583
+Q 1772 269 2209 269
+Q 2650 269 2876 622
+Q 3103 975 3103 1663
+Q 3103 2353 2876 2703
+Q 2650 3053 2209 3053
+Q 1772 3053 1542 2737
+Q 1313 2422 1313 1825
+z
+M 738 2988
+L 184 2988
+L 184 3322
+L 1313 3322
+L 1313 2803
+Q 1481 3116 1742 3264
+Q 2003 3413 2388 3413
+Q 3000 3413 3387 2928
+Q 3775 2444 3775 1663
+Q 3775 881 3387 395
+Q 3000 -91 2388 -91
+Q 2003 -91 1742 57
+Q 1481 206 1313 519
+L 1313 -997
+L 1856 -997
+L 1856 -1331
+L 184 -1331
+L 184 -997
+L 738 -997
+L 738 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-6c" d="M 1313 331
+L 1856 331
+L 1856 0
+L 184 0
+L 184 331
+L 738 331
+L 738 4531
+L 184 4531
+L 184 4863
+L 1313 4863
+L 1313 331
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-6d" d="M 3316 2675
+Q 3481 3041 3739 3227
+Q 3997 3413 4341 3413
+Q 4863 3413 5119 3089
+Q 5375 2766 5375 2113
+L 5375 331
+L 5894 331
+L 5894 0
+L 4300 0
+L 4300 331
+L 4800 331
+L 4800 2047
+Q 4800 2556 4650 2772
+Q 4500 2988 4153 2988
+Q 3769 2988 3567 2697
+Q 3366 2406 3366 1850
+L 3366 331
+L 3866 331
+L 3866 0
+L 2291 0
+L 2291 331
+L 2791 331
+L 2791 2069
+Q 2791 2566 2641 2777
+Q 2491 2988 2144 2988
+Q 1759 2988 1557 2697
+Q 1356 2406 1356 1850
+L 1356 331
+L 1856 331
+L 1856 0
+L 263 0
+L 263 331
+L 781 331
+L 781 2994
+L 231 2994
+L 231 3322
+L 1356 3322
+L 1356 2731
+Q 1516 3063 1762 3238
+Q 2009 3413 2322 3413
+Q 2709 3413 2968 3220
+Q 3228 3028 3316 2675
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-65" d="M 3469 1600
+L 991 1600
+L 991 1575
+Q 991 903 1244 561
+Q 1497 219 1991 219
+Q 2369 219 2611 417
+Q 2853 616 2950 1006
+L 3413 1006
+Q 3275 459 2904 184
+Q 2534 -91 1931 -91
+Q 1203 -91 761 389
+Q 319 869 319 1663
+Q 319 2450 753 2931
+Q 1188 3413 1894 3413
+Q 2647 3413 3050 2948
+Q 3453 2484 3469 1600
+z
+M 2791 1931
+Q 2772 2513 2545 2808
+Q 2319 3103 1894 3103
+Q 1497 3103 1269 2806
+Q 1041 2509 991 1931
+L 2791 1931
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-Italic-71" d="M 2684 519
+Q 2469 206 2206 56
+Q 1944 -91 1597 -91
+Q 1047 -91 769 281
+Q 594 516 575 841
+Q 563 1031 606 1256
+Q 822 2359 1588 2928
+Q 2241 3409 3006 3413
+Q 3613 3416 3803 3322
+L 2963 -1000
+L 3516 -1000
+L 3450 -1331
+L 2322 -1331
+L 2684 519
+z
+M 2916 3094
+Q 2316 3094 1850 2625
+Q 1388 2153 1219 1297
+Q 1172 1044 1184 853
+Q 1197 659 1275 528
+Q 1428 269 1828 269
+Q 2222 269 2489 583
+Q 2756 897 2872 1497
+L 3166 3003
+Q 3169 3094 2916 3094
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-2308" d="M 550 4863
+L 2003 4863
+L 2003 4531
+L 1147 4531
+L 1147 -844
+L 550 -844
+L 550 4863
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-Italic-6e" d="M 450 0
+L 1031 2988
+L 481 2988
+L 544 3322
+L 1669 3322
+L 1556 2731
+Q 1781 3069 2068 3241
+Q 2356 3413 2694 3413
+Q 3244 3413 3444 3097
+Q 3563 2906 3563 2588
+Q 3563 2378 3509 2113
+L 3163 331
+L 3675 331
+L 3613 0
+L 2522 0
+L 2897 1931
+Q 2959 2253 2959 2469
+Q 2959 2659 2909 2769
+Q 2803 2994 2425 2994
+Q 2025 2994 1759 2701
+Q 1494 2409 1384 1850
+L 1025 0
+L 450 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-2f" d="M 1656 4666
+L 2156 4666
+L 500 -594
+L 0 -594
+L 1656 4666
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-32" d="M 819 3553
+L 469 3553
+L 469 4384
+Q 803 4563 1142 4656
+Q 1481 4750 1806 4750
+Q 2534 4750 2956 4397
+Q 3378 4044 3378 3438
+Q 3378 2753 2422 1800
+Q 2347 1728 2309 1691
+L 1131 513
+L 3078 513
+L 3078 1088
+L 3444 1088
+L 3444 0
+L 434 0
+L 434 341
+L 1850 1753
+Q 2319 2222 2519 2614
+Q 2719 3006 2719 3438
+Q 2719 3909 2473 4175
+Q 2228 4441 1797 4441
+Q 1350 4441 1106 4219
+Q 863 3997 819 3553
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-2309" d="M 1947 4863
+L 1947 -844
+L 1350 -844
+L 1350 4531
+L 494 4531
+L 494 4863
+L 1947 4863
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-230a" d="M 550 -844
+L 550 4863
+L 1147 4863
+L 1147 -513
+L 2003 -513
+L 2003 -844
+L 550 -844
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-230b" d="M 1947 -844
+L 494 -844
+L 494 -513
+L 1350 -513
+L 1350 4863
+L 1947 4863
+L 1947 -844
+z
+" transform="scale(0.015625)"/>
+     <path id="math-681df0e6d9c11a-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-681df0e6d9c11a-STIXGeneral-Italic-2119" transform="translate(0 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-28" transform="translate(68.699982 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-6f" transform="translate(107.713654 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-72" transform="translate(167.918732 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-64" transform="translate(215.721466 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-69" transform="translate(279.735138 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-6e" transform="translate(311.71756 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-61" transform="translate(376.121857 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-72" transform="translate(435.740997 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-79" transform="translate(483.543732 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-70" transform="translate(571.645629 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-61" transform="translate(635.659301 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-6c" transform="translate(695.278442 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-69" transform="translate(727.260864 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-6e" transform="translate(759.243285 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-64" transform="translate(823.647582 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-72" transform="translate(887.661254 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-6f" transform="translate(935.463989 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-6d" transform="translate(995.669067 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-65" transform="translate(1090.493285 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-29" transform="translate(1149.672973 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-3d" transform="translate(1207.651489 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-Italic-71" transform="translate(1310.405395 59.333594) scale(0.7)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-2308" transform="translate(1358.32621 84.767656) scale(0.49)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-Italic-6e" transform="translate(1377.442909 84.767656) scale(0.49)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-2f" transform="translate(1409.001015 84.767656) scale(0.49)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-32" transform="translate(1425.509804 84.767656) scale(0.49)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-2309" transform="translate(1456.685097 84.767656) scale(0.49)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-Italic-71" transform="translate(1353.405395 -38.039062) scale(0.7)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-Italic-6e" transform="translate(1401.32621 -12.605) scale(0.49)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-3d" transform="translate(1509.083358 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-Italic-71" transform="translate(1611.837265 0.924219)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-2212" transform="translate(1680.295572 37.258594) scale(0.7)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-230a" transform="translate(1738.947916 37.258594) scale(0.7)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-Italic-6e" transform="translate(1766.257486 37.258594) scale(0.7)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-2f" transform="translate(1811.340494 37.258594) scale(0.7)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-32" transform="translate(1834.924478 37.258594) scale(0.7)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-230b" transform="translate(1879.460611 37.258594) scale(0.7)"/>
+    <use xlink:href="#math-681df0e6d9c11a-DejaVuSerif-2e" transform="translate(1909.365494 0.924219)"/>
+    <path d="M 1310.405395 19.775781
+L 1310.405395 26.025781
+L 1477.618515 26.025781
+L 1477.618515 19.775781
+L 1310.405395 19.775781
+z
+"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>\mathbb{P}(\mathrm{ordinary\ palindrome})=\frac{q^{\lceil n/2\rceil}}{q^n}=q^{-\lfloor n/2\rfloor}.</code></pre></details></div>
+<p class="reader-paragraph" data-zyntalic data-passage-id="palindrome-counting--palindromes--b2" data-source-block="2" data-source-type="p">For even n, floor(n/2) = n/2, so the probability simplifies to q^(−n/2). With q = 4 and n = 40,</p>
+<div class="reader-equation" data-latex="\mathbb{P}=4^{-20}=2^{-40}=\frac1{1\,099\,511\,627\,776}" data-source-block="3" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="\mathbb{P}=4^{-20}=2^{-40}=\frac1{1\,099\,511\,627\,776}" xmlns:xlink="http://www.w3.org/1999/xlink" width="271pt" height="26pt" viewBox="0 0 271 26" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-782c7d3521fb25-figure_1">
+  <g id="math-782c7d3521fb25-patch_1">
+   <path d="M 0 26
+L 271 26
+L 271 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-782c7d3521fb25-text_1">
+   <!-- $\mathbb{P}=4^{-20}=2^{-40}=\frac{1}{1\,099\,511\,627\,776}$ -->
+   <g style="fill: #202520" transform="translate(0 18) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-782c7d3521fb25-STIXGeneral-Italic-2119" d="M 1229 4179
+L 3360 4179
+Q 3827 4179 4108 3894
+Q 4390 3610 4390 3142
+Q 4390 2534 4032 2118
+Q 3571 1581 2605 1581
+L 1517 1581
+L 1094 0
+L 109 0
+L 1229 4179
+z
+M 3872 3808
+L 3354 1914
+Q 3718 2022 3936 2380
+Q 4154 2739 4154 3136
+Q 4154 3558 3872 3808
+z
+M 3110 1875
+L 3654 3878
+Q 3507 3942 3283 3942
+L 2150 3942
+L 1581 1818
+L 2598 1818
+Q 2938 1818 3110 1875
+z
+M 1907 3942
+L 1408 3942
+L 416 237
+L 915 237
+L 1907 3942
+z
+" transform="scale(0.015625)"/>
+     <path id="math-782c7d3521fb25-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-782c7d3521fb25-DejaVuSerif-34" d="M 2234 1581
+L 2234 4063
+L 641 1581
+L 2234 1581
+z
+M 3609 0
+L 1484 0
+L 1484 331
+L 2234 331
+L 2234 1247
+L 197 1247
+L 197 1588
+L 2241 4750
+L 2859 4750
+L 2859 1581
+L 3750 1581
+L 3750 1247
+L 2859 1247
+L 2859 331
+L 3609 331
+L 3609 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-782c7d3521fb25-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-782c7d3521fb25-DejaVuSerif-32" d="M 819 3553
+L 469 3553
+L 469 4384
+Q 803 4563 1142 4656
+Q 1481 4750 1806 4750
+Q 2534 4750 2956 4397
+Q 3378 4044 3378 3438
+Q 3378 2753 2422 1800
+Q 2347 1728 2309 1691
+L 1131 513
+L 3078 513
+L 3078 1088
+L 3444 1088
+L 3444 0
+L 434 0
+L 434 341
+L 1850 1753
+Q 2319 2222 2519 2614
+Q 2719 3006 2719 3438
+Q 2719 3909 2473 4175
+Q 2228 4441 1797 4441
+Q 1350 4441 1106 4219
+Q 863 3997 819 3553
+z
+" transform="scale(0.015625)"/>
+     <path id="math-782c7d3521fb25-DejaVuSerif-30" d="M 2034 219
+Q 2513 219 2750 744
+Q 2988 1269 2988 2328
+Q 2988 3391 2750 3916
+Q 2513 4441 2034 4441
+Q 1556 4441 1318 3916
+Q 1081 3391 1081 2328
+Q 1081 1269 1318 744
+Q 1556 219 2034 219
+z
+M 2034 -91
+Q 1275 -91 848 546
+Q 422 1184 422 2328
+Q 422 3475 848 4112
+Q 1275 4750 2034 4750
+Q 2797 4750 3222 4112
+Q 3647 3475 3647 2328
+Q 3647 1184 3222 546
+Q 2797 -91 2034 -91
+z
+" transform="scale(0.015625)"/>
+     <path id="math-782c7d3521fb25-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-782c7d3521fb25-DejaVuSerif-39" d="M 2994 2091
+Q 2784 1856 2512 1740
+Q 2241 1625 1900 1625
+Q 1206 1625 804 2044
+Q 403 2463 403 3188
+Q 403 3897 839 4323
+Q 1275 4750 2003 4750
+Q 2794 4750 3217 4161
+Q 3641 3572 3641 2478
+Q 3641 1253 3137 581
+Q 2634 -91 1722 -91
+Q 1475 -91 1203 -44
+Q 931 3 647 97
+L 647 872
+L 997 872
+Q 1038 556 1241 387
+Q 1444 219 1784 219
+Q 2391 219 2687 676
+Q 2984 1134 2994 2091
+z
+M 1978 4441
+Q 1534 4441 1298 4117
+Q 1063 3794 1063 3188
+Q 1063 2581 1298 2256
+Q 1534 1931 1978 1931
+Q 2422 1931 2658 2245
+Q 2894 2559 2894 3150
+Q 2894 3772 2656 4106
+Q 2419 4441 1978 4441
+z
+" transform="scale(0.015625)"/>
+     <path id="math-782c7d3521fb25-DejaVuSerif-35" d="M 3219 4666
+L 3219 4153
+L 1081 4153
+L 1081 2816
+Q 1244 2928 1461 2984
+Q 1678 3041 1947 3041
+Q 2703 3041 3140 2622
+Q 3578 2203 3578 1478
+Q 3578 738 3136 323
+Q 2694 -91 1894 -91
+Q 1572 -91 1234 -12
+Q 897 66 544 225
+L 544 1131
+L 897 1131
+Q 925 688 1179 453
+Q 1434 219 1894 219
+Q 2388 219 2653 544
+Q 2919 869 2919 1478
+Q 2919 2084 2655 2407
+Q 2391 2731 1894 2731
+Q 1613 2731 1398 2631
+Q 1184 2531 1019 2322
+L 750 2322
+L 750 4666
+L 3219 4666
+z
+" transform="scale(0.015625)"/>
+     <path id="math-782c7d3521fb25-DejaVuSerif-36" d="M 2094 219
+Q 2534 219 2771 542
+Q 3009 866 3009 1472
+Q 3009 2078 2771 2401
+Q 2534 2725 2094 2725
+Q 1647 2725 1412 2412
+Q 1178 2100 1178 1509
+Q 1178 888 1415 553
+Q 1653 219 2094 219
+z
+M 1075 2569
+Q 1288 2803 1556 2918
+Q 1825 3034 2163 3034
+Q 2859 3034 3264 2615
+Q 3669 2197 3669 1472
+Q 3669 763 3233 336
+Q 2797 -91 2069 -91
+Q 1278 -91 853 498
+Q 428 1088 428 2181
+Q 428 3406 931 4078
+Q 1434 4750 2350 4750
+Q 2597 4750 2869 4703
+Q 3141 4656 3425 4563
+L 3425 3794
+L 3072 3794
+Q 3034 4109 2831 4275
+Q 2628 4441 2284 4441
+Q 1678 4441 1381 3981
+Q 1084 3522 1075 2569
+z
+" transform="scale(0.015625)"/>
+     <path id="math-782c7d3521fb25-DejaVuSerif-37" d="M 3609 4347
+L 1784 0
+L 1319 0
+L 3059 4153
+L 903 4153
+L 903 3578
+L 538 3578
+L 538 4666
+L 3609 4666
+L 3609 4347
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-782c7d3521fb25-STIXGeneral-Italic-2119" transform="translate(0 0.195312)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-3d" transform="translate(87.664825 0.195312)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-34" transform="translate(190.418732 0.195312)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-2212" transform="translate(254.950138 36.529687) scale(0.7)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-32" transform="translate(313.602482 36.529687) scale(0.7)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-30" transform="translate(358.138615 36.529687) scale(0.7)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-3d" transform="translate(424.234904 0.195312)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-32" transform="translate(526.98881 0.195312)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-2212" transform="translate(591.520216 36.529687) scale(0.7)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-34" transform="translate(650.17256 36.529687) scale(0.7)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-30" transform="translate(694.708693 36.529687) scale(0.7)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-3d" transform="translate(760.804982 0.195312)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-31" transform="translate(1153.558888 44.046875) scale(0.7)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-31" transform="translate(863.558888 -39.15625) scale(0.7)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-30" transform="translate(919.158068 -39.15625) scale(0.7)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-39" transform="translate(963.6942 -39.15625) scale(0.7)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-39" transform="translate(1008.230333 -39.15625) scale(0.7)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-35" transform="translate(1063.829513 -39.15625) scale(0.7)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-31" transform="translate(1108.365646 -39.15625) scale(0.7)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-31" transform="translate(1152.901778 -39.15625) scale(0.7)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-36" transform="translate(1208.500958 -39.15625) scale(0.7)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-32" transform="translate(1253.037091 -39.15625) scale(0.7)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-37" transform="translate(1297.573224 -39.15625) scale(0.7)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-37" transform="translate(1353.172403 -39.15625) scale(0.7)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-37" transform="translate(1399.021036 -39.15625) scale(0.7)"/>
+    <use xlink:href="#math-782c7d3521fb25-DejaVuSerif-36" transform="translate(1443.557169 -39.15625) scale(0.7)"/>
+    <path d="M 863.558888 19.046875
+L 863.558888 25.296875
+L 1488.093302 25.296875
+L 1488.093302 19.046875
+L 863.558888 19.046875
+z
+"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>\mathbb{P}=4^{-20}=2^{-40}=\frac1{1\,099\,511\,627\,776}</code></pre></details></div>
+<div class="reader-equation" data-latex="\mathbb{P}\approx9.094947017729282\times10^{-13}." data-source-block="4" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="\mathbb{P}\approx9.094947017729282\times10^{-13}." xmlns:xlink="http://www.w3.org/1999/xlink" width="305pt" height="17pt" viewBox="0 0 305 17" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-657b6078d538f9-figure_1">
+  <g id="math-657b6078d538f9-patch_1">
+   <path d="M 0 17
+L 305 17
+L 305 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-657b6078d538f9-text_1">
+   <!-- $\mathbb{P}\approx9.094947017729282\times10^{-13}.$ -->
+   <g style="fill: #202520" transform="translate(0 16) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-657b6078d538f9-STIXGeneral-Italic-2119" d="M 1229 4179
+L 3360 4179
+Q 3827 4179 4108 3894
+Q 4390 3610 4390 3142
+Q 4390 2534 4032 2118
+Q 3571 1581 2605 1581
+L 1517 1581
+L 1094 0
+L 109 0
+L 1229 4179
+z
+M 3872 3808
+L 3354 1914
+Q 3718 2022 3936 2380
+Q 4154 2739 4154 3136
+Q 4154 3558 3872 3808
+z
+M 3110 1875
+L 3654 3878
+Q 3507 3942 3283 3942
+L 2150 3942
+L 1581 1818
+L 2598 1818
+Q 2938 1818 3110 1875
+z
+M 1907 3942
+L 1408 3942
+L 416 237
+L 915 237
+L 1907 3942
+z
+" transform="scale(0.015625)"/>
+     <path id="math-657b6078d538f9-DejaVuSerif-2248" d="M 4684 1913
+L 4684 1453
+Q 4375 1172 4092 1040
+Q 3809 909 3519 909
+Q 3231 909 2713 1106
+Q 2666 1125 2641 1134
+Q 2609 1147 2541 1172
+Q 2081 1350 1784 1350
+Q 1497 1350 1226 1236
+Q 956 1122 678 884
+L 678 1344
+Q 994 1625 1273 1753
+Q 1553 1881 1844 1881
+Q 2144 1881 2688 1675
+L 2719 1663
+Q 2753 1653 2816 1625
+Q 3269 1447 3572 1447
+Q 3859 1447 4134 1561
+Q 4409 1675 4684 1913
+z
+M 4684 3128
+L 4684 2669
+Q 4378 2391 4095 2261
+Q 3813 2131 3519 2131
+Q 3219 2131 2675 2338
+L 2644 2350
+Q 2609 2363 2541 2388
+Q 2081 2566 1784 2566
+Q 1497 2566 1226 2452
+Q 956 2338 678 2100
+L 678 2559
+Q 994 2841 1273 2969
+Q 1553 3097 1844 3097
+Q 2144 3097 2688 2894
+L 2719 2881
+Q 2753 2869 2816 2841
+Q 3269 2663 3572 2663
+Q 3859 2663 4134 2777
+Q 4409 2891 4684 3128
+z
+" transform="scale(0.015625)"/>
+     <path id="math-657b6078d538f9-DejaVuSerif-39" d="M 2994 2091
+Q 2784 1856 2512 1740
+Q 2241 1625 1900 1625
+Q 1206 1625 804 2044
+Q 403 2463 403 3188
+Q 403 3897 839 4323
+Q 1275 4750 2003 4750
+Q 2794 4750 3217 4161
+Q 3641 3572 3641 2478
+Q 3641 1253 3137 581
+Q 2634 -91 1722 -91
+Q 1475 -91 1203 -44
+Q 931 3 647 97
+L 647 872
+L 997 872
+Q 1038 556 1241 387
+Q 1444 219 1784 219
+Q 2391 219 2687 676
+Q 2984 1134 2994 2091
+z
+M 1978 4441
+Q 1534 4441 1298 4117
+Q 1063 3794 1063 3188
+Q 1063 2581 1298 2256
+Q 1534 1931 1978 1931
+Q 2422 1931 2658 2245
+Q 2894 2559 2894 3150
+Q 2894 3772 2656 4106
+Q 2419 4441 1978 4441
+z
+" transform="scale(0.015625)"/>
+     <path id="math-657b6078d538f9-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+     <path id="math-657b6078d538f9-DejaVuSerif-30" d="M 2034 219
+Q 2513 219 2750 744
+Q 2988 1269 2988 2328
+Q 2988 3391 2750 3916
+Q 2513 4441 2034 4441
+Q 1556 4441 1318 3916
+Q 1081 3391 1081 2328
+Q 1081 1269 1318 744
+Q 1556 219 2034 219
+z
+M 2034 -91
+Q 1275 -91 848 546
+Q 422 1184 422 2328
+Q 422 3475 848 4112
+Q 1275 4750 2034 4750
+Q 2797 4750 3222 4112
+Q 3647 3475 3647 2328
+Q 3647 1184 3222 546
+Q 2797 -91 2034 -91
+z
+" transform="scale(0.015625)"/>
+     <path id="math-657b6078d538f9-DejaVuSerif-34" d="M 2234 1581
+L 2234 4063
+L 641 1581
+L 2234 1581
+z
+M 3609 0
+L 1484 0
+L 1484 331
+L 2234 331
+L 2234 1247
+L 197 1247
+L 197 1588
+L 2241 4750
+L 2859 4750
+L 2859 1581
+L 3750 1581
+L 3750 1247
+L 2859 1247
+L 2859 331
+L 3609 331
+L 3609 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-657b6078d538f9-DejaVuSerif-37" d="M 3609 4347
+L 1784 0
+L 1319 0
+L 3059 4153
+L 903 4153
+L 903 3578
+L 538 3578
+L 538 4666
+L 3609 4666
+L 3609 4347
+z
+" transform="scale(0.015625)"/>
+     <path id="math-657b6078d538f9-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-657b6078d538f9-DejaVuSerif-32" d="M 819 3553
+L 469 3553
+L 469 4384
+Q 803 4563 1142 4656
+Q 1481 4750 1806 4750
+Q 2534 4750 2956 4397
+Q 3378 4044 3378 3438
+Q 3378 2753 2422 1800
+Q 2347 1728 2309 1691
+L 1131 513
+L 3078 513
+L 3078 1088
+L 3444 1088
+L 3444 0
+L 434 0
+L 434 341
+L 1850 1753
+Q 2319 2222 2519 2614
+Q 2719 3006 2719 3438
+Q 2719 3909 2473 4175
+Q 2228 4441 1797 4441
+Q 1350 4441 1106 4219
+Q 863 3997 819 3553
+z
+" transform="scale(0.015625)"/>
+     <path id="math-657b6078d538f9-DejaVuSerif-38" d="M 2981 1275
+Q 2981 1775 2732 2051
+Q 2484 2328 2034 2328
+Q 1584 2328 1336 2051
+Q 1088 1775 1088 1275
+Q 1088 772 1336 495
+Q 1584 219 2034 219
+Q 2484 219 2732 495
+Q 2981 772 2981 1275
+z
+M 2853 3541
+Q 2853 3966 2637 4203
+Q 2422 4441 2034 4441
+Q 1650 4441 1433 4203
+Q 1216 3966 1216 3541
+Q 1216 3113 1433 2875
+Q 1650 2638 2034 2638
+Q 2422 2638 2637 2875
+Q 2853 3113 2853 3541
+z
+M 2516 2484
+Q 3047 2413 3344 2092
+Q 3641 1772 3641 1275
+Q 3641 619 3225 264
+Q 2809 -91 2034 -91
+Q 1263 -91 845 264
+Q 428 619 428 1275
+Q 428 1772 725 2092
+Q 1022 2413 1556 2484
+Q 1084 2569 832 2842
+Q 581 3116 581 3541
+Q 581 4103 968 4426
+Q 1356 4750 2034 4750
+Q 2713 4750 3100 4426
+Q 3488 4103 3488 3541
+Q 3488 3116 3236 2842
+Q 2984 2569 2516 2484
+z
+" transform="scale(0.015625)"/>
+     <path id="math-657b6078d538f9-DejaVuSerif-d7" d="M 4481 3450
+L 3034 2003
+L 4481 563
+L 4122 213
+L 2681 1650
+L 1241 213
+L 884 563
+L 2322 2003
+L 884 3450
+L 1241 3803
+L 2681 2363
+L 4122 3803
+L 4481 3450
+z
+" transform="scale(0.015625)"/>
+     <path id="math-657b6078d538f9-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-657b6078d538f9-DejaVuSerif-33" d="M 622 4469
+Q 988 4606 1323 4678
+Q 1659 4750 1953 4750
+Q 2638 4750 3022 4454
+Q 3406 4159 3406 3634
+Q 3406 3213 3140 2930
+Q 2875 2647 2388 2547
+Q 2963 2466 3280 2130
+Q 3597 1794 3597 1259
+Q 3597 606 3158 257
+Q 2719 -91 1894 -91
+Q 1528 -91 1179 -12
+Q 831 66 488 225
+L 488 1131
+L 838 1131
+Q 869 681 1141 450
+Q 1413 219 1906 219
+Q 2384 219 2661 495
+Q 2938 772 2938 1253
+Q 2938 1803 2653 2086
+Q 2369 2369 1819 2369
+L 1522 2369
+L 1522 2688
+L 1678 2688
+Q 2225 2688 2498 2914
+Q 2772 3141 2772 3597
+Q 2772 4006 2547 4223
+Q 2322 4441 1900 4441
+Q 1478 4441 1245 4241
+Q 1013 4041 972 3647
+L 622 3647
+L 622 4469
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-657b6078d538f9-STIXGeneral-Italic-2119" transform="translate(0 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-2248" transform="translate(87.664825 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-39" transform="translate(190.418732 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-2e" transform="translate(254.041779 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-30" transform="translate(285.828888 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-39" transform="translate(349.451935 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-34" transform="translate(413.074982 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-39" transform="translate(476.698029 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-34" transform="translate(540.321075 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-37" transform="translate(603.944122 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-30" transform="translate(667.567169 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-31" transform="translate(731.190216 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-37" transform="translate(794.813263 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-37" transform="translate(860.31131 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-32" transform="translate(923.934357 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-39" transform="translate(985.807404 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-32" transform="translate(1047.68045 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-38" transform="translate(1111.303497 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-32" transform="translate(1174.926544 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-d7" transform="translate(1257.514435 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-31" transform="translate(1360.268341 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-30" transform="translate(1423.891388 0.7125)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-2212" transform="translate(1488.422794 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-31" transform="translate(1547.075138 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-33" transform="translate(1591.611271 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-657b6078d538f9-DejaVuSerif-2e" transform="translate(1638.742716 0.7125)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>\mathbb{P}\approx9.094947017729282\times10^{-13}.</code></pre></details></div>
+<p class="reader-paragraph" data-zyntalic data-passage-id="palindrome-counting--palindromes--b5" data-source-block="5" data-source-type="p">The reciprocal gives an expected 1.10 × 10^12 independent <b>complete-string draws</b> per first success, including the successful draw. Overlapping windows require a separate dependence model.</p>
+<div class="reader-table-scroll" data-source-block="6" data-source-type="table"><table class="reader-table"><thead><tr><th scope="col">Alphabet size q</th><th scope="col">Length n</th><th scope="col">Ordinary-palindrome probability</th></tr></thead><tbody><tr><td>4</td><td>40</td><td>4^(−20) = 2^(−40)</td></tr><tr><td>6</td><td>40</td><td>6^(−20)</td></tr><tr><td>8</td><td>40</td><td>8^(−20) = 2^(−60)</td></tr><tr><td>12</td><td>40</td><td>12^(−20)</td></tr><tr><td>40</td><td>40</td><td>40^(−20)</td></tr></tbody></table></div>
+<aside class="reader-callout" data-status="open" data-source-block="7" data-source-type="callout"><p class="reader-callout-label">What the number 40 means</p><p class="reader-callout-text">In the displayed example, 40 is the sequence length n and the alphabet size is q = 4. Taking q = 40 defines a different abstract counting experiment. Neither calculation establishes a maximum sustainable DNA alphabet, a chemical stability threshold or an optimal decay rate.</p></aside>
+<h3 class="reader-subheading" data-zyntalic data-passage-id="palindrome-counting--palindromes--b8" data-source-block="8" data-source-type="h">Reversal and reverse complementation</h3>
+<p class="reader-paragraph" data-zyntalic data-passage-id="palindrome-counting--palindromes--b9" data-source-block="9" data-source-type="p">For reverse-complement palindromes, assume a fixed-point-free complement pairing and the same sampling model. Then q is even. Even lengths have probability q^(−n/2); odd lengths are impossible because the central symbol would have to complement itself.</p>
+<p class="reader-paragraph" data-zyntalic data-passage-id="palindrome-counting--palindromes--b10" data-source-block="10" data-source-type="p">The suggested synthetic-alphabet and biophysics thread therefore remains a research direction. It needs an explicit physical model, measurable stability criteria and suitable evidence beyond this combinatorial count.</p></section>
+</main><footer class="reader-footer"><p><a href="palindrome-counting.json">Structured source</a> · <a href="palindrome-counting.md">Markdown source</a></p>
+<details class="reader-provenance" data-archival-provenance><summary>Credits and source-version record</summary><pre>{
+  &quot;title&quot;: &quot;Palindrome counting&quot;,
+  &quot;subtitle&quot;: &quot;A focused reading note from the Pirate Chest&quot;,
+  &quot;date&quot;: &quot;23 November 2026&quot;,
+  &quot;author&quot;: &quot;Zolton / EncapsulatorP · with ChatGPT&quot;,
+  &quot;historical_source_commit&quot;: &quot;cc3f20117eaead570db6077377a43a92c0bfc652&quot;,
+  &quot;reviewed_proof_commit&quot;: &quot;29f9232545aa112cd6ffa9fe1f3c0e85d093dedd&quot;,
+  &quot;status&quot;: &quot;exact&quot;,
+  &quot;statusLabel&quot;: &quot;Exact count under a sampling model&quot;
+}</pre></details>
+<p><a href="../../index.html#interactive?topic=goldbach-involution">Return to the interactive space</a></p></footer></div>
+<script type="application/json" id="reader-source">{
+  "title": "Palindrome counting",
+  "subtitle": "A focused reading note from the Pirate Chest",
+  "date": "23 November 2026",
+  "author": "Zolton / EncapsulatorP · with ChatGPT",
+  "historical_source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
+  "reviewed_proof_commit": "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd",
+  "status": "exact",
+  "statusLabel": "Exact count under a sampling model",
+  "pages": [
+    {
+      "id": "palindrome-counting-orientation",
+      "title": "Palindrome counting",
+      "kicker": "NOTE 07 · EXACT COUNT UNDER A SAMPLING MODEL",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "For independent uniform q-symbol strings of length n, ordinary palindromes have probability q^(−floor(n/2)). The example q = 4, n = 40 has probability exactly 2^(−40)."
+        },
+        {
+          "type": "eq",
+          "latex": "\\mathbb{P}(\\mathrm{ordinary\\ palindrome})=q^{-\\lfloor n/2\\rfloor}"
+        },
+        {
+          "type": "callout",
+          "label": "Exact count under a sampling model",
+          "status": "exact",
+          "text": "The probability is tied to the stated sampling model. Forty is the sequence length in the example, not a proved limit on the size of a sustainable biological alphabet."
+        },
+        {
+          "type": "p",
+          "text": "Count free positions in a reversed string, then distinguish ordinary reversal from reverse complementation. An expected number of independent complete-string draws is not a guarantee for overlapping windows."
+        },
+        {
+          "type": "h",
+          "text": "One concrete next step"
+        },
+        {
+          "type": "p",
+          "text": "Before making a biophysical claim, specify a physical alphabet, pairing rule and measurable stability or decay criterion. The finite combinatorics supplies no biochemical feasibility result."
+        },
+        {
+          "type": "h",
+          "text": "Sources and related reading"
+        },
+        {
+          "type": "p",
+          "text": "The following pages give the complete derivation from the stated definitions. The historical collection records the original fragments and argument.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Historical collection source · original edition",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#palindromes"
+        },
+        {
+          "type": "link",
+          "text": "Return to the Treasure Chest",
+          "url": "https://encapsulatorp.github.io/#buried-logistic-vanishing"
+        }
+      ]
+    },
+    {
+      "id": "palindromes",
+      "title": "Forty positions, four symbols",
+      "kicker": "01 · EXACT COUNTING AND THE BIOPHYSICS BOUNDARY",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Choose symbols independently and uniformly from an alphabet of integer size q ≥ 2. For integer length n ≥ 1, an ordinary palindrome reads identically under reversal. There are ceiling(n/2) free positions, giving q^ceiling(n/2) palindromes among q^n strings."
+        },
+        {
+          "type": "eq",
+          "latex": "\\mathbb{P}(\\mathrm{ordinary\\ palindrome})=\\frac{q^{\\lceil n/2\\rceil}}{q^n}=q^{-\\lfloor n/2\\rfloor}."
+        },
+        {
+          "type": "p",
+          "text": "For even n, floor(n/2) = n/2, so the probability simplifies to q^(−n/2). With q = 4 and n = 40,"
+        },
+        {
+          "type": "eq",
+          "latex": "\\mathbb{P}=4^{-20}=2^{-40}=\\frac1{1\\,099\\,511\\,627\\,776}"
+        },
+        {
+          "type": "eq",
+          "latex": "\\mathbb{P}\\approx9.094947017729282\\times10^{-13}."
+        },
+        {
+          "type": "p",
+          "text": "The reciprocal gives an expected 1.10 × 10^12 independent <b>complete-string draws<\/b> per first success, including the successful draw. Overlapping windows require a separate dependence model."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Alphabet size q",
+            "Length n",
+            "Ordinary-palindrome probability"
+          ],
+          "rows": [
+            [
+              "4",
+              "40",
+              "4^(−20) = 2^(−40)"
+            ],
+            [
+              "6",
+              "40",
+              "6^(−20)"
+            ],
+            [
+              "8",
+              "40",
+              "8^(−20) = 2^(−60)"
+            ],
+            [
+              "12",
+              "40",
+              "12^(−20)"
+            ],
+            [
+              "40",
+              "40",
+              "40^(−20)"
+            ]
+          ],
+          "widths": [
+            0.27,
+            0.2,
+            0.53
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "What the number 40 means",
+          "text": "In the displayed example, 40 is the sequence length n and the alphabet size is q = 4. Taking q = 40 defines a different abstract counting experiment. Neither calculation establishes a maximum sustainable DNA alphabet, a chemical stability threshold or an optimal decay rate.",
+          "status": "open"
+        },
+        {
+          "type": "h",
+          "text": "Reversal and reverse complementation"
+        },
+        {
+          "type": "p",
+          "text": "For reverse-complement palindromes, assume a fixed-point-free complement pairing and the same sampling model. Then q is even. Even lengths have probability q^(−n/2); odd lengths are impossible because the central symbol would have to complement itself."
+        },
+        {
+          "type": "p",
+          "text": "The suggested synthetic-alphabet and biophysics thread therefore remains a research direction. It needs an explicit physical model, measurable stability criteria and suitable evidence beyond this combinatorial count."
+        }
+      ]
+    }
+  ]
+}</script>
+<script type="application/json" id="reader-config">{"id":"palindrome-counting","entryId":"palindrome-counting","title":"Palindrome counting","status":"exact","kind":"proof","root":"#reader-content","controls":"#reader-tools","sourceLabel":"Complete structured source","sourceUrl":"palindrome-counting.json","returnUrl":"../../index.html#interactive?topic=goldbach-involution","passages":[{"id":"palindrome-counting--palindrome-counting-orientation--title","english":"Palindrome counting","status":"exact","zyntalic":"jąggąrzdątja vełewsićśarek naźódźóćac bazusżłycti; lucożźubćńom naźódźóćac vełewsićśarek riłomyłrzke.","sourceSha256":"a59be79780697bb14ea3c5b9e6bdeec46d1fe5e2bc6dfc3e5167e46222f5e441"},{"id":"palindrome-counting--palindrome-counting-orientation--b0","english":"For independent uniform q-symbol strings of length n, ordinary palindromes have probability q^(−floor(n/2)). The example q = 4, n = 40 has probability exactly 2^(−40).","status":"exact","zyntalic":"dypreźćbę kipyzyti jyburagor ra\ntajebóźekis syźężźągśćculen lyńikzą pónfoćźeor ve feśfóśij lyńikzą syźężźągśćculen rilonływwoja.","sourceSha256":"5a9b4653bd2b10a4cf39e05e27718b513d73eec15be6b8f64831fb218b4f9f72"},{"id":"palindrome-counting--palindrome-counting-orientation--b2","english":"The probability is tied to the stated sampling model. Forty is the sequence length in the example, not a proved limit on the size of a sustainable biological alphabet.","status":"exact","zyntalic":"lohdizóśen jyźwóże dyńnojetos naweśtąlsosek / deńjufćpator dyńnojetos jyźwóże fócelląum.\ncypężsuzor riśójóćka jaźitkyar","sourceSha256":"070fb3f9c2873d273afb3bbdbd65fa4975c57beb7042be21f422311e00df03bf"},{"id":"palindrome-counting--palindrome-counting-orientation--b3","english":"Count free positions in a reversed string, then distinguish ordinary reversal from reverse complementation. An expected number of independent complete-string draws is not a guarantee for overlapping windows.","status":"exact","zyntalic":"tąjehbuum jugąfoum ćedćęnłygor naźuwentóen / fynźarzturis ćedćęnłygor jugąfoum źaftiżnuor.\nźyzyfłeti wąlćeśólek ludaźąsęf vetirgęjmąek · hifęriti ludaźąsęf wąlćeśólek pęgladfiń.","sourceSha256":"354cb9103c6bde76781b9f73b0fa1c5ec4e19d969c98a3bcc291158754cd2b67"},{"id":"palindrome-counting--palindrome-counting-orientation--b4","english":"One concrete next step","status":"exact","zyntalic":"jacyłyz źesęćłułul bazusżłycti","sourceSha256":"794050a9dca2bb1602bfeb0e2a90829da94794bba10d7c0ae673088fc29dced3"},{"id":"palindrome-counting--palindrome-counting-orientation--b5","english":"Before making a biophysical claim, specify a physical alphabet, pairing rule and measurable stability or decay criterion. The finite combinatorics supplies no biochemical feasibility result.","status":"exact","zyntalic":"kicsobócum sątuzał syrenąnśćmyum źigęćrzńę lu ząjęźąmti syrenąnśćmyum sątuzał nyniwęar.\nrifaróżsężti sysekąćźaek lużoncunśćńónul dyplińałum / napetćińząhor lużoncunśćńónul sysekąćźaek żórfołśćcoul.","sourceSha256":"5503131937fc1990b4cd1b3051b7e0fe3374e113415e91c6a2bee3db77221a03"},{"id":"palindrome-counting--palindromes--title","english":"Forty positions, four symbols","status":"exact","zyntalic":"rićoźsińuul veżuwelbeźti girąfżęb rąźiłsóum sy doźdąćlęen girąfżęb veżuwelbeźti cihkićlow.","sourceSha256":"0a119bbdfbd8cd261c0d59d1a4d527f9c7dc5036daea7152fa993cdbd5337d12"},{"id":"palindrome-counting--palindromes--b0","english":"Choose symbols independently and uniformly from an alphabet of integer size q ≥ 2. For integer length n ≥ 1, an ordinary palindrome reads identically under reversal. There are ceiling(n/2) free positions, giving q^ceiling(n/2) palindromes among q^n strings.","status":"exact","zyntalic":"symasawżfyis gążęfehul mącoźdęrar jęgąteul sy veżiśyćrybar mącoźdęrar gążęfehul naźebożwyis.\ncyńuhżo żujdakfąen nyńóźąor nadąfećlikor / sydaźkąśójti nyńóźąor żujdakfąen kodiźah.\ndeńjufćpator nabątsęgcęź śeleżpa sykęraniis; źąćbóććtęmor śeleżpa nabątsęgcęź lelarzźoum.","sourceSha256":"9217a57c23c33c680202c2dc2292e2c4ebeb95838e11b7474a06b2a91c2db649"},{"id":"palindrome-counting--palindromes--b2","english":"For even n, floor(n/2) = n/2, so the probability simplifies to q^(−n/2). With q = 4 and n = 40,","status":"exact","zyntalic":"nojśąmpą gibliśćgoźis jyźwóże tajątmoćmęnen; śąjcóśeh jyźwóże gibliśćgoźis źąłjoćóhek.\npaźąśiis veńąńlędli pędawóos łomgęlaos / męćzaććihul pędawóos veńąńlędli fynałulum.","sourceSha256":"d2383a5991f16a670a2bd5bbdc30297f6f661a7f62da2e5e90bbdccfd6b2f138"},{"id":"palindrome-counting--palindromes--b5","english":"The reciprocal gives an expected 1.10 × 10^12 independent complete-string draws per first success, including the successful draw. Overlapping windows require a separate dependence model.","status":"exact","zyntalic":"wakąhśąul tapymóśćjogti golkiżi\ntącecymti póćrómapti źąźdulógul lęrafó na ripórtyskaśek źąźdulógul póćrómapti luźęcbomy.","sourceSha256":"5711f4ff4e1fb8e9a9fe96863cd94ea00ffcd592be4dd0713bfe86b71250d385"},{"id":"palindrome-counting--palindromes--b8","english":"Reversal and reverse complementation","status":"exact","zyntalic":"zęśjonżrarti nażaźąfżójar nonjogwąek nagóńąśćdac / luńibifbiti nonjogwąek nażaźąfżójar riśanbogyź.","sourceSha256":"04c65f8b224791e328735f67d0c800131c05f65b0cc538fec8d86c8a088c850a"},{"id":"palindrome-counting--palindromes--b9","english":"For reverse-complement palindromes, assume a fixed-point-free complement pairing and the same sampling model. Then q is even. Even lengths have probability q^(−n/2); odd lengths are impossible because the central symbol would have to complement itself.","status":"exact","zyntalic":"pozmipuja gibliśćgoźis rikewrahżą cuźźummór sy wąttehkog rikewrahżą gibliśćgoźis ńićtężźąum.\nnaróźźurzhapos źerbiżćęwar nalerępyg tawlódłorul / luńarómaos nalerępyg źerbiżćęwar źydźósrzwu.\nńunikyja łuhjoćdą żufebą nyniwęar · takąkiżpiżti żufebą łuhjoćdą raźgęźrzmązos.","sourceSha256":"18f8dca5ed7787a67b90369a6d185a40270befc7774df833f4ac80a13f58931f"},{"id":"palindrome-counting--palindromes--b10","english":"The suggested synthetic-alphabet and biophysics thread therefore remains a research direction. It needs an explicit physical model, measurable stability criteria and suitable evidence beyond this combinatorial count.","status":"exact","zyntalic":"zęśjonżrarti hąźyźeum vewętjecwóul\nsyćękpęmó ribożnabfilti symepoććlędor ńedujyar; pozmipuja symepoććlędor ribożnabfilti nęśóćśćdepis.","sourceSha256":"3daeb06e43df0c52d02d4556409096068ca6340210f9aa83abaa1175e55c375f"}],"gifBlocks":[{"type":"heading","text":"Palindrome counting"},{"type":"caption","text":"A focused reading note from the Pirate Chest"},{"type":"caption","text":"Zolton / EncapsulatorP · with ChatGPT · 23 November 2026"},{"type":"caption","text":"NOTE 07 · EXACT COUNT UNDER A SAMPLING MODEL"},{"type":"heading","text":"Palindrome counting","passageId":"palindrome-counting--palindrome-counting-orientation--title","sourceEnglish":"Palindrome counting"},{"type":"paragraph","text":"For independent uniform q-symbol strings of length n, ordinary palindromes have probability q^(−floor(n/2)). The example q = 4, n = 40 has probability exactly 2^(−40).","passageId":"palindrome-counting--palindrome-counting-orientation--b0","sourceEnglish":"For independent uniform q-symbol strings of length n, ordinary palindromes have probability q^(−floor(n/2)). The example q = 4, n = 40 has probability exactly 2^(−40)."},{"type":"math","text":"\\mathbb{P}(\\mathrm{ordinary\\ palindrome})=q^{-\\lfloor n/2\\rfloor}","image":"../assets/math/06a7bed9a9f758e54742bcad06383efba07db315e73c3e2671485d59b9865070.svg","width":290.0,"height":21.0},{"type":"caption","text":"Exact count under a sampling model"},{"type":"paragraph","text":"The probability is tied to the stated sampling model. Forty is the sequence length in the example, not a proved limit on the size of a sustainable biological alphabet.","passageId":"palindrome-counting--palindrome-counting-orientation--b2","sourceEnglish":"The probability is tied to the stated sampling model. Forty is the sequence length in the example, not a proved limit on the size of a sustainable biological alphabet."},{"type":"paragraph","text":"Count free positions in a reversed string, then distinguish ordinary reversal from reverse complementation. An expected number of independent complete-string draws is not a guarantee for overlapping windows.","passageId":"palindrome-counting--palindrome-counting-orientation--b3","sourceEnglish":"Count free positions in a reversed string, then distinguish ordinary reversal from reverse complementation. An expected number of independent complete-string draws is not a guarantee for overlapping windows."},{"type":"heading","text":"One concrete next step","passageId":"palindrome-counting--palindrome-counting-orientation--b4","sourceEnglish":"One concrete next step"},{"type":"paragraph","text":"Before making a biophysical claim, specify a physical alphabet, pairing rule and measurable stability or decay criterion. The finite combinatorics supplies no biochemical feasibility result.","passageId":"palindrome-counting--palindrome-counting-orientation--b5","sourceEnglish":"Before making a biophysical claim, specify a physical alphabet, pairing rule and measurable stability or decay criterion. The finite combinatorics supplies no biochemical feasibility result."},{"type":"heading","text":"Sources and related reading"},{"type":"paragraph","text":"The following pages give the complete derivation from the stated definitions. The historical collection records the original fragments and argument."},{"type":"caption","text":"Historical collection source · original edition: https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#palindromes"},{"type":"caption","text":"Return to the Treasure Chest: https://encapsulatorp.github.io/#buried-logistic-vanishing"},{"type":"caption","text":"01 · EXACT COUNTING AND THE BIOPHYSICS BOUNDARY"},{"type":"heading","text":"Forty positions, four symbols","passageId":"palindrome-counting--palindromes--title","sourceEnglish":"Forty positions, four symbols"},{"type":"paragraph","text":"Choose symbols independently and uniformly from an alphabet of integer size q ≥ 2. For integer length n ≥ 1, an ordinary palindrome reads identically under reversal. There are ceiling(n/2) free positions, giving q^ceiling(n/2) palindromes among q^n strings.","passageId":"palindrome-counting--palindromes--b0","sourceEnglish":"Choose symbols independently and uniformly from an alphabet of integer size q ≥ 2. For integer length n ≥ 1, an ordinary palindrome reads identically under reversal. There are ceiling(n/2) free positions, giving q^ceiling(n/2) palindromes among q^n strings."},{"type":"math","text":"\\mathbb{P}(\\mathrm{ordinary\\ palindrome})=\\frac{q^{\\lceil n/2\\rceil}}{q^n}=q^{-\\lfloor n/2\\rfloor}.","image":"../assets/math/d9cde6fd4f02b1f366a18a366329f41a10c30e2815c3e5e7b26aa6c2fc2101f0.svg","width":353.0,"height":32.0},{"type":"paragraph","text":"For even n, floor(n/2) = n/2, so the probability simplifies to q^(−n/2). With q = 4 and n = 40,","passageId":"palindrome-counting--palindromes--b2","sourceEnglish":"For even n, floor(n/2) = n/2, so the probability simplifies to q^(−n/2). With q = 4 and n = 40,"},{"type":"math","text":"\\mathbb{P}=4^{-20}=2^{-40}=\\frac1{1\\,099\\,511\\,627\\,776}","image":"../assets/math/d1b7d69d5df8ab856fba865384d3d301759c789efd234eb684fd3c02d1fc06df.svg","width":271.0,"height":26.0},{"type":"math","text":"\\mathbb{P}\\approx9.094947017729282\\times10^{-13}.","image":"../assets/math/14ffb3f8cf92cfe9f749a1ffb3b53222343121dbbcdbc70f69a3450cb371ce0a.svg","width":305.0,"height":17.0},{"type":"paragraph","text":"The reciprocal gives an expected 1.10 × 10^12 independent complete-string draws per first success, including the successful draw. Overlapping windows require a separate dependence model.","passageId":"palindrome-counting--palindromes--b5","sourceEnglish":"The reciprocal gives an expected 1.10 × 10^12 independent complete-string draws per first success, including the successful draw. Overlapping windows require a separate dependence model."},{"type":"caption","text":"Alphabet size q | Length n | Ordinary-palindrome probability"},{"type":"paragraph","text":"4 | 40 | 4^(−20) = 2^(−40)"},{"type":"paragraph","text":"6 | 40 | 6^(−20)"},{"type":"paragraph","text":"8 | 40 | 8^(−20) = 2^(−60)"},{"type":"paragraph","text":"12 | 40 | 12^(−20)"},{"type":"paragraph","text":"40 | 40 | 40^(−20)"},{"type":"caption","text":"What the number 40 means"},{"type":"paragraph","text":"In the displayed example, 40 is the sequence length n and the alphabet size is q = 4. Taking q = 40 defines a different abstract counting experiment. Neither calculation establishes a maximum sustainable DNA alphabet, a chemical stability threshold or an optimal decay rate."},{"type":"heading","text":"Reversal and reverse complementation","passageId":"palindrome-counting--palindromes--b8","sourceEnglish":"Reversal and reverse complementation"},{"type":"paragraph","text":"For reverse-complement palindromes, assume a fixed-point-free complement pairing and the same sampling model. Then q is even. Even lengths have probability q^(−n/2); odd lengths are impossible because the central symbol would have to complement itself.","passageId":"palindrome-counting--palindromes--b9","sourceEnglish":"For reverse-complement palindromes, assume a fixed-point-free complement pairing and the same sampling model. Then q is even. Even lengths have probability q^(−n/2); odd lengths are impossible because the central symbol would have to complement itself."},{"type":"paragraph","text":"The suggested synthetic-alphabet and biophysics thread therefore remains a research direction. It needs an explicit physical model, measurable stability criteria and suitable evidence beyond this combinatorial count.","passageId":"palindrome-counting--palindromes--b10","sourceEnglish":"The suggested synthetic-alphabet and biophysics thread therefore remains a research direction. It needs an explicit physical model, measurable stability criteria and suitable evidence beyond this combinatorial count."}],"translation":{"engine":"core","version":"0.4.0","mirror_rate":0.8,"wheel_sha256":"4389e91e55a97a977df4efc796a6e38706e3c15a323fb9d98dd2a58ef2696f0a","translation_note":"Each passage is an independent request; document-level state resets per passage.","readback_note":"The English endpoint is the preserved original source, not an automatically decoded translation.","display_note":"Context tails are omitted only from the visible surface; full targets, sidecars and returned Unicode remain in this file."},"translationRecord":"../../atlas/zyntalic-passages.json.gz"}</script>
+<script src="../../assets/atlas-gif.js" defer></script><script src="../../assets/atlas-reveal.js" defer></script>
+</body></html>

@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "title": "Traps: the claim and the correction",
+  "scope": "These challenges isolate false extensions. Their related proofs, identities and exact counterexamples retain their own evidence status. None of the 46 atlas entries is reclassified as a trap.",
+  "entries": [
+    {
+      "id": "logistic-global-identity",
+      "kind": "trap",
+      "status": "refuted",
+      "title": "Does a flat tangent return every point?",
+      "claim": "At r = 1 + √6, the fourth-return displacement has zero derivative at the two-cycle points. Therefore four logistic updates return every starting point exactly.",
+      "correctionStatus": "exact",
+      "correction": "The local derivative identity is true. The global conclusion is false: the nonlinear fourth iterate is a degree-16 polynomial, not the identity on an interval.",
+      "proof": [
+        "Let f(x) = r x(1 − x), with r = 1 + √6. The two cycle slopes are −1 − √2 and −1 + √2. Their product is −1, so the derivative of the fourth iterate is 1 at either cycle point and the derivative of its displacement is zero there.",
+        "The leading coefficient of f is −r. Composing once more sends a leading coefficient a to −r a². Four compositions therefore have degree 16 and leading coefficient −r¹⁵, which is nonzero. Such a polynomial cannot agree with x on an interval.",
+        "An explicit starting point gives f⁴(1/2) − 1/2 = 1021(1 − √6)/65536, which is nonzero. Here f⁴ means fourfold composition, not the fourth power of a function value."
+      ],
+      "formulas": [
+        "(f^{\\circ4}-\\mathrm{id})'(x_\\pm)=0",
+        "\\deg(f^{\\circ4})=16,\\qquad [x^{16}]f^{\\circ4}(x)=-r^{15}",
+        "f^{\\circ4}(1/2)-1/2=\\frac{1021(1-\\sqrt6)}{65536}\\ne0"
+      ],
+      "formulaText": [
+        "(f⁴ − id)′(x±) = 0 at the two-cycle points",
+        "degree(f⁴) = 16; leading coefficient = −r¹⁵",
+        "f⁴(1/2) − 1/2 = 1021(1 − √6)/65536 ≠ 0"
+      ],
+      "preservedFacts": [
+        "The cycle Lyapunov exponent per original update is ½ log|−1| = 0.",
+        "The paired linear-response matrix satisfies C² = −I and C⁴ = I.",
+        "The later cubic calculation supplies a separate local attraction result."
+      ],
+      "relatedEntries": ["logistic-quarter-turn"],
+      "sources": [
+        {
+          "label": "The logistic quarter-turn: complete argument and scope",
+          "path": "atlas/proofs/logistic-quarter-turn.md",
+          "href": "/atlas/proofs/logistic-quarter-turn.html"
+        },
+        {
+          "label": "The later local cubic and attraction proof",
+          "path": "atlas/proofs/logistic-collapse-vanishing.md",
+          "href": "/atlas/proofs/logistic-collapse-vanishing.html"
+        }
+      ],
+      "provenance": "The false global conclusion is an added challenge, not the current source conclusion. The degree argument is in the source; the rational-radical witness was independently obtained by four exact polynomial substitutions."
+    },
+    {
+      "id": "mobius-false-converse",
+      "kind": "trap",
+      "status": "refuted",
+      "title": "Does the Möbius sign certify twins?",
+      "claim": "If μ(m² − 1) = +1 and μ(m²) = 0, then m − 1 and m + 1 must both be prime.",
+      "correctionStatus": "exact",
+      "correction": "The implication from twin primes to this sign pattern is true. Its converse is false. The exact counterexample at m = 34 remains a mathematical treasure.",
+      "proof": [
+        "Set m = 34. Then m² − 1 = 1155 = 3 × 5 × 7 × 11 is squarefree with four prime factors, so μ(1155) = +1. The next integer is 34², so μ(1156) = 0.",
+        "Nevertheless, m − 1 = 33 = 3 × 11 and m + 1 = 35 = 5 × 7 are both composite. Thus the required sign pattern holds while the claimed conclusion fails.",
+        "For integers m ≥ 3, the stronger condition Ω(m² − 1) = 2 is equivalent to both neighbours being prime: Ω is additive on the product (m − 1)(m + 1), and both factors are at least two."
+      ],
+      "formulas": [
+        "1155=3\\cdot5\\cdot7\\cdot11,\\qquad \\mu(1155)=+1,\\quad\\mu(1156)=0",
+        "33=3\\cdot11,\\qquad35=5\\cdot7",
+        "m\\ge3:\\quad\\Omega(m^2-1)=2\\iff m-1\\text{ and }m+1\\text{ are prime}"
+      ],
+      "formulaText": [
+        "m = 34: (μ(1155), μ(1156)) = (+1, 0)",
+        "33 = 3 × 11 and 35 = 5 × 7 are composite",
+        "For m ≥ 3: Ω(m² − 1) = 2 ⇔ both neighbours are prime"
+      ],
+      "preservedFacts": [
+        "Twin primes do imply the adjacent Möbius pattern (+1, 0).",
+        "The m = 34 counterexample is an exact refutation of the converse.",
+        "The Ω = 2 characterization retains its stated domain m ≥ 3."
+      ],
+      "relatedEntries": ["twin-mobius"],
+      "sources": [
+        {
+          "label": "Hibernating Lemmas 001, 003 and 004",
+          "path": "lemmas/LEMMAS.md",
+          "href": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/lemmas/LEMMAS.md"
+        },
+        {
+          "label": "The exact twin-prime identity and counterexample",
+          "path": "atlas/README.md",
+          "href": "/atlas/entries/twin-mobius.html"
+        }
+      ],
+      "provenance": "The false converse is separated from the existing source's valid counterexample. This challenge does not reclassify that source, its forward implication, or its exact Ω criterion."
+    },
+    {
+      "id": "tower-two-bases-at-ceiling",
+      "kind": "trap",
+      "status": "refuted",
+      "title": "Do two bases remain at the summit?",
+      "claim": "Every upper height from just above one through the maximum, including the maximum itself, is attained by two distinct finite real bases.",
+      "correctionStatus": "exact",
+      "correction": "Two distinct bases exist only strictly below the maximum. At the maximum height the inverse branches meet, leaving exactly one finite real base.",
+      "proof": [
+        "For u = c^(−v), v = c^u and c > 1, set t = v log c. The exact identity v log v = t exp(−t) reduces the question to a single curve.",
+        "Its derivative is exp(−t)(1 − t). The unique maximum 1/e occurs at t = 1, so the maximum height v_max = exp(W₀(1/e)) has only that one value of t.",
+        "Recovering c = exp(t/v) gives the unique base c_peak = exp(1/v_max). Interior heights 1 < v < v_max have two bases; heights above the maximum and height one have none among finite c > 1."
+      ],
+      "formulas": [
+        "v\\log v=t e^{-t}\\le1/e",
+        "v_{\\max}=\\exp(W_0(1/e)),\\qquad c_{\\mathrm{peak}}=\\exp(1/v_{\\max})",
+        "t e^{-t}=1/e\\iff t=1\\qquad(t>0)"
+      ],
+      "formulaText": [
+        "v log v = t e⁻ᵗ ≤ 1/e",
+        "v_max ≈ 1.3210997620; c_peak ≈ 2.1317539817",
+        "At the maximum: t = 1, so exactly one finite base"
+      ],
+      "preservedFacts": [
+        "The full convergence result remains valid for every real c > 1.",
+        "Every strict interior height has exactly two distinct finite bases.",
+        "The maximum height is attained; c_peak is not a largest permitted base."
+      ],
+      "relatedEntries": ["tower-envelope", "alternating-tower-convergence"],
+      "sources": [
+        {
+          "label": "Alternating real towers: sharp height and complete classification",
+          "path": "atlas/proofs/alternating-towers.md",
+          "href": "/atlas/proofs/alternating-towers.html"
+        }
+      ],
+      "provenance": "This deliberately false endpoint extension is an added challenge. The source correctly distinguishes the strict interior from the attained maximum."
+    }
+  ]
+}

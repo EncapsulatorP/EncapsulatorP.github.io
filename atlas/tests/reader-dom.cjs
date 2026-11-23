@@ -1,0 +1,48 @@
+/* Controlled DOM/animation-clock checks; this is not a browser renderer. */
+const assert=require('assert');
+function makeDom({reduced=false,collection=false}={}){
+ let now=0,next=1;const pending=new Map(),events={},intersections=[];
+ class Text{constructor(value){this.nodeType=3;this.nodeValue=value;this.parentNode=null}get parentElement(){return this.parentNode}get textContent(){return this.nodeValue}set textContent(v){this.nodeValue=String(v)}}
+ class Element{
+  constructor(tag='div'){this.nodeType=1;this.tagName=tag.toUpperCase();this.childNodes=[];this.parentNode=null;this.attrs={};this.dataset={};this.style={setProperty(k,v){this[k]=v}};this.className='';this.hidden=false;this.open=false;this.handlers={};this.classList={contains:c=>this.className.split(/\s+/).includes(c),add:(...cs)=>{this.className=[...new Set([...this.className.split(/\s+/).filter(Boolean),...cs])].join(' ')}}}
+  get parentElement(){return this.parentNode}get children(){return this.childNodes.filter(n=>n.nodeType===1)}
+  get textContent(){return this.childNodes.map(n=>n.textContent).join('')}set textContent(v){this.replaceChildren(new Text(String(v)))}
+  setAttribute(k,v){this.attrs[k]=String(v);if(k==='id')this.id=String(v);if(k==='class')this.className=String(v)}
+  getAttribute(k){if(k.startsWith('data-')){const key=k.slice(5).replace(/-([a-z])/g,(_,c)=>c.toUpperCase());return Object.hasOwn(this.dataset,key)?String(this.dataset[key]):null}return this.attrs[k]??null}
+  hasAttribute(k){return this.getAttribute(k)!==null}
+  append(...nodes){for(let node of nodes){if(typeof node==='string')node=new Text(node);node.parentNode=this;node.ownerDocument=doc;this.childNodes.push(node)}}
+  replaceChildren(...nodes){this.childNodes=[];this.append(...nodes)}
+  replaceChild(next,old){const i=this.childNodes.indexOf(old);assert(i>=0);next.parentNode=this;next.ownerDocument=doc;this.childNodes[i]=next;old.parentNode=null;return old}
+  insertBefore(next,before){const i=this.childNodes.indexOf(before);assert(i>=0);next.parentNode=this;next.ownerDocument=doc;this.childNodes.splice(i,0,next)}
+  remove(){if(this.parentNode){const i=this.parentNode.childNodes.indexOf(this);this.parentNode.childNodes.splice(i,1);this.parentNode=null}}
+  contains(node){return this===node||this.childNodes.some(n=>n.nodeType===1&&n.contains(node))}
+  matches(selector){return selector.split(',').some(part=>{part=part.trim();if(part.startsWith('.'))return this.classList.contains(part.slice(1));if(part.startsWith('#'))return this.id===part.slice(1);const attr=part.match(/^\[([^=\]]+)(?:="([^"]*)")?\]$/);if(attr)return attr[2]===undefined?this.hasAttribute(attr[1]):this.getAttribute(attr[1])===attr[2];return this.tagName.toLowerCase()===part.toLowerCase()})}
+  closest(selector){let at=this;while(at){if(at.matches?.(selector))return at;at=at.parentNode}return null}
+  querySelectorAll(selector){return this.children.flatMap(n=>[...(n.matches(selector)?[n]:[]),...n.querySelectorAll(selector)])}
+  querySelector(s){return this.querySelectorAll(s)[0]||null}
+  addEventListener(name,fn){(this.handlers[name]??=[]).push(fn)}click(){for(const fn of this.handlers.click||[])fn({target:this})}
+ }
+ const doc={readyState:'loading',hidden:false,createElement:t=>new Element(t),createTextNode:s=>new Text(s),addEventListener(){},querySelector:s=>doc.body.querySelector(s),getElementById:id=>doc.body.querySelector('#'+id),createTreeWalker(el,type,filter){const found=[];function visit(n){if(n.nodeType===3){if(filter.acceptNode(n)===1)found.push(n)}else for(const c of n.childNodes)visit(c)}visit(el);let i=0;return {nextNode:()=>found[i++]||null}}};
+ const win={matchMedia:()=>({matches:reduced,addEventListener(){}}),requestAnimationFrame:fn=>{const id=next++;pending.set(id,fn);return id},cancelAnimationFrame:id=>pending.delete(id),addEventListener:(k,f)=>(events[k]??=[]).push(f),removeEventListener(){},setTimeout(){return 0},IntersectionObserver:class{constructor(fn){this.fn=fn;this.targets=[];intersections.push(this)}observe(el){this.targets.push(el)}disconnect(){this.targets=[]}}};
+ doc.defaultView=win;doc.body=new Element('body');doc.body.ownerDocument=doc;
+ const tools=new Element('div');tools.id='reader-tools';tools.ownerDocument=doc;const root=new Element('main');root.id='reader-content';root.ownerDocument=doc;doc.body.append(tools,root);
+ function paragraph(id,text){const p=new Element('p');p.dataset.passageId=id;p.append(new Text(text));root.append(p);return p}
+ function advance(ms){for(let i=0;i<ms;i+=16){now+=16;const jobs=[...pending.values()];pending.clear();for(const fn of jobs)fn(now)}}
+ function intersect(el,value=true){for(const observer of intersections)if(observer.targets.includes(el))observer.fn([{target:el,isIntersecting:value}])}
+ function install(){global.document=doc;global.window=win}
+ function visibleText(el){if(el.nodeType===3)return el.nodeValue;if(el.classList.contains('ar-sr-only'))return'';return el.childNodes.map(visibleText).join('')}
+ return{doc,win,root,tools,paragraph,advance,intersect,install,visibleText,pending:()=>pending.size,fire:name=>{for(const fn of events[name]||[])fn()}};
+}
+function runDomChecks(A,treasurePassages,trapPassage){
+ const checks=[],record=name=>checks.push({name,status:'PASS'}),selected=treasurePassages.slice(0,2).map((p,i)=>({...p,id:'t'+i,selector:undefined,status:'exact'}));assert.equal(selected.length,2);
+ let d=makeDom();d.install();const els=selected.map(p=>d.paragraph(p.id,p.english));
+ const cfg={root:'#reader-content',controls:'#reader-tools',entryId:'actual-proof-playback',status:'exact',passages:selected,gifBlocks:selected.map(p=>({type:'paragraph',text:p.english,passageId:p.id,status:'exact'}))};
+ let a=A.mount(cfg);assert.equal(d.pending(),1);selected.forEach((p,i)=>assert.equal(d.visibleText(els[i]),p.zyntalic));const toolCount=d.tools.childNodes.length;assert.strictEqual(A.mount(cfg),a);assert.equal(d.tools.childNodes.length,toolCount);a.play();assert.equal(d.pending(),1);d.advance(1500);a.pause();const paused=d.visibleText(els[0]);d.advance(1000);assert.equal(d.visibleText(els[0]),paused);assert.equal(d.pending(),0);a.play();d.advance(7000);selected.forEach((p,i)=>assert.equal(d.visibleText(els[i]),p.english));assert.equal(d.pending(),0);record('Exact real endpoints, pause/resume, one RAF, duplicate mount guard');
+ a.replay();d.advance(800);a.plain();assert.equal(d.pending(),0);selected.forEach((p,i)=>assert.equal(d.visibleText(els[i]),p.english));a.destroy();record('Whole-document plain reading cancels active animation');
+ d=makeDom({reduced:true});d.install();selected.forEach(p=>d.paragraph(p.id,p.english));a=A.mount(cfg);assert.equal(d.pending(),0);a.replay();assert.equal(d.pending(),0);assert(a.snapshot().plain);record('Reduced-motion replay remains complete readable English');a.destroy();
+ d=makeDom({collection:true});d.install();const lazy=selected.map(p=>d.paragraph(p.id,p.english));a=A.mount({...cfg,status:'collection'});assert.equal(a.snapshot().prepared,0);assert.equal(d.pending(),0);d.intersect(lazy[0]);assert.equal(a.snapshot().prepared,1);assert.equal(d.pending(),1);assert.equal(d.visibleText(lazy[1]),selected[1].english);d.advance(3500);assert.equal(d.pending(),0);assert.equal(a.snapshot().prepared,1);assert.equal(d.visibleText(lazy[0]),selected[0].english);d.intersect(lazy[1]);d.advance(900);d.intersect(lazy[1],false);assert.equal(d.pending(),0);const offscreen=d.visibleText(lazy[1]);d.advance(5000);assert.equal(d.visibleText(lazy[1]),offscreen);d.intersect(lazy[1]);d.advance(4000);assert.equal(d.visibleText(lazy[1]),selected[1].english);a.plain();a.replay();assert.equal(d.pending(),1);record('Collection lazy reveal freezes offscreen and resumes without finishing unseen');a.destroy();
+ d=makeDom();d.install();const trap={...trapPassage,id:'scope-trap',selector:undefined,status:'false'},p=d.paragraph(trap.id,trap.english),correction=d.doc.createElement('details');correction.id='correction';correction.textContent='The exact counterexample remains.';d.root.append(correction);a=A.mount({root:'#reader-content',controls:'#reader-tools',entryId:'trap-only',status:'false',passages:[trap],correctionSelector:'#correction',returnUrl:'/atlas/README.html',gifBlocks:[{type:'paragraph',text:trap.english,passageId:trap.id,status:'false',role:'claim'}]});a.renderAt(0);assert.equal(d.visibleText(p),trap.english);a.renderAt(4200);assert.equal(d.visibleText(p),trap.zyntalic);assert(!p.hidden);a.renderAt(a.durationMs);assert(p.hidden);assert(correction.open);assert.equal(correction.textContent,'The exact counterexample remains.');assert(!d.root.querySelector('.ar-return-panel').hidden);assert(!d.tools.querySelector('[data-mode]'));a.plain();assert(!p.hidden);assert.equal(d.visibleText(p),trap.english);record('Dedicated trap follows English → authentic Zyntalic → vanish; correction survives');a.destroy();
+ d=makeDom();d.install();const p2=d.paragraph('sup-test','A term x');const sup=d.doc.createElement('sup');sup.textContent='2';p2.append(sup,d.doc.createTextNode(' stays exact.'));const originalSup=sup,originalSupText=sup.childNodes[0];a=A.mount({root:'#reader-content',controls:'#reader-tools',status:'exact',passages:[{id:'sup-test',english:'A term x2 stays exact.',zyntalic:selected[0].zyntalic,status:'exact'}],gifBlocks:[{type:'paragraph',text:'A term x^(2) stays exact.'}]});a.renderAt(a.durationMs);assert.strictEqual(p2.querySelector('sup'),originalSup);assert.strictEqual(sup.childNodes[0],originalSupText);assert.equal(d.visibleText(p2),'A term x2 stays exact.');record('Original sup/sub/math parent DOM and protected text are never flattened');a.destroy();
+ delete global.document;delete global.window;return checks;
+}
+module.exports={runDomChecks};
