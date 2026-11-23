@@ -109,7 +109,13 @@ for (const N of [16, 64, 160]) {
     assert.equal(sample.state, original.state); assert.equal(sample.escapedIndex, original.escapedIndex);
     near(sample.re, original.re); near(sample.im, original.im);
     const color = Uint8ClampedArray.from(model.fieldColor(sample, N));
-    for (let channel = 0; channel < 3; channel++) assert.equal(color[channel], reference.fieldCtx.image.data[(y * w + x) * 4 + channel]);
+    const px = reference.fieldCtx.image.data, at = (y * w + x) * 4;
+    if (sample.state === 'escaped') {
+      // Same escape brightness as Gemini's field; the site palette maps its orange-brown ramp to violet.
+      const v = Math.floor(12 + 190 * Math.pow(Math.min(1, sample.escapedIndex / N), .55));
+      assert.equal(px[at], Math.floor(v * .85));
+      assert.deepEqual(Array.from(color), [Math.floor(v * .62), Math.floor(v * .42), Math.floor(v * .95)]);
+    } else for (let channel = 0; channel < 3; channel++) assert.equal(color[channel], px[at + channel]);
     fieldSamples++;
   }
 }

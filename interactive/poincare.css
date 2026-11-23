@@ -2,12 +2,12 @@
 .poincare .pc-orbit { height:310px; }
 .poincare .pc-readout { display:block; background:var(--ix-surface); border:1px solid var(--ix-line); border-left:3px solid var(--ix-accent); border-radius:7px; padding:12px 15px; margin:14px 0; font-size:12px; line-height:1.8; font-variant-numeric:tabular-nums; }
 .poincare .pc-mode-note { color:var(--ix-accent); font-size:12px; padding:0 0 12px; margin:0; }
-.poincare .pc-mode-note[data-capped=true] { border-left:3px solid #bd674f; padding-left:12px; color:#8e4234; }
+.poincare .pc-mode-note[data-capped=true] { border-left:3px solid #774fbd; padding-left:12px; color:#55348e; }
 .poincare .pc-ledger { margin-top:18px; }
 .poincare .pc-ledger summary { color:var(--ix-accent); font-size:12px; font-weight:600; cursor:pointer; padding:7px 0; }
 .poincare .pc-ledger .ix-table-host { max-height:280px; margin-top:8px; border-radius:8px; }
 .poincare .pc-ledger .ix-table { min-width:410px; font-variant-numeric:tabular-nums; }
-.poincare .pc-ledger tr[aria-current=true] { background:#e5eee4; box-shadow:inset 3px 0 var(--ix-accent); }
+.poincare .pc-ledger tr[aria-current=true] { background:#ece4fb; box-shadow:inset 3px 0 var(--ix-accent); }
 .poincare .ix-hud { gap:12px 26px; }
 .poincare .ix-hud dd { font-size:16px; }
 @media(min-width:900px) { .poincare .ix-split { grid-template-columns:1.1fr 1fr; } .poincare .pc-map,.poincare .pc-orbit { height:410px; } }

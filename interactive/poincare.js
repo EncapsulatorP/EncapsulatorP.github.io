@@ -181,7 +181,7 @@
     ctx.font = '10px system-ui'; ctx.textBaseline = 'middle';
     for (let tick = 0; tick <= 4; tick++) {
       const px = x(xMax * tick / 4), py = y(yMax * tick / 4);
-      ctx.strokeStyle = '#365b5c'; ctx.lineWidth = 1; ctx.setLineDash([]);
+      ctx.strokeStyle = '#e6e9f4'; ctx.lineWidth = 1; ctx.setLineDash([]);
       ctx.beginPath(); ctx.moveTo(px, top); ctx.lineTo(px, bottom); ctx.moveTo(left, py); ctx.lineTo(right, py); ctx.stroke();
       ctx.fillStyle = WH.getColor('--on-surface-variant'); ctx.textAlign = 'center'; ctx.fillText(Number((xMax * tick / 4).toPrecision(3)), px, bottom + 15);
       ctx.textAlign = 'right'; ctx.fillText(Number((yMax * tick / 4).toPrecision(3)), left - 7, py);

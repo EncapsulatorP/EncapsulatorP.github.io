@@ -80,7 +80,7 @@
 
   const SVG_NS='http://www.w3.org/2000/svg';
   function svg(tag,attrs={},text=''){const el=document.createElementNS(SVG_NS,tag);for(const [key,value]of Object.entries(attrs))el.setAttribute(key,String(value));if(text)el.textContent=text;return el;}
-  const ORANGE='#e45c13',INK='#18271e',VIOLET='#237b46',MUTED='#85968b';
+  const ORANGE='#672fc8',INK='#18271e',VIOLET='#237b46',MUTED='#85968b';
   const r=1+Math.sqrt(6),radical=Math.sqrt((r-3)*(r+1));
   const xm=(r+1-radical)/(2*r),xp=(r+1+radical)/(2*r);
   function f(x){return r*x*(1-x);}
@@ -99,9 +99,9 @@
   cycle.append(svg('text',{x:64,y:27,class:'plot-label'},'next value f(x)'),svg('text',{x:440,y:333,'text-anchor':'end',class:'plot-label'},'starting value x'),svg('text',{x:390,y:48,class:'plot-muted'},'y = x'));
   const cycleMarker=svg('circle',{cx:cx(xm),cy:cy(xp),r:9,fill:ORANGE,stroke:'white','stroke-width':3});cycle.append(cycleMarker);
   const turn=byId('turn-chart'),ox=260,oy=164,radius=105;
-  turn.append(svg('circle',{cx:ox,cy:oy,r:radius,fill:'#fff8f1',stroke:'#ffdec7','stroke-width':1.5}),svg('line',{x1:ox-135,y1:oy,x2:ox+135,y2:oy,class:'chart-axis'}),svg('line',{x1:ox,y1:oy-135,x2:ox,y2:oy+135,class:'chart-axis'}));
+  turn.append(svg('circle',{cx:ox,cy:oy,r:radius,fill:'#f6f6fa',stroke:'#ffdec7','stroke-width':1.5}),svg('line',{x1:ox-135,y1:oy,x2:ox+135,y2:oy,class:'chart-axis'}),svg('line',{x1:ox,y1:oy-135,x2:ox,y2:oy+135,class:'chart-axis'}));
   const turnDirs=[[1,0],[0,-1],[-1,0],[0,1]];
-  turnDirs.forEach(([x,y],i)=>{turn.append(svg('circle',{cx:ox+x*radius,cy:oy-y*radius,r:5,fill:'#f4cdb5'}));const labels=['right','down','left','up'];turn.append(svg('text',{x:ox+x*(radius+40),y:oy-y*(radius+32)+5,'text-anchor':'middle'},labels[i]));});
+  turnDirs.forEach(([x,y],i)=>{turn.append(svg('circle',{cx:ox+x*radius,cy:oy-y*radius,r:5,fill:'#cdbaef'}));const labels=['right','down','left','up'];turn.append(svg('text',{x:ox+x*(radius+40),y:oy-y*(radius+32)+5,'text-anchor':'middle'},labels[i]));});
   const arrow=svg('path',{fill:ORANGE});turn.append(arrow,svg('circle',{cx:ox,cy:oy,r:5,fill:INK}),svg('text',{x:260,y:321,'text-anchor':'middle',class:'plot-label'},'J sends (x, y) to (y, −x)'));
   let step=0,timer=null;
   function drawStep(){
@@ -152,7 +152,7 @@
   const project=(theta,h)=>[280+180*Math.cos(theta),285+64*Math.sin(theta)-150*Math.sqrt(180**2-64**2)*h];
   const pathPoints=(steps,offset=0)=>steps.map((h,i)=>project((i+offset)*Math.PI/12,h).join(',')).join(' ');
   const basePoints=Array.from({length:121},(_,i)=>project(i*Math.PI/60,0).join(',')).join(' ');
-  transport.append(svg('ellipse',{cx:280,cy:285,rx:180,ry:64,fill:'#fff2e6',stroke:'#e9b98f','stroke-width':1.5}),svg('polyline',{points:basePoints,fill:'none',stroke:ORANGE,'stroke-width':2}),svg('text',{x:280,y:391,'text-anchor':'middle',class:'plot-label'},'the invariant circle · h = 0'),svg('text',{x:44,y:30,class:'plot-muted'},'angular motion continues'));
+  transport.append(svg('ellipse',{cx:280,cy:285,rx:180,ry:64,fill:'#eff0f6',stroke:'#b192e6','stroke-width':1.5}),svg('polyline',{points:basePoints,fill:'none',stroke:ORANGE,'stroke-width':2}),svg('text',{x:280,y:391,'text-anchor':'middle',class:'plot-label'},'the invariant circle · h = 0'),svg('text',{x:44,y:30,class:'plot-muted'},'angular motion continues'));
   const trailPath=svg('polyline',{fill:'none',stroke:ORANGE,'stroke-width':2.5,'stroke-linejoin':'round'}),drop=svg('line',{stroke:VIOLET,'stroke-dasharray':'4 5','stroke-width':1.5}),transportPoint=svg('circle',{r:7,fill:ORANGE,stroke:'white','stroke-width':2.5});
   transport.append(trailPath,drop,transportPoint);
   function drawTransport(){const n=Number(slider.value),h=transportValues[n],point=project(n*Math.PI/12,h),floor=project(n*Math.PI/12,0);trailPath.setAttribute('points',pathPoints(transportValues.slice(0,n+1)));transportPoint.setAttribute('cx',point[0]);transportPoint.setAttribute('cy',point[1]);drop.setAttribute('x1',point[0]);drop.setAttribute('y1',point[1]);drop.setAttribute('x2',floor[0]);drop.setAttribute('y2',floor[1]);byId('transport-output').textContent=n;byId('transport-readout').textContent='transverse error '+h.toFixed(6)+' · '+(n*4)+' original logistic updates';}

@@ -74,7 +74,7 @@ body { accent-color: var(--atlas-accent); }
 
 .pm-dialog { background: var(--atlas-paper); border-color: var(--atlas-line); scrollbar-color: #aab4ce var(--atlas-paper); }
 .pm-dialog::backdrop { background: #142139c9; }
-.pm-stage { background: #f1eee7; }
+.pm-stage { background: #e7e8f1; }
 .pm-find, .pm-table-models button, .pm-back-table { background: var(--atlas-surface); }
 .pm-style-switch, .pm-structure, .pm-button[aria-pressed="true"] { background: var(--atlas-tint); }
 .pm-style-switch button[aria-pressed="true"] { background: var(--atlas-surface); }
@@ -234,7 +234,7 @@ body { accent-color: var(--atlas-accent); }
 .page[data-page="lemmas"] .loot .serial, .page[data-page="lemmas"] .loot .status,
 .page[data-page="lemmas"] .loot summary, .page[data-page="towers"] .ttfact .n,
 .page[data-page="towers"] .eqline .m, .page[data-page="towers"] .eqline .p { color: var(--atlas-accent); }
-.page[data-page="towers"] .ttwarn { color: #675b36; background: #f2eddb; border-color: #b7a871; }
+.page[data-page="towers"] .ttwarn { color: #3e3667; background: #dfe1ee; border-color: #7d71b7; }
 
 /* Curated connections: labels describe the relation, not the evidence level. */
 .pm-connection {
@@ -242,7 +242,7 @@ body { accent-color: var(--atlas-accent); }
   background: var(--atlas-surface); border: 1px solid var(--atlas-line);
   border-left: 3px solid var(--atlas-accent); border-radius: 9px;
 }
-.pm-connection[data-connection-kind="study"] { border-left-color: #a39774; }
+.pm-connection[data-connection-kind="study"] { border-left-color: #8574a3; }
 .pm-connection .pm-kicker { color: var(--atlas-accent); font-size: 9px; letter-spacing: .07em; }
 .pm-connection h3 { color: var(--atlas-ink); font: 500 17px/1.3 "IBM Plex Sans",system-ui,sans-serif; margin: 7px 0; letter-spacing: -.02em; }
 .pm-connection p:not(.pm-kicker) { color: var(--atlas-muted); font-size: 11px; line-height: 1.65; margin: 8px 0 12px; }
@@ -271,7 +271,7 @@ body { accent-color: var(--atlas-accent); }
 
 /* Keep the new Interactive destination visible in the compact navigation. */
 @media(max-width:800px){.nav .tr-nav-primary a[data-tab="cabinet"],.nav .tr-nav-primary a[data-tab="collatz"],.nav .tr-nav-primary a[data-tab="towers"]{display:none}.nav .tr-nav-primary a[data-tab="interactive"]{display:block}}
-.pm-trio{padding:18px 20px;background:var(--atlas-surface);border:1px solid var(--atlas-line);border-radius:10px;margin-top:14px}.pm-trio h3{font:500 21px/1.25 Georgia,serif;color:var(--atlas-ink);margin:0 0 8px}.pm-trio>p{font:11px/1.75 system-ui,sans-serif;color:var(--atlas-muted);margin:0 0 15px}.pm-trio-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.pm-trio-buttons button{background:var(--atlas-paper);border:1px solid var(--atlas-line);border-top:3px solid var(--atlas-accent);border-radius:6px;padding:12px;text-align:left;cursor:pointer;color:var(--atlas-ink);min-width:0}.pm-trio-buttons button[data-kind="trap"]{border-top-color:#995931}.pm-trio-buttons button[data-kind="wildcard"]{border-top-color:#6c5790}.pm-trio-buttons span{display:block;color:var(--atlas-muted);font:600 9px/1.5 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em}.pm-trio-buttons strong{display:block;font:500 14px/1.4 Georgia,serif;margin-top:7px;overflow-wrap:anywhere}.pm-trio-buttons button:hover{background:var(--atlas-tint)}.pm-pin[data-essential="true"]{box-shadow:0 0 0 2px var(--atlas-paper),0 0 0 3px var(--atlas-accent)}
+.pm-trio{padding:18px 20px;background:var(--atlas-surface);border:1px solid var(--atlas-line);border-radius:10px;margin-top:14px}.pm-trio h3{font:500 21px/1.25 Georgia,serif;color:var(--atlas-ink);margin:0 0 8px}.pm-trio>p{font:11px/1.75 system-ui,sans-serif;color:var(--atlas-muted);margin:0 0 15px}.pm-trio-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.pm-trio-buttons button{background:var(--atlas-paper);border:1px solid var(--atlas-line);border-top:3px solid var(--atlas-accent);border-radius:6px;padding:12px;text-align:left;cursor:pointer;color:var(--atlas-ink);min-width:0}.pm-trio-buttons button[data-kind="trap"]{border-top-color:#573199}.pm-trio-buttons button[data-kind="wildcard"]{border-top-color:#6c5790}.pm-trio-buttons span{display:block;color:var(--atlas-muted);font:600 9px/1.5 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em}.pm-trio-buttons strong{display:block;font:500 14px/1.4 Georgia,serif;margin-top:7px;overflow-wrap:anywhere}.pm-trio-buttons button:hover{background:var(--atlas-tint)}.pm-pin[data-essential="true"]{box-shadow:0 0 0 2px var(--atlas-paper),0 0 0 3px var(--atlas-accent)}
 @media(max-width:540px){.pm-trio{padding:16px}.pm-trio-buttons{grid-template-columns:1fr}.pm-trio-buttons button{display:flex;align-items:center;gap:12px;padding:11px}.pm-trio-buttons span{flex:0 0 65px}.pm-trio-buttons strong{margin-top:0}}
 
 /* The same paper and dark panels in the workbench, chest and research plan. */

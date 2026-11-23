@@ -7,10 +7,10 @@
   <title>Complex tetration &amp; sheet jumps · Gemini · EncapsulatorP</title>
   <meta name="description" content="Explore Gemini’s complex power-tower basin, principal orbit and stochastic sheet-jump ensemble with the original parameters and critical-base presets.">
   <link rel="icon" href="../assets/favicon-32.png">
-  <link rel="stylesheet" href="shared.css">
-  <link rel="stylesheet" href="complex-tetration.css">
-  <script src="runtime.js?v=restore-20261121" defer></script>
-  <script src="complex-tetration.js?v=restore-20261121-r2" defer></script>
+  <link rel="stylesheet" href="shared.css?v=gemini-look-1">
+  <link rel="stylesheet" href="complex-tetration.css?v=gemini-look-1">
+  <script src="runtime.js?v=gemini-look-1" defer></script>
+  <script src="complex-tetration.js?v=gemini-look-1" defer></script>
 </head>
 <body>
 <main class="ix-exhibit">
@@ -22,7 +22,7 @@
     <summary>Iteration, sheet jumps &amp; source notes</summary>
     <p class="ix-equation">z₀ = c; zₙ₊₁ = exp(zₙ [ln|c| + i(arg c + 2πkₙ)]).</p>
     <ul>
-      <li>The background uses the principal logarithm, kₙ = 0. Pixels tinted by the last state’s angle mark a successive-step difference below 10⁻⁴; dark blue means the run has not escaped or met that tolerance in N updates. Brown records an escape. The image samples bases c; the overlaid paths plot the iterated states z on the same complex scale.</li>
+      <li>The background uses the principal logarithm, kₙ = 0. Pixels tinted by the last state’s angle mark a successive-step difference below 10⁻⁴; dark blue means the run has not escaped or met that tolerance in N updates. Violet records an escape (brighter = later). The image samples bases c; the overlaid paths plot the iterated states z on the same complex scale.</li>
       <li>Each ensemble orbit gets one perturbed base c + σ(ξ + iη), with independent standard normal ξ and η. At each update kₙ is freshly chosen: 0 with probability 1 − pₖ, or −1 and +1 with probability pₖ/2 each. The sheet index is <em>not</em> accumulated. Amber dots mark sampled nonzero choices.</li>
       <li>The original safety limits are retained: escape at |z|² &gt; 10⁸, a non-finite value, or an exponential real part &gt; 25. “Survived” means only that none of those events occurred within the chosen N. Escape steps are displayed starting at 1.</li>
       <li>The real presets c = e<sup>−e</sup> and c = e<sup>1/e</sup>, the original complex seed 1.32 + 0.38i, all four parameter ranges, the white principal orbit and blue/red ensemble paths are preserved. The logarithm at c = 0 is left undefined instead of silently replacing zero. Bases with |c| &lt; 10⁻¹² are excluded at the source’s numerical cutoff; survival uses only valid ensemble paths and reports excluded attempts separately.</li>

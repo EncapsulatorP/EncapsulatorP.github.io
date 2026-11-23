@@ -143,7 +143,7 @@
       const style = getComputedStyle(host);
       const pick = (name, fallback) => style.getPropertyValue(name).trim() || fallback;
       palette = { ink: pick('--atlas-ink', '#182b35'), muted: pick('--atlas-muted', '#596d69'),
-        line: pick('--atlas-line', '#d8ddd2'), back: '#236b67', forward: '#a46520', gap: '#ad514b' };
+        line: pick('--atlas-line', '#d8ddd2'), back: '#236b67', forward: '#52259f', gap: '#ad514b' };
     }
     function fit() {
       const box = canvas.getBoundingClientRect();

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <title>RG lattice &amp; Hopf detector · Gemini · EncapsulatorP</title>
+  <meta name="description" content="Gemini's coarse-graining micro-lattice and Hopf detector: block-average a 32 × 32 field layer by layer, then hide or collapse a limit cycle by changing the detector or the pump.">
+  <link rel="icon" href="../assets/favicon-32.png">
+  <link rel="stylesheet" href="shared.css?v=gemini-look-1">
+  <link rel="stylesheet" href="rg-lattice-hopf.css?v=gemini-look-1">
+  <script src="runtime.js?v=gemini-look-1" defer></script>
+  <script src="rg-lattice-hopf.js?v=gemini-look-1" defer></script>
+</head>
+<body>
+<main class="ix-exhibit">
+  <header class="ix-header"><div><p class="ix-kicker">Interactive · Defined coarse-graining · exact normal form</p><h1>RG lattice &amp; Hopf detector</h1><p>Block-average one field layer by layer and watch the detail disappear. Then ask the same question of a loop: when does its hole disappear?</p></div><div class="ix-signature">Gemini (Neon)<small>RG lattice &amp; Hopf lab · c3.2z Prime Forms<br>Interactive concept · Atlas adaptation</small></div></header>
+  <p class="ix-boundary"><strong>Claim boundary</strong>The lattice is a synthetic 32 × 32 field built from the decimal digits of <i>c</i> in the chosen unit and a knot amplitude, then block-averaged. The layer names (Planck → thermodynamic) are Gemini’s illustrative labels, not a physical renormalization; “information lost” is Gemini’s heuristic. The Hopf panel is the exact normal form ṙ = μr − r³: a limit cycle of radius √μ when μ &gt; 0 and a fixed point otherwise. Digits of <i>c</i> are a symbolic test alphabet, not a derivation of <i>c</i>.</p>
+
+  <section id="rg-hopf" class="rg-hopf" aria-label="RG lattice and Hopf detector">
+    <div class="rg-panel">
+      <div class="rg-head">
+        <div><h2>1 · Coarse-graining lattice</h2><p id="rg-subtitle" class="rg-subtitle" aria-live="polite"></p></div>
+        <dl class="ix-hud rg-mini"><div><dt>Scale label</dt><dd id="rg-top-scale"></dd></div><div><dt>State</dt><dd id="rg-top-state" data-tone="violet"></dd></div></dl>
+      </div>
+      <div class="rg-stage" id="rg-stage"><canvas id="rg-canvas" role="img" aria-label="32 by 32 field, block-averaged at the selected layer"></canvas></div>
+      <dl class="ix-hud rg-kpis">
+        <div><dt>Variance retained</dt><dd id="rg-kpi-var" data-tone="sapphire"></dd></div>
+        <div><dt>Information lost (heuristic)</dt><dd id="rg-kpi-ent" data-tone="rose"></dd></div>
+        <div><dt>Cells remaining</dt><dd id="rg-kpi-cells"></dd></div>
+        <div><dt>Seed</dt><dd id="rg-kpi-seed" data-tone="violet"></dd></div>
+      </dl>
+      <div class="rg-ramp" aria-hidden="true"><span><i style="background:#cdd3e6"></i>low</span><span><i style="background:#7f97de"></i>mid</span><span><i style="background:#284cad"></i>high</span><span><i style="background:#ee9a12"></i>peak</span></div>
+      <div class="ix-controls rg-controls">
+        <label class="ix-field" for="rg-scale"><span class="ix-control-label">Coarse-graining layer <output id="rg-scale-out"></output></span><input id="rg-scale" type="range" min="0" max="3" step="1" value="0"></label>
+        <label class="ix-field" for="rg-unit"><span class="ix-control-label">Unit of c (digit seed)</span><select id="rg-unit"></select></label>
+        <label class="ix-field" for="rg-knot-r"><span class="ix-control-label">Knot r <output id="rg-knot-r-out"></output></span><input id="rg-knot-r" type="range" min="0.55" max="1.85" step="0.01" value="1.22"></label>
+        <label class="ix-field" for="rg-knot-e"><span class="ix-control-label">Knot e <output id="rg-knot-e-out"></output></span><input id="rg-knot-e" type="range" min="0.25" max="2.25" step="0.01" value="0.70"></label>
+        <label class="rg-check"><input type="checkbox" id="rg-uncap"> Restore the third tower layer</label>
+        <button type="button" class="ix-button" id="rg-step">Next layer</button>
+        <button type="button" class="ix-button" id="rg-play" aria-pressed="true">Pause</button>
+        <button type="button" class="ix-button" id="rg-save">Save PNG</button>
+      </div>
+      <p class="rg-digits">Digit seed: <code id="rg-digits"></code></p>
+    </div>
+
+    <div class="rg-panel">
+      <div class="rg-head"><div><h2>2 · When does the hole disappear?</h2><p class="rg-subtitle">Change the detector to hide the hole. Lower the pump to collapse the loop. Wire the unit’s last digit into the pump to see what the tower would command.</p></div></div>
+      <div class="hopf-layout">
+        <div>
+          <div class="rg-stage hopf-stage"><canvas id="hopf-canvas" width="640" height="260" role="img" aria-label="Oscillator orbit and detector output"></canvas></div>
+          <p id="hopf-caption" class="hopf-caption" aria-live="polite"></p>
+          <dl class="ix-hud hopf-kpis" id="hopf-kpis" aria-live="polite"></dl>
+        </div>
+        <div class="ix-controls hopf-controls">
+          <label class="ix-field" for="hopf-view"><span class="ix-control-label">Detector</span><select id="hopf-view"><option value="iq">Both quadratures</option><option value="sum">Coherent mirror sum</option><option value="power">Power only</option></select></label>
+          <label class="ix-field" for="hopf-unit"><span class="ix-control-label">Unit</span><select id="hopf-unit"></select></label>
+          <label class="ix-field" for="hopf-drive"><span class="ix-control-label">Pump input</span><select id="hopf-drive"><option value="manual">Physical setting</option><option value="tower">Unit digit → pump</option></select></label>
+          <label class="ix-field" for="hopf-bias"><span class="ix-control-label">Pump bias <output id="hopf-bias-out"></output></span><input id="hopf-bias" type="range" min="-0.60" max="0.60" step="0.01" value="0.18"></label>
+          <label class="ix-field" for="hopf-floor"><span class="ix-control-label">Detection floor <output id="hopf-floor-out"></output></span><input id="hopf-floor" type="range" min="0" max="0.75" step="0.01" value="0"></label>
+          <p id="hopf-command" class="hopf-command"></p>
+          <p id="hopf-check" class="hopf-check"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <noscript><p>The lattice and detector require JavaScript. The rules and source notes below remain readable.</p></noscript>
+  <details class="ix-notes" open><summary>Rules, limits &amp; source notes</summary>
+    <p class="ix-equation">v(x, y) = clamp(0.42·h<sub>A</sub> + 0.22·h<sub>B</sub> + 0.36·wave, 0, 1); h = tower height of a digit ÷ 3; Layer k averages 2<sup>k</sup> × 2<sup>k</sup> blocks (k = 0…3).</p>
+    <ul>
+      <li>Digit heights count prime factors with multiplicity (8 = 2³ → 3), capped at 2 unless the third layer is restored. h<sub>A</sub> reads digit (x + 3y), h<sub>B</sub> reads digit (5x + 7y), cycling through the integer part plus nine decimals of c in the chosen unit.</li>
+      <li>The wave term is sin(1.15t + 0.42x − 0.37y + a·cos(0.8t + 0.22·(7x ⊕ 11y))), with knot amplitude a = √((r − 1)/e) for r &gt; 1 and 0.25 otherwise — the positive fixed point of Gemini’s Odd Mirror Knot.</li>
+      <li>Variance retained compares block-average variance with the raw field. “Information lost” is Gemini’s heuristic: log₂(1024 / cells) plus half the log-loss of variance. It is a readout of this construction, not a thermodynamic entropy.</li>
+      <li>Hopf panel: normalized normal form ṙ = μr − r³, so the stable cycle has R² = max(0, μ). With the digit wired in, μ = bias + 0.30 × (height − 2). The attractor dimension is that of the invariant set; the visible dimension and visible holes depend on the detector and floor. The live check confirms R² = max(0, μ).</li>
+      <li>Adapted: white instrument stage and the Atlas ramp (Gemini’s slate · sky · mint · gold became lavender · periwinkle · sapphire · amber); Next layer and Play/Pause added; animation pauses when hidden or when reduced motion is requested. Rules, ranges and defaults are Gemini’s.</li>
+    </ul>
+    <p class="ix-source-code">Gemini (Neon) source: <code>c3_2z_living_spec_prime_forms.html</code>, tab 1. <a href="sources/gemini-rg-lattice-hopf-original.js.txt">Read the supplied tab script</a>, <a href="https://github.com/EncapsulatorP/c3._2z">open the c3.2z repository</a> or <a href="sources.json">inspect the complete source inventory</a>.</p>
+  </details>
+  <footer class="ix-footer"><a href="index.html?topic=rg-lattice-hopf">All interactive contributions</a><a href="../index.html#cabinet">Curious Cabinet · C3.2Z</a><a href="../atlas/gemini-interactive-notes.md">Adaptation notes</a></footer>
+</main>
+</body>
+</html>
