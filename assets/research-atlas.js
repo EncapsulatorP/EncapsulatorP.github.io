@@ -227,11 +227,19 @@
   pairInput.addEventListener('input', drawPairs); drawPairs();
 
   var towerInput = document.getElementById('at-tower-c');
-  function tower(c) {
+  var towerStep = document.getElementById('at-tower-step');
+  function tower(c, steps = 80) {
     var a = Math.log(c), v = 1;
-    for (var i = 0; i < 80; i++) v = Math.exp(a * Math.exp(-a * v));
+    for (var i = 0; i < steps; i++) v = Math.exp(a * Math.exp(-a * v));
     var u = Math.exp(-a * v), residual = Math.abs(v - Math.exp(a * u));
     return { u: u, v: v, residual: residual };
+  }
+  function drawTowerStep() {
+    var step = Number(towerStep.value);
+    var point = tower(Number(towerInput.value), step);
+    document.getElementById('at-tower-step-value').value = String(step);
+    document.getElementById('at-tower-step-phases').textContent =
+      'Lower u ≈ ' + point.u.toFixed(12) + ' · upper v ≈ ' + point.v.toFixed(12);
   }
   function drawTower() {
     var c = Number(towerInput.value), value = tower(c);
@@ -255,8 +263,10 @@
       svg.append(svgNode('circle', { cx: x(c), cy: y(value[phase]), r: 6, fill: color, stroke: '#fff', 'stroke-width': 2 }));
     });
     svg.append(svgNode('text', { x: 680, y: 317, 'text-anchor': 'end', fill: '#617391', 'font-size': 10 }, 'base c'));
+    if (towerStep) drawTowerStep();
   }
   towerInput.addEventListener('input', drawTower);
+  if (towerStep) towerStep.addEventListener('input', drawTowerStep);
   document.getElementById('at-tower-specimen').addEventListener('click', function () { towerInput.value = '1.11'; drawTower(); });
   drawTower();
 

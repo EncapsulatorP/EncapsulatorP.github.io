@@ -28,6 +28,14 @@
     const prefix = 'gemini-space-' + mountIndex;
     const head = el('header', 'is-heading'), kicker = el('p', 'is-kicker', 'Interactive · Gemini’s contributions');
     head.append(kicker, el('h2', '', 'One question. A world to move.'), el('p', 'is-intro', 'Ten interactive views, recovered from Gemini’s supplied visualizations. Move through complex towers, red Recamán holes, prime energies and visible iteration. Each topic keeps its original idea and a clear claim boundary.'));
+    const primeForms = 'https://github.com/EncapsulatorP/c3._2z/blob/7e8fb577bd3eb8da2e358d691164a9fee5c75f9b/index.html';
+    const sourceTrail = el('p', 'is-intro', 'In Prime Forms, Gemini (Neon) paired a coarse-graining lattice with a Hopf detector. Explore the original ');
+    const lattice = el('a', '', 'lattice source'), hopf = el('a', '', 'Hopf detector source'), credits = el('a', '', 'credits');
+    lattice.href = primeForms + '#L615-L665';
+    hopf.href = primeForms + '#L667-L704';
+    credits.href = primeForms + '#L839-L850';
+    sourceTrail.append(lattice, ' and ', hopf, ', with the shared ', credits, '.');
+    head.append(sourceTrail);
     const tabs = el('div', 'is-topics'); tabs.setAttribute('role', 'tablist'); tabs.setAttribute('aria-label', 'Interactive topics');
     const panel = el('section', 'is-selected'); panel.id = prefix + '-panel'; panel.setAttribute('role', 'tabpanel');
     const picker = el('label', 'is-topic-picker', 'Choose a topic'), pickerSelect = el('select');

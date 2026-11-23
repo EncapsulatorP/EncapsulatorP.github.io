@@ -17,6 +17,12 @@ from html_renderer import render_document
 
 BASE = Path(__file__).resolve().parent
 ROOT = BASE.parent
+READING_NOTES = {
+    "alternating-towers": (
+        "Picard iteration. The Banach fixed point theorem gives a unique "
+        "upper phase and convergence from every starting value v₀ ≥ 1."
+    ),
+}
 
 
 def build() -> list[dict]:
@@ -35,7 +41,8 @@ def build() -> list[dict]:
         source = ROOT / note["source"]
         output = source.with_suffix(".html")
         results.append(render_document(source, output, status=note["status"],
-                                       document_id=note["slug"], kind=note["kind"]))
+                                       document_id=note["slug"], kind=note["kind"],
+                                       reading_note=READING_NOTES.get(note["slug"], "")))
         note.pop("pdf", None)
         note.pop("pageCount", None)
         note["html"] = output.relative_to(ROOT).as_posix()
