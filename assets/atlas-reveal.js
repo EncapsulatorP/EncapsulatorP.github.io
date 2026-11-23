@@ -9,7 +9,7 @@
     const source = document.currentScript?.src;
     if (source && document.querySelector('.reader-header .reader-brand')) {
       const wordmark = document.createElement('script');
-      wordmark.src = new URL('pq-wordmark.js?v=atlas-shell-1', source);
+      wordmark.src = new URL('pq-wordmark.js?v=map-layout-1', source);
       document.head.append(wordmark);
     }
   }

@@ -3,6 +3,10 @@
 .site-shell-ready {
   --site-width: 1160px;
   --site-gutter: clamp(16px, 3vw, 28px);
+  --site-lead-top: clamp(30px, 5vw, 56px);
+  --site-lead-bottom: clamp(24px, 3.2vw, 36px);
+  --site-title: 600 clamp(36px, 5.5vw, 62px)/1.06 Georgia, "Times New Roman", serif;
+  scrollbar-gutter: stable;
   scroll-padding-top: calc(var(--site-header-height, 64px) + 12px);
 }
 
@@ -14,14 +18,14 @@
   color: var(--atlas-ink);
   border-bottom: 1px solid var(--atlas-line);
   box-shadow: 0 4px 18px #1421390c;
-  font: 500 13px/1.35 "IBM Plex Sans", system-ui, sans-serif;
+  font: 500 13px/1.35 system-ui, sans-serif;
   text-align: start;
 }
 
 .site-shell *, .site-shell *::before { box-sizing: border-box; }
 .site-shell-inner {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: 215px minmax(0, 1fr) 79px;
   align-items: center;
   gap: 8px 16px;
   max-width: var(--site-width);
@@ -43,7 +47,7 @@
 .site-shell .pq-lockup { background: transparent; }
 .site-shell-tabs {
   display: grid;
-  grid-template-columns: repeat(5, auto);
+  grid-template-columns: 62px 58px 62px 106px 76px;
   justify-self: end;
   gap: 3px;
   padding: 3px;
@@ -166,14 +170,6 @@
   .site-shell-ready .rx-route-main { margin-block: 32px 48px; }
   .site-shell-ready :is(.ev-index, .ix-exhibit) { padding-block-start: clamp(30px, 5vw, 56px); }
   .site-shell-ready .ix-header { border-color: var(--atlas-line); }
-  .site-shell-ready .ix-header h1,
-  .site-shell-ready .ev-index h1,
-  .site-shell-ready .map-heading h1,
-  .site-shell-ready .site-nav[hidden] + main .hero h1 {
-    font-size: clamp(38px, 5.5vw, 65px);
-    line-height: 1.05;
-    letter-spacing: -.035em;
-  }
   .site-shell-ready .reader-header:has(> nav[hidden]):not(:has(> [data-reader-reveal])) {
     display: none;
   }
@@ -182,7 +178,7 @@
     background: var(--atlas-paper);
     color: var(--atlas-ink);
     border-bottom: 1px solid var(--atlas-line);
-    padding: clamp(32px, 5vw, 58px) 0 28px;
+    padding-inline: 0;
   }
   .site-shell-ready .map-heading h1 { margin: 0 0 12px; }
   .site-shell-ready .map-heading p { color: var(--atlas-muted); }
@@ -196,7 +192,7 @@
 }
 
 @media (max-width: 730px) {
-  .site-shell-inner { position: relative; grid-template-columns: minmax(0, 1fr) auto; gap: 5px 10px; padding-block: 7px; }
+  .site-shell-inner { position: relative; grid-template-columns: minmax(0, 1fr) 79px; gap: 5px 10px; padding-block: 7px; }
   .site-shell-tabs {
     grid-row: 2;
     grid-column: 1 / -1;
@@ -217,17 +213,96 @@
   .site-shell, .site-shell-skip { display: none !important; }
 }
 
+/* The Map's paper, title and section rhythm are the default page opening. */
 @media screen {
-  .site-shell-ready .page[data-page="home"] .hero { padding-block: clamp(32px, 5vw, 58px); }
-  .site-shell-ready .home-site-map { padding-block: 32px 38px; }
+  .site-shell-ready :is(.map-heading, .page[data-page="home"] .hero, .at-hero, .tr-hero, .cc-hero, .gb-lab, .pp-page .pp-hero) {
+    background: var(--atlas-paper);
+    color: var(--atlas-ink);
+    border-color: var(--atlas-line);
+    padding-block: var(--site-lead-top) var(--site-lead-bottom);
+  }
+  .site-shell-ready .page[data-page="home"] .hero {
+    border-bottom: 1px solid var(--atlas-line);
+  }
+  .site-shell-ready .page[data-page="home"] .hero .bars,
+  .site-shell-ready .pp-hero::before { display: none; }
+  .site-shell-ready .home-site-map { padding-block: 28px var(--site-lead-bottom); border-block-start: 0; }
+  .site-shell-ready .site-home-feature { padding-block: var(--site-lead-bottom) 0; }
+  .site-shell-ready .site-home-feature .atlas-home-launch { margin: 0; }
+  .site-shell-ready .site-home-feature .atlas-home-launch img { object-fit: cover; }
+
+  .site-shell-ready :is(.map-heading h1, .ix-header h1, .ev-index h1, .site-nav[hidden] + main .hero h1,
+      .atlas-title, .reader-header .reader-title, .is-overview h2, .rx-route-main .rx-title,
+      .page[data-page="home"] .hero h1, .at-hero h2, .tr-hero h2, .cc-hero h2, .gb-intro h2,
+      .pp-page .pp-hero h2, .pirate-chest .pirate-chest-head h2.t) {
+    font: var(--site-title);
+    letter-spacing: -.035em;
+    color: var(--atlas-ink);
+    text-shadow: none;
+  }
+  .site-shell-ready :is(.page[data-page="home"] .hero h1 em, .at-hero h2 em, .tr-hero h2 em, .cc-hero h2 em,
+      .gb-intro h2 em, .pp-page .pp-hero h2 em, .pirate-chest .pirate-chest-head h2.t em,
+      .site-nav[hidden] + main .hero h1 span) {
+    color: var(--atlas-accent);
+    text-shadow: none;
+  }
+  .site-shell-ready .page[data-page="home"] .hero p:not(.ky),
+  .site-shell-ready .pp-hero .pp-hero-summary,
+  .site-shell-ready .pirate-chest .pirate-chest-head :is(.lead, .chest-invitation) {
+    color: var(--atlas-muted);
+  }
+  .site-shell-ready .page[data-page="home"] .hero .ky,
+  .site-shell-ready .pp-hero-top .pp-eyebrow,
+  .site-shell-ready .pirate-chest .pirate-chest-head .chest-kicker { color: var(--atlas-accent); }
+
+  .site-shell-ready .page[data-page="buried-chat-stories"] .pirate-chest { padding-block-start: 0; }
+  .site-shell-ready .pirate-chest .pirate-chest-head {
+    background: var(--atlas-paper);
+    border-color: var(--atlas-line);
+    padding: var(--site-lead-top) 0 var(--site-lead-bottom);
+    border-radius: 0;
+    border-width: 0 0 1px;
+    box-shadow: none;
+  }
+  .site-shell-ready .pirate-chest-head .chest-subtitle { color: var(--atlas-violet); }
+
+  .site-shell-ready .pp-hero .pp-hero-top,
+  .site-shell-ready .pp-hero .pp-stats,
+  .site-shell-ready .pp-hero .pp-stats > div { border-color: var(--atlas-line); }
+  .site-shell-ready .pp-hero :is(.pp-edition, .pp-stats dt, .pp-stats dd span, .pp-page-access small) {
+    color: var(--atlas-muted);
+  }
+  .site-shell-ready .pp-hero .pp-stats dd { color: var(--atlas-ink); }
+  .site-shell-ready .pp-hero .pp-compass {
+    padding: 14px;
+    background: var(--atlas-deep-panel);
+    border: 1px solid var(--atlas-line);
+    border-radius: 12px;
+  }
+  .site-shell-ready .pp-hero .pp-button-primary {
+    background: var(--atlas-accent);
+    color: var(--atlas-on-deep) !important;
+    border-color: var(--atlas-accent);
+  }
+  .site-shell-ready .pp-hero .pp-button-quiet {
+    background: var(--atlas-surface);
+    color: var(--atlas-accent) !important;
+    border-color: var(--atlas-line);
+  }
+  .site-shell-ready .pp-hero a.pp-reading-link { color: var(--atlas-accent); }
+
+  .site-shell-ready :is(.atlas-introduction, .ev-index, .ix-exhibit) { padding-block-start: var(--site-lead-top); }
+  .site-shell-ready .site-nav[hidden] + main .hero { padding-block-start: var(--site-lead-top); }
+  .site-shell-ready .is-standalone-body .is-space { padding-block-start: var(--site-lead-top); }
 }
 .site-home-search {
   display: inline-block;
   padding: 8px 14px;
-  border: 1px solid var(--atlas-muted-on-deep);
+  border: 1px solid var(--atlas-accent);
   border-radius: 8px;
+  background: var(--atlas-accent);
   color: var(--atlas-on-deep);
   font-weight: 600;
   text-decoration: none;
 }
-.site-home-search:hover { background: var(--atlas-deep-panel); }
+.site-home-search:hover { background: var(--atlas-deep-panel); color: var(--atlas-on-deep); }
