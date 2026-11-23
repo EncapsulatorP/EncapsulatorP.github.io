@@ -13,6 +13,21 @@
   } else {
     document.documentElement.classList.remove('ar-reveal-pending');
   }
+
+  // Canonical site tabs: every Atlas reading page exposes the same five top-level routes.
+  (function canonicalSiteTabs(){
+    var nav = document.querySelector('.reader-header nav');
+    if (!nav) return;
+    var tabs = [
+      ['Home','/'],['Map','/map/'],['Atlas','/atlas/README.html'],
+      ['Treasure Hunt','/treasure-hunt/'],['Evidence','/evidence/']
+    ];
+    nav.innerHTML = tabs.map(function(t){
+      var current = location.pathname === t[1] || (t[1] !== '/' && location.pathname.indexOf(t[1].replace(/README\\.html$/,'')) === 0);
+      return '<a href="'+t[1]+'"'+(current?' aria-current="page"':'')+'>'+t[0]+'</a>';
+    }).join('');
+  }());
+
   var filter = document.getElementById('contents-filter');
   if (filter) {
     filter.parentElement.hidden = false;

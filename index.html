@@ -223,6 +223,22 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 .story-body[hidden]{display:none}
 
 
+
+/* Main-page published-content browser: mirrors sitemap.xml without duplicating site ownership. */
+.home-site-map{padding:52px 0 58px;border-top:1px solid var(--atlas-line);border-bottom:1px solid var(--atlas-line);background:var(--atlas-paper)}
+.home-site-map-head{display:flex;gap:28px;align-items:end;justify-content:space-between;margin-bottom:20px}
+.home-site-map h2{font-family:"Fraunces",serif;font-size:clamp(2rem,5vw,3.2rem);line-height:1.05;margin:5px 0 8px}
+.home-site-map p{max-width:66ch;color:var(--atlas-muted);margin:0}
+.home-site-search{min-width:min(330px,100%);font:500 11px "IBM Plex Mono",monospace;color:var(--atlas-muted);text-transform:uppercase;letter-spacing:.08em}
+.home-site-search input{display:block;width:100%;margin-top:6px;border:1px solid var(--atlas-line);border-radius:9px;background:var(--atlas-surface);padding:11px 12px;color:var(--atlas-ink);font:14px "IBM Plex Sans",sans-serif}
+.home-site-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px}
+.home-site-group{border:1px solid var(--atlas-line);background:var(--atlas-surface);border-radius:11px;padding:16px;min-width:0}
+.home-site-group h3{font:600 14px "IBM Plex Sans",sans-serif;margin:0 0 8px;color:var(--atlas-ink)}
+.home-site-group a{display:block;padding:7px 0;border-top:1px solid var(--atlas-line);color:var(--atlas-accent);font-size:12px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere}
+.home-site-group a:hover{text-decoration:underline}.home-site-count{font:500 11px "IBM Plex Mono",monospace;color:var(--atlas-muted);margin-top:12px}
+@media(max-width:850px){.home-site-map-head{align-items:start;flex-direction:column}.home-site-groups{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.home-site-groups{grid-template-columns:1fr}}
+
 </style>
 <link rel="stylesheet" href="assets/research-atlas.css">
 <link rel="stylesheet" href="assets/treasure-rooms.css">
@@ -257,16 +273,23 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a href="#cabinet"><small>02 / Two new windows</small><strong>Circles &amp; mirrored worlds</strong><svg class="tr-mini-art" viewBox="0 0 280 95" aria-hidden="true"><circle cx="140" cy="48" r="40" fill="none" stroke="#bdacf3" stroke-width="2"/><path d="M65 48H215M140 3V92" stroke="#45637d"/><circle cx="175" cy="29" r="4" fill="#84e9d2"/><circle cx="175" cy="67" r="4" fill="#84e9d2"/><circle cx="140" cy="48" r="5" fill="#e5d58a"/></svg><p>Put Catalan at the centre. Let two logistic strands merge, mirror or separate.</p><b>Enter the Curious Cabinet →</b></a>
 <a href="#pirate-chest"><small>03 / From the notebook</small><strong>The Pirate Chest</strong><svg class="tr-mini-art" viewBox="0 0 280 95" aria-hidden="true"><path d="M70 72L112 22L140 72L168 22L210 72M86 48H194" fill="none" stroke="#d3c49d" stroke-width="2"/><circle cx="140" cy="48" r="38" fill="none" stroke="#8c9ebf" stroke-dasharray="3 6"/><path d="M140 11V85M133 48H147" stroke="#b6e9d3" stroke-width="2"/></svg><p>Dagger towers, Shapiro rings and unfinished questions with their source trails still attached.</p><b>Pick up a treasure →</b></a>
 </div></div></section>
+
+<section class="home-site-map" id="site-map" aria-labelledby="site-map-title"><div class="wrap">
+<div class="home-site-map-head"><div><p class="kick">Everything published</p><h2 id="site-map-title">Find the work without knowing the maze.</h2><p>The same source as the Map tab: <code>sitemap.xml</code>. Search here for a proof, experiment, Atlas entry or evidence page without leaving the main tab.</p></div><label class="home-site-search">Search published content<input id="home-site-query" type="search" placeholder="Goldbach, tower, Collatz, logistic…" autocomplete="off"></label></div>
+<div id="home-site-groups" class="home-site-groups" aria-live="polite"><div class="home-site-group"><h3>Loading published routes…</h3></div></div>
+<div class="home-site-count" id="home-site-count"></div>
+</div></section>
+
 <details class="home-research-notes"><summary>Read the research notes and counterexamples</summary>
 <div class="ev-comparison" id="evidence-comparison"><div class="wrap" id="evidence-start"><p class="kick">The evidence board</p><p class="ev-intro">Follow an argument, inspect its boundary, or run a finite check. <a href="evidence/">Open the compact evidence index ↗</a></p></div><section class="sec bg-tint" id="home-mathematics" aria-labelledby="home-math-title"><div class="wrap">
 <h2 class="t" id="home-math-title">Identities, asymptotics, <em>and kernels.</em></h2>
 <div class="grid home-math-grid">
-<article data-evidence-entry="ramanujan-23" class="card" style="--e:#3f7a00"><span class="tag">Exact identity</span><h3 class="sub">Ramanujan modulo 23</h3><p>In characteristic 23, (1 − q<sup>n</sup>)<sup>23</sup> = 1 − q<sup>23n</sup>. One factorization turns Δ into a simpler product.</p><a data-evidence-open class="story-link" href="#buried-ramanujan-23">Read the coefficient proof</a></article>
-<article data-evidence-entry="shapiro" class="card" style="--e:#3f7a00"><span class="tag">Exact identity</span><h3 class="sub">Rudin–Shapiro on the circle</h3><p>Two signed polynomials divide the energy between them. |P<sub>j</sub>|² + |Q<sub>j</sub>|² = 2<sup>j+1</sup> on |z| = 1.</p><a data-evidence-open class="story-link" href="#buried-shapiro-rings">Read the circle argument</a></article>
-<article data-evidence-entry="wheel-210" class="card" style="--e:#3f7a00"><span class="tag">Euler product</span><h3 class="sub">Zeta’s 48 remainder lanes</h3><p>The 210-wheel products reconstruct ζ(s) with four factors removed, for Re(s) &gt; 1.</p><a data-evidence-open class="story-link" href="#buried-zeta-partitionings">Read the partitioning</a></article>
-<article data-evidence-entry="critical-tower" class="card" style="--e:#3f7a00"><span class="tag">Exact asymptotic</span><h3 class="sub">The critical tower’s slowdown</h3><p>For x<sub>n+1</sub> = exp(x<sub>n</sub>/e), starting at 1, the distance to e is asymptotic to 2e/n.</p><a data-evidence-open class="story-link" href="#buried-critical-tower">Read the endpoint proof</a></article>
-<article data-evidence-entry="zp-asymptotic" class="card" style="--e:#3f7a00"><span class="tag">Exact asymptotic</span><h3 class="sub">The smooth part of Z(p)</h3><p>Z(n) = 2 + π/n + π²/(2n²) + O(n<sup>−3</sup>). The leading terms give Prime Polarity a baseline.</p><a data-evidence-open class="story-link" href="#buried-zp-asymptotic">Read the expansion</a></article>
-<article data-evidence-entry="catalan-kernel" class="card" style="--e:#3f7a00"><span class="tag">Exact kernel</span><h3 class="sub">A quarter-turn in the Catalan integral</h3><p>∑<sub>n≥1</sub> χ<sub>4</sub>(n)e<sup>−nt</sup> = 1/(2 cosh t) for t &gt; 0. Its Mellin integral at s = 2 gives Catalan’s constant.</p><a data-evidence-open class="story-link" href="#buried-bubble-tube">Read the kernel story</a></article>
+<article data-evidence-entry="ramanujan-23" class="card" style="--e:#284cad"><span class="tag">Exact identity</span><h3 class="sub">Ramanujan modulo 23</h3><p>In characteristic 23, (1 − q<sup>n</sup>)<sup>23</sup> = 1 − q<sup>23n</sup>. One factorization turns Δ into a simpler product.</p><a data-evidence-open class="story-link" href="#buried-ramanujan-23">Read the coefficient proof</a></article>
+<article data-evidence-entry="shapiro" class="card" style="--e:#284cad"><span class="tag">Exact identity</span><h3 class="sub">Rudin–Shapiro on the circle</h3><p>Two signed polynomials divide the energy between them. |P<sub>j</sub>|² + |Q<sub>j</sub>|² = 2<sup>j+1</sup> on |z| = 1.</p><a data-evidence-open class="story-link" href="#buried-shapiro-rings">Read the circle argument</a></article>
+<article data-evidence-entry="wheel-210" class="card" style="--e:#284cad"><span class="tag">Euler product</span><h3 class="sub">Zeta’s 48 remainder lanes</h3><p>The 210-wheel products reconstruct ζ(s) with four factors removed, for Re(s) &gt; 1.</p><a data-evidence-open class="story-link" href="#buried-zeta-partitionings">Read the partitioning</a></article>
+<article data-evidence-entry="critical-tower" class="card" style="--e:#284cad"><span class="tag">Exact asymptotic</span><h3 class="sub">The critical tower’s slowdown</h3><p>For x<sub>n+1</sub> = exp(x<sub>n</sub>/e), starting at 1, the distance to e is asymptotic to 2e/n.</p><a data-evidence-open class="story-link" href="#buried-critical-tower">Read the endpoint proof</a></article>
+<article data-evidence-entry="zp-asymptotic" class="card" style="--e:#284cad"><span class="tag">Exact asymptotic</span><h3 class="sub">The smooth part of Z(p)</h3><p>Z(n) = 2 + π/n + π²/(2n²) + O(n<sup>−3</sup>). The leading terms give Prime Polarity a baseline.</p><a data-evidence-open class="story-link" href="#buried-zp-asymptotic">Read the expansion</a></article>
+<article data-evidence-entry="catalan-kernel" class="card" style="--e:#284cad"><span class="tag">Exact kernel</span><h3 class="sub">A quarter-turn in the Catalan integral</h3><p>∑<sub>n≥1</sub> χ<sub>4</sub>(n)e<sup>−nt</sup> = 1/(2 cosh t) for t &gt; 0. Its Mellin integral at s = 2 gives Catalan’s constant.</p><a data-evidence-open class="story-link" href="#buried-bubble-tube">Read the kernel story</a></article>
 </div></div></section>
 <section class="sec bg-cream" id="coordinate-primer" aria-labelledby="primer-title"><div class="wrap"><p class="kick">Exact elementary identities · a coordinate primer</p><h2 class="t" id="primer-title">The centre. The gap.<br><em>The factor count.</em></h2><p class="ev-intro">Three small identities give prime pairs a common language. They organize the question; they do not establish the existence of a prime pair at every centre or infinitely many twin primes.</p><ul class="ev-primer-list"><li><small>TREASURE 001 · MÖBIUS</small><b>μ(p(p + 2)) = +1</b><p>For a twin-prime pair, the product is squarefree with two prime factors. The next integer is a square.</p></li><li><small>TREASURE 002 · COORDINATES</small><b>pq = m² − d²</b><p>Set m = (p + q)/2 and d = (q − p)/2. The difference-of-squares identity relates the centre and half-gap.</p></li><li><small>TREASURE 004 · THE EXACT TEST</small><b>Ω(m² − 1) = 2</b><p>For m ≥ 3, this is equivalent to both neighbours being prime. It restates the twin-prime condition.</p></li></ul><div class="ev-primer-actions"><a href="#lemmas" data-evidence-open>Open the elementary arguments →</a><a href="#goldbach" data-evidence-open>Try the prime-pair coordinates →</a></div><p class="cap">Written proofs · Lean formalization pending.</p></div></section>
 </div>
@@ -275,7 +298,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <p class="kick">Boundaries &amp; next questions</p><h2 class="t">Keep the correction<br><em>beside the claim.</em></h2>
 <p class="lead">Start with a statement we can explain, a construction we can manipulate, or a question we can test. Each keeps its assumptions and evidence close by.</p>
 <div class="board">
-<article class="cell" style="--cc:#236b67"><span class="ck">Exact counterexample</span><h3>A filter that catches too much.</h3><p>At m = 34, the neighbour product is 1155 = 3 × 5 × 7 × 11. Its Möbius value is +1, although neither neighbour is prime.</p><p>Below 200,000, that pattern catches 2,160 twin centres and 30,215 non-twin centres. The failed converse makes the need for Ω = 2 concrete.</p><a class="go" href="#disappointment-islands">Inspect the counterexample and finite counts →</a></article>
+<article class="cell" style="--cc:#284cad"><span class="ck">Exact counterexample</span><h3>A filter that catches too much.</h3><p>At m = 34, the neighbour product is 1155 = 3 × 5 × 7 × 11. Its Möbius value is +1, although neither neighbour is prime.</p><p>Below 200,000, that pattern catches 2,160 twin centres and 30,215 non-twin centres. The failed converse makes the need for Ω = 2 concrete.</p><a class="go" href="#disappointment-islands">Inspect the counterexample and finite counts →</a></article>
 <article class="cell" style="--cc:#c95a00"><span class="ck">Finite experiments</span><h3>Move something. Notice something.</h3>
 <p>Change a tower’s base, follow a prime pair, or revisit an orbit. The exhibits give a question visible structure; their definitions and finite ranges tell us what we have actually learned.</p>
 <a class="go" href="#goldbach">Explore prime-pair geometry →</a><a class="go" href="#towers">Explore alternating towers →</a></article>
@@ -370,15 +393,15 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <div class="rm-pair">
 <div class="card" style="--e:#D6BA73"><div class="head"><span class="repo">Goldbach · reflection</span></div>
 <div class="eqline" style="--el:#D6BA73">G(N) = Σ a(n)·a(N − n) = [z<sup>N</sup>] P<sub>N</sub>(z)²</div>
-<p>Ordered prime pairs with p + q = N. Required: G(N) &gt; 0 for every even N ≥ 4.</p><span class="tag" style="align-self:flex-start;--e:#3f7a00">Exact identity</span></div>
+<p>Ordered prime pairs with p + q = N. Required: G(N) &gt; 0 for every even N ≥ 4.</p><span class="tag" style="align-self:flex-start;--e:#284cad">Exact identity</span></div>
 <div class="card" style="--e:#6FB6C3"><div class="head"><span class="repo">Twin primes · translation</span></div>
 <div class="eqline" style="--el:#6FB6C3">T(X) = Σ a(n)·a(n + 2) = [z²] P<sub>X+2</sub>(z)·P<sub>X</sub>(1/z)</div>
-<p>Primes n ≤ X with n + 2 prime. Required: T(X) grows without bound.</p><span class="tag" style="align-self:flex-start;--e:#3f7a00">Exact identity</span></div>
+<p>Primes n ≤ X with n + 2 prime. Required: T(X) grows without bound.</p><span class="tag" style="align-self:flex-start;--e:#284cad">Exact identity</span></div>
 </div>
 <p class="cap">In the coordinates of treasure 002, reflection fixes the centre m and translation fixes the half-gap d = 1.</p>
 <ol class="rm-steps">
-<li><span class="n" style="--rc:#3f7a00">Lean milestone<small>exact · to formalize</small></span><div><p><b>The prime-polynomial identities.</b> State and check the two coefficient identities above. They are finite, algebraic and tractable in Lean.</p></div></li>
-<li><span class="n" style="--rc:#3f7a00">Lean milestone<small>exact · to formalize</small></span><div><p><b>The inversion expansion.</b> Möbius inversion turns prime-power detection into signed divisor sums:</p><div class="eqline" style="--el:#557CDB">Λ(n) = Σ<sub>d | n</sub> μ(d)·log(n/d)</div><p>Substituted into R(N) = Σ Λ(n)·Λ(N − n), it gives two coupled Möbius sums with constraints d | n and e | N − n. R(N) also counts prime powers, so a proof has to remove that contribution.</p></div></li>
+<li><span class="n" style="--rc:#284cad">Lean milestone<small>exact · to formalize</small></span><div><p><b>The prime-polynomial identities.</b> State and check the two coefficient identities above. They are finite, algebraic and tractable in Lean.</p></div></li>
+<li><span class="n" style="--rc:#284cad">Lean milestone<small>exact · to formalize</small></span><div><p><b>The inversion expansion.</b> Möbius inversion turns prime-power detection into signed divisor sums:</p><div class="eqline" style="--el:#557CDB">Λ(n) = Σ<sub>d | n</sub> μ(d)·log(n/d)</div><p>Substituted into R(N) = Σ Λ(n)·Λ(N − n), it gives two coupled Möbius sums with constraints d | n and e | N − n. R(N) also counts prime powers, so a proof has to remove that contribution.</p></div></li>
 <li><span class="n" style="--rc:#c95a00">Research milestone<small>open</small></span><div><p><b>The missing correlation bound.</b> The target is a main term that beats the error:</p><div class="eqline" style="--el:#c95a00">G(N) = A(N) + E(N), &nbsp; A(N) &gt; |E(N)|</div><p>for all sufficiently large even N, followed by finite verification below the threshold. Our Mertens work studies cancellation in a single sum of μ(n); Goldbach needs cancellation after coupling two arithmetic positions. Control of the single sum does not supply the coupled one, and sieve methods meet the parity obstruction here.</p></div></li>
 <li><span class="n" style="--rc:#6b52d0">Our tools<small>proposal</small></span><div><p><b>Where our constructions could earn a role.</b> Sign-flipping towers: propose a model for the signed cancellation error, then prove the model bounds the arithmetic error. Collatz flights: methods for separating approximate balance from exact admissibility. Brun and repunits: comparison sequences and weighting experiments. A tower or attractor becomes useful when it yields the uniform error bound in step 03; matching a limiting constant does not.</p></div></li>
 <li><span class="n" style="--rc:#697994">Definitions<small>to recover</small></span><div><p><b>Two names without a pinned definition.</b> Our “Bernoulli limit” and “trivial inversion theorem” are not yet written down exactly. Neither is identified with a standard theorem, and neither is used above, until its definition is recovered.</p></div></li>
@@ -768,17 +791,17 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </div>
 <p class="kick" style="--acc:#0c9a89">The repository shelves</p><div class="tr-repo-filter"><label for="tr-repo-family">Browse by subject</label><select id="tr-repo-family"><option value="">All mathematical subjects</option><option value="arithmetic">Prime pairs &amp; arithmetic</option><option value="dynamics">Dynamics &amp; geometry</option><option value="spectral">Complex &amp; spectral</option></select><span class="tr-repo-count" id="tr-repo-count" role="status"></span></div>
 <div class="grid" style="margin-top:14px">
-<a class="card" data-repo-family="dynamics" style="--e:#0c9a89" href="https://github.com/EncapsulatorP/collatz_kesten-goldie"><div style="display:flex;align-items:center"><span class="repo">collatz_kesten-goldie</span><span class="vis" style="color:#3f7a00;border-color:#9ac44a">Public</span></div><div class="pair">Collatz × Kesten–Goldie</div><p>Collatz-derived multipliers drive an affine experiment; compare moment roots with measured tail fits.</p><span class="tag" style="align-self:flex-start">Empirical</span></a>
-<a class="card" data-repo-family="arithmetic dynamics" style="--e:#0c9a89" href="https://github.com/EncapsulatorP/goldbach_busy_collatz"><div style="display:flex;align-items:center"><span class="repo">goldbach_busy_collatz</span><span class="vis" style="color:#3f7a00;border-color:#9ac44a">Public</span></div><div class="pair">Goldbach × Collatz structure</div><p>Cross-examines Goldbach partition counts against Collatz orbit structure.</p><span class="tag" style="align-self:flex-start">Empirical</span></a>
+<a class="card" data-repo-family="dynamics" style="--e:#0c9a89" href="https://github.com/EncapsulatorP/collatz_kesten-goldie"><div style="display:flex;align-items:center"><span class="repo">collatz_kesten-goldie</span><span class="vis" style="color:#284cad;border-color:#9ac44a">Public</span></div><div class="pair">Collatz × Kesten–Goldie</div><p>Collatz-derived multipliers drive an affine experiment; compare moment roots with measured tail fits.</p><span class="tag" style="align-self:flex-start">Empirical</span></a>
+<a class="card" data-repo-family="arithmetic dynamics" style="--e:#0c9a89" href="https://github.com/EncapsulatorP/goldbach_busy_collatz"><div style="display:flex;align-items:center"><span class="repo">goldbach_busy_collatz</span><span class="vis" style="color:#284cad;border-color:#9ac44a">Public</span></div><div class="pair">Goldbach × Collatz structure</div><p>Cross-examines Goldbach partition counts against Collatz orbit structure.</p><span class="tag" style="align-self:flex-start">Empirical</span></a>
 <div class="card" data-repo-family="arithmetic" style="--e:#0c9a89"><div style="display:flex;align-items:center"><span class="repo">mertens_counterexample</span><span class="vis">Private</span></div><div class="pair">Mertens · the Riemann edge</div><p>Pushes the M(n)/√n boundary toward where Mertens is known to fail.</p><span class="tag" style="align-self:flex-start">Empirical</span></div>
 <div class="card" data-repo-family="spectral" style="--e:#c95a00"><div style="display:flex;align-items:center"><span class="repo">Catalan_ruelle_mayer</span><span class="vis">Private</span></div><div class="pair">Catalan × Ruelle–Mayer</div><p>Transfer-operator machinery on Catalan-type exponent gaps.</p><span class="tag" style="align-self:flex-start">Theoretical</span></div>
 <div class="card" data-repo-family="spectral" style="--e:#c95a00"><div style="display:flex;align-items:center"><span class="repo">zeta_branching</span><span class="vis">Public</span></div><div class="pair">Ruelle/Riemann zeta · branch structure</div><p>A branch-controlled zeta transform feeding a finite geometric sum. The atlas gives its explicit kernel, branch conventions and next experiments.</p><span class="tag" style="align-self:flex-start">Theoretical</span></div>
-<a class="card" data-repo-family="dynamics" style="--e:#c95a00" href="https://github.com/EncapsulatorP/collatz_rupert_delay_embedding"><div class="head"><span class="repo">collatz_rupert_delay_embedding</span><span class="vis" style="color:#3f7a00;border-color:#9ac44a">Public</span><span class="vis wip">Early</span></div><div class="pair">Collatz × Rupert · delay hulls</div><p>Takes the τ=1 embedding of the Collatz tab down to a single orbit — n = 27, 111 updates / 112 visited vertices, peak 9,232 — and asks what counts the structure on the two rails. The two affine rails are exact. The extension to compact hulls and Rupert-admissible geometry is an exploratory question; the atlas separates the written unbounded-hull lemma from the proposed geometric implications.</p><span class="tag" style="align-self:flex-start">Conjectural</span></a>
+<a class="card" data-repo-family="dynamics" style="--e:#c95a00" href="https://github.com/EncapsulatorP/collatz_rupert_delay_embedding"><div class="head"><span class="repo">collatz_rupert_delay_embedding</span><span class="vis" style="color:#284cad;border-color:#9ac44a">Public</span><span class="vis wip">Early</span></div><div class="pair">Collatz × Rupert · delay hulls</div><p>Takes the τ=1 embedding of the Collatz tab down to a single orbit — n = 27, 111 updates / 112 visited vertices, peak 9,232 — and asks what counts the structure on the two rails. The two affine rails are exact. The extension to compact hulls and Rupert-admissible geometry is an exploratory question; the atlas separates the written unbounded-hull lemma from the proposed geometric implications.</p><span class="tag" style="align-self:flex-start">Conjectural</span></a>
 <div class="card" data-repo-family="arithmetic" style="--e:#697994"><div class="head"><span class="repo">erdos_schnitzel</span><span class="vis">Private</span><span class="vis wip">New</span></div><div class="pair">Erdős line · not yet described</div><p>An early private research direction. A problem statement and supporting materials will accompany its public introduction.</p><span class="tag pend" style="align-self:flex-start">Unlabeled</span></div>
 </div>
 <section class="tr-panel" id="physics-explorations" aria-labelledby="tr-physics-title"><span class="tr-eyebrow">Physics explorations / scope of the shelf</span><h3 id="tr-physics-title">Keep the model.<br>Name its physical question.</h3><p>The C3.2Z source includes a coarse-graining lattice and a photonic-inspired ray toy. They are exploratory models. Block averaging alone does not derive physical constants, decoherence or thermodynamic entropy; those interpretations need additional definitions and evidence.</p><p>The Catalan disk and logistic mirror identities stay in mathematics. Future physics material can sit here with its equations, assumptions, units and reproducible comparisons. Repository locations and private research remain as they are.</p><div class="tr-hero-links"><a href="https://github.com/EncapsulatorP/c3._2z">C3.2Z source &amp; original credits ↗</a><a href="#cabinet">Explore its mathematical connections ↗</a></div></section><p class="kick" style="margin-top:44px">reading the research</p><h2 class="t">Stages of <em>understanding</em></h2>
 <ul class="labels">
-<li><span class="n" style="color:#3f7a00">Theorem</span><p>A mathematical statement supported by a proof, with assumptions and a source.</p></li>
+<li><span class="n" style="color:#284cad">Theorem</span><p>A mathematical statement supported by a proof, with assumptions and a source.</p></li>
 <li><span class="n" style="color:#0c9a89">Empirical</span><p>A reported computational observation within a stated range and method.</p></li>
 <li><span class="n" style="color:#c95a00">Conjectural</span><p>A proposed statement guiding further mathematical investigation.</p></li>
 <li><span class="n" style="color:#6b52d0">Tooling</span><p>Software and methods supporting exploration and evaluation.</p></li>
@@ -834,7 +857,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a href="#buried-prime-polarity">Recharted routes</a>
 </nav>
 <div class="grid story-grid">
-<article class="card story" id="buried-omega-feedback" data-topics="towers" style="--e:#3f7a00">
+<article class="card story" id="buried-omega-feedback" data-topics="towers" style="--e:#284cad">
 <span class="tag">Exact fixed point</span>
 <h3 class="sub">The Ω series · from feedback to waves</h3>
 <p>Close a Beer–Lambert attenuation rule into the scalar loop x ↦ exp(−gx). At unit gain the steady value is the Omega constant. Change the gain to see where the fixed point loses linear stability.</p>
@@ -858,7 +881,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="https://github.com/EncapsulatorP/c3._2z">Omega Stability and Prime Forms</a>
 </article>
 
-<article class="card story" id="buried-collatz-riemann-reversal" data-topics="collatz zeta corrections" style="--e:#3f7a00">
+<article class="card story" id="buried-collatz-riemann-reversal" data-topics="collatz zeta corrections" style="--e:#284cad">
 <span class="tag">Exact correction</span>
 <h3 class="sub">The Collatz–Riemann hint that turned around</h3>
 <p>One version of the hint put Riemann zeros upstream of Collatz collapse. Another tried to detect a failed orbit through a singularity. A stopping-time weight exposed a flaw in that second step. If τ(n) is infinite, exp(−βτ(n)) can be set to zero, and skipping that term supplies no automatic singularity.</p>
@@ -899,7 +922,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="atlas/assets/logistic-proof.apng">Watch the illustrated proof · APNG</a>
 <a class="story-link" href="#atlas?entry=logistic-quarter-turn">Open the logistic quarter-turn entry</a>
 </article>
-<article class="card story" id="buried-critical-tower" data-topics="towers" style="--e:#3f7a00">
+<article class="card story" id="buried-critical-tower" data-topics="towers" style="--e:#284cad">
 <span class="tag">Exact asymptotic</span>
 <h3 class="sub">The tower that slows down</h3>
 <p>What happens at the upper endpoint of the real power tower? For <var>x</var><sub>0</sub> = 1 and <var>x</var><sub>n+1</sub> = exp(<var>x</var><sub>n</sub>/e), the fixed point e has slope one. The distance to e decays like 2e/n.</p>
@@ -919,7 +942,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="https://github.com/EncapsulatorP/Some_playful_boundary_paths_and_brun_twin_prime_sign_flipping_towers">Boundary-residue experiments</a>
 </article>
 
-<article class="card story" id="buried-phase-integral" data-topics="zeta" style="--e:#3f7a00">
+<article class="card story" id="buried-phase-integral" data-topics="zeta" style="--e:#284cad">
 <span class="tag">Exact identity</span>
 <h3 class="sub">A phase inside the Sophomore’s dream</h3>
 <p>A June note put a complex phase in the exponent of an integral. For |a| = 1, ∫<sub>0</sub><sup>1</sup> u<sup>−au</sup> du = ∑<sub>n≥1</sub> a<sup>n−1</sup>/n<sup>n</sup>. The familiar value ≈ 1.291286 appears anywhere the phase returns to 1.</p>
@@ -928,7 +951,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </details>
 </article>
 
-<article class="card story" id="buried-euler-wheel" data-topics="zeta primes" style="--e:#3f7a00">
+<article class="card story" id="buried-euler-wheel" data-topics="zeta primes" style="--e:#284cad">
 <span class="tag">Exact factorization</span>
 <h3 class="sub">The 210-wheel as an Euler product</h3>
 <p>Remove the primes 2, 3, 5 and 7, and the remaining prime factors split among the 48 coprime remainders modulo 210. For Re(s) &gt; 1, multiplying the 48 class products reconstructs ζ(s) with those four Euler factors removed.</p>
@@ -938,7 +961,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="https://github.com/EncapsulatorP/Periodic-Table-of-Primes-210">PTP-210 prime generator</a>
 </article>
 
-<article class="card story" id="buried-goldbach-spine" data-topics="primes" style="--e:#3f7a00">
+<article class="card story" id="buried-goldbach-spine" data-topics="primes" style="--e:#284cad">
 <span class="tag">Exact obstruction</span>
 <h3 class="sub">Where the twin-prime line meets the spine</h3>
 <p>On Goldbach’s power-of-two spine, set the centre m = 2<sup>k</sup>. For k ≥ 1 and both primes above 3, the half-gap d must be 3 modulo 6. The line d = 1 meets the spine only at the pair 3 and 5.</p>
@@ -948,7 +971,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="#goldbach">Prime-pair geometry</a>
 </article>
 
-<article class="card story" id="buried-collatz-repunit" data-topics="collatz sequences" style="--e:#3f7a00">
+<article class="card story" id="buried-collatz-repunit" data-topics="collatz sequences" style="--e:#284cad">
 <span class="tag">Exact finite flight</span>
 <h3 class="sub">The first k steps of a binary repunit</h3>
 <p>Start the shortcut Collatz map at 2<sup>k</sup> − 1. After j steps the value is 3<sup>j</sup>2<sup>k−j</sup> − 1 for 0 ≤ j ≤ k. The orbit hands a string of ones to a power of three minus one.</p>
@@ -958,7 +981,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="#embed">Collatz experiments</a>
 </article>
 
-<article class="card story" id="buried-catalan-quarter-turn" data-topics="zeta" style="--e:#3f7a00">
+<article class="card story" id="buried-catalan-quarter-turn" data-topics="zeta" style="--e:#284cad">
 <span class="tag">Exact identities</span>
 <h3 class="sub">Catalan at the centre of a disk</h3>
 <p>A quarter-turn yields χ<sub>4</sub>(n) = sin(πn/2). Weighted by n<sup>−2</sup>, these signs sum to Catalan’s constant. The coordinate w = (s − 2)/(s + 1) puts s = 2 at the centre and Re(s) = ½ on the rim.</p>
@@ -967,7 +990,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 </details>
 </article>
 
-<article class="card story" id="buried-omega-order" data-topics="towers spectral" style="--e:#3f7a00">
+<article class="card story" id="buried-omega-order" data-topics="towers spectral" style="--e:#284cad">
 <span class="tag">Exact local expansion</span>
 <h3 class="sub">The wave hiding in reversed order</h3>
 <p>Two prime layers T<sub>p</sub>(x) = Ωp<sup>Ω−x</sup> can agree at Ω and share a slope while retaining different curvatures. Their half-difference gives a signed second harmonic for a small sinusoidal drive.</p>
@@ -977,7 +1000,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="https://github.com/EncapsulatorP/c3._2z">Prime Forms and The Order of Waves</a>
 </article>
 
-<article class="card story" id="buried-light-digits" data-topics="towers sequences" style="--e:#3f7a00">
+<article class="card story" id="buried-light-digits" data-topics="towers sequences" style="--e:#284cad">
 <span class="tag">Exact encoding</span>
 <h3 class="sub">The third factor hiding in 299792458</h3>
 <p>Counting prime factors in each decimal digit of c in m/s gives 122121213. A cap of two gives 122121212. Both differ at a single digit because 8 = 2³.</p>
@@ -1015,8 +1038,8 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="https://github.com/EncapsulatorP/zeta_branching/blob/main/scripts/zeta_branching.py#L23-L61">Read the XO₂ kernel and branch control</a>
 </article>
 
-<article class="card story" id="buried-recaman" data-topics="sequences" style="--e:#236b67"><span class="tag">Exact finite construction · open long-term question</span><h3 class="sub">Recamán · around the gaps</h3><p>The sequence tries a subtraction, then uses addition if subtraction is negative or revisits a value. Gemini’s supplied visual study now has a working exhibit: observed delay triples, an illustrative Möbius ribbon, and exact number-line arcs.</p><p>The repository’s saved mechanism report follows 10,000,000 transitions and 103 selected catalogue targets. Of those targets, 23 were proposed as addition candidates but bypassed by legal subtraction; 80 were never proposed. None was selected in that finite run. This does not prove permanent omission.</p><details><summary>What survives a second horizon?</summary><p>Compare the same candidate integers below the first prefix maximum at N and 2N. Freeze predictive features at N, evaluate later segments and report the horizon. The earlier 20,000-step Grassmannian run had weak separation from shuffled labels; its window rank matched the null. A visual ribbon does not repair that statistical limitation.</p></details><a class="story-link" href="#recaman">Open Gemini’s Recamán exhibit →</a><a class="story-link" href="recaman/">Open the standalone view ↗</a><a class="story-link" href="https://github.com/EncapsulatorP/recaman/blob/056452f2be03dad5f7bca0f7024c8357f42d8c6b/outputs/hole_mechanism_report.md">Saved finite mechanism report ↗</a><a class="story-link" href="CONTENT_MAP.md">Earlier Grassmannian record</a></article>
-<article class="card story" id="buried-zeta-partitionings" data-topics="zeta" style="--e:#3f7a00">
+<article class="card story" id="buried-recaman" data-topics="sequences" style="--e:#284cad"><span class="tag">Exact finite construction · open long-term question</span><h3 class="sub">Recamán · around the gaps</h3><p>The sequence tries a subtraction, then uses addition if subtraction is negative or revisits a value. Gemini’s supplied visual study now has a working exhibit: observed delay triples, an illustrative Möbius ribbon, and exact number-line arcs.</p><p>The repository’s saved mechanism report follows 10,000,000 transitions and 103 selected catalogue targets. Of those targets, 23 were proposed as addition candidates but bypassed by legal subtraction; 80 were never proposed. None was selected in that finite run. This does not prove permanent omission.</p><details><summary>What survives a second horizon?</summary><p>Compare the same candidate integers below the first prefix maximum at N and 2N. Freeze predictive features at N, evaluate later segments and report the horizon. The earlier 20,000-step Grassmannian run had weak separation from shuffled labels; its window rank matched the null. A visual ribbon does not repair that statistical limitation.</p></details><a class="story-link" href="#recaman">Open Gemini’s Recamán exhibit →</a><a class="story-link" href="recaman/">Open the standalone view ↗</a><a class="story-link" href="https://github.com/EncapsulatorP/recaman/blob/056452f2be03dad5f7bca0f7024c8357f42d8c6b/outputs/hole_mechanism_report.md">Saved finite mechanism report ↗</a><a class="story-link" href="CONTENT_MAP.md">Earlier Grassmannian record</a></article>
+<article class="card story" id="buried-zeta-partitionings" data-topics="zeta" style="--e:#284cad">
 <span class="tag">Exact decomposition</span>
 <h3 class="sub">Zeta partitionings · separating the lanes</h3>
 <p>The 210-wheel story started with admissible remainders. In the region Re(s) &gt; 1, each prime belongs to one lane after removing 2, 3, 5 and 7, and each Euler factor comes along with it.</p>
@@ -1027,7 +1050,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="#atlas?entry=prime-sectors">Zetheon and the weighted sectors</a>
 </article>
 
-<article class="card story" id="buried-time-reversal" data-topics="collatz spectral" style="--e:#3f7a00">
+<article class="card story" id="buried-time-reversal" data-topics="collatz spectral" style="--e:#284cad">
 <span class="tag">Exact symmetry · conditional on the model</span>
 <h3 class="sub">Conjugate symmetry · the zero cloud in the mirror</h3>
 <p>The root scans compared positive and negative indices. For a branch on a conjugation-invariant domain with H(z̄) = H(z)̄, putting Q<sub>k</sub>(z) = H(z) − 2πik gives Q<sub>−k</sub>(z̄) = Q<sub>k</sub>(z)̄.</p>
@@ -1037,7 +1060,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="#atlas?entry=paired-cancellation">Conjugate-pair cancellation</a>
 </article>
 
-<article class="card story" id="buried-ramanujan-23" data-topics="recurrences" style="--e:#3f7a00">
+<article class="card story" id="buried-ramanujan-23" data-topics="recurrences" style="--e:#284cad">
 <span class="tag">Exact coefficient congruence</span>
 <h3 class="sub">Ramanujan · the coefficient ring modulo 23</h3>
 <p>Reduce the discriminant series Δ(q) = q∏<sub>n≥1</sub>(1 − q<sup>n</sup>)<sup>24</sup> coefficient by coefficient modulo 23. Its product becomes q∏<sub>n≥1</sub>(1 − q<sup>n</sup>)(1 − q<sup>23n</sup>).</p>
@@ -1048,7 +1071,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="https://gaetan.chenevier.perso.math.cnrs.fr/GT/wilton.pdf">Wilton on congruences for τ</a>
 </article>
 
-<article class="card story" id="buried-shapiro-rings" data-topics="recurrences spectral" style="--e:#3f7a00">
+<article class="card story" id="buried-shapiro-rings" data-topics="recurrences spectral" style="--e:#284cad">
 <span class="tag">Exact identity · root plots exploratory</span>
 <h3 class="sub">Shapiro rings · a perfectly balanced circle</h3>
 <p>In the recovered story, “Shapiro rings” meant the Rudin–Shapiro pair. Starting with P<sub>0</sub> = Q<sub>0</sub> = 1, set P<sub>j+1</sub> = P<sub>j</sub> + z<sup>2ʲ</sup>Q<sub>j</sub> and Q<sub>j+1</sub> = P<sub>j</sub> − z<sup>2ʲ</sup>Q<sub>j</sub>. On |z| = 1 their squared magnitudes sum to 2<sup>j+1</sup>.</p>
@@ -1058,7 +1081,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="https://annals.math.princeton.edu/wp-content/uploads/annals-v192-n3-p06-s.pdf">Rudin–Shapiro definitions and circle identity</a>
 </article>
 
-<article class="card story" id="buried-golden-plastic" data-topics="recurrences" style="--e:#3f7a00">
+<article class="card story" id="buried-golden-plastic" data-topics="recurrences" style="--e:#284cad">
 <span class="tag">Exact generating functions</span>
 <h3 class="sub">Golden and plastic · two recurrences, one seed</h3>
 <p>The golden ratio solves x² = x + 1; the plastic constant solves x³ = x + 1. Reversing these polynomials gives the Fibonacci and Padovan generating denominators, 1 − z − z² and 1 − z² − z³.</p>
@@ -1078,7 +1101,7 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a class="story-link" href="#buried-golden-plastic">Return to the plastic denominator</a>
 </article>
 
-<article class="card story" id="buried-zp-asymptotic" data-topics="zeta primes" style="--e:#3f7a00">
+<article class="card story" id="buried-zp-asymptotic" data-topics="zeta primes" style="--e:#284cad">
 <span class="tag">Exact asymptotic</span>
 <h3 class="sub">Z(p) · subtract the smooth part first</h3>
 <p>Extend Z to n &gt; 2 through Z(n) = 1 + exp(πζ(n−1)/n). Then Z(n) = 2 + π/n + π²/(2n²) + O(n<sup>−3</sup>). The dominant change is a trend in the input n.</p>
@@ -1696,6 +1719,25 @@ window.addEventListener('hashchange',show);show();
 <script src="assets/interactive-space.js?v=restore-20261121-r2"></script>
 <script src="assets/pirates-plan-data.js?v=plan-20261121-r3"></script>
 <script src="assets/pirates-plan.js?v=plan-20261121-r3"></script>
+
+<script>
+(function(){
+  var host=document.getElementById('home-site-groups'),input=document.getElementById('home-site-query'),count=document.getElementById('home-site-count');
+  if(!host||!input)return;
+  var labels={atlas:'Atlas',interactive:'Interactive',treasure:'Treasure Hunt',evidence:'Evidence',other:'Other published routes'},rows=[];
+  function group(path){if(path.indexOf('/atlas/')===0)return'atlas';if(path.indexOf('/interactive/')===0||path==='/recaman/')return'interactive';if(path.indexOf('/treasure-hunt/')===0)return'treasure';if(path.indexOf('/evidence/')===0)return'evidence';return'other'}
+  function title(path){if(path==='/')return'Home';var s=path.replace(/^\//,'').replace(/\/$/,'').split('/').pop().replace(/\.html$/,'');return s.replace(/[-_]/g,' ').replace(/\b\w/g,function(x){return x.toUpperCase()})}
+  function render(){
+    var q=input.value.trim().toLowerCase(),filtered=rows.filter(function(r){return !q||(r.title+' '+r.path).toLowerCase().indexOf(q)>=0});
+    count.textContent=filtered.length+' published route'+(filtered.length===1?'':'s')+' visible';
+    var order=['atlas','interactive','treasure','evidence','other'];
+    host.innerHTML=order.map(function(g){var items=filtered.filter(function(r){return r.group===g}).slice(0,q?30:8);if(!items.length)return'';return '<section class="home-site-group"><h3>'+labels[g]+'</h3>'+items.map(function(r){return '<a href="'+r.url+'">'+r.title+'</a>'}).join('')+(filtered.filter(function(r){return r.group===g}).length>items.length?'<a href="map/">More in Map →</a>':'')+'</section>'}).join('')||'<div class="home-site-group"><h3>No matching route.</h3></div>';
+  }
+  fetch('sitemap.xml',{cache:'no-store'}).then(function(r){return r.text()}).then(function(t){var xml=new DOMParser().parseFromString(t,'application/xml');rows=[].slice.call(xml.querySelectorAll('url > loc')).map(function(n){var u=new URL(n.textContent.trim());return{url:u.href,path:u.pathname,title:title(u.pathname),group:group(u.pathname)}}).filter(function(r){return r.path!='/'});render()}).catch(function(){host.innerHTML='<div class="home-site-group"><h3>Map unavailable</h3><a href="map/">Open the Map tab →</a></div>'});
+  input.addEventListener('input',render);
+}());
+</script>
+
 </body></html>
 
 

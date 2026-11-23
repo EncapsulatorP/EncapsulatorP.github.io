@@ -13,7 +13,9 @@
   --atlas-muted-on-deep: #c6d1e8;
   --atlas-accent-on-deep: #c5bbff;
   --atlas-violet: #8054b5;
-  --atlas-amber: #91601e;
+  --atlas-amber: #6f5aa8;
+  --atlas-blue-soft: #e9edf9;
+  --atlas-blue-hover: #dfe6f7;
   --atlas-stripe: linear-gradient(90deg, #284cad, #1480c5 38%, #8054b5 75%, #d8995c);
 }
 
@@ -32,7 +34,7 @@
     padding: 4px;
     border: 1px solid var(--atlas-line);
     border-radius: 12px;
-    background: var(--atlas-tint);
+    background: var(--atlas-blue-soft);
   }
 
   :is(.nav .in > .tr-nav-primary, .site-nav > nav, .reader-header > nav,
