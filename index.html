@@ -224,21 +224,6 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 
 
 
-/* Main-page published-content browser: mirrors sitemap.xml without duplicating site ownership. */
-.home-site-map{padding:52px 0 58px;border-top:1px solid var(--atlas-line);border-bottom:1px solid var(--atlas-line);background:var(--atlas-paper)}
-.home-site-map-head{display:flex;gap:28px;align-items:end;justify-content:space-between;margin-bottom:20px}
-.home-site-map h2{font-family:"Fraunces",serif;font-size:clamp(2rem,5vw,3.2rem);line-height:1.05;margin:5px 0 8px}
-.home-site-map p{max-width:66ch;color:var(--atlas-muted);margin:0}
-.home-site-search{min-width:min(330px,100%);font:500 11px "IBM Plex Mono",monospace;color:var(--atlas-muted);text-transform:uppercase;letter-spacing:.08em}
-.home-site-search input{display:block;width:100%;margin-top:6px;border:1px solid var(--atlas-line);border-radius:9px;background:var(--atlas-surface);padding:11px 12px;color:var(--atlas-ink);font:14px "IBM Plex Sans",sans-serif}
-.home-site-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px}
-.home-site-group{border:1px solid var(--atlas-line);background:var(--atlas-surface);border-radius:11px;padding:16px;min-width:0}
-.home-site-group h3{font:600 14px "IBM Plex Sans",sans-serif;margin:0 0 8px;color:var(--atlas-ink)}
-.home-site-group a{display:block;padding:7px 0;border-top:1px solid var(--atlas-line);color:var(--atlas-accent);font-size:12px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere}
-.home-site-group a:hover{text-decoration:underline}.home-site-count{font:500 11px "IBM Plex Mono",monospace;color:var(--atlas-muted);margin-top:12px}
-@media(max-width:850px){.home-site-map-head{align-items:start;flex-direction:column}.home-site-groups{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.home-site-groups{grid-template-columns:1fr}}
-
 </style>
 <link rel="stylesheet" href="assets/research-atlas.css">
 <link rel="stylesheet" href="assets/treasure-rooms.css">
@@ -254,6 +239,8 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <link rel="stylesheet" href="assets/treasure-entry.css?v=orbital-20261123">
 <link rel="stylesheet" href="assets/atlas-theme.css?v=paper-tabs">
 <script src="assets/pq-wordmark.js?v=map-layout-1" defer></script>
+<link rel="stylesheet" href="assets/site-directory.css">
+<script src="assets/site-directory.js" defer></script>
 </head>
 <body>
 
@@ -267,11 +254,18 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <p>An open research project exploring prime pairs, Collatz dynamics, recursive towers and mathematical intelligence. Ideas grow through exact arguments, computational experiments and connections across fields.</p>
 <p><a class="site-home-search" href="#site-map">Search the site ↓</a></p>
 </div></header>
-<section class="home-site-map" id="site-map" aria-labelledby="site-map-title"><div class="wrap">
-<div class="home-site-map-head"><div><h2 id="site-map-title">Find a proof or experiment.</h2></div><label class="home-site-search">Search published content<input id="home-site-query" type="search" placeholder="Goldbach, tower, Collatz, logistic…" autocomplete="off"></label></div>
-<div id="home-site-groups" class="home-site-groups" aria-live="polite"><div class="home-site-group"><h3>Loading published routes…</h3></div></div>
-<div class="home-site-count" id="home-site-count"></div>
-</div></section>
+<section class="site-directory" id="site-map" aria-labelledby="site-map-title" data-site-directory>
+  <div class="site-directory-shell">
+    <div class="site-directory-head">
+      <h2 id="site-map-title">Find a proof or experiment.</h2>
+      <label class="site-directory-search">Search published content<input type="search" placeholder="Goldbach, towers, Collatz, logistic…" autocomplete="off"></label>
+    </div>
+    <div class="site-directory-filters" role="group" aria-label="Filter published content" data-directory-filters></div>
+    <p class="site-directory-count" role="status" data-directory-count></p>
+    <div class="site-directory-groups" data-directory-groups></div>
+    <noscript><p><a href="sitemap.xml">Open the XML sitemap</a></p></noscript>
+  </div>
+</section>
 
 <div class="site-home-feature"><div class="wrap">
 <a class="atlas-home-launch" href="#atlas"><img src="assets/omega-stability-thread-cover.png" width="1200" height="630" alt="Omega Stability: a luminous path through power-tower layers"><span><small>THE RESEARCH ATLAS</small><strong>Follow a spark.<br>Open a whole thread.</strong><span>46 entries · working exhibits · proofs and next questions</span><b>Enter the atlas →</b></span></a>
@@ -1723,23 +1717,6 @@ window.addEventListener('hashchange',show);show();
 <script src="assets/pirates-plan-data.js?v=plan-20261121-r3"></script>
 <script src="assets/pirates-plan.js?v=plan-20261121-r3"></script>
 
-<script>
-(function(){
-  var host=document.getElementById('home-site-groups'),input=document.getElementById('home-site-query'),count=document.getElementById('home-site-count');
-  if(!host||!input)return;
-  var labels={atlas:'Atlas',interactive:'Interactive',treasure:'Treasure Hunt',evidence:'Evidence',other:'Other published routes'},rows=[];
-  function group(path){if(path.indexOf('/atlas/')===0)return'atlas';if(path.indexOf('/interactive/')===0||path==='/recaman/')return'interactive';if(path.indexOf('/treasure-hunt/')===0)return'treasure';if(path.indexOf('/evidence/')===0)return'evidence';return'other'}
-  function title(path){if(path==='/')return'Home';var s=path.replace(/^\//,'').replace(/\/$/,'').split('/').pop().replace(/\.html$/,'');return s.replace(/[-_]/g,' ').replace(/\b\w/g,function(x){return x.toUpperCase()})}
-  function render(){
-    var q=input.value.trim().toLowerCase(),filtered=rows.filter(function(r){return !q||(r.title+' '+r.path).toLowerCase().indexOf(q)>=0});
-    count.textContent=filtered.length+' published route'+(filtered.length===1?'':'s')+' visible';
-    var order=['atlas','interactive','treasure','evidence','other'];
-    host.innerHTML=order.map(function(g){var items=filtered.filter(function(r){return r.group===g}).slice(0,q?30:8);if(!items.length)return'';return '<section class="home-site-group"><h3>'+labels[g]+'</h3>'+items.map(function(r){return '<a href="'+r.url+'">'+r.title+'</a>'}).join('')+(filtered.filter(function(r){return r.group===g}).length>items.length?'<a href="map/">More in Map →</a>':'')+'</section>'}).join('')||'<div class="home-site-group"><h3>No matching route.</h3></div>';
-  }
-  fetch('sitemap.xml',{cache:'no-store'}).then(function(r){return r.text()}).then(function(t){var xml=new DOMParser().parseFromString(t,'application/xml');rows=[].slice.call(xml.querySelectorAll('url > loc')).map(function(n){var u=new URL(n.textContent.trim());return{url:u.href,path:u.pathname,title:title(u.pathname),group:group(u.pathname)}}).filter(function(r){return r.path!='/'});render()}).catch(function(){host.innerHTML='<div class="home-site-group"><h3>Map unavailable</h3><a href="map/">Open the Map tab →</a></div>'});
-  input.addEventListener('input',render);
-}());
-</script>
 
 </body></html>
 

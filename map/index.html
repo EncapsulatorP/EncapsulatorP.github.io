@@ -12,17 +12,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--paper:var(--atlas-paper);--card:var(--atlas-surface);--ink:var(--atlas-ink);--soft:var(--atlas-muted);--muted:var(--atlas-muted);--blk:var(--atlas-deep);--blue:#557CDB;--violet:#948AC8;--cyan:#6FB6C3;--lime:#9BC8D8;--prism:linear-gradient(90deg,#A39BD5,#948AC8,#6FB6C3,#9BC8D8);--mw:1120px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--atlas-paper);color:var(--atlas-ink);font:16px/1.6 "IBM Plex Sans",system-ui,sans-serif}
-a{color:inherit}.top{position:sticky;top:0;z-index:4;background:var(--atlas-surface);border-bottom:1px solid var(--atlas-line)}.topin{max-width:var(--mw);margin:auto;padding:11px 22px;display:flex;gap:20px;align-items:center}.brand{margin-right:auto;display:flex;align-items:center;gap:9px;color:var(--atlas-ink);text-decoration:none;font:600 12px "IBM Plex Mono",monospace;letter-spacing:.1em}.brand img{width:26px;height:26px}.top a:not(.brand){color:var(--atlas-accent);text-decoration:none;font:500 12px "IBM Plex Mono",monospace}.top a:hover{color:#bfe9ef}
-.hero{background:linear-gradient(125deg,var(--atlas-deep),#272846);color:white;padding:60px 24px 46px}.heroin{max-width:var(--mw);margin:auto}.k{font:500 11px "IBM Plex Mono",monospace;letter-spacing:.2em;text-transform:uppercase;color:#9bc8d8}.hero h1{font:700 clamp(3rem,8vw,6rem)/.92 "Fraunces",serif;letter-spacing:-.035em;margin:14px 0 22px}.hero p{max-width:65ch;color:#dce6f6;font-size:1.08rem}
-.wrap{max-width:var(--mw);margin:auto;padding:38px 24px 72px}.controls{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:end;margin-bottom:26px}.controls label{font:500 11px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.controls input{display:block;width:100%;margin-top:7px;border:1px solid #c9d5e8;border-radius:10px;background:#fff;color:var(--ink);padding:13px 14px;font:15px "IBM Plex Sans",sans-serif}.count{font:500 12px "IBM Plex Mono",monospace;color:var(--muted);padding-bottom:13px}.filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px}.filters button{border:1px solid #becce1;border-radius:999px;background:#fff;padding:7px 11px;color:#33435e;font:500 12px "IBM Plex Mono",monospace;cursor:pointer}.filters button[aria-pressed=true]{background:var(--blk);color:white;border-color:var(--blk)}
-.group{margin:42px 0}.group h2{font:700 2rem "Fraunces",serif;margin:0 0 14px}.group>p{color:var(--soft);max-width:70ch}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:var(--card);border:1px solid #d6dfec;border-radius:14px;padding:17px;text-decoration:none;min-height:124px;display:flex;flex-direction:column;transition:transform .14s,box-shadow .14s}.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(35,59,95,.10)}.card small{font:500 10px "IBM Plex Mono",monospace;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}.card strong{font-size:15px;line-height:1.35;margin:8px 0 4px}.card span{margin-top:auto;color:#62728a;font-size:12px;overflow-wrap:anywhere}.empty{border:1px dashed #b9c7da;border-radius:12px;padding:22px;color:var(--soft)}footer{border-top:1px solid #d6dfec;padding:26px 24px;color:var(--muted);font-size:13px}footer div{max-width:var(--mw);margin:auto}
-@media(max-width:850px){.grid{grid-template-columns:1fr 1fr}.controls{grid-template-columns:1fr}.count{padding:0}.topin{gap:13px}.top a:not(.brand){font-size:11px}}
-@media(max-width:560px){.grid{grid-template-columns:1fr}.hero{padding-top:58px}.topin{overflow-x:auto}.brand{min-width:max-content}}
-.map-room-links{display:flex;flex-wrap:wrap;gap:9px 16px;margin-top:22px}.map-room-links a{color:var(--atlas-on-deep);text-underline-offset:4px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--atlas-paper);color:var(--atlas-ink);font:16px/1.6 system-ui,sans-serif}
+a{color:var(--atlas-accent)}
+.top{position:sticky;top:0;z-index:4;background:var(--atlas-surface);border-bottom:1px solid var(--atlas-line)}
+.topin{max-width:1160px;margin:auto;padding:10px clamp(16px,3vw,28px);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{margin-right:auto;display:flex;align-items:center;gap:8px;color:var(--atlas-ink);text-decoration:none;font-weight:650}
+.brand img{width:27px;height:27px}
+.top a:not(.brand){text-decoration:none}
+.hero{padding-block:clamp(30px,5vw,56px) clamp(24px,3.2vw,36px);border-bottom:1px solid var(--atlas-line)}
+.heroin{box-sizing:border-box;max-width:1160px;margin-inline:auto;padding-inline:clamp(16px,3vw,28px)}
+.hero h1{margin:0 0 12px;font:600 clamp(36px,5.5vw,62px)/1.06 Georgia,serif;letter-spacing:-.035em}
+.hero p{margin:0;color:var(--atlas-muted)}
+.map-room-links{display:flex;flex-wrap:wrap;gap:9px 16px;margin-top:22px}
 </style>
 <script src="../assets/pq-wordmark.js?v=map-layout-1" defer></script>
+<link rel="stylesheet" href="../assets/site-directory.css">
+<script src="../assets/site-directory.js" defer></script>
 </head>
 <body>
 <nav class="top" aria-label="Primary"><div class="topin"><a class="brand" href="../"><img src="../assets/logo-encapsulatorp-96.png" alt=""><span>ENCAPSULATORP</span></a><div class="atlas-top-tabs"><a href="../">Home</a><a href="./" aria-current="page">Map</a><a href="../atlas/README.html">Atlas</a><a href="../treasure-hunt/">Treasure Hunt</a><a href="../evidence/">Evidence</a></div></div></nav>
@@ -31,54 +37,17 @@ a{color:inherit}.top{position:sticky;top:0;z-index:4;background:var(--atlas-surf
 <p>Find an experiment, proof, or research thread by name or topic.</p>
 <nav class="map-room-links" aria-label="Research rooms"><a href="../#pirate-chest">Pirate Chest</a><a href="../#goldbach">Goldbach</a><a href="../#cabinet">Curious Cabinet</a><a href="../#collatz">Collatz</a><a href="../#towers">Towers</a><a href="../#lemmas">Lemmas</a><a href="../#paper-table">Paper workbench</a><a href="../#map-credits">Map Credits</a><a href="../#atlas-credits">Co-authors</a><a href="../#pirates-plan">Plan</a><a href="../#validatron">Validatron</a></nav>
 </div></header>
-<main class="wrap">
-<div class="controls"><label>Find anything<input id="q" type="search" placeholder="Goldbach, towers, Collatz, proof, logistic…" autocomplete="off"></label><div class="count" id="count">Loading sitemap…</div></div>
-<div class="filters" id="filters" aria-label="Map filters"></div>
-<div id="map"><div class="empty">Reading sitemap.xml…</div></div>
+<main class="site-directory" id="site-map" aria-labelledby="site-map-title" data-site-directory>
+  <div class="site-directory-shell">
+    <div class="site-directory-head">
+      <h2 id="site-map-title">Find a proof or experiment.</h2>
+      <label class="site-directory-search">Search published content<input type="search" placeholder="Goldbach, towers, Collatz, logistic…" autocomplete="off"></label>
+    </div>
+    <div class="site-directory-filters" role="group" aria-label="Filter published content" data-directory-filters></div>
+    <p class="site-directory-count" role="status" data-directory-count></p>
+    <div class="site-directory-groups" data-directory-groups></div>
+    <noscript><p><a href="../sitemap.xml">Open the XML sitemap</a></p></noscript>
+  </div>
 </main>
-<footer><div>Source of truth: <code>/sitemap.xml</code>. New published routes appear here automatically when the sitemap changes.</div></footer>
-<script>
-(() => {
-  const labels={
-    home:["Main","Front door and core overview."],
-    atlas:["Atlas","Research entries, proof notes and long-form reading."],
-    interactive:["Interactive","Explorers, visual experiments and movable mathematics."],
-    treasure:["Treasure Hunt","Game-like proof and discovery routes."],
-    evidence:["Evidence","Compact evidence and validation views."],
-    other:["Other","Published routes that do not fit the main families."]
-  };
-  const order=["home","atlas","interactive","treasure","evidence","other"];
-  const classify=p=>p==="/"?"home":p.startsWith("/atlas/")?"atlas":p.startsWith("/interactive/")||p==="/recaman/"?"interactive":p.startsWith("/treasure-hunt/")?"treasure":p.startsWith("/evidence/")?"evidence":"other";
-  const humanize=p=>{
-    if(p==="/") return "EncapsulatorP home";
-    const raw=p.replace(/^\//,"").replace(/\/$/,"").split("/").pop().replace(/\.html$/,"");
-    return raw.replace(/[-_]/g," ").replace(/\b\w/g,c=>c.toUpperCase());
-  };
-  const q=document.getElementById("q"),map=document.getElementById("map"),count=document.getElementById("count"),filters=document.getElementById("filters");
-  let rows=[],active="all";
-  const render=()=>{
-    const term=q.value.trim().toLowerCase();
-    const visible=rows.filter(r=>(active==="all"||r.group===active)&&(!term||(r.title+" "+r.path).toLowerCase().includes(term)));
-    count.textContent=visible.length+" route"+(visible.length===1?"":"s");
-    if(!visible.length){map.innerHTML='<div class="empty">No matching published route.</div>';return}
-    map.innerHTML=order.map(g=>{
-      const items=visible.filter(r=>r.group===g); if(!items.length)return "";
-      return '<section class="group"><h2>'+labels[g][0]+'</h2><p>'+labels[g][1]+'</p><div class="grid">'+items.map(r=>'<a class="card" href="'+r.url+'"><small>'+g+'</small><strong>'+r.title+'</strong><span>'+r.path+'</span></a>').join("")+'</div></section>';
-    }).join("");
-  };
-  const button=(key,name)=>{
-    const b=document.createElement("button");b.type="button";b.textContent=name;b.dataset.group=key;b.setAttribute("aria-pressed",key===active);
-    b.onclick=()=>{active=key;[...filters.children].forEach(x=>x.setAttribute("aria-pressed",x===b));render()};filters.appendChild(b);
-  };
-  fetch("../sitemap.xml",{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error("sitemap unavailable");return r.text()}).then(text=>{
-    const xml=new DOMParser().parseFromString(text,"application/xml");
-    rows=[...xml.querySelectorAll("url > loc")].map(n=>{
-      const url=n.textContent.trim(),u=new URL(url),path=u.pathname.replace(/^\/EncapsulatorP\.github\.io/,"")||"/";
-      return {url,title:humanize(path),path,group:classify(path)};
-    });
-    button("all","All");order.forEach(g=>{if(rows.some(r=>r.group===g))button(g,labels[g][0])});q.addEventListener("input",render);render();
-  }).catch(err=>{count.textContent="Map unavailable";map.innerHTML='<div class="empty">Could not read sitemap.xml. The site itself is still available from the links above.</div>';console.warn(err)});
-})();
-</script>
 </body>
 </html>

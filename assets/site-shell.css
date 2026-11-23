@@ -152,7 +152,6 @@
   }
   .site-shell-ready .page :is(.wrap, .pp-wrap, .gb-wrap),
   .site-shell-ready .map-heading .heroin,
-  .site-shell-ready .map-heading + .wrap,
   .site-shell-ready .site-nav[hidden] + main .shell,
   .site-shell-ready :is(.ev-index, .ix-exhibit, .rx-route-main) {
     box-sizing: border-box;
@@ -161,7 +160,6 @@
     padding-inline: var(--site-gutter);
     margin-inline: auto;
   }
-  .site-shell-ready .map-heading + .wrap { padding-block-start: 28px; }
   .site-shell-ready .reader-shell {
     box-sizing: border-box;
     width: 100%;
@@ -227,7 +225,6 @@
   }
   .site-shell-ready .page[data-page="home"] .hero .bars,
   .site-shell-ready .pp-hero::before { display: none; }
-  .site-shell-ready .home-site-map { padding-block: 28px var(--site-lead-bottom); border-block-start: 0; }
   .site-shell-ready .site-home-feature { padding-block: var(--site-lead-bottom) 0; }
   .site-shell-ready .site-home-feature .atlas-home-launch { margin: 0; }
   .site-shell-ready .site-home-feature .atlas-home-launch img { object-fit: cover; }

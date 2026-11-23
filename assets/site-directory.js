@@ -1,0 +1,129 @@
+/* The Home and Map directories share the public sitemap and the same view. */
+(function () {
+  'use strict';
+  const siteRoot = new URL('../', document.currentScript.src);
+  const directory = document.querySelector('[data-site-directory]');
+  if (!directory) return;
+  const query = directory.querySelector('input[type="search"]');
+  const filters = directory.querySelector('[data-directory-filters]');
+  const groups = directory.querySelector('[data-directory-groups]');
+  const count = directory.querySelector('[data-directory-count]');
+
+  const labels = new Map([
+    ['atlas', 'Atlas'], ['interactive', 'Interactive'], ['treasure', 'Treasure Hunt'],
+    ['evidence', 'Evidence'], ['main', 'Site pages']
+  ]);
+  const titles = new Map([
+    ['/', 'Home'], ['/map/', 'Site map'], ['/atlas/README.html', 'Complete atlas reader'],
+    ['/interactive/', 'Interactive exhibits'], ['/recaman/', 'Recamán explorer'],
+    ['/treasure-hunt/', 'Proof Board'], ['/treasure-hunt/quest/', 'Flying cubic quest'],
+    ['/evidence/', 'Evidence index']
+  ]);
+  const previewSize = 8;
+  let active = 'all';
+  let routes = [];
+
+  function normalize(value) {
+    return value.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  }
+
+  function routeFromSitemap(location) {
+    const canonical = new URL(location.textContent.trim());
+    const path = canonical.pathname;
+    const [, prefix] = path.split('/');
+    const group = prefix === 'treasure-hunt' ? 'treasure' :
+      prefix === 'recaman' ? 'interactive' :
+      labels.has(prefix) ? prefix : 'main';
+    const slug = path.split('/').filter(Boolean).pop() || '';
+    const title = titles.get(path) || slug.replace(/\.html$/, '').replace(/[-_]/g, ' ')
+      .replace(/\b[a-z]/g, letter => letter.toUpperCase());
+    const href = new URL(path.replace(/^\/+/, ''), siteRoot).href;
+    const search = normalize(title + ' ' + path + ' ' + labels.get(group));
+    return { group, title, href, search };
+  }
+
+  function list(rows) {
+    const items = document.createElement('ul');
+    for (const route of rows) {
+      const item = document.createElement('li');
+      const link = document.createElement('a');
+      link.href = route.href;
+      link.textContent = route.title;
+      item.append(link);
+      items.append(item);
+    }
+    return items;
+  }
+
+  function render() {
+    const terms = normalize(query.value).trim().split(/\s+/).filter(Boolean);
+    const visible = routes.filter(route => (active === 'all' || route.group === active) &&
+      terms.every(term => route.search.includes(term)));
+    count.textContent = visible.length + ' published ' + (visible.length === 1 ? 'route' : 'routes');
+    groups.replaceChildren();
+    if (!visible.length) {
+      groups.textContent = 'No matching route.';
+      return;
+    }
+    for (const [key, label] of labels) {
+      const matches = visible.filter(route => route.group === key);
+      if (!matches.length) continue;
+
+      const card = document.createElement('section');
+      card.className = 'site-directory-group';
+      const heading = document.createElement('h3');
+      heading.textContent = label;
+      const limit = active === 'all' && !terms.length ? previewSize : matches.length;
+      card.append(heading, list(matches.slice(0, limit)));
+
+      if (matches.length > limit) {
+        const more = document.createElement('details');
+        const summary = document.createElement('summary');
+        summary.textContent = 'Show ' + (matches.length - limit) + ' more';
+        more.append(summary, list(matches.slice(limit)));
+        card.append(more);
+      }
+      groups.append(card);
+    }
+  }
+
+  function addFilter(id, label) {
+    const control = document.createElement('button');
+    control.type = 'button';
+    control.dataset.group = id;
+    control.textContent = label;
+    control.setAttribute('aria-pressed', String(id === active));
+    filters.append(control);
+  }
+
+  fetch(new URL('sitemap.xml', siteRoot))
+    .then(response => {
+      if (!response.ok) throw new Error('Sitemap could not be loaded');
+      return response.text();
+    })
+    .then(text => {
+      const xml = new DOMParser().parseFromString(text, 'application/xml');
+      routes = Array.from(xml.querySelectorAll('url > loc'), routeFromSitemap);
+      if (!routes.length) throw new Error('Sitemap has no routes');
+      addFilter('all', 'All');
+      for (const [key, label] of labels) {
+        if (routes.some(route => route.group === key)) addFilter(key, label);
+      }
+      filters.addEventListener('click', event => {
+        const selected = event.target.closest('button[data-group]');
+        if (!selected) return;
+        active = selected.dataset.group;
+        for (const control of filters.children) control.setAttribute('aria-pressed', String(control === selected));
+        render();
+      });
+      query.addEventListener('input', render);
+      render();
+    })
+    .catch(() => {
+      count.textContent = 'Search is unavailable.';
+      const link = document.createElement('a');
+      link.href = new URL('sitemap.xml', siteRoot);
+      link.textContent = 'Open the XML sitemap';
+      groups.replaceChildren(link);
+    });
+})();
