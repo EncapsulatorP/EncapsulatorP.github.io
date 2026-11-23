@@ -273,7 +273,7 @@
     for(const el of candidates){
       if(candidates.some(other=>other!==el&&other.contains(el)))continue;
       const p=translated.get(el),status=p?.status||el.dataset?.evidence||el.dataset?.sourceStatus||el.closest?.('[data-evidence]')?.dataset.evidence||el.closest?.('[data-source-status]')?.dataset.sourceStatus||spec.status;
-      if(isPlainStatus(status))continue; // proved, exact, numerical and asymptotic text stays plain; traps are folded by the reader
+      // Zyntalic reveal restored for every status (exact and proved included), as before 1cb7a4e. Traps are still folded by the reader.
       const target=el.textContent||semanticText(el),seed=seedFor(entryId+'|'+(p?.id||records.length));
       const isImage=el.matches('img,svg,math')||Boolean(el.querySelector('img,svg,math'));
       const authentic=Boolean(p?.zyntalic)&&!isImage,source=authentic?String(p.zyntalic):visualMask(target||semanticText(el)||'visual equation mask',seed);
