@@ -31,7 +31,7 @@ h1 span{color:#ffe14d}
 #pick{position:fixed;inset:0;display:grid;place-items:center;background:rgba(6,30,24,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:5;padding:4vw}
 .pk{max-width:980px;text-align:center}.pk h2{font-size:clamp(26px,4.6vw,64px);letter-spacing:-.04em;margin:.3em 0 .2em}.pk p{font-size:clamp(11px,1.15vw,17px);line-height:1.5;color:#eaf6e2;max-width:52ch;margin:0 auto}
 .two{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.4vw;margin-top:3.5vh}
-#pc{text-align:left;padding:2.4vh 1.8vw;border-radius:1.4vw;color:#06281d;text-decoration:none;border:1.5px solid rgba(255,255,255,.6);background:linear-gradient(135deg,#fffbe0,#eaf6e2);transition:transform .2s}#pc:hover{transform:translateY(-.6vh) scale(1.02)}
+#pc{text-align:left;padding:2.4vh 1.8vw;border-radius:1.4vw;color:#06281d;text-decoration:none;border:1.5px solid rgba(255,255,255,.6);background:linear-gradient(135deg,#ebecf4,#eaf6e2);transition:transform .2s}#pc:hover{transform:translateY(-.6vh) scale(1.02)}
 @media(max-width:720px){.two{grid-template-columns:1fr}}
 .two button{text-align:left;padding:2.4vh 1.8vw;border-radius:1.4vw;cursor:pointer;color:#fff;font-family:inherit;border:1.5px solid rgba(255,255,255,.6);transition:transform .2s}
 .two button:hover{transform:translateY(-.6vh) scale(1.02)}
@@ -52,7 +52,7 @@ h1 span{color:#ffc782}
 .fx{background:linear-gradient(110deg,#c7d9ff,#d2b7ff 55%,#ffd19e);color:var(--atlas-ink)}
 .ctl button,.ctl>a{background:#142139d9!important}
 </style>
-<script src="../../assets/pq-wordmark.js?v=blue-violet-1" defer></script>
+<script src="../../assets/pq-wordmark.js?v=violet-unify-1" defer></script>
 </head>
 <body>
 <canvas id="gl"></canvas>
@@ -73,10 +73,10 @@ function start(MODE){
 if(!window.THREE){$('err').style.display='grid';return;}
 if(stopCurrent)stopCurrent();let alive=true,frameN=0,hN=.03,nN=0;
 const T=THREE,TEEN=MODE==='teen';document.body.classList.toggle('teen',TEEN);$('hud').style.display=TEEN?'block':'none';
-const TH=TEEN?{exp:.9,fog:0x8f7a80,fogN:30,fogF:170,sky:[[0,'#221f33'],[.28,'#4d4260'],[.43,'#9a7f8c'],[.5,'#e0b890'],[.56,'#b98a6a'],[.66,'#6b4a44'],[1,'#2b2226']],sunC:0xffd2a0,sunI:1.5,hemi:[0x8f86b8,0x5a4038,.5],rimC:0x35e0ff,rimI:1.3,
+const TH=TEEN?{exp:.9,fog:0x8f7a80,fogN:30,fogF:170,sky:[[0,'#221f33'],[.28,'#4d4260'],[.43,'#9a7f8c'],[.5,'#ad90e0'],[.56,'#876ab9'],[.66,'#52446b'],[1,'#2b2226']],sunC:0xffd2a0,sunI:1.5,hemi:[0x8f86b8,0x5a4038,.5],rimC:0x35e0ff,rimI:1.3,
   or:0x3b4048,orL:0x59606c,orD:0x22252b,gold:0x9aa0aa,jade:0x1a1d23,dark:0x0b0d12,coral:0x8e9299,acc:0x39e6ff,accS:'#5ff0ff',lbg:'rgba(14,16,24,.86)',sea:0x2a2830,rock:0x3a3036,grass:0x4b4753,trunk:0x5a4a48,leaf:0x4f5a60,
   shell:0x3a6f86,wire:0x8fe9ff,rib:0x9ff6ff,ribE:0x18c8e8,hopf:[[.7,0x7ff3ff],[1.25,0xd8dde6],[1.9,0xb48cff]],hue0:.52,hueD:-.2,glowS:'rgba(80,230,255,.75)',thrS:'rgba(80,220,255,.7)',flame:0x7fefff,fly:0xe8c9a0,cape:1.25,ness:0x4a6a78}
- :{exp:.78,fog:0xff8f3c,fogN:55,fogF:230,sky:[[0,'#0c6a55'],[.28,'#2f9a58'],[.42,'#b9d93f'],[.49,'#ffcf40'],[.55,'#ff9a30'],[.64,'#f0602e'],[1,'#8f2a2a']],sunC:0xffe2a8,sunI:1.7,hemi:[0xc9e24a,0xd8502a,.42],rimC:0xff5a6e,rimI:.9,
+ :{exp:.78,fog:0xff8f3c,fogN:55,fogF:230,sky:[[0,'#0c6a55'],[.28,'#2f9a58'],[.42,'#b9d93f'],[.49,'#ffcf40'],[.55,'#ff9a30'],[.64,'#7c4ad4'],[1,'#8f2a2a']],sunC:0xffe2a8,sunI:1.7,hemi:[0xc9e24a,0xd8502a,.42],rimC:0xff5a6e,rimI:.9,
   or:0xff5a0a,orL:0xff8a24,orD:0xb8360a,gold:0xffc233,jade:0x0f5132,dark:0x06281d,coral:0xff4d6d,acc:0xeaff6b,accS:'#eaff6b',lbg:'rgba(6,40,29,.82)',sea:0x0a6a52,rock:0xb8431f,grass:0x8fdc3a,trunk:0xc7702a,leaf:0x2fb85a,
   shell:0x13a577,wire:0xffc233,rib:0xeaff6b,ribE:0x9bd92a,hopf:[[.7,0xeaff6b],[1.25,0xffc233],[1.9,0xff6a4d]],hue0:.2,hueD:.14,glowS:'rgba(214,255,90,.6)',thrS:'rgba(255,190,60,.6)',flame:0xffe14d,fly:0xeaff6b,cape:.34,ness:0x1fae6e};
 // ---------- mathematics (all exact formulas, evaluated live) ----------
@@ -109,8 +109,8 @@ function glow(color,size){const c=cv(128,128,(g)=>{const G=g.createRadialGradien
  const s=new T.Sprite(new T.SpriteMaterial({map:new T.CanvasTexture(c),blending:T.AdditiveBlending,depthWrite:false,transparent:true,fog:false}));s.scale.set(size,size,1);return s;}
 // sun: a citrus slice
 const sunG=new T.Group();sunG.position.set(52,0,-120);scene.add(sunG);
-const slice=new T.Mesh(new T.CircleGeometry(26,64),new T.MeshBasicMaterial({fog:false,map:tex(cv(512,512,(g)=>{g.translate(256,256);let G=g.createLinearGradient(0,-256,0,256);G.addColorStop(0,'#ffc21a');G.addColorStop(1,'#ff5a1f');g.fillStyle=G;g.beginPath();g.arc(0,0,254,0,7);g.fill();g.fillStyle='#fffbe0';g.beginPath();g.arc(0,0,232,0,7);g.fill();
- for(let k=0;k<10;k++){const a0=2*Math.PI*k/10+.06,a1=2*Math.PI*(k+1)/10-.06;G=g.createRadialGradient(0,0,10,0,0,220);G.addColorStop(0,'#fffbd0');G.addColorStop(.7,'#ffe14d');G.addColorStop(1,'#ffa02e');g.fillStyle=G;g.beginPath();g.moveTo(26*Math.cos(a0),26*Math.sin(a0));g.arc(0,0,218,a0,a1);g.lineTo(26*Math.cos(a1),26*Math.sin(a1));g.closePath();g.fill();}}))}));sunG.add(slice);
+const slice=new T.Mesh(new T.CircleGeometry(26,64),new T.MeshBasicMaterial({fog:false,map:tex(cv(512,512,(g)=>{g.translate(256,256);let G=g.createLinearGradient(0,-256,0,256);G.addColorStop(0,'#ffc21a');G.addColorStop(1,'#ff5a1f');g.fillStyle=G;g.beginPath();g.arc(0,0,254,0,7);g.fill();g.fillStyle='#ebecf4';g.beginPath();g.arc(0,0,232,0,7);g.fill();
+ for(let k=0;k<10;k++){const a0=2*Math.PI*k/10+.06,a1=2*Math.PI*(k+1)/10-.06;G=g.createRadialGradient(0,0,10,0,0,220);G.addColorStop(0,'#e0e2ef');G.addColorStop(.7,'#ffe14d');G.addColorStop(1,'#ffa02e');g.fillStyle=G;g.beginPath();g.moveTo(26*Math.cos(a0),26*Math.sin(a0));g.arc(0,0,218,a0,a1);g.lineTo(26*Math.cos(a1),26*Math.sin(a1));g.closePath();g.fill();}}))}));sunG.add(slice);
 const sg=glow('rgba(255,200,70,.55)',95);sg.material.opacity=.6;sg.position.z=-2;sunG.add(sg);
 // sea
 const sea=new T.Mesh(new T.CircleGeometry(380,64),M(TH.sea,{roughness:TEEN?.4:.28,metalness:TEEN?.7:.3,clearcoat:.6}));sea.rotation.x=-Math.PI/2;sea.position.y=-9;sea.receiveShadow=true;scene.add(sea);

@@ -60,13 +60,19 @@ export async function mountSiteShell(assets) {
 
   const stylesheet = document.createElement('link');
   stylesheet.rel = 'stylesheet';
-  stylesheet.href = new URL('site-shell.css?v=blue-violet-1', assets);
+  stylesheet.href = new URL('site-shell.css?v=violet-unify-1', assets);
   const styled = new Promise(resolve => {
     stylesheet.addEventListener('load', () => resolve(true), { once: true });
     stylesheet.addEventListener('error', () => resolve(false), { once: true });
   });
   document.head.append(stylesheet);
   if (!await styled) return null;
+
+  // Unified theme layer: always last in <head>, so it wins over per-page palettes.
+  const unify = document.createElement('link');
+  unify.rel = 'stylesheet';
+  unify.href = new URL('site-unify.css?v=violet-1', assets);
+  document.head.append(unify);
 
   const root = new URL('../', assets);
   const header = document.createElement('header');
@@ -125,6 +131,36 @@ export async function mountSiteShell(assets) {
     element.hidden = true;
   }
   document.body.prepend(header);
+
+  // One footer on every page: the same routes, the sitemap and the code home.
+  if (!document.querySelector('.site-unified-footer')) {
+    const footer = document.createElement('footer');
+    footer.className = 'site-unified-footer';
+    const wrap = document.createElement('div');
+    const brandLine = document.createElement('a');
+    brandLine.className = 'suf-brand';
+    brandLine.href = root.href;
+    brandLine.innerHTML = 'Encapsulator<span>P</span>';
+    const links = document.createElement('nav');
+    links.setAttribute('aria-label', 'Footer');
+    for (const [label, path] of [
+      ['Home', './'], ['Atlas', '#atlas'], ['Reading edition', 'atlas/README.html'],
+      ['Interactive', 'interactive/'], ['Treasure Hunt', 'treasure-hunt/'],
+      ['Evidence', 'evidence/'], ['Site map', 'map/']
+    ]) {
+      const a = document.createElement('a');
+      a.href = new URL(path, root).href;
+      a.textContent = label;
+      links.append(a);
+    }
+    const gh = document.createElement('a');
+    gh.href = 'https://github.com/EncapsulatorP';
+    gh.textContent = 'GitHub ↗';
+    links.append(gh);
+    wrap.append(brandLine, links);
+    footer.append(wrap);
+    document.body.append(footer);
+  }
 
   const main = document.querySelector('main, #pick');
   if (main && !document.querySelector('.tr-skip, .reader-skip, a.skip')) {

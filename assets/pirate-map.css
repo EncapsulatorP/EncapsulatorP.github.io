@@ -2,9 +2,9 @@
   --pm-ink: #0b1728;
   --pm-night: #101f32;
   --pm-line: #2b435c;
-  --pm-text: #f4e8cb;
+  --pm-text: #daccf3;
   --pm-muted: #b9c8d7;
-  --pm-gold: #f2ca71;
+  --pm-gold: #a581e2;
   --pm-trap: #ff9ca7;
   --pm-wild: #8be1db;
 }
@@ -33,7 +33,7 @@
   text-transform: uppercase;
   color: var(--pm-gold);
 }
-.pm-header h2 { margin: 3px 0 0; color: #fff2d5; font: 700 clamp(1.8rem, 5vw, 3.3rem)/1.02 Fraunces, Georgia, serif; }
+.pm-header h2 { margin: 3px 0 0; color: #e4e5f0; font: 700 clamp(1.8rem, 5vw, 3.3rem)/1.02 Fraunces, Georgia, serif; }
 .pm-button, .pm-launch {
   border: 1px solid #748ba7;
   border-radius: 10px;
@@ -45,7 +45,7 @@
 }
 .pm-button:hover, .pm-button:focus-visible, .pm-launch:hover, .pm-launch:focus-visible { background: #294362; color: #fff; }
 .pm-launch { border-color: var(--pm-gold); color: #172233; background: var(--pm-gold); padding: 10px 13px; }
-.pm-launch:hover, .pm-launch:focus-visible { border-color: #fff2d5; background: #ffe3a6; color: #172233; }
+.pm-launch:hover, .pm-launch:focus-visible { border-color: #e4e5f0; background: #ffe3a6; color: #172233; }
 .pm-close span[aria-hidden] { margin-left: 5px; font-size: 15px; }
 .pm-layout { display: grid; grid-template-columns: minmax(0, 1.42fr) minmax(0, 1fr); gap: 20px; align-items: start; }
 [data-map-state="landing"] .pm-layout { display: block; max-width: 790px; margin-inline: auto; }
@@ -78,7 +78,7 @@
   border-radius: 23%;
   outline: 2px solid var(--pm-gold);
   outline-offset: 4px;
-  box-shadow: 0 15px 48px #060b18, 0 0 46px #e2b65056;
+  box-shadow: 0 15px 48px #060b18, 0 0 46px #885ad856;
   animation: pm-land .95s cubic-bezier(.18,.72,.27,1) both;
 }
 .pm-unfold {
@@ -131,7 +131,7 @@
 .pm-journal { display: grid; gap: 10px; min-width: 0; }
 .pm-find { min-width: 0; padding: 16px; background: var(--pm-night); border: 1px solid var(--pm-line); border-inline-start: 4px solid var(--pm-kind); border-radius: 12px; }
 .pm-find .pm-kicker { color: var(--pm-kind); }
-.pm-find h3 { margin: 5px 0; color: #fff2d5; font: 700 clamp(1.18rem, 2.4vw, 1.63rem)/1.18 Fraunces, Georgia, serif; }
+.pm-find h3 { margin: 5px 0; color: #e4e5f0; font: 700 clamp(1.18rem, 2.4vw, 1.63rem)/1.18 Fraunces, Georgia, serif; }
 .pm-find p { margin: 6px 0; color: var(--pm-muted); font-size: .9rem; line-height: 1.47; }
 .pm-find details { margin: 9px 0; font-size: .9rem; }
 .pm-find summary { width: fit-content; cursor: pointer; color: var(--pm-kind); }

@@ -7,7 +7,7 @@
   // The instrument also runs inside Atlas embeds. Add site chrome only when it owns the page.
   if (window.top === window && document.querySelector('.ix-exhibit')) {
     const wordmark = document.createElement('script');
-    wordmark.src = new URL('../assets/pq-wordmark.js?v=blue-violet-1', document.currentScript.src);
+    wordmark.src = new URL('../assets/pq-wordmark.js?v=violet-unify-1', document.currentScript.src);
     wordmark.setAttribute('data-pq-standalone', '');
     document.head.append(wordmark);
   }
@@ -15,9 +15,9 @@
   if (!root) return;
   if (window.parent !== window) document.documentElement.classList.add('ix-embedded');
   const colors = {
-    '--surface': '#163b43', '--primary': '#a9e1cc', '--positive': '#e0be73',
-    '--negative': '#ed9a88', '--chart-1': '#a9e1cc', '--chart-2': '#89c5df',
-    '--chart-3': '#d6c782', '--chart-4': '#dfad8e', '--chart-5': '#c5b4df',
+    '--surface': '#163b43', '--primary': '#a9e1cc', '--positive': '#9b74df',
+    '--negative': '#af90e5', '--chart-1': '#a9e1cc', '--chart-2': '#89c5df',
+    '--chart-3': '#9082d6', '--chart-4': '#ac8edf', '--chart-5': '#c5b4df',
     '--on-surface-default': '#edf4eb', '--on-surface-variant': '#bfd2c8',
     '--outline': '#8daea3', '--outline-variant': '#496d67',
     '--stroke-emphasis': '#74958a', '--surface-container-high': '#72978d',
@@ -150,7 +150,7 @@
     ctx.drawTag = function (text, x, y) {
       text = text.replace(/\$/g, ''); this.save(); this.font = '600 13px system-ui';
       const w = this.measureText(text).width + 20;
-      this.fillStyle = '#fffdf8'; this.fillRect(x - w / 2, y - 15, w, 26);
+      this.fillStyle = '#fafbfd'; this.fillRect(x - w / 2, y - 15, w, 26);
       this.fillStyle = '#182b35'; this.textAlign = 'center'; this.fillText(text, x, y + 3); this.restore();
     };
     loops.push(frame => {

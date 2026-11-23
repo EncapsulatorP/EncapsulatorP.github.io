@@ -478,7 +478,7 @@ def render_document(source: Path, output: Path, *, status: str | None = None,
     css = relative_url(ROOT / "assets/atlas-reader.css", output)
     reveal_css = relative_url(ROOT / "assets/atlas-reveal.css", output)
     gif_js = relative_url(ROOT / "assets/atlas-gif.js", output)
-    reveal_js = relative_url(ROOT / "assets/atlas-reveal.js", output)
+    reveal_js = relative_url(ROOT / "assets/atlas-reveal.js?v=unify-1", output)
     wordmark_js = relative_url(ROOT / "assets/pq-wordmark.js", output)
     collection = relative_url(ROOT / "atlas/README.html", output)
     board = relative_url(ROOT / "treasure-hunt/index.html", output)
@@ -490,7 +490,7 @@ def render_document(source: Path, output: Path, *, status: str | None = None,
 <title>{html.escape(data['title'])} · EncapsulatorP</title>
 {REVEAL_PREPAINT}
 <link rel="stylesheet" href="{esc(css)}"><link rel="stylesheet" href="{esc(reveal_css)}">
-<script src="{esc(wordmark_js)}?v=blue-violet-1" defer></script>
+<script src="{esc(wordmark_js)}?v=violet-unify-1" defer></script>
 </head><body class="atlas-reader" data-reader-status="{esc(status)}">
 <a class="reader-skip" data-reader-chrome href="#reader-content">Skip to the complete text</a>
 <div class="reader-shell"><header class="reader-header">

@@ -4484,7 +4484,7 @@
     {
       "id": "proposed",
       "label": "Proposed work",
-      "color": "#e9c36a",
+      "color": "#9b74df",
       "pattern": "long dash",
       "meaning": "An interface, reuse or experiment is specified, but its successful implementation or result is still pending."
     },

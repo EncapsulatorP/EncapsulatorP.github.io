@@ -275,7 +275,7 @@
     outline([[293,260],[429,321],[429,411],[293,348]], '#0a1729', '#afc1cf', 1.6);
     outline([[548,329],[701,259],[701,344],[548,415]], '#14283a', '#88a5bd', 1.6);
     ctx.setLineDash([9, 8]);
-    strokePath([[360,335],[618,339],[833,250]], '#e4c885a6', 2);
+    strokePath([[360,335],[618,339],[833,250]], '#a886e3a6', 2);
     ctx.setLineDash([]);
     strokePath([[488,309],[520,68]], '#b1c7d17a', 1.25);
     strokePath([[235,369],[488,485],[779,352]], '#7190a97a', 1.25);
@@ -367,13 +367,13 @@
       strokePath([[x, 0], [x, 600]], '#a0b3c015', 1);
       for (let y = 20; y < 600; y += 54) {
         const twinkle = (x * 31 + y * 19) % 11;
-        ctx.fillStyle = twinkle < 2 ? '#e9d2a58a' : '#b2c9d453';
+        ctx.fillStyle = twinkle < 2 ? '#bea5e98a' : '#b2c9d453';
         ctx.fillRect(x, y, twinkle < 2 ? 3 : 1.4, twinkle < 2 ? 3 : 1.4);
       }
     }
     for (let y = 20; y < 600; y += 54) strokePath([[0, y], [1000, y]], '#a0b3c014');
-    outline([[74,45],[90,83],[74,121],[58,83]], '#c3a46570', '#e2c284ad');
-    outline([[39,83],[74,72],[109,83],[74,93]], '#17334d', '#e2c284ad');
+    outline([[74,45],[90,83],[74,121],[58,83]], '#8765c370', '#a684e2ad');
+    outline([[39,83],[74,72],[109,83],[74,93]], '#17334d', '#a684e2ad');
     const chart = charts[mapIndex];
     const open = dialog.dataset.mapState === 'explored';
     chart.draw(open);
@@ -384,7 +384,7 @@
       const [px, py] = chart.points[index - 1];
       ctx.quadraticCurveTo((px + x) / 2, (py + y) / 2 + (index % 2 ? -25 : 25), x, y);
     });
-    ctx.setLineDash([8, 10]); ctx.lineWidth = 2.8; ctx.strokeStyle = '#f1d799b6'; ctx.stroke(); ctx.setLineDash([]);
+    ctx.setLineDash([8, 10]); ctx.lineWidth = 2.8; ctx.strokeStyle = '#bba1e9b6'; ctx.stroke(); ctx.setLineDash([]);
     const [x, y] = chart.points[chosen];
     ctx.beginPath(); ctx.arc(x, y, 31, 0, Math.PI * 2);
     ctx.lineWidth = 1.2; ctx.strokeStyle = '#fff0c18c'; ctx.stroke();

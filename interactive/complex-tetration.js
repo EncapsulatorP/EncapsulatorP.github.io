@@ -110,7 +110,7 @@
     { label: 'Principal orbit', color: '#ffffff' },
     { label: 'Ensemble: survived N', color: '#4589ff' },
     { label: 'Ensemble: escaped', color: '#ff6b6b' },
-    { label: 'Sheet choice k = ±1', color: '#e0be73' }
+    { label: 'Sheet choice k = ±1', color: '#9b74df' }
   ]);
   function seedInput(labelText, id, min, max) {
     const label = document.createElement('label'); label.textContent = labelText;
@@ -209,7 +209,7 @@
         ctx.fillText(marker.label, x + 6, y + marker.dy);
       });
       paths.forEach(path => pathLine(path, path.state === 'survived' ? 'rgba(69,137,255,.48)' : 'rgba(255,107,107,.38)', 1.15));
-      ctx.fillStyle = 'rgba(224,190,115,.8)';
+      ctx.fillStyle = 'rgba(155,116,223,.8)';
       paths.forEach(path => path.points.forEach(point => {
         if (!point.k) return;
         const [x, y] = xy(point.re, point.im);

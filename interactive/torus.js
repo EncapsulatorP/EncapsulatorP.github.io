@@ -221,7 +221,7 @@ WH.initThree('viz', (scene, camera, renderer, controls) => {
     scene.add(innerRim);
 
     const particleGeometry = new THREE.SphereGeometry(0.29, 18, 12);
-    const particleMaterial = new THREE.MeshBasicMaterial({ color: '#fffdf3' });
+    const particleMaterial = new THREE.MeshBasicMaterial({ color: '#f7f8fb' });
     const particle = new THREE.Mesh(particleGeometry, particleMaterial);
     const haloGeometry = new THREE.SphereGeometry(0.56, 18, 12);
     const haloMaterial = new THREE.MeshBasicMaterial({ color: PASS_COLORS[0], transparent: true, opacity: 0.52, depthWrite: false });
@@ -297,7 +297,7 @@ WH.initThree('viz', (scene, camera, renderer, controls) => {
     jumpLine.renderOrder = 5;
     const markerGeometry = new THREE.TorusGeometry(0.7, 0.08, 7, 40);
     const crossingMaterial = new THREE.MeshBasicMaterial({ color: '#ffd172', depthTest: false, depthWrite: false });
-    const landingMaterial = new THREE.MeshBasicMaterial({ color: '#fffdf3', depthTest: false, depthWrite: false });
+    const landingMaterial = new THREE.MeshBasicMaterial({ color: '#f7f8fb', depthTest: false, depthWrite: false });
     const crossing = new THREE.Mesh(markerGeometry, crossingMaterial);
     const landing = new THREE.Mesh(markerGeometry, landingMaterial);
     crossing.renderOrder = landing.renderOrder = 6;
@@ -449,10 +449,10 @@ if (!view) {
                 context.setLineDash([]);
                 const radius = 9 + currentFrame.flash * 4;
                 circle(lastJump.from, radius, '#ffd172');
-                circle(lastJump.to, radius, '#fffdf3');
+                circle(lastJump.to, radius, '#f7f8fb');
             }
             circle(currentFrame.position, 10, PASS_COLORS[state.kt % PASS_COLORS.length], true);
-            circle(currentFrame.position, 4.5, '#fffdf3', true);
+            circle(currentFrame.position, 4.5, '#f7f8fb', true);
         }
     };
     const resize = () => {

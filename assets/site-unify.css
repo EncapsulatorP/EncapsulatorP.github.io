@@ -1,0 +1,165 @@
+/* ==========================================================================
+   EncapsulatorP — unified theme layer
+   Loaded LAST on every page by site-shell.js, so it wins over per-page
+   palettes. One paper, one ink, one sapphire→violet accent pair.
+   No browns, creams, tans or ochres anywhere.
+   ========================================================================== */
+
+:root {
+  /* Surfaces: cool lavender paper, white cards */
+  --atlas-paper: #f4f5fa;
+  --atlas-surface: #ffffff;
+  --atlas-tint: #eceefa;
+  --atlas-line: #d9ddec;
+
+  /* Ink */
+  --atlas-ink: #18213a;
+  --atlas-muted: #525c74;
+
+  /* Accent pair: sapphire (primary) + violet (secondary/emphasis) */
+  --atlas-accent: #284cad;
+  --atlas-violet: #6c46c4;
+  --atlas-secondary: #5a4a9a;
+  --atlas-action-ink: #243b80;
+  --atlas-selection: #e3e8fb;
+  --atlas-selection-hover: #ece4fb;
+  --atlas-stripe: linear-gradient(90deg, #284cad, #4d6ad6 45%, #8a63d8);
+
+  /* Deep panels */
+  --atlas-deep: #131d38;
+  --atlas-deep-panel: #1f2b4d;
+  --atlas-on-deep: #f5f4ff;
+  --atlas-muted-on-deep: #c3cce6;
+  --atlas-accent-on-deep: #c3b4ff;
+
+  /* Legacy per-page names, all pointed at the same system */
+  --paper: var(--atlas-paper);
+  --card: var(--atlas-surface);
+  --tint: var(--atlas-tint);
+  --ink: var(--atlas-ink);
+  --muted: var(--atlas-muted);
+  --soft: var(--atlas-muted);
+  --e: var(--atlas-muted);
+  --coral: var(--atlas-violet);
+  --orange: var(--atlas-violet);
+  --yellow: #9d86e0;
+  --pink: #a48be0;
+  --violet: var(--atlas-violet);
+  --blue: var(--atlas-accent);
+  --pm-line: var(--atlas-line);
+  --pm-muted: var(--atlas-muted);
+  --pp-paper: var(--atlas-paper);
+  --pp-line: var(--atlas-line);
+  --at-paper: var(--atlas-paper);
+  --at-line: var(--atlas-line);
+  --at-violet: var(--atlas-violet);
+  --cc-line: var(--atlas-line);
+
+  /* Atlas reader + reveal */
+  --reader-paper: var(--atlas-paper);
+  --reader-line: var(--atlas-line);
+  --reader-muted: var(--atlas-muted);
+  --reader-blue: var(--atlas-accent);
+  --ar-paper: var(--atlas-paper);
+  --ar-violet: var(--atlas-violet);
+  --ar-mint: #8a63d8;
+}
+
+html, body { background-color: var(--atlas-paper); }
+::selection { background: var(--atlas-selection); color: var(--atlas-ink); }
+a:hover { color: var(--atlas-violet); }
+
+/* ---- Headline emphasis: one rule everywhere ------------------------------ */
+h1 em, h2 em, h2.t em, .hero h1 em, .atlas-title .title-accent {
+  font-style: italic;
+  color: var(--atlas-violet);
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+}
+
+/* ---- Buttons that were sand/tan ----------------------------------------- */
+.vf-button, .vf-scope { background: var(--atlas-tint) !important; border-color: var(--atlas-line) !important; color: var(--atlas-ink) !important; }
+.vf-explore { background: #c9bbf3 !important; border-color: #c9bbf3 !important; color: #1d1546 !important; }
+.vf-explore:hover { background: #ddd3fa !important; }
+details.vf-proof { border-color: var(--atlas-line) !important; }
+.ttwarn { background: #eeeafb !important; border-color: #a796dc !important; color: #3c2f6e !important; }
+.ttwarn b { color: #2c2160 !important; }
+
+/* ---- Atlas reading room: same column as the header, no cream panel ------ */
+.atlas-reader, .reader-shell, .reader-document, .reader-content, .ar-shell,
+body.atlas-reader, body.atlas-reader .reader-header { background: var(--atlas-paper) !important; }
+.reader-shell {
+  max-width: var(--site-width, 1160px) !important;
+  padding-inline: var(--site-gutter, 28px) !important;
+}
+.reader-shell .reader-prose > p, .reader-shell .reader-section > p,
+.reader-lead, .reader-origin, .atlas-introduction > p { max-width: 74ch; }
+.atlas-title { letter-spacing: -.025em !important; }
+.document-heading h1, .document-heading h2, .reader-title { letter-spacing: -.02em !important; max-width: 30ch; }
+.reader-document::before { background: var(--atlas-stripe) !important; }
+.reader-equation { background: #f7f8fe !important; border-color: #e0e5f5 !important; border-left-color: var(--atlas-accent) !important; }
+.reader-callout { background: #f8f7fe !important; border-left-color: var(--atlas-violet) !important; }
+.reader-section th { background: var(--atlas-tint) !important; }
+.ar-controls { position: sticky; top: var(--site-header-height, 64px); z-index: 5; background: var(--atlas-paper) !important; }
+.contents-list a:hover, .atlas-route-grid > a:hover { color: var(--atlas-violet); border-color: #b9a8ea; }
+
+/* Traps stay grey-violet, never brown */
+body[data-reader-status=false] { --reader-line: #dddbe6; --reader-muted: #67657a; }
+.trap-document a { color: #5f557f; }
+
+/* ---- Cards & panels across rooms ---------------------------------------- */
+:is(.card, .cell, .story, .tr-panel, .gb-discoveries article, .cc-card, .pp-card) { border-color: var(--atlas-line); }
+.aside { border-left-color: #b9a8ea !important; }
+select, input[type="search"], input[type="text"] { background-color: #fff; }
+
+/* ---- Unified footer injected by site-shell.js --------------------------- */
+.site-unified-footer {
+  margin-top: 56px;
+  border-top: 1px solid var(--atlas-line);
+  background: var(--atlas-paper);
+  color: var(--atlas-muted);
+  font: 13px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.site-unified-footer > div {
+  max-width: var(--site-width, 1160px);
+  margin-inline: auto;
+  padding: 22px var(--site-gutter, 28px) 30px;
+  display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; justify-content: space-between;
+}
+.site-unified-footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.site-unified-footer a { color: var(--atlas-accent); text-decoration: none; }
+.site-unified-footer a:hover { color: var(--atlas-violet); text-decoration: underline; }
+.site-unified-footer .suf-brand { color: var(--atlas-ink); font-weight: 600; }
+.site-unified-footer .suf-brand span { color: var(--atlas-violet); }
+
+@media print { .site-unified-footer { display: none; } }
+
+/* ---- Reading-room heads speak the same type as the home heroes ---------- */
+.reader-kicker, body.atlas-reader .reader-kicker {
+  font: 500 11px/1.7 ui-monospace, SFMono-Regular, Menlo, monospace !important;
+  letter-spacing: .2em !important;
+  text-transform: uppercase;
+  color: var(--atlas-accent) !important;
+}
+.atlas-introduction { padding: var(--site-lead-top, 48px) 0 36px !important; }
+.atlas-title {
+  font: 600 clamp(40px, 6vw, 68px)/1.06 var(--atlas-serif) !important;
+  letter-spacing: -.03em !important;
+  color: var(--atlas-ink) !important;
+  margin: 8px 0 18px !important;
+}
+.reader-lead { font-size: 20px !important; color: var(--atlas-muted) !important; margin: 0 0 14px; }
+.atlas-stats { gap: 14px 44px !important; margin: 26px 0 !important; align-items: flex-end; }
+.atlas-stats > span { display: flex; flex-direction: column; gap: 0; line-height: 1.3; font: 11px/1.5 ui-monospace, monospace; color: var(--atlas-muted); }
+.atlas-stats .ar-shell { display: block; }
+.atlas-stats b { font: 500 30px/1.15 system-ui, sans-serif !important; color: var(--atlas-accent) !important; margin: 0 !important; }
+.atlas-contents .contents-heading h2, .reader-section h2, .document-heading h1, .document-heading h2, .reader-title {
+  color: var(--atlas-ink);
+}
+.reader-evidence[data-evidence=exact] { background: var(--atlas-selection) !important; }
+.reader-evidence { background: #fff !important; border-color: var(--atlas-line) !important; }
+
+/* Light heroes that kept a blue emphasis: same violet as every other title */
+.page[data-page="home"] .hero h1 em,
+.pirate-chest .pirate-chest-head h2.t em { color: var(--atlas-violet) !important; text-shadow: none !important; }
