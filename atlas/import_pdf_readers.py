@@ -86,7 +86,7 @@ def safe_relative(value):
 
 def load_assets(directory):
     result = {name: (directory / name).read_text(encoding="utf-8") for name in
-              ("atlas-reader.css", "atlas-reveal.css", "atlas-gif.js", "atlas-reveal.js")}
+              ("atlas-reader.css", "atlas-reveal.css", "atlas-gif.js", "atlas-reveal.js?v=unify-1")}
     logo = (directory / "logo-encapsulatorp-512.png").read_bytes()
     if sha256(logo) != LOGO_SHA256:
         raise ValueError("The approved actual EncapsulatorP logo is missing or changed.")
@@ -267,7 +267,7 @@ def convert(raw, output, assets, *, repository="local", source_path="document.pd
     text_download = (f'<a download="{esc(Path(source_path).stem)}-source-text.txt" href="{text_url}">Download exact extracted text</a>'
                      if any(text.strip() for text in all_text) else '<span>This original source has no encoded selectable text.</span>')
     hydrate = """(function(){var n=document.getElementById('reader-config');var c=JSON.parse(n.textContent);c.logoSrc=document.getElementById(c.logoDomId).src;c.gifBlocks.forEach(function(b){if(b.imageDomId)b.image=document.getElementById(b.imageDomId).src});n.textContent=JSON.stringify(c).replace(/</g,'\\\\u003c');}());"""
-    scripts = "\n".join(assets[name].replace("</script", "<\\/script") for name in ("atlas-gif.js", "atlas-reveal.js"))
+    scripts = "\n".join(assets[name].replace("</script", "<\\/script") for name in ("atlas-gif.js", "atlas-reveal.js?v=unify-1"))
     markup = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>{esc(title)} · complete reading edition</title>
 <style>{PENDING_CSS}</style><script>{BOOT}</script><style id="reader-styles">{assets['atlas-reader.css']}\n{assets['atlas-reveal.css']}\n{EXTRA_CSS}</style></head>
 <body data-reader-status="{esc(status)}"><div class="reader-shell"><header class="import-header">
@@ -392,7 +392,7 @@ def refresh_readers(directory, assets):
     """Update only embedded shared code; leave every source page/text untouched."""
     changed = {}
     style = assets["atlas-reader.css"] + "\n" + assets["atlas-reveal.css"] + "\n" + EXTRA_CSS
-    runtime = "\n".join(assets[name].replace("</script", "<\\/script") for name in ("atlas-gif.js", "atlas-reveal.js"))
+    runtime = "\n".join(assets[name].replace("</script", "<\\/script") for name in ("atlas-gif.js", "atlas-reveal.js?v=unify-1"))
     for path in sorted(directory.rglob("*.html")):
         source = path.read_text(encoding="utf-8")
         if 'id="pdf-source"' not in source:

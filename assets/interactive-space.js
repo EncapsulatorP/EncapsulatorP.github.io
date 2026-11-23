@@ -4,6 +4,7 @@
   const script = document.currentScript;
   const base = new URL('../interactive/', script.src);
   const topics = [
+    { id: 'rg-lattice-hopf', author: 'Gemini (Neon)', title: 'RG lattice & Hopf detector', glyph: '2ᵏ×2ᵏ · √μ', label: 'Defined coarse-graining · exact normal form', summary: 'Block-average a 32 × 32 digit field layer by layer, then hide or collapse a limit cycle by changing the detector, the floor or the pump.', boundary: 'Layer names are Gemini’s illustrative labels, not a physical renormalization; information lost is a heuristic readout. The Hopf panel is the exact normal form ṙ = μr − r³ with cycle radius √μ.', source: 'c3_2z_living_spec_prime_forms', room: '#cabinet', roomLabel: 'Curious Cabinet · C3.2Z' },
     { id: 'complex-tetration', title: 'Complex tetration', glyph: 'c ↑↑ N', label: 'Finite basin · stochastic experiment', summary: 'Explore the Shell–Thron basin image, a white principal power tower and an ensemble with stochastic logarithm-sheet jumps.', boundary: 'The colors record a finite tolerance and escape test. The independently resampled sheets are a chosen stochastic experiment; survival does not prove convergence.', source: 'gemini-code-1795274340354', room: '#towers', roomLabel: 'Towers laboratory' },
     { id: 'recaman-obstructions', title: 'Recamán · holes & Möbius', glyph: 'aₙ ↔ ∅', label: 'Exact sequence · finite gaps', summary: 'Orbit the original 3D delay view and twisted Möbius mode, with the red unvisited-value markers restored inside the scene.', boundary: 'Red holes mark sampled values not yet visited in a finite prefix, placed by Gemini’s chosen coordinate map. They do not establish a topological obstruction theorem.', source: 'gemini-code-1795274358812', room: '#recaman', roomLabel: 'Recamán sequence explorer' },
     { id: 'goldbach-involution', title: 'Goldbach involution', glyph: 'E₊ · E₋ · ρ', label: 'Exact finite energies', summary: 'Fold the prime indicator through k ↔ N − k. Watch E+, E− and ρ change, and inspect the contribution of each mirror orbit.', boundary: 'The energies are exact for the displayed even total. The ratio describes that finite prime pattern and does not prove Goldbach’s conjecture.', source: '9df25cf48edc7ed6', room: '#goldbach', roomLabel: 'Goldbach laboratory' },
@@ -27,14 +28,12 @@
     let selected = topics.find(t => t.id === requestedTopic()) || topics[0], frame = null, lastActive = null, inViewport = !('IntersectionObserver' in window);
     const prefix = 'gemini-space-' + mountIndex;
     const head = el('header', 'is-heading'), kicker = el('p', 'is-kicker', 'Interactive · Gemini’s contributions');
-    head.append(kicker, el('h2', '', 'One question. A world to move.'), el('p', 'is-intro', 'Ten interactive views, recovered from Gemini’s supplied visualizations. Move through complex towers, red Recamán holes, prime energies and visible iteration. Each topic keeps its original idea and a clear claim boundary.'));
-    const primeForms = 'https://github.com/EncapsulatorP/c3._2z/blob/7e8fb577bd3eb8da2e358d691164a9fee5c75f9b/index.html';
-    const sourceTrail = el('p', 'is-intro', 'In Prime Forms, Gemini (Neon) paired a coarse-graining lattice with a Hopf detector. Explore the original ');
-    const lattice = el('a', '', 'lattice source'), hopf = el('a', '', 'Hopf detector source'), credits = el('a', '', 'credits');
-    lattice.href = primeForms + '#L615-L665';
-    hopf.href = primeForms + '#L667-L704';
-    credits.href = primeForms + '#L839-L850';
-    sourceTrail.append(lattice, ' and ', hopf, ', with the shared ', credits, '.');
+    head.append(kicker, el('h2', '', 'One question. A world to move.'), el('p', 'is-intro', 'Eleven interactive views, recovered from Gemini’s supplied visualizations. Move through complex towers, red Recamán holes, prime energies and visible iteration. Each topic keeps its original idea and a clear claim boundary.'));
+    const sourceTrail = el('p', 'is-intro', 'New in this room: Gemini (Neon)’s coarse-graining lattice and Hopf detector from c3.2z Prime Forms. ');
+    const latticeLink = el('a', '', 'Open the RG lattice & Hopf detector');
+    latticeLink.href = (standalone ? '?topic=' : '#interactive?topic=') + 'rg-lattice-hopf';
+    latticeLink.addEventListener('click', event => { const topic = topics.find(item => item.id === 'rg-lattice-hopf'); if (topic) { event.preventDefault(); choose(topic, true); } });
+    sourceTrail.append(latticeLink, '.');
     head.append(sourceTrail);
     const tabs = el('div', 'is-topics'); tabs.setAttribute('role', 'tablist'); tabs.setAttribute('aria-label', 'Interactive topics');
     const panel = el('section', 'is-selected'); panel.id = prefix + '-panel'; panel.setAttribute('role', 'tabpanel');
@@ -60,9 +59,9 @@
     function tellFrame(active) { if (frame?.contentWindow) frame.contentWindow.postMessage({ type: 'atlas-interactive-visibility', active }, location.origin); }
     function ensureFrame() {
       if (frame || !visible()) return;
-      frame = el('iframe', 'is-frame'); frame.title = 'Gemini · ' + selected.title;
+      frame = el('iframe', 'is-frame'); frame.title = (selected.author || 'Gemini') + ' · ' + selected.title;
       frame.setAttribute('sandbox', 'allow-scripts allow-same-origin'); frame.setAttribute('loading', 'lazy');
-      frame.src = new URL(selected.id + '.html?v=restore-20261121-r2', base).href;
+      frame.src = new URL(selected.id + '.html?v=gemini-look-1', base).href;
       frame.addEventListener('load', () => tellFrame(visible())); frameHost.replaceChildren(frame);
     }
     function syncVisibility() {
@@ -86,7 +85,7 @@
       pickerSelect.value = topic.id;
       buttons.forEach((button, id) => { const current = id === topic.id; button.setAttribute('aria-selected', String(current)); button.tabIndex = current ? 0 : -1; });
       panel.setAttribute('aria-labelledby', prefix + '-' + topic.id); title.textContent = topic.title; evidence.textContent = topic.label; description.textContent = topic.summary;
-      signature.replaceChildren(el('span', '', 'Gemini · ' + topic.title), el('small', '', 'Interactive concept · Atlas adaptation'));
+      signature.replaceChildren(el('span', '', (topic.author || 'Gemini') + ' · ' + topic.title), el('small', '', 'Interactive concept · Atlas adaptation'));
       boundary.replaceChildren(el('strong', '', 'Claim boundary. '), document.createTextNode(topic.boundary));
       exhibitLink.href = new URL(topic.id + '.html', base).href;
       roomLink.href = new URL('../index.html' + topic.room, base).href; roomLink.textContent = topic.roomLabel + ' ↗';

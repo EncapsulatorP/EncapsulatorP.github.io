@@ -80,10 +80,10 @@
   const format = n => n.toLocaleString('en-GB');
   const host = byId('canvas-host'), stage = byId('stage'), reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const palettes = {
-    dark: { back: '#89c5ff', forward: '#70d795', hole: '#ff6269', axes: ['#ef9f8b', '#a4d6a2', '#87bdd9'] },
-    light: { back: '#0f62fe', forward: '#198038', hole: '#da1e28', axes: ['#bc6756', '#6b8b51', '#5f85a1'] }
+    dark: { back: '#89c5ff', forward: '#70d795', hole: '#ff6269', axes: ['#b294e6', '#a4d6a2', '#87bdd9'] },
+    light: { back: '#284cad', forward: '#6c46c4', hole: '#e0364f', axes: ['#e0364f', '#6c46c4', '#2f8fd8'] }
   };
-  let data = computeRecaman(2500), mode = 'delay', showHoles = true, theme = 'dark';
+  let data = computeRecaman(2500), mode = 'delay', showHoles = true, theme = 'light';
   let sceneData = buildSceneData(data, mode), playing = !reduced.matches;
   let renderer = null, controls = null, canvas = null, ctx = null, scene = null, group = null, holeCloud = null;
   let camera = null, initialPosition = null, initialTarget = null, rotation = 0, framingScale = 1;

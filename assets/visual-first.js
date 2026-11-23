@@ -263,7 +263,7 @@
       add(model.svg, 'text', { x: 521, y: 292, 'text-anchor': 'middle', fill: '#e2eee6', 'font-size': 16 }, 'm + d = ' + v.q);
       add(model.svg, 'text', { x: 397, y: 266 - v.p * scale / 2, 'text-anchor': 'end', fill: '#b8d4ca', 'font-size': 13 }, String(v.p));
       if (d > 0) add(model.svg, 'text', { x: 54 + a - cut / 2, y: 266 - a + cut / 2 + 4, 'text-anchor': 'middle', fill: '#e1cbf6', 'font-size': Math.max(10, Math.min(16, cut / 2)) }, d + '²');
-      add(model.svg, 'text', { x: 350, y: 175, 'text-anchor': 'middle', fill: '#d8c69e', 'font-size': 32 }, '=');
+      add(model.svg, 'text', { x: 350, y: 175, 'text-anchor': 'middle', fill: '#b39ed8', 'font-size': 32 }, '=');
       put('vf-home-m-value', m); put('vf-home-d-value', d); live.textContent = m + '² − ' + d + '² = ' + v.p + ' × ' + v.q + ' = ' + v.area + '. Exact integer area.';
     }
     controls.addEventListener('input', draw); draw();
@@ -300,7 +300,7 @@
           add(model.svg, 'text', { x: x, y: 241, 'text-anchor': 'middle', fill: '#effdeb', 'font-size': 13 }, String(p));
         });
       });
-      add(model.svg, 'text', { x: 360, y: 48, 'text-anchor': 'middle', fill: '#f0dfb9', 'font-size': 22 }, v.m + '² − 1 = ' + v.product);
+      add(model.svg, 'text', { x: 360, y: 48, 'text-anchor': 'middle', fill: '#cdbaef', 'font-size': 22 }, v.m + '² − 1 = ' + v.product);
       add(model.svg, 'text', { x: 360, y: 298, 'text-anchor': 'middle', fill: '#e0eae2', 'font-size': 16 }, 'Ω = ' + v.omega + '     μ = ' + (v.mu > 0 ? '+' : '') + v.mu);
       omegaButton.setAttribute('aria-pressed', String(chosen === 'omega')); muButton.setAttribute('aria-pressed', String(chosen === 'mu'));
       if (chosen === 'omega') live.textContent = v.omega === 2 ? 'The premise Ω = 2 holds here, and both neighbours are prime. The proof below establishes the implication for every m ≥ 3.' : 'The premise Ω = 2 is false at this centre. The general implication makes no primality assertion for this input.';
@@ -329,7 +329,7 @@
     }
   }
 
-  var TEAL = '#8ee7cd', LILAC = '#cbb1f1', GOLD = '#ead49c', MUTED = '#658992';
+  var TEAL = '#8ee7cd', LILAC = '#cbb1f1', GOLD = '#b99ee8', MUTED = '#658992';
   function path(points, color, width, fill) { return { kind: 'path', points: points, color: color || TEAL, width: width || 1.5, fill: fill || 'none' }; }
   function dot(point, color, label, radius) { return { kind: 'dot', point: point, color: color || TEAL, label: label || '', radius: radius || 3 }; }
   function circlePoints(radius, z, count) { var pts = []; for (var i = 0; i <= (count || 96); i++) { var t = i * 2 * Math.PI / (count || 96); pts.push([radius * Math.cos(t), radius * Math.sin(t), z || 0]); } return pts; }
@@ -421,7 +421,7 @@
       var model = headerGeometry(kind); strong.textContent = model.caption; noteText.textContent = model.explanation; title.textContent = model.caption + '. ' + model.explanation;
       drawing.replaceChildren(); state.shapes = model.shapes.map(function (shape) {
         var node = shape.kind === 'path' ? svgNode('path', { fill: shape.fill, stroke: shape.color, 'stroke-width': shape.width, 'stroke-linejoin': 'round' }) : svgNode('circle', { r: shape.radius, fill: shape.color }); drawing.appendChild(node);
-        var label; if (shape.label) { label = svgNode('text', { fill: '#f0ecd9', 'font-size': 10, 'text-anchor': 'middle' }, shape.label); drawing.appendChild(label); }
+        var label; if (shape.label) { label = svgNode('text', { fill: '#dddfec', 'font-size': 10, 'text-anchor': 'middle' }, shape.label); drawing.appendChild(label); }
         return { shape: shape, node: node, label: label };
       }); render();
     }
@@ -480,7 +480,7 @@
         var orbit = svg.querySelector('path[stroke="#73ddd3"]'); if (!orbit) return;
         var d = orbit.getAttribute('d'); if (d !== state.pathText) { state.pathText = d; state.points = plotPoints(d); state.travel = 0; }
         if (state.points.length < 2) return;
-        if (!state.marker || state.marker.parentNode !== svg) { state.marker = add(svg, 'circle', { class: 'vf-flight-marker', r: 5.5, fill: '#f1df9f', stroke: '#12313e', 'stroke-width': 1.5, 'aria-hidden': 'true', 'pointer-events': 'none' }); }
+        if (!state.marker || state.marker.parentNode !== svg) { state.marker = add(svg, 'circle', { class: 'vf-flight-marker', r: 5.5, fill: '#b1a6ea', stroke: '#12313e', 'stroke-width': 1.5, 'aria-hidden': 'true', 'pointer-events': 'none' }); }
         state.travel = (state.travel + dt * 8) % (state.points.length - 1);
         var i = Math.floor(state.travel), a = state.points[i], b = state.points[i + 1], t = state.travel - i;
         state.marker.setAttribute('cx', a[0] + (b[0] - a[0]) * t); state.marker.setAttribute('cy', a[1] + (b[1] - a[1]) * t);

@@ -1,5 +1,5 @@
 /* Shared paper palette; no independent light/dark mode. */
-.rx-explorer{--rx-paper:var(--atlas-paper,#eaedf6);--rx-surface:var(--atlas-surface,#fffdf8);--rx-ink:var(--atlas-ink,#182b35);--rx-muted:var(--atlas-muted,#6d5963);--rx-accent:var(--atlas-accent,#236b67);--rx-line:var(--atlas-line,#d2cbe4);color:var(--rx-ink);font:14px/1.7 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;max-width:1120px;margin-inline:auto;min-width:0;scroll-margin-top:85px}
+.rx-explorer{--rx-paper:var(--atlas-paper,#eaedf6);--rx-surface:var(--atlas-surface,#fafbfd);--rx-ink:var(--atlas-ink,#182b35);--rx-muted:var(--atlas-muted,#6d5963);--rx-accent:var(--atlas-accent,#236b67);--rx-line:var(--atlas-line,#d2cbe4);color:var(--rx-ink);font:14px/1.7 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;max-width:1120px;margin-inline:auto;min-width:0;scroll-margin-top:85px}
 .rx-explorer *{box-sizing:border-box}
 .rx-explorer [hidden]{display:none!important}
 .rx-explorer :focus-visible{outline:3px solid var(--rx-accent);outline-offset:4px}

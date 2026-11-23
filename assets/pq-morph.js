@@ -157,7 +157,7 @@ function create(canvas,opt){
   function size(){const r=canvas.getBoundingClientRect();dpr=Math.min(window.devicePixelRatio||1,2);w=Math.max(1,Math.round(r.width*dpr));h=Math.max(1,Math.round(r.height*dpr));if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h}}
   const o=[0,0,0,1,0],D=5;
   function gem(px,py,rad){ctx.globalAlpha=1;ctx.beginPath();for(let k=0;k<6;k++){const a=TAU*k/6+PI/6;ctx[k?'lineTo':'moveTo'](px+rad*Math.cos(a),py+rad*Math.sin(a))}ctx.closePath();
-    const g=ctx.createRadialGradient(px-rad*.3,py-rad*.35,rad*.1,px,py,rad);g.addColorStop(0,'#ffe2a6');g.addColorStop(.45,'#f58a1c');g.addColorStop(1,'#b24a08');ctx.fillStyle=g;ctx.fill();ctx.lineWidth=Math.max(1,rad*.22);ctx.strokeStyle='#c4cad6';ctx.stroke()}
+    const g=ctx.createRadialGradient(px-rad*.3,py-rad*.35,rad*.1,px,py,rad);g.addColorStop(0,'#ffe2a6');g.addColorStop(.45,'#f58a1c');g.addColorStop(1,'#4e2397');ctx.fillStyle=g;ctx.fill();ctx.lineWidth=Math.max(1,rad*.22);ctx.strokeStyle='#c4cad6';ctx.stroke()}
   function draw(now){
     size();ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,w,h);
     const tf=T[st.tf],t=st.t,S=Math.min(w,h)*(mode==='line'?.44:.4),cx0=w/2,cy0=h/2;
@@ -180,7 +180,7 @@ function create(canvas,opt){
       for(let i=0;i<=N;i++){tf.at(i,t,o);const x=o[0]*cyw+o[2]*syw,z=-o[0]*syw+o[2]*cyw,ps=D/(D-z),px=cx0+x*ps*S,py=cy0-o[1]*ps*S;
         if(i===N){gx=px;gy=py;gs=ps;break}
         const sz=(1.25+RD[i]*1.2)*ps*unit*(1+o[4]*.9);
-        ctx.globalAlpha=o[3]*clamp(.62+z*.9,.25,1);ctx.fillStyle=o[4]>.5?'#ee7a14':col[i];
+        ctx.globalAlpha=o[3]*clamp(.62+z*.9,.25,1);ctx.fillStyle=o[4]>.5?'#6c33cf':col[i];
         if(sz<2.4)ctx.fillRect(px-sz/2,py-sz/2,sz,sz);else{ctx.beginPath();ctx.arc(px,py,sz/2,0,TAU);ctx.fill()}}
       gem(gx,gy,S*.04*gs);
     }

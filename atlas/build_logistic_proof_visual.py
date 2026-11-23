@@ -24,7 +24,7 @@ from matplotlib.mathtext import math_to_image
 
 BASE = Path(__file__).resolve().parent
 W, H = 2000, 1800
-ORANGE = "#F36B21"
+ORANGE = "#7741d3"
 YELLOW = "#F6C945"
 GREEN = "#77B443"
 DARK_GREEN = "#245C38"

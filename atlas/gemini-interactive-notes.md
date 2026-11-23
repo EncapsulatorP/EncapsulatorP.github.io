@@ -18,6 +18,15 @@ The restoration recovers the standalone complex-tetration and Recamán-obstructi
 | [Recamán coordinates](../interactive/recaman.html) | Delay triples, normalized triples, time/value view and separate addition/subtraction colors. | Exact finite sequence in chosen coordinates, without a growth-rate or topology proof. |
 | [Threshold branching](../interactive/threshold.html) | Compact piecewise map, cobweb and time series with editable parameters. | Defined speculative toy. The expanded Poincaré view above makes its iteration more visible. |
 | [Phase slip & lifted helix](../interactive/phase-slip.html) | Circular path, reset burst, rising helix and accumulated trail. | Comparison of explicit reset/retention rules, not consequences forced by topology. |
+| [RG lattice & Hopf detector](../interactive/rg-lattice-hopf.html) · Gemini (Neon) | 32 × 32 digit field, four coarse-graining layers, variance and information readouts; Hopf detector with three detectors, pump bias, floor and unit-digit drive. | Layer names are illustrative, the information figure is heuristic; the Hopf panel is the exact normal form with cycle radius √μ. |
+
+## 23 November 2026 · Gemini’s display, Atlas palette
+
+The live views had drifted from Gemini’s instruments: dark teal panels, thin pale strokes and a stage placed below the reading text made several exhibits harder to read than the supplied widgets. Every exhibit now follows Gemini’s display order — readouts, then a white instrument stage, then the controls, then the claim boundary and notes — with saturated marks in the site palette: sapphire `#284cad` (Gemini’s blue), violet `#6c46c4` (Gemini’s green), amber `#ee9a12` and coral `#e0364f` (Gemini’s red). Recamán’s obstruction scene opens on the paper scene, the torus passes use the same four colours, and the complex-tetration escape ramp is violet instead of orange-brown (the verifier checks that the escape brightness is unchanged).
+
+## RG lattice & Hopf detector
+
+Source: Gemini (Neon), tab 1 of <code>c3_2z_living_spec_prime_forms.html</code>. The 32 × 32 field is v = clamp(0.42 h<sub>A</sub> + 0.22 h<sub>B</sub> + 0.36 wave), seeded by the prime-factor tower heights of the digits of c in the chosen unit and by the Odd Mirror Knot amplitude √((r − 1)/e). Layers 0–3 average 1×1 to 8×8 blocks. The Hopf panel uses ṙ = μr − r³; with the digit wired in, μ = bias + 0.30 × (height − 2). Rules, ranges and defaults are unchanged; layer names are kept as Gemini’s labels and are not a physical renormalization.
 
 ## Complex tetration
 

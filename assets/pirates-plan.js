@@ -5,12 +5,12 @@
     'existing-link': { label: 'Existing navigation', color: '#cfdf9b' },
     'existing-code': { label: 'Existing code link', color: '#a6e6bf' },
     'shared-object': { label: 'Shared mathematical object', color: '#94ccd8' },
-    'proposed-reuse': { label: 'Proposed reuse', color: '#d9c182' },
+    'proposed-reuse': { label: 'Proposed reuse', color: '#a282d9' },
     'analogy': { label: 'Analogy to test', color: '#c7addf' }
   };
   var EVIDENCE = {
     known: { label: 'Known / documented basis', color: '#89e8df', dash: '' },
-    proposed: { label: 'Proposed work', color: '#f1cc73', dash: '13 7' },
+    proposed: { label: 'Proposed work', color: '#a582e2', dash: '13 7' },
     speculative: { label: 'Speculative bridge', color: '#cfb0f4', dash: '2 7' }
   };
   function evidenceLevel(edge) {

@@ -164,12 +164,12 @@
 
   const standalone = document.currentScript.hasAttribute('data-pq-standalone');
   if (standalone && window.top !== window) return;
-  const shared = import(new URL('site-shell.js?v=blue-violet-1', assetDirectory))
+  const shared = import(new URL('site-shell.js?v=violet-unify-1', assetDirectory))
     .then(({ mountSiteShell }) => mountSiteShell(assetDirectory))
     .catch(() => null);
   const style = document.createElement('link');
   style.rel = 'stylesheet';
-  style.href = new URL('pq-wordmark.css?v=blue-violet-1', assetDirectory);
+  style.href = new URL('pq-wordmark.css?v=violet-unify-1', assetDirectory);
   let stylesheetReady;
   const styled = new Promise(resolve => { stylesheetReady = resolve; });
   style.addEventListener('load', () => stylesheetReady(true), { once: true });
