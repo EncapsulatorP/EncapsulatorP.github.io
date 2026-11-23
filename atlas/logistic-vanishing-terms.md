@@ -666,7 +666,7 @@ The written algebra and inequalities supply the proofs. Numerical values and sym
 
 For the fractional maps, identify the orbit means or invariant measures to study. For T₀–T₃, recover the definitions. For the geometric interpretation, specify the object, evolution and quantity whose disappearance is proposed.
 
-[Proof board · statements, corrections and direct proof links](https://encapsulatorp.github.io/atlas/proof-review-board.pdf)
+[Proof board · statements, corrections and direct proof links](https://encapsulatorp.github.io/atlas/proof-review-board.html)
 
 > **Review finding (exact).** The reviewed arguments establish the identities, bounds and classifications stated here. The later cubic-attraction proof and the explicitly defined geometric model remain clearly identified as subsequent additions.
 

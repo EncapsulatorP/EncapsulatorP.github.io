@@ -32,13 +32,13 @@ Choose one precise extension: a limiting orbit mean, a stronger remainder estima
 
 [Historical collection source · original edition](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#review-finding)
 
-[Proof board · full statements and direct proof links](https://encapsulatorp.github.io/atlas/proof-review-board.pdf)
+[Proof board · full statements and direct proof links](https://encapsulatorp.github.io/atlas/proof-review-board.html)
 
-[Alternating towers · complete note](https://encapsulatorp.github.io/atlas/proofs/alternating-towers.pdf)
+[Alternating towers · complete note](https://encapsulatorp.github.io/atlas/proofs/alternating-towers.html)
 
-[Logistic quarter-turn · complete note](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf)
+[Logistic quarter-turn · complete note](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.html)
 
-[Prime-polynomial counts · complete note](https://encapsulatorp.github.io/atlas/proofs/prime-polynomial-counts.pdf)
+[Prime-polynomial counts · complete note](https://encapsulatorp.github.io/atlas/proofs/prime-polynomial-counts.html)
 
 <a id="review-finding"></a>
 
@@ -61,6 +61,6 @@ The written algebra and inequalities supply the proofs. Numerical values and sym
 
 For the fractional maps, identify the orbit means or invariant measures to study. For T₀–T₃, recover the definitions. For the geometric interpretation, specify the object, evolution and quantity whose disappearance is proposed.
 
-[Proof board · statements, corrections and direct proof links](https://encapsulatorp.github.io/atlas/proof-review-board.pdf)
+[Proof board · statements, corrections and direct proof links](https://encapsulatorp.github.io/atlas/proof-review-board.html)
 
 > **Review finding (exact).** The reviewed arguments establish the identities, bounds and classifications stated here. The later cubic-attraction proof and the explicitly defined geometric model remain clearly identified as subsequent additions.

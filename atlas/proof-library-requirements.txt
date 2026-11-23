@@ -1,4 +1,0 @@
-# Shared typography and vector mathematics renderer.
--r logistic-pdf-requirements.txt
-# Used to record the rendered page count in proof-library.json.
-pypdf==6.21.4

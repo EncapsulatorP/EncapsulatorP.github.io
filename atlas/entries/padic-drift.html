@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A finite base-p packet can be described by its valuation, remaining unit and depth of return toward a p-adic reference.">
+<meta name="theme-color" content="#ffffff">
+<title>Listen to the carries in a digit packet · EncapsulatorP</title>
+<style>html.ar-reveal-pending #reader-content,html.ar-reveal-pending [data-reader-reveal]{visibility:hidden!important}</style>
+<script>(function(){try{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('ar-reveal-pending');window.setTimeout(function(){document.documentElement.classList.remove('ar-reveal-pending');},8000);}}catch(e){document.documentElement.classList.remove('ar-reveal-pending');}}());</script>
+<link rel="canonical" href="https://encapsulatorp.github.io/atlas/entries/padic-drift.html">
+<link rel="icon" href="../../assets/favicon-32.png">
+<link rel="stylesheet" href="../../assets/atlas-reader.css">
+<link rel="stylesheet" href="../../assets/atlas-reveal.css">
+<script src="../../assets/atlas-gif.js" defer></script>
+<script src="../../assets/atlas-reveal.js" defer></script>
+<script src="../../assets/atlas-reader-init.js" defer></script>
+</head>
+<body data-reader-status="exploratory">
+<a class="reader-skip" data-reader-chrome href="#reader-content">Skip to the document</a>
+<header class="reader-header">
+  <a class="reader-brand" data-reader-chrome href="../../#interactive?topic=goldbach-involution"><img src="../../assets/logo-encapsulatorp-512.png" alt="EncapsulatorP" width="64" height="64"><span>ENCAPSULATORP<small>THE PIRATE CHEST · READING ROOM</small></span></a>
+  <nav data-reader-chrome aria-label="Reading navigation"><a href="../../#interactive?topic=goldbach-involution">Main menu</a><a href="../../atlas/README.html#contents">Atlas contents</a><a href="../../treasure-hunt/">Proof board</a></nav>
+</header>
+<div class="reader-shell">
+<div id="reader-tools" class="reader-tools" data-reader-chrome aria-label="Reading and export controls"></div>
+<main id="reader-content"><article id="padic-drift" class="reader-document catalog-entry" data-entry-id="padic-drift" data-source-status="exploratory" data-reader-kind="exploration">
+<header class="document-heading"><div class="reader-kicker"><span>35 / 46 · Prime pairs &amp; arithmetic</span><span class="reader-evidence" data-evidence="exploratory">Exploratory construction</span></div>
+<h1 class="" data-catalog-field="title">Listen to the carries in a digit packet</h1>
+<p class="reader-lead" data-catalog-field="summary">A finite base-p packet can be described by its valuation, remaining unit and depth of return toward a p-adic reference.</p>
+<p class="reader-origin" data-catalog-field="origin">Boundary-path and p-adic packet experiments · recovered 2026 source</p>
+</header>
+<pre class="reader-equation catalog-formula" data-catalog-field="formula">W(n,L) = Σ_{j=0}^{L−1} d_(n+j) p^j
+r = v_p(W),  U = W/p^r
+For odd p: Δ = v_p(U^(p−1) − 1)</pre>
+<div class="reader-prose">
+<h3>Why follow it</h3>
+<p class="" data-catalog-field="why">It makes carry depth and multiplicative unit behavior visible in prime-gap or other arithmetic digit streams.</p>
+<p class="" data-detail-index="0">Digits are least-significant first. W must be nonzero before its finite valuation r and unit U are formed. For odd p, U mod p gives a unit-class label; it is not the full p-adic Teichmüller lift.</p>
+<p class="" data-detail-index="1">The implementation also uses the p = 2 branches U−1 and U+1, according to the unit class modulo 4. A zero difference has infinite valuation mathematically; the source’s display cap must be recorded as a cap.</p>
+<p class="" data-detail-index="2">These descriptors depend on the chosen base, packet length and input stream. Their use in separating arithmetic families is an experiment.</p>
+<h3>Next experiment or question</h3>
+<p class="" data-catalog-field="next">Keep packet length fixed and compare genuine streams with digit-permuted and matched-frequency controls.</p>
+</div><section class="reader-sources" aria-label="Sources"><h3>Sources</h3><ol>
+<li><a data-source-index="0" href="https://github.com/EncapsulatorP/Some_playful_boundary_paths_and_brun_twin_prime_sign_flipping_towers/blob/main/scripts/padic_drift.py">p-adic packet implementation</a></li>
+</ol></section>
+<nav class="reader-related" aria-label="Connected entries"><h3>Connected threads</h3><ul>
+<li><a data-connection-index="0" data-related-entry="factorial-valuations" href="factorial-valuations.html">Prime towers made of carries <span aria-hidden="true">↗</span></a></li>
+<li><a data-connection-index="1" data-related-entry="representation-study" href="representation-study.html">The speed of light, through different written forms <span aria-hidden="true">↗</span></a></li>
+<li><a data-connection-index="2" data-related-entry="wheel-210" href="wheel-210.html">Forty-eight arithmetic lanes <span aria-hidden="true">↗</span></a></li>
+</ul></nav>
+</article><p class="reader-document-end"><a href="../README.html#padic-drift">← Back to the complete atlas</a></p></main>
+
+<footer class="reader-footer"><p data-reader-reveal>Research direction: Zolton / EncapsulatorP. Contributor and source credits are retained with each entry.</p><a data-reader-chrome href="../../#interactive?topic=goldbach-involution">Return to the main menu <span aria-hidden="true">↗</span></a></footer>
+</div>
+<script type="application/json" id="catalog-source">{"id":"padic-drift","title":"Listen to the carries in a digit packet","family":"Prime pairs & arithmetic","status":"exploratory","origin":"Boundary-path and p-adic packet experiments · recovered 2026 source","summary":"A finite base-p packet can be described by its valuation, remaining unit and depth of return toward a p-adic reference.","formula":"W(n,L) = Σ_{j=0}^{L−1} d_(n+j) p^j\nr = v_p(W),  U = W/p^r\nFor odd p: Δ = v_p(U^(p−1) − 1)","why":"It makes carry depth and multiplicative unit behavior visible in prime-gap or other arithmetic digit streams.","detail":["Digits are least-significant first. W must be nonzero before its finite valuation r and unit U are formed. For odd p, U mod p gives a unit-class label; it is not the full p-adic Teichmüller lift.","The implementation also uses the p = 2 branches U−1 and U+1, according to the unit class modulo 4. A zero difference has infinite valuation mathematically; the source’s display cap must be recorded as a cap.","These descriptors depend on the chosen base, packet length and input stream. Their use in separating arithmetic families is an experiment."],"next":"Keep packet length fixed and compare genuine streams with digit-permuted and matched-frequency controls.","sources":[{"label":"p-adic packet implementation","url":"https://github.com/EncapsulatorP/Some_playful_boundary_paths_and_brun_twin_prime_sign_flipping_towers/blob/main/scripts/padic_drift.py"}],"connections":["factorial-valuations","representation-study","wheel-210"]}</script>
+<script type="application/json" id="reader-config">{"entryId":"padic-drift","title":"Listen to the carries in a digit packet","status":"exploratory","root":"#reader-content","controls":"#reader-tools","passages":[],"gifBlocks":[{"type":"caption","text":"35 / 46 · Exploratory construction · Prime pairs & arithmetic","status":"exploratory"},{"type":"heading","text":"Listen to the carries in a digit packet","status":"exploratory"},{"type":"paragraph","text":"A finite base-p packet can be described by its valuation, remaining unit and depth of return toward a p-adic reference.","status":"exploratory"},{"type":"paragraph","text":"Boundary-path and p-adic packet experiments · recovered 2026 source","status":"exploratory"},{"type":"math","text":"W(n,L) = Σ_{j=0}^{L−1} d_(n+j) p^j","status":"exploratory"},{"type":"math","text":"r = v_p(W),  U = W/p^r","status":"exploratory"},{"type":"math","text":"For odd p: Δ = v_p(U^(p−1) − 1)","status":"exploratory"},{"type":"heading","text":"Why follow it","status":"exploratory"},{"type":"paragraph","text":"It makes carry depth and multiplicative unit behavior visible in prime-gap or other arithmetic digit streams.","status":"exploratory"},{"type":"paragraph","text":"Digits are least-significant first. W must be nonzero before its finite valuation r and unit U are formed. For odd p, U mod p gives a unit-class label; it is not the full p-adic Teichmüller lift.","status":"exploratory"},{"type":"paragraph","text":"The implementation also uses the p = 2 branches U−1 and U+1, according to the unit class modulo 4. A zero difference has infinite valuation mathematically; the source’s display cap must be recorded as a cap.","status":"exploratory"},{"type":"paragraph","text":"These descriptors depend on the chosen base, packet length and input stream. Their use in separating arithmetic families is an experiment.","status":"exploratory"},{"type":"heading","text":"Next experiment or question","status":"exploratory"},{"type":"paragraph","text":"Keep packet length fixed and compare genuine streams with digit-permuted and matched-frequency controls.","status":"exploratory"},{"type":"heading","text":"Sources","status":"exploratory"},{"type":"caption","text":"p-adic packet implementation\nhttps://github.com/EncapsulatorP/Some_playful_boundary_paths_and_brun_twin_prime_sign_flipping_towers/blob/main/scripts/padic_drift.py","status":"exploratory"},{"type":"heading","text":"Connected threads","status":"exploratory"},{"type":"caption","text":"Prime towers made of carries","status":"exploratory"},{"type":"caption","text":"The speed of light, through different written forms","status":"exploratory"},{"type":"caption","text":"Forty-eight arithmetic lanes","status":"exploratory"},{"type":"caption","text":"Research direction and original explorations: Zolton / EncapsulatorP. Recovery, mathematical checks and this interactive edition: ChatGPT. Existing contributor credits, including Neo’s Prime Forms layout/helper and the showcase’s earlier collaborators, remain with their sources.","status":"exploratory"}],"menuHref":"../../#interactive?topic=goldbach-involution","sourceLabel":"Zolton / EncapsulatorP · with ChatGPT","sourceUrl":"https://encapsulatorp.github.io/atlas/entries/padic-drift.html","credit":"Research direction and original explorations: Zolton / EncapsulatorP. Recovery, mathematical checks and this interactive edition: ChatGPT. Existing contributor credits, including Neo’s Prime Forms layout/helper and the showcase’s earlier collaborators, remain with their sources.","logoSrc":"../../assets/logo-encapsulatorp-512.png","translation":{"engine":"core","version":"0.4.0","mirror_rate":0.8,"wheel_sha256":"4389e91e55a97a977df4efc796a6e38706e3c15a323fb9d98dd2a58ef2696f0a","translation_note":"Each passage is an independent request; document-level state resets per passage.","readback_note":"The English endpoint is the preserved original source, not an automatically decoded translation.","display_note":"Context tails are omitted only from the visible surface; full targets, sidecars and returned Unicode remain in this file."},"translationRecord":"../../atlas/zyntalic-passages.json.gz"}</script>
+<noscript><p class="reader-noscript">The complete English document is available above. Animation and GIF export use JavaScript.</p></noscript>
+</body></html>

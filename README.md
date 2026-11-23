@@ -60,7 +60,7 @@ record where a source was recovered and where a definition or table remains miss
 ## Explore
 
 - [Interactive atlas](https://encapsulatorp.github.io/#atlas): search, family/evidence filters, related threads and three working exhibits.
-- [Complete reading copy (PDF)](atlas/README.pdf): every entry, equation and source link. [Markdown source](atlas/README.md).
+- [Complete HTML reading edition](atlas/README.html): every entry, equation and source link. [Markdown source](atlas/README.md).
 - [The Pirate Chest · Orbital Treasures](https://encapsulatorp.github.io/#pirate-chest): Brun crossings, dagger towers and research treasures, connected to the atlas.
 - [Hibernating Lemmas](https://encapsulatorp.github.io/#lemmas): small exact prime-pair identities and their proofs. The [Goldbach roadmap](lemmas/ROADMAP.md) records the next steps.
 - [Goldbach](https://encapsulatorp.github.io/#goldbach), [Collatz](https://encapsulatorp.github.io/#collatz), and [towers](https://encapsulatorp.github.io/#towers): the existing visual exhibits.
@@ -70,7 +70,7 @@ record where a source was recovered and where a definition or table remains miss
 
 The [proof review board](https://encapsulatorp.github.io/treasure-hunt/) presents three connected records: **A**, nine reported PDF passages checked against the source and printed editions; **B**, fourteen statements with their hypotheses; and **C**, ten groups of surviving arguments. The inspected source and printed notation already contain the correct formulas. The confirmed text-extraction losses are recorded separately from mathematical correctness.
 
-[Read the review PDF](atlas/treasure-hunt-guide.pdf), [open the readable mathematical source](atlas/proof-review-board.md), or [choose a standalone proof](https://encapsulatorp.github.io/treasure-hunt/#proof-library). The public [board data](atlas/proof-board-data.json) identifies the reviewed starting commit, earlier PDF checksums, statement domains and evidence status. The [earlier complete collection](atlas/logistic-vanishing-terms.pdf) remains linked for comparison.
+[Read the review in HTML](atlas/treasure-hunt-guide.html), [open the readable mathematical source](atlas/proof-review-board.md), or [choose a standalone proof](https://encapsulatorp.github.io/treasure-hunt/#proof-library). The public [board data](atlas/proof-board-data.json) identifies the reviewed starting commit, earlier PDF checksums, statement domains and evidence status. The [earlier complete collection](atlas/logistic-vanishing-terms.html) remains linked for comparison.
 
 The logistic cubic, local attraction rate, dyadic/zeta ratio and explicitly defined transverse-attraction model appear in a separate **later additions** section. Exact two-cycle, quarter-turn, seed-folding, local-return and transport diagrams remain interactive. Solid lines denote proved implications; dotted lines denote assumptions; dashed lines denote open connections. The supplied Hopf and sphere-eversion references remain secondary and retain their [source and license credits](atlas/assets/treasure-hunt/media-sources.json).
 
@@ -80,10 +80,10 @@ To regenerate the notes, A/B/C review and static website, then check mathematica
 python3 atlas/build_proof_library.py
 python3 atlas/build_treasure_hunt_guide.py
 python3 atlas/build_treasure_site.py
-python3 atlas/verify_pdf_semantics.py
+python3 atlas/verify_html_semantics.py
 ```
 
-The searchable PDF collection uses [proof-library.json](atlas/proof-library.json); the static board uses [proof-board-data.json](atlas/proof-board-data.json). The [Pirates Plan](https://encapsulatorp.github.io/#pirates-plan) and [repository graph](https://encapsulatorp.github.io/#repo-interlinks) hold the organisation-wide planning threads.
+The searchable HTML collection uses [proof-library.json](atlas/proof-library.json); the static board uses [proof-board-data.json](atlas/proof-board-data.json). The [Pirates Plan](https://encapsulatorp.github.io/#pirates-plan) and [repository graph](https://encapsulatorp.github.io/#repo-interlinks) hold the organisation-wide planning threads.
 
 ## Written arguments and reproduction
 
@@ -107,40 +107,63 @@ certificates. The finite experiment output is preserved in
 
 ## Maintain the collection
 
-Edit [atlas/catalog.json](atlas/catalog.json), then run:
+Edit [atlas/catalog.json](atlas/catalog.json), then rebuild the complete reading edition:
 
 ```sh
-python3 atlas/build_catalog.py
+python3 atlas/build_reading_site.py
 ```
 
-This validates IDs, evidence labels, source URLs and related-thread links, and
-rebuilds the browser data and Markdown reading copy. To refresh the linked PDF,
-install Pandoc and the DejaVu fonts, then run:
+This validates IDs, evidence labels, source URLs and related threads. It rebuilds
+all 46 complete HTML entries, the full `atlas/README.html`, the Markdown source,
+and the existing browser catalogue. The original evidence labels are preserved:
+28 exact entries; finite, reported, conjectural, exploratory and tooling entries
+keep their own stated scope.
+
+The reading edition uses white pages and an azure / sapphire / cyan / indigo /
+violet spectrum. Each page begins with its full reading content concealed, then
+reveals the original English and mathematics in a downward cascade. Reviewed
+prose uses authentic deterministic Zyntalic; equations, artwork and other source
+blocks use temporary visual masks that restore their exact originals. Evidence
+labels retain their stated scope throughout. Reduced motion and **Plain reading**
+provide immediate English. Rejected claims have separate muted pages; their true
+corrections survive.
+
+Rebuild the complete collection, focused notes and authentic language data:
 
 ```sh
-python3 -m pip install -r atlas/pdf-requirements.txt
-python3 atlas/build_pdf.py
+python3 -m pip install -r atlas/html-requirements.txt
+python3 atlas/build_proof_html.py
+python3 atlas/build_treasure_site.py
+python3 atlas/build_zyntalic.py
+python3 atlas/verify_html_semantics.py
+node atlas/verify_reader.cjs
 ```
 
-The PDF retains all entry text, equations, source URLs and evidence labels, with
-clickable contents, related-entry links and PDF bookmarks. Commit the regenerated
-`atlas/README.pdf` with content updates. The renderer's docstring includes Ubuntu
-setup commands and its `--font-dir` option supports another font installation.
+`build_zyntalic.py` reuses checked-in translations. For changed prose, install the [bundled MIT-licensed engine](atlas/vendor/README.md) and pass
+`--translate` with Zyntalic 0.4.0 installed, or `--runner` with the translator
+skill's supplied runner. The compressed cache retains the exact English, complete engine
+records, context tails, sidecars, warnings and engine version. Visible context
+tails are omitted from the animation; no invented replacement language is used.
 
-The [Logistic vanishing terms note](atlas/logistic-vanishing-terms.pdf) is maintained in
-[its structured source](atlas/logistic-vanishing-terms.json). Rebuild its PDF and
-[Markdown reading copy](atlas/logistic-vanishing-terms.md) with:
+**Export GIF** encodes the complete current document locally, paginates every
+block, and uses the same full-content cascade as the reader. The original
+EncapsulatorP logo appears on every GIF page and frame. The complete atlas and
+each individual entry have their own export. The GIF is a visual recording;
+selectable mathematics, navigation and source links remain in HTML. No account
+or upload is needed to export. No first-party PDF documents are built or served.
 
-```sh
-python3 -m pip install -r atlas/logistic-pdf-requirements.txt
-python3 atlas/build_logistic_vanishing_pdf.py
-```
+The [complete logistic note](atlas/logistic-vanishing-terms.html) and its
+[structured source](atlas/logistic-vanishing-terms.json) preserve every section,
+including the opening, reading map and sources. Mathematical equations are
+rendered as local vector images with exact LaTeX and accessible labels. Tables
+and matrices retain their full HTML structure. The old PDF-named build commands
+are compatibility entrypoints that now generate HTML only; historical audits
+and external scholarly source citations keep their provenance.
 
-The note also includes an [illustrated proof](atlas/assets/logistic-proof.png) with a
-matching [animated PNG](atlas/assets/logistic-proof.apng). To rebuild both pictures
-before regenerating the PDF, run `python3 atlas/build_logistic_proof_visual.py`
-after installing [the visual dependencies](atlas/logistic-visual-requirements.txt). The PDF contains a still
-image linked to the browser animation.
+The note includes an [illustrated proof](atlas/assets/logistic-proof.png) with a
+matching [animated PNG](atlas/assets/logistic-proof.apng). To regenerate those
+mathematical illustrations, run `python3 atlas/build_logistic_proof_visual.py`
+with [the visual dependencies](atlas/logistic-visual-requirements.txt).
 
 The browser loads local assets without a data-fetch dependency. Existing
 analytics and visual exhibits remain part of the showcase.
@@ -156,7 +179,7 @@ Recovered threads and checked notes.
 - [The Ω series](https://encapsulatorp.github.io/#buried-omega-feedback) follows the Omega fixed point from a feedback loop to two prime layers whose order leaves a measurable second harmonic in the model.
 - [The Collatz–Riemann hint that turned around](https://encapsulatorp.github.io/#buried-collatz-riemann-reversal) traces the failed singularity argument back to something exact. The known 1–4–2 cycle produces a pole in its own orbit series, with Abel limit $7/12$ after normalization.
 - [The bubble versals tube](https://encapsulatorp.github.io/#buried-bubble-tube) pairs a model of sideways collapse and axial transport with the quarter-turn kernel behind the Catalan integral.
-- [Logistic vanishing terms](https://encapsulatorp.github.io/#buried-logistic-vanishing) links the exact logistic two-cycle calculation, recovered notes on exponential maps, Schanuel and Mahler, and a review of the written proofs. [Read the note and proof review (PDF)](atlas/logistic-vanishing-terms.pdf).
+- [Logistic vanishing terms](https://encapsulatorp.github.io/#buried-logistic-vanishing) links the exact logistic two-cycle calculation, recovered notes on exponential maps, Schanuel and Mahler, and a review of the written proofs. [Read the note and proof review (HTML)](atlas/logistic-vanishing-terms.html).
 - [XO₂, the two-sheet geometron](https://encapsulatorp.github.io/#buried-xo2) lets you flip the square-root sheet at the same input and compare what the zeta-based kernel returns.
 
 *Signed, GPT Sol and Zolton*

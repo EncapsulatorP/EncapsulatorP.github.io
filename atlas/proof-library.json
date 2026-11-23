@@ -5,7 +5,7 @@
   "collectionSourceSha256": "f770b2544dcb7fd0e7dc5a17887ca381d5a0cafcc4b0cbdfdf5f18a2162a6198",
   "historicalCollectionSourceCommit": "cc3f20117eaead570db6077377a43a92c0bfc652",
   "reviewedProofCommit": "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd",
-  "completeCollection": "atlas/logistic-vanishing-terms.pdf",
+  "completeCollection": "atlas/logistic-vanishing-terms.html",
   "notes": [
     {
       "slug": "logistic-quarter-turn",
@@ -20,15 +20,15 @@
         "fractional-exponential-maps",
         "alternating-towers"
       ],
-      "pdf": "atlas/proofs/logistic-quarter-turn.pdf",
       "markdown": "atlas/proofs/logistic-quarter-turn.md",
       "source": "atlas/proofs/logistic-quarter-turn.json",
-      "pageCount": 4,
       "sourcePages": [
         "logistic-proof-picture",
         "logistic-cycle",
         "logistic-vanishing"
-      ]
+      ],
+      "html": "atlas/proofs/logistic-quarter-turn.html",
+      "sectionCount": 4
     },
     {
       "slug": "alternating-towers",
@@ -42,14 +42,14 @@
         "logistic-quarter-turn",
         "proof-review"
       ],
-      "pdf": "atlas/proofs/alternating-towers.pdf",
       "markdown": "atlas/proofs/alternating-towers.md",
       "source": "atlas/proofs/alternating-towers.json",
-      "pageCount": 3,
       "sourcePages": [
         "tower-convergence",
         "tower-envelope"
-      ]
+      ],
+      "html": "atlas/proofs/alternating-towers.html",
+      "sectionCount": 3
     },
     {
       "slug": "dyadic-remainder",
@@ -64,13 +64,13 @@
         "schanuel-zeta-family",
         "fractional-exponential-maps"
       ],
-      "pdf": "atlas/proofs/dyadic-remainder.pdf",
       "markdown": "atlas/proofs/dyadic-remainder.md",
       "source": "atlas/proofs/dyadic-remainder.json",
-      "pageCount": 2,
       "sourcePages": [
         "mahler-remainder"
-      ]
+      ],
+      "html": "atlas/proofs/dyadic-remainder.html",
+      "sectionCount": 2
     },
     {
       "slug": "prime-polynomial-counts",
@@ -84,13 +84,13 @@
         "palindrome-counting",
         "proof-review"
       ],
-      "pdf": "atlas/proofs/prime-polynomial-counts.pdf",
       "markdown": "atlas/proofs/prime-polynomial-counts.md",
       "source": "atlas/proofs/prime-polynomial-counts.json",
-      "pageCount": 2,
       "sourcePages": [
         "prime-polynomials"
-      ]
+      ],
+      "html": "atlas/proofs/prime-polynomial-counts.html",
+      "sectionCount": 2
     },
     {
       "slug": "schanuel-zeta-family",
@@ -104,14 +104,14 @@
         "dyadic-remainder",
         "proof-review"
       ],
-      "pdf": "atlas/proofs/schanuel-zeta-family.pdf",
       "markdown": "atlas/proofs/schanuel-zeta-family.md",
       "source": "atlas/proofs/schanuel-zeta-family.json",
-      "pageCount": 3,
       "sourcePages": [
         "zeta-family",
         "schanuel-proof"
-      ]
+      ],
+      "html": "atlas/proofs/schanuel-zeta-family.html",
+      "sectionCount": 3
     },
     {
       "slug": "fractional-exponential-maps",
@@ -125,14 +125,14 @@
         "logistic-quarter-turn",
         "dyadic-remainder"
       ],
-      "pdf": "atlas/proofs/fractional-exponential-maps.pdf",
       "markdown": "atlas/proofs/fractional-exponential-maps.md",
       "source": "atlas/proofs/fractional-exponential-maps.json",
-      "pageCount": 3,
       "sourcePages": [
         "six-maps",
         "lyapunov-comparison"
-      ]
+      ],
+      "html": "atlas/proofs/fractional-exponential-maps.html",
+      "sectionCount": 3
     },
     {
       "slug": "palindrome-counting",
@@ -146,13 +146,13 @@
         "prime-polynomial-counts",
         "dimensions-and-fragments"
       ],
-      "pdf": "atlas/proofs/palindrome-counting.pdf",
       "markdown": "atlas/proofs/palindrome-counting.md",
       "source": "atlas/proofs/palindrome-counting.json",
-      "pageCount": 2,
       "sourcePages": [
         "palindromes"
-      ]
+      ],
+      "html": "atlas/proofs/palindrome-counting.html",
+      "sectionCount": 2
     },
     {
       "slug": "dimensions-and-fragments",
@@ -166,13 +166,13 @@
         "logistic-quarter-turn",
         "palindrome-counting"
       ],
-      "pdf": "atlas/proofs/dimensions-and-fragments.pdf",
       "markdown": "atlas/proofs/dimensions-and-fragments.md",
       "source": "atlas/proofs/dimensions-and-fragments.json",
-      "pageCount": 2,
       "sourcePages": [
         "dimensions-fragments"
-      ]
+      ],
+      "html": "atlas/proofs/dimensions-and-fragments.html",
+      "sectionCount": 2
     },
     {
       "slug": "proof-review",
@@ -187,13 +187,13 @@
         "logistic-quarter-turn",
         "prime-polynomial-counts"
       ],
-      "pdf": "atlas/proofs/proof-review.pdf",
       "markdown": "atlas/proofs/proof-review.md",
       "source": "atlas/proofs/proof-review.json",
-      "pageCount": 2,
       "sourcePages": [
         "review-finding"
-      ]
+      ],
+      "html": "atlas/proofs/proof-review.html",
+      "sectionCount": 2
     },
     {
       "slug": "logistic-collapse-vanishing",
@@ -208,10 +208,8 @@
         "dimensions-and-fragments",
         "dyadic-remainder"
       ],
-      "pdf": "atlas/proofs/logistic-collapse-vanishing.pdf",
       "markdown": "atlas/proofs/logistic-collapse-vanishing.md",
       "source": "atlas/proofs/logistic-collapse-vanishing.json",
-      "pageCount": 7,
       "sourcePages": [
         "complementary-fold",
         "surviving-cubic",
@@ -225,7 +223,9 @@
       "canonicalSource": "atlas/logistic-collapse-vanishing.json",
       "sourceSha256": "cf51009ae78690f3cc364540e689cef1af0ebcf70dfb5d7ba70e0b58d32da07d",
       "reviewedProofCommit": null,
-      "provenance": "Derivations added on 23 November 2026 after the earlier collected-proof review; historical sources are cited separately from the current source hash."
+      "provenance": "Derivations added on 23 November 2026 after the earlier collected-proof review; historical sources are cited separately from the current source hash.",
+      "html": "atlas/proofs/logistic-collapse-vanishing.html",
+      "sectionCount": 7
     }
   ]
 }

@@ -1,0 +1,4079 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A focused reading note from the Pirate Chest">
+<meta name="color-scheme" content="light"><link rel="canonical" href="https://encapsulatorp.github.io/atlas/proofs/alternating-towers.html">
+<title>Alternating real towers · EncapsulatorP</title>
+<style>html.ar-reveal-pending #reader-content,html.ar-reveal-pending [data-reader-reveal]{visibility:hidden!important}</style>
+<script>(function(){try{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('ar-reveal-pending');window.setTimeout(function(){document.documentElement.classList.remove('ar-reveal-pending');},8000);}}catch(e){document.documentElement.classList.remove('ar-reveal-pending');}}());</script>
+<link rel="stylesheet" href="../../assets/atlas-reader.css"><link rel="stylesheet" href="../../assets/atlas-reveal.css">
+</head><body class="atlas-reader" data-reader-status="exact">
+<a class="reader-skip" data-reader-chrome href="#reader-content">Skip to the complete text</a>
+<div class="reader-shell"><header class="reader-header">
+<a class="reader-brand" data-reader-chrome href="../../index.html#interactive?topic=goldbach-involution"><img src="../../assets/logo-encapsulatorp-512.png" alt="EncapsulatorP" width="64" height="64"></a>
+<nav class="reader-nav" data-reader-chrome aria-label="Reading routes"><a href="../../index.html#interactive?topic=goldbach-involution">Interactive space</a><a href="../README.html">Complete atlas</a><a href="../../treasure-hunt/index.html">Proof board</a></nav>
+<div data-reader-reveal>
+<p class="reader-kicker">ENCAPSULATORP · Proved convergence and classification</p><h1 class="reader-title">Alternating real towers</h1>
+<p class="reader-subtitle">A focused reading note from the Pirate Chest</p>
+<p class="reader-byline">Zolton / EncapsulatorP · with ChatGPT · 23 November 2026</p>
+</div>
+<div id="reader-tools" class="reader-toolbar reader-tools" data-reader-chrome aria-label="Reading and export controls"></div>
+<noscript><p>The complete English text and formulas below are available without JavaScript.</p></noscript>
+<details class="reader-contents" data-reader-reveal><summary>Contents · 3 sections</summary><ol><li><a href="#alternating-towers-orientation">Alternating real towers</a></li><li><a href="#tower-convergence">Alternating real towers converge</a></li><li><a href="#tower-envelope">A sharp height and exactly two bases</a></li></ol></details>
+</header>
+<main id="reader-content" class="reader-content reader-document" data-source-document="atlas/proofs/alternating-towers.json">
+<section class="reader-section" id="alternating-towers-orientation" data-source-page="alternating-towers-orientation" data-source-index="0" data-source-status="exact"><span id="page-1" class="reader-page-anchor" aria-hidden="true"></span><p class="reader-kicker">NOTE 02 · PROVED CONVERGENCE AND CLASSIFICATION</p><h2 class="reader-section-title" data-zyntalic data-passage-id="alternating-towers--alternating-towers-orientation--title">Alternating real towers</h2><p class="reader-paragraph" data-zyntalic data-passage-id="alternating-towers--alternating-towers-orientation--b0" data-source-block="0" data-source-type="p">For every real base c &gt; 1, the alternating-sign system has one pair of phases. The explicit iteration converges from every upper starting phase at least 1, with a uniform contraction bound.</p>
+<div class="reader-equation" data-latex="u=c^{-v},\qquad v=c^u,\qquad c&gt;1" data-source-block="1" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="u=c^{-v},\qquad v=c^u,\qquad c&gt;1" xmlns:xlink="http://www.w3.org/1999/xlink" width="245pt" height="17pt" viewBox="0 0 245 17" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-c6edbae081788d-figure_1">
+  <g id="math-c6edbae081788d-patch_1">
+   <path d="M 0 17
+L 245 17
+L 245 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-c6edbae081788d-text_1">
+   <!-- $u=c^{-v},\qquad v=c^u,\qquad c&gt;1$ -->
+   <g style="fill: #202520" transform="translate(0 14) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-c6edbae081788d-DejaVuSerif-Italic-75" d="M 3097 3322
+L 3672 3322
+L 3091 331
+L 3634 331
+L 3572 0
+L 2453 0
+L 2566 588
+Q 2341 256 2055 82
+Q 1769 -91 1434 -91
+Q 881 -91 681 225
+Q 559 413 559 734
+Q 559 944 613 1209
+L 956 2988
+L 438 2988
+L 503 3322
+L 1600 3322
+L 1225 1388
+Q 1163 1066 1163 853
+Q 1163 663 1213 556
+Q 1316 331 1697 331
+Q 2097 331 2364 625
+Q 2631 919 2738 1478
+L 3097 3322
+z
+" transform="scale(0.015625)"/>
+     <path id="math-c6edbae081788d-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-c6edbae081788d-DejaVuSerif-Italic-63" d="M 3163 997
+Q 2938 466 2536 187
+Q 2134 -91 1584 -91
+Q 859 -91 513 388
+Q 272 722 272 1203
+Q 272 1419 319 1663
+Q 475 2459 1008 2936
+Q 1541 3413 2266 3413
+Q 2581 3413 2879 3339
+Q 3178 3266 3463 3116
+L 3300 2266
+L 2966 2266
+Q 2966 2309 2966 2347
+Q 2966 2722 2803 2903
+Q 2622 3103 2213 3103
+Q 1747 3103 1439 2742
+Q 1131 2381 991 1663
+Q 928 1334 928 1078
+Q 928 778 1016 581
+Q 1181 219 1650 219
+Q 2022 219 2281 412
+Q 2541 606 2700 997
+L 3163 997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-c6edbae081788d-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-c6edbae081788d-DejaVuSerif-Italic-76" d="M 1681 0
+L 1259 0
+L 619 2988
+L 241 2988
+L 303 3322
+L 1163 3322
+L 1725 703
+Q 2084 1016 2325 1413
+Q 2825 2238 3003 2988
+L 2622 2988
+L 2688 3322
+L 3547 3322
+Q 3206 2034 2775 1313
+Q 2400 688 1681 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-c6edbae081788d-DejaVuSerif-2c" d="M 231 -622
+Q 525 -406 662 -114
+Q 800 178 800 594
+L 800 709
+L 1416 709
+Q 1391 175 1164 -208
+Q 938 -591 481 -872
+L 231 -622
+z
+" transform="scale(0.015625)"/>
+     <path id="math-c6edbae081788d-DejaVuSerif-3e" d="M 678 3188
+L 678 3719
+L 4684 2266
+L 4684 1747
+L 678 294
+L 678 825
+L 3922 2003
+L 678 3188
+z
+" transform="scale(0.015625)"/>
+     <path id="math-c6edbae081788d-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-c6edbae081788d-DejaVuSerif-Italic-75" transform="translate(0 0.78125)"/>
+    <use xlink:href="#math-c6edbae081788d-DejaVuSerif-3d" transform="translate(83.369141 0.78125)"/>
+    <use xlink:href="#math-c6edbae081788d-DejaVuSerif-Italic-63" transform="translate(186.123047 0.78125)"/>
+    <use xlink:href="#math-c6edbae081788d-DejaVuSerif-2212" transform="translate(246.566979 37.115625) scale(0.7)"/>
+    <use xlink:href="#math-c6edbae081788d-DejaVuSerif-Italic-76" transform="translate(305.219323 37.115625) scale(0.7)"/>
+    <use xlink:href="#math-c6edbae081788d-DejaVuSerif-2c" transform="translate(347.360534 0.78125)"/>
+    <use xlink:href="#math-c6edbae081788d-DejaVuSerif-Italic-76" transform="translate(587.760924 0.78125)"/>
+    <use xlink:href="#math-c6edbae081788d-DejaVuSerif-3d" transform="translate(663.219909 0.78125)"/>
+    <use xlink:href="#math-c6edbae081788d-DejaVuSerif-Italic-63" transform="translate(765.973815 0.78125)"/>
+    <use xlink:href="#math-c6edbae081788d-DejaVuSerif-Italic-75" transform="translate(826.417747 37.115625) scale(0.7)"/>
+    <use xlink:href="#math-c6edbae081788d-DejaVuSerif-2c" transform="translate(874.096068 0.78125)"/>
+    <use xlink:href="#math-c6edbae081788d-DejaVuSerif-Italic-63" transform="translate(1114.496458 0.78125)"/>
+    <use xlink:href="#math-c6edbae081788d-DejaVuSerif-3e" transform="translate(1189.467161 0.78125)"/>
+    <use xlink:href="#math-c6edbae081788d-DejaVuSerif-31" transform="translate(1292.221068 0.78125)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>u=c^{-v},\qquad v=c^u,\qquad c&gt;1</code></pre></details></div>
+<aside class="reader-callout" data-status="exact" data-source-block="2" data-source-type="callout"><p class="reader-callout-label">Proved convergence and classification</p><p class="reader-callout-text" data-zyntalic data-passage-id="alternating-towers--alternating-towers-orientation--b2">The defined alternating-sign system has a sharp maximum upper phase and exactly two finite bases at every height strictly between 1 and that maximum.</p></aside>
+<p class="reader-paragraph" data-zyntalic data-passage-id="alternating-towers--alternating-towers-orientation--b3" data-source-block="3" data-source-type="p">The first argument establishes an invariant interval and a contraction. The second extracts the sharp envelope from v log v = t exp(−t) and classifies the two inverse branches.</p>
+<h3 class="reader-subheading" data-zyntalic data-passage-id="alternating-towers--alternating-towers-orientation--b4" data-source-block="4" data-source-type="h">One concrete next step</h3>
+<p class="reader-paragraph" data-zyntalic data-passage-id="alternating-towers--alternating-towers-orientation--b5" data-source-block="5" data-source-type="p">Compare the convergence and inverse classification with the literature. If a particular arithmetic constant is used as a target height, state the additional arithmetic question separately.</p>
+<h3 class="reader-subheading" data-source-block="6" data-source-type="h">Sources and related reading</h3>
+<p class="reader-paragraph reader-small" data-source-block="7" data-source-type="p"><b>[S2] Towers and prime polynomials.</b> EncapsulatorP, <i>Exact structures behind the atlas</i>, edition 21 November 2026, §§1, 2 and 4. The written arguments record their scope, prior solver provenance and numerical limits.</p>
+<p class="reader-source-link" data-source-block="8" data-source-type="link"><a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/29f9232545aa112cd6ffa9fe1f3c0e85d093dedd/atlas/mathematical-notes.md">[S2] Read the pinned mathematical notes</a></p>
+<p class="reader-source-link" data-source-block="9" data-source-type="link"><a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#tower-convergence">Historical collection source · original edition</a></p>
+<p class="reader-source-link" data-source-block="10" data-source-type="link"><a href="https://encapsulatorp.github.io/#buried-logistic-vanishing">Return to the Treasure Chest</a></p></section>
+<section class="reader-section" id="tower-convergence" data-source-page="tower-convergence" data-source-index="1" data-source-status="exact"><span id="page-2" class="reader-page-anchor" aria-hidden="true"></span><p class="reader-kicker">01 · WRITTEN-PROOF REVIEW: GLOBAL RESULT</p><h2 class="reader-section-title" data-zyntalic data-passage-id="alternating-towers--tower-convergence--title">Alternating real towers converge</h2><p class="reader-paragraph" data-source-block="0" data-source-type="p">Fix a real c &gt; 1 and L = log c. The following alternating-sign system has exactly one solution with 0 &lt; u &lt; 1 &lt; v [S2]:</p>
+<div class="reader-equation" data-latex="u=c^{-v},\qquad v=c^u." data-source-block="1" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="u=c^{-v},\qquad v=c^u." xmlns:xlink="http://www.w3.org/1999/xlink" width="167pt" height="17pt" viewBox="0 0 167 17" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-3fb689cde7a5ab-figure_1">
+  <g id="math-3fb689cde7a5ab-patch_1">
+   <path d="M 0 17
+L 167 17
+L 167 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-3fb689cde7a5ab-text_1">
+   <!-- $u=c^{-v},\qquad v=c^u.$ -->
+   <g style="fill: #202520" transform="translate(0 14) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-3fb689cde7a5ab-DejaVuSerif-Italic-75" d="M 3097 3322
+L 3672 3322
+L 3091 331
+L 3634 331
+L 3572 0
+L 2453 0
+L 2566 588
+Q 2341 256 2055 82
+Q 1769 -91 1434 -91
+Q 881 -91 681 225
+Q 559 413 559 734
+Q 559 944 613 1209
+L 956 2988
+L 438 2988
+L 503 3322
+L 1600 3322
+L 1225 1388
+Q 1163 1066 1163 853
+Q 1163 663 1213 556
+Q 1316 331 1697 331
+Q 2097 331 2364 625
+Q 2631 919 2738 1478
+L 3097 3322
+z
+" transform="scale(0.015625)"/>
+     <path id="math-3fb689cde7a5ab-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-3fb689cde7a5ab-DejaVuSerif-Italic-63" d="M 3163 997
+Q 2938 466 2536 187
+Q 2134 -91 1584 -91
+Q 859 -91 513 388
+Q 272 722 272 1203
+Q 272 1419 319 1663
+Q 475 2459 1008 2936
+Q 1541 3413 2266 3413
+Q 2581 3413 2879 3339
+Q 3178 3266 3463 3116
+L 3300 2266
+L 2966 2266
+Q 2966 2309 2966 2347
+Q 2966 2722 2803 2903
+Q 2622 3103 2213 3103
+Q 1747 3103 1439 2742
+Q 1131 2381 991 1663
+Q 928 1334 928 1078
+Q 928 778 1016 581
+Q 1181 219 1650 219
+Q 2022 219 2281 412
+Q 2541 606 2700 997
+L 3163 997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-3fb689cde7a5ab-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-3fb689cde7a5ab-DejaVuSerif-Italic-76" d="M 1681 0
+L 1259 0
+L 619 2988
+L 241 2988
+L 303 3322
+L 1163 3322
+L 1725 703
+Q 2084 1016 2325 1413
+Q 2825 2238 3003 2988
+L 2622 2988
+L 2688 3322
+L 3547 3322
+Q 3206 2034 2775 1313
+Q 2400 688 1681 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-3fb689cde7a5ab-DejaVuSerif-2c" d="M 231 -622
+Q 525 -406 662 -114
+Q 800 178 800 594
+L 800 709
+L 1416 709
+Q 1391 175 1164 -208
+Q 938 -591 481 -872
+L 231 -622
+z
+" transform="scale(0.015625)"/>
+     <path id="math-3fb689cde7a5ab-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-3fb689cde7a5ab-DejaVuSerif-Italic-75" transform="translate(0 0.33125)"/>
+    <use xlink:href="#math-3fb689cde7a5ab-DejaVuSerif-3d" transform="translate(83.369141 0.33125)"/>
+    <use xlink:href="#math-3fb689cde7a5ab-DejaVuSerif-Italic-63" transform="translate(186.123047 0.33125)"/>
+    <use xlink:href="#math-3fb689cde7a5ab-DejaVuSerif-2212" transform="translate(246.566979 36.665625) scale(0.7)"/>
+    <use xlink:href="#math-3fb689cde7a5ab-DejaVuSerif-Italic-76" transform="translate(305.219323 36.665625) scale(0.7)"/>
+    <use xlink:href="#math-3fb689cde7a5ab-DejaVuSerif-2c" transform="translate(347.360534 0.33125)"/>
+    <use xlink:href="#math-3fb689cde7a5ab-DejaVuSerif-Italic-76" transform="translate(587.760924 0.33125)"/>
+    <use xlink:href="#math-3fb689cde7a5ab-DejaVuSerif-3d" transform="translate(663.219909 0.33125)"/>
+    <use xlink:href="#math-3fb689cde7a5ab-DejaVuSerif-Italic-63" transform="translate(765.973815 0.33125)"/>
+    <use xlink:href="#math-3fb689cde7a5ab-DejaVuSerif-Italic-75" transform="translate(826.417747 36.665625) scale(0.7)"/>
+    <use xlink:href="#math-3fb689cde7a5ab-DejaVuSerif-2e" transform="translate(874.096068 0.33125)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>u=c^{-v},\qquad v=c^u.</code></pre></details></div>
+<p class="reader-paragraph" data-zyntalic data-passage-id="alternating-towers--tower-convergence--b2" data-source-block="2" data-source-type="p">Eliminate u and define</p>
+<div class="reader-equation" data-latex="F_L(v)=\exp(Le^{-Lv}),\qquad v_{j+1}=F_L(v_j)." data-source-block="3" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="F_L(v)=\exp(Le^{-Lv}),\qquad v_{j+1}=F_L(v_j)." xmlns:xlink="http://www.w3.org/1999/xlink" width="326pt" height="22pt" viewBox="0 0 326 22" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-8d943539e5a033-figure_1">
+  <g id="math-8d943539e5a033-patch_1">
+   <path d="M 0 22
+L 326 22
+L 326 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-8d943539e5a033-text_1">
+   <!-- $F_L(v)=\exp(Le^{-Lv}),\qquad v_{j+1}=F_L(v_j).$ -->
+   <g style="fill: #202520" transform="translate(0 16) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-8d943539e5a033-DejaVuSerif-Italic-46" d="M -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 4628 4666
+L 4428 3628
+L 4044 3628
+L 4169 4281
+L 1963 4281
+L 1659 2719
+L 3253 2719
+L 3366 3303
+L 3750 3303
+L 3450 1753
+L 3066 1753
+L 3178 2338
+L 1584 2338
+L 1194 331
+L 1941 331
+L 1878 0
+L -97 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d943539e5a033-DejaVuSerif-Italic-4c" d="M -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 2631 4666
+L 2566 4331
+L 1972 4331
+L 1206 384
+L 3338 384
+L 3488 1166
+L 3872 1166
+L 3647 0
+L -97 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d943539e5a033-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d943539e5a033-DejaVuSerif-Italic-76" d="M 1681 0
+L 1259 0
+L 619 2988
+L 241 2988
+L 303 3322
+L 1163 3322
+L 1725 703
+Q 2084 1016 2325 1413
+Q 2825 2238 3003 2988
+L 2622 2988
+L 2688 3322
+L 3547 3322
+Q 3206 2034 2775 1313
+Q 2400 688 1681 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d943539e5a033-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d943539e5a033-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d943539e5a033-DejaVuSerif-65" d="M 3469 1600
+L 991 1600
+L 991 1575
+Q 991 903 1244 561
+Q 1497 219 1991 219
+Q 2369 219 2611 417
+Q 2853 616 2950 1006
+L 3413 1006
+Q 3275 459 2904 184
+Q 2534 -91 1931 -91
+Q 1203 -91 761 389
+Q 319 869 319 1663
+Q 319 2450 753 2931
+Q 1188 3413 1894 3413
+Q 2647 3413 3050 2948
+Q 3453 2484 3469 1600
+z
+M 2791 1931
+Q 2772 2513 2545 2808
+Q 2319 3103 1894 3103
+Q 1497 3103 1269 2806
+Q 1041 2509 991 1931
+L 2791 1931
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d943539e5a033-DejaVuSerif-78" d="M 1863 2028
+L 2559 2988
+L 2113 2988
+L 2113 3322
+L 3391 3322
+L 3391 2988
+L 2950 2988
+L 2059 1759
+L 3097 331
+L 3531 331
+L 3531 0
+L 1997 0
+L 1997 331
+L 2419 331
+L 1697 1325
+L 972 331
+L 1403 331
+L 1403 0
+L 141 0
+L 141 331
+L 581 331
+L 1497 1594
+L 488 2988
+L 78 2988
+L 78 3322
+L 1563 3322
+L 1563 2988
+L 1166 2988
+L 1863 2028
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d943539e5a033-DejaVuSerif-70" d="M 1313 1825
+L 1313 1497
+Q 1313 897 1542 583
+Q 1772 269 2209 269
+Q 2650 269 2876 622
+Q 3103 975 3103 1663
+Q 3103 2353 2876 2703
+Q 2650 3053 2209 3053
+Q 1772 3053 1542 2737
+Q 1313 2422 1313 1825
+z
+M 738 2988
+L 184 2988
+L 184 3322
+L 1313 3322
+L 1313 2803
+Q 1481 3116 1742 3264
+Q 2003 3413 2388 3413
+Q 3000 3413 3387 2928
+Q 3775 2444 3775 1663
+Q 3775 881 3387 395
+Q 3000 -91 2388 -91
+Q 2003 -91 1742 57
+Q 1481 206 1313 519
+L 1313 -997
+L 1856 -997
+L 1856 -1331
+L 184 -1331
+L 184 -997
+L 738 -997
+L 738 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d943539e5a033-DejaVuSerif-Italic-65" d="M 938 1275
+Q 925 1156 925 1050
+Q 925 756 1031 563
+Q 1216 219 1709 219
+Q 2072 219 2250 328
+Q 2569 525 2644 778
+L 3066 778
+Q 2941 381 2475 103
+Q 2150 -91 1506 -91
+Q 863 -91 516 388
+Q 272 722 272 1206
+Q 272 1419 319 1659
+Q 472 2450 1000 2931
+Q 1528 3413 2278 3413
+Q 3500 3413 3500 2547
+Q 3500 1913 2859 1603
+Q 2206 1288 938 1275
+z
+M 2541 1975
+Q 2891 2181 2891 2569
+Q 2891 3103 2181 3103
+Q 1763 3103 1472 2784
+Q 1181 2466 1003 1606
+Q 2006 1653 2541 1975
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d943539e5a033-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d943539e5a033-DejaVuSerif-2c" d="M 231 -622
+Q 525 -406 662 -114
+Q 800 178 800 594
+L 800 709
+L 1416 709
+Q 1391 175 1164 -208
+Q 938 -591 481 -872
+L 231 -622
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d943539e5a033-DejaVuSerif-Italic-6a" d="M 1172 4353
+Q 1197 4497 1323 4603
+Q 1450 4709 1597 4709
+Q 1741 4709 1825 4603
+Q 1888 4522 1888 4422
+Q 1888 4388 1881 4353
+Q 1850 4206 1729 4103
+Q 1609 4000 1459 4000
+Q 1313 4000 1225 4103
+Q 1163 4181 1163 4281
+Q 1163 4316 1172 4353
+z
+M 1047 2988
+L 503 2988
+L 566 3322
+L 1684 3322
+L 978 -325
+Q 878 -838 515 -1130
+Q 153 -1422 -381 -1422
+Q -606 -1422 -800 -1370
+Q -994 -1319 -1169 -1216
+L -1034 -531
+L -738 -531
+Q -747 -609 -747 -675
+Q -747 -869 -669 -972
+Q -563 -1113 -306 -1113
+Q -22 -1113 150 -920
+Q 322 -728 403 -325
+L 1047 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d943539e5a033-DejaVuSerif-2b" d="M 2931 4013
+L 2931 2259
+L 4684 2259
+L 4684 1753
+L 2931 1753
+L 2931 0
+L 2431 0
+L 2431 1753
+L 678 1753
+L 678 2259
+L 2431 2259
+L 2431 4013
+L 2931 4013
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d943539e5a033-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d943539e5a033-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-Italic-46" transform="translate(0 0.63125)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-Italic-4c" transform="translate(69.384766 -14.940625) scale(0.7)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-28" transform="translate(118.464453 0.63125)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-Italic-76" transform="translate(157.478125 0.63125)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-29" transform="translate(213.972266 0.63125)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-3d" transform="translate(271.950781 0.63125)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-65" transform="translate(374.704687 0.63125)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-78" transform="translate(433.884375 0.63125)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-70" transform="translate(490.280859 0.63125)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-28" transform="translate(554.294531 0.63125)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-Italic-4c" transform="translate(593.308203 0.63125)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-Italic-65" transform="translate(659.714453 0.63125)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-2212" transform="translate(723.332214 36.965625) scale(0.7)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-Italic-4c" transform="translate(781.984557 36.965625) scale(0.7)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-Italic-76" transform="translate(828.468932 36.965625) scale(0.7)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-29" transform="translate(870.610143 0.63125)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-2c" transform="translate(909.623815 0.63125)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-Italic-76" transform="translate(1150.024206 0.63125)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-Italic-6a" transform="translate(1206.518346 -14.940625) scale(0.7)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-2b" transform="translate(1241.497839 -14.940625) scale(0.7)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-31" transform="translate(1313.425573 -14.940625) scale(0.7)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-3d" transform="translate(1379.521862 0.63125)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-Italic-46" transform="translate(1482.275768 0.63125)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-Italic-4c" transform="translate(1551.660534 -14.940625) scale(0.7)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-28" transform="translate(1600.740221 0.63125)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-Italic-76" transform="translate(1639.753893 0.63125)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-Italic-6a" transform="translate(1696.248034 -14.940625) scale(0.7)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-29" transform="translate(1720.547448 0.63125)"/>
+    <use xlink:href="#math-8d943539e5a033-DejaVuSerif-2e" transform="translate(1759.56112 0.63125)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>F_L(v)=\exp(Le^{-Lv}),\qquad v_{j+1}=F_L(v_j).</code></pre></details></div>
+<p class="reader-paragraph" data-zyntalic data-passage-id="alternating-towers--tower-convergence--b4" data-source-block="4" data-source-type="p"><b>Invariant interval.</b> For v ≥ 1,</p>
+<div class="reader-equation" data-latex="1&lt;F_L(v)\le\exp(Le^{-L})\le e^{1/e}." data-source-block="5" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="1&lt;F_L(v)\le\exp(Le^{-L})\le e^{1/e}." xmlns:xlink="http://www.w3.org/1999/xlink" width="253pt" height="20pt" viewBox="0 0 253 20" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-2295e1f35f3d10-figure_1">
+  <g id="math-2295e1f35f3d10-patch_1">
+   <path d="M 0 20
+L 253 20
+L 253 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-2295e1f35f3d10-text_1">
+   <!-- $1&lt;F_L(v)\leq\exp(Le^{-L})\leq e^{1/e}.$ -->
+   <g style="fill: #202520" transform="translate(0 16) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-2295e1f35f3d10-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2295e1f35f3d10-DejaVuSerif-3c" d="M 4684 3188
+L 1441 2003
+L 4684 825
+L 4684 294
+L 678 1747
+L 678 2266
+L 4684 3719
+L 4684 3188
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2295e1f35f3d10-DejaVuSerif-Italic-46" d="M -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 4628 4666
+L 4428 3628
+L 4044 3628
+L 4169 4281
+L 1963 4281
+L 1659 2719
+L 3253 2719
+L 3366 3303
+L 3750 3303
+L 3450 1753
+L 3066 1753
+L 3178 2338
+L 1584 2338
+L 1194 331
+L 1941 331
+L 1878 0
+L -97 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2295e1f35f3d10-DejaVuSerif-Italic-4c" d="M -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 2631 4666
+L 2566 4331
+L 1972 4331
+L 1206 384
+L 3338 384
+L 3488 1166
+L 3872 1166
+L 3647 0
+L -97 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2295e1f35f3d10-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2295e1f35f3d10-DejaVuSerif-Italic-76" d="M 1681 0
+L 1259 0
+L 619 2988
+L 241 2988
+L 303 3322
+L 1163 3322
+L 1725 703
+Q 2084 1016 2325 1413
+Q 2825 2238 3003 2988
+L 2622 2988
+L 2688 3322
+L 3547 3322
+Q 3206 2034 2775 1313
+Q 2400 688 1681 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2295e1f35f3d10-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2295e1f35f3d10-DejaVuSerif-2264" d="M 4684 3206
+L 1388 2309
+L 4684 1416
+L 4684 897
+L 678 2047
+L 678 2578
+L 4684 3725
+L 4684 3206
+z
+M 678 488
+L 4684 488
+L 4684 0
+L 678 0
+L 678 488
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2295e1f35f3d10-DejaVuSerif-65" d="M 3469 1600
+L 991 1600
+L 991 1575
+Q 991 903 1244 561
+Q 1497 219 1991 219
+Q 2369 219 2611 417
+Q 2853 616 2950 1006
+L 3413 1006
+Q 3275 459 2904 184
+Q 2534 -91 1931 -91
+Q 1203 -91 761 389
+Q 319 869 319 1663
+Q 319 2450 753 2931
+Q 1188 3413 1894 3413
+Q 2647 3413 3050 2948
+Q 3453 2484 3469 1600
+z
+M 2791 1931
+Q 2772 2513 2545 2808
+Q 2319 3103 1894 3103
+Q 1497 3103 1269 2806
+Q 1041 2509 991 1931
+L 2791 1931
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2295e1f35f3d10-DejaVuSerif-78" d="M 1863 2028
+L 2559 2988
+L 2113 2988
+L 2113 3322
+L 3391 3322
+L 3391 2988
+L 2950 2988
+L 2059 1759
+L 3097 331
+L 3531 331
+L 3531 0
+L 1997 0
+L 1997 331
+L 2419 331
+L 1697 1325
+L 972 331
+L 1403 331
+L 1403 0
+L 141 0
+L 141 331
+L 581 331
+L 1497 1594
+L 488 2988
+L 78 2988
+L 78 3322
+L 1563 3322
+L 1563 2988
+L 1166 2988
+L 1863 2028
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2295e1f35f3d10-DejaVuSerif-70" d="M 1313 1825
+L 1313 1497
+Q 1313 897 1542 583
+Q 1772 269 2209 269
+Q 2650 269 2876 622
+Q 3103 975 3103 1663
+Q 3103 2353 2876 2703
+Q 2650 3053 2209 3053
+Q 1772 3053 1542 2737
+Q 1313 2422 1313 1825
+z
+M 738 2988
+L 184 2988
+L 184 3322
+L 1313 3322
+L 1313 2803
+Q 1481 3116 1742 3264
+Q 2003 3413 2388 3413
+Q 3000 3413 3387 2928
+Q 3775 2444 3775 1663
+Q 3775 881 3387 395
+Q 3000 -91 2388 -91
+Q 2003 -91 1742 57
+Q 1481 206 1313 519
+L 1313 -997
+L 1856 -997
+L 1856 -1331
+L 184 -1331
+L 184 -997
+L 738 -997
+L 738 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2295e1f35f3d10-DejaVuSerif-Italic-65" d="M 938 1275
+Q 925 1156 925 1050
+Q 925 756 1031 563
+Q 1216 219 1709 219
+Q 2072 219 2250 328
+Q 2569 525 2644 778
+L 3066 778
+Q 2941 381 2475 103
+Q 2150 -91 1506 -91
+Q 863 -91 516 388
+Q 272 722 272 1206
+Q 272 1419 319 1659
+Q 472 2450 1000 2931
+Q 1528 3413 2278 3413
+Q 3500 3413 3500 2547
+Q 3500 1913 2859 1603
+Q 2206 1288 938 1275
+z
+M 2541 1975
+Q 2891 2181 2891 2569
+Q 2891 3103 2181 3103
+Q 1763 3103 1472 2784
+Q 1181 2466 1003 1606
+Q 2006 1653 2541 1975
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2295e1f35f3d10-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2295e1f35f3d10-DejaVuSerif-2f" d="M 1656 4666
+L 2156 4666
+L 500 -594
+L 0 -594
+L 1656 4666
+z
+" transform="scale(0.015625)"/>
+     <path id="math-2295e1f35f3d10-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-31" transform="translate(0 0.7125)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-3c" transform="translate(82.587891 0.7125)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-Italic-46" transform="translate(185.341797 0.7125)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-Italic-4c" transform="translate(254.726562 -14.859375) scale(0.7)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-28" transform="translate(303.80625 0.7125)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-Italic-76" transform="translate(342.819922 0.7125)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-29" transform="translate(399.314062 0.7125)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-2264" transform="translate(457.292578 0.7125)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-65" transform="translate(560.046484 0.7125)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-78" transform="translate(619.226172 0.7125)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-70" transform="translate(675.622656 0.7125)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-28" transform="translate(739.636328 0.7125)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-Italic-4c" transform="translate(778.65 0.7125)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-Italic-65" transform="translate(845.05625 0.7125)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-2212" transform="translate(908.67401 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-Italic-4c" transform="translate(967.326354 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-29" transform="translate(1016.406042 0.7125)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-2264" transform="translate(1074.384557 0.7125)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-Italic-65" transform="translate(1177.138464 0.7125)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-31" transform="translate(1240.756224 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-2f" transform="translate(1285.292357 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-Italic-65" transform="translate(1308.876341 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-2295e1f35f3d10-DejaVuSerif-2e" transform="translate(1352.897435 0.7125)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>1&lt;F_L(v)\le\exp(Le^{-L})\le e^{1/e}.</code></pre></details></div>
+<p class="reader-paragraph" data-zyntalic data-passage-id="alternating-towers--tower-convergence--b6" data-source-block="6" data-source-type="p">The function L exp(−L) has maximum 1/e at L = 1. Every v₀ ≥ 1 therefore enters I = [1, exp(1/e)] after one step.</p>
+<p class="reader-paragraph" data-zyntalic data-passage-id="alternating-towers--tower-convergence--b7" data-source-block="7" data-source-type="p"><b>Uniform contraction.</b> Differentiate and use the separate maxima of L² exp(−L) and L exp(−L):</p>
+<div class="reader-equation" data-latex="|F_L&#x27;(v)|=L^2e^{-Lv}\exp(Le^{-Lv})" data-source-block="8" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="|F_L&#x27;(v)|=L^2e^{-Lv}\exp(Le^{-Lv})" xmlns:xlink="http://www.w3.org/1999/xlink" width="236pt" height="21pt" viewBox="0 0 236 21" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-8f238b91bd45da-figure_1">
+  <g id="math-8f238b91bd45da-patch_1">
+   <path d="M 0 21
+L 236 21
+L 236 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-8f238b91bd45da-text_1">
+   <!-- $|F_L'(v)|=L^2e^{-Lv}\exp(Le^{-Lv})$ -->
+   <g style="fill: #202520" transform="translate(0 16) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-8f238b91bd45da-DejaVuSerif-7c" d="M 1331 4891
+L 1331 -1509
+L 825 -1509
+L 825 4891
+L 1331 4891
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8f238b91bd45da-DejaVuSerif-Italic-46" d="M -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 4628 4666
+L 4428 3628
+L 4044 3628
+L 4169 4281
+L 1963 4281
+L 1659 2719
+L 3253 2719
+L 3366 3303
+L 3750 3303
+L 3450 1753
+L 3066 1753
+L 3178 2338
+L 1584 2338
+L 1194 331
+L 1941 331
+L 1878 0
+L -97 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8f238b91bd45da-Cmsy10-30" d="M 225 347
+Q 184 359 184 409
+L 966 3316
+Q 1003 3434 1093 3506
+Q 1184 3578 1300 3578
+Q 1450 3578 1564 3479
+Q 1678 3381 1678 3231
+Q 1678 3166 1644 3084
+L 488 319
+Q 466 275 428 275
+Q 394 275 320 306
+Q 247 338 225 347
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8f238b91bd45da-DejaVuSerif-Italic-4c" d="M -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 2631 4666
+L 2566 4331
+L 1972 4331
+L 1206 384
+L 3338 384
+L 3488 1166
+L 3872 1166
+L 3647 0
+L -97 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8f238b91bd45da-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8f238b91bd45da-DejaVuSerif-Italic-76" d="M 1681 0
+L 1259 0
+L 619 2988
+L 241 2988
+L 303 3322
+L 1163 3322
+L 1725 703
+Q 2084 1016 2325 1413
+Q 2825 2238 3003 2988
+L 2622 2988
+L 2688 3322
+L 3547 3322
+Q 3206 2034 2775 1313
+Q 2400 688 1681 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8f238b91bd45da-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8f238b91bd45da-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8f238b91bd45da-DejaVuSerif-32" d="M 819 3553
+L 469 3553
+L 469 4384
+Q 803 4563 1142 4656
+Q 1481 4750 1806 4750
+Q 2534 4750 2956 4397
+Q 3378 4044 3378 3438
+Q 3378 2753 2422 1800
+Q 2347 1728 2309 1691
+L 1131 513
+L 3078 513
+L 3078 1088
+L 3444 1088
+L 3444 0
+L 434 0
+L 434 341
+L 1850 1753
+Q 2319 2222 2519 2614
+Q 2719 3006 2719 3438
+Q 2719 3909 2473 4175
+Q 2228 4441 1797 4441
+Q 1350 4441 1106 4219
+Q 863 3997 819 3553
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8f238b91bd45da-DejaVuSerif-Italic-65" d="M 938 1275
+Q 925 1156 925 1050
+Q 925 756 1031 563
+Q 1216 219 1709 219
+Q 2072 219 2250 328
+Q 2569 525 2644 778
+L 3066 778
+Q 2941 381 2475 103
+Q 2150 -91 1506 -91
+Q 863 -91 516 388
+Q 272 722 272 1206
+Q 272 1419 319 1659
+Q 472 2450 1000 2931
+Q 1528 3413 2278 3413
+Q 3500 3413 3500 2547
+Q 3500 1913 2859 1603
+Q 2206 1288 938 1275
+z
+M 2541 1975
+Q 2891 2181 2891 2569
+Q 2891 3103 2181 3103
+Q 1763 3103 1472 2784
+Q 1181 2466 1003 1606
+Q 2006 1653 2541 1975
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8f238b91bd45da-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8f238b91bd45da-DejaVuSerif-65" d="M 3469 1600
+L 991 1600
+L 991 1575
+Q 991 903 1244 561
+Q 1497 219 1991 219
+Q 2369 219 2611 417
+Q 2853 616 2950 1006
+L 3413 1006
+Q 3275 459 2904 184
+Q 2534 -91 1931 -91
+Q 1203 -91 761 389
+Q 319 869 319 1663
+Q 319 2450 753 2931
+Q 1188 3413 1894 3413
+Q 2647 3413 3050 2948
+Q 3453 2484 3469 1600
+z
+M 2791 1931
+Q 2772 2513 2545 2808
+Q 2319 3103 1894 3103
+Q 1497 3103 1269 2806
+Q 1041 2509 991 1931
+L 2791 1931
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8f238b91bd45da-DejaVuSerif-78" d="M 1863 2028
+L 2559 2988
+L 2113 2988
+L 2113 3322
+L 3391 3322
+L 3391 2988
+L 2950 2988
+L 2059 1759
+L 3097 331
+L 3531 331
+L 3531 0
+L 1997 0
+L 1997 331
+L 2419 331
+L 1697 1325
+L 972 331
+L 1403 331
+L 1403 0
+L 141 0
+L 141 331
+L 581 331
+L 1497 1594
+L 488 2988
+L 78 2988
+L 78 3322
+L 1563 3322
+L 1563 2988
+L 1166 2988
+L 1863 2028
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8f238b91bd45da-DejaVuSerif-70" d="M 1313 1825
+L 1313 1497
+Q 1313 897 1542 583
+Q 1772 269 2209 269
+Q 2650 269 2876 622
+Q 3103 975 3103 1663
+Q 3103 2353 2876 2703
+Q 2650 3053 2209 3053
+Q 1772 3053 1542 2737
+Q 1313 2422 1313 1825
+z
+M 738 2988
+L 184 2988
+L 184 3322
+L 1313 3322
+L 1313 2803
+Q 1481 3116 1742 3264
+Q 2003 3413 2388 3413
+Q 3000 3413 3387 2928
+Q 3775 2444 3775 1663
+Q 3775 881 3387 395
+Q 3000 -91 2388 -91
+Q 2003 -91 1742 57
+Q 1481 206 1313 519
+L 1313 -997
+L 1856 -997
+L 1856 -1331
+L 184 -1331
+L 184 -997
+L 738 -997
+L 738 2988
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-7c" transform="translate(0 0.7125)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-Italic-46" transform="translate(33.691406 0.7125)"/>
+    <use xlink:href="#math-8f238b91bd45da-Cmsy10-30" transform="translate(110.255182 38.29375) scale(0.7)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-Italic-4c" transform="translate(103.076172 -25.240625) scale(0.7)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-28" transform="translate(152.155859 0.7125)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-Italic-76" transform="translate(191.169531 0.7125)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-29" transform="translate(247.663672 0.7125)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-7c" transform="translate(286.677344 0.7125)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-3d" transform="translate(339.333594 0.7125)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-Italic-4c" transform="translate(442.0875 0.7125)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-32" transform="translate(515.67276 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-Italic-65" transform="translate(562.804206 0.7125)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-2212" transform="translate(626.421966 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-Italic-4c" transform="translate(685.07431 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-Italic-76" transform="translate(731.558685 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-65" transform="translate(773.699896 0.7125)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-78" transform="translate(832.879583 0.7125)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-70" transform="translate(889.276068 0.7125)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-28" transform="translate(953.28974 0.7125)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-Italic-4c" transform="translate(992.303411 0.7125)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-Italic-65" transform="translate(1058.709661 0.7125)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-2212" transform="translate(1122.327422 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-Italic-4c" transform="translate(1180.979766 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-Italic-76" transform="translate(1227.464141 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-8f238b91bd45da-DejaVuSerif-29" transform="translate(1269.605352 0.7125)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>|F_L&#x27;(v)|=L^2e^{-Lv}\exp(Le^{-Lv})</code></pre></details></div>
+<div class="reader-equation" data-latex="\le L^2e^{-L}\exp(Le^{-L})\le q:=4e^{1/e-2}&lt;1." data-source-block="9" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="\le L^2e^{-L}\exp(Le^{-L})\le q:=4e^{1/e-2}&lt;1." xmlns:xlink="http://www.w3.org/1999/xlink" width="341pt" height="20pt" viewBox="0 0 341 20" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-b8911fb2515f82-figure_1">
+  <g id="math-b8911fb2515f82-patch_1">
+   <path d="M 0 20
+L 341 20
+L 341 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-b8911fb2515f82-text_1">
+   <!-- $\leq L^2e^{-L}\exp(Le^{-L})\leq q:=4e^{1/e-2}&lt;1.$ -->
+   <g style="fill: #202520" transform="translate(0 16) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-b8911fb2515f82-DejaVuSerif-2264" d="M 4684 3206
+L 1388 2309
+L 4684 1416
+L 4684 897
+L 678 2047
+L 678 2578
+L 4684 3725
+L 4684 3206
+z
+M 678 488
+L 4684 488
+L 4684 0
+L 678 0
+L 678 488
+z
+" transform="scale(0.015625)"/>
+     <path id="math-b8911fb2515f82-DejaVuSerif-Italic-4c" d="M -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 2631 4666
+L 2566 4331
+L 1972 4331
+L 1206 384
+L 3338 384
+L 3488 1166
+L 3872 1166
+L 3647 0
+L -97 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-b8911fb2515f82-DejaVuSerif-32" d="M 819 3553
+L 469 3553
+L 469 4384
+Q 803 4563 1142 4656
+Q 1481 4750 1806 4750
+Q 2534 4750 2956 4397
+Q 3378 4044 3378 3438
+Q 3378 2753 2422 1800
+Q 2347 1728 2309 1691
+L 1131 513
+L 3078 513
+L 3078 1088
+L 3444 1088
+L 3444 0
+L 434 0
+L 434 341
+L 1850 1753
+Q 2319 2222 2519 2614
+Q 2719 3006 2719 3438
+Q 2719 3909 2473 4175
+Q 2228 4441 1797 4441
+Q 1350 4441 1106 4219
+Q 863 3997 819 3553
+z
+" transform="scale(0.015625)"/>
+     <path id="math-b8911fb2515f82-DejaVuSerif-Italic-65" d="M 938 1275
+Q 925 1156 925 1050
+Q 925 756 1031 563
+Q 1216 219 1709 219
+Q 2072 219 2250 328
+Q 2569 525 2644 778
+L 3066 778
+Q 2941 381 2475 103
+Q 2150 -91 1506 -91
+Q 863 -91 516 388
+Q 272 722 272 1206
+Q 272 1419 319 1659
+Q 472 2450 1000 2931
+Q 1528 3413 2278 3413
+Q 3500 3413 3500 2547
+Q 3500 1913 2859 1603
+Q 2206 1288 938 1275
+z
+M 2541 1975
+Q 2891 2181 2891 2569
+Q 2891 3103 2181 3103
+Q 1763 3103 1472 2784
+Q 1181 2466 1003 1606
+Q 2006 1653 2541 1975
+z
+" transform="scale(0.015625)"/>
+     <path id="math-b8911fb2515f82-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-b8911fb2515f82-DejaVuSerif-65" d="M 3469 1600
+L 991 1600
+L 991 1575
+Q 991 903 1244 561
+Q 1497 219 1991 219
+Q 2369 219 2611 417
+Q 2853 616 2950 1006
+L 3413 1006
+Q 3275 459 2904 184
+Q 2534 -91 1931 -91
+Q 1203 -91 761 389
+Q 319 869 319 1663
+Q 319 2450 753 2931
+Q 1188 3413 1894 3413
+Q 2647 3413 3050 2948
+Q 3453 2484 3469 1600
+z
+M 2791 1931
+Q 2772 2513 2545 2808
+Q 2319 3103 1894 3103
+Q 1497 3103 1269 2806
+Q 1041 2509 991 1931
+L 2791 1931
+z
+" transform="scale(0.015625)"/>
+     <path id="math-b8911fb2515f82-DejaVuSerif-78" d="M 1863 2028
+L 2559 2988
+L 2113 2988
+L 2113 3322
+L 3391 3322
+L 3391 2988
+L 2950 2988
+L 2059 1759
+L 3097 331
+L 3531 331
+L 3531 0
+L 1997 0
+L 1997 331
+L 2419 331
+L 1697 1325
+L 972 331
+L 1403 331
+L 1403 0
+L 141 0
+L 141 331
+L 581 331
+L 1497 1594
+L 488 2988
+L 78 2988
+L 78 3322
+L 1563 3322
+L 1563 2988
+L 1166 2988
+L 1863 2028
+z
+" transform="scale(0.015625)"/>
+     <path id="math-b8911fb2515f82-DejaVuSerif-70" d="M 1313 1825
+L 1313 1497
+Q 1313 897 1542 583
+Q 1772 269 2209 269
+Q 2650 269 2876 622
+Q 3103 975 3103 1663
+Q 3103 2353 2876 2703
+Q 2650 3053 2209 3053
+Q 1772 3053 1542 2737
+Q 1313 2422 1313 1825
+z
+M 738 2988
+L 184 2988
+L 184 3322
+L 1313 3322
+L 1313 2803
+Q 1481 3116 1742 3264
+Q 2003 3413 2388 3413
+Q 3000 3413 3387 2928
+Q 3775 2444 3775 1663
+Q 3775 881 3387 395
+Q 3000 -91 2388 -91
+Q 2003 -91 1742 57
+Q 1481 206 1313 519
+L 1313 -997
+L 1856 -997
+L 1856 -1331
+L 184 -1331
+L 184 -997
+L 738 -997
+L 738 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-b8911fb2515f82-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-b8911fb2515f82-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-b8911fb2515f82-DejaVuSerif-Italic-71" d="M 2684 519
+Q 2469 206 2206 56
+Q 1944 -91 1597 -91
+Q 1047 -91 769 281
+Q 594 516 575 841
+Q 563 1031 606 1256
+Q 822 2359 1588 2928
+Q 2241 3409 3006 3413
+Q 3613 3416 3803 3322
+L 2963 -1000
+L 3516 -1000
+L 3450 -1331
+L 2322 -1331
+L 2684 519
+z
+M 2916 3094
+Q 2316 3094 1850 2625
+Q 1388 2153 1219 1297
+Q 1172 1044 1184 853
+Q 1197 659 1275 528
+Q 1428 269 1828 269
+Q 2222 269 2489 583
+Q 2756 897 2872 1497
+L 3166 3003
+Q 3169 3094 2916 3094
+z
+" transform="scale(0.015625)"/>
+     <path id="math-b8911fb2515f82-DejaVuSerif-3a" d="M 666 325
+Q 666 500 786 622
+Q 906 744 1081 744
+Q 1256 744 1376 622
+Q 1497 500 1497 325
+Q 1497 150 1378 29
+Q 1259 -91 1081 -91
+Q 903 -91 784 29
+Q 666 150 666 325
+z
+M 666 2363
+Q 666 2538 786 2658
+Q 906 2778 1081 2778
+Q 1259 2778 1378 2659
+Q 1497 2541 1497 2363
+Q 1497 2184 1378 2065
+Q 1259 1947 1081 1947
+Q 906 1947 786 2067
+Q 666 2188 666 2363
+z
+" transform="scale(0.015625)"/>
+     <path id="math-b8911fb2515f82-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-b8911fb2515f82-DejaVuSerif-34" d="M 2234 1581
+L 2234 4063
+L 641 1581
+L 2234 1581
+z
+M 3609 0
+L 1484 0
+L 1484 331
+L 2234 331
+L 2234 1247
+L 197 1247
+L 197 1588
+L 2241 4750
+L 2859 4750
+L 2859 1581
+L 3750 1581
+L 3750 1247
+L 2859 1247
+L 2859 331
+L 3609 331
+L 3609 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-b8911fb2515f82-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-b8911fb2515f82-DejaVuSerif-2f" d="M 1656 4666
+L 2156 4666
+L 500 -594
+L 0 -594
+L 1656 4666
+z
+" transform="scale(0.015625)"/>
+     <path id="math-b8911fb2515f82-DejaVuSerif-3c" d="M 4684 3188
+L 1441 2003
+L 4684 825
+L 4684 294
+L 678 1747
+L 678 2266
+L 4684 3719
+L 4684 3188
+z
+" transform="scale(0.015625)"/>
+     <path id="math-b8911fb2515f82-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-2264" transform="translate(18.964844 0.7125)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-Italic-4c" transform="translate(121.71875 0.7125)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-32" transform="translate(195.30401 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-Italic-65" transform="translate(242.435456 0.7125)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-2212" transform="translate(306.053216 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-Italic-4c" transform="translate(364.70556 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-65" transform="translate(413.785247 0.7125)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-78" transform="translate(472.964935 0.7125)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-70" transform="translate(529.361419 0.7125)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-28" transform="translate(593.375091 0.7125)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-Italic-4c" transform="translate(632.388763 0.7125)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-Italic-65" transform="translate(698.795013 0.7125)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-2212" transform="translate(762.412773 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-Italic-4c" transform="translate(821.065117 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-29" transform="translate(870.144805 0.7125)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-2264" transform="translate(928.12332 0.7125)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-Italic-71" transform="translate(1030.877227 0.7125)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-3a" transform="translate(1113.855742 0.7125)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-3d" transform="translate(1185.476836 0.7125)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-34" transform="translate(1288.230742 0.7125)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-Italic-65" transform="translate(1351.853789 0.7125)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-31" transform="translate(1415.471549 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-2f" transform="translate(1460.007682 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-Italic-65" transform="translate(1483.591667 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-2212" transform="translate(1538.292839 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-32" transform="translate(1610.220573 37.046875) scale(0.7)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-3c" transform="translate(1676.316862 0.7125)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-31" transform="translate(1779.070768 0.7125)"/>
+    <use xlink:href="#math-b8911fb2515f82-DejaVuSerif-2e" transform="translate(1842.693815 0.7125)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>\le L^2e^{-L}\exp(Le^{-L})\le q:=4e^{1/e-2}&lt;1.</code></pre></details></div>
+<p class="reader-paragraph" data-zyntalic data-passage-id="alternating-towers--tower-convergence--b10" data-source-block="10" data-source-type="p">This convenient bound is uniform in L and v. To prove q &lt; 1 without decimals, use 1/e &lt; 1/2 and exp(3/2) &gt; 1 + 3/2 + 9/8 + 27/48 &gt; 4. Numerically q ≈ 0.782058136610352468.</p>
+<p class="reader-paragraph" data-zyntalic data-passage-id="alternating-towers--tower-convergence--b11" data-source-block="11" data-source-type="p"><b>Existence, uniqueness and convergence.</b> Apply Banach’s contraction theorem on I. Every possible fixed point in the stated domain lies in I, so it is unique throughout that domain. Set u = exp(−Lv) to recover both phase equations. Every v₀ ≥ 1 converges.</p>
+<div class="reader-equation" data-latex="|x-v_*|\le\frac{|F_L(x)-x|}{1-q}\qquad(x\in I)." data-source-block="12" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="|x-v_*|\le\frac{|F_L(x)-x|}{1-q}\qquad(x\in I)." xmlns:xlink="http://www.w3.org/1999/xlink" width="248pt" height="31pt" viewBox="0 0 248 31" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-8dafe601b15cb6-figure_1">
+  <g id="math-8dafe601b15cb6-patch_1">
+   <path d="M 0 31
+L 248 31
+L 248 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-8dafe601b15cb6-text_1">
+   <!-- $|x-v_*|\leq\frac{|F_L(x)-x|}{1-q}\qquad(x\in I).$ -->
+   <g style="fill: #202520" transform="translate(0 21) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-8dafe601b15cb6-DejaVuSerif-7c" d="M 1331 4891
+L 1331 -1509
+L 825 -1509
+L 825 4891
+L 1331 4891
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8dafe601b15cb6-DejaVuSerif-Italic-78" d="M 409 0
+L 19 0
+L 1484 1594
+L 747 2988
+L 338 2988
+L 400 3322
+L 1244 3322
+L 1934 2028
+L 3125 3322
+L 3516 3322
+L 2078 1759
+L 2838 331
+L 3272 331
+L 3209 0
+L 2338 0
+L 1631 1325
+L 409 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8dafe601b15cb6-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8dafe601b15cb6-DejaVuSerif-Italic-76" d="M 1681 0
+L 1259 0
+L 619 2988
+L 241 2988
+L 303 3322
+L 1163 3322
+L 1725 703
+Q 2084 1016 2325 1413
+Q 2825 2238 3003 2988
+L 2622 2988
+L 2688 3322
+L 3547 3322
+Q 3206 2034 2775 1313
+Q 2400 688 1681 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8dafe601b15cb6-DejaVuSerif-2a" d="M 3097 3866
+L 1875 3297
+L 3097 2719
+L 2859 2350
+L 1772 3028
+L 1813 1838
+L 1388 1838
+L 1428 3028
+L 341 2350
+L 103 2719
+L 1325 3291
+L 103 3866
+L 341 4238
+L 1428 3559
+L 1388 4750
+L 1813 4750
+L 1772 3559
+L 2859 4238
+L 3097 3866
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8dafe601b15cb6-DejaVuSerif-2264" d="M 4684 3206
+L 1388 2309
+L 4684 1416
+L 4684 897
+L 678 2047
+L 678 2578
+L 4684 3725
+L 4684 3206
+z
+M 678 488
+L 4684 488
+L 4684 0
+L 678 0
+L 678 488
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8dafe601b15cb6-DejaVuSerif-Italic-46" d="M -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 4628 4666
+L 4428 3628
+L 4044 3628
+L 4169 4281
+L 1963 4281
+L 1659 2719
+L 3253 2719
+L 3366 3303
+L 3750 3303
+L 3450 1753
+L 3066 1753
+L 3178 2338
+L 1584 2338
+L 1194 331
+L 1941 331
+L 1878 0
+L -97 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8dafe601b15cb6-DejaVuSerif-Italic-4c" d="M -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 2631 4666
+L 2566 4331
+L 1972 4331
+L 1206 384
+L 3338 384
+L 3488 1166
+L 3872 1166
+L 3647 0
+L -97 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8dafe601b15cb6-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8dafe601b15cb6-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8dafe601b15cb6-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8dafe601b15cb6-DejaVuSerif-Italic-71" d="M 2684 519
+Q 2469 206 2206 56
+Q 1944 -91 1597 -91
+Q 1047 -91 769 281
+Q 594 516 575 841
+Q 563 1031 606 1256
+Q 822 2359 1588 2928
+Q 2241 3409 3006 3413
+Q 3613 3416 3803 3322
+L 2963 -1000
+L 3516 -1000
+L 3450 -1331
+L 2322 -1331
+L 2684 519
+z
+M 2916 3094
+Q 2316 3094 1850 2625
+Q 1388 2153 1219 1297
+Q 1172 1044 1184 853
+Q 1197 659 1275 528
+Q 1428 269 1828 269
+Q 2222 269 2489 583
+Q 2756 897 2872 1497
+L 3166 3003
+Q 3169 3094 2916 3094
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8dafe601b15cb6-DejaVuSerif-2208" d="M 2684 500
+L 4059 500
+L 4059 0
+L 2684 0
+Q 2141 0 1678 269
+Q 1216 538 947 1000
+Q 678 1463 678 2006
+Q 678 2550 947 3012
+Q 1216 3475 1678 3744
+Q 2141 4013 2684 4013
+L 4059 4013
+L 4059 3513
+L 2684 3513
+Q 2278 3513 1931 3309
+Q 1584 3106 1381 2759
+Q 1244 2522 1200 2259
+L 4059 2259
+L 4059 1753
+L 1200 1753
+Q 1244 1491 1381 1253
+Q 1584 906 1931 703
+Q 2278 500 2684 500
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8dafe601b15cb6-DejaVuSerif-Italic-49" d="M 1194 331
+L 1788 331
+L 1725 0
+L -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 2631 4666
+L 2566 4331
+L 1972 4331
+L 1194 331
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8dafe601b15cb6-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-7c" transform="translate(0 0.148438)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-Italic-78" transform="translate(33.691406 0.148438)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-2212" transform="translate(109.052734 0.148438)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-Italic-76" transform="translate(211.806641 0.148438)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-2a" transform="translate(281.576172 -15.423438) scale(0.7)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-7c" transform="translate(332.446875 0.148438)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-2264" transform="translate(385.103125 0.148438)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-7c" transform="translate(487.857031 60.504688) scale(0.7)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-Italic-46" transform="translate(511.441016 60.504688) scale(0.7)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-Italic-4c" transform="translate(560.010352 49.604375) scale(0.49)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-28" transform="translate(594.366133 60.504688) scale(0.7)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-Italic-78" transform="translate(621.675703 60.504688) scale(0.7)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-29" transform="translate(661.153242 60.504688) scale(0.7)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-2212" transform="translate(701.738203 60.504688) scale(0.7)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-Italic-78" transform="translate(773.665937 60.504688) scale(0.7)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-7c" transform="translate(813.143477 60.504688) scale(0.7)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-31" transform="translate(574.857031 -39.203125) scale(0.7)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-2212" transform="translate(632.668555 -39.203125) scale(0.7)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-Italic-71" transform="translate(704.596289 -39.203125) scale(0.7)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-28" transform="translate(1038.875898 0.148438)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-Italic-78" transform="translate(1077.88957 0.148438)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-2208" transform="translate(1153.250898 0.148438)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-Italic-49" transform="translate(1246.23918 0.148438)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-29" transform="translate(1285.741133 0.148438)"/>
+    <use xlink:href="#math-8dafe601b15cb6-DejaVuSerif-2e" transform="translate(1324.754805 0.148438)"/>
+    <path d="M 487.857031 19
+L 487.857031 25.25
+L 836.727461 25.25
+L 836.727461 19
+L 487.857031 19
+z
+"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>|x-v_*|\le\frac{|F_L(x)-x|}{1-q}\qquad(x\in I).</code></pre></details></div>
+<p class="reader-paragraph" data-zyntalic data-passage-id="alternating-towers--tower-convergence--b13" data-source-block="13" data-source-type="p">The error bound follows by inserting F<sub>L</sub>(x), using the contraction inequality and rearranging. Rounded function values alone do not turn it into an interval certificate.</p>
+<aside class="reader-callout" data-status="exact" data-source-block="14" data-source-type="callout"><p class="reader-callout-label">Conclusion</p><p class="reader-callout-text" data-zyntalic data-passage-id="alternating-towers--tower-convergence--b14">For every c &gt; 1, the defined alternating-sign system has a unique solution with 0 &lt; u &lt; 1 &lt; v. Its stated iteration converges from every v₀ ≥ 1 with a uniform contraction bound.</p></aside></section>
+<section class="reader-section" id="tower-envelope" data-source-page="tower-envelope" data-source-index="2" data-source-status="exact"><span id="page-3" class="reader-page-anchor" aria-hidden="true"></span><p class="reader-kicker">02 · WRITTEN-PROOF REVIEW: EXACT CLASSIFICATION</p><h2 class="reader-section-title" data-zyntalic data-passage-id="alternating-towers--tower-envelope--title">A sharp height and exactly two bases</h2><p class="reader-paragraph" data-zyntalic data-passage-id="alternating-towers--tower-envelope--b0" data-source-block="0" data-source-type="p">At the fixed point of the alternating system, put t = Lv &gt; 0. Taking logarithms of the fixed-point equation and multiplying by v yields</p>
+<div class="reader-equation" data-latex="v\log v=t e^{-t}\le1/e." data-source-block="1" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="v\log v=t e^{-t}\le1/e." xmlns:xlink="http://www.w3.org/1999/xlink" width="168pt" height="20pt" viewBox="0 0 168 20" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-4f48aa4f27f71c-figure_1">
+  <g id="math-4f48aa4f27f71c-patch_1">
+   <path d="M 0 20
+L 168 20
+L 168 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-4f48aa4f27f71c-text_1">
+   <!-- $v\log v=t e^{-t}\leq1/e.$ -->
+   <g style="fill: #202520" transform="translate(0 16) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-4f48aa4f27f71c-DejaVuSerif-Italic-76" d="M 1681 0
+L 1259 0
+L 619 2988
+L 241 2988
+L 303 3322
+L 1163 3322
+L 1725 703
+Q 2084 1016 2325 1413
+Q 2825 2238 3003 2988
+L 2622 2988
+L 2688 3322
+L 3547 3322
+Q 3206 2034 2775 1313
+Q 2400 688 1681 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4f48aa4f27f71c-DejaVuSerif-6c" d="M 1313 331
+L 1856 331
+L 1856 0
+L 184 0
+L 184 331
+L 738 331
+L 738 4531
+L 184 4531
+L 184 4863
+L 1313 4863
+L 1313 331
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4f48aa4f27f71c-DejaVuSerif-6f" d="M 1925 219
+Q 2388 219 2623 584
+Q 2859 950 2859 1663
+Q 2859 2375 2623 2739
+Q 2388 3103 1925 3103
+Q 1463 3103 1227 2739
+Q 991 2375 991 1663
+Q 991 950 1228 584
+Q 1466 219 1925 219
+z
+M 1925 -91
+Q 1200 -91 759 389
+Q 319 869 319 1663
+Q 319 2456 758 2934
+Q 1197 3413 1925 3413
+Q 2653 3413 3092 2934
+Q 3531 2456 3531 1663
+Q 3531 869 3092 389
+Q 2653 -91 1925 -91
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4f48aa4f27f71c-DejaVuSerif-67" d="M 3359 2988
+L 3359 72
+Q 3359 -644 2965 -1033
+Q 2572 -1422 1844 -1422
+Q 1516 -1422 1216 -1362
+Q 916 -1303 641 -1184
+L 641 -488
+L 941 -488
+Q 997 -813 1206 -963
+Q 1416 -1113 1806 -1113
+Q 2313 -1113 2548 -827
+Q 2784 -541 2784 72
+L 2784 519
+Q 2616 206 2355 57
+Q 2094 -91 1709 -91
+Q 1097 -91 708 395
+Q 319 881 319 1663
+Q 319 2444 706 2928
+Q 1094 3413 1709 3413
+Q 2094 3413 2355 3264
+Q 2616 3116 2784 2803
+L 2784 3322
+L 3909 3322
+L 3909 2988
+L 3359 2988
+z
+M 2784 1825
+Q 2784 2422 2554 2737
+Q 2325 3053 1888 3053
+Q 1444 3053 1217 2703
+Q 991 2353 991 1663
+Q 991 975 1217 622
+Q 1444 269 1888 269
+Q 2325 269 2554 583
+Q 2784 897 2784 1497
+L 2784 1825
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4f48aa4f27f71c-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4f48aa4f27f71c-DejaVuSerif-Italic-74" d="M 856 2988
+L 350 2988
+L 416 3322
+L 922 3322
+L 1122 4353
+L 1700 4353
+L 1500 3322
+L 2581 3322
+L 2516 2988
+L 1434 2988
+L 1025 878
+Q 978 631 978 488
+Q 978 388 1000 338
+Q 1059 219 1278 219
+Q 1503 219 1633 351
+Q 1763 484 1825 781
+L 2259 781
+Q 2147 328 1884 118
+Q 1622 -91 1169 -91
+Q 672 -91 506 131
+Q 406 266 406 516
+Q 406 675 447 878
+L 856 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4f48aa4f27f71c-DejaVuSerif-Italic-65" d="M 938 1275
+Q 925 1156 925 1050
+Q 925 756 1031 563
+Q 1216 219 1709 219
+Q 2072 219 2250 328
+Q 2569 525 2644 778
+L 3066 778
+Q 2941 381 2475 103
+Q 2150 -91 1506 -91
+Q 863 -91 516 388
+Q 272 722 272 1206
+Q 272 1419 319 1659
+Q 472 2450 1000 2931
+Q 1528 3413 2278 3413
+Q 3500 3413 3500 2547
+Q 3500 1913 2859 1603
+Q 2206 1288 938 1275
+z
+M 2541 1975
+Q 2891 2181 2891 2569
+Q 2891 3103 2181 3103
+Q 1763 3103 1472 2784
+Q 1181 2466 1003 1606
+Q 2006 1653 2541 1975
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4f48aa4f27f71c-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4f48aa4f27f71c-DejaVuSerif-2264" d="M 4684 3206
+L 1388 2309
+L 4684 1416
+L 4684 897
+L 678 2047
+L 678 2578
+L 4684 3725
+L 4684 3206
+z
+M 678 488
+L 4684 488
+L 4684 0
+L 678 0
+L 678 488
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4f48aa4f27f71c-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4f48aa4f27f71c-DejaVuSerif-2f" d="M 1656 4666
+L 2156 4666
+L 500 -594
+L 0 -594
+L 1656 4666
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4f48aa4f27f71c-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-4f48aa4f27f71c-DejaVuSerif-Italic-76" transform="translate(0 0.054688)"/>
+    <use xlink:href="#math-4f48aa4f27f71c-DejaVuSerif-6c" transform="translate(56.494141 0.054688)"/>
+    <use xlink:href="#math-4f48aa4f27f71c-DejaVuSerif-6f" transform="translate(88.476562 0.054688)"/>
+    <use xlink:href="#math-4f48aa4f27f71c-DejaVuSerif-67" transform="translate(148.681641 0.054688)"/>
+    <use xlink:href="#math-4f48aa4f27f71c-DejaVuSerif-Italic-76" transform="translate(228.499665 0.054688)"/>
+    <use xlink:href="#math-4f48aa4f27f71c-DejaVuSerif-3d" transform="translate(303.958649 0.054688)"/>
+    <use xlink:href="#math-4f48aa4f27f71c-DejaVuSerif-Italic-74" transform="translate(406.712556 0.054688)"/>
+    <use xlink:href="#math-4f48aa4f27f71c-DejaVuSerif-Italic-65" transform="translate(446.898103 0.054688)"/>
+    <use xlink:href="#math-4f48aa4f27f71c-DejaVuSerif-2212" transform="translate(510.515863 36.389062) scale(0.7)"/>
+    <use xlink:href="#math-4f48aa4f27f71c-DejaVuSerif-Italic-74" transform="translate(569.168207 36.389062) scale(0.7)"/>
+    <use xlink:href="#math-4f48aa4f27f71c-DejaVuSerif-2264" transform="translate(618.858246 0.054688)"/>
+    <use xlink:href="#math-4f48aa4f27f71c-DejaVuSerif-31" transform="translate(721.612152 0.054688)"/>
+    <use xlink:href="#math-4f48aa4f27f71c-DejaVuSerif-2f" transform="translate(785.235199 0.054688)"/>
+    <use xlink:href="#math-4f48aa4f27f71c-DejaVuSerif-Italic-65" transform="translate(818.926605 0.054688)"/>
+    <use xlink:href="#math-4f48aa4f27f71c-DejaVuSerif-2e" transform="translate(878.106293 0.054688)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>v\log v=t e^{-t}\le1/e.</code></pre></details></div>
+<p class="reader-paragraph" data-zyntalic data-passage-id="alternating-towers--tower-envelope--b2" data-source-block="2" data-source-type="p">Because v log v is strictly increasing on v ≥ 1, this bounds the upper phase sharply. With W₀ the principal real Lambert W function,</p>
+<div class="reader-equation" data-latex="v_{\max}=\exp(W_0(1/e))\approx1.321099762015617456962." data-source-block="3" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="v_{\max}=\exp(W_0(1/e))\approx1.321099762015617456962." xmlns:xlink="http://www.w3.org/1999/xlink" width="464pt" height="18pt" viewBox="0 0 464 18" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-50525bb7afaae0-figure_1">
+  <g id="math-50525bb7afaae0-patch_1">
+   <path d="M 0 18
+L 464 18
+L 464 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-50525bb7afaae0-text_1">
+   <!-- $v_{\max}=\exp(W_0(1/e))\approx1.321099762015617456962.$ -->
+   <g style="fill: #202520" transform="translate(0 14) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-50525bb7afaae0-DejaVuSerif-Italic-76" d="M 1681 0
+L 1259 0
+L 619 2988
+L 241 2988
+L 303 3322
+L 1163 3322
+L 1725 703
+Q 2084 1016 2325 1413
+Q 2825 2238 3003 2988
+L 2622 2988
+L 2688 3322
+L 3547 3322
+Q 3206 2034 2775 1313
+Q 2400 688 1681 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-6d" d="M 3316 2675
+Q 3481 3041 3739 3227
+Q 3997 3413 4341 3413
+Q 4863 3413 5119 3089
+Q 5375 2766 5375 2113
+L 5375 331
+L 5894 331
+L 5894 0
+L 4300 0
+L 4300 331
+L 4800 331
+L 4800 2047
+Q 4800 2556 4650 2772
+Q 4500 2988 4153 2988
+Q 3769 2988 3567 2697
+Q 3366 2406 3366 1850
+L 3366 331
+L 3866 331
+L 3866 0
+L 2291 0
+L 2291 331
+L 2791 331
+L 2791 2069
+Q 2791 2566 2641 2777
+Q 2491 2988 2144 2988
+Q 1759 2988 1557 2697
+Q 1356 2406 1356 1850
+L 1356 331
+L 1856 331
+L 1856 0
+L 263 0
+L 263 331
+L 781 331
+L 781 2994
+L 231 2994
+L 231 3322
+L 1356 3322
+L 1356 2731
+Q 1516 3063 1762 3238
+Q 2009 3413 2322 3413
+Q 2709 3413 2968 3220
+Q 3228 3028 3316 2675
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-61" d="M 2547 1044
+L 2547 1747
+L 1806 1747
+Q 1378 1747 1168 1562
+Q 959 1378 959 997
+Q 959 650 1171 447
+Q 1384 244 1747 244
+Q 2106 244 2326 466
+Q 2547 688 2547 1044
+z
+M 3122 2075
+L 3122 331
+L 3634 331
+L 3634 0
+L 2547 0
+L 2547 359
+Q 2356 128 2106 18
+Q 1856 -91 1522 -91
+Q 969 -91 644 203
+Q 319 497 319 997
+Q 319 1513 691 1797
+Q 1063 2081 1741 2081
+L 2547 2081
+L 2547 2309
+Q 2547 2688 2317 2895
+Q 2088 3103 1672 3103
+Q 1328 3103 1125 2947
+Q 922 2791 872 2484
+L 575 2484
+L 575 3156
+Q 875 3284 1158 3348
+Q 1441 3413 1709 3413
+Q 2400 3413 2761 3070
+Q 3122 2728 3122 2075
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-78" d="M 1863 2028
+L 2559 2988
+L 2113 2988
+L 2113 3322
+L 3391 3322
+L 3391 2988
+L 2950 2988
+L 2059 1759
+L 3097 331
+L 3531 331
+L 3531 0
+L 1997 0
+L 1997 331
+L 2419 331
+L 1697 1325
+L 972 331
+L 1403 331
+L 1403 0
+L 141 0
+L 141 331
+L 581 331
+L 1497 1594
+L 488 2988
+L 78 2988
+L 78 3322
+L 1563 3322
+L 1563 2988
+L 1166 2988
+L 1863 2028
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-65" d="M 3469 1600
+L 991 1600
+L 991 1575
+Q 991 903 1244 561
+Q 1497 219 1991 219
+Q 2369 219 2611 417
+Q 2853 616 2950 1006
+L 3413 1006
+Q 3275 459 2904 184
+Q 2534 -91 1931 -91
+Q 1203 -91 761 389
+Q 319 869 319 1663
+Q 319 2450 753 2931
+Q 1188 3413 1894 3413
+Q 2647 3413 3050 2948
+Q 3453 2484 3469 1600
+z
+M 2791 1931
+Q 2772 2513 2545 2808
+Q 2319 3103 1894 3103
+Q 1497 3103 1269 2806
+Q 1041 2509 991 1931
+L 2791 1931
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-70" d="M 1313 1825
+L 1313 1497
+Q 1313 897 1542 583
+Q 1772 269 2209 269
+Q 2650 269 2876 622
+Q 3103 975 3103 1663
+Q 3103 2353 2876 2703
+Q 2650 3053 2209 3053
+Q 1772 3053 1542 2737
+Q 1313 2422 1313 1825
+z
+M 738 2988
+L 184 2988
+L 184 3322
+L 1313 3322
+L 1313 2803
+Q 1481 3116 1742 3264
+Q 2003 3413 2388 3413
+Q 3000 3413 3387 2928
+Q 3775 2444 3775 1663
+Q 3775 881 3387 395
+Q 3000 -91 2388 -91
+Q 2003 -91 1742 57
+Q 1481 206 1313 519
+L 1313 -997
+L 1856 -997
+L 1856 -1331
+L 184 -1331
+L 184 -997
+L 738 -997
+L 738 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-Italic-57" d="M 4425 0
+L 3913 0
+L 3581 3794
+L 1775 0
+L 1263 0
+L 881 4331
+L 419 4331
+L 484 4666
+L 2188 4666
+L 2122 4331
+L 1541 4331
+L 1844 884
+L 3641 4666
+L 4147 4666
+L 4484 844
+L 6141 4331
+L 5603 4331
+L 5669 4666
+L 7013 4666
+L 6947 4331
+L 6488 4331
+L 4425 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-30" d="M 2034 219
+Q 2513 219 2750 744
+Q 2988 1269 2988 2328
+Q 2988 3391 2750 3916
+Q 2513 4441 2034 4441
+Q 1556 4441 1318 3916
+Q 1081 3391 1081 2328
+Q 1081 1269 1318 744
+Q 1556 219 2034 219
+z
+M 2034 -91
+Q 1275 -91 848 546
+Q 422 1184 422 2328
+Q 422 3475 848 4112
+Q 1275 4750 2034 4750
+Q 2797 4750 3222 4112
+Q 3647 3475 3647 2328
+Q 3647 1184 3222 546
+Q 2797 -91 2034 -91
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-2f" d="M 1656 4666
+L 2156 4666
+L 500 -594
+L 0 -594
+L 1656 4666
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-Italic-65" d="M 938 1275
+Q 925 1156 925 1050
+Q 925 756 1031 563
+Q 1216 219 1709 219
+Q 2072 219 2250 328
+Q 2569 525 2644 778
+L 3066 778
+Q 2941 381 2475 103
+Q 2150 -91 1506 -91
+Q 863 -91 516 388
+Q 272 722 272 1206
+Q 272 1419 319 1659
+Q 472 2450 1000 2931
+Q 1528 3413 2278 3413
+Q 3500 3413 3500 2547
+Q 3500 1913 2859 1603
+Q 2206 1288 938 1275
+z
+M 2541 1975
+Q 2891 2181 2891 2569
+Q 2891 3103 2181 3103
+Q 1763 3103 1472 2784
+Q 1181 2466 1003 1606
+Q 2006 1653 2541 1975
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-2248" d="M 4684 1913
+L 4684 1453
+Q 4375 1172 4092 1040
+Q 3809 909 3519 909
+Q 3231 909 2713 1106
+Q 2666 1125 2641 1134
+Q 2609 1147 2541 1172
+Q 2081 1350 1784 1350
+Q 1497 1350 1226 1236
+Q 956 1122 678 884
+L 678 1344
+Q 994 1625 1273 1753
+Q 1553 1881 1844 1881
+Q 2144 1881 2688 1675
+L 2719 1663
+Q 2753 1653 2816 1625
+Q 3269 1447 3572 1447
+Q 3859 1447 4134 1561
+Q 4409 1675 4684 1913
+z
+M 4684 3128
+L 4684 2669
+Q 4378 2391 4095 2261
+Q 3813 2131 3519 2131
+Q 3219 2131 2675 2338
+L 2644 2350
+Q 2609 2363 2541 2388
+Q 2081 2566 1784 2566
+Q 1497 2566 1226 2452
+Q 956 2338 678 2100
+L 678 2559
+Q 994 2841 1273 2969
+Q 1553 3097 1844 3097
+Q 2144 3097 2688 2894
+L 2719 2881
+Q 2753 2869 2816 2841
+Q 3269 2663 3572 2663
+Q 3859 2663 4134 2777
+Q 4409 2891 4684 3128
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-33" d="M 622 4469
+Q 988 4606 1323 4678
+Q 1659 4750 1953 4750
+Q 2638 4750 3022 4454
+Q 3406 4159 3406 3634
+Q 3406 3213 3140 2930
+Q 2875 2647 2388 2547
+Q 2963 2466 3280 2130
+Q 3597 1794 3597 1259
+Q 3597 606 3158 257
+Q 2719 -91 1894 -91
+Q 1528 -91 1179 -12
+Q 831 66 488 225
+L 488 1131
+L 838 1131
+Q 869 681 1141 450
+Q 1413 219 1906 219
+Q 2384 219 2661 495
+Q 2938 772 2938 1253
+Q 2938 1803 2653 2086
+Q 2369 2369 1819 2369
+L 1522 2369
+L 1522 2688
+L 1678 2688
+Q 2225 2688 2498 2914
+Q 2772 3141 2772 3597
+Q 2772 4006 2547 4223
+Q 2322 4441 1900 4441
+Q 1478 4441 1245 4241
+Q 1013 4041 972 3647
+L 622 3647
+L 622 4469
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-32" d="M 819 3553
+L 469 3553
+L 469 4384
+Q 803 4563 1142 4656
+Q 1481 4750 1806 4750
+Q 2534 4750 2956 4397
+Q 3378 4044 3378 3438
+Q 3378 2753 2422 1800
+Q 2347 1728 2309 1691
+L 1131 513
+L 3078 513
+L 3078 1088
+L 3444 1088
+L 3444 0
+L 434 0
+L 434 341
+L 1850 1753
+Q 2319 2222 2519 2614
+Q 2719 3006 2719 3438
+Q 2719 3909 2473 4175
+Q 2228 4441 1797 4441
+Q 1350 4441 1106 4219
+Q 863 3997 819 3553
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-39" d="M 2994 2091
+Q 2784 1856 2512 1740
+Q 2241 1625 1900 1625
+Q 1206 1625 804 2044
+Q 403 2463 403 3188
+Q 403 3897 839 4323
+Q 1275 4750 2003 4750
+Q 2794 4750 3217 4161
+Q 3641 3572 3641 2478
+Q 3641 1253 3137 581
+Q 2634 -91 1722 -91
+Q 1475 -91 1203 -44
+Q 931 3 647 97
+L 647 872
+L 997 872
+Q 1038 556 1241 387
+Q 1444 219 1784 219
+Q 2391 219 2687 676
+Q 2984 1134 2994 2091
+z
+M 1978 4441
+Q 1534 4441 1298 4117
+Q 1063 3794 1063 3188
+Q 1063 2581 1298 2256
+Q 1534 1931 1978 1931
+Q 2422 1931 2658 2245
+Q 2894 2559 2894 3150
+Q 2894 3772 2656 4106
+Q 2419 4441 1978 4441
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-37" d="M 3609 4347
+L 1784 0
+L 1319 0
+L 3059 4153
+L 903 4153
+L 903 3578
+L 538 3578
+L 538 4666
+L 3609 4666
+L 3609 4347
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-36" d="M 2094 219
+Q 2534 219 2771 542
+Q 3009 866 3009 1472
+Q 3009 2078 2771 2401
+Q 2534 2725 2094 2725
+Q 1647 2725 1412 2412
+Q 1178 2100 1178 1509
+Q 1178 888 1415 553
+Q 1653 219 2094 219
+z
+M 1075 2569
+Q 1288 2803 1556 2918
+Q 1825 3034 2163 3034
+Q 2859 3034 3264 2615
+Q 3669 2197 3669 1472
+Q 3669 763 3233 336
+Q 2797 -91 2069 -91
+Q 1278 -91 853 498
+Q 428 1088 428 2181
+Q 428 3406 931 4078
+Q 1434 4750 2350 4750
+Q 2597 4750 2869 4703
+Q 3141 4656 3425 4563
+L 3425 3794
+L 3072 3794
+Q 3034 4109 2831 4275
+Q 2628 4441 2284 4441
+Q 1678 4441 1381 3981
+Q 1084 3522 1075 2569
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-35" d="M 3219 4666
+L 3219 4153
+L 1081 4153
+L 1081 2816
+Q 1244 2928 1461 2984
+Q 1678 3041 1947 3041
+Q 2703 3041 3140 2622
+Q 3578 2203 3578 1478
+Q 3578 738 3136 323
+Q 2694 -91 1894 -91
+Q 1572 -91 1234 -12
+Q 897 66 544 225
+L 544 1131
+L 897 1131
+Q 925 688 1179 453
+Q 1434 219 1894 219
+Q 2388 219 2653 544
+Q 2919 869 2919 1478
+Q 2919 2084 2655 2407
+Q 2391 2731 1894 2731
+Q 1613 2731 1398 2631
+Q 1184 2531 1019 2322
+L 750 2322
+L 750 4666
+L 3219 4666
+z
+" transform="scale(0.015625)"/>
+     <path id="math-50525bb7afaae0-DejaVuSerif-34" d="M 2234 1581
+L 2234 4063
+L 641 1581
+L 2234 1581
+z
+M 3609 0
+L 1484 0
+L 1484 331
+L 2234 331
+L 2234 1247
+L 197 1247
+L 197 1588
+L 2241 4750
+L 2859 4750
+L 2859 1581
+L 3750 1581
+L 3750 1247
+L 2859 1247
+L 2859 331
+L 3609 331
+L 3609 0
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-Italic-76" transform="translate(0 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-6d" transform="translate(56.494141 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-61" transform="translate(122.871094 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-78" transform="translate(164.604492 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-3d" transform="translate(225.642188 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-65" transform="translate(328.396094 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-78" transform="translate(387.575781 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-70" transform="translate(443.972266 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-28" transform="translate(507.985937 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-Italic-57" transform="translate(546.999609 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-30" transform="translate(649.782812 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-28" transform="translate(696.914258 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-31" transform="translate(735.92793 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-2f" transform="translate(799.550977 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-Italic-65" transform="translate(833.242383 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-29" transform="translate(892.42207 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-29" transform="translate(931.435742 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-2248" transform="translate(989.414258 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-31" transform="translate(1092.168164 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-2e" transform="translate(1155.791211 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-33" transform="translate(1187.57832 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-32" transform="translate(1251.201367 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-31" transform="translate(1314.824414 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-30" transform="translate(1378.447461 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-39" transform="translate(1442.070508 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-39" transform="translate(1505.693555 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-37" transform="translate(1569.316602 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-36" transform="translate(1632.939648 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-32" transform="translate(1696.562695 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-30" transform="translate(1760.185742 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-31" transform="translate(1823.808789 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-35" transform="translate(1887.431836 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-36" transform="translate(1951.054883 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-31" transform="translate(2014.67793 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-37" transform="translate(2078.300977 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-34" transform="translate(2141.924023 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-35" transform="translate(2205.54707 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-36" transform="translate(2269.170117 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-39" transform="translate(2332.793164 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-36" transform="translate(2396.416211 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-32" transform="translate(2460.039258 0.015625)"/>
+    <use xlink:href="#math-50525bb7afaae0-DejaVuSerif-2e" transform="translate(2523.662305 0.015625)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>v_{\max}=\exp(W_0(1/e))\approx1.321099762015617456962.</code></pre></details></div>
+<p class="reader-paragraph" data-zyntalic data-passage-id="alternating-towers--tower-envelope--b4" data-source-block="4" data-source-type="p">Equality is attained by t = 1 and L = 1/v<sub>max</sub>. The base attaining the maximum height is</p>
+<div class="reader-equation" data-latex="c_{\mathrm{peak}}=\exp(1/v_{\max})\approx2.131753981723805825514." data-source-block="5" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="c_{\mathrm{peak}}=\exp(1/v_{\max})\approx2.131753981723805825514." xmlns:xlink="http://www.w3.org/1999/xlink" width="453pt" height="20pt" viewBox="0 0 453 20" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-027a9d58d0549d-figure_1">
+  <g id="math-027a9d58d0549d-patch_1">
+   <path d="M 0 20
+L 453 20
+L 453 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-027a9d58d0549d-text_1">
+   <!-- $c_{\mathrm{peak}}=\exp(1/v_{\max})\approx2.131753981723805825514.$ -->
+   <g style="fill: #202520" transform="translate(0 14) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-027a9d58d0549d-DejaVuSerif-Italic-63" d="M 3163 997
+Q 2938 466 2536 187
+Q 2134 -91 1584 -91
+Q 859 -91 513 388
+Q 272 722 272 1203
+Q 272 1419 319 1663
+Q 475 2459 1008 2936
+Q 1541 3413 2266 3413
+Q 2581 3413 2879 3339
+Q 3178 3266 3463 3116
+L 3300 2266
+L 2966 2266
+Q 2966 2309 2966 2347
+Q 2966 2722 2803 2903
+Q 2622 3103 2213 3103
+Q 1747 3103 1439 2742
+Q 1131 2381 991 1663
+Q 928 1334 928 1078
+Q 928 778 1016 581
+Q 1181 219 1650 219
+Q 2022 219 2281 412
+Q 2541 606 2700 997
+L 3163 997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-70" d="M 1313 1825
+L 1313 1497
+Q 1313 897 1542 583
+Q 1772 269 2209 269
+Q 2650 269 2876 622
+Q 3103 975 3103 1663
+Q 3103 2353 2876 2703
+Q 2650 3053 2209 3053
+Q 1772 3053 1542 2737
+Q 1313 2422 1313 1825
+z
+M 738 2988
+L 184 2988
+L 184 3322
+L 1313 3322
+L 1313 2803
+Q 1481 3116 1742 3264
+Q 2003 3413 2388 3413
+Q 3000 3413 3387 2928
+Q 3775 2444 3775 1663
+Q 3775 881 3387 395
+Q 3000 -91 2388 -91
+Q 2003 -91 1742 57
+Q 1481 206 1313 519
+L 1313 -997
+L 1856 -997
+L 1856 -1331
+L 184 -1331
+L 184 -997
+L 738 -997
+L 738 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-65" d="M 3469 1600
+L 991 1600
+L 991 1575
+Q 991 903 1244 561
+Q 1497 219 1991 219
+Q 2369 219 2611 417
+Q 2853 616 2950 1006
+L 3413 1006
+Q 3275 459 2904 184
+Q 2534 -91 1931 -91
+Q 1203 -91 761 389
+Q 319 869 319 1663
+Q 319 2450 753 2931
+Q 1188 3413 1894 3413
+Q 2647 3413 3050 2948
+Q 3453 2484 3469 1600
+z
+M 2791 1931
+Q 2772 2513 2545 2808
+Q 2319 3103 1894 3103
+Q 1497 3103 1269 2806
+Q 1041 2509 991 1931
+L 2791 1931
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-61" d="M 2547 1044
+L 2547 1747
+L 1806 1747
+Q 1378 1747 1168 1562
+Q 959 1378 959 997
+Q 959 650 1171 447
+Q 1384 244 1747 244
+Q 2106 244 2326 466
+Q 2547 688 2547 1044
+z
+M 3122 2075
+L 3122 331
+L 3634 331
+L 3634 0
+L 2547 0
+L 2547 359
+Q 2356 128 2106 18
+Q 1856 -91 1522 -91
+Q 969 -91 644 203
+Q 319 497 319 997
+Q 319 1513 691 1797
+Q 1063 2081 1741 2081
+L 2547 2081
+L 2547 2309
+Q 2547 2688 2317 2895
+Q 2088 3103 1672 3103
+Q 1328 3103 1125 2947
+Q 922 2791 872 2484
+L 575 2484
+L 575 3156
+Q 875 3284 1158 3348
+Q 1441 3413 1709 3413
+Q 2400 3413 2761 3070
+Q 3122 2728 3122 2075
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-6b" d="M 1831 0
+L 219 0
+L 219 331
+L 738 331
+L 738 4531
+L 184 4531
+L 184 4863
+L 1313 4863
+L 1313 1697
+L 2713 2988
+L 2234 2988
+L 2234 3322
+L 3738 3322
+L 3738 2988
+L 3169 2988
+L 2181 2075
+L 3444 331
+L 3922 331
+L 3922 0
+L 2284 0
+L 2284 331
+L 2759 331
+L 1766 1697
+L 1313 1275
+L 1313 331
+L 1831 331
+L 1831 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-78" d="M 1863 2028
+L 2559 2988
+L 2113 2988
+L 2113 3322
+L 3391 3322
+L 3391 2988
+L 2950 2988
+L 2059 1759
+L 3097 331
+L 3531 331
+L 3531 0
+L 1997 0
+L 1997 331
+L 2419 331
+L 1697 1325
+L 972 331
+L 1403 331
+L 1403 0
+L 141 0
+L 141 331
+L 581 331
+L 1497 1594
+L 488 2988
+L 78 2988
+L 78 3322
+L 1563 3322
+L 1563 2988
+L 1166 2988
+L 1863 2028
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-2f" d="M 1656 4666
+L 2156 4666
+L 500 -594
+L 0 -594
+L 1656 4666
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-Italic-76" d="M 1681 0
+L 1259 0
+L 619 2988
+L 241 2988
+L 303 3322
+L 1163 3322
+L 1725 703
+Q 2084 1016 2325 1413
+Q 2825 2238 3003 2988
+L 2622 2988
+L 2688 3322
+L 3547 3322
+Q 3206 2034 2775 1313
+Q 2400 688 1681 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-6d" d="M 3316 2675
+Q 3481 3041 3739 3227
+Q 3997 3413 4341 3413
+Q 4863 3413 5119 3089
+Q 5375 2766 5375 2113
+L 5375 331
+L 5894 331
+L 5894 0
+L 4300 0
+L 4300 331
+L 4800 331
+L 4800 2047
+Q 4800 2556 4650 2772
+Q 4500 2988 4153 2988
+Q 3769 2988 3567 2697
+Q 3366 2406 3366 1850
+L 3366 331
+L 3866 331
+L 3866 0
+L 2291 0
+L 2291 331
+L 2791 331
+L 2791 2069
+Q 2791 2566 2641 2777
+Q 2491 2988 2144 2988
+Q 1759 2988 1557 2697
+Q 1356 2406 1356 1850
+L 1356 331
+L 1856 331
+L 1856 0
+L 263 0
+L 263 331
+L 781 331
+L 781 2994
+L 231 2994
+L 231 3322
+L 1356 3322
+L 1356 2731
+Q 1516 3063 1762 3238
+Q 2009 3413 2322 3413
+Q 2709 3413 2968 3220
+Q 3228 3028 3316 2675
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-2248" d="M 4684 1913
+L 4684 1453
+Q 4375 1172 4092 1040
+Q 3809 909 3519 909
+Q 3231 909 2713 1106
+Q 2666 1125 2641 1134
+Q 2609 1147 2541 1172
+Q 2081 1350 1784 1350
+Q 1497 1350 1226 1236
+Q 956 1122 678 884
+L 678 1344
+Q 994 1625 1273 1753
+Q 1553 1881 1844 1881
+Q 2144 1881 2688 1675
+L 2719 1663
+Q 2753 1653 2816 1625
+Q 3269 1447 3572 1447
+Q 3859 1447 4134 1561
+Q 4409 1675 4684 1913
+z
+M 4684 3128
+L 4684 2669
+Q 4378 2391 4095 2261
+Q 3813 2131 3519 2131
+Q 3219 2131 2675 2338
+L 2644 2350
+Q 2609 2363 2541 2388
+Q 2081 2566 1784 2566
+Q 1497 2566 1226 2452
+Q 956 2338 678 2100
+L 678 2559
+Q 994 2841 1273 2969
+Q 1553 3097 1844 3097
+Q 2144 3097 2688 2894
+L 2719 2881
+Q 2753 2869 2816 2841
+Q 3269 2663 3572 2663
+Q 3859 2663 4134 2777
+Q 4409 2891 4684 3128
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-32" d="M 819 3553
+L 469 3553
+L 469 4384
+Q 803 4563 1142 4656
+Q 1481 4750 1806 4750
+Q 2534 4750 2956 4397
+Q 3378 4044 3378 3438
+Q 3378 2753 2422 1800
+Q 2347 1728 2309 1691
+L 1131 513
+L 3078 513
+L 3078 1088
+L 3444 1088
+L 3444 0
+L 434 0
+L 434 341
+L 1850 1753
+Q 2319 2222 2519 2614
+Q 2719 3006 2719 3438
+Q 2719 3909 2473 4175
+Q 2228 4441 1797 4441
+Q 1350 4441 1106 4219
+Q 863 3997 819 3553
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-33" d="M 622 4469
+Q 988 4606 1323 4678
+Q 1659 4750 1953 4750
+Q 2638 4750 3022 4454
+Q 3406 4159 3406 3634
+Q 3406 3213 3140 2930
+Q 2875 2647 2388 2547
+Q 2963 2466 3280 2130
+Q 3597 1794 3597 1259
+Q 3597 606 3158 257
+Q 2719 -91 1894 -91
+Q 1528 -91 1179 -12
+Q 831 66 488 225
+L 488 1131
+L 838 1131
+Q 869 681 1141 450
+Q 1413 219 1906 219
+Q 2384 219 2661 495
+Q 2938 772 2938 1253
+Q 2938 1803 2653 2086
+Q 2369 2369 1819 2369
+L 1522 2369
+L 1522 2688
+L 1678 2688
+Q 2225 2688 2498 2914
+Q 2772 3141 2772 3597
+Q 2772 4006 2547 4223
+Q 2322 4441 1900 4441
+Q 1478 4441 1245 4241
+Q 1013 4041 972 3647
+L 622 3647
+L 622 4469
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-37" d="M 3609 4347
+L 1784 0
+L 1319 0
+L 3059 4153
+L 903 4153
+L 903 3578
+L 538 3578
+L 538 4666
+L 3609 4666
+L 3609 4347
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-35" d="M 3219 4666
+L 3219 4153
+L 1081 4153
+L 1081 2816
+Q 1244 2928 1461 2984
+Q 1678 3041 1947 3041
+Q 2703 3041 3140 2622
+Q 3578 2203 3578 1478
+Q 3578 738 3136 323
+Q 2694 -91 1894 -91
+Q 1572 -91 1234 -12
+Q 897 66 544 225
+L 544 1131
+L 897 1131
+Q 925 688 1179 453
+Q 1434 219 1894 219
+Q 2388 219 2653 544
+Q 2919 869 2919 1478
+Q 2919 2084 2655 2407
+Q 2391 2731 1894 2731
+Q 1613 2731 1398 2631
+Q 1184 2531 1019 2322
+L 750 2322
+L 750 4666
+L 3219 4666
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-39" d="M 2994 2091
+Q 2784 1856 2512 1740
+Q 2241 1625 1900 1625
+Q 1206 1625 804 2044
+Q 403 2463 403 3188
+Q 403 3897 839 4323
+Q 1275 4750 2003 4750
+Q 2794 4750 3217 4161
+Q 3641 3572 3641 2478
+Q 3641 1253 3137 581
+Q 2634 -91 1722 -91
+Q 1475 -91 1203 -44
+Q 931 3 647 97
+L 647 872
+L 997 872
+Q 1038 556 1241 387
+Q 1444 219 1784 219
+Q 2391 219 2687 676
+Q 2984 1134 2994 2091
+z
+M 1978 4441
+Q 1534 4441 1298 4117
+Q 1063 3794 1063 3188
+Q 1063 2581 1298 2256
+Q 1534 1931 1978 1931
+Q 2422 1931 2658 2245
+Q 2894 2559 2894 3150
+Q 2894 3772 2656 4106
+Q 2419 4441 1978 4441
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-38" d="M 2981 1275
+Q 2981 1775 2732 2051
+Q 2484 2328 2034 2328
+Q 1584 2328 1336 2051
+Q 1088 1775 1088 1275
+Q 1088 772 1336 495
+Q 1584 219 2034 219
+Q 2484 219 2732 495
+Q 2981 772 2981 1275
+z
+M 2853 3541
+Q 2853 3966 2637 4203
+Q 2422 4441 2034 4441
+Q 1650 4441 1433 4203
+Q 1216 3966 1216 3541
+Q 1216 3113 1433 2875
+Q 1650 2638 2034 2638
+Q 2422 2638 2637 2875
+Q 2853 3113 2853 3541
+z
+M 2516 2484
+Q 3047 2413 3344 2092
+Q 3641 1772 3641 1275
+Q 3641 619 3225 264
+Q 2809 -91 2034 -91
+Q 1263 -91 845 264
+Q 428 619 428 1275
+Q 428 1772 725 2092
+Q 1022 2413 1556 2484
+Q 1084 2569 832 2842
+Q 581 3116 581 3541
+Q 581 4103 968 4426
+Q 1356 4750 2034 4750
+Q 2713 4750 3100 4426
+Q 3488 4103 3488 3541
+Q 3488 3116 3236 2842
+Q 2984 2569 2516 2484
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-30" d="M 2034 219
+Q 2513 219 2750 744
+Q 2988 1269 2988 2328
+Q 2988 3391 2750 3916
+Q 2513 4441 2034 4441
+Q 1556 4441 1318 3916
+Q 1081 3391 1081 2328
+Q 1081 1269 1318 744
+Q 1556 219 2034 219
+z
+M 2034 -91
+Q 1275 -91 848 546
+Q 422 1184 422 2328
+Q 422 3475 848 4112
+Q 1275 4750 2034 4750
+Q 2797 4750 3222 4112
+Q 3647 3475 3647 2328
+Q 3647 1184 3222 546
+Q 2797 -91 2034 -91
+z
+" transform="scale(0.015625)"/>
+     <path id="math-027a9d58d0549d-DejaVuSerif-34" d="M 2234 1581
+L 2234 4063
+L 641 1581
+L 2234 1581
+z
+M 3609 0
+L 1484 0
+L 1484 331
+L 2234 331
+L 2234 1247
+L 197 1247
+L 197 1588
+L 2241 4750
+L 2859 4750
+L 2859 1581
+L 3750 1581
+L 3750 1247
+L 2859 1247
+L 2859 331
+L 3609 331
+L 3609 0
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-Italic-63" transform="translate(0 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-70" transform="translate(56.005859 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-65" transform="translate(100.81543 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-61" transform="translate(142.241211 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-6b" transform="translate(183.974609 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-3d" transform="translate(247.951758 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-65" transform="translate(350.705664 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-78" transform="translate(409.885352 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-70" transform="translate(466.281836 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-28" transform="translate(530.295508 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-31" transform="translate(569.30918 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-2f" transform="translate(632.932227 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-Italic-76" transform="translate(666.623633 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-6d" transform="translate(723.117773 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-61" transform="translate(789.494727 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-78" transform="translate(831.228125 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-29" transform="translate(873.300977 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-2248" transform="translate(931.279492 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-32" transform="translate(1034.033398 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-2e" transform="translate(1097.656445 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-31" transform="translate(1129.443555 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-33" transform="translate(1193.066602 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-31" transform="translate(1256.689648 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-37" transform="translate(1320.312695 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-35" transform="translate(1383.935742 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-33" transform="translate(1447.558789 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-39" transform="translate(1511.181836 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-38" transform="translate(1574.804883 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-31" transform="translate(1638.42793 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-37" transform="translate(1702.050977 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-32" transform="translate(1765.674023 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-33" transform="translate(1829.29707 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-38" transform="translate(1891.170117 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-30" transform="translate(1954.793164 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-35" transform="translate(2018.416211 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-38" transform="translate(2082.039258 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-32" transform="translate(2145.662305 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-35" transform="translate(2209.285352 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-35" transform="translate(2272.908398 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-31" transform="translate(2336.531445 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-34" transform="translate(2400.154492 0.015625)"/>
+    <use xlink:href="#math-027a9d58d0549d-DejaVuSerif-2e" transform="translate(2463.777539 0.015625)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>c_{\mathrm{peak}}=\exp(1/v_{\max})\approx2.131753981723805825514.</code></pre></details></div>
+<p class="reader-paragraph" data-zyntalic data-passage-id="alternating-towers--tower-envelope--b6" data-source-block="6" data-source-type="p">The earlier review called this c<sub>max</sub>. The label c<sub>peak</sub> avoids suggesting that there is a largest allowable base: the theorem permits every c &gt; 1.</p>
+<h3 class="reader-subheading" data-zyntalic data-passage-id="alternating-towers--tower-envelope--b7" data-source-block="7" data-source-type="h">Why there are exactly two bases</h3>
+<p class="reader-paragraph" data-zyntalic data-passage-id="alternating-towers--tower-envelope--b8" data-source-block="8" data-source-type="p">For 1 &lt; v &lt; v_max, set a = v log v ∈ (0, 1/e). The function t exp(−t) increases to t = 1 and then decreases to zero. Thus</p>
+<div class="reader-equation" data-latex="t e^{-t}=a" data-source-block="9" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="t e^{-t}=a" xmlns:xlink="http://www.w3.org/1999/xlink" width="68pt" height="17pt" viewBox="0 0 68 17" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-a0f40549f7c3c2-figure_1">
+  <g id="math-a0f40549f7c3c2-patch_1">
+   <path d="M 0 17
+L 68 17
+L 68 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-a0f40549f7c3c2-text_1">
+   <!-- $t e^{-t}=a$ -->
+   <g style="fill: #202520" transform="translate(0 16) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-a0f40549f7c3c2-DejaVuSerif-Italic-74" d="M 856 2988
+L 350 2988
+L 416 3322
+L 922 3322
+L 1122 4353
+L 1700 4353
+L 1500 3322
+L 2581 3322
+L 2516 2988
+L 1434 2988
+L 1025 878
+Q 978 631 978 488
+Q 978 388 1000 338
+Q 1059 219 1278 219
+Q 1503 219 1633 351
+Q 1763 484 1825 781
+L 2259 781
+Q 2147 328 1884 118
+Q 1622 -91 1169 -91
+Q 672 -91 506 131
+Q 406 266 406 516
+Q 406 675 447 878
+L 856 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a0f40549f7c3c2-DejaVuSerif-Italic-65" d="M 938 1275
+Q 925 1156 925 1050
+Q 925 756 1031 563
+Q 1216 219 1709 219
+Q 2072 219 2250 328
+Q 2569 525 2644 778
+L 3066 778
+Q 2941 381 2475 103
+Q 2150 -91 1506 -91
+Q 863 -91 516 388
+Q 272 722 272 1206
+Q 272 1419 319 1659
+Q 472 2450 1000 2931
+Q 1528 3413 2278 3413
+Q 3500 3413 3500 2547
+Q 3500 1913 2859 1603
+Q 2206 1288 938 1275
+z
+M 2541 1975
+Q 2891 2181 2891 2569
+Q 2891 3103 2181 3103
+Q 1763 3103 1472 2784
+Q 1181 2466 1003 1606
+Q 2006 1653 2541 1975
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a0f40549f7c3c2-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a0f40549f7c3c2-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-a0f40549f7c3c2-DejaVuSerif-Italic-61" d="M 2325 519
+Q 1909 -91 1238 -91
+Q 688 -91 409 281
+Q 216 544 216 919
+Q 216 1078 250 1256
+Q 463 2359 1231 2928
+Q 1884 3413 2675 3413
+Q 3206 3413 3388 3322
+L 2806 331
+L 3300 331
+L 3238 0
+L 2225 0
+L 2325 519
+z
+M 822 938
+Q 822 269 1469 269
+Q 1863 269 2130 583
+Q 2397 897 2516 1497
+L 2806 3003
+L 2806 3003
+Q 2806 3094 2556 3094
+Q 1956 3094 1491 2625
+Q 1028 2153 863 1297
+Q 822 1097 822 938
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-a0f40549f7c3c2-DejaVuSerif-Italic-74" transform="translate(0 0.054688)"/>
+    <use xlink:href="#math-a0f40549f7c3c2-DejaVuSerif-Italic-65" transform="translate(40.185547 0.054688)"/>
+    <use xlink:href="#math-a0f40549f7c3c2-DejaVuSerif-2212" transform="translate(103.803307 36.389062) scale(0.7)"/>
+    <use xlink:href="#math-a0f40549f7c3c2-DejaVuSerif-Italic-74" transform="translate(162.455651 36.389062) scale(0.7)"/>
+    <use xlink:href="#math-a0f40549f7c3c2-DejaVuSerif-3d" transform="translate(212.14569 0.054688)"/>
+    <use xlink:href="#math-a0f40549f7c3c2-DejaVuSerif-Italic-61" transform="translate(314.899596 0.054688)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>t e^{-t}=a</code></pre></details></div>
+<p class="reader-paragraph" data-zyntalic data-passage-id="alternating-towers--tower-envelope--b10" data-source-block="10" data-source-type="p">has exactly two positive solutions t<sub>−</sub> &lt; 1 &lt; t<sub>+</sub>. Each gives a distinct base</p>
+<div class="reader-equation" data-latex="c_-=e^{t_-/v},\qquad c_+=e^{t_+/v}." data-source-block="11" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="c_-=e^{t_-/v},\qquad c_+=e^{t_+/v}." xmlns:xlink="http://www.w3.org/1999/xlink" width="227pt" height="19pt" viewBox="0 0 227 19" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-41bcb68289ba40-figure_1">
+  <g id="math-41bcb68289ba40-patch_1">
+   <path d="M 0 19
+L 227 19
+L 227 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-41bcb68289ba40-text_1">
+   <!-- $c_-=e^{t_-/v},\qquad c_+=e^{t_+/v}.$ -->
+   <g style="fill: #202520" transform="translate(0 16) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-41bcb68289ba40-DejaVuSerif-Italic-63" d="M 3163 997
+Q 2938 466 2536 187
+Q 2134 -91 1584 -91
+Q 859 -91 513 388
+Q 272 722 272 1203
+Q 272 1419 319 1663
+Q 475 2459 1008 2936
+Q 1541 3413 2266 3413
+Q 2581 3413 2879 3339
+Q 3178 3266 3463 3116
+L 3300 2266
+L 2966 2266
+Q 2966 2309 2966 2347
+Q 2966 2722 2803 2903
+Q 2622 3103 2213 3103
+Q 1747 3103 1439 2742
+Q 1131 2381 991 1663
+Q 928 1334 928 1078
+Q 928 778 1016 581
+Q 1181 219 1650 219
+Q 2022 219 2281 412
+Q 2541 606 2700 997
+L 3163 997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-41bcb68289ba40-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-41bcb68289ba40-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-41bcb68289ba40-DejaVuSerif-Italic-65" d="M 938 1275
+Q 925 1156 925 1050
+Q 925 756 1031 563
+Q 1216 219 1709 219
+Q 2072 219 2250 328
+Q 2569 525 2644 778
+L 3066 778
+Q 2941 381 2475 103
+Q 2150 -91 1506 -91
+Q 863 -91 516 388
+Q 272 722 272 1206
+Q 272 1419 319 1659
+Q 472 2450 1000 2931
+Q 1528 3413 2278 3413
+Q 3500 3413 3500 2547
+Q 3500 1913 2859 1603
+Q 2206 1288 938 1275
+z
+M 2541 1975
+Q 2891 2181 2891 2569
+Q 2891 3103 2181 3103
+Q 1763 3103 1472 2784
+Q 1181 2466 1003 1606
+Q 2006 1653 2541 1975
+z
+" transform="scale(0.015625)"/>
+     <path id="math-41bcb68289ba40-DejaVuSerif-Italic-74" d="M 856 2988
+L 350 2988
+L 416 3322
+L 922 3322
+L 1122 4353
+L 1700 4353
+L 1500 3322
+L 2581 3322
+L 2516 2988
+L 1434 2988
+L 1025 878
+Q 978 631 978 488
+Q 978 388 1000 338
+Q 1059 219 1278 219
+Q 1503 219 1633 351
+Q 1763 484 1825 781
+L 2259 781
+Q 2147 328 1884 118
+Q 1622 -91 1169 -91
+Q 672 -91 506 131
+Q 406 266 406 516
+Q 406 675 447 878
+L 856 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-41bcb68289ba40-DejaVuSerif-2f" d="M 1656 4666
+L 2156 4666
+L 500 -594
+L 0 -594
+L 1656 4666
+z
+" transform="scale(0.015625)"/>
+     <path id="math-41bcb68289ba40-DejaVuSerif-Italic-76" d="M 1681 0
+L 1259 0
+L 619 2988
+L 241 2988
+L 303 3322
+L 1163 3322
+L 1725 703
+Q 2084 1016 2325 1413
+Q 2825 2238 3003 2988
+L 2622 2988
+L 2688 3322
+L 3547 3322
+Q 3206 2034 2775 1313
+Q 2400 688 1681 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-41bcb68289ba40-DejaVuSerif-2c" d="M 231 -622
+Q 525 -406 662 -114
+Q 800 178 800 594
+L 800 709
+L 1416 709
+Q 1391 175 1164 -208
+Q 938 -591 481 -872
+L 231 -622
+z
+" transform="scale(0.015625)"/>
+     <path id="math-41bcb68289ba40-DejaVuSerif-2b" d="M 2931 4013
+L 2931 2259
+L 4684 2259
+L 4684 1753
+L 2931 1753
+L 2931 0
+L 2431 0
+L 2431 1753
+L 678 1753
+L 678 2259
+L 2431 2259
+L 2431 4013
+L 2931 4013
+z
+" transform="scale(0.015625)"/>
+     <path id="math-41bcb68289ba40-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-41bcb68289ba40-DejaVuSerif-Italic-63" transform="translate(0 0.63125)"/>
+    <use xlink:href="#math-41bcb68289ba40-DejaVuSerif-2212" transform="translate(69.28125 -14.940625) scale(0.7)"/>
+    <use xlink:href="#math-41bcb68289ba40-DejaVuSerif-3d" transform="translate(162.769141 0.63125)"/>
+    <use xlink:href="#math-41bcb68289ba40-DejaVuSerif-Italic-65" transform="translate(265.523047 0.63125)"/>
+    <use xlink:href="#math-41bcb68289ba40-DejaVuSerif-Italic-74" transform="translate(329.140807 36.965625) scale(0.7)"/>
+    <use xlink:href="#math-41bcb68289ba40-DejaVuSerif-2212" transform="translate(366.563464 26.065313) scale(0.49)"/>
+    <use xlink:href="#math-41bcb68289ba40-DejaVuSerif-2f" transform="translate(418.729596 36.965625) scale(0.7)"/>
+    <use xlink:href="#math-41bcb68289ba40-DejaVuSerif-Italic-76" transform="translate(442.313581 36.965625) scale(0.7)"/>
+    <use xlink:href="#math-41bcb68289ba40-DejaVuSerif-2c" transform="translate(484.454792 0.63125)"/>
+    <use xlink:href="#math-41bcb68289ba40-DejaVuSerif-Italic-63" transform="translate(724.855182 0.63125)"/>
+    <use xlink:href="#math-41bcb68289ba40-DejaVuSerif-2b" transform="translate(794.136432 -14.940625) scale(0.7)"/>
+    <use xlink:href="#math-41bcb68289ba40-DejaVuSerif-3d" transform="translate(887.624323 0.63125)"/>
+    <use xlink:href="#math-41bcb68289ba40-DejaVuSerif-Italic-65" transform="translate(990.378229 0.63125)"/>
+    <use xlink:href="#math-41bcb68289ba40-DejaVuSerif-Italic-74" transform="translate(1053.99599 36.965625) scale(0.7)"/>
+    <use xlink:href="#math-41bcb68289ba40-DejaVuSerif-2b" transform="translate(1091.418646 26.065313) scale(0.49)"/>
+    <use xlink:href="#math-41bcb68289ba40-DejaVuSerif-2f" transform="translate(1143.584779 36.965625) scale(0.7)"/>
+    <use xlink:href="#math-41bcb68289ba40-DejaVuSerif-Italic-76" transform="translate(1167.168763 36.965625) scale(0.7)"/>
+    <use xlink:href="#math-41bcb68289ba40-DejaVuSerif-2e" transform="translate(1209.309974 0.63125)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>c_-=e^{t_-/v},\qquad c_+=e^{t_+/v}.</code></pre></details></div>
+<div class="reader-table-scroll" data-source-block="12" data-source-type="table"><table class="reader-table"><thead><tr><th scope="col">Upper phase</th><th scope="col">Number of finite real bases c &gt; 1</th></tr></thead><tbody><tr><td>1 &lt; v &lt; vₘₐₓ</td><td>Exactly two</td></tr><tr><td>v = vₘₐₓ</td><td>Exactly one</td></tr><tr><td>v &gt; vₘₐₓ</td><td>None</td></tr><tr><td>v = 1</td><td>None; only a limiting height</td></tr></tbody></table></div>
+<aside class="reader-callout" data-status="exact" data-source-block="13" data-source-type="callout"><p class="reader-callout-label">Conclusion</p><p class="reader-callout-text" data-zyntalic data-passage-id="alternating-towers--tower-envelope--b13">The sharp upper-phase bound is attained. Each interior height corresponds to exactly two finite bases, the maximum to one, and all other listed heights to none.</p></aside>
+<p class="reader-paragraph" data-zyntalic data-passage-id="alternating-towers--tower-envelope--b14" data-source-block="14" data-source-type="p">The convergence theorem and the inverse classification form one complete argument: first construct the unique phase pair for each base, then determine exactly which bases realize a chosen height.</p></section>
+</main><footer class="reader-footer"><p data-reader-chrome><a href="alternating-towers.json">Structured source</a> · <a href="alternating-towers.md">Markdown source</a></p>
+<details class="reader-provenance" data-reader-reveal data-archival-provenance><summary>Credits and source-version record</summary><pre>{
+  &quot;title&quot;: &quot;Alternating real towers&quot;,
+  &quot;subtitle&quot;: &quot;A focused reading note from the Pirate Chest&quot;,
+  &quot;date&quot;: &quot;23 November 2026&quot;,
+  &quot;author&quot;: &quot;Zolton / EncapsulatorP · with ChatGPT&quot;,
+  &quot;historical_source_commit&quot;: &quot;cc3f20117eaead570db6077377a43a92c0bfc652&quot;,
+  &quot;reviewed_proof_commit&quot;: &quot;29f9232545aa112cd6ffa9fe1f3c0e85d093dedd&quot;,
+  &quot;status&quot;: &quot;exact&quot;,
+  &quot;statusLabel&quot;: &quot;Proved convergence and classification&quot;
+}</pre></details>
+<p data-reader-chrome><a href="../../index.html#interactive?topic=goldbach-involution">Return to the interactive space</a></p></footer></div>
+<script type="application/json" id="reader-source">{
+  "title": "Alternating real towers",
+  "subtitle": "A focused reading note from the Pirate Chest",
+  "date": "23 November 2026",
+  "author": "Zolton / EncapsulatorP · with ChatGPT",
+  "historical_source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
+  "reviewed_proof_commit": "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd",
+  "status": "exact",
+  "statusLabel": "Proved convergence and classification",
+  "pages": [
+    {
+      "id": "alternating-towers-orientation",
+      "title": "Alternating real towers",
+      "kicker": "NOTE 02 · PROVED CONVERGENCE AND CLASSIFICATION",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "For every real base c > 1, the alternating-sign system has one pair of phases. The explicit iteration converges from every upper starting phase at least 1, with a uniform contraction bound."
+        },
+        {
+          "type": "eq",
+          "latex": "u=c^{-v},\\qquad v=c^u,\\qquad c>1"
+        },
+        {
+          "type": "callout",
+          "label": "Proved convergence and classification",
+          "status": "exact",
+          "text": "The defined alternating-sign system has a sharp maximum upper phase and exactly two finite bases at every height strictly between 1 and that maximum."
+        },
+        {
+          "type": "p",
+          "text": "The first argument establishes an invariant interval and a contraction. The second extracts the sharp envelope from v log v = t exp(−t) and classifies the two inverse branches."
+        },
+        {
+          "type": "h",
+          "text": "One concrete next step"
+        },
+        {
+          "type": "p",
+          "text": "Compare the convergence and inverse classification with the literature. If a particular arithmetic constant is used as a target height, state the additional arithmetic question separately."
+        },
+        {
+          "type": "h",
+          "text": "Sources and related reading"
+        },
+        {
+          "type": "p",
+          "text": "<b>[S2] Towers and prime polynomials.<\/b> EncapsulatorP, <i>Exact structures behind the atlas<\/i>, edition 21 November 2026, §§1, 2 and 4. The written arguments record their scope, prior solver provenance and numerical limits.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "[S2] Read the pinned mathematical notes",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/29f9232545aa112cd6ffa9fe1f3c0e85d093dedd/atlas/mathematical-notes.md"
+        },
+        {
+          "type": "link",
+          "text": "Historical collection source · original edition",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#tower-convergence"
+        },
+        {
+          "type": "link",
+          "text": "Return to the Treasure Chest",
+          "url": "https://encapsulatorp.github.io/#buried-logistic-vanishing"
+        }
+      ]
+    },
+    {
+      "id": "tower-convergence",
+      "title": "Alternating real towers converge",
+      "kicker": "01 · WRITTEN-PROOF REVIEW: GLOBAL RESULT",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Fix a real c &gt; 1 and L = log c. The following alternating-sign system has exactly one solution with 0 &lt; u &lt; 1 &lt; v [S2]:"
+        },
+        {
+          "type": "eq",
+          "latex": "u=c^{-v},\\qquad v=c^u."
+        },
+        {
+          "type": "p",
+          "text": "Eliminate u and define"
+        },
+        {
+          "type": "eq",
+          "latex": "F_L(v)=\\exp(Le^{-Lv}),\\qquad v_{j+1}=F_L(v_j)."
+        },
+        {
+          "type": "p",
+          "text": "<b>Invariant interval.<\/b> For v ≥ 1,"
+        },
+        {
+          "type": "eq",
+          "latex": "1<F_L(v)\\le\\exp(Le^{-L})\\le e^{1/e}."
+        },
+        {
+          "type": "p",
+          "text": "The function L exp(−L) has maximum 1/e at L = 1. Every v₀ ≥ 1 therefore enters I = [1, exp(1/e)] after one step."
+        },
+        {
+          "type": "p",
+          "text": "<b>Uniform contraction.<\/b> Differentiate and use the separate maxima of L² exp(−L) and L exp(−L):"
+        },
+        {
+          "type": "eq",
+          "latex": "|F_L'(v)|=L^2e^{-Lv}\\exp(Le^{-Lv})"
+        },
+        {
+          "type": "eq",
+          "latex": "\\le L^2e^{-L}\\exp(Le^{-L})\\le q:=4e^{1/e-2}<1."
+        },
+        {
+          "type": "p",
+          "text": "This convenient bound is uniform in L and v. To prove q &lt; 1 without decimals, use 1/e &lt; 1/2 and exp(3/2) &gt; 1 + 3/2 + 9/8 + 27/48 &gt; 4. Numerically q ≈ 0.782058136610352468."
+        },
+        {
+          "type": "p",
+          "text": "<b>Existence, uniqueness and convergence.<\/b> Apply Banach’s contraction theorem on I. Every possible fixed point in the stated domain lies in I, so it is unique throughout that domain. Set u = exp(−Lv) to recover both phase equations. Every v₀ ≥ 1 converges."
+        },
+        {
+          "type": "eq",
+          "latex": "|x-v_*|\\le\\frac{|F_L(x)-x|}{1-q}\\qquad(x\\in I)."
+        },
+        {
+          "type": "p",
+          "text": "The error bound follows by inserting F<sub>L<\/sub>(x), using the contraction inequality and rearranging. Rounded function values alone do not turn it into an interval certificate."
+        },
+        {
+          "type": "callout",
+          "label": "Conclusion",
+          "text": "For every c &gt; 1, the defined alternating-sign system has a unique solution with 0 &lt; u &lt; 1 &lt; v. Its stated iteration converges from every v₀ ≥ 1 with a uniform contraction bound.",
+          "status": "exact"
+        }
+      ]
+    },
+    {
+      "id": "tower-envelope",
+      "title": "A sharp height and exactly two bases",
+      "kicker": "02 · WRITTEN-PROOF REVIEW: EXACT CLASSIFICATION",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "At the fixed point of the alternating system, put t = Lv &gt; 0. Taking logarithms of the fixed-point equation and multiplying by v yields"
+        },
+        {
+          "type": "eq",
+          "latex": "v\\log v=t e^{-t}\\le1/e."
+        },
+        {
+          "type": "p",
+          "text": "Because v log v is strictly increasing on v ≥ 1, this bounds the upper phase sharply. With W₀ the principal real Lambert W function,"
+        },
+        {
+          "type": "eq",
+          "latex": "v_{\\max}=\\exp(W_0(1/e))\\approx1.321099762015617456962."
+        },
+        {
+          "type": "p",
+          "text": "Equality is attained by t = 1 and L = 1/v<sub>max<\/sub>. The base attaining the maximum height is"
+        },
+        {
+          "type": "eq",
+          "latex": "c_{\\mathrm{peak}}=\\exp(1/v_{\\max})\\approx2.131753981723805825514."
+        },
+        {
+          "type": "p",
+          "text": "The earlier review called this c<sub>max<\/sub>. The label c<sub>peak<\/sub> avoids suggesting that there is a largest allowable base: the theorem permits every c &gt; 1."
+        },
+        {
+          "type": "h",
+          "text": "Why there are exactly two bases"
+        },
+        {
+          "type": "p",
+          "text": "For 1 &lt; v &lt; v_max, set a = v log v ∈ (0, 1/e). The function t exp(−t) increases to t = 1 and then decreases to zero. Thus"
+        },
+        {
+          "type": "eq",
+          "latex": "t e^{-t}=a"
+        },
+        {
+          "type": "p",
+          "text": "has exactly two positive solutions t<sub>−<\/sub> &lt; 1 &lt; t<sub>+<\/sub>. Each gives a distinct base"
+        },
+        {
+          "type": "eq",
+          "latex": "c_-=e^{t_-/v},\\qquad c_+=e^{t_+/v}."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Upper phase",
+            "Number of finite real bases c > 1"
+          ],
+          "rows": [
+            [
+              "1 < v < vₘₐₓ",
+              "Exactly two"
+            ],
+            [
+              "v = vₘₐₓ",
+              "Exactly one"
+            ],
+            [
+              "v > vₘₐₓ",
+              "None"
+            ],
+            [
+              "v = 1",
+              "None; only a limiting height"
+            ]
+          ],
+          "widths": [
+            0.43,
+            0.57
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Conclusion",
+          "text": "The sharp upper-phase bound is attained. Each interior height corresponds to exactly two finite bases, the maximum to one, and all other listed heights to none.",
+          "status": "exact"
+        },
+        {
+          "type": "p",
+          "text": "The convergence theorem and the inverse classification form one complete argument: first construct the unique phase pair for each base, then determine exactly which bases realize a chosen height."
+        }
+      ]
+    }
+  ]
+}</script>
+<script type="application/json" id="reader-config">{"id":"alternating-towers","entryId":"alternating-towers","title":"Alternating real towers","status":"exact","kind":"proof","root":"#reader-content","controls":"#reader-tools","sourceLabel":"Complete structured source","sourceUrl":"alternating-towers.json","logoSrc":"../../assets/logo-encapsulatorp-512.png","returnUrl":"../../index.html#interactive?topic=goldbach-involution","passages":[{"id":"alternating-towers--alternating-towers-orientation--title","english":"Alternating real towers","status":"exact","zyntalic":"najebmodadek nałąńkilrąkul cóźesó ńądhałógis lu żumpęźśćmuar cóźesó nałąńkilrąkul bigażżtot.","sourceSha256":"4fabc3030b282bfb89d707407e8c3f058647dc48106224f8351ce96edf58b376"},{"id":"alternating-towers--alternating-towers-orientation--b0","english":"For every real base c > 1, the alternating-sign system has one pair of phases. The explicit iteration converges from every upper starting phase at least 1, with a uniform contraction bound.","status":"exact","zyntalic":"tariżźilok źemśiżźęum kilmaćnęor hącżynrzfior; kąfobien kilmaćnęor źemśiżźęum ńójćyzął.\nłiggaśćbohek kymąmżjówul defgarzśeg śąnycred · sożiłałti defgarzśeg kymąmżjówul gożmućybar.","sourceSha256":"db690fa4172845364a6d9df6b440a2d0fbf87c91db615e878f776a2bc0b0e93b"},{"id":"alternating-towers--alternating-towers-orientation--b2","english":"The defined alternating-sign system has a sharp maximum upper phase and exactly two finite bases at every height strictly between 1 and that maximum.","status":"exact","zyntalic":"moźązolar corodśćńitja nałórydżló łusiżjaor; luźefądćąźum nałórydżló corodśćńitja łóhągim.","sourceSha256":"cbf168ee5188aadb4aca7df53db26614e064874cd0a93c6257e11bb1fa047d95"},{"id":"alternating-towers--alternating-towers-orientation--b3","english":"The first argument establishes an invariant interval and a contraction. The second extracts the sharp envelope from v log v = t exp(−t) and classifies the two inverse branches.","status":"exact","zyntalic":"lujóżźofrzló syźęcożńąmja mąwórzry źóśuro / paźąśiis mąwórzry syźęcożńąmja taćóńąśśe.\nnętyrrzgy fowźątćyźar huźąśźuti naśjylół; kizźętąwos huźąśźuti fowźątćyźar beźozó.","sourceSha256":"cc876de5d33d47ff482eccd96a3d4a2ff57fe967f99053f06bc725aa02328f01"},{"id":"alternating-towers--alternating-towers-orientation--b4","english":"One concrete next step","status":"exact","zyntalic":"jacyłyz źesęćłułul bazusżłycti","sourceSha256":"794050a9dca2bb1602bfeb0e2a90829da94794bba10d7c0ae673088fc29dced3"},{"id":"alternating-towers--alternating-towers-orientation--b5","english":"Compare the convergence and inverse classification with the literature. If a particular arithmetic constant is used as a target height, state the additional arithmetic question separately.","status":"exact","zyntalic":"dośłućżiek fowźątćyźar huźąśźuti ńedujyar lu gukakjof huźąśźuti fowźątćyźar ribyccadżkaar.\ntókukrzźąpek ńemłurzkafja rihódożbub ćąplożłęlis; śęńąmżpoti rihódożbub ńemłurzkafja łełńapfyis.","sourceSha256":"4675d5882c37f0b90dd8d9ee9fd17e23bb4a17f73f3a0001454976840f36abfb"},{"id":"alternating-towers--tower-convergence--title","english":"Alternating real towers converge","status":"exact","zyntalic":"tęsźaćrznęfek cóźesó giźecąul dęćsynkucti; nafytąźkuja giźecąul cóźesó łępęjrzrąti.","sourceSha256":"1fae11be18c52c66ce5371a3c4f7f4a2c4d37f478a8493ebd33ae140600792c4"},{"id":"alternating-towers--tower-convergence--b2","english":"Eliminate u and define","status":"exact","zyntalic":"ńężuśćwigja żopyłobul sośojćóor śywsolyć / diżjodgeis sośojćóor żopyłobul ńójćyzął.","sourceSha256":"1934900d701d0abcccb2d21bd1aeb0ef2ebf7c26d87e9e2963cc687811cea063"},{"id":"alternating-towers--tower-convergence--b4","english":"Invariant interval. For v ≥ 1,","status":"exact","zyntalic":"gulożśćhyum syźęcożńąmja mąwórzry gecełńa / żęmźuwęp mąwórzry syźęcożńąmja hóssagagum.\npymológti pomóźuj luźorzitynar wuhaćluos; źóńtigóar luźorzitynar pomóźuj fufjańżjąw.","sourceSha256":"f97842d77eac00489d2bf8418d780377931f35b497df9fbfd9f7e6510c7981e1"},{"id":"alternating-towers--tower-convergence--b6","english":"The function L exp(−L) has maximum 1/e at L = 1. Every v₀ ≥ 1 therefore enters I = [1, exp(1/e)] after one step.","status":"exact","zyntalic":"kóljóku bęwjeźwóbja tyćźąpsarul ka\ndywźohóis kirejśćhóńor ńęgućźaul jemźywręos; mutaćpurum ńęgućźaul kirejśćhóńor rązosaja.","sourceSha256":"cb9e1acd4083414450daae793b34a72e0ac45050c0da345a895bdcffcb1a128c"},{"id":"alternating-towers--tower-convergence--b7","english":"Uniform contraction. Differentiate and use the separate maxima of L² exp(−L) and L exp(−L):","status":"exact","zyntalic":"śąńpótę kymąmżjówul defgarzśeg źazźeho; łucuwćóńen defgarzśeg kymąmżjówul lukęźućżąti.\ntęsźaćrznęfek łemągiul bijutełor ti","sourceSha256":"41431927b76c7d4d085af99317d23eb3ecf79f43efec2ac73bf45db94c195a04"},{"id":"alternating-towers--tower-convergence--b10","english":"This convenient bound is uniform in L and v. To prove q \u003c 1 without decimals, use 1/e \u003c 1/2 and exp(3/2) > 1 + 3/2 + 9/8 + 27/48 > 4. Numerically q ≈ 0.782058136610352468.","status":"exact","zyntalic":"syładehźesis kymąmżjówul defgarzśeg lyńęrźuźek; tariżźilok defgarzśeg kymąmżjówul jęlóżyżja.\nvezogńyźar luźęwaćcęc łeggęzeum sobźafa · fóppepążja łeggęzeum luźęwaćcęc nafącótyen.\nlótzężćcęśen tahętęśręos zązmośćtówis fużyźćżez ve zemłuźwyp zązmośćtówis tahętęśręos móźemą.","sourceSha256":"785257687e2771d03c89ea69ec4ac4c632919d1d82b0317407c87957ebcaa477"},{"id":"alternating-towers--tower-convergence--b11","english":"Existence, uniqueness and convergence. Apply Banach’s contraction theorem on I. Every possible fixed point in the stated domain lies in I, so it is unique throughout that domain. Set u = exp(−Lv) to recover both phase equations. Every v₀ ≥ 1 converges.","status":"exact","zyntalic":"hąńena kyćażliłek żimońćgó ra\nluńarómaos wuśąbma naźuwentóen\nnojśąmpą lućąrąhśćkizis befocsaar kyźimrzcy; kęćęnty befocsaar lućąrąhśćkizis matsycśćsylor.\nribegyżćys namiłóhfóos tasómyźeti taśenśęctąor sy łęranheti tasómyźeti namiłóhfóos folgęćzóor.\ndośłućżiek hocśógłoor kilmaćnęor zęćużwęor · fopokcóum kilmaćnęor hocśógłoor lunypsuhęl.","sourceSha256":"810f08537d9609b2453ff7e3a84aff6c349f38d687ecc876f9d3bd2a65d5d28d"},{"id":"alternating-towers--tower-convergence--b13","english":"The error bound follows by inserting FL(x), using the contraction inequality and rearranging. Rounded function values alone do not turn it into an interval certificate.","status":"exact","zyntalic":"łyzśyźreńum ćęśezcef dąlycźy\njąmbyłśćzuek teccąrztim żóźpąbwecek dyplińałum; papigłicar żóźpąbwecek teccąrztim lucykkęrdóar.","sourceSha256":"b11b11b84c7272b67dc8ea4864eadf89e098416c5a6d6ee56f98a7877b9ab7b9"},{"id":"alternating-towers--tower-convergence--b14","english":"For every c > 1, the defined alternating-sign system has a unique solution with 0 \u003c u \u003c 1 \u003c v. Its stated iteration converges from every v₀ ≥ 1 with a uniform contraction bound.","status":"exact","zyntalic":"męćzaććihul żądniddąen tacąśrątóek ka\nhącukjeźar kymąmżjówul defgarzśeg rihóluźże; jąggąrzdątja defgarzśeg kymąmżjówul zęćużwęor.","sourceSha256":"6805551ae64aa27e2fff20a1a100c762b95ed33fc79b44527755ff21395ce960"},{"id":"alternating-towers--tower-envelope--title","english":"A sharp height and exactly two bases","status":"exact","zyntalic":"tezarztaum łufjyżrezja ńaźórzpecul","sourceSha256":"94c78464feb7aabd464d6eefe18443f9a042382916c8c169cbc4f9df690c4e04"},{"id":"alternating-towers--tower-envelope--b0","english":"At the fixed point of the alternating system, put t = Lv > 0. Taking logarithms of the fixed-point equation and multiplying by v yields","status":"exact","zyntalic":"dygbąlńal nuźroćgidos sełbóźebar hąwujżśąńor ve śiżężżi sełbóźebar nuźroćgidos taróhosyć.\nłucuwćóńen śagapiul źypążnyor hiśdóńąśul; fićywraor źypążnyor śagapiul łikążńegos.","sourceSha256":"df20fbc96c9f2b6629e49a81e1faf48b84531f5db2fb3cb6df69c887983faead"},{"id":"alternating-towers--tower-envelope--b2","english":"Because v log v is strictly increasing on v ≥ 1, this bounds the upper phase sharply. With W₀ the principal real Lambert W function,","status":"exact","zyntalic":"lużalńeję tótuśąor naryryśćtegek tąćyfźy; taśosbóen naryryśćtegek tótuśąor nagybąjźąh.\ncyńuhżo ririźfohpuja cóźesó hętątba / baśebcinti cóźesó ririźfohpuja rizobćuhmyz.","sourceSha256":"c400fb042d4d7d67ea0845090c1c2336e36dfedd729ef5400610a940a86c817f"},{"id":"alternating-towers--tower-envelope--b4","english":"Equality is attained by t = 1 and L = 1/vmax. The base attaining the maximum height is","status":"exact","zyntalic":"nąźśiżzyti fóceśrzkuń gąńybśćraen tawzukgeg lu źitśowtićti gąńybśćraen fóceśrzkuń jeźócyti.\ntadawlaćmehum sykubihleor zicmana piwżalyjek · hatćapyb zicmana sykubihleor sikkotyćis.","sourceSha256":"4db6a38ba6321b6de77635c12025b30461bf743d5786b11e9cd97e8539310c1b"},{"id":"alternating-towers--tower-envelope--b6","english":"The earlier review called this cmax. The label cpeak avoids suggesting that there is a largest allowable base: the theorem permits every c > 1.","status":"exact","zyntalic":"talóśudmuzja nabofnumrzfója ribożnabfilti kodiźah / łaćsuźźal ribożnabfilti nabofnumrzfója pąććajęum.\njubóżdója nomąśęfti syćumhófśćguos herińycos; sykebciząź syćumhófśćguos nomąśęfti tawzukgeg.","sourceSha256":"bcceaa0523aa77f03d1779f72494a8207abde9a7a5e403ee94c360a77eed9390"},{"id":"alternating-towers--tower-envelope--b7","english":"Why there are exactly two bases","status":"exact","zyntalic":"tólboła lyńikzą męwdogą nahuzećrzju; nojśąmpą męwdogą lyńikzą hęgęly.","sourceSha256":"43ff20f4e502a90037c5760c2f0949be5422e279df81c0d69b92358ce871535d"},{"id":"alternating-towers--tower-envelope--b8","english":"For 1 \u003c v \u003c v_max, set a = v log v ∈ (0, 1/e). The function t exp(−t) increases to t = 1 and then decreases to zero. Thus","status":"exact","zyntalic":"dygbąlńal rędwągę ribyccadżkaar ti\nrąlożwó źąfutep źućazbuis źagkedco · dyżićłoum źućazbuis źąfutep gizńućtęen.\ncąscąśćbeul vebąmtohfaar męraśśćholos źijtąhet na lybźyrżęen męraśśćholos vebąmtohfaar śąkrakyis.","sourceSha256":"10f5cf995dbbcdaeb385a026d3c65b3cca9cac4a32b2e91c8574f74728ee876e"},{"id":"alternating-towers--tower-envelope--b10","english":"has exactly two positive solutions t− \u003c 1 \u003c t+. Each gives a distinct base","status":"exact","zyntalic":"ńunikyja risiżiżńior kócęjugul łuzodzytor sy taląłmąhęźum kócęjugul risiżiżńior ńęźjórzźąum.\njąwtaswiś ląttagmum towórzluen dihźiżu / pęleńąnek towórzluen ląttagmum lukęźućżąti.","sourceSha256":"eb2684cb32a727f29c11100b063d38395a11ec540cea4cab52d3ede4cfc72a82"},{"id":"alternating-towers--tower-envelope--b13","english":"The sharp upper-phase bound is attained. Each interior height corresponds to exactly two finite bases, the maximum to one, and all other listed heights to none.","status":"exact","zyntalic":"fynźarzturis rińyźńyjy cajujęlul\ntawąrrztokum minpudzóor hążwęrzriźul sykihsymaek ve śęlećjyźar hążwęrzriźul minpudzóor hęgęly.","sourceSha256":"cadb17afe8d0b34c4717eeb66f795be56846cb7559d22d3c0d6433fbfb709db0"},{"id":"alternating-towers--tower-envelope--b14","english":"The convergence theorem and the inverse classification form one complete argument: first construct the unique phase pair for each base, then determine exactly which bases realize a chosen height.","status":"exact","zyntalic":"mudlińećor sabźęśćfyśti dyplińałum","sourceSha256":"01ca6ce00a0613869b1a5bcfba7f6baeafb4fe0fb1dd54d18fd5e0be03edb613"}],"gifBlocks":[{"type":"heading","text":"Alternating real towers"},{"type":"caption","text":"A focused reading note from the Pirate Chest"},{"type":"caption","text":"Zolton / EncapsulatorP · with ChatGPT · 23 November 2026"},{"type":"caption","text":"NOTE 02 · PROVED CONVERGENCE AND CLASSIFICATION"},{"type":"heading","text":"Alternating real towers","passageId":"alternating-towers--alternating-towers-orientation--title","sourceEnglish":"Alternating real towers"},{"type":"paragraph","text":"For every real base c > 1, the alternating-sign system has one pair of phases. The explicit iteration converges from every upper starting phase at least 1, with a uniform contraction bound.","passageId":"alternating-towers--alternating-towers-orientation--b0","sourceEnglish":"For every real base c > 1, the alternating-sign system has one pair of phases. The explicit iteration converges from every upper starting phase at least 1, with a uniform contraction bound."},{"type":"math","text":"u=c^{-v},\\qquad v=c^u,\\qquad c>1","image":"../assets/math/4d411d1d8082b3ffca29f324d02352dd0e98bc95be6aea5cf73c7a68915e48f3.svg","width":245.0,"height":17.0},{"type":"caption","text":"Proved convergence and classification"},{"type":"paragraph","text":"The defined alternating-sign system has a sharp maximum upper phase and exactly two finite bases at every height strictly between 1 and that maximum.","passageId":"alternating-towers--alternating-towers-orientation--b2","sourceEnglish":"The defined alternating-sign system has a sharp maximum upper phase and exactly two finite bases at every height strictly between 1 and that maximum."},{"type":"paragraph","text":"The first argument establishes an invariant interval and a contraction. The second extracts the sharp envelope from v log v = t exp(−t) and classifies the two inverse branches.","passageId":"alternating-towers--alternating-towers-orientation--b3","sourceEnglish":"The first argument establishes an invariant interval and a contraction. The second extracts the sharp envelope from v log v = t exp(−t) and classifies the two inverse branches."},{"type":"heading","text":"One concrete next step","passageId":"alternating-towers--alternating-towers-orientation--b4","sourceEnglish":"One concrete next step"},{"type":"paragraph","text":"Compare the convergence and inverse classification with the literature. If a particular arithmetic constant is used as a target height, state the additional arithmetic question separately.","passageId":"alternating-towers--alternating-towers-orientation--b5","sourceEnglish":"Compare the convergence and inverse classification with the literature. If a particular arithmetic constant is used as a target height, state the additional arithmetic question separately."},{"type":"heading","text":"Sources and related reading"},{"type":"paragraph","text":"[S2] Towers and prime polynomials. EncapsulatorP, Exact structures behind the atlas, edition 21 November 2026, §§1, 2 and 4. The written arguments record their scope, prior solver provenance and numerical limits."},{"type":"caption","text":"[S2] Read the pinned mathematical notes: https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/29f9232545aa112cd6ffa9fe1f3c0e85d093dedd/atlas/mathematical-notes.md"},{"type":"caption","text":"Historical collection source · original edition: https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#tower-convergence"},{"type":"caption","text":"Return to the Treasure Chest: https://encapsulatorp.github.io/#buried-logistic-vanishing"},{"type":"caption","text":"01 · WRITTEN-PROOF REVIEW: GLOBAL RESULT"},{"type":"heading","text":"Alternating real towers converge","passageId":"alternating-towers--tower-convergence--title","sourceEnglish":"Alternating real towers converge"},{"type":"paragraph","text":"Fix a real c > 1 and L = log c. The following alternating-sign system has exactly one solution with 0 \u003c u \u003c 1 \u003c v [S2]:"},{"type":"math","text":"u=c^{-v},\\qquad v=c^u.","image":"../assets/math/bef8bff668fae333a4f0698242f58deed2de03e966741e1dad55ed553397db72.svg","width":167.0,"height":17.0},{"type":"paragraph","text":"Eliminate u and define","passageId":"alternating-towers--tower-convergence--b2","sourceEnglish":"Eliminate u and define"},{"type":"math","text":"F_L(v)=\\exp(Le^{-Lv}),\\qquad v_{j+1}=F_L(v_j).","image":"../assets/math/6d19854c0685a7f0fed7e39bd8df5aaa40ac88b5fdcb29e1d60de1d6c056fc33.svg","width":326.0,"height":22.0},{"type":"paragraph","text":"Invariant interval. For v ≥ 1,","passageId":"alternating-towers--tower-convergence--b4","sourceEnglish":"Invariant interval. For v ≥ 1,"},{"type":"math","text":"1\u003cF_L(v)\\le\\exp(Le^{-L})\\le e^{1/e}.","image":"../assets/math/4c39fd237b752eccad0a04929ee0bfec626bc4ad1efbf5af4a6dcaafc8883385.svg","width":253.0,"height":20.0},{"type":"paragraph","text":"The function L exp(−L) has maximum 1/e at L = 1. Every v₀ ≥ 1 therefore enters I = [1, exp(1/e)] after one step.","passageId":"alternating-towers--tower-convergence--b6","sourceEnglish":"The function L exp(−L) has maximum 1/e at L = 1. Every v₀ ≥ 1 therefore enters I = [1, exp(1/e)] after one step."},{"type":"paragraph","text":"Uniform contraction. Differentiate and use the separate maxima of L² exp(−L) and L exp(−L):","passageId":"alternating-towers--tower-convergence--b7","sourceEnglish":"Uniform contraction. Differentiate and use the separate maxima of L² exp(−L) and L exp(−L):"},{"type":"math","text":"|F_L'(v)|=L^2e^{-Lv}\\exp(Le^{-Lv})","image":"../assets/math/069f0efe17ca5b2647f64b735a8877fef788577eb0caf09032689b644b3ee219.svg","width":236.0,"height":21.0},{"type":"math","text":"\\le L^2e^{-L}\\exp(Le^{-L})\\le q:=4e^{1/e-2}\u003c1.","image":"../assets/math/a2a813f4c2d7bab451613c160dd289ee4901a737d2f489d401869ee564f166c5.svg","width":341.0,"height":20.0},{"type":"paragraph","text":"This convenient bound is uniform in L and v. To prove q \u003c 1 without decimals, use 1/e \u003c 1/2 and exp(3/2) > 1 + 3/2 + 9/8 + 27/48 > 4. Numerically q ≈ 0.782058136610352468.","passageId":"alternating-towers--tower-convergence--b10","sourceEnglish":"This convenient bound is uniform in L and v. To prove q \u003c 1 without decimals, use 1/e \u003c 1/2 and exp(3/2) > 1 + 3/2 + 9/8 + 27/48 > 4. Numerically q ≈ 0.782058136610352468."},{"type":"paragraph","text":"Existence, uniqueness and convergence. Apply Banach’s contraction theorem on I. Every possible fixed point in the stated domain lies in I, so it is unique throughout that domain. Set u = exp(−Lv) to recover both phase equations. Every v₀ ≥ 1 converges.","passageId":"alternating-towers--tower-convergence--b11","sourceEnglish":"Existence, uniqueness and convergence. Apply Banach’s contraction theorem on I. Every possible fixed point in the stated domain lies in I, so it is unique throughout that domain. Set u = exp(−Lv) to recover both phase equations. Every v₀ ≥ 1 converges."},{"type":"math","text":"|x-v_*|\\le\\frac{|F_L(x)-x|}{1-q}\\qquad(x\\in I).","image":"../assets/math/a25a21aa97a34f9fe3ddac86e2ad1b9f94ad4e06640e9648a0fc862bef540dff.svg","width":248.0,"height":31.0},{"type":"paragraph","text":"The error bound follows by inserting F_(L)(x), using the contraction inequality and rearranging. Rounded function values alone do not turn it into an interval certificate.","passageId":"alternating-towers--tower-convergence--b13","sourceEnglish":"The error bound follows by inserting FL(x), using the contraction inequality and rearranging. Rounded function values alone do not turn it into an interval certificate."},{"type":"caption","text":"Conclusion"},{"type":"paragraph","text":"For every c > 1, the defined alternating-sign system has a unique solution with 0 \u003c u \u003c 1 \u003c v. Its stated iteration converges from every v₀ ≥ 1 with a uniform contraction bound.","passageId":"alternating-towers--tower-convergence--b14","sourceEnglish":"For every c > 1, the defined alternating-sign system has a unique solution with 0 \u003c u \u003c 1 \u003c v. Its stated iteration converges from every v₀ ≥ 1 with a uniform contraction bound."},{"type":"caption","text":"02 · WRITTEN-PROOF REVIEW: EXACT CLASSIFICATION"},{"type":"heading","text":"A sharp height and exactly two bases","passageId":"alternating-towers--tower-envelope--title","sourceEnglish":"A sharp height and exactly two bases"},{"type":"paragraph","text":"At the fixed point of the alternating system, put t = Lv > 0. Taking logarithms of the fixed-point equation and multiplying by v yields","passageId":"alternating-towers--tower-envelope--b0","sourceEnglish":"At the fixed point of the alternating system, put t = Lv > 0. Taking logarithms of the fixed-point equation and multiplying by v yields"},{"type":"math","text":"v\\log v=t e^{-t}\\le1/e.","image":"../assets/math/f1c66224557850d733accd226de4a96d2a9c353f606cd8a306aaaf22b1dce26b.svg","width":168.0,"height":20.0},{"type":"paragraph","text":"Because v log v is strictly increasing on v ≥ 1, this bounds the upper phase sharply. With W₀ the principal real Lambert W function,","passageId":"alternating-towers--tower-envelope--b2","sourceEnglish":"Because v log v is strictly increasing on v ≥ 1, this bounds the upper phase sharply. With W₀ the principal real Lambert W function,"},{"type":"math","text":"v_{\\max}=\\exp(W_0(1/e))\\approx1.321099762015617456962.","image":"../assets/math/be71c3ea11dc808bfad9adf616b71c3d0afb56a9a88b567800dc5a2765392743.svg","width":464.0,"height":18.0},{"type":"paragraph","text":"Equality is attained by t = 1 and L = 1/v_(max). The base attaining the maximum height is","passageId":"alternating-towers--tower-envelope--b4","sourceEnglish":"Equality is attained by t = 1 and L = 1/vmax. The base attaining the maximum height is"},{"type":"math","text":"c_{\\mathrm{peak}}=\\exp(1/v_{\\max})\\approx2.131753981723805825514.","image":"../assets/math/9318326552587b5f087d697b9e5e0c563c736691c96e67adcdf19ab5e957899b.svg","width":453.0,"height":20.0},{"type":"paragraph","text":"The earlier review called this c_(max). The label c_(peak) avoids suggesting that there is a largest allowable base: the theorem permits every c > 1.","passageId":"alternating-towers--tower-envelope--b6","sourceEnglish":"The earlier review called this cmax. The label cpeak avoids suggesting that there is a largest allowable base: the theorem permits every c > 1."},{"type":"heading","text":"Why there are exactly two bases","passageId":"alternating-towers--tower-envelope--b7","sourceEnglish":"Why there are exactly two bases"},{"type":"paragraph","text":"For 1 \u003c v \u003c v_max, set a = v log v ∈ (0, 1/e). The function t exp(−t) increases to t = 1 and then decreases to zero. Thus","passageId":"alternating-towers--tower-envelope--b8","sourceEnglish":"For 1 \u003c v \u003c v_max, set a = v log v ∈ (0, 1/e). The function t exp(−t) increases to t = 1 and then decreases to zero. Thus"},{"type":"math","text":"t e^{-t}=a","image":"../assets/math/d5ffa1ff3ae11f32288ed6d5e9560281a1f7766341511df4cb9adc048b579ba0.svg","width":68.0,"height":17.0},{"type":"paragraph","text":"has exactly two positive solutions t_(−) \u003c 1 \u003c t_(+). Each gives a distinct base","passageId":"alternating-towers--tower-envelope--b10","sourceEnglish":"has exactly two positive solutions t− \u003c 1 \u003c t+. Each gives a distinct base"},{"type":"math","text":"c_-=e^{t_-/v},\\qquad c_+=e^{t_+/v}.","image":"../assets/math/c6896e8d4695a442e8e3dcbab42c609d071df1d26f6720eea5717cfdf79a5d5e.svg","width":227.0,"height":19.0},{"type":"caption","text":"Upper phase | Number of finite real bases c > 1"},{"type":"paragraph","text":"1 \u003c v \u003c vₘₐₓ | Exactly two"},{"type":"paragraph","text":"v = vₘₐₓ | Exactly one"},{"type":"paragraph","text":"v > vₘₐₓ | None"},{"type":"paragraph","text":"v = 1 | None; only a limiting height"},{"type":"caption","text":"Conclusion"},{"type":"paragraph","text":"The sharp upper-phase bound is attained. Each interior height corresponds to exactly two finite bases, the maximum to one, and all other listed heights to none.","passageId":"alternating-towers--tower-envelope--b13","sourceEnglish":"The sharp upper-phase bound is attained. Each interior height corresponds to exactly two finite bases, the maximum to one, and all other listed heights to none."},{"type":"paragraph","text":"The convergence theorem and the inverse classification form one complete argument: first construct the unique phase pair for each base, then determine exactly which bases realize a chosen height.","passageId":"alternating-towers--tower-envelope--b14","sourceEnglish":"The convergence theorem and the inverse classification form one complete argument: first construct the unique phase pair for each base, then determine exactly which bases realize a chosen height."}],"translation":{"engine":"core","version":"0.4.0","mirror_rate":0.8,"wheel_sha256":"4389e91e55a97a977df4efc796a6e38706e3c15a323fb9d98dd2a58ef2696f0a","translation_note":"Each passage is an independent request; document-level state resets per passage.","readback_note":"The English endpoint is the preserved original source, not an automatically decoded translation.","display_note":"Context tails are omitted only from the visible surface; full targets, sidecars and returned Unicode remain in this file."},"translationRecord":"../../atlas/zyntalic-passages.json.gz"}</script>
+<script src="../../assets/atlas-gif.js" defer></script><script src="../../assets/atlas-reveal.js" defer></script>
+</body></html>

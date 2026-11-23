@@ -56,7 +56,7 @@ def replace_block(text, name, content):
 
 def links(slug):
     slug = esc(slug, quote=True)
-    return (f'<a href="../atlas/proofs/{slug}.pdf">Proof · PDF <span aria-hidden="true">→</span></a>'
+    return (f'<a href="../atlas/proofs/{slug}.html">Proof · HTML <span aria-hidden="true">→</span></a>'
             f'<a href="../atlas/proofs/{slug}.md">Readable source</a>')
 
 
@@ -124,7 +124,7 @@ def render_library(manifest):
           <span class="status {esc(note['status'])}">{esc(note['statusLabel'])}</span>
           <h3>{esc(note['title'])}</h3><p>{esc(note['summary'])}</p>
           <p class="note-next"><strong>Next task</strong>{esc(note['nextStep'])}</p>
-          <div class="proof-links"><a href="../{esc(note['pdf'])}">Read the PDF →</a><a href="../{esc(note['markdown'])}">Readable source</a><span>{note['pageCount']} pages</span></div>
+          <div class="proof-links"><a href="../{esc(note['html'])}">Read & export GIF →</a><a href="../{esc(note['markdown'])}">Readable source</a><span>{note['sectionCount']} sections</span></div>
         </article>''')
     return "\n".join(cards)
 

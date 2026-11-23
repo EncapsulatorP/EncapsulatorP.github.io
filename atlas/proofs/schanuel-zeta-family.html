@@ -1,0 +1,4098 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A focused reading note from the Pirate Chest">
+<meta name="color-scheme" content="light"><link rel="canonical" href="https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.html">
+<title>The Z(p) family under Schanuel · EncapsulatorP</title>
+<style>html.ar-reveal-pending #reader-content,html.ar-reveal-pending [data-reader-reveal]{visibility:hidden!important}</style>
+<script>(function(){try{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('ar-reveal-pending');window.setTimeout(function(){document.documentElement.classList.remove('ar-reveal-pending');},8000);}}catch(e){document.documentElement.classList.remove('ar-reveal-pending');}}());</script>
+<link rel="stylesheet" href="../../assets/atlas-reader.css"><link rel="stylesheet" href="../../assets/atlas-reveal.css">
+</head><body class="atlas-reader" data-reader-status="conditional">
+<a class="reader-skip" data-reader-chrome href="#reader-content">Skip to the complete text</a>
+<div class="reader-shell"><header class="reader-header">
+<a class="reader-brand" data-reader-chrome href="../../index.html#interactive?topic=goldbach-involution"><img src="../../assets/logo-encapsulatorp-512.png" alt="EncapsulatorP" width="64" height="64"></a>
+<nav class="reader-nav" data-reader-chrome aria-label="Reading routes"><a href="../../index.html#interactive?topic=goldbach-involution">Interactive space</a><a href="../README.html">Complete atlas</a><a href="../../treasure-hunt/index.html">Proof board</a></nav>
+<div data-reader-reveal>
+<p class="reader-kicker">ENCAPSULATORP · Conditional on complex Schanuel</p><h1 class="reader-title">The Z(p) family under Schanuel</h1>
+<p class="reader-subtitle">A focused reading note from the Pirate Chest</p>
+<p class="reader-byline">Zolton / EncapsulatorP · with ChatGPT · 23 November 2026</p>
+</div>
+<div id="reader-tools" class="reader-toolbar reader-tools" data-reader-chrome aria-label="Reading and export controls"></div>
+<noscript><p>The complete English text and formulas below are available without JavaScript.</p></noscript>
+<details class="reader-contents" data-reader-reveal><summary>Contents · 3 sections</summary><ol><li><a href="#schanuel-zeta-family-orientation">The Z(p) family under Schanuel</a></li><li><a href="#zeta-family">The Z(p) family</a></li><li><a href="#schanuel-proof">The conditional Schanuel argument</a></li></ol></details>
+</header>
+<main id="reader-content" class="reader-content reader-document" data-source-document="atlas/proofs/schanuel-zeta-family.json">
+<section class="reader-section" id="schanuel-zeta-family-orientation" data-source-page="schanuel-zeta-family-orientation" data-source-index="0" data-source-status="conditional"><span id="page-1" class="reader-page-anchor" aria-hidden="true"></span><p class="reader-kicker">NOTE 05 · CONDITIONAL ON COMPLEX SCHANUEL</p><h2 class="reader-section-title">The Z(p) family under Schanuel</h2><p class="reader-paragraph" data-source-block="0" data-source-type="p">Euler’s even-zeta formula gives exact rational coefficients cₚ for every odd integer p ≥ 3. Assuming complex Schanuel, π and any finite list of the corresponding Z(p) values are algebraically independent.</p>
+<div class="reader-equation" data-latex="Z(p)=e^{c_p\pi^p}+1,\qquad p=3,5,7,\ldots" data-source-block="1" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="Z(p)=e^{c_p\pi^p}+1,\qquad p=3,5,7,\ldots" xmlns:xlink="http://www.w3.org/1999/xlink" width="290pt" height="20pt" viewBox="0 0 290 20" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-5da8947447c4f1-figure_1">
+  <g id="math-5da8947447c4f1-patch_1">
+   <path d="M 0 20
+L 290 20
+L 290 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-5da8947447c4f1-text_1">
+   <!-- $Z(p)=e^{c_p\pi^p}+1,\qquad p=3,5,7,\ldots$ -->
+   <g style="fill: #202520" transform="translate(0 16) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-5da8947447c4f1-DejaVuSerif-Italic-5a" d="M -166 0
+L -122 225
+L 3572 4281
+L 1159 4281
+L 1025 3584
+L 641 3584
+L 850 4666
+L 4538 4666
+L 4494 4441
+L 800 384
+L 3438 384
+L 3563 1038
+L 3944 1038
+L 3744 0
+L -166 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5da8947447c4f1-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5da8947447c4f1-DejaVuSerif-Italic-70" d="M 1466 1825
+L 1400 1497
+Q 1353 1250 1353 1053
+Q 1353 769 1453 581
+Q 1622 269 2059 269
+Q 2500 269 2795 622
+Q 3091 975 3225 1663
+Q 3284 1978 3284 2225
+Q 3284 2513 3200 2703
+Q 3041 3053 2600 3053
+Q 2163 3053 1872 2737
+Q 1581 2422 1466 1825
+z
+M 1116 2988
+L 563 2988
+L 628 3322
+L 1756 3322
+L 1656 2803
+Q 1884 3116 2175 3264
+Q 2466 3413 2850 3413
+Q 3463 3413 3753 2928
+Q 3947 2609 3947 2163
+Q 3947 1928 3897 1663
+Q 3744 881 3262 395
+Q 2781 -91 2169 -91
+Q 1784 -91 1551 57
+Q 1319 206 1213 519
+L 850 -1331
+L 275 -1331
+L 1116 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5da8947447c4f1-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5da8947447c4f1-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5da8947447c4f1-DejaVuSerif-Italic-65" d="M 938 1275
+Q 925 1156 925 1050
+Q 925 756 1031 563
+Q 1216 219 1709 219
+Q 2072 219 2250 328
+Q 2569 525 2644 778
+L 3066 778
+Q 2941 381 2475 103
+Q 2150 -91 1506 -91
+Q 863 -91 516 388
+Q 272 722 272 1206
+Q 272 1419 319 1659
+Q 472 2450 1000 2931
+Q 1528 3413 2278 3413
+Q 3500 3413 3500 2547
+Q 3500 1913 2859 1603
+Q 2206 1288 938 1275
+z
+M 2541 1975
+Q 2891 2181 2891 2569
+Q 2891 3103 2181 3103
+Q 1763 3103 1472 2784
+Q 1181 2466 1003 1606
+Q 2006 1653 2541 1975
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5da8947447c4f1-DejaVuSerif-Italic-63" d="M 3163 997
+Q 2938 466 2536 187
+Q 2134 -91 1584 -91
+Q 859 -91 513 388
+Q 272 722 272 1203
+Q 272 1419 319 1663
+Q 475 2459 1008 2936
+Q 1541 3413 2266 3413
+Q 2581 3413 2879 3339
+Q 3178 3266 3463 3116
+L 3300 2266
+L 2966 2266
+Q 2966 2309 2966 2347
+Q 2966 2722 2803 2903
+Q 2622 3103 2213 3103
+Q 1747 3103 1439 2742
+Q 1131 2381 991 1663
+Q 928 1334 928 1078
+Q 928 778 1016 581
+Q 1181 219 1650 219
+Q 2022 219 2281 412
+Q 2541 606 2700 997
+L 3163 997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5da8947447c4f1-DejaVuSerif-Italic-3c0" d="M -56 0
+L 6 331
+L 525 331
+L 1044 2988
+L 494 2988
+L 556 3322
+L 4300 3322
+L 4238 2988
+L 3694 2988
+L 3175 331
+L 3688 331
+L 3625 0
+L 2038 0
+L 2100 331
+L 2597 331
+L 3116 2988
+L 1619 2988
+L 1100 331
+L 1600 331
+L 1538 0
+L -56 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5da8947447c4f1-DejaVuSerif-2b" d="M 2931 4013
+L 2931 2259
+L 4684 2259
+L 4684 1753
+L 2931 1753
+L 2931 0
+L 2431 0
+L 2431 1753
+L 678 1753
+L 678 2259
+L 2431 2259
+L 2431 4013
+L 2931 4013
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5da8947447c4f1-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5da8947447c4f1-DejaVuSerif-2c" d="M 231 -622
+Q 525 -406 662 -114
+Q 800 178 800 594
+L 800 709
+L 1416 709
+Q 1391 175 1164 -208
+Q 938 -591 481 -872
+L 231 -622
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5da8947447c4f1-DejaVuSerif-33" d="M 622 4469
+Q 988 4606 1323 4678
+Q 1659 4750 1953 4750
+Q 2638 4750 3022 4454
+Q 3406 4159 3406 3634
+Q 3406 3213 3140 2930
+Q 2875 2647 2388 2547
+Q 2963 2466 3280 2130
+Q 3597 1794 3597 1259
+Q 3597 606 3158 257
+Q 2719 -91 1894 -91
+Q 1528 -91 1179 -12
+Q 831 66 488 225
+L 488 1131
+L 838 1131
+Q 869 681 1141 450
+Q 1413 219 1906 219
+Q 2384 219 2661 495
+Q 2938 772 2938 1253
+Q 2938 1803 2653 2086
+Q 2369 2369 1819 2369
+L 1522 2369
+L 1522 2688
+L 1678 2688
+Q 2225 2688 2498 2914
+Q 2772 3141 2772 3597
+Q 2772 4006 2547 4223
+Q 2322 4441 1900 4441
+Q 1478 4441 1245 4241
+Q 1013 4041 972 3647
+L 622 3647
+L 622 4469
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5da8947447c4f1-DejaVuSerif-35" d="M 3219 4666
+L 3219 4153
+L 1081 4153
+L 1081 2816
+Q 1244 2928 1461 2984
+Q 1678 3041 1947 3041
+Q 2703 3041 3140 2622
+Q 3578 2203 3578 1478
+Q 3578 738 3136 323
+Q 2694 -91 1894 -91
+Q 1572 -91 1234 -12
+Q 897 66 544 225
+L 544 1131
+L 897 1131
+Q 925 688 1179 453
+Q 1434 219 1894 219
+Q 2388 219 2653 544
+Q 2919 869 2919 1478
+Q 2919 2084 2655 2407
+Q 2391 2731 1894 2731
+Q 1613 2731 1398 2631
+Q 1184 2531 1019 2322
+L 750 2322
+L 750 4666
+L 3219 4666
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5da8947447c4f1-DejaVuSerif-37" d="M 3609 4347
+L 1784 0
+L 1319 0
+L 3059 4153
+L 903 4153
+L 903 3578
+L 538 3578
+L 538 4666
+L 3609 4666
+L 3609 4347
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5da8947447c4f1-DejaVuSerif-2026" d="M 4916 325
+Q 4916 500 5036 622
+Q 5156 744 5331 744
+Q 5503 744 5625 622
+Q 5747 500 5747 325
+Q 5747 153 5625 31
+Q 5503 -91 5331 -91
+Q 5153 -91 5034 29
+Q 4916 150 4916 325
+z
+M 2784 325
+Q 2784 500 2904 622
+Q 3025 744 3200 744
+Q 3372 744 3494 622
+Q 3616 500 3616 325
+Q 3616 153 3494 31
+Q 3372 -91 3200 -91
+Q 3022 -91 2903 29
+Q 2784 150 2784 325
+z
+M 653 325
+Q 653 500 773 622
+Q 894 744 1069 744
+Q 1241 744 1362 622
+Q 1484 500 1484 325
+Q 1484 153 1362 31
+Q 1241 -91 1069 -91
+Q 891 -91 772 29
+Q 653 150 653 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-Italic-5a" transform="translate(0 0.100781)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-28" transform="translate(69.482422 0.100781)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-Italic-70" transform="translate(108.496094 0.100781)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-29" transform="translate(172.509766 0.100781)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-3d" transform="translate(230.488281 0.100781)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-Italic-65" transform="translate(333.242188 0.100781)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-Italic-63" transform="translate(396.859948 36.435156) scale(0.7)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-Italic-70" transform="translate(436.064049 25.534844) scale(0.49)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-Italic-3c0" transform="translate(469.247467 36.435156) scale(0.7)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-Italic-70" transform="translate(518.220634 61.869219) scale(0.49)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-2b" transform="translate(572.964208 0.100781)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-31" transform="translate(675.718115 0.100781)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-2c" transform="translate(739.341161 0.100781)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-Italic-70" transform="translate(979.741552 0.100781)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-3d" transform="translate(1062.720068 0.100781)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-33" transform="translate(1165.473974 0.100781)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-2c" transform="translate(1229.097021 0.100781)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-35" transform="translate(1279.848974 0.100781)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-2c" transform="translate(1343.472021 0.100781)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-37" transform="translate(1394.223974 0.100781)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-2c" transform="translate(1457.847021 0.100781)"/>
+    <use xlink:href="#math-5da8947447c4f1-DejaVuSerif-2026" transform="translate(1508.598974 0.100781)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>Z(p)=e^{c_p\pi^p}+1,\qquad p=3,5,7,\ldots</code></pre></details></div>
+<aside class="reader-callout" data-status="conditional" data-source-block="2" data-source-type="callout"><p class="reader-callout-label">Conditional on complex Schanuel</p><p class="reader-callout-text">The zeta reduction is unconditional. The independence conclusion in this argument assumes the full complex Schanuel conjecture. Distinct odd exponents and nonzero rational coefficients are part of the hypotheses.</p></aside>
+<p class="reader-paragraph" data-source-block="3" data-source-type="p">First identify the exact Bernoulli coefficient. Then apply the conjecture to iπ and the selected real π-power exponents; field containment gives the required transcendence-degree bound.</p>
+<h3 class="reader-subheading" data-source-block="4" data-source-type="h">One concrete next step</h3>
+<p class="reader-paragraph" data-source-block="5" data-source-type="p">Compare this specific conditional consequence with the literature. State any proposed unconditional result as a separate claim with its own assumptions.</p>
+<h3 class="reader-subheading" data-source-block="6" data-source-type="h">Sources and related reading</h3>
+<p class="reader-paragraph reader-small" data-source-block="7" data-source-type="p"><b>[S3] Even-zeta values.</b> NIST Digital Library of Mathematical Functions, §25.6, equation 25.6.2. This classical formula supplies the exact coefficient c<sub>p</sub>.</p>
+<p class="reader-source-link" data-source-block="8" data-source-type="link"><a href="https://dlmf.nist.gov/25.6.E2">[S3] Euler’s even-zeta evaluation</a></p>
+<p class="reader-paragraph reader-small" data-source-block="9" data-source-type="p"><b>[S4] Complex Schanuel conjecture.</b> I. A. Broudy and S. Eterović, <i>Schanuel type conjectures and disjointness</i>, The Ramanujan Journal 62 (2023), 781–795, Conjecture 3.1. This supplies the conjectural assumption; the Z(p) deduction is written here.</p>
+<p class="reader-source-link" data-source-block="10" data-source-type="link"><a href="https://link.springer.com/article/10.1007/s11139-023-00707-3">[S4] Read the precise Schanuel assumption</a></p>
+<p class="reader-source-link" data-source-block="11" data-source-type="link"><a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#zeta-family">Historical collection source · original edition</a></p>
+<p class="reader-source-link" data-source-block="12" data-source-type="link"><a href="https://encapsulatorp.github.io/#buried-logistic-vanishing">Return to the Treasure Chest</a></p></section>
+<section class="reader-section" id="zeta-family" data-source-page="zeta-family" data-source-index="1" data-source-status="conditional"><span id="page-2" class="reader-page-anchor" aria-hidden="true"></span><p class="reader-kicker">01 · EXACT REDUCTION; CONDITIONAL INDEPENDENCE</p><h2 class="reader-section-title">The Z(p) family</h2><p class="reader-paragraph" data-source-block="0" data-source-type="p">Let p be an odd integer at least 3. Primality is optional. Define</p>
+<div class="reader-equation" data-latex="Z(p)=\exp\!\left(\frac{\pi\zeta(p-1)}p\right)+1." data-source-block="1" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="Z(p)=\exp\!\left(\frac{\pi\zeta(p-1)}p\right)+1." xmlns:xlink="http://www.w3.org/1999/xlink" width="212pt" height="29pt" viewBox="0 0 212 29" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-d8350c75c5fbf8-figure_1">
+  <g id="math-d8350c75c5fbf8-patch_1">
+   <path d="M 0 29
+L 212 29
+L 212 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-d8350c75c5fbf8-text_1">
+   <!-- $Z(p)=\exp\!\left(\frac{\pi\zeta(p-1)}{p}\right)+1.$ -->
+   <g style="fill: #202520" transform="translate(0 21) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-d8350c75c5fbf8-DejaVuSerif-Italic-5a" d="M -166 0
+L -122 225
+L 3572 4281
+L 1159 4281
+L 1025 3584
+L 641 3584
+L 850 4666
+L 4538 4666
+L 4494 4441
+L 800 384
+L 3438 384
+L 3563 1038
+L 3944 1038
+L 3744 0
+L -166 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d8350c75c5fbf8-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d8350c75c5fbf8-DejaVuSerif-Italic-70" d="M 1466 1825
+L 1400 1497
+Q 1353 1250 1353 1053
+Q 1353 769 1453 581
+Q 1622 269 2059 269
+Q 2500 269 2795 622
+Q 3091 975 3225 1663
+Q 3284 1978 3284 2225
+Q 3284 2513 3200 2703
+Q 3041 3053 2600 3053
+Q 2163 3053 1872 2737
+Q 1581 2422 1466 1825
+z
+M 1116 2988
+L 563 2988
+L 628 3322
+L 1756 3322
+L 1656 2803
+Q 1884 3116 2175 3264
+Q 2466 3413 2850 3413
+Q 3463 3413 3753 2928
+Q 3947 2609 3947 2163
+Q 3947 1928 3897 1663
+Q 3744 881 3262 395
+Q 2781 -91 2169 -91
+Q 1784 -91 1551 57
+Q 1319 206 1213 519
+L 850 -1331
+L 275 -1331
+L 1116 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d8350c75c5fbf8-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d8350c75c5fbf8-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d8350c75c5fbf8-DejaVuSerif-65" d="M 3469 1600
+L 991 1600
+L 991 1575
+Q 991 903 1244 561
+Q 1497 219 1991 219
+Q 2369 219 2611 417
+Q 2853 616 2950 1006
+L 3413 1006
+Q 3275 459 2904 184
+Q 2534 -91 1931 -91
+Q 1203 -91 761 389
+Q 319 869 319 1663
+Q 319 2450 753 2931
+Q 1188 3413 1894 3413
+Q 2647 3413 3050 2948
+Q 3453 2484 3469 1600
+z
+M 2791 1931
+Q 2772 2513 2545 2808
+Q 2319 3103 1894 3103
+Q 1497 3103 1269 2806
+Q 1041 2509 991 1931
+L 2791 1931
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d8350c75c5fbf8-DejaVuSerif-78" d="M 1863 2028
+L 2559 2988
+L 2113 2988
+L 2113 3322
+L 3391 3322
+L 3391 2988
+L 2950 2988
+L 2059 1759
+L 3097 331
+L 3531 331
+L 3531 0
+L 1997 0
+L 1997 331
+L 2419 331
+L 1697 1325
+L 972 331
+L 1403 331
+L 1403 0
+L 141 0
+L 141 331
+L 581 331
+L 1497 1594
+L 488 2988
+L 78 2988
+L 78 3322
+L 1563 3322
+L 1563 2988
+L 1166 2988
+L 1863 2028
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d8350c75c5fbf8-DejaVuSerif-70" d="M 1313 1825
+L 1313 1497
+Q 1313 897 1542 583
+Q 1772 269 2209 269
+Q 2650 269 2876 622
+Q 3103 975 3103 1663
+Q 3103 2353 2876 2703
+Q 2650 3053 2209 3053
+Q 1772 3053 1542 2737
+Q 1313 2422 1313 1825
+z
+M 738 2988
+L 184 2988
+L 184 3322
+L 1313 3322
+L 1313 2803
+Q 1481 3116 1742 3264
+Q 2003 3413 2388 3413
+Q 3000 3413 3387 2928
+Q 3775 2444 3775 1663
+Q 3775 881 3387 395
+Q 3000 -91 2388 -91
+Q 2003 -91 1742 57
+Q 1481 206 1313 519
+L 1313 -997
+L 1856 -997
+L 1856 -1331
+L 184 -1331
+L 184 -997
+L 738 -997
+L 738 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d8350c75c5fbf8-STIXSizeTwoSym-Regular-28" d="M 3219 -1555
+L 3219 -1786
+Q 2144 -774 1517 730
+Q 890 2234 890 4115
+Q 890 6003 1533 7593
+Q 2176 9184 3219 10022
+L 3219 9811
+Q 2490 9062 1994 7606
+Q 1498 6150 1498 4115
+Q 1498 563 3219 -1555
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d8350c75c5fbf8-DejaVuSerif-Italic-3c0" d="M -56 0
+L 6 331
+L 525 331
+L 1044 2988
+L 494 2988
+L 556 3322
+L 4300 3322
+L 4238 2988
+L 3694 2988
+L 3175 331
+L 3688 331
+L 3625 0
+L 2038 0
+L 2100 331
+L 2597 331
+L 3116 2988
+L 1619 2988
+L 1100 331
+L 1600 331
+L 1538 0
+L -56 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d8350c75c5fbf8-DejaVuSerif-Italic-3b6" d="M 3784 4863
+L 3709 4478
+Q 2341 3878 1594 3019
+Q 1134 2491 991 1763
+Q 825 938 997 581
+Q 1169 225 1788 225
+Q 2769 228 2769 -459
+Q 2769 -816 2378 -1097
+Q 2050 -1334 1453 -1334
+L 1519 -997
+Q 2144 -997 2241 -506
+Q 2322 -91 1713 -91
+Q 838 -88 491 388
+Q 144 869 319 1763
+Q 441 2384 1134 3263
+Q 1703 3978 2984 4478
+L 1116 4478
+L 1028 4028
+L 700 4028
+L 863 4863
+L 3784 4863
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d8350c75c5fbf8-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d8350c75c5fbf8-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d8350c75c5fbf8-STIXSizeTwoSym-Regular-29" d="M 730 9792
+L 730 10022
+Q 1805 9011 2432 7507
+Q 3059 6003 3059 4115
+Q 3059 2234 2416 643
+Q 1773 -947 730 -1786
+L 730 -1574
+Q 1459 -826 1955 633
+Q 2451 2093 2451 4115
+Q 2451 7674 730 9792
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d8350c75c5fbf8-DejaVuSerif-2b" d="M 2931 4013
+L 2931 2259
+L 4684 2259
+L 4684 1753
+L 2931 1753
+L 2931 0
+L 2431 0
+L 2431 1753
+L 678 1753
+L 678 2259
+L 2431 2259
+L 2431 4013
+L 2931 4013
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d8350c75c5fbf8-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-d8350c75c5fbf8-DejaVuSerif-Italic-5a" transform="translate(0 0.004687)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-DejaVuSerif-28" transform="translate(69.482422 0.004687)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-DejaVuSerif-Italic-70" transform="translate(108.496094 0.004687)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-DejaVuSerif-29" transform="translate(172.509766 0.004687)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-DejaVuSerif-3d" transform="translate(230.488281 0.004687)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-DejaVuSerif-65" transform="translate(333.242188 0.004687)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-DejaVuSerif-78" transform="translate(392.421875 0.004687)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-DejaVuSerif-70" transform="translate(448.818359 0.004687)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-STIXSizeTwoSym-Regular-28" transform="translate(512.832031 -16.40625) scale(0.817979)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-DejaVuSerif-Italic-3c0" transform="translate(560.982773 58.446875) scale(0.7)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-DejaVuSerif-Italic-3b6" transform="translate(606.988632 58.446875) scale(0.7)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-DejaVuSerif-28" transform="translate(644.928085 58.446875) scale(0.7)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-DejaVuSerif-Italic-70" transform="translate(672.237656 58.446875) scale(0.7)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-DejaVuSerif-2212" transform="translate(730.322617 58.446875) scale(0.7)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-DejaVuSerif-31" transform="translate(802.250351 58.446875) scale(0.7)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-DejaVuSerif-29" transform="translate(846.786484 58.446875) scale(0.7)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-DejaVuSerif-Italic-70" transform="translate(694.982773 -24.723438) scale(0.7)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-STIXSizeTwoSym-Regular-29" transform="translate(886.596054 -16.40625) scale(0.817979)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-DejaVuSerif-2b" transform="translate(955.264893 0.004687)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-DejaVuSerif-31" transform="translate(1058.018799 0.004687)"/>
+    <use xlink:href="#math-d8350c75c5fbf8-DejaVuSerif-2e" transform="translate(1121.641846 0.004687)"/>
+    <path d="M 560.982773 18.85625
+L 560.982773 25.10625
+L 874.096054 25.10625
+L 874.096054 18.85625
+L 560.982773 18.85625
+z
+"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>Z(p)=\exp\!\left(\frac{\pi\zeta(p-1)}p\right)+1.</code></pre></details></div>
+<p class="reader-paragraph" data-source-block="2" data-source-type="p">For p = 2m + 1 with m ≥ 1, Euler’s even-zeta evaluation [S3] gives</p>
+<div class="reader-equation" data-latex="\zeta(2m)=\frac{(2\pi)^{2m}}{2(2m)!}|B_{2m}|," data-source-block="3" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="\zeta(2m)=\frac{(2\pi)^{2m}}{2(2m)!}|B_{2m}|," xmlns:xlink="http://www.w3.org/1999/xlink" width="177pt" height="31pt" viewBox="0 0 177 31" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-1fdb2fad01a6bc-figure_1">
+  <g id="math-1fdb2fad01a6bc-patch_1">
+   <path d="M 0 31
+L 177 31
+L 177 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-1fdb2fad01a6bc-text_1">
+   <!-- $\zeta(2m)=\frac{(2\pi)^{2m}}{2(2m)!}|B_{2m}|,$ -->
+   <g style="fill: #202520" transform="translate(0 21) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-1fdb2fad01a6bc-DejaVuSerif-Italic-3b6" d="M 3784 4863
+L 3709 4478
+Q 2341 3878 1594 3019
+Q 1134 2491 991 1763
+Q 825 938 997 581
+Q 1169 225 1788 225
+Q 2769 228 2769 -459
+Q 2769 -816 2378 -1097
+Q 2050 -1334 1453 -1334
+L 1519 -997
+Q 2144 -997 2241 -506
+Q 2322 -91 1713 -91
+Q 838 -88 491 388
+Q 144 869 319 1763
+Q 441 2384 1134 3263
+Q 1703 3978 2984 4478
+L 1116 4478
+L 1028 4028
+L 700 4028
+L 863 4863
+L 3784 4863
+z
+" transform="scale(0.015625)"/>
+     <path id="math-1fdb2fad01a6bc-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-1fdb2fad01a6bc-DejaVuSerif-32" d="M 819 3553
+L 469 3553
+L 469 4384
+Q 803 4563 1142 4656
+Q 1481 4750 1806 4750
+Q 2534 4750 2956 4397
+Q 3378 4044 3378 3438
+Q 3378 2753 2422 1800
+Q 2347 1728 2309 1691
+L 1131 513
+L 3078 513
+L 3078 1088
+L 3444 1088
+L 3444 0
+L 434 0
+L 434 341
+L 1850 1753
+Q 2319 2222 2519 2614
+Q 2719 3006 2719 3438
+Q 2719 3909 2473 4175
+Q 2228 4441 1797 4441
+Q 1350 4441 1106 4219
+Q 863 3997 819 3553
+z
+" transform="scale(0.015625)"/>
+     <path id="math-1fdb2fad01a6bc-DejaVuSerif-Italic-6d" d="M 3503 2675
+Q 3741 3041 4034 3227
+Q 4328 3413 4672 3413
+Q 5194 3413 5388 3088
+Q 5503 2894 5503 2578
+Q 5503 2372 5453 2113
+L 5106 331
+L 5625 331
+L 5563 0
+L 4469 0
+L 4866 2047
+Q 4913 2291 4913 2466
+Q 4913 2659 4856 2772
+Q 4750 2988 4403 2988
+Q 4019 2988 3761 2697
+Q 3503 2406 3394 1850
+L 3034 0
+L 2459 0
+L 2863 2069
+Q 2906 2303 2906 2472
+Q 2906 2666 2850 2775
+Q 2741 2988 2394 2988
+Q 2009 2988 1751 2697
+Q 1494 2406 1384 1850
+L 1025 0
+L 450 0
+L 1031 2994
+L 481 2994
+L 544 3322
+L 1669 3322
+L 1556 2731
+Q 1778 3063 2059 3238
+Q 2341 3413 2653 3413
+Q 3041 3413 3262 3220
+Q 3484 3028 3503 2675
+z
+" transform="scale(0.015625)"/>
+     <path id="math-1fdb2fad01a6bc-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-1fdb2fad01a6bc-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-1fdb2fad01a6bc-DejaVuSerif-Italic-3c0" d="M -56 0
+L 6 331
+L 525 331
+L 1044 2988
+L 494 2988
+L 556 3322
+L 4300 3322
+L 4238 2988
+L 3694 2988
+L 3175 331
+L 3688 331
+L 3625 0
+L 2038 0
+L 2100 331
+L 2597 331
+L 3116 2988
+L 1619 2988
+L 1100 331
+L 1600 331
+L 1538 0
+L -56 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-1fdb2fad01a6bc-DejaVuSerif-21" d="M 872 325
+Q 872 500 990 622
+Q 1109 744 1288 744
+Q 1459 744 1581 622
+Q 1703 500 1703 325
+Q 1703 153 1581 31
+Q 1459 -91 1288 -91
+Q 1109 -91 990 29
+Q 872 150 872 325
+z
+M 884 4666
+L 1691 4666
+L 1478 2100
+L 1478 1313
+L 1094 1313
+L 1094 2100
+L 884 4666
+z
+" transform="scale(0.015625)"/>
+     <path id="math-1fdb2fad01a6bc-DejaVuSerif-7c" d="M 1331 4891
+L 1331 -1509
+L 825 -1509
+L 825 4891
+L 1331 4891
+z
+" transform="scale(0.015625)"/>
+     <path id="math-1fdb2fad01a6bc-DejaVuSerif-Italic-42" d="M 1194 331
+L 2128 331
+Q 2691 331 2998 575
+Q 3306 819 3409 1350
+Q 3513 1878 3302 2120
+Q 3091 2363 2525 2363
+L 1591 2363
+L 1194 331
+z
+M 1653 2694
+L 2447 2694
+Q 2959 2694 3234 2891
+Q 3509 3088 3591 3513
+Q 3675 3941 3476 4136
+Q 3278 4331 2766 4331
+L 1972 4331
+L 1653 2694
+z
+M -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 3113 4666
+Q 3819 4666 4120 4377
+Q 4422 4088 4309 3513
+Q 4231 3097 3934 2850
+Q 3638 2603 3147 2547
+Q 3728 2472 3976 2167
+Q 4225 1863 4125 1350
+Q 3991 656 3489 328
+Q 2988 0 2059 0
+L -97 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-1fdb2fad01a6bc-DejaVuSerif-2c" d="M 231 -622
+Q 525 -406 662 -114
+Q 800 178 800 594
+L 800 709
+L 1416 709
+Q 1391 175 1164 -208
+Q 938 -591 481 -872
+L 231 -622
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-Italic-3b6" transform="translate(0 0.4425)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-28" transform="translate(54.199219 0.4425)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-32" transform="translate(93.212891 0.4425)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-Italic-6d" transform="translate(156.835938 0.4425)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-29" transform="translate(251.660156 0.4425)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-3d" transform="translate(309.638672 0.4425)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-28" transform="translate(425.392578 55.19875) scale(0.7)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-32" transform="translate(452.702148 55.19875) scale(0.7)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-Italic-3c0" transform="translate(497.238281 55.19875) scale(0.7)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-29" transform="translate(543.244141 55.19875) scale(0.7)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-32" transform="translate(571.189562 80.632812) scale(0.49)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-Italic-6d" transform="translate(602.364855 80.632812) scale(0.49)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-32" transform="translate(412.392578 -40.145) scale(0.7)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-28" transform="translate(456.928711 -40.145) scale(0.7)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-32" transform="translate(484.238281 -40.145) scale(0.7)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-Italic-6d" transform="translate(528.774414 -40.145) scale(0.7)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-29" transform="translate(595.151367 -40.145) scale(0.7)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-21" transform="translate(622.460938 -40.145) scale(0.7)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-7c" transform="translate(676.366211 0.4425)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-Italic-42" transform="translate(710.057617 0.4425)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-32" transform="translate(783.543945 -15.129375) scale(0.7)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-Italic-6d" transform="translate(828.080078 -15.129375) scale(0.7)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-7c" transform="translate(897.052344 0.4425)"/>
+    <use xlink:href="#math-1fdb2fad01a6bc-DejaVuSerif-2c" transform="translate(930.74375 0.4425)"/>
+    <path d="M 412.392578 19.294063
+L 412.392578 25.544063
+L 663.866211 25.544063
+L 663.866211 19.294063
+L 412.392578 19.294063
+z
+"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>\zeta(2m)=\frac{(2\pi)^{2m}}{2(2m)!}|B_{2m}|,</code></pre></details></div>
+<div class="reader-equation" data-latex="Z(p)=e^{c_p\pi^p}+1,\qquad c_p=\frac{2^{p-2}|B_{p-1}|}{p!}\in\mathbb{Q}_{&gt;0}." data-source-block="4" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="Z(p)=e^{c_p\pi^p}+1,\qquad c_p=\frac{2^{p-2}|B_{p-1}|}{p!}\in\mathbb{Q}_{&gt;0}." xmlns:xlink="http://www.w3.org/1999/xlink" width="356pt" height="33pt" viewBox="0 0 356 33" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-5e58b74fa5bd89-figure_1">
+  <g id="math-5e58b74fa5bd89-patch_1">
+   <path d="M 0 33
+L 356 33
+L 356 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-5e58b74fa5bd89-text_1">
+   <!-- $Z(p)=e^{c_p\pi^p}+1,\qquad c_p=\frac{2^{p-2}|B_{p-1}|}{p!}\in\mathbb{Q}_{&gt;0}.$ -->
+   <g style="fill: #202520" transform="translate(0 23) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-Italic-5a" d="M -166 0
+L -122 225
+L 3572 4281
+L 1159 4281
+L 1025 3584
+L 641 3584
+L 850 4666
+L 4538 4666
+L 4494 4441
+L 800 384
+L 3438 384
+L 3563 1038
+L 3944 1038
+L 3744 0
+L -166 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-Italic-70" d="M 1466 1825
+L 1400 1497
+Q 1353 1250 1353 1053
+Q 1353 769 1453 581
+Q 1622 269 2059 269
+Q 2500 269 2795 622
+Q 3091 975 3225 1663
+Q 3284 1978 3284 2225
+Q 3284 2513 3200 2703
+Q 3041 3053 2600 3053
+Q 2163 3053 1872 2737
+Q 1581 2422 1466 1825
+z
+M 1116 2988
+L 563 2988
+L 628 3322
+L 1756 3322
+L 1656 2803
+Q 1884 3116 2175 3264
+Q 2466 3413 2850 3413
+Q 3463 3413 3753 2928
+Q 3947 2609 3947 2163
+Q 3947 1928 3897 1663
+Q 3744 881 3262 395
+Q 2781 -91 2169 -91
+Q 1784 -91 1551 57
+Q 1319 206 1213 519
+L 850 -1331
+L 275 -1331
+L 1116 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-Italic-65" d="M 938 1275
+Q 925 1156 925 1050
+Q 925 756 1031 563
+Q 1216 219 1709 219
+Q 2072 219 2250 328
+Q 2569 525 2644 778
+L 3066 778
+Q 2941 381 2475 103
+Q 2150 -91 1506 -91
+Q 863 -91 516 388
+Q 272 722 272 1206
+Q 272 1419 319 1659
+Q 472 2450 1000 2931
+Q 1528 3413 2278 3413
+Q 3500 3413 3500 2547
+Q 3500 1913 2859 1603
+Q 2206 1288 938 1275
+z
+M 2541 1975
+Q 2891 2181 2891 2569
+Q 2891 3103 2181 3103
+Q 1763 3103 1472 2784
+Q 1181 2466 1003 1606
+Q 2006 1653 2541 1975
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-Italic-63" d="M 3163 997
+Q 2938 466 2536 187
+Q 2134 -91 1584 -91
+Q 859 -91 513 388
+Q 272 722 272 1203
+Q 272 1419 319 1663
+Q 475 2459 1008 2936
+Q 1541 3413 2266 3413
+Q 2581 3413 2879 3339
+Q 3178 3266 3463 3116
+L 3300 2266
+L 2966 2266
+Q 2966 2309 2966 2347
+Q 2966 2722 2803 2903
+Q 2622 3103 2213 3103
+Q 1747 3103 1439 2742
+Q 1131 2381 991 1663
+Q 928 1334 928 1078
+Q 928 778 1016 581
+Q 1181 219 1650 219
+Q 2022 219 2281 412
+Q 2541 606 2700 997
+L 3163 997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-Italic-3c0" d="M -56 0
+L 6 331
+L 525 331
+L 1044 2988
+L 494 2988
+L 556 3322
+L 4300 3322
+L 4238 2988
+L 3694 2988
+L 3175 331
+L 3688 331
+L 3625 0
+L 2038 0
+L 2100 331
+L 2597 331
+L 3116 2988
+L 1619 2988
+L 1100 331
+L 1600 331
+L 1538 0
+L -56 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-2b" d="M 2931 4013
+L 2931 2259
+L 4684 2259
+L 4684 1753
+L 2931 1753
+L 2931 0
+L 2431 0
+L 2431 1753
+L 678 1753
+L 678 2259
+L 2431 2259
+L 2431 4013
+L 2931 4013
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-2c" d="M 231 -622
+Q 525 -406 662 -114
+Q 800 178 800 594
+L 800 709
+L 1416 709
+Q 1391 175 1164 -208
+Q 938 -591 481 -872
+L 231 -622
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-32" d="M 819 3553
+L 469 3553
+L 469 4384
+Q 803 4563 1142 4656
+Q 1481 4750 1806 4750
+Q 2534 4750 2956 4397
+Q 3378 4044 3378 3438
+Q 3378 2753 2422 1800
+Q 2347 1728 2309 1691
+L 1131 513
+L 3078 513
+L 3078 1088
+L 3444 1088
+L 3444 0
+L 434 0
+L 434 341
+L 1850 1753
+Q 2319 2222 2519 2614
+Q 2719 3006 2719 3438
+Q 2719 3909 2473 4175
+Q 2228 4441 1797 4441
+Q 1350 4441 1106 4219
+Q 863 3997 819 3553
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-7c" d="M 1331 4891
+L 1331 -1509
+L 825 -1509
+L 825 4891
+L 1331 4891
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-Italic-42" d="M 1194 331
+L 2128 331
+Q 2691 331 2998 575
+Q 3306 819 3409 1350
+Q 3513 1878 3302 2120
+Q 3091 2363 2525 2363
+L 1591 2363
+L 1194 331
+z
+M 1653 2694
+L 2447 2694
+Q 2959 2694 3234 2891
+Q 3509 3088 3591 3513
+Q 3675 3941 3476 4136
+Q 3278 4331 2766 4331
+L 1972 4331
+L 1653 2694
+z
+M -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 3113 4666
+Q 3819 4666 4120 4377
+Q 4422 4088 4309 3513
+Q 4231 3097 3934 2850
+Q 3638 2603 3147 2547
+Q 3728 2472 3976 2167
+Q 4225 1863 4125 1350
+Q 3991 656 3489 328
+Q 2988 0 2059 0
+L -97 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-21" d="M 872 325
+Q 872 500 990 622
+Q 1109 744 1288 744
+Q 1459 744 1581 622
+Q 1703 500 1703 325
+Q 1703 153 1581 31
+Q 1459 -91 1288 -91
+Q 1109 -91 990 29
+Q 872 150 872 325
+z
+M 884 4666
+L 1691 4666
+L 1478 2100
+L 1478 1313
+L 1094 1313
+L 1094 2100
+L 884 4666
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-2208" d="M 2684 500
+L 4059 500
+L 4059 0
+L 2684 0
+Q 2141 0 1678 269
+Q 1216 538 947 1000
+Q 678 1463 678 2006
+Q 678 2550 947 3012
+Q 1216 3475 1678 3744
+Q 2141 4013 2684 4013
+L 4059 4013
+L 4059 3513
+L 2684 3513
+Q 2278 3513 1931 3309
+Q 1584 3106 1381 2759
+Q 1244 2522 1200 2259
+L 4059 2259
+L 4059 1753
+L 1200 1753
+Q 1244 1491 1381 1253
+Q 1584 906 1931 703
+Q 2278 500 2684 500
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-STIXGeneral-Italic-211a" d="M 3878 -122
+L 3930 -333
+Q 3693 -454 3405 -454
+Q 3194 -454 3002 -326
+Q 2810 -198 2701 0
+Q 2317 -115 1907 -115
+Q 1133 -115 678 291
+Q 224 698 224 1459
+Q 224 2221 553 2861
+Q 883 3501 1497 3881
+Q 2112 4262 2880 4262
+Q 3654 4262 4108 3856
+Q 4563 3450 4563 2688
+Q 4563 1830 4134 1120
+Q 3706 410 2944 90
+Q 3136 -218 3437 -218
+Q 3674 -218 3878 -122
+z
+M 4102 3462
+L 3328 557
+Q 3808 902 4067 1446
+Q 4326 1990 4326 2598
+Q 4326 3066 4102 3462
+z
+M 3053 384
+L 3923 3661
+Q 3744 3834 3459 3930
+Q 3174 4026 2906 4026
+Q 2195 4026 1741 3770
+L 864 480
+Q 1011 339 1210 262
+Q 1536 659 2048 659
+Q 2310 659 2473 572
+Q 2637 486 2810 269
+Q 2944 320 3053 384
+z
+M 685 691
+L 1459 3597
+Q 979 3238 720 2697
+Q 461 2157 461 1549
+Q 461 1037 685 691
+z
+M 2554 192
+Q 2349 422 2029 422
+Q 1683 422 1453 179
+Q 1677 122 1901 122
+Q 2214 122 2554 192
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-3e" d="M 678 3188
+L 678 3719
+L 4684 2266
+L 4684 1747
+L 678 294
+L 678 825
+L 3922 2003
+L 678 3188
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-30" d="M 2034 219
+Q 2513 219 2750 744
+Q 2988 1269 2988 2328
+Q 2988 3391 2750 3916
+Q 2513 4441 2034 4441
+Q 1556 4441 1318 3916
+Q 1081 3391 1081 2328
+Q 1081 1269 1318 744
+Q 1556 219 2034 219
+z
+M 2034 -91
+Q 1275 -91 848 546
+Q 422 1184 422 2328
+Q 422 3475 848 4112
+Q 1275 4750 2034 4750
+Q 2797 4750 3222 4112
+Q 3647 3475 3647 2328
+Q 3647 1184 3222 546
+Q 2797 -91 2034 -91
+z
+" transform="scale(0.015625)"/>
+     <path id="math-5e58b74fa5bd89-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-Italic-5a" transform="translate(0 0.256406)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-28" transform="translate(69.482422 0.256406)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-Italic-70" transform="translate(108.496094 0.256406)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-29" transform="translate(172.509766 0.256406)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-3d" transform="translate(230.488281 0.256406)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-Italic-65" transform="translate(333.242188 0.256406)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-Italic-63" transform="translate(396.859948 36.590781) scale(0.7)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-Italic-70" transform="translate(436.064049 25.690469) scale(0.49)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-Italic-3c0" transform="translate(469.247467 36.590781) scale(0.7)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-Italic-70" transform="translate(518.220634 62.024844) scale(0.49)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-2b" transform="translate(572.964208 0.256406)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-31" transform="translate(675.718115 0.256406)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-2c" transform="translate(739.341161 0.256406)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-Italic-63" transform="translate(979.741552 0.256406)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-Italic-70" transform="translate(1035.747411 -15.315469) scale(0.7)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-3d" transform="translate(1102.117138 0.256406)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-32" transform="translate(1204.871044 65.19875) scale(0.7)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-Italic-70" transform="translate(1250.043029 90.632812) scale(0.49)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-2212" transform="translate(1290.702501 90.632812) scale(0.49)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-32" transform="translate(1341.051915 90.632812) scale(0.49)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-7c" transform="translate(1374.043927 65.19875) scale(0.7)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-Italic-42" transform="translate(1397.627911 65.19875) scale(0.7)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-Italic-70" transform="translate(1449.068341 54.298438) scale(0.49)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-2212" transform="translate(1489.727814 54.298438) scale(0.49)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-31" transform="translate(1540.077228 54.298438) scale(0.49)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-7c" transform="translate(1573.06924 65.19875) scale(0.7)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-Italic-70" transform="translate(1357.871044 -38.176406) scale(0.7)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-21" transform="translate(1402.680615 -38.176406) scale(0.7)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-2208" transform="translate(1628.118068 0.256406)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-STIXGeneral-Italic-211a" transform="translate(1721.106349 0.256406)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-3e" transform="translate(1806.681727 -15.315469) scale(0.7)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-30" transform="translate(1878.609462 -15.315469) scale(0.7)"/>
+    <use xlink:href="#math-5e58b74fa5bd89-DejaVuSerif-2e" transform="translate(1925.740907 0.256406)"/>
+    <path d="M 1204.871044 19.107969
+L 1204.871044 25.357969
+L 1596.653224 25.357969
+L 1596.653224 19.107969
+L 1204.871044 19.107969
+z
+"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>Z(p)=e^{c_p\pi^p}+1,\qquad c_p=\frac{2^{p-2}|B_{p-1}|}{p!}\in\mathbb{Q}_{&gt;0}.</code></pre></details></div>
+<p class="reader-paragraph" data-source-block="5" data-source-type="p">Here B<sub>2m</sub> denotes a Bernoulli number. Equivalently</p>
+<div class="reader-equation" data-latex="c_{2m+1}=\frac{(-1)^{m+1}2^{2m-1}B_{2m}}{(2m+1)!}." data-source-block="6" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="c_{2m+1}=\frac{(-1)^{m+1}2^{2m-1}B_{2m}}{(2m+1)!}." xmlns:xlink="http://www.w3.org/1999/xlink" width="204pt" height="31pt" viewBox="0 0 204 31" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-92bb94a1c968a3-figure_1">
+  <g id="math-92bb94a1c968a3-patch_1">
+   <path d="M 0 31
+L 204 31
+L 204 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-92bb94a1c968a3-text_1">
+   <!-- $c_{2m+1}=\frac{(-1)^{m+1}2^{2m-1}B_{2m}}{(2m+1)!}.$ -->
+   <g style="fill: #202520" transform="translate(0 21) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-92bb94a1c968a3-DejaVuSerif-Italic-63" d="M 3163 997
+Q 2938 466 2536 187
+Q 2134 -91 1584 -91
+Q 859 -91 513 388
+Q 272 722 272 1203
+Q 272 1419 319 1663
+Q 475 2459 1008 2936
+Q 1541 3413 2266 3413
+Q 2581 3413 2879 3339
+Q 3178 3266 3463 3116
+L 3300 2266
+L 2966 2266
+Q 2966 2309 2966 2347
+Q 2966 2722 2803 2903
+Q 2622 3103 2213 3103
+Q 1747 3103 1439 2742
+Q 1131 2381 991 1663
+Q 928 1334 928 1078
+Q 928 778 1016 581
+Q 1181 219 1650 219
+Q 2022 219 2281 412
+Q 2541 606 2700 997
+L 3163 997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-92bb94a1c968a3-DejaVuSerif-32" d="M 819 3553
+L 469 3553
+L 469 4384
+Q 803 4563 1142 4656
+Q 1481 4750 1806 4750
+Q 2534 4750 2956 4397
+Q 3378 4044 3378 3438
+Q 3378 2753 2422 1800
+Q 2347 1728 2309 1691
+L 1131 513
+L 3078 513
+L 3078 1088
+L 3444 1088
+L 3444 0
+L 434 0
+L 434 341
+L 1850 1753
+Q 2319 2222 2519 2614
+Q 2719 3006 2719 3438
+Q 2719 3909 2473 4175
+Q 2228 4441 1797 4441
+Q 1350 4441 1106 4219
+Q 863 3997 819 3553
+z
+" transform="scale(0.015625)"/>
+     <path id="math-92bb94a1c968a3-DejaVuSerif-Italic-6d" d="M 3503 2675
+Q 3741 3041 4034 3227
+Q 4328 3413 4672 3413
+Q 5194 3413 5388 3088
+Q 5503 2894 5503 2578
+Q 5503 2372 5453 2113
+L 5106 331
+L 5625 331
+L 5563 0
+L 4469 0
+L 4866 2047
+Q 4913 2291 4913 2466
+Q 4913 2659 4856 2772
+Q 4750 2988 4403 2988
+Q 4019 2988 3761 2697
+Q 3503 2406 3394 1850
+L 3034 0
+L 2459 0
+L 2863 2069
+Q 2906 2303 2906 2472
+Q 2906 2666 2850 2775
+Q 2741 2988 2394 2988
+Q 2009 2988 1751 2697
+Q 1494 2406 1384 1850
+L 1025 0
+L 450 0
+L 1031 2994
+L 481 2994
+L 544 3322
+L 1669 3322
+L 1556 2731
+Q 1778 3063 2059 3238
+Q 2341 3413 2653 3413
+Q 3041 3413 3262 3220
+Q 3484 3028 3503 2675
+z
+" transform="scale(0.015625)"/>
+     <path id="math-92bb94a1c968a3-DejaVuSerif-2b" d="M 2931 4013
+L 2931 2259
+L 4684 2259
+L 4684 1753
+L 2931 1753
+L 2931 0
+L 2431 0
+L 2431 1753
+L 678 1753
+L 678 2259
+L 2431 2259
+L 2431 4013
+L 2931 4013
+z
+" transform="scale(0.015625)"/>
+     <path id="math-92bb94a1c968a3-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-92bb94a1c968a3-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-92bb94a1c968a3-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-92bb94a1c968a3-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-92bb94a1c968a3-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-92bb94a1c968a3-DejaVuSerif-Italic-42" d="M 1194 331
+L 2128 331
+Q 2691 331 2998 575
+Q 3306 819 3409 1350
+Q 3513 1878 3302 2120
+Q 3091 2363 2525 2363
+L 1591 2363
+L 1194 331
+z
+M 1653 2694
+L 2447 2694
+Q 2959 2694 3234 2891
+Q 3509 3088 3591 3513
+Q 3675 3941 3476 4136
+Q 3278 4331 2766 4331
+L 1972 4331
+L 1653 2694
+z
+M -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 3113 4666
+Q 3819 4666 4120 4377
+Q 4422 4088 4309 3513
+Q 4231 3097 3934 2850
+Q 3638 2603 3147 2547
+Q 3728 2472 3976 2167
+Q 4225 1863 4125 1350
+Q 3991 656 3489 328
+Q 2988 0 2059 0
+L -97 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-92bb94a1c968a3-DejaVuSerif-21" d="M 872 325
+Q 872 500 990 622
+Q 1109 744 1288 744
+Q 1459 744 1581 622
+Q 1703 500 1703 325
+Q 1703 153 1581 31
+Q 1459 -91 1288 -91
+Q 1109 -91 990 29
+Q 872 150 872 325
+z
+M 884 4666
+L 1691 4666
+L 1478 2100
+L 1478 1313
+L 1094 1313
+L 1094 2100
+L 884 4666
+z
+" transform="scale(0.015625)"/>
+     <path id="math-92bb94a1c968a3-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-Italic-63" transform="translate(0 0.4425)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-32" transform="translate(56.005859 -15.129375) scale(0.7)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-Italic-6d" transform="translate(100.541992 -15.129375) scale(0.7)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-2b" transform="translate(180.194336 -15.129375) scale(0.7)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-31" transform="translate(252.12207 -15.129375) scale(0.7)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-3d" transform="translate(318.218359 0.4425)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-28" transform="translate(420.972266 55.19875) scale(0.7)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-2212" transform="translate(448.281836 55.19875) scale(0.7)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-31" transform="translate(506.93418 55.19875) scale(0.7)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-29" transform="translate(551.470312 55.19875) scale(0.7)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-Italic-6d" transform="translate(579.415734 80.632812) scale(0.49)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-2b" transform="translate(635.172375 80.632812) scale(0.49)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-31" transform="translate(685.521789 80.632812) scale(0.49)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-32" transform="translate(718.513801 55.19875) scale(0.7)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-32" transform="translate(763.685785 80.632812) scale(0.49)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-Italic-6d" transform="translate(794.861078 80.632812) scale(0.49)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-2212" transform="translate(850.617719 80.632812) scale(0.49)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-31" transform="translate(900.967133 80.632812) scale(0.49)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-Italic-42" transform="translate(933.959145 55.19875) scale(0.7)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-32" transform="translate(985.399574 44.298438) scale(0.49)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-Italic-6d" transform="translate(1016.574867 44.298438) scale(0.49)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-28" transform="translate(574.972266 -40.145) scale(0.7)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-32" transform="translate(602.281836 -40.145) scale(0.7)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-Italic-6d" transform="translate(646.817969 -40.145) scale(0.7)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-2b" transform="translate(726.470312 -40.145) scale(0.7)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-31" transform="translate(798.398047 -40.145) scale(0.7)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-29" transform="translate(842.93418 -40.145) scale(0.7)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-21" transform="translate(870.24375 -40.145) scale(0.7)"/>
+    <use xlink:href="#math-92bb94a1c968a3-DejaVuSerif-2e" transform="translate(1077.355453 0.4425)"/>
+    <path d="M 420.972266 19.294063
+L 420.972266 25.544063
+L 1064.855453 25.544063
+L 1064.855453 19.294063
+L 420.972266 19.294063
+z
+"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>c_{2m+1}=\frac{(-1)^{m+1}2^{2m-1}B_{2m}}{(2m+1)!}.</code></pre></details></div>
+<div class="reader-table-scroll" data-source-block="7" data-source-type="table"><table class="reader-table"><thead><tr><th scope="col">p</th><th scope="col">cₚ</th><th scope="col">Exponent in Z(p) − 1</th></tr></thead><tbody><tr><td>3</td><td>1/18</td><td>π³/18</td></tr><tr><td>5</td><td>1/450</td><td>π⁵/450</td></tr><tr><td>7</td><td>1/6615</td><td>π⁷/6615</td></tr></tbody></table></div>
+<p class="reader-paragraph" data-source-block="8" data-source-type="p">The case p = 2 is excluded because ζ(1) has a pole. For even p ≥ 4, the displayed rational coefficient does not follow from the even-zeta formula.</p>
+<aside class="reader-callout" data-status="conditional" data-source-block="9" data-source-type="callout"><p class="reader-callout-label">Conditional proposition</p><p class="reader-callout-text">Assume the full complex Schanuel conjecture. For pairwise distinct odd integers p₁, …, pₖ ≥ 3, the numbers π, Z(p₁), …, Z(pₖ) are algebraically independent over ℚ.</p></aside>
+<p class="reader-paragraph" data-source-block="10" data-source-type="p">“Algebraically independent” means that no nonzero polynomial with rational coefficients in these k + 1 variables vanishes on the tuple. The next page gives the deduction and keeps the assumption visible.</p>
+<p class="reader-paragraph" data-source-block="11" data-source-type="p">The rational-coefficient reduction is unconditional. Algebraic independence of π and the selected Z(p) values, including the resulting individual-transcendence conclusions, follows under the stated complex Schanuel assumption.</p></section>
+<section class="reader-section" id="schanuel-proof" data-source-page="schanuel-proof" data-source-index="2" data-source-status="conditional"><span id="page-3" class="reader-page-anchor" aria-hidden="true"></span><p class="reader-kicker">02 · COMPLETE DEDUCTION AND DOMAIN LIMITS</p><h2 class="reader-section-title">The conditional Schanuel argument</h2><p class="reader-paragraph" data-source-block="0" data-source-type="p">Complex Schanuel states that for ℚ-linearly independent complex numbers α₀, …, αₖ, the field generated by these numbers and their exponentials has transcendence degree at least k + 1 over ℚ [S4]. Apply it to</p>
+<div class="reader-equation" data-latex="\alpha_0=i\pi,\qquad \alpha_j=c_{p_j}\pi^{p_j}\quad(1\le j\le k)." data-source-block="1" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="\alpha_0=i\pi,\qquad \alpha_j=c_{p_j}\pi^{p_j}\quad(1\le j\le k)." xmlns:xlink="http://www.w3.org/1999/xlink" width="300pt" height="21pt" viewBox="0 0 300 21" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-d39ee95c9a5c33-figure_1">
+  <g id="math-d39ee95c9a5c33-patch_1">
+   <path d="M 0 21
+L 300 21
+L 300 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-d39ee95c9a5c33-text_1">
+   <!-- $\alpha_0=i\pi,\qquad \alpha_j=c_{p_j}\pi^{p_j}\quad(1\leq j\leq k).$ -->
+   <g style="fill: #202520" transform="translate(0 14) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-d39ee95c9a5c33-DejaVuSerif-Italic-3b1" d="M 2597 819
+L 2406 472
+Q 2259 206 1925 31
+Q 1719 -78 1388 -78
+Q 1378 -78 1369 -78
+Q 753 -75 463 406
+Q 269 728 269 1175
+Q 269 1409 322 1675
+Q 472 2441 953 2941
+Q 1406 3409 2172 3409
+Q 2713 3409 2941 3200
+Q 3144 3013 3156 2613
+L 3159 2497
+L 3347 2844
+Q 3525 3172 3878 3334
+L 4194 3334
+L 4156 3150
+Q 3838 3056 3675 2763
+L 3178 1875
+L 3213 919
+Q 3228 428 3338 375
+Q 3375 356 3434 356
+Q 3603 356 3928 531
+L 3856 153
+Q 3509 -25 3244 -25
+Q 2966 -25 2778 169
+Q 2609 344 2603 597
+L 2597 819
+z
+M 2581 1431
+L 2566 2350
+Q 2550 3081 2119 3084
+Q 1763 3084 1419 2703
+Q 1131 2388 991 1663
+Q 928 1347 928 1103
+Q 928 813 1016 622
+Q 1175 266 1550 266
+Q 1963 266 2384 1063
+L 2581 1431
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d39ee95c9a5c33-DejaVuSerif-30" d="M 2034 219
+Q 2513 219 2750 744
+Q 2988 1269 2988 2328
+Q 2988 3391 2750 3916
+Q 2513 4441 2034 4441
+Q 1556 4441 1318 3916
+Q 1081 3391 1081 2328
+Q 1081 1269 1318 744
+Q 1556 219 2034 219
+z
+M 2034 -91
+Q 1275 -91 848 546
+Q 422 1184 422 2328
+Q 422 3475 848 4112
+Q 1275 4750 2034 4750
+Q 2797 4750 3222 4112
+Q 3647 3475 3647 2328
+Q 3647 1184 3222 546
+Q 2797 -91 2034 -91
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d39ee95c9a5c33-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d39ee95c9a5c33-DejaVuSerif-Italic-69" d="M 1009 4353
+Q 1038 4497 1163 4603
+Q 1288 4709 1434 4709
+Q 1578 4709 1663 4603
+Q 1728 4522 1728 4422
+Q 1728 4388 1719 4353
+Q 1691 4206 1567 4103
+Q 1444 4000 1297 4000
+Q 1150 4000 1066 4103
+Q 1003 4181 1003 4281
+Q 1003 4316 1009 4353
+z
+M 963 331
+L 1506 331
+L 1444 0
+L 325 0
+L 903 2988
+L 353 2988
+L 419 3322
+L 1544 3322
+L 963 331
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d39ee95c9a5c33-DejaVuSerif-Italic-3c0" d="M -56 0
+L 6 331
+L 525 331
+L 1044 2988
+L 494 2988
+L 556 3322
+L 4300 3322
+L 4238 2988
+L 3694 2988
+L 3175 331
+L 3688 331
+L 3625 0
+L 2038 0
+L 2100 331
+L 2597 331
+L 3116 2988
+L 1619 2988
+L 1100 331
+L 1600 331
+L 1538 0
+L -56 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d39ee95c9a5c33-DejaVuSerif-2c" d="M 231 -622
+Q 525 -406 662 -114
+Q 800 178 800 594
+L 800 709
+L 1416 709
+Q 1391 175 1164 -208
+Q 938 -591 481 -872
+L 231 -622
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d39ee95c9a5c33-DejaVuSerif-Italic-6a" d="M 1172 4353
+Q 1197 4497 1323 4603
+Q 1450 4709 1597 4709
+Q 1741 4709 1825 4603
+Q 1888 4522 1888 4422
+Q 1888 4388 1881 4353
+Q 1850 4206 1729 4103
+Q 1609 4000 1459 4000
+Q 1313 4000 1225 4103
+Q 1163 4181 1163 4281
+Q 1163 4316 1172 4353
+z
+M 1047 2988
+L 503 2988
+L 566 3322
+L 1684 3322
+L 978 -325
+Q 878 -838 515 -1130
+Q 153 -1422 -381 -1422
+Q -606 -1422 -800 -1370
+Q -994 -1319 -1169 -1216
+L -1034 -531
+L -738 -531
+Q -747 -609 -747 -675
+Q -747 -869 -669 -972
+Q -563 -1113 -306 -1113
+Q -22 -1113 150 -920
+Q 322 -728 403 -325
+L 1047 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d39ee95c9a5c33-DejaVuSerif-Italic-63" d="M 3163 997
+Q 2938 466 2536 187
+Q 2134 -91 1584 -91
+Q 859 -91 513 388
+Q 272 722 272 1203
+Q 272 1419 319 1663
+Q 475 2459 1008 2936
+Q 1541 3413 2266 3413
+Q 2581 3413 2879 3339
+Q 3178 3266 3463 3116
+L 3300 2266
+L 2966 2266
+Q 2966 2309 2966 2347
+Q 2966 2722 2803 2903
+Q 2622 3103 2213 3103
+Q 1747 3103 1439 2742
+Q 1131 2381 991 1663
+Q 928 1334 928 1078
+Q 928 778 1016 581
+Q 1181 219 1650 219
+Q 2022 219 2281 412
+Q 2541 606 2700 997
+L 3163 997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d39ee95c9a5c33-DejaVuSerif-Italic-70" d="M 1466 1825
+L 1400 1497
+Q 1353 1250 1353 1053
+Q 1353 769 1453 581
+Q 1622 269 2059 269
+Q 2500 269 2795 622
+Q 3091 975 3225 1663
+Q 3284 1978 3284 2225
+Q 3284 2513 3200 2703
+Q 3041 3053 2600 3053
+Q 2163 3053 1872 2737
+Q 1581 2422 1466 1825
+z
+M 1116 2988
+L 563 2988
+L 628 3322
+L 1756 3322
+L 1656 2803
+Q 1884 3116 2175 3264
+Q 2466 3413 2850 3413
+Q 3463 3413 3753 2928
+Q 3947 2609 3947 2163
+Q 3947 1928 3897 1663
+Q 3744 881 3262 395
+Q 2781 -91 2169 -91
+Q 1784 -91 1551 57
+Q 1319 206 1213 519
+L 850 -1331
+L 275 -1331
+L 1116 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d39ee95c9a5c33-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d39ee95c9a5c33-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d39ee95c9a5c33-DejaVuSerif-2264" d="M 4684 3206
+L 1388 2309
+L 4684 1416
+L 4684 897
+L 678 2047
+L 678 2578
+L 4684 3725
+L 4684 3206
+z
+M 678 488
+L 4684 488
+L 4684 0
+L 678 0
+L 678 488
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d39ee95c9a5c33-DejaVuSerif-Italic-6b" d="M 2113 2075
+L 3034 331
+L 3513 331
+L 3450 0
+L 2528 0
+L 1622 1697
+L 1088 1275
+L 841 0
+L 266 0
+L 1147 4531
+L 594 4531
+L 656 4863
+L 1784 4863
+L 1169 1697
+L 2822 2988
+L 2344 2988
+L 2406 3322
+L 3341 3322
+L 3278 2988
+L 2113 2075
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d39ee95c9a5c33-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d39ee95c9a5c33-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-Italic-3b1" transform="translate(0 0.015625)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-30" transform="translate(67.529297 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-3d" transform="translate(133.625586 0.015625)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-Italic-69" transform="translate(236.379492 0.015625)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-Italic-3c0" transform="translate(268.361914 0.015625)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-2c" transform="translate(334.08457 0.015625)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-Italic-3b1" transform="translate(574.484961 0.015625)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-Italic-6a" transform="translate(642.014258 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-3d" transform="translate(685.278516 0.015625)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-Italic-63" transform="translate(788.032422 0.015625)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-Italic-70" transform="translate(844.038281 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-Italic-6a" transform="translate(888.847852 -26.456562) scale(0.49)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-Italic-3c0" transform="translate(908.452754 0.015625)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-Italic-70" transform="translate(978.414421 36.35) scale(0.7)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-Italic-6a" transform="translate(1023.223991 25.449687) scale(0.49)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-28" transform="translate(1137.653112 0.015625)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-31" transform="translate(1176.666784 0.015625)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-2264" transform="translate(1259.254674 0.015625)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-Italic-6a" transform="translate(1362.008581 0.015625)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-2264" transform="translate(1411.979284 0.015625)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-Italic-6b" transform="translate(1514.73319 0.015625)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-29" transform="translate(1575.328893 0.015625)"/>
+    <use xlink:href="#math-d39ee95c9a5c33-DejaVuSerif-2e" transform="translate(1614.342565 0.015625)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>\alpha_0=i\pi,\qquad \alpha_j=c_{p_j}\pi^{p_j}\quad(1\le j\le k).</code></pre></details></div>
+<p class="reader-paragraph" data-source-block="2" data-source-type="p"><b>Linear independence.</b> The imaginary part of a rational relation forces the coefficient of iπ (i times pi) to vanish. The remaining relation is a polynomial in π (pi), with distinct powers and nonzero rational coefficients c_p. Transcendence of π forces every remaining coefficient to vanish.</p>
+<p class="reader-paragraph" data-source-block="3" data-source-type="p"><b>The Schanuel bound.</b> With E the field generated by these inputs and their exponentials, the conjecture gives</p>
+<div class="reader-equation" data-latex="E=\mathbb{Q}(\alpha_0,\ldots,\alpha_k,e^{\alpha_0},\ldots,e^{\alpha_k}),\qquad \operatorname{trdeg}_{\mathbb{Q}}E\ge k+1." data-source-block="4" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="E=\mathbb{Q}(\alpha_0,\ldots,\alpha_k,e^{\alpha_0},\ldots,e^{\alpha_k}),\qquad \operatorname{trdeg}_{\mathbb{Q}}E\ge k+1." xmlns:xlink="http://www.w3.org/1999/xlink" width="431pt" height="18pt" viewBox="0 0 431 18" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-6a65fd4e83ba71-figure_1">
+  <g id="math-6a65fd4e83ba71-patch_1">
+   <path d="M 0 18
+L 431 18
+L 431 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-6a65fd4e83ba71-text_1">
+   <!-- $E=\mathbb{Q}(\alpha_0,\ldots,\alpha_k,e^{\alpha_0},\ldots,e^{\alpha_k}),\qquad \operatorname{trdeg}_{\mathbb{Q}}E\geq k+1.$ -->
+   <g style="fill: #202520" transform="translate(0 14) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-6a65fd4e83ba71-DejaVuSerif-Italic-45" d="M -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 4566 4666
+L 4366 3628
+L 3981 3628
+L 4106 4281
+L 1963 4281
+L 1659 2719
+L 3188 2719
+L 3300 3303
+L 3684 3303
+L 3384 1753
+L 3000 1753
+L 3113 2338
+L 1584 2338
+L 1206 384
+L 3400 384
+L 3525 1038
+L 3909 1038
+L 3709 0
+L -97 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-6a65fd4e83ba71-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-6a65fd4e83ba71-STIXGeneral-Italic-211a" d="M 3878 -122
+L 3930 -333
+Q 3693 -454 3405 -454
+Q 3194 -454 3002 -326
+Q 2810 -198 2701 0
+Q 2317 -115 1907 -115
+Q 1133 -115 678 291
+Q 224 698 224 1459
+Q 224 2221 553 2861
+Q 883 3501 1497 3881
+Q 2112 4262 2880 4262
+Q 3654 4262 4108 3856
+Q 4563 3450 4563 2688
+Q 4563 1830 4134 1120
+Q 3706 410 2944 90
+Q 3136 -218 3437 -218
+Q 3674 -218 3878 -122
+z
+M 4102 3462
+L 3328 557
+Q 3808 902 4067 1446
+Q 4326 1990 4326 2598
+Q 4326 3066 4102 3462
+z
+M 3053 384
+L 3923 3661
+Q 3744 3834 3459 3930
+Q 3174 4026 2906 4026
+Q 2195 4026 1741 3770
+L 864 480
+Q 1011 339 1210 262
+Q 1536 659 2048 659
+Q 2310 659 2473 572
+Q 2637 486 2810 269
+Q 2944 320 3053 384
+z
+M 685 691
+L 1459 3597
+Q 979 3238 720 2697
+Q 461 2157 461 1549
+Q 461 1037 685 691
+z
+M 2554 192
+Q 2349 422 2029 422
+Q 1683 422 1453 179
+Q 1677 122 1901 122
+Q 2214 122 2554 192
+z
+" transform="scale(0.015625)"/>
+     <path id="math-6a65fd4e83ba71-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-6a65fd4e83ba71-DejaVuSerif-Italic-3b1" d="M 2597 819
+L 2406 472
+Q 2259 206 1925 31
+Q 1719 -78 1388 -78
+Q 1378 -78 1369 -78
+Q 753 -75 463 406
+Q 269 728 269 1175
+Q 269 1409 322 1675
+Q 472 2441 953 2941
+Q 1406 3409 2172 3409
+Q 2713 3409 2941 3200
+Q 3144 3013 3156 2613
+L 3159 2497
+L 3347 2844
+Q 3525 3172 3878 3334
+L 4194 3334
+L 4156 3150
+Q 3838 3056 3675 2763
+L 3178 1875
+L 3213 919
+Q 3228 428 3338 375
+Q 3375 356 3434 356
+Q 3603 356 3928 531
+L 3856 153
+Q 3509 -25 3244 -25
+Q 2966 -25 2778 169
+Q 2609 344 2603 597
+L 2597 819
+z
+M 2581 1431
+L 2566 2350
+Q 2550 3081 2119 3084
+Q 1763 3084 1419 2703
+Q 1131 2388 991 1663
+Q 928 1347 928 1103
+Q 928 813 1016 622
+Q 1175 266 1550 266
+Q 1963 266 2384 1063
+L 2581 1431
+z
+" transform="scale(0.015625)"/>
+     <path id="math-6a65fd4e83ba71-DejaVuSerif-30" d="M 2034 219
+Q 2513 219 2750 744
+Q 2988 1269 2988 2328
+Q 2988 3391 2750 3916
+Q 2513 4441 2034 4441
+Q 1556 4441 1318 3916
+Q 1081 3391 1081 2328
+Q 1081 1269 1318 744
+Q 1556 219 2034 219
+z
+M 2034 -91
+Q 1275 -91 848 546
+Q 422 1184 422 2328
+Q 422 3475 848 4112
+Q 1275 4750 2034 4750
+Q 2797 4750 3222 4112
+Q 3647 3475 3647 2328
+Q 3647 1184 3222 546
+Q 2797 -91 2034 -91
+z
+" transform="scale(0.015625)"/>
+     <path id="math-6a65fd4e83ba71-DejaVuSerif-2c" d="M 231 -622
+Q 525 -406 662 -114
+Q 800 178 800 594
+L 800 709
+L 1416 709
+Q 1391 175 1164 -208
+Q 938 -591 481 -872
+L 231 -622
+z
+" transform="scale(0.015625)"/>
+     <path id="math-6a65fd4e83ba71-DejaVuSerif-2026" d="M 4916 325
+Q 4916 500 5036 622
+Q 5156 744 5331 744
+Q 5503 744 5625 622
+Q 5747 500 5747 325
+Q 5747 153 5625 31
+Q 5503 -91 5331 -91
+Q 5153 -91 5034 29
+Q 4916 150 4916 325
+z
+M 2784 325
+Q 2784 500 2904 622
+Q 3025 744 3200 744
+Q 3372 744 3494 622
+Q 3616 500 3616 325
+Q 3616 153 3494 31
+Q 3372 -91 3200 -91
+Q 3022 -91 2903 29
+Q 2784 150 2784 325
+z
+M 653 325
+Q 653 500 773 622
+Q 894 744 1069 744
+Q 1241 744 1362 622
+Q 1484 500 1484 325
+Q 1484 153 1362 31
+Q 1241 -91 1069 -91
+Q 891 -91 772 29
+Q 653 150 653 325
+z
+" transform="scale(0.015625)"/>
+     <path id="math-6a65fd4e83ba71-DejaVuSerif-Italic-6b" d="M 2113 2075
+L 3034 331
+L 3513 331
+L 3450 0
+L 2528 0
+L 1622 1697
+L 1088 1275
+L 841 0
+L 266 0
+L 1147 4531
+L 594 4531
+L 656 4863
+L 1784 4863
+L 1169 1697
+L 2822 2988
+L 2344 2988
+L 2406 3322
+L 3341 3322
+L 3278 2988
+L 2113 2075
+z
+" transform="scale(0.015625)"/>
+     <path id="math-6a65fd4e83ba71-DejaVuSerif-Italic-65" d="M 938 1275
+Q 925 1156 925 1050
+Q 925 756 1031 563
+Q 1216 219 1709 219
+Q 2072 219 2250 328
+Q 2569 525 2644 778
+L 3066 778
+Q 2941 381 2475 103
+Q 2150 -91 1506 -91
+Q 863 -91 516 388
+Q 272 722 272 1206
+Q 272 1419 319 1659
+Q 472 2450 1000 2931
+Q 1528 3413 2278 3413
+Q 3500 3413 3500 2547
+Q 3500 1913 2859 1603
+Q 2206 1288 938 1275
+z
+M 2541 1975
+Q 2891 2181 2891 2569
+Q 2891 3103 2181 3103
+Q 1763 3103 1472 2784
+Q 1181 2466 1003 1606
+Q 2006 1653 2541 1975
+z
+" transform="scale(0.015625)"/>
+     <path id="math-6a65fd4e83ba71-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-6a65fd4e83ba71-DejaVuSerif-74" d="M 691 2988
+L 184 2988
+L 184 3322
+L 691 3322
+L 691 4353
+L 1269 4353
+L 1269 3322
+L 2350 3322
+L 2350 2988
+L 1269 2988
+L 1269 878
+Q 1269 456 1350 337
+Q 1431 219 1650 219
+Q 1875 219 1978 351
+Q 2081 484 2088 781
+L 2522 781
+Q 2497 328 2275 118
+Q 2053 -91 1600 -91
+Q 1103 -91 897 129
+Q 691 350 691 878
+L 691 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-6a65fd4e83ba71-DejaVuSerif-72" d="M 3059 3328
+L 3059 2497
+L 2728 2497
+Q 2713 2744 2591 2866
+Q 2469 2988 2234 2988
+Q 1809 2988 1582 2694
+Q 1356 2400 1356 1850
+L 1356 331
+L 2022 331
+L 2022 0
+L 263 0
+L 263 331
+L 781 331
+L 781 2994
+L 231 2994
+L 231 3322
+L 1356 3322
+L 1356 2731
+Q 1525 3078 1790 3245
+Q 2056 3413 2438 3413
+Q 2578 3413 2733 3391
+Q 2888 3369 3059 3328
+z
+" transform="scale(0.015625)"/>
+     <path id="math-6a65fd4e83ba71-DejaVuSerif-64" d="M 3359 331
+L 3909 331
+L 3909 0
+L 2784 0
+L 2784 519
+Q 2616 206 2355 57
+Q 2094 -91 1709 -91
+Q 1097 -91 708 395
+Q 319 881 319 1663
+Q 319 2444 706 2928
+Q 1094 3413 1709 3413
+Q 2094 3413 2355 3264
+Q 2616 3116 2784 2803
+L 2784 4531
+L 2241 4531
+L 2241 4863
+L 3359 4863
+L 3359 331
+z
+M 2784 1497
+L 2784 1825
+Q 2784 2422 2554 2737
+Q 2325 3053 1888 3053
+Q 1444 3053 1217 2703
+Q 991 2353 991 1663
+Q 991 975 1217 622
+Q 1444 269 1888 269
+Q 2325 269 2554 583
+Q 2784 897 2784 1497
+z
+" transform="scale(0.015625)"/>
+     <path id="math-6a65fd4e83ba71-DejaVuSerif-65" d="M 3469 1600
+L 991 1600
+L 991 1575
+Q 991 903 1244 561
+Q 1497 219 1991 219
+Q 2369 219 2611 417
+Q 2853 616 2950 1006
+L 3413 1006
+Q 3275 459 2904 184
+Q 2534 -91 1931 -91
+Q 1203 -91 761 389
+Q 319 869 319 1663
+Q 319 2450 753 2931
+Q 1188 3413 1894 3413
+Q 2647 3413 3050 2948
+Q 3453 2484 3469 1600
+z
+M 2791 1931
+Q 2772 2513 2545 2808
+Q 2319 3103 1894 3103
+Q 1497 3103 1269 2806
+Q 1041 2509 991 1931
+L 2791 1931
+z
+" transform="scale(0.015625)"/>
+     <path id="math-6a65fd4e83ba71-DejaVuSerif-67" d="M 3359 2988
+L 3359 72
+Q 3359 -644 2965 -1033
+Q 2572 -1422 1844 -1422
+Q 1516 -1422 1216 -1362
+Q 916 -1303 641 -1184
+L 641 -488
+L 941 -488
+Q 997 -813 1206 -963
+Q 1416 -1113 1806 -1113
+Q 2313 -1113 2548 -827
+Q 2784 -541 2784 72
+L 2784 519
+Q 2616 206 2355 57
+Q 2094 -91 1709 -91
+Q 1097 -91 708 395
+Q 319 881 319 1663
+Q 319 2444 706 2928
+Q 1094 3413 1709 3413
+Q 2094 3413 2355 3264
+Q 2616 3116 2784 2803
+L 2784 3322
+L 3909 3322
+L 3909 2988
+L 3359 2988
+z
+M 2784 1825
+Q 2784 2422 2554 2737
+Q 2325 3053 1888 3053
+Q 1444 3053 1217 2703
+Q 991 2353 991 1663
+Q 991 975 1217 622
+Q 1444 269 1888 269
+Q 2325 269 2554 583
+Q 2784 897 2784 1497
+L 2784 1825
+z
+" transform="scale(0.015625)"/>
+     <path id="math-6a65fd4e83ba71-DejaVuSerif-2265" d="M 4684 488
+L 4684 0
+L 678 0
+L 678 488
+L 4684 488
+z
+M 678 3206
+L 678 3725
+L 4684 2578
+L 4684 2047
+L 678 897
+L 678 1416
+L 3975 2309
+L 678 3206
+z
+" transform="scale(0.015625)"/>
+     <path id="math-6a65fd4e83ba71-DejaVuSerif-2b" d="M 2931 4013
+L 2931 2259
+L 4684 2259
+L 4684 1753
+L 2931 1753
+L 2931 0
+L 2431 0
+L 2431 1753
+L 678 1753
+L 678 2259
+L 2431 2259
+L 2431 4013
+L 2931 4013
+z
+" transform="scale(0.015625)"/>
+     <path id="math-6a65fd4e83ba71-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-6a65fd4e83ba71-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-Italic-45" transform="translate(0 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-3d" transform="translate(91.962891 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-STIXGeneral-Italic-211a" transform="translate(194.716797 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-28" transform="translate(267.016785 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-Italic-3b1" transform="translate(306.030457 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-30" transform="translate(373.559753 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-2c" transform="translate(420.691199 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-2026" transform="translate(471.443152 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-2c" transform="translate(571.443152 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-Italic-3b1" transform="translate(622.195105 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-Italic-6b" transform="translate(689.724402 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-2c" transform="translate(734.736707 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-Italic-65" transform="translate(785.48866 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-Italic-3b1" transform="translate(849.10642 36.35) scale(0.7)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-30" transform="translate(896.376928 25.449687) scale(0.49)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-2c" transform="translate(931.964252 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-2026" transform="translate(982.716205 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-2c" transform="translate(1082.716205 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-Italic-65" transform="translate(1133.468158 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-Italic-3b1" transform="translate(1197.085919 36.35) scale(0.7)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-Italic-6b" transform="translate(1244.356427 25.449687) scale(0.49)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-29" transform="translate(1278.460352 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-2c" transform="translate(1317.474024 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-74" transform="translate(1557.874415 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-72" transform="translate(1598.059962 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-64" transform="translate(1645.862696 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-65" transform="translate(1709.876368 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-67" transform="translate(1769.056056 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-STIXGeneral-Italic-211a" transform="translate(1833.978087 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-Italic-45" transform="translate(1902.987743 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-2265" transform="translate(1994.950634 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-Italic-6b" transform="translate(2097.70454 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-2b" transform="translate(2177.265087 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-31" transform="translate(2280.018993 0.015625)"/>
+    <use xlink:href="#math-6a65fd4e83ba71-DejaVuSerif-2e" transform="translate(2343.64204 0.015625)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>E=\mathbb{Q}(\alpha_0,\ldots,\alpha_k,e^{\alpha_0},\ldots,e^{\alpha_k}),\qquad \operatorname{trdeg}_{\mathbb{Q}}E\ge k+1.</code></pre></details></div>
+<p class="reader-paragraph" data-source-block="5" data-source-type="p">Euler’s identity gives exp(α₀) = −1, while exp(αⱼ) = Z(pⱼ) − 1. Therefore</p>
+<div class="reader-equation" data-latex="E\subseteq K:=\mathbb{Q}(i,\pi,Z(p_1),\ldots,Z(p_k))." data-source-block="6" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="E\subseteq K:=\mathbb{Q}(i,\pi,Z(p_1),\ldots,Z(p_k))." xmlns:xlink="http://www.w3.org/1999/xlink" width="285pt" height="18pt" viewBox="0 0 285 18" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-8d6613ad04b6eb-figure_1">
+  <g id="math-8d6613ad04b6eb-patch_1">
+   <path d="M 0 18
+L 285 18
+L 285 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-8d6613ad04b6eb-text_1">
+   <!-- $E\subseteq K:=\mathbb{Q}(i,\pi,Z(p_1),\ldots,Z(p_k)).$ -->
+   <g style="fill: #202520" transform="translate(0 14) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-8d6613ad04b6eb-DejaVuSerif-Italic-45" d="M -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 4566 4666
+L 4366 3628
+L 3981 3628
+L 4106 4281
+L 1963 4281
+L 1659 2719
+L 3188 2719
+L 3300 3303
+L 3684 3303
+L 3384 1753
+L 3000 1753
+L 3113 2338
+L 1584 2338
+L 1206 384
+L 3400 384
+L 3525 1038
+L 3909 1038
+L 3709 0
+L -97 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d6613ad04b6eb-DejaVuSerif-2286" d="M 678 38
+L 4684 38
+L 4684 -469
+L 678 -469
+L 678 38
+z
+M 2684 969
+L 4684 969
+L 4684 469
+L 2684 469
+Q 2141 469 1678 737
+Q 1216 1006 947 1468
+Q 678 1931 678 2475
+Q 678 3019 947 3481
+Q 1216 3944 1678 4212
+Q 2141 4481 2684 4481
+L 4684 4481
+L 4684 3981
+L 2684 3981
+Q 2278 3981 1931 3778
+Q 1584 3575 1381 3228
+Q 1178 2881 1178 2475
+Q 1178 2069 1381 1722
+Q 1584 1375 1931 1172
+Q 2278 969 2684 969
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d6613ad04b6eb-DejaVuSerif-Italic-4b" d="M -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 2631 4666
+L 2566 4331
+L 1972 4331
+L 1628 2566
+L 3981 4331
+L 3475 4331
+L 3541 4666
+L 5091 4666
+L 5025 4331
+L 4500 4331
+L 2156 2572
+L 3959 331
+L 4491 331
+L 4428 0
+L 3344 0
+L 1563 2216
+L 1194 331
+L 1788 331
+L 1725 0
+L -97 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d6613ad04b6eb-DejaVuSerif-3a" d="M 666 325
+Q 666 500 786 622
+Q 906 744 1081 744
+Q 1256 744 1376 622
+Q 1497 500 1497 325
+Q 1497 150 1378 29
+Q 1259 -91 1081 -91
+Q 903 -91 784 29
+Q 666 150 666 325
+z
+M 666 2363
+Q 666 2538 786 2658
+Q 906 2778 1081 2778
+Q 1259 2778 1378 2659
+Q 1497 2541 1497 2363
+Q 1497 2184 1378 2065
+Q 1259 1947 1081 1947
+Q 906 1947 786 2067
+Q 666 2188 666 2363
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d6613ad04b6eb-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d6613ad04b6eb-STIXGeneral-Italic-211a" d="M 3878 -122
+L 3930 -333
+Q 3693 -454 3405 -454
+Q 3194 -454 3002 -326
+Q 2810 -198 2701 0
+Q 2317 -115 1907 -115
+Q 1133 -115 678 291
+Q 224 698 224 1459
+Q 224 2221 553 2861
+Q 883 3501 1497 3881
+Q 2112 4262 2880 4262
+Q 3654 4262 4108 3856
+Q 4563 3450 4563 2688
+Q 4563 1830 4134 1120
+Q 3706 410 2944 90
+Q 3136 -218 3437 -218
+Q 3674 -218 3878 -122
+z
+M 4102 3462
+L 3328 557
+Q 3808 902 4067 1446
+Q 4326 1990 4326 2598
+Q 4326 3066 4102 3462
+z
+M 3053 384
+L 3923 3661
+Q 3744 3834 3459 3930
+Q 3174 4026 2906 4026
+Q 2195 4026 1741 3770
+L 864 480
+Q 1011 339 1210 262
+Q 1536 659 2048 659
+Q 2310 659 2473 572
+Q 2637 486 2810 269
+Q 2944 320 3053 384
+z
+M 685 691
+L 1459 3597
+Q 979 3238 720 2697
+Q 461 2157 461 1549
+Q 461 1037 685 691
+z
+M 2554 192
+Q 2349 422 2029 422
+Q 1683 422 1453 179
+Q 1677 122 1901 122
+Q 2214 122 2554 192
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d6613ad04b6eb-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d6613ad04b6eb-DejaVuSerif-Italic-69" d="M 1009 4353
+Q 1038 4497 1163 4603
+Q 1288 4709 1434 4709
+Q 1578 4709 1663 4603
+Q 1728 4522 1728 4422
+Q 1728 4388 1719 4353
+Q 1691 4206 1567 4103
+Q 1444 4000 1297 4000
+Q 1150 4000 1066 4103
+Q 1003 4181 1003 4281
+Q 1003 4316 1009 4353
+z
+M 963 331
+L 1506 331
+L 1444 0
+L 325 0
+L 903 2988
+L 353 2988
+L 419 3322
+L 1544 3322
+L 963 331
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d6613ad04b6eb-DejaVuSerif-2c" d="M 231 -622
+Q 525 -406 662 -114
+Q 800 178 800 594
+L 800 709
+L 1416 709
+Q 1391 175 1164 -208
+Q 938 -591 481 -872
+L 231 -622
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d6613ad04b6eb-DejaVuSerif-Italic-3c0" d="M -56 0
+L 6 331
+L 525 331
+L 1044 2988
+L 494 2988
+L 556 3322
+L 4300 3322
+L 4238 2988
+L 3694 2988
+L 3175 331
+L 3688 331
+L 3625 0
+L 2038 0
+L 2100 331
+L 2597 331
+L 3116 2988
+L 1619 2988
+L 1100 331
+L 1600 331
+L 1538 0
+L -56 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d6613ad04b6eb-DejaVuSerif-Italic-5a" d="M -166 0
+L -122 225
+L 3572 4281
+L 1159 4281
+L 1025 3584
+L 641 3584
+L 850 4666
+L 4538 4666
+L 4494 4441
+L 800 384
+L 3438 384
+L 3563 1038
+L 3944 1038
+L 3744 0
+L -166 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d6613ad04b6eb-DejaVuSerif-Italic-70" d="M 1466 1825
+L 1400 1497
+Q 1353 1250 1353 1053
+Q 1353 769 1453 581
+Q 1622 269 2059 269
+Q 2500 269 2795 622
+Q 3091 975 3225 1663
+Q 3284 1978 3284 2225
+Q 3284 2513 3200 2703
+Q 3041 3053 2600 3053
+Q 2163 3053 1872 2737
+Q 1581 2422 1466 1825
+z
+M 1116 2988
+L 563 2988
+L 628 3322
+L 1756 3322
+L 1656 2803
+Q 1884 3116 2175 3264
+Q 2466 3413 2850 3413
+Q 3463 3413 3753 2928
+Q 3947 2609 3947 2163
+Q 3947 1928 3897 1663
+Q 3744 881 3262 395
+Q 2781 -91 2169 -91
+Q 1784 -91 1551 57
+Q 1319 206 1213 519
+L 850 -1331
+L 275 -1331
+L 1116 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d6613ad04b6eb-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d6613ad04b6eb-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d6613ad04b6eb-DejaVuSerif-2026" d="M 4916 325
+Q 4916 500 5036 622
+Q 5156 744 5331 744
+Q 5503 744 5625 622
+Q 5747 500 5747 325
+Q 5747 153 5625 31
+Q 5503 -91 5331 -91
+Q 5153 -91 5034 29
+Q 4916 150 4916 325
+z
+M 2784 325
+Q 2784 500 2904 622
+Q 3025 744 3200 744
+Q 3372 744 3494 622
+Q 3616 500 3616 325
+Q 3616 153 3494 31
+Q 3372 -91 3200 -91
+Q 3022 -91 2903 29
+Q 2784 150 2784 325
+z
+M 653 325
+Q 653 500 773 622
+Q 894 744 1069 744
+Q 1241 744 1362 622
+Q 1484 500 1484 325
+Q 1484 153 1362 31
+Q 1241 -91 1069 -91
+Q 891 -91 772 29
+Q 653 150 653 325
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d6613ad04b6eb-DejaVuSerif-Italic-6b" d="M 2113 2075
+L 3034 331
+L 3513 331
+L 3450 0
+L 2528 0
+L 1622 1697
+L 1088 1275
+L 841 0
+L 266 0
+L 1147 4531
+L 594 4531
+L 656 4863
+L 1784 4863
+L 1169 1697
+L 2822 2988
+L 2344 2988
+L 2406 3322
+L 3341 3322
+L 3278 2988
+L 2113 2075
+z
+" transform="scale(0.015625)"/>
+     <path id="math-8d6613ad04b6eb-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-Italic-45" transform="translate(0 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-2286" transform="translate(91.962891 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-Italic-4b" transform="translate(194.716797 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-3a" transform="translate(288.388672 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-3d" transform="translate(360.009766 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-STIXGeneral-Italic-211a" transform="translate(462.763672 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-28" transform="translate(535.06366 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-Italic-69" transform="translate(574.077332 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-2c" transform="translate(606.059753 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-Italic-3c0" transform="translate(656.811707 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-2c" transform="translate(722.534363 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-Italic-5a" transform="translate(773.286316 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-28" transform="translate(842.768738 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-Italic-70" transform="translate(881.78241 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-31" transform="translate(945.796082 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-29" transform="translate(992.927527 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-2c" transform="translate(1031.941199 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-2026" transform="translate(1082.693152 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-2c" transform="translate(1182.693152 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-Italic-5a" transform="translate(1233.445105 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-28" transform="translate(1302.927527 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-Italic-70" transform="translate(1341.941199 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-Italic-6b" transform="translate(1405.954871 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-29" transform="translate(1450.967175 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-29" transform="translate(1489.980847 0.015625)"/>
+    <use xlink:href="#math-8d6613ad04b6eb-DejaVuSerif-2e" transform="translate(1528.994519 0.015625)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>E\subseteq K:=\mathbb{Q}(i,\pi,Z(p_1),\ldots,Z(p_k)).</code></pre></details></div>
+<p class="reader-paragraph" data-source-block="7" data-source-type="p">Adjoining i is algebraic, so</p>
+<div class="reader-equation" data-latex="\operatorname{trdeg}_{\mathbb{Q}}K=\operatorname{trdeg}_{\mathbb{Q}}\mathbb{Q}(\pi,Z(p_1),\ldots,Z(p_k))\le k+1." data-source-block="8" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="\operatorname{trdeg}_{\mathbb{Q}}K=\operatorname{trdeg}_{\mathbb{Q}}\mathbb{Q}(\pi,Z(p_1),\ldots,Z(p_k))\le k+1." xmlns:xlink="http://www.w3.org/1999/xlink" width="412pt" height="18pt" viewBox="0 0 412 18" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-d159ea6aa226bc-figure_1">
+  <g id="math-d159ea6aa226bc-patch_1">
+   <path d="M 0 18
+L 412 18
+L 412 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-d159ea6aa226bc-text_1">
+   <!-- $\operatorname{trdeg}_{\mathbb{Q}}K=\operatorname{trdeg}_{\mathbb{Q}}\mathbb{Q}(\pi,Z(p_1),\ldots,Z(p_k))\leq k+1.$ -->
+   <g style="fill: #202520" transform="translate(0 14) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-d159ea6aa226bc-DejaVuSerif-74" d="M 691 2988
+L 184 2988
+L 184 3322
+L 691 3322
+L 691 4353
+L 1269 4353
+L 1269 3322
+L 2350 3322
+L 2350 2988
+L 1269 2988
+L 1269 878
+Q 1269 456 1350 337
+Q 1431 219 1650 219
+Q 1875 219 1978 351
+Q 2081 484 2088 781
+L 2522 781
+Q 2497 328 2275 118
+Q 2053 -91 1600 -91
+Q 1103 -91 897 129
+Q 691 350 691 878
+L 691 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d159ea6aa226bc-DejaVuSerif-72" d="M 3059 3328
+L 3059 2497
+L 2728 2497
+Q 2713 2744 2591 2866
+Q 2469 2988 2234 2988
+Q 1809 2988 1582 2694
+Q 1356 2400 1356 1850
+L 1356 331
+L 2022 331
+L 2022 0
+L 263 0
+L 263 331
+L 781 331
+L 781 2994
+L 231 2994
+L 231 3322
+L 1356 3322
+L 1356 2731
+Q 1525 3078 1790 3245
+Q 2056 3413 2438 3413
+Q 2578 3413 2733 3391
+Q 2888 3369 3059 3328
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d159ea6aa226bc-DejaVuSerif-64" d="M 3359 331
+L 3909 331
+L 3909 0
+L 2784 0
+L 2784 519
+Q 2616 206 2355 57
+Q 2094 -91 1709 -91
+Q 1097 -91 708 395
+Q 319 881 319 1663
+Q 319 2444 706 2928
+Q 1094 3413 1709 3413
+Q 2094 3413 2355 3264
+Q 2616 3116 2784 2803
+L 2784 4531
+L 2241 4531
+L 2241 4863
+L 3359 4863
+L 3359 331
+z
+M 2784 1497
+L 2784 1825
+Q 2784 2422 2554 2737
+Q 2325 3053 1888 3053
+Q 1444 3053 1217 2703
+Q 991 2353 991 1663
+Q 991 975 1217 622
+Q 1444 269 1888 269
+Q 2325 269 2554 583
+Q 2784 897 2784 1497
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d159ea6aa226bc-DejaVuSerif-65" d="M 3469 1600
+L 991 1600
+L 991 1575
+Q 991 903 1244 561
+Q 1497 219 1991 219
+Q 2369 219 2611 417
+Q 2853 616 2950 1006
+L 3413 1006
+Q 3275 459 2904 184
+Q 2534 -91 1931 -91
+Q 1203 -91 761 389
+Q 319 869 319 1663
+Q 319 2450 753 2931
+Q 1188 3413 1894 3413
+Q 2647 3413 3050 2948
+Q 3453 2484 3469 1600
+z
+M 2791 1931
+Q 2772 2513 2545 2808
+Q 2319 3103 1894 3103
+Q 1497 3103 1269 2806
+Q 1041 2509 991 1931
+L 2791 1931
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d159ea6aa226bc-DejaVuSerif-67" d="M 3359 2988
+L 3359 72
+Q 3359 -644 2965 -1033
+Q 2572 -1422 1844 -1422
+Q 1516 -1422 1216 -1362
+Q 916 -1303 641 -1184
+L 641 -488
+L 941 -488
+Q 997 -813 1206 -963
+Q 1416 -1113 1806 -1113
+Q 2313 -1113 2548 -827
+Q 2784 -541 2784 72
+L 2784 519
+Q 2616 206 2355 57
+Q 2094 -91 1709 -91
+Q 1097 -91 708 395
+Q 319 881 319 1663
+Q 319 2444 706 2928
+Q 1094 3413 1709 3413
+Q 2094 3413 2355 3264
+Q 2616 3116 2784 2803
+L 2784 3322
+L 3909 3322
+L 3909 2988
+L 3359 2988
+z
+M 2784 1825
+Q 2784 2422 2554 2737
+Q 2325 3053 1888 3053
+Q 1444 3053 1217 2703
+Q 991 2353 991 1663
+Q 991 975 1217 622
+Q 1444 269 1888 269
+Q 2325 269 2554 583
+Q 2784 897 2784 1497
+L 2784 1825
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d159ea6aa226bc-STIXGeneral-Italic-211a" d="M 3878 -122
+L 3930 -333
+Q 3693 -454 3405 -454
+Q 3194 -454 3002 -326
+Q 2810 -198 2701 0
+Q 2317 -115 1907 -115
+Q 1133 -115 678 291
+Q 224 698 224 1459
+Q 224 2221 553 2861
+Q 883 3501 1497 3881
+Q 2112 4262 2880 4262
+Q 3654 4262 4108 3856
+Q 4563 3450 4563 2688
+Q 4563 1830 4134 1120
+Q 3706 410 2944 90
+Q 3136 -218 3437 -218
+Q 3674 -218 3878 -122
+z
+M 4102 3462
+L 3328 557
+Q 3808 902 4067 1446
+Q 4326 1990 4326 2598
+Q 4326 3066 4102 3462
+z
+M 3053 384
+L 3923 3661
+Q 3744 3834 3459 3930
+Q 3174 4026 2906 4026
+Q 2195 4026 1741 3770
+L 864 480
+Q 1011 339 1210 262
+Q 1536 659 2048 659
+Q 2310 659 2473 572
+Q 2637 486 2810 269
+Q 2944 320 3053 384
+z
+M 685 691
+L 1459 3597
+Q 979 3238 720 2697
+Q 461 2157 461 1549
+Q 461 1037 685 691
+z
+M 2554 192
+Q 2349 422 2029 422
+Q 1683 422 1453 179
+Q 1677 122 1901 122
+Q 2214 122 2554 192
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d159ea6aa226bc-DejaVuSerif-Italic-4b" d="M -97 0
+L -34 331
+L 559 331
+L 1338 4331
+L 744 4331
+L 809 4666
+L 2631 4666
+L 2566 4331
+L 1972 4331
+L 1628 2566
+L 3981 4331
+L 3475 4331
+L 3541 4666
+L 5091 4666
+L 5025 4331
+L 4500 4331
+L 2156 2572
+L 3959 331
+L 4491 331
+L 4428 0
+L 3344 0
+L 1563 2216
+L 1194 331
+L 1788 331
+L 1725 0
+L -97 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d159ea6aa226bc-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d159ea6aa226bc-DejaVuSerif-28" d="M 2041 -997
+Q 1281 -656 893 83
+Q 506 822 506 1931
+Q 506 3044 893 3783
+Q 1281 4522 2041 4863
+L 2041 4556
+Q 1559 4225 1350 3623
+Q 1141 3022 1141 1931
+Q 1141 844 1350 242
+Q 1559 -359 2041 -691
+L 2041 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d159ea6aa226bc-DejaVuSerif-Italic-3c0" d="M -56 0
+L 6 331
+L 525 331
+L 1044 2988
+L 494 2988
+L 556 3322
+L 4300 3322
+L 4238 2988
+L 3694 2988
+L 3175 331
+L 3688 331
+L 3625 0
+L 2038 0
+L 2100 331
+L 2597 331
+L 3116 2988
+L 1619 2988
+L 1100 331
+L 1600 331
+L 1538 0
+L -56 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d159ea6aa226bc-DejaVuSerif-2c" d="M 231 -622
+Q 525 -406 662 -114
+Q 800 178 800 594
+L 800 709
+L 1416 709
+Q 1391 175 1164 -208
+Q 938 -591 481 -872
+L 231 -622
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d159ea6aa226bc-DejaVuSerif-Italic-5a" d="M -166 0
+L -122 225
+L 3572 4281
+L 1159 4281
+L 1025 3584
+L 641 3584
+L 850 4666
+L 4538 4666
+L 4494 4441
+L 800 384
+L 3438 384
+L 3563 1038
+L 3944 1038
+L 3744 0
+L -166 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d159ea6aa226bc-DejaVuSerif-Italic-70" d="M 1466 1825
+L 1400 1497
+Q 1353 1250 1353 1053
+Q 1353 769 1453 581
+Q 1622 269 2059 269
+Q 2500 269 2795 622
+Q 3091 975 3225 1663
+Q 3284 1978 3284 2225
+Q 3284 2513 3200 2703
+Q 3041 3053 2600 3053
+Q 2163 3053 1872 2737
+Q 1581 2422 1466 1825
+z
+M 1116 2988
+L 563 2988
+L 628 3322
+L 1756 3322
+L 1656 2803
+Q 1884 3116 2175 3264
+Q 2466 3413 2850 3413
+Q 3463 3413 3753 2928
+Q 3947 2609 3947 2163
+Q 3947 1928 3897 1663
+Q 3744 881 3262 395
+Q 2781 -91 2169 -91
+Q 1784 -91 1551 57
+Q 1319 206 1213 519
+L 850 -1331
+L 275 -1331
+L 1116 2988
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d159ea6aa226bc-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d159ea6aa226bc-DejaVuSerif-29" d="M 453 -997
+L 453 -691
+Q 934 -359 1145 242
+Q 1356 844 1356 1931
+Q 1356 3022 1145 3623
+Q 934 4225 453 4556
+L 453 4863
+Q 1216 4522 1603 3783
+Q 1991 3044 1991 1931
+Q 1991 822 1603 83
+Q 1216 -656 453 -997
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d159ea6aa226bc-DejaVuSerif-2026" d="M 4916 325
+Q 4916 500 5036 622
+Q 5156 744 5331 744
+Q 5503 744 5625 622
+Q 5747 500 5747 325
+Q 5747 153 5625 31
+Q 5503 -91 5331 -91
+Q 5153 -91 5034 29
+Q 4916 150 4916 325
+z
+M 2784 325
+Q 2784 500 2904 622
+Q 3025 744 3200 744
+Q 3372 744 3494 622
+Q 3616 500 3616 325
+Q 3616 153 3494 31
+Q 3372 -91 3200 -91
+Q 3022 -91 2903 29
+Q 2784 150 2784 325
+z
+M 653 325
+Q 653 500 773 622
+Q 894 744 1069 744
+Q 1241 744 1362 622
+Q 1484 500 1484 325
+Q 1484 153 1362 31
+Q 1241 -91 1069 -91
+Q 891 -91 772 29
+Q 653 150 653 325
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d159ea6aa226bc-DejaVuSerif-Italic-6b" d="M 2113 2075
+L 3034 331
+L 3513 331
+L 3450 0
+L 2528 0
+L 1622 1697
+L 1088 1275
+L 841 0
+L 266 0
+L 1147 4531
+L 594 4531
+L 656 4863
+L 1784 4863
+L 1169 1697
+L 2822 2988
+L 2344 2988
+L 2406 3322
+L 3341 3322
+L 3278 2988
+L 2113 2075
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d159ea6aa226bc-DejaVuSerif-2264" d="M 4684 3206
+L 1388 2309
+L 4684 1416
+L 4684 897
+L 678 2047
+L 678 2578
+L 4684 3725
+L 4684 3206
+z
+M 678 488
+L 4684 488
+L 4684 0
+L 678 0
+L 678 488
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d159ea6aa226bc-DejaVuSerif-2b" d="M 2931 4013
+L 2931 2259
+L 4684 2259
+L 4684 1753
+L 2931 1753
+L 2931 0
+L 2431 0
+L 2431 1753
+L 678 1753
+L 678 2259
+L 2431 2259
+L 2431 4013
+L 2931 4013
+z
+" transform="scale(0.015625)"/>
+     <path id="math-d159ea6aa226bc-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-74" transform="translate(0 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-72" transform="translate(40.185547 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-64" transform="translate(87.988281 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-65" transform="translate(152.001953 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-67" transform="translate(211.181641 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-STIXGeneral-Italic-211a" transform="translate(276.103672 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-Italic-4b" transform="translate(345.113328 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-3d" transform="translate(438.785203 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-74" transform="translate(541.53911 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-72" transform="translate(581.724656 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-64" transform="translate(629.527391 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-65" transform="translate(693.541063 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-67" transform="translate(752.72075 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-STIXGeneral-Italic-211a" transform="translate(817.642781 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-d159ea6aa226bc-STIXGeneral-Italic-211a" transform="translate(886.652438 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-28" transform="translate(958.952426 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-Italic-3c0" transform="translate(997.966098 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-2c" transform="translate(1063.688754 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-Italic-5a" transform="translate(1114.440707 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-28" transform="translate(1183.923129 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-Italic-70" transform="translate(1222.936801 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-31" transform="translate(1286.950473 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-29" transform="translate(1334.081918 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-2c" transform="translate(1373.09559 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-2026" transform="translate(1423.847543 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-2c" transform="translate(1523.847543 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-Italic-5a" transform="translate(1574.599496 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-28" transform="translate(1644.081918 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-Italic-70" transform="translate(1683.09559 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-Italic-6b" transform="translate(1747.109262 -15.55625) scale(0.7)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-29" transform="translate(1792.121566 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-29" transform="translate(1831.135238 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-2264" transform="translate(1889.113754 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-Italic-6b" transform="translate(1991.86766 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-2b" transform="translate(2071.428207 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-31" transform="translate(2174.182113 0.015625)"/>
+    <use xlink:href="#math-d159ea6aa226bc-DejaVuSerif-2e" transform="translate(2237.80516 0.015625)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>\operatorname{trdeg}_{\mathbb{Q}}K=\operatorname{trdeg}_{\mathbb{Q}}\mathbb{Q}(\pi,Z(p_1),\ldots,Z(p_k))\le k+1.</code></pre></details></div>
+<p class="reader-paragraph" data-source-block="9" data-source-type="p">The lower and upper bounds force equality. A field generated by k + 1 numbers has transcendence degree k + 1 exactly when those generators are algebraically independent. This proves the conditional proposition. The field containment above suffices; literal equality of E and K is not needed.</p>
+<aside class="reader-callout" data-status="conditional" data-source-block="10" data-source-type="callout"><p class="reader-callout-label">Why the complex version matters</p><p class="reader-callout-text">The selected inputs include iπ. A real-only version of Schanuel is not the assumption used in this proof.</p></aside>
+<h3 class="reader-subheading" data-source-block="11" data-source-type="h">The Euler counterexample has a domain</h3>
+<div class="reader-equation" data-latex="q=i,\quad m=1:\qquad e^{q\pi^m}=e^{i\pi}=-1." data-source-block="12" data-source-type="eq"><div class="reader-equation-scroll"><svg class="reader-math-svg" role="img" aria-label="q=i,\quad m=1:\qquad e^{q\pi^m}=e^{i\pi}=-1." xmlns:xlink="http://www.w3.org/1999/xlink" width="305pt" height="20pt" viewBox="0 0 305 20" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="math-4e48b6aaef24e2-figure_1">
+  <g id="math-4e48b6aaef24e2-patch_1">
+   <path d="M 0 20
+L 305 20
+L 305 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="math-4e48b6aaef24e2-text_1">
+   <!-- $q=i,\quad m=1:\qquad e^{q\pi^m}=e^{i\pi}=-1.$ -->
+   <g style="fill: #202520" transform="translate(0 16) scale(0.18 -0.18)">
+    <defs>
+     <path id="math-4e48b6aaef24e2-DejaVuSerif-Italic-71" d="M 2684 519
+Q 2469 206 2206 56
+Q 1944 -91 1597 -91
+Q 1047 -91 769 281
+Q 594 516 575 841
+Q 563 1031 606 1256
+Q 822 2359 1588 2928
+Q 2241 3409 3006 3413
+Q 3613 3416 3803 3322
+L 2963 -1000
+L 3516 -1000
+L 3450 -1331
+L 2322 -1331
+L 2684 519
+z
+M 2916 3094
+Q 2316 3094 1850 2625
+Q 1388 2153 1219 1297
+Q 1172 1044 1184 853
+Q 1197 659 1275 528
+Q 1428 269 1828 269
+Q 2222 269 2489 583
+Q 2756 897 2872 1497
+L 3166 3003
+Q 3169 3094 2916 3094
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e48b6aaef24e2-DejaVuSerif-3d" d="M 678 2894
+L 4684 2894
+L 4684 2394
+L 678 2394
+L 678 2894
+z
+M 678 1619
+L 4684 1619
+L 4684 1119
+L 678 1119
+L 678 1619
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e48b6aaef24e2-DejaVuSerif-Italic-69" d="M 1009 4353
+Q 1038 4497 1163 4603
+Q 1288 4709 1434 4709
+Q 1578 4709 1663 4603
+Q 1728 4522 1728 4422
+Q 1728 4388 1719 4353
+Q 1691 4206 1567 4103
+Q 1444 4000 1297 4000
+Q 1150 4000 1066 4103
+Q 1003 4181 1003 4281
+Q 1003 4316 1009 4353
+z
+M 963 331
+L 1506 331
+L 1444 0
+L 325 0
+L 903 2988
+L 353 2988
+L 419 3322
+L 1544 3322
+L 963 331
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e48b6aaef24e2-DejaVuSerif-2c" d="M 231 -622
+Q 525 -406 662 -114
+Q 800 178 800 594
+L 800 709
+L 1416 709
+Q 1391 175 1164 -208
+Q 938 -591 481 -872
+L 231 -622
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e48b6aaef24e2-DejaVuSerif-Italic-6d" d="M 3503 2675
+Q 3741 3041 4034 3227
+Q 4328 3413 4672 3413
+Q 5194 3413 5388 3088
+Q 5503 2894 5503 2578
+Q 5503 2372 5453 2113
+L 5106 331
+L 5625 331
+L 5563 0
+L 4469 0
+L 4866 2047
+Q 4913 2291 4913 2466
+Q 4913 2659 4856 2772
+Q 4750 2988 4403 2988
+Q 4019 2988 3761 2697
+Q 3503 2406 3394 1850
+L 3034 0
+L 2459 0
+L 2863 2069
+Q 2906 2303 2906 2472
+Q 2906 2666 2850 2775
+Q 2741 2988 2394 2988
+Q 2009 2988 1751 2697
+Q 1494 2406 1384 1850
+L 1025 0
+L 450 0
+L 1031 2994
+L 481 2994
+L 544 3322
+L 1669 3322
+L 1556 2731
+Q 1778 3063 2059 3238
+Q 2341 3413 2653 3413
+Q 3041 3413 3262 3220
+Q 3484 3028 3503 2675
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e48b6aaef24e2-DejaVuSerif-31" d="M 909 0
+L 909 331
+L 1722 331
+L 1722 4213
+L 781 3603
+L 781 4013
+L 1919 4750
+L 2350 4750
+L 2350 331
+L 3163 331
+L 3163 0
+L 909 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e48b6aaef24e2-DejaVuSerif-3a" d="M 666 325
+Q 666 500 786 622
+Q 906 744 1081 744
+Q 1256 744 1376 622
+Q 1497 500 1497 325
+Q 1497 150 1378 29
+Q 1259 -91 1081 -91
+Q 903 -91 784 29
+Q 666 150 666 325
+z
+M 666 2363
+Q 666 2538 786 2658
+Q 906 2778 1081 2778
+Q 1259 2778 1378 2659
+Q 1497 2541 1497 2363
+Q 1497 2184 1378 2065
+Q 1259 1947 1081 1947
+Q 906 1947 786 2067
+Q 666 2188 666 2363
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e48b6aaef24e2-DejaVuSerif-Italic-65" d="M 938 1275
+Q 925 1156 925 1050
+Q 925 756 1031 563
+Q 1216 219 1709 219
+Q 2072 219 2250 328
+Q 2569 525 2644 778
+L 3066 778
+Q 2941 381 2475 103
+Q 2150 -91 1506 -91
+Q 863 -91 516 388
+Q 272 722 272 1206
+Q 272 1419 319 1659
+Q 472 2450 1000 2931
+Q 1528 3413 2278 3413
+Q 3500 3413 3500 2547
+Q 3500 1913 2859 1603
+Q 2206 1288 938 1275
+z
+M 2541 1975
+Q 2891 2181 2891 2569
+Q 2891 3103 2181 3103
+Q 1763 3103 1472 2784
+Q 1181 2466 1003 1606
+Q 2006 1653 2541 1975
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e48b6aaef24e2-DejaVuSerif-Italic-3c0" d="M -56 0
+L 6 331
+L 525 331
+L 1044 2988
+L 494 2988
+L 556 3322
+L 4300 3322
+L 4238 2988
+L 3694 2988
+L 3175 331
+L 3688 331
+L 3625 0
+L 2038 0
+L 2100 331
+L 2597 331
+L 3116 2988
+L 1619 2988
+L 1100 331
+L 1600 331
+L 1538 0
+L -56 0
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e48b6aaef24e2-DejaVuSerif-2212" d="M 678 2259
+L 4684 2259
+L 4684 1753
+L 678 1753
+L 678 2259
+z
+" transform="scale(0.015625)"/>
+     <path id="math-4e48b6aaef24e2-DejaVuSerif-2e" d="M 603 325
+Q 603 500 722 622
+Q 841 744 1019 744
+Q 1191 744 1312 622
+Q 1434 500 1434 325
+Q 1434 153 1312 31
+Q 1191 -91 1019 -91
+Q 841 -91 722 29
+Q 603 150 603 325
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-Italic-71" transform="translate(0 0.100781)"/>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-3d" transform="translate(82.978516 0.100781)"/>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-Italic-69" transform="translate(185.732422 0.100781)"/>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-2c" transform="translate(217.714844 0.100781)"/>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-Italic-6d" transform="translate(363.291016 0.100781)"/>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-3d" transform="translate(477.080078 0.100781)"/>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-31" transform="translate(579.833984 0.100781)"/>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-3a" transform="translate(662.421875 0.100781)"/>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-Italic-65" transform="translate(904.726562 0.100781)"/>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-Italic-71" transform="translate(968.344323 36.435156) scale(0.7)"/>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-Italic-3c0" transform="translate(1013.153893 36.435156) scale(0.7)"/>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-Italic-6d" transform="translate(1062.12706 61.869219) scale(0.49)"/>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-3d" transform="translate(1131.967802 0.100781)"/>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-Italic-65" transform="translate(1234.721708 0.100781)"/>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-Italic-69" transform="translate(1298.339469 36.435156) scale(0.7)"/>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-Italic-3c0" transform="translate(1320.727164 36.435156) scale(0.7)"/>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-3d" transform="translate(1388.29318 0.100781)"/>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-2212" transform="translate(1491.047086 0.100781)"/>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-31" transform="translate(1574.836148 0.100781)"/>
+    <use xlink:href="#math-4e48b6aaef24e2-DejaVuSerif-2e" transform="translate(1638.459195 0.100781)"/>
+   </g>
+  </g>
+ </g>
+</svg>
+</div><details class="reader-math-source"><summary>Copy exact formula</summary><pre><code>q=i,\quad m=1:\qquad e^{q\pi^m}=e^{i\pi}=-1.</code></pre></details></div>
+<p class="reader-paragraph" data-source-block="13" data-source-type="p">This refutes a blanket transcendence claim allowing every nonzero <b>complex algebraic</b> coefficient q. It does not refute a claim restricted to rational or real q, since i is neither. Lindemann’s algebraic-input theorem does not directly apply to c<sub>p</sub>π<sup>p</sup>, whose input is transcendental.</p>
+<p class="reader-paragraph" data-source-block="14" data-source-type="p">The deduction uses the stated conjecture, the even-zeta formula and the transcendence of π. Field containment provides the required bound.</p></section>
+</main><footer class="reader-footer"><p data-reader-chrome><a href="schanuel-zeta-family.json">Structured source</a> · <a href="schanuel-zeta-family.md">Markdown source</a></p>
+<details class="reader-provenance" data-reader-reveal data-archival-provenance><summary>Credits and source-version record</summary><pre>{
+  &quot;title&quot;: &quot;The Z(p) family under Schanuel&quot;,
+  &quot;subtitle&quot;: &quot;A focused reading note from the Pirate Chest&quot;,
+  &quot;date&quot;: &quot;23 November 2026&quot;,
+  &quot;author&quot;: &quot;Zolton / EncapsulatorP · with ChatGPT&quot;,
+  &quot;historical_source_commit&quot;: &quot;cc3f20117eaead570db6077377a43a92c0bfc652&quot;,
+  &quot;reviewed_proof_commit&quot;: &quot;29f9232545aa112cd6ffa9fe1f3c0e85d093dedd&quot;,
+  &quot;status&quot;: &quot;conditional&quot;,
+  &quot;statusLabel&quot;: &quot;Conditional on complex Schanuel&quot;
+}</pre></details>
+<p data-reader-chrome><a href="../../index.html#interactive?topic=goldbach-involution">Return to the interactive space</a></p></footer></div>
+<script type="application/json" id="reader-source">{
+  "title": "The Z(p) family under Schanuel",
+  "subtitle": "A focused reading note from the Pirate Chest",
+  "date": "23 November 2026",
+  "author": "Zolton / EncapsulatorP · with ChatGPT",
+  "historical_source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
+  "reviewed_proof_commit": "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd",
+  "status": "conditional",
+  "statusLabel": "Conditional on complex Schanuel",
+  "pages": [
+    {
+      "id": "schanuel-zeta-family-orientation",
+      "title": "The Z(p) family under Schanuel",
+      "kicker": "NOTE 05 · CONDITIONAL ON COMPLEX SCHANUEL",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Euler’s even-zeta formula gives exact rational coefficients cₚ for every odd integer p ≥ 3. Assuming complex Schanuel, π and any finite list of the corresponding Z(p) values are algebraically independent."
+        },
+        {
+          "type": "eq",
+          "latex": "Z(p)=e^{c_p\\pi^p}+1,\\qquad p=3,5,7,\\ldots"
+        },
+        {
+          "type": "callout",
+          "label": "Conditional on complex Schanuel",
+          "status": "conditional",
+          "text": "The zeta reduction is unconditional. The independence conclusion in this argument assumes the full complex Schanuel conjecture. Distinct odd exponents and nonzero rational coefficients are part of the hypotheses."
+        },
+        {
+          "type": "p",
+          "text": "First identify the exact Bernoulli coefficient. Then apply the conjecture to iπ and the selected real π-power exponents; field containment gives the required transcendence-degree bound."
+        },
+        {
+          "type": "h",
+          "text": "One concrete next step"
+        },
+        {
+          "type": "p",
+          "text": "Compare this specific conditional consequence with the literature. State any proposed unconditional result as a separate claim with its own assumptions."
+        },
+        {
+          "type": "h",
+          "text": "Sources and related reading"
+        },
+        {
+          "type": "p",
+          "text": "<b>[S3] Even-zeta values.<\/b> NIST Digital Library of Mathematical Functions, §25.6, equation 25.6.2. This classical formula supplies the exact coefficient c<sub>p<\/sub>.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "[S3] Euler’s even-zeta evaluation",
+          "url": "https://dlmf.nist.gov/25.6.E2"
+        },
+        {
+          "type": "p",
+          "text": "<b>[S4] Complex Schanuel conjecture.<\/b> I. A. Broudy and S. Eterović, <i>Schanuel type conjectures and disjointness<\/i>, The Ramanujan Journal 62 (2023), 781–795, Conjecture 3.1. This supplies the conjectural assumption; the Z(p) deduction is written here.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "[S4] Read the precise Schanuel assumption",
+          "url": "https://link.springer.com/article/10.1007/s11139-023-00707-3"
+        },
+        {
+          "type": "link",
+          "text": "Historical collection source · original edition",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#zeta-family"
+        },
+        {
+          "type": "link",
+          "text": "Return to the Treasure Chest",
+          "url": "https://encapsulatorp.github.io/#buried-logistic-vanishing"
+        }
+      ]
+    },
+    {
+      "id": "zeta-family",
+      "title": "The Z(p) family",
+      "kicker": "01 · EXACT REDUCTION; CONDITIONAL INDEPENDENCE",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Let p be an odd integer at least 3. Primality is optional. Define"
+        },
+        {
+          "type": "eq",
+          "latex": "Z(p)=\\exp\\!\\left(\\frac{\\pi\\zeta(p-1)}p\\right)+1."
+        },
+        {
+          "type": "p",
+          "text": "For p = 2m + 1 with m ≥ 1, Euler’s even-zeta evaluation [S3] gives"
+        },
+        {
+          "type": "eq",
+          "latex": "\\zeta(2m)=\\frac{(2\\pi)^{2m}}{2(2m)!}|B_{2m}|,"
+        },
+        {
+          "type": "eq",
+          "latex": "Z(p)=e^{c_p\\pi^p}+1,\\qquad c_p=\\frac{2^{p-2}|B_{p-1}|}{p!}\\in\\mathbb{Q}_{>0}."
+        },
+        {
+          "type": "p",
+          "text": "Here B<sub>2m<\/sub> denotes a Bernoulli number. Equivalently"
+        },
+        {
+          "type": "eq",
+          "latex": "c_{2m+1}=\\frac{(-1)^{m+1}2^{2m-1}B_{2m}}{(2m+1)!}."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "p",
+            "cₚ",
+            "Exponent in Z(p) − 1"
+          ],
+          "rows": [
+            [
+              "3",
+              "1/18",
+              "π³/18"
+            ],
+            [
+              "5",
+              "1/450",
+              "π⁵/450"
+            ],
+            [
+              "7",
+              "1/6615",
+              "π⁷/6615"
+            ]
+          ],
+          "widths": [
+            0.16,
+            0.28,
+            0.56
+          ]
+        },
+        {
+          "type": "p",
+          "text": "The case p = 2 is excluded because ζ(1) has a pole. For even p ≥ 4, the displayed rational coefficient does not follow from the even-zeta formula."
+        },
+        {
+          "type": "callout",
+          "label": "Conditional proposition",
+          "text": "Assume the full complex Schanuel conjecture. For pairwise distinct odd integers p₁, …, pₖ ≥ 3, the numbers π, Z(p₁), …, Z(pₖ) are algebraically independent over ℚ.",
+          "status": "conditional"
+        },
+        {
+          "type": "p",
+          "text": "“Algebraically independent” means that no nonzero polynomial with rational coefficients in these k + 1 variables vanishes on the tuple. The next page gives the deduction and keeps the assumption visible."
+        },
+        {
+          "type": "p",
+          "text": "The rational-coefficient reduction is unconditional. Algebraic independence of π and the selected Z(p) values, including the resulting individual-transcendence conclusions, follows under the stated complex Schanuel assumption."
+        }
+      ]
+    },
+    {
+      "id": "schanuel-proof",
+      "title": "The conditional Schanuel argument",
+      "kicker": "02 · COMPLETE DEDUCTION AND DOMAIN LIMITS",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Complex Schanuel states that for ℚ-linearly independent complex numbers α₀, …, αₖ, the field generated by these numbers and their exponentials has transcendence degree at least k + 1 over ℚ [S4]. Apply it to"
+        },
+        {
+          "type": "eq",
+          "latex": "\\alpha_0=i\\pi,\\qquad \\alpha_j=c_{p_j}\\pi^{p_j}\\quad(1\\le j\\le k)."
+        },
+        {
+          "type": "p",
+          "text": "<b>Linear independence.<\/b> The imaginary part of a rational relation forces the coefficient of iπ (i times pi) to vanish. The remaining relation is a polynomial in π (pi), with distinct powers and nonzero rational coefficients c_p. Transcendence of π forces every remaining coefficient to vanish."
+        },
+        {
+          "type": "p",
+          "text": "<b>The Schanuel bound.<\/b> With E the field generated by these inputs and their exponentials, the conjecture gives"
+        },
+        {
+          "type": "eq",
+          "latex": "E=\\mathbb{Q}(\\alpha_0,\\ldots,\\alpha_k,e^{\\alpha_0},\\ldots,e^{\\alpha_k}),\\qquad \\operatorname{trdeg}_{\\mathbb{Q}}E\\ge k+1."
+        },
+        {
+          "type": "p",
+          "text": "Euler’s identity gives exp(α₀) = −1, while exp(αⱼ) = Z(pⱼ) − 1. Therefore"
+        },
+        {
+          "type": "eq",
+          "latex": "E\\subseteq K:=\\mathbb{Q}(i,\\pi,Z(p_1),\\ldots,Z(p_k))."
+        },
+        {
+          "type": "p",
+          "text": "Adjoining i is algebraic, so"
+        },
+        {
+          "type": "eq",
+          "latex": "\\operatorname{trdeg}_{\\mathbb{Q}}K=\\operatorname{trdeg}_{\\mathbb{Q}}\\mathbb{Q}(\\pi,Z(p_1),\\ldots,Z(p_k))\\le k+1."
+        },
+        {
+          "type": "p",
+          "text": "The lower and upper bounds force equality. A field generated by k + 1 numbers has transcendence degree k + 1 exactly when those generators are algebraically independent. This proves the conditional proposition. The field containment above suffices; literal equality of E and K is not needed."
+        },
+        {
+          "type": "callout",
+          "label": "Why the complex version matters",
+          "text": "The selected inputs include iπ. A real-only version of Schanuel is not the assumption used in this proof.",
+          "status": "conditional"
+        },
+        {
+          "type": "h",
+          "text": "The Euler counterexample has a domain"
+        },
+        {
+          "type": "eq",
+          "latex": "q=i,\\quad m=1:\\qquad e^{q\\pi^m}=e^{i\\pi}=-1."
+        },
+        {
+          "type": "p",
+          "text": "This refutes a blanket transcendence claim allowing every nonzero <b>complex algebraic<\/b> coefficient q. It does not refute a claim restricted to rational or real q, since i is neither. Lindemann’s algebraic-input theorem does not directly apply to c<sub>p<\/sub>π<super>p<\/super>, whose input is transcendental."
+        },
+        {
+          "type": "p",
+          "text": "The deduction uses the stated conjecture, the even-zeta formula and the transcendence of π. Field containment provides the required bound."
+        }
+      ]
+    }
+  ]
+}</script>
+<script type="application/json" id="reader-config">{"id":"schanuel-zeta-family","entryId":"schanuel-zeta-family","title":"The Z(p) family under Schanuel","status":"conditional","kind":"conditional-proof","root":"#reader-content","controls":"#reader-tools","sourceLabel":"Complete structured source","sourceUrl":"schanuel-zeta-family.json","logoSrc":"../../assets/logo-encapsulatorp-512.png","returnUrl":"../../index.html#interactive?topic=goldbach-involution","passages":[],"gifBlocks":[{"type":"heading","text":"The Z(p) family under Schanuel"},{"type":"caption","text":"A focused reading note from the Pirate Chest"},{"type":"caption","text":"Zolton / EncapsulatorP · with ChatGPT · 23 November 2026"},{"type":"caption","text":"NOTE 05 · CONDITIONAL ON COMPLEX SCHANUEL"},{"type":"heading","text":"The Z(p) family under Schanuel"},{"type":"paragraph","text":"Euler’s even-zeta formula gives exact rational coefficients cₚ for every odd integer p ≥ 3. Assuming complex Schanuel, π and any finite list of the corresponding Z(p) values are algebraically independent."},{"type":"math","text":"Z(p)=e^{c_p\\pi^p}+1,\\qquad p=3,5,7,\\ldots","image":"../assets/math/fc203c15083a13c99997b42ead50ebcb8829513e36d700ec1be2e32e633732a5.svg","width":290.0,"height":20.0},{"type":"caption","text":"Conditional on complex Schanuel"},{"type":"paragraph","text":"The zeta reduction is unconditional. The independence conclusion in this argument assumes the full complex Schanuel conjecture. Distinct odd exponents and nonzero rational coefficients are part of the hypotheses."},{"type":"paragraph","text":"First identify the exact Bernoulli coefficient. Then apply the conjecture to iπ and the selected real π-power exponents; field containment gives the required transcendence-degree bound."},{"type":"heading","text":"One concrete next step"},{"type":"paragraph","text":"Compare this specific conditional consequence with the literature. State any proposed unconditional result as a separate claim with its own assumptions."},{"type":"heading","text":"Sources and related reading"},{"type":"paragraph","text":"[S3] Even-zeta values. NIST Digital Library of Mathematical Functions, §25.6, equation 25.6.2. This classical formula supplies the exact coefficient c_(p)."},{"type":"caption","text":"[S3] Euler’s even-zeta evaluation: https://dlmf.nist.gov/25.6.E2"},{"type":"paragraph","text":"[S4] Complex Schanuel conjecture. I. A. Broudy and S. Eterović, Schanuel type conjectures and disjointness, The Ramanujan Journal 62 (2023), 781–795, Conjecture 3.1. This supplies the conjectural assumption; the Z(p) deduction is written here."},{"type":"caption","text":"[S4] Read the precise Schanuel assumption: https://link.springer.com/article/10.1007/s11139-023-00707-3"},{"type":"caption","text":"Historical collection source · original edition: https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#zeta-family"},{"type":"caption","text":"Return to the Treasure Chest: https://encapsulatorp.github.io/#buried-logistic-vanishing"},{"type":"caption","text":"01 · EXACT REDUCTION; CONDITIONAL INDEPENDENCE"},{"type":"heading","text":"The Z(p) family"},{"type":"paragraph","text":"Let p be an odd integer at least 3. Primality is optional. Define"},{"type":"math","text":"Z(p)=\\exp\\!\\left(\\frac{\\pi\\zeta(p-1)}p\\right)+1.","image":"../assets/math/5f22d4c25071870d3f4b9c9415020c79021007dc789ac2ed06c699dab649f820.svg","width":212.0,"height":29.0},{"type":"paragraph","text":"For p = 2m + 1 with m ≥ 1, Euler’s even-zeta evaluation [S3] gives"},{"type":"math","text":"\\zeta(2m)=\\frac{(2\\pi)^{2m}}{2(2m)!}|B_{2m}|,","image":"../assets/math/ed163862ff46c2748629c28e4b5f9f3ace594e2b41565f524bef03022786c0ba.svg","width":177.0,"height":31.0},{"type":"math","text":"Z(p)=e^{c_p\\pi^p}+1,\\qquad c_p=\\frac{2^{p-2}|B_{p-1}|}{p!}\\in\\mathbb{Q}_{>0}.","image":"../assets/math/e8c949a53b007831c45ae871930a0ec984eb573bc2ccc391768a5e35301de603.svg","width":356.0,"height":33.0},{"type":"paragraph","text":"Here B_(2m) denotes a Bernoulli number. Equivalently"},{"type":"math","text":"c_{2m+1}=\\frac{(-1)^{m+1}2^{2m-1}B_{2m}}{(2m+1)!}.","image":"../assets/math/2ad0377d51c0c7527b966da4c151b0c608c5110ff006baa174419c3b8a262447.svg","width":204.0,"height":31.0},{"type":"caption","text":"p | cₚ | Exponent in Z(p) − 1"},{"type":"paragraph","text":"3 | 1/18 | π³/18"},{"type":"paragraph","text":"5 | 1/450 | π⁵/450"},{"type":"paragraph","text":"7 | 1/6615 | π⁷/6615"},{"type":"paragraph","text":"The case p = 2 is excluded because ζ(1) has a pole. For even p ≥ 4, the displayed rational coefficient does not follow from the even-zeta formula."},{"type":"caption","text":"Conditional proposition"},{"type":"paragraph","text":"Assume the full complex Schanuel conjecture. For pairwise distinct odd integers p₁, …, pₖ ≥ 3, the numbers π, Z(p₁), …, Z(pₖ) are algebraically independent over ℚ."},{"type":"paragraph","text":"“Algebraically independent” means that no nonzero polynomial with rational coefficients in these k + 1 variables vanishes on the tuple. The next page gives the deduction and keeps the assumption visible."},{"type":"paragraph","text":"The rational-coefficient reduction is unconditional. Algebraic independence of π and the selected Z(p) values, including the resulting individual-transcendence conclusions, follows under the stated complex Schanuel assumption."},{"type":"caption","text":"02 · COMPLETE DEDUCTION AND DOMAIN LIMITS"},{"type":"heading","text":"The conditional Schanuel argument"},{"type":"paragraph","text":"Complex Schanuel states that for ℚ-linearly independent complex numbers α₀, …, αₖ, the field generated by these numbers and their exponentials has transcendence degree at least k + 1 over ℚ [S4]. Apply it to"},{"type":"math","text":"\\alpha_0=i\\pi,\\qquad \\alpha_j=c_{p_j}\\pi^{p_j}\\quad(1\\le j\\le k).","image":"../assets/math/c75533b08efbdb1552aad1f07f0163fb64844930fca8c7aef5f170c28e1ba826.svg","width":300.0,"height":21.0},{"type":"paragraph","text":"Linear independence. The imaginary part of a rational relation forces the coefficient of iπ (i times pi) to vanish. The remaining relation is a polynomial in π (pi), with distinct powers and nonzero rational coefficients c_p. Transcendence of π forces every remaining coefficient to vanish."},{"type":"paragraph","text":"The Schanuel bound. With E the field generated by these inputs and their exponentials, the conjecture gives"},{"type":"math","text":"E=\\mathbb{Q}(\\alpha_0,\\ldots,\\alpha_k,e^{\\alpha_0},\\ldots,e^{\\alpha_k}),\\qquad \\operatorname{trdeg}_{\\mathbb{Q}}E\\ge k+1.","image":"../assets/math/6d8a3234b022ba5f20e26138fa5e9933878471d652c7c05bbb3bff3ca98ccfaf.svg","width":431.0,"height":18.0},{"type":"paragraph","text":"Euler’s identity gives exp(α₀) = −1, while exp(αⱼ) = Z(pⱼ) − 1. Therefore"},{"type":"math","text":"E\\subseteq K:=\\mathbb{Q}(i,\\pi,Z(p_1),\\ldots,Z(p_k)).","image":"../assets/math/9c280582a04477d172e677f850834861e200ff941f39483a874178cd9452972e.svg","width":285.0,"height":18.0},{"type":"paragraph","text":"Adjoining i is algebraic, so"},{"type":"math","text":"\\operatorname{trdeg}_{\\mathbb{Q}}K=\\operatorname{trdeg}_{\\mathbb{Q}}\\mathbb{Q}(\\pi,Z(p_1),\\ldots,Z(p_k))\\le k+1.","image":"../assets/math/6c39209c653e89506c92c485fcc5ece986794ac22745a434ce352b34c8ddef59.svg","width":412.0,"height":18.0},{"type":"paragraph","text":"The lower and upper bounds force equality. A field generated by k + 1 numbers has transcendence degree k + 1 exactly when those generators are algebraically independent. This proves the conditional proposition. The field containment above suffices; literal equality of E and K is not needed."},{"type":"caption","text":"Why the complex version matters"},{"type":"paragraph","text":"The selected inputs include iπ. A real-only version of Schanuel is not the assumption used in this proof."},{"type":"heading","text":"The Euler counterexample has a domain"},{"type":"math","text":"q=i,\\quad m=1:\\qquad e^{q\\pi^m}=e^{i\\pi}=-1.","image":"../assets/math/655f5e22118cd10f85b7557cb0e60d64bcda2c6d393571377f4ad75572e1c48d.svg","width":305.0,"height":20.0},{"type":"paragraph","text":"This refutes a blanket transcendence claim allowing every nonzero complex algebraic coefficient q. It does not refute a claim restricted to rational or real q, since i is neither. Lindemann’s algebraic-input theorem does not directly apply to c_(p)π^(p), whose input is transcendental."},{"type":"paragraph","text":"The deduction uses the stated conjecture, the even-zeta formula and the transcendence of π. Field containment provides the required bound."}],"translation":{"engine":"core","version":"0.4.0","mirror_rate":0.8,"wheel_sha256":"4389e91e55a97a977df4efc796a6e38706e3c15a323fb9d98dd2a58ef2696f0a","translation_note":"Each passage is an independent request; document-level state resets per passage.","readback_note":"The English endpoint is the preserved original source, not an automatically decoded translation.","display_note":"Context tails are omitted only from the visible surface; full targets, sidecars and returned Unicode remain in this file."},"translationRecord":"../../atlas/zyntalic-passages.json.gz"}</script>
+<script src="../../assets/atlas-gif.js" defer></script><script src="../../assets/atlas-reveal.js" defer></script>
+</body></html>

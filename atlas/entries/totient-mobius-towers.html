@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Squarefree indices define two arithmetic tower families: raw totient bases and normalized bases close to one.">
+<meta name="theme-color" content="#ffffff">
+<title>Totients supply the bases; Möbius supplies the signs · EncapsulatorP</title>
+<style>html.ar-reveal-pending #reader-content,html.ar-reveal-pending [data-reader-reveal]{visibility:hidden!important}</style>
+<script>(function(){try{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('ar-reveal-pending');window.setTimeout(function(){document.documentElement.classList.remove('ar-reveal-pending');},8000);}}catch(e){document.documentElement.classList.remove('ar-reveal-pending');}}());</script>
+<link rel="canonical" href="https://encapsulatorp.github.io/atlas/entries/totient-mobius-towers.html">
+<link rel="icon" href="../../assets/favicon-32.png">
+<link rel="stylesheet" href="../../assets/atlas-reader.css">
+<link rel="stylesheet" href="../../assets/atlas-reveal.css">
+<script src="../../assets/atlas-gif.js" defer></script>
+<script src="../../assets/atlas-reveal.js" defer></script>
+<script src="../../assets/atlas-reader-init.js" defer></script>
+</head>
+<body data-reader-status="finite">
+<a class="reader-skip" data-reader-chrome href="#reader-content">Skip to the document</a>
+<header class="reader-header">
+  <a class="reader-brand" data-reader-chrome href="../../#interactive?topic=goldbach-involution"><img src="../../assets/logo-encapsulatorp-512.png" alt="EncapsulatorP" width="64" height="64"><span>ENCAPSULATORP<small>THE PIRATE CHEST · READING ROOM</small></span></a>
+  <nav data-reader-chrome aria-label="Reading navigation"><a href="../../#interactive?topic=goldbach-involution">Main menu</a><a href="../../atlas/README.html#contents">Atlas contents</a><a href="../../treasure-hunt/">Proof board</a></nav>
+</header>
+<div class="reader-shell">
+<div id="reader-tools" class="reader-tools" data-reader-chrome aria-label="Reading and export controls"></div>
+<main id="reader-content"><article id="totient-mobius-towers" class="reader-document catalog-entry" data-entry-id="totient-mobius-towers" data-source-status="finite" data-reader-kind="observation">
+<header class="document-heading"><div class="reader-kicker"><span>31 / 46 · Towers &amp; constants</span><span class="reader-evidence" data-evidence="finite">Finite-depth observation</span></div>
+<h1 class="" data-catalog-field="title">Totients supply the bases; Möbius supplies the signs</h1>
+<p class="reader-lead" data-catalog-field="summary">Squarefree indices define two arithmetic tower families: raw totient bases and normalized bases close to one.</p>
+<p class="reader-origin" data-catalog-field="origin">Recovered boundary notebook; exact index lists retained</p>
+</header>
+<pre class="reader-equation catalog-formula" data-catalog-field="formula">t_k = a_k^(μ(n_(k+1)) t_(k+1)),  t_N = a_N
+a_k = φ(n_k)  or  1 + φ(n_k)/n_k
+Raw depth 10 ≈ 0.492468328815…
+Normalized depth 12 ≈ 0.821920364711…</pre>
+<div class="reader-prose">
+<h3>Why follow it</h3>
+<p class="" data-catalog-field="why">It couples two familiar arithmetic functions in a precisely specified nonlinear experiment.</p>
+<p class="" data-detail-index="0">The raw list is n = (3,5,6,7,10,11,13,14,15,17). Starting at 3 avoids the leading base φ(2) = 1, which would collapse the outer value.</p>
+<p class="" data-detail-index="1">The normalized list is n = (2,3,5,6,7,10,11,13,14,15,17,19), with bases 1 + φ(n)/n. Every listed n is squarefree, so its Möbius sign is ±1.</p>
+<p class="" data-detail-index="2">The finite values were independently recomputed at high precision. Changing the first index, sign alignment or association changes the construction and must be recorded.</p>
+<h3>Next experiment or question</h3>
+<p class="" data-catalog-field="next">Compare matched sign permutations and growing squarefree prefixes, reporting terminal-value sensitivity.</p>
+</div><section class="reader-sources" aria-label="Sources"><h3>Sources</h3><ol>
+<li><a data-source-index="0" href="https://github.com/EncapsulatorP/Some_playful_boundary_paths_and_brun_twin_prime_sign_flipping_towers/blob/main/notes/boundary_residue_notes.md">Totient and Möbius tower definitions</a></li>
+<li><a data-source-index="1" href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/experiment-results.json">Recomputed inputs and results · 21 Nov 2026</a></li>
+</ol></section>
+<nav class="reader-related" aria-label="Connected entries"><h3>Connected threads</h3><ul>
+<li><a data-connection-index="0" data-related-entry="theta-towers" href="theta-towers.html">Theta bases with alternating and golden-density signs <span aria-hidden="true">↗</span></a></li>
+<li><a data-connection-index="1" data-related-entry="factorial-valuations" href="factorial-valuations.html">Prime towers made of carries <span aria-hidden="true">↗</span></a></li>
+<li><a data-connection-index="2" data-related-entry="euler-resolvent" href="euler-resolvent.html">Remainder-filtered Euler-product resolvents <span aria-hidden="true">↗</span></a></li>
+</ul></nav>
+</article><p class="reader-document-end"><a href="../README.html#totient-mobius-towers">← Back to the complete atlas</a></p></main>
+
+<footer class="reader-footer"><p data-reader-reveal>Research direction: Zolton / EncapsulatorP. Contributor and source credits are retained with each entry.</p><a data-reader-chrome href="../../#interactive?topic=goldbach-involution">Return to the main menu <span aria-hidden="true">↗</span></a></footer>
+</div>
+<script type="application/json" id="catalog-source">{"id":"totient-mobius-towers","title":"Totients supply the bases; Möbius supplies the signs","family":"Towers & constants","status":"finite","origin":"Recovered boundary notebook; exact index lists retained","summary":"Squarefree indices define two arithmetic tower families: raw totient bases and normalized bases close to one.","formula":"t_k = a_k^(μ(n_(k+1)) t_(k+1)),  t_N = a_N\na_k = φ(n_k)  or  1 + φ(n_k)/n_k\nRaw depth 10 ≈ 0.492468328815…\nNormalized depth 12 ≈ 0.821920364711…","why":"It couples two familiar arithmetic functions in a precisely specified nonlinear experiment.","detail":["The raw list is n = (3,5,6,7,10,11,13,14,15,17). Starting at 3 avoids the leading base φ(2) = 1, which would collapse the outer value.","The normalized list is n = (2,3,5,6,7,10,11,13,14,15,17,19), with bases 1 + φ(n)/n. Every listed n is squarefree, so its Möbius sign is ±1.","The finite values were independently recomputed at high precision. Changing the first index, sign alignment or association changes the construction and must be recorded."],"next":"Compare matched sign permutations and growing squarefree prefixes, reporting terminal-value sensitivity.","sources":[{"label":"Totient and Möbius tower definitions","url":"https://github.com/EncapsulatorP/Some_playful_boundary_paths_and_brun_twin_prime_sign_flipping_towers/blob/main/notes/boundary_residue_notes.md"},{"label":"Recomputed inputs and results · 21 Nov 2026","url":"https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/experiment-results.json"}],"connections":["theta-towers","factorial-valuations","euler-resolvent"]}</script>
+<script type="application/json" id="reader-config">{"entryId":"totient-mobius-towers","title":"Totients supply the bases; Möbius supplies the signs","status":"finite","root":"#reader-content","controls":"#reader-tools","passages":[],"gifBlocks":[{"type":"caption","text":"31 / 46 · Finite-depth observation · Towers & constants","status":"finite"},{"type":"heading","text":"Totients supply the bases; Möbius supplies the signs","status":"finite"},{"type":"paragraph","text":"Squarefree indices define two arithmetic tower families: raw totient bases and normalized bases close to one.","status":"finite"},{"type":"paragraph","text":"Recovered boundary notebook; exact index lists retained","status":"finite"},{"type":"math","text":"t_k = a_k^(μ(n_(k+1)) t_(k+1)),  t_N = a_N","status":"finite"},{"type":"math","text":"a_k = φ(n_k)  or  1 + φ(n_k)/n_k","status":"finite"},{"type":"math","text":"Raw depth 10 ≈ 0.492468328815…","status":"finite"},{"type":"math","text":"Normalized depth 12 ≈ 0.821920364711…","status":"finite"},{"type":"heading","text":"Why follow it","status":"finite"},{"type":"paragraph","text":"It couples two familiar arithmetic functions in a precisely specified nonlinear experiment.","status":"finite"},{"type":"paragraph","text":"The raw list is n = (3,5,6,7,10,11,13,14,15,17). Starting at 3 avoids the leading base φ(2) = 1, which would collapse the outer value.","status":"finite"},{"type":"paragraph","text":"The normalized list is n = (2,3,5,6,7,10,11,13,14,15,17,19), with bases 1 + φ(n)/n. Every listed n is squarefree, so its Möbius sign is ±1.","status":"finite"},{"type":"paragraph","text":"The finite values were independently recomputed at high precision. Changing the first index, sign alignment or association changes the construction and must be recorded.","status":"finite"},{"type":"heading","text":"Next experiment or question","status":"finite"},{"type":"paragraph","text":"Compare matched sign permutations and growing squarefree prefixes, reporting terminal-value sensitivity.","status":"finite"},{"type":"heading","text":"Sources","status":"finite"},{"type":"caption","text":"Totient and Möbius tower definitions\nhttps://github.com/EncapsulatorP/Some_playful_boundary_paths_and_brun_twin_prime_sign_flipping_towers/blob/main/notes/boundary_residue_notes.md","status":"finite"},{"type":"caption","text":"Recomputed inputs and results · 21 Nov 2026\nhttps://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/main/atlas/experiment-results.json","status":"finite"},{"type":"heading","text":"Connected threads","status":"finite"},{"type":"caption","text":"Theta bases with alternating and golden-density signs","status":"finite"},{"type":"caption","text":"Prime towers made of carries","status":"finite"},{"type":"caption","text":"Remainder-filtered Euler-product resolvents","status":"finite"},{"type":"caption","text":"Research direction and original explorations: Zolton / EncapsulatorP. Recovery, mathematical checks and this interactive edition: ChatGPT. Existing contributor credits, including Neo’s Prime Forms layout/helper and the showcase’s earlier collaborators, remain with their sources.","status":"finite"}],"menuHref":"../../#interactive?topic=goldbach-involution","sourceLabel":"Zolton / EncapsulatorP · with ChatGPT","sourceUrl":"https://encapsulatorp.github.io/atlas/entries/totient-mobius-towers.html","credit":"Research direction and original explorations: Zolton / EncapsulatorP. Recovery, mathematical checks and this interactive edition: ChatGPT. Existing contributor credits, including Neo’s Prime Forms layout/helper and the showcase’s earlier collaborators, remain with their sources.","logoSrc":"../../assets/logo-encapsulatorp-512.png","translation":{"engine":"core","version":"0.4.0","mirror_rate":0.8,"wheel_sha256":"4389e91e55a97a977df4efc796a6e38706e3c15a323fb9d98dd2a58ef2696f0a","translation_note":"Each passage is an independent request; document-level state resets per passage.","readback_note":"The English endpoint is the preserved original source, not an automatically decoded translation.","display_note":"Context tails are omitted only from the visible surface; full targets, sidecars and returned Unicode remain in this file."},"translationRecord":"../../atlas/zyntalic-passages.json.gz"}</script>
+<noscript><p class="reader-noscript">The complete English document is available above. Animation and GIF export use JavaScript.</p></noscript>
+</body></html>
