@@ -1,4 +1,4 @@
-:root{--ar-paper:var(--atlas-surface,#fff);--ar-ink:var(--atlas-ink,#24252b);--ar-muted:var(--atlas-muted,#6b7280);--ar-rule:var(--atlas-line,#e4e7ee);--ar-sapphire:#284cad;--ar-azure:#1480c5;--ar-cyan:#078b9e;--ar-indigo:#5d65c7;--ar-violet:#8054b5;--ar-mint:#6c9e95;--ar-trap:#756b78}
+:root{--ar-paper:var(--atlas-surface,#fff);--ar-ink:var(--atlas-ink,#24252b);--ar-muted:var(--atlas-muted,#6b7280);--ar-rule:var(--atlas-line,#e4e7ee);--ar-sapphire:#284cad;--ar-azure:#1480c5;--ar-cyan:#078b9e;--ar-indigo:#5d65c7;--ar-violet:#8054b5;--ar-mint:#9e6c86;--ar-trap:#756b78}
 .atlas-reader,.reader-shell,.reader-document,.reader-content{background:var(--ar-paper);color:var(--ar-ink)}
 html.ar-reveal-pending #reader-content,html.ar-reveal-pending [data-reader-reveal]{visibility:hidden!important}
 .ar-shell{position:relative;display:flow-root;max-width:100%;background:var(--ar-paper)}

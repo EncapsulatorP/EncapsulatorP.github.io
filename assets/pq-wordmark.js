@@ -120,7 +120,7 @@
 
   const standalone = document.currentScript.hasAttribute('data-pq-standalone');
   if (standalone && window.top !== window) return;
-  const shared = import(new URL('site-shell.js?v=map-layout-2', assetDirectory))
+  const shared = import(new URL('site-shell.js?v=warm-paper-1', assetDirectory))
     .then(({ mountSiteShell }) => mountSiteShell(assetDirectory))
     .catch(() => null);
   const style = document.createElement('link');
