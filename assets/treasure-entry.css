@@ -1,13 +1,13 @@
 .th-entry{display:grid;grid-template-columns:1fr 200px;align-items:center;gap:30px;background:var(--atlas-surface);color:var(--atlas-ink);border:1px solid var(--atlas-line);border-radius:10px;padding:28px 32px;margin:24px 0;position:relative;overflow:hidden}
 .th-entry::before{content:"";position:absolute;inset:0 0 auto;height:5px;background:var(--atlas-stripe)}
-.th-entry .th-kicker{font:500 10px/1.5 "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--atlas-amber);margin:0 0 10px}
+.th-entry .th-kicker{font:500 10px/1.5 "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--atlas-secondary);margin:0 0 10px}
 .th-entry h3{font:600 clamp(25px,3vw,35px)/1.13 "IBM Plex Sans",system-ui,sans-serif;letter-spacing:-.035em;color:var(--atlas-ink);margin:0 0 13px}
 .th-entry p{font-size:14px;line-height:1.65;color:var(--atlas-muted);max-width:74ch;margin:0 0 17px}
 .th-entry-links{display:flex;flex-wrap:wrap;align-items:center;gap:13px 20px}
 .th-entry-links a{font:500 12px/1.4 "IBM Plex Sans",system-ui,sans-serif;color:var(--atlas-accent);text-underline-offset:3px}
 .th-entry-links a:first-child{background:var(--atlas-accent);color:var(--atlas-on-deep);padding:11px 15px;border-radius:5px;font-weight:600;text-decoration:none;border:1px solid var(--atlas-accent)}
 .th-entry a:focus-visible{outline:3px solid var(--atlas-accent);outline-offset:4px}
-.th-entry .th-math{padding:20px;border:1px solid var(--atlas-line);border-radius:7px;background:linear-gradient(120deg,#fff1db,var(--atlas-tint))}
+.th-entry .th-math{padding:20px;border:1px solid var(--atlas-line);border-radius:7px;background:linear-gradient(120deg,#e2e8f8,var(--atlas-tint))}
 .th-entry .th-math>span{display:block;font:500 8px/1.6 "IBM Plex Mono",monospace;color:var(--atlas-muted);letter-spacing:.06em}
 .th-entry .th-math strong{display:block;font:italic 29px/1.5 Georgia,"Times New Roman",serif;color:var(--atlas-ink);margin:9px 0 12px}
 .th-entry .th-math sup{font-size:.57em}.th-entry .th-math a{font:500 10px/1.5 "IBM Plex Sans",system-ui,sans-serif;color:var(--atlas-accent)}

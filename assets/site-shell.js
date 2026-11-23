@@ -60,7 +60,7 @@ export async function mountSiteShell(assets) {
 
   const stylesheet = document.createElement('link');
   stylesheet.rel = 'stylesheet';
-  stylesheet.href = new URL('site-shell.css?v=warm-paper-1', assets);
+  stylesheet.href = new URL('site-shell.css?v=blue-violet-1', assets);
   const styled = new Promise(resolve => {
     stylesheet.addEventListener('load', () => resolve(true), { once: true });
     stylesheet.addEventListener('error', () => resolve(false), { once: true });

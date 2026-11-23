@@ -23,7 +23,7 @@
 }
 
 .pq-brand img { display: block; flex: none; width: 27px; height: 27px; margin: 0; object-fit: contain; }
-.pq-brand .pq-word { display: block; width: 139px; max-width: 100%; height: 34px; }
+.pq-brand .pq-word { display: block; width: 144px; max-width: 100%; height: auto; }
 .pq-word-text { font: bold 20px Georgia, serif; }
 .pq-caption { margin: -3px 0 2px 3px; }
 

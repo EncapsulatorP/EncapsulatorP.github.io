@@ -5,19 +5,19 @@
   --atlas-tint: #eeedf6;
   --atlas-ink: #18243a;
   --atlas-muted: #4e586a;
-  --atlas-accent: #a13e1a;
+  --atlas-accent: #284cad;
   --atlas-line: #d5d9e6;
   --atlas-deep: #142139;
   --atlas-deep-panel: #223251;
   --atlas-on-deep: #f6f5ff;
   --atlas-muted-on-deep: #c6d1e8;
-  --atlas-accent-on-deep: #ffd18d;
+  --atlas-accent-on-deep: #c5bbff;
   --atlas-violet: #8054b5;
-  --atlas-amber: #936417;
-  --atlas-pink: #8e3c63;
-  --atlas-selection: #f8e8db;
-  --atlas-selection-hover: #f4dcc9;
-  --atlas-stripe: linear-gradient(90deg, #a13e1a, #e6ad45 43%, #b96289);
+  --atlas-secondary: #61518b;
+  --atlas-action-ink: #253b7d;
+  --atlas-selection: #dfe8ff;
+  --atlas-selection-hover: #e8def8;
+  --atlas-stripe: linear-gradient(90deg, #9ab9f5, #b3cafa 43%, #c8b6e9);
   --atlas-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
   --atlas-serif: Georgia, "Times New Roman", serif;
 }
