@@ -16,3 +16,87 @@
   --atlas-amber: #91601e;
   --atlas-stripe: linear-gradient(90deg, #284cad, #1480c5 38%, #8054b5 75%, #d8995c);
 }
+
+/* Navigation uses the paper workbench's inset rail and raised selected tab. */
+@media screen {
+  :is(.nav .in > .tr-nav-primary, .site-nav > nav, .reader-header > nav,
+      .topin > .atlas-top-tabs, nav.ev-index-nav, nav.is-standalone-nav,
+      .rx-route-nav > div, .pp-page .pp-subnav > .pp-wrap, .pm-dialog .pm-style-switch) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    box-sizing: border-box;
+    max-width: 100%;
+    width: max-content;
+    padding: 4px;
+    border: 1px solid var(--atlas-line);
+    border-radius: 12px;
+    background: var(--atlas-tint);
+  }
+
+  :is(.nav .in > .tr-nav-primary, .site-nav > nav, .reader-header > nav,
+      .topin > .atlas-top-tabs, nav.ev-index-nav, nav.is-standalone-nav,
+      .rx-route-nav > div, .pp-page .pp-subnav > .pp-wrap, .pm-dialog .pm-style-switch)
+      > :is(a, button) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 6px 11px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--atlas-muted);
+    font: 500 12px/1.25 "IBM Plex Sans", system-ui, sans-serif;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  :is(.nav .in > .tr-nav-primary, .site-nav > nav, .reader-header > nav,
+      .topin > .atlas-top-tabs, nav.ev-index-nav, nav.is-standalone-nav,
+      .rx-route-nav > div, .pp-page .pp-subnav > .pp-wrap, .pm-dialog .pm-style-switch)
+      > :is([aria-current="page"], [aria-pressed="true"], a:hover, button:hover) {
+    border-color: var(--atlas-line);
+    background: var(--atlas-surface);
+    color: var(--atlas-accent);
+  }
+
+  :is(.nav .in > .tr-nav-primary, .site-nav > nav, .reader-header > nav,
+      .topin > .atlas-top-tabs, nav.ev-index-nav, nav.is-standalone-nav,
+      .rx-route-nav > div, .pp-page .pp-subnav > .pp-wrap, .pm-dialog .pm-style-switch)
+      > :focus-visible {
+    outline: 2px solid var(--atlas-accent);
+    outline-offset: 1px;
+  }
+
+  .nav .in > .tr-nav-primary { flex: 0 1 auto; margin-inline-start: auto; }
+  .nav .in > .tr-mobile-nav {
+    border-radius: 8px;
+    border-color: var(--atlas-line);
+    background: var(--atlas-surface);
+    color: var(--atlas-ink);
+    font: 500 12px/1.25 "IBM Plex Sans", system-ui, sans-serif;
+  }
+  .pm-dialog .pm-style-switch { width: 100%; }
+  .pp-page .pp-subnav > .pp-wrap { margin-block: 10px; }
+
+  @media (max-width: 800px) {
+    .nav .in:has(> .tr-nav-primary), nav.top > .topin { flex-wrap: wrap; overflow: visible; }
+    .nav .in > .tr-nav-primary { flex: 1 0 100%; justify-content: space-between; }
+    .nav .in > .tr-nav-primary > a { flex: 1 0 auto; }
+    .site-nav > nav[aria-label] > a { display: inline-flex; }
+  }
+
+  @media (max-width: 600px) {
+    .site-nav:has(> nav[aria-label="Site navigation"]) {
+      display: flex;
+      flex-wrap: wrap;
+      height: auto;
+      gap: 7px;
+      padding-block: 8px;
+    }
+    :is(.nav .in > .tr-nav-primary, .site-nav > nav, .topin > .atlas-top-tabs)
+       > :is(a, button) { padding-inline: 7px; }
+  }
+}
