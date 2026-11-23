@@ -30,6 +30,10 @@
   const mix=(a,b,t)=>a.map((v,i)=>v+(b[i]-v)*t);
   function evidenceKind(status){const s=String(status||'').toLowerCase();if(['exact','proved','proven','proof','treasure','theorem'].includes(s))return'treasure';if(['false','trap','refuted','disproved'].includes(s))return'trap';return'neutral'}
   function evidenceLabel(s){return {exact:'Exact result',proved:'Proved result',proven:'Proved result',proof:'Proof',theorem:'Theorem',false:'Refuted extension',refuted:'Refuted extension',disproved:'Disproved claim',trap:'Scope trap',exploratory:'Exploratory',conjectural:'Conjectural',conditional:'Conditional',collection:'Evidence collection',numerical:'Numerical observation'}[String(s||'').toLowerCase()]||String(s||'Evidence note')}
+  // Statuses whose English is shown as plain text, never masked: proved/exact results, finite
+  // and numerical computations, asymptotics, reviews of them, and refuted claims (folded instead).
+  const PLAIN_STATUSES=new Set(['exact','proved','proven','proof','theorem','treasure','finite','numerical','asymptotic','conditional','review','reference','collection','false','trap','refuted','disproved']);
+  function isPlainStatus(status){return PLAIN_STATUSES.has(String(status||'').toLowerCase())}
   function colourAt(fraction,kind='treasure'){const stops=kind==='treasure'?COOL:DULL,t=clamp(fraction);for(let i=1;i<stops.length;i++)if(t<=stops[i][0])return mix(hex(stops[i-1][1]),hex(stops[i][1]),(t-stops[i-1][0])/(stops[i][0]-stops[i-1][0]));return hex(stops.at(-1)[1])}
   function hash(value){value|=0;value=Math.imul(value^(value>>>16),0x45d9f3b);value=Math.imul(value^(value>>>16),0x45d9f3b);return(value^(value>>>16))>>>0}
   function seedFor(s){let n=2166136261;for(const c of String(s))n=hash(n+c.codePointAt(0));return n}
@@ -269,6 +273,7 @@
     for(const el of candidates){
       if(candidates.some(other=>other!==el&&other.contains(el)))continue;
       const p=translated.get(el),status=p?.status||el.dataset?.evidence||el.dataset?.sourceStatus||el.closest?.('[data-evidence]')?.dataset.evidence||el.closest?.('[data-source-status]')?.dataset.sourceStatus||spec.status;
+      if(isPlainStatus(status))continue; // proved, exact, numerical and asymptotic text stays plain; traps are folded by the reader
       const target=el.textContent||semanticText(el),seed=seedFor(entryId+'|'+(p?.id||records.length));
       const isImage=el.matches('img,svg,math')||Boolean(el.querySelector('img,svg,math'));
       const authentic=Boolean(p?.zyntalic)&&!isImage,source=authentic?String(p.zyntalic):visualMask(target||semanticText(el)||'visual equation mask',seed);
