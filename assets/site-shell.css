@@ -146,6 +146,7 @@
 
 @media screen {
   .site-shell-ready body:not(:has(#gl + .vig)) {
+    margin: 0;
     background: var(--atlas-paper);
     color: var(--atlas-ink);
   }
