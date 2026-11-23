@@ -1,0 +1,9 @@
+# encapsulatorp.github.io — public research site: everything is open to crawlers
+User-agent: *
+Allow: /
+# internal previews and QA pages (not secret, just not worth indexing)
+Disallow: /qa/
+Disallow: /paper-atlas-preview.html
+Disallow: /reading-room-preview.html
+
+Sitemap: https://encapsulatorp.github.io/sitemap.xml
