@@ -21,9 +21,11 @@ def integrate(root: Path, nav: str, expected_sha256: str | None) -> dict:
     before = hashlib.sha256(original.encode()).hexdigest()
     if expected_sha256 and before != expected_sha256:
         raise ValueError("The local index differs from --expected-sha256. Re-read the fresh source before integrating.")
-    fragment = (root / "planning/room.html").read_text(encoding="utf-8").strip()
-    if not fragment.startswith(START) or not fragment.endswith(END):
-        raise ValueError("planning/room.html must be bounded by the Pirates Plan markers.")
+    room = (root / "planning/room.html").read_text(encoding="utf-8")
+    if room.count(START) != 1 or room.count(END) != 1 or room.index(START) > room.index(END):
+        raise ValueError("planning/room.html must contain one bounded Pirates Plan fragment.")
+    fragment = room[room.index(START):room.index(END) + len(END)]
+    fragment = fragment.replace('href="./', 'href="planning/').replace('href="../', 'href="')
     text = original
     actions = []
     if START in text or END in text:
@@ -40,31 +42,33 @@ def integrate(root: Path, nav: str, expected_sha256: str | None) -> dict:
     if text.count('data-tab="pirates-plan"') != text.count(link) or text.count(link) > 1:
         raise ValueError("Ambiguous Pirates Plan navigation link; review the index manually.")
     before_navigation = text
-    text = text.replace(link, "", 1)
-    menus = list(re.finditer(r'<details class="tr-nav-more">[\s\S]*?</details>', text))
-    if len(menus) != 1:
-        raise ValueError("Expected exactly one More paths menu.")
-    menu = menus[0].group(0)
-    text = text[:menus[0].start()] + text[menus[0].end():]
-    primary = list(re.finditer(r'<div class="tr-nav-primary">([\s\S]*?)</div>', text))
-    if len(primary) != 1:
-        raise ValueError("Expected exactly one primary navigation group.")
-    if nav == "more":
-        menu = menu.replace("</div></details>", link + "</div></details>", 1)
-    replacement = '<div class="tr-nav-primary">' + primary[0].group(1) + menu
-    replacement += (link if nav == "primary" else "") + "</div>"
-    text = text[:primary[0].start()] + replacement + text[primary[0].end():]
-    option = '<option value="#pirates-plan">Pirates Plan</option>'
-    if text.count('<option value="#pirates-plan">') != text.count(option) or text.count(option) > 1:
-        raise ValueError("Ambiguous Pirates Plan mobile option; review the index manually.")
-    text = text.replace(option, "", 1)
-    selectors = list(re.finditer(r'<select class="tr-mobile-nav" id="tr-all-rooms">[\s\S]*?</select>', text))
-    if len(selectors) != 1:
-        raise ValueError("Expected exactly one mobile room selector.")
-    selector = selectors[0]
-    text = text[:selector.start()] + selector.group(0).replace("</select>", option + "</select>", 1) + text[selector.end():]
-    if text != before_navigation:
-        actions.append("Placed Pirates Plan last in navigation and the mobile selector: " + nav)
+    shared_shell = 'src="assets/pq-wordmark.js' in text
+    if not shared_shell:
+        text = text.replace(link, "", 1)
+        menus = list(re.finditer(r'<details class="tr-nav-more">[\s\S]*?</details>', text))
+        if len(menus) != 1:
+            raise ValueError("Expected exactly one More paths menu.")
+        menu = menus[0].group(0)
+        text = text[:menus[0].start()] + text[menus[0].end():]
+        primary = list(re.finditer(r'<div class="tr-nav-primary">([\s\S]*?)</div>', text))
+        if len(primary) != 1:
+            raise ValueError("Expected exactly one primary navigation group.")
+        if nav == "more":
+            menu = menu.replace("</div></details>", link + "</div></details>", 1)
+        replacement = '<div class="tr-nav-primary">' + primary[0].group(1) + menu
+        replacement += (link if nav == "primary" else "") + "</div>"
+        text = text[:primary[0].start()] + replacement + text[primary[0].end():]
+        option = '<option value="#pirates-plan">Pirates Plan</option>'
+        if text.count('<option value="#pirates-plan">') != text.count(option) or text.count(option) > 1:
+            raise ValueError("Ambiguous Pirates Plan mobile option; review the index manually.")
+        text = text.replace(option, "", 1)
+        selectors = list(re.finditer(r'<select class="tr-mobile-nav" id="tr-all-rooms">[\s\S]*?</select>', text))
+        if len(selectors) != 1:
+            raise ValueError("Expected exactly one mobile room selector.")
+        selector = selectors[0]
+        text = text[:selector.start()] + selector.group(0).replace("</select>", option + "</select>", 1) + text[selector.end():]
+        if text != before_navigation:
+            actions.append("Placed Pirates Plan last in navigation and the mobile selector: " + nav)
     router = re.search(r"\bvar alias=\{([^\n]*)\};", text)
     if not router:
         raise ValueError("Cannot find the current hash-router alias map. Review its structure before integrating.")
@@ -77,7 +81,7 @@ def integrate(root: Path, nav: str, expected_sha256: str | None) -> dict:
         replacement = "var alias={" + ",".join(additions) + "," + aliases_text + "};"
         text = text[:router.start()] + replacement + text[router.end():]
         actions.append("Added planning room and subsection aliases")
-    if 'href="assets/pirates-plan.css' not in text:
+    if not any(asset in text for asset in ('href="assets/pirates-plan.css', 'href="assets/home.css')):
         if text.count("</head>") != 1:
             raise ValueError("Expected one closing head element.")
         text = text.replace("</head>", '<link rel="stylesheet" href="assets/pirates-plan.css?v=' + ASSET_VERSION + '">\n</head>', 1)

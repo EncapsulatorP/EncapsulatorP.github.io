@@ -17,6 +17,7 @@ const rooms = [
     ['interactive', 'Interactive exhibits', 'interactive/']
   ]],
   ['Read and follow the work', [
+    ['atlas-contents', 'Atlas contents', 'atlas/README.html#contents'],
     ['buried-chat-stories', 'Pirate Chest', '#pirate-chest'],
     ['paper-table', 'Paper workbench', '#paper-table'],
     ['lemmas', 'Hibernating Lemmas', '#lemmas'],
@@ -32,6 +33,7 @@ function currentLocation(root) {
   const path = location.pathname.slice(root.pathname.length).replace(/index\.html$/, '');
   if (path === 'map/' || path === 'evidence/') return { page: path.slice(0, -1) };
   if (path.startsWith('treasure-hunt/')) return { page: 'treasure' };
+  if (path.startsWith('planning/')) return { room: 'pirates-plan' };
   if (path.startsWith('atlas/')) return { page: 'atlas' };
   if (path.startsWith('recaman/')) return { room: 'recaman' };
   if (path.startsWith('interactive/')) return { room: 'interactive' };
@@ -58,7 +60,7 @@ export async function mountSiteShell(assets) {
 
   const stylesheet = document.createElement('link');
   stylesheet.rel = 'stylesheet';
-  stylesheet.href = new URL('site-shell.css?v=map-layout-2', assets);
+  stylesheet.href = new URL('site-shell.css?v=warm-paper-1', assets);
   const styled = new Promise(resolve => {
     stylesheet.addEventListener('load', () => resolve(true), { once: true });
     stylesheet.addEventListener('error', () => resolve(false), { once: true });

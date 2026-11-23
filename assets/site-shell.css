@@ -1,11 +1,11 @@
-@import url("atlas-palette.css");
+@import url("atlas-palette.css?v=warm-paper-1");
 
 .site-shell-ready {
   --site-width: 1160px;
   --site-gutter: clamp(16px, 3vw, 28px);
   --site-lead-top: clamp(30px, 5vw, 56px);
   --site-lead-bottom: clamp(24px, 3.2vw, 36px);
-  --site-title: 600 clamp(36px, 5.5vw, 62px)/1.06 Georgia, "Times New Roman", serif;
+  --site-title: 600 clamp(36px, 5.5vw, 62px)/1.06 var(--atlas-serif);
   scrollbar-gutter: stable;
   scroll-padding-top: calc(var(--site-header-height, 64px) + 12px);
 }
@@ -53,7 +53,7 @@
   padding: 3px;
   border: 1px solid var(--atlas-line);
   border-radius: 11px;
-  background: var(--atlas-blue-soft);
+  background: var(--atlas-selection);
 }
 
 .site-shell-tabs a, .site-shell-rooms summary {
@@ -129,7 +129,7 @@
   text-decoration: none;
 }
 .site-shell-room-panel a:hover, .site-shell-room-panel a[aria-current] {
-  background: var(--atlas-blue-soft);
+  background: var(--atlas-selection);
   color: var(--atlas-accent);
 }
 .site-shell-skip {
@@ -145,6 +145,7 @@
 .site-shell-ready .site-shell-legacy[hidden] { display: none !important; }
 
 @media screen {
+  .site-shell-ready body { font-family: var(--atlas-sans); }
   .site-shell-ready body:not(:has(#gl + .vig)) {
     margin: 0;
     background: var(--atlas-paper);
@@ -262,7 +263,7 @@
     border-width: 0 0 1px;
     box-shadow: none;
   }
-  .site-shell-ready .pirate-chest-head .chest-subtitle { color: var(--atlas-violet); }
+  .site-shell-ready .pirate-chest-head .chest-subtitle { color: var(--atlas-pink); }
 
   .site-shell-ready .pp-hero .pp-hero-top,
   .site-shell-ready .pp-hero .pp-stats,
@@ -304,3 +305,15 @@
   text-decoration: none;
 }
 .site-home-search:hover { background: var(--atlas-deep-panel); color: var(--atlas-on-deep); }
+
+@media screen {
+  .site-shell-ready :is(.pm-launch, .pm-unfold, .pm-story-link, .at-featured-link, .th-entry-links a:first-child) {
+    background: var(--atlas-accent);
+    color: var(--atlas-on-deep);
+    border-color: var(--atlas-accent);
+  }
+  .site-shell-ready :is(.pm-launch, .pm-unfold, .pm-story-link, .at-featured-link, .th-entry-links a:first-child):hover {
+    background: #7f2e16;
+    color: var(--atlas-on-deep);
+  }
+}

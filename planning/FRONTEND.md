@@ -1,18 +1,18 @@
 # Pirates Plan frontend
 
-The live room is embedded in the website's index. Its maintained template is planning/room.html; the template is not a separate live page.
+The public room opens from Rooms → Pirates Plan. [room.html](room.html) is a styled standalone preview and contains the bounded template used in the main page.
 
 ## Integrate against fresh source
 
-Fetch the current default-branch index and record its commit/blob before applying the plan. Run:
+Fetch the current default branch, then run:
 
     python3 planning/integrate_plan.py --root .
 
-The default adds Pirates Plan to the primary navigation immediately after Pirate Chest. Use the option below to put the link first in More paths instead:
+The integrator replaces the marked planning fragment and checks its hash routes and data scripts. The shared site shell owns the navigation. The optional `--expected-sha256` checks the local input before writing.
 
-    python3 planning/integrate_plan.py --root . --nav more
+After changing a CSS source used by Home, refresh its stylesheet:
 
-The integrator adds the mobile selector option, hash aliases, scoped stylesheet, local data script, and enhancement script. A repeat run replaces only the marked planning room and does not duplicate its markup or includes. An optional --expected-sha256 guards the local input. The tool never makes network requests or changes GitHub.
+    python3 assets/build_home_css.py
 
 The maintainer must still use the current remote parent/blob when publishing. Other contributors were updating the same site during this addition. Preserve all existing Gemini/Claude content and router aliases.
 

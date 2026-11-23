@@ -1,3 +1,16 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pirates Plan · EncapsulatorP</title>
+<link rel="stylesheet" href="../assets/pirates-plan.css">
+<link rel="stylesheet" href="../assets/atlas-theme.css">
+<script>if (!location.hash) history.replaceState(null,"","#pirates-plan");</script>
+<script src="../assets/pirates-plan-data.js" defer></script>
+<script src="../assets/pirates-plan.js" defer></script>
+<script src="../assets/pq-wordmark.js?v=warm-paper-1" defer></script>
+</head><body>
+<header class="pq-page-brand"><a data-pq-brand href="../"><img src="../assets/logo-encapsulatorp-96.png" alt="" width="27" height="27">EncapsulatorP</a></header>
+<main>
 <!-- PIRATES PLAN:START -->
 <div class="page pp-page" data-page="pirates-plan">
   <header class="pp-hero" id="pirates-plan" aria-labelledby="pp-title">
@@ -7,7 +20,7 @@
         <div>
           <h2 id="pp-title">Next treasures <br><em>hunt planning</em></h2>
           <p class="pp-hero-summary" id="pp-summary">A complete repository map, a ranked research programme, and the next piece of work on every connection.</p>
-          <div class="pp-hero-actions" id="pp-hero-actions"><a class="pp-button pp-button-primary" href="#repo-interlinks">Explore the connections <span aria-hidden="true">↘</span></a><a class="pp-button pp-button-quiet" href="#repo-register">Find a repository</a><a class="pp-reading-link" href="planning/next-treasures-hunt.md">Read the complete plan ↗</a></div>
+          <div class="pp-hero-actions" id="pp-hero-actions"><a class="pp-button pp-button-primary" href="#repo-interlinks">Explore the connections <span aria-hidden="true">↘</span></a><a class="pp-button pp-button-quiet" href="#repo-register">Find a repository</a><a class="pp-reading-link" href="./next-treasures-hunt.md">Read the complete plan ↗</a></div>
         </div>
         <aside class="pp-compass" aria-label="How to use this plan">
           <svg viewBox="0 0 280 210" aria-hidden="true" focusable="false"><defs><linearGradient id="pp-compass-line" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#a2e3d8"/><stop offset="1" stop-color="#c1a8e7"/></linearGradient></defs><g fill="none" stroke="#506b7b"><ellipse cx="140" cy="105" rx="100" ry="67"/><ellipse cx="140" cy="105" rx="63" ry="95" transform="rotate(45 140 105)"/><ellipse cx="140" cy="105" rx="63" ry="95" transform="rotate(-45 140 105)"/><path d="M32 105H248M140 5V205" stroke-dasharray="3 8"/></g><path d="M80 56L197 76L169 164L55 119L80 56L169 164M197 76L55 119" fill="none" stroke="url(#pp-compass-line)" stroke-width="2"/><g fill="#b9f0d0" stroke="#0d2630" stroke-width="5"><circle cx="80" cy="56" r="8"/><circle cx="197" cy="76" r="8"/><circle cx="169" cy="164" r="8"/><circle cx="55" cy="119" r="8"/></g><circle cx="140" cy="105" r="12" fill="#dabf81"/><circle cx="140" cy="105" r="22" fill="none" stroke="#dabf81" stroke-opacity=".5"/></svg>
@@ -21,8 +34,15 @@
   <nav class="pp-subnav" aria-label="Pirates Plan sections"><div class="pp-wrap"><a href="#plan-timeline">01 / Stages</a><a href="#plan-routes">02 / Research routes</a><a href="#repo-interlinks">03 / Connections</a><a href="#repo-register">04 / All repositories</a><a href="#decision-targets">05 / Decisions</a></div></nav>
 
   <div class="pp-wrap pp-main">
-    <div class="pp-loading" id="pp-loading" role="status">Opening the research programme… <a href="planning/next-treasures-hunt.md">The complete reading copy is also available.</a></div>
-    <noscript><p class="pp-note">The complete plan is available in the <a href="planning/next-treasures-hunt.md">reading copy</a>. Enable JavaScript for the searchable register and interactive repository map.</p></noscript>
+    <section class="pp-near-term" aria-labelledby="pp-near-term-title">
+      <h3 id="pp-near-term-title">What we’ll build next</h3>
+      <ol>
+        <li><h4>Validatron · first milestone</h4><p>Start with the 48 admissible lanes modulo 210. Retrieve the statement and its premises, attempt a Lean proof, and record the checker output, runtime, and model cost. Use failed attempts to guide the next proof or a narrower statement.</p><a href="../#validatron">Open Validatron →</a></li>
+        <li><h4>Playable proof applications · planned</h4><p>Start from the flying cubic quest. Let players change a parameter, predict the outcome, and test which conclusion survives when a hypothesis changes. Give each game a link to the exact statement and proof.</p><a href="../treasure-hunt/quest/">Play the existing flying quest →</a></li>
+      </ol>
+    </section>
+    <div class="pp-loading" id="pp-loading" role="status">Opening the research programme… <a href="./next-treasures-hunt.md">The complete reading copy is also available.</a></div>
+    <noscript><p class="pp-note">The complete plan is available in the <a href="./next-treasures-hunt.md">reading copy</a>. Enable JavaScript for the searchable register and interactive repository map.</p></noscript>
 
     <section class="pp-section" id="plan-timeline" aria-labelledby="pp-timeline-title">
       <div class="pp-section-heading"><div><p class="pp-eyebrow">01 / Put the work in order</p><h3 id="pp-timeline-title">Stages, targets, and decision gates.</h3></div><p>Time windows describe the proposed sequence. Each stage earns its continuation through a specific result.</p></div>
@@ -93,7 +113,10 @@
       <div class="pp-section-heading"><div><p class="pp-eyebrow">Beyond the organisation</p><h3 id="pp-bridges-title">External research bridges.</h3></div><p>Related work outside the organisation has its own source and next target.</p></div>
       <div class="pp-bridge-grid" id="pp-bridges"></div>
     </section>
-    <footer class="pp-colophon"><p>Research direction: <strong>Zolton / EncapsulatorP</strong>. This plan separates established connections, proposed reuse, and analogies to test.</p><p id="pp-footer-links"><a href="planning/next-treasures-hunt.md">Complete reading copy ↗</a><a href="planning/roadmap.json">Structured plan ↗</a><a href="#pirate-chest">Return to Pirate Chest ↗</a></p></footer>
+    <footer class="pp-colophon"><p>Research direction: <strong>Zolton / EncapsulatorP</strong>. This plan separates established connections, proposed reuse, and analogies to test.</p><p id="pp-footer-links"><a href="./next-treasures-hunt.md">Complete reading copy ↗</a><a href="./roadmap.json">Structured plan ↗</a><a href="../#pirate-chest">Return to Pirate Chest ↗</a></p></footer>
   </div>
 </div>
 <!-- PIRATES PLAN:END -->
+
+</main>
+</body></html>

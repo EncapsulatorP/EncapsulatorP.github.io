@@ -57,7 +57,7 @@
 }
 .site-directory-filters button:hover,
 .site-directory-filters button[aria-pressed="true"] {
-  background: var(--atlas-blue-soft);
+  background: var(--atlas-selection);
   border-color: #a6b5d8;
   color: var(--atlas-accent);
 }

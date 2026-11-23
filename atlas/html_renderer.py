@@ -490,7 +490,7 @@ def render_document(source: Path, output: Path, *, status: str | None = None,
 <title>{html.escape(data['title'])} · EncapsulatorP</title>
 {REVEAL_PREPAINT}
 <link rel="stylesheet" href="{esc(css)}"><link rel="stylesheet" href="{esc(reveal_css)}">
-<script src="{esc(wordmark_js)}?v=map-layout-1" defer></script>
+<script src="{esc(wordmark_js)}?v=warm-paper-1" defer></script>
 </head><body class="atlas-reader" data-reader-status="{esc(status)}">
 <a class="reader-skip" data-reader-chrome href="#reader-content">Skip to the complete text</a>
 <div class="reader-shell"><header class="reader-header">
