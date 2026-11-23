@@ -711,7 +711,7 @@
     get('pp-first-path').addEventListener('click', function () { if (piratePaths.length) selectPath(piratePaths[0].id); });
     get('pp-edge-focus').addEventListener('change', function () { if (this.value) selectEdge(this.value, false); else { state.edge = ''; saveState(false); renderGraph(); renderEdges(); } });
     get('pp-read-edge').addEventListener('click', inspectEdgeInLedger);
-    get('pp-map-reset').addEventListener('click', function () { state.repo = ''; state.route = ''; state.path = ''; state.edge = ''; state.evidence = ''; state.kind = ''; state.eq = ''; saveState(true); renderDynamic(); get('pp-graph-scroll').scrollTop = 0; });
+    (get('pp-map-reset')||{addEventListener:function(){}}).addEventListener('click', function () { state.repo = ''; state.route = ''; state.path = ''; state.edge = ''; state.evidence = ''; state.kind = ''; state.eq = ''; saveState(true); renderDynamic(); get('pp-graph-scroll').scrollTop = 0; });
     get('pp-filters').addEventListener('submit', function (event) { event.preventDefault(); });
     var searchTimer, edgeTimer;
     get('pp-search').addEventListener('input', function () {

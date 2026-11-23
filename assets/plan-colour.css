@@ -1,0 +1,99 @@
+/* Plan connection map: colourful light theme (replaces the dark navy / green / maroon board).
+   Loaded after pirates-plan.css, atlas-theme.css and home.css; scoped to the map section. */
+#repo-interlinks {
+  --pc-ink: #18243a;
+  --pc-muted: #4e586a;
+  --pc-violet: #8054b5;
+  --pc-sapphire: #284cad;
+  --pc-pink: #ff4f9a;
+  --pc-sun: #fff44f;
+  --pc-lime: #c9f800;
+  --pc-sky: #38bdf8;
+  --pc-coral: #ff7a6b;
+}
+
+#repo-interlinks .pp-map-shell {
+  border: 1px solid #c9b8f0;
+  background: linear-gradient(135deg, #fff4fa 0%, #f6f1ff 38%, #eef7ff 70%, #fbffe8 100%);
+  color: var(--pc-ink);
+  box-shadow: 0 18px 40px #8054b51f;
+}
+#repo-interlinks .pp-map-toolbar,
+#repo-interlinks .pp-evidence-key {
+  background: transparent;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(90deg, var(--pc-pink), var(--pc-sun), var(--pc-sky), var(--pc-violet)) 1;
+}
+#repo-interlinks .pp-map-toolbar label,
+#repo-interlinks .pp-map-caption p,
+#repo-interlinks .pp-map-count,
+#repo-interlinks .pp-evidence-key > p,
+#repo-interlinks .pp-node-list-details,
+#repo-interlinks .pp-map-legend span,
+#repo-interlinks .pp-map-legend::before { color: var(--pc-muted); }
+#repo-interlinks .pp-evidence-key > p strong,
+#repo-interlinks .pp-map-caption strong { color: var(--pc-ink); }
+#repo-interlinks .pp-evidence-key .pp-expedition-key { color: var(--pc-violet); }
+
+#repo-interlinks .pp-map-toolbar select,
+#repo-interlinks select#pp-edge-focus {
+  background: #fff;
+  color: var(--pc-ink);
+  border: 1.5px solid #b9a3ec;
+}
+#repo-interlinks .pp-map-toolbar select:focus-visible,
+#repo-interlinks select#pp-edge-focus:focus-visible { outline: 3px solid var(--pc-pink); outline-offset: 2px; }
+
+#repo-interlinks .pp-connection-inspector {
+  border: 1px solid #f3a9cb;
+  background: linear-gradient(120deg, #ffe1ef 0%, #fff6c9 52%, #dff2ff 100%);
+  color: var(--pc-ink);
+}
+#repo-interlinks .pp-connection-inspector h4 { color: var(--pc-ink); }
+#repo-interlinks .pp-connection-inspector p { color: #2c3447; }
+#repo-interlinks .pp-connection-inspector .pp-route-label,
+#repo-interlinks .pp-connection-inspector .pp-detail-label { color: #b02a6b; }
+#repo-interlinks .pp-button-light { background: #fff; color: #3c2a6e; border-color: #b9a3ec; }
+#repo-interlinks .pp-button-light:hover { background: #ffe1ef; }
+
+/* Graph: family zones cycle through bright pastels; nodes are white cards. */
+#repo-interlinks .pp-graph .pp-family-zone { fill: #ffe3f1; fill-opacity: .75; stroke: var(--pc-pink); stroke-opacity: .55; }
+#repo-interlinks .pp-graph .pp-family-zone:nth-of-type(5n+2) { fill: #fff8c2; stroke: #e2c400; }
+#repo-interlinks .pp-graph .pp-family-zone:nth-of-type(5n+3) { fill: #dff3ff; stroke: var(--pc-sky); }
+#repo-interlinks .pp-graph .pp-family-zone:nth-of-type(5n+4) { fill: #ece4ff; stroke: var(--pc-violet); }
+#repo-interlinks .pp-graph .pp-family-zone:nth-of-type(5n+5) { fill: #ffe6df; stroke: var(--pc-coral); }
+#repo-interlinks .pp-graph .pp-family-title { fill: #3c2a6e; }
+#repo-interlinks .pp-graph .pp-node-box { fill: #fff; stroke: #a78be6; }
+#repo-interlinks .pp-graph .pp-node-title { fill: var(--pc-ink); }
+#repo-interlinks .pp-graph .pp-node-rank,
+#repo-interlinks .pp-graph .pp-node-note { fill: var(--pc-muted); }
+#repo-interlinks .pp-graph .pp-node-dot { fill: var(--pc-pink); }
+#repo-interlinks .pp-graph .pp-node:hover .pp-node-box,
+#repo-interlinks .pp-graph .pp-node:focus .pp-node-box { fill: #ffe1ef; stroke: var(--pc-pink); }
+#repo-interlinks .pp-graph .pp-node.is-selected .pp-node-box,
+#repo-interlinks .pp-graph .pp-node.is-selected:hover .pp-node-box { fill: var(--pc-sun); stroke: var(--pc-violet); }
+#repo-interlinks .pp-graph .pp-node.is-selected .pp-node-title { fill: var(--pc-ink); }
+#repo-interlinks .pp-graph .pp-node.is-edge-endpoint .pp-node-box { fill: #dff3ff; stroke: var(--pc-sapphire); }
+#repo-interlinks .pp-graph .pp-node.is-edge-endpoint .pp-node-title { fill: var(--pc-ink); }
+
+/* Edges darkened enough to read on the light board. */
+#repo-interlinks .pp-graph .pp-edge-halo { stroke: #ffffff; opacity: .9; }
+#repo-interlinks .pp-graph .pp-network-edge[data-kind=existing-code] { stroke: var(--pc-violet); }
+#repo-interlinks .pp-graph .pp-network-edge[data-kind=shared-object] { stroke: #0ea5c6; }
+#repo-interlinks .pp-graph .pp-network-edge[data-kind=proposed-reuse] { stroke: var(--pc-sapphire); }
+#repo-interlinks .pp-graph .pp-network-edge[data-kind=analogy] { stroke: #b04fd6; }
+#repo-interlinks .pp-graph .pp-network-edge[data-kind=existing-link] { stroke: #6d4fc2; }
+#repo-interlinks .pp-graph .pp-network-edge[data-evidence=known] { stroke: var(--pc-pink); }
+#repo-interlinks .pp-graph .pp-network-edge[data-evidence=proposed] { stroke: var(--pc-sapphire); }
+#repo-interlinks .pp-graph .pp-network-edge[data-evidence=speculative] { stroke: #a855f7; }
+#repo-interlinks .pp-graph .pp-expedition-line { stroke: #d6338a; }
+
+#repo-interlinks .pp-node-list button { background: #fff; color: #3c2a6e; border-color: #c9b8f0; }
+#repo-interlinks .pp-node-list button:hover,
+#repo-interlinks .pp-node-list button[aria-pressed=true] { background: var(--pc-sun); color: var(--pc-ink); }
+
+/* Readable labels on the light board. */
+#repo-interlinks .pp-evidence-key strong,
+#repo-interlinks .pp-edge-picker label { color: var(--pc-ink); }
+#repo-interlinks .pp-evidence-key span { color: var(--pc-muted); }
+#repo-interlinks .pp-evidence-key [data-evidence] strong { color: #3c2a6e; }
