@@ -39,15 +39,19 @@ from reportlab.platypus import (
 
 
 BASE = Path(__file__).resolve().parent
-CREAM = colors.HexColor("#FAF7EF")
-INK = colors.HexColor("#203C3E")
-TEAL = colors.HexColor("#176C6C")
-MUTED = colors.HexColor("#607173")
-RULE = colors.HexColor("#D6DED7")
+PAPER = colors.white
+ORANGE = colors.HexColor("#FF5A00")
+HEADING = colors.HexColor("#A93600")
+LINK_HEX = "#A93600"
+INK = colors.HexColor("#2C211B")
+MUTED = colors.HexColor("#6E5549")
+RULE = colors.HexColor("#FFD4B5")
+PALE_ORANGE = colors.HexColor("#FFF2E8")
+# Keep small labels dark enough to read; bright orange is an accent or large title.
 STATUS = {
-    "exact": ("#176C6C", "#EAF2EB"),
-    "conditional": ("#9A6422", "#F7EEDC"),
-    "open": ("#755A8B", "#F0EAF4"),
+    "exact": ("#A93600", "#FFF2E8"),
+    "conditional": ("#8A4D00", "#FFF5D6"),
+    "open": ("#725044", "#FFF9F5"),
 }
 MATH = MathTextParser("path")
 
@@ -167,8 +171,8 @@ class Equation(Flowable):
         c = self.canv
         c.saveState()
         if self.boxed:
-            c.setFillColor(colors.HexColor("#EAF2EB"))
-            c.setStrokeColor(TEAL)
+            c.setFillColor(PALE_ORANGE)
+            c.setStrokeColor(ORANGE)
             c.setLineWidth(.5)
             w = float(self.parsed.width) * self.scale + 18
             c.roundRect((self.width - w) / 2, 0, w, self.height, 3, fill=1, stroke=1)
@@ -265,17 +269,17 @@ def styles() -> dict[str, ParagraphStyle]:
         "p": body,
         "small": ParagraphStyle("Small", parent=body, fontSize=10, leading=14, spaceAfter=7),
         "h": ParagraphStyle("Heading", parent=body, fontName="SansBold", fontSize=12.2,
-                            leading=17, textColor=TEAL, spaceBefore=9, spaceAfter=6, keepWithNext=1),
+                            leading=17, textColor=HEADING, spaceBefore=9, spaceAfter=6, keepWithNext=1),
         "title": ParagraphStyle("Title", fontName="SansBold", fontSize=22, leading=28,
-                                textColor=INK, spaceAfter=12, keepWithNext=1),
+                                textColor=ORANGE, spaceAfter=12, keepWithNext=1),
         "kicker": ParagraphStyle("Kicker", fontName="SansBold", fontSize=8.7, leading=12,
-                                 textColor=TEAL, spaceAfter=8, keepWithNext=1),
+                                 textColor=HEADING, spaceAfter=8, keepWithNext=1),
         "subtitle": ParagraphStyle("Subtitle", parent=body, fontSize=11.2, leading=17, spaceAfter=13),
         "meta": ParagraphStyle("Metadata", fontName="Sans", fontSize=9.1, leading=13,
                                textColor=MUTED, spaceAfter=5),
         "cell": ParagraphStyle("Cell", parent=body, fontSize=10, leading=13.5, spaceAfter=0),
         "th": ParagraphStyle("TableHeading", fontName="SansBold", fontSize=10, leading=13,
-                             textColor=colors.white),
+                             textColor=INK),
         "callout": ParagraphStyle("Callout", parent=body, spaceAfter=0),
     }
 
@@ -297,12 +301,12 @@ def make_table(block: dict, width: float, st: dict) -> Table:
                   spaceBefore=5, spaceAfter=9, splitByRow=1)
     table.setStyle(TableStyle([
         ("FONTNAME", (0, 0), (-1, -1), "Body"),
-        ("BACKGROUND", (0, 0), (-1, 0), TEAL),
-        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.HexColor("#F0F2EA"), CREAM]),
+        ("BACKGROUND", (0, 0), (-1, 0), ORANGE),
+        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [PALE_ORANGE, PAPER]),
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
         ("LEFTPADDING", (0, 0), (-1, -1), 9), ("RIGHTPADDING", (0, 0), (-1, -1), 9),
         ("TOPPADDING", (0, 0), (-1, -1), padding), ("BOTTOMPADDING", (0, 0), (-1, -1), padding),
-        ("LINEBELOW", (0, 0), (-1, 0), .6, TEAL),
+        ("LINEBELOW", (0, 0), (-1, 0), .6, ORANGE),
         ("LINEBELOW", (0, 1), (-1, -1), .35, RULE),
     ]))
     return table
@@ -326,21 +330,69 @@ def make_callout(block: dict, width: float, st: dict) -> Table:
     return table
 
 
+def sparkle(canvas: Canvas, x: float, y: float, radius: float, color) -> None:
+    """A small vector glint, confined to the page furniture."""
+    inset = radius * .24
+    points = [(x, y + radius), (x + inset, y + inset),
+              (x + radius, y), (x + inset, y - inset),
+              (x, y - radius), (x - inset, y - inset),
+              (x - radius, y), (x - inset, y + inset)]
+    path = canvas.beginPath()
+    path.moveTo(*points[0])
+    for point in points[1:]:
+        path.lineTo(*point)
+    path.close()
+    canvas.setFillColor(color)
+    canvas.drawPath(path, fill=1, stroke=0)
+
+
+def treasure_mark(canvas: Canvas, x: float, y: float) -> None:
+    """A faceted orange gem and a quiet halo, clear of the reading area."""
+    canvas.setFillColor(colors.HexColor("#FFF9F4"))
+    canvas.circle(x, y, 22, fill=1, stroke=0)
+    canvas.setFillColor(PALE_ORANGE)
+    canvas.circle(x, y, 16, fill=1, stroke=0)
+    path = canvas.beginPath()
+    path.moveTo(x - 10, y + 3)
+    for point in [(x - 5, y + 9), (x + 5, y + 9),
+                  (x + 10, y + 3), (x, y - 10)]:
+        path.lineTo(*point)
+    path.close()
+    canvas.setFillColor(ORANGE)
+    canvas.drawPath(path, fill=1, stroke=0)
+    canvas.setStrokeColor(colors.white)
+    canvas.setLineWidth(.65)
+    canvas.lines([(x - 10, y + 3, x + 10, y + 3),
+                  (x - 5, y + 9, x, y - 10),
+                  (x + 5, y + 9, x, y - 10)])
+    sparkle(canvas, x + 19, y + 13, 5, ORANGE)
+    sparkle(canvas, x - 19, y - 10, 3, RULE)
+
+
 def page_decoration(canvas: Canvas, doc: BaseDocTemplate) -> None:
     width, height = A4
     canvas.saveState()
-    canvas.setFillColor(CREAM)
+    canvas.setFillColor(PAPER)
     canvas.rect(0, 0, width, height, fill=1, stroke=0)
-    canvas.setFillColor(TEAL)
+    # Electric orange frames a bright white page; ornaments never cross body text.
+    canvas.setFillColor(ORANGE)
+    canvas.rect(0, height - 5, width, 5, fill=1, stroke=0)
+    canvas.roundRect(18, height - 133, 4, 64, 2, fill=1, stroke=0)
     canvas.rect(doc.leftMargin, height - 39, 18, 3, fill=1, stroke=0)
+    canvas.setFillColor(HEADING)
     canvas.setFont("SansBold", 8)
     canvas.drawString(doc.leftMargin + 26, height - 39, "ENCAPSULATORP  /  PIRATE CHEST")
+    treasure_mark(canvas, width - 67, height - 31)
     canvas.setStrokeColor(RULE)
     canvas.setLineWidth(.5)
     canvas.line(doc.leftMargin, 40, width - doc.rightMargin, 40)
     canvas.setFillColor(MUTED)
     canvas.setFont("Sans", 8)
     canvas.drawString(doc.leftMargin, 25, "Logistic vanishing terms • EncapsulatorP")
+    canvas.setFillColor(PALE_ORANGE)
+    canvas.setStrokeColor(ORANGE)
+    canvas.roundRect(width - doc.rightMargin - 26, 18, 31, 18, 4, fill=1, stroke=1)
+    canvas.setFillColor(HEADING)
     canvas.setFont("SansBold", 8.5)
     canvas.drawRightString(width - doc.rightMargin, 25, f"{canvas.getPageNumber():02d}")
     canvas.restoreState()
@@ -397,7 +449,7 @@ def build_pdf(data: dict, output: Path) -> None:
                 elif kind == "callout":
                     story.append(make_callout(block, doc.width, st))
                 elif kind == "link":
-                    link = f'<link href={quoteattr(block["url"])} color="#176C6C"><u>{escape(block["text"])}</u></link>'
+                    link = f'<link href={quoteattr(block["url"])} color="{LINK_HEX}"><u>{escape(block["text"])}</u></link>'
                     story.append(Paragraph(link, st["small"]))
                 else:
                     raise ValueError(f"Unknown block type: {kind}")
