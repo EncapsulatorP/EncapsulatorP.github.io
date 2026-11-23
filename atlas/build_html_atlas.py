@@ -74,7 +74,7 @@ def shell(title, description, content, config, depth=1, canonical="README.html",
 <link rel="stylesheet" href="{prefix}assets/atlas-reader.css">
 <link rel="stylesheet" href="{prefix}assets/atlas-reveal.css">
 <script src="{prefix}assets/atlas-gif.js" defer></script>
-<script src="{prefix}assets/pq-wordmark.js?v=atlas-shell-1" defer></script>
+<script src="{prefix}assets/pq-wordmark.js?v=map-layout-1" defer></script>
 <script src="{prefix}assets/atlas-reveal.js" defer></script>
 <script src="{prefix}assets/atlas-reader-init.js" defer></script>
 </head>

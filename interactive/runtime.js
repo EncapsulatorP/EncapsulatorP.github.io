@@ -7,7 +7,7 @@
   // The instrument also runs inside Atlas embeds. Add site chrome only when it owns the page.
   if (window.top === window && document.querySelector('.ix-exhibit')) {
     const wordmark = document.createElement('script');
-    wordmark.src = new URL('../assets/pq-wordmark.js?v=atlas-shell-1', document.currentScript.src);
+    wordmark.src = new URL('../assets/pq-wordmark.js?v=map-layout-1', document.currentScript.src);
     wordmark.setAttribute('data-pq-standalone', '');
     document.head.append(wordmark);
   }
