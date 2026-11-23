@@ -1,4 +1,4 @@
-@import url("atlas-palette.css?v=warm-paper-1");
+@import url("atlas-palette.css?v=blue-violet-1");
 
 .site-shell-ready {
   --site-width: 1160px;
@@ -191,7 +191,7 @@
   }
 }
 
-@media (max-width: 730px) {
+@media (max-width: 780px) {
   .site-shell-inner { position: relative; grid-template-columns: minmax(0, 1fr) 79px; gap: 5px 10px; padding-block: 7px; }
   .site-shell-tabs {
     grid-row: 2;
@@ -263,7 +263,7 @@
     border-width: 0 0 1px;
     box-shadow: none;
   }
-  .site-shell-ready .pirate-chest-head .chest-subtitle { color: var(--atlas-pink); }
+  .site-shell-ready .pirate-chest-head .chest-subtitle { color: var(--atlas-violet); }
 
   .site-shell-ready .pp-hero .pp-hero-top,
   .site-shell-ready .pp-hero .pp-stats,
@@ -279,10 +279,11 @@
     border-radius: 12px;
   }
   .site-shell-ready .pp-hero .pp-button-primary {
-    background: var(--atlas-accent);
-    color: var(--atlas-on-deep) !important;
-    border-color: var(--atlas-accent);
+    background: var(--atlas-selection);
+    color: var(--atlas-action-ink) !important;
+    border-color: var(--atlas-line);
   }
+  .site-shell-ready .pp-hero .pp-button-primary:hover { background: var(--atlas-selection-hover); }
   .site-shell-ready .pp-hero .pp-button-quiet {
     background: var(--atlas-surface);
     color: var(--atlas-accent) !important;
@@ -297,23 +298,23 @@
 .site-home-search {
   display: inline-block;
   padding: 8px 14px;
-  border: 1px solid var(--atlas-accent);
+  border: 1px solid var(--atlas-line);
   border-radius: 8px;
-  background: var(--atlas-accent);
-  color: var(--atlas-on-deep);
+  background: var(--atlas-selection);
+  color: var(--atlas-action-ink);
   font-weight: 600;
   text-decoration: none;
 }
-.site-home-search:hover { background: var(--atlas-deep-panel); color: var(--atlas-on-deep); }
+.site-home-search:hover { background: var(--atlas-selection-hover); }
 
 @media screen {
   .site-shell-ready :is(.pm-launch, .pm-unfold, .pm-story-link, .at-featured-link, .th-entry-links a:first-child) {
-    background: var(--atlas-accent);
-    color: var(--atlas-on-deep);
-    border-color: var(--atlas-accent);
+    background: var(--atlas-selection);
+    color: var(--atlas-action-ink);
+    border-color: var(--atlas-line);
   }
   .site-shell-ready :is(.pm-launch, .pm-unfold, .pm-story-link, .at-featured-link, .th-entry-links a:first-child):hover {
-    background: #7f2e16;
-    color: var(--atlas-on-deep);
+    background: var(--atlas-selection-hover);
+    color: var(--atlas-action-ink);
   }
 }

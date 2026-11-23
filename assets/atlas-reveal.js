@@ -9,7 +9,7 @@
     const source = document.currentScript?.src;
     if (source && document.querySelector('.reader-header .reader-brand')) {
       const wordmark = document.createElement('script');
-      wordmark.src = new URL('pq-wordmark.js?v=warm-paper-1', source);
+      wordmark.src = new URL('pq-wordmark.js?v=blue-violet-1', source);
       document.head.append(wordmark);
     }
   }

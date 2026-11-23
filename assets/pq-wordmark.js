@@ -15,16 +15,23 @@
   ];
 
   function paintWord(canvas) {
-    const width = 139, height = 34;
+    const word = 'Encapsulator';
     const scale = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = Math.round(width * scale);
-    canvas.height = Math.round(height * scale);
     const context = canvas.getContext('2d');
     if (!context) return false;
 
     const font = '700 ' + 21 * scale + 'px Georgia, serif';
     context.font = font;
-    context.fillText('Encapsulator', 2 * scale, 24 * scale);
+    const measured = context.measureText(word);
+    const pad = 3 * scale;
+    const left = Math.max(0, measured.actualBoundingBoxLeft || 0);
+    const right = Math.max(measured.width, measured.actualBoundingBoxRight || 0);
+    canvas.width = Math.ceil(left + right + 2 * pad);
+    canvas.height = Math.round(34 * scale);
+    const width = canvas.width / scale;
+    const height = canvas.height / scale;
+    context.font = font;
+    context.fillText(word, pad + left, 24 * scale);
     const mask = context.getImageData(0, 0, canvas.width, canvas.height);
     context.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -92,40 +99,77 @@
 
     const animation = window.PQ.create(mark, {
       mode: 'line', count: 180, from: 'P', to: 'P', tfs: ['flip'],
-      playing: false, auto: false, dur: 0.95, hold: 0.05
+      playing: false, auto: false, dur: 0.78, hold: 0.14
     });
 
     let index = 0;
-    function label() {
-      button.setAttribute('aria-label', 'Transform wordmark, ' + sequence[index].label + ' to ' +
-        sequence[(index + 1) % sequence.length].label);
-    }
-    label();
+    let remaining = 0;
+    let intro = 0;
 
-    button.addEventListener('click', () => {
-      const source = sequence[index];
+    function label() {
+      const current = sequence[index].label;
+      const next = sequence[(index + 1) % sequence.length].label;
+      button.setAttribute('aria-label', 'Transform wordmark, ' + current + ' to ' + next);
+    }
+
+    function advance() {
+      const source = animation.shown();
       index = (index + 1) % sequence.length;
       const target = sequence[index];
       if (motion.matches) animation.set({ a: target.glyph, b: target.glyph, t: 0, playing: false });
-      else animation.set({ a: source.glyph, b: target.glyph, tf: target.transform, t: 0, playing: true });
+      else animation.set({ a: source, b: target.glyph, tf: target.transform, t: 0, playing: true });
       label();
-    });
-    motion.addEventListener('change', event => {
-      if (event.matches) {
-        const current = sequence[index].glyph;
-        animation.set({ a: current, b: current, t: 0, playing: false });
+    }
+
+    function cancelIntro() {
+      window.clearTimeout(intro);
+      intro = 0;
+      remaining = 0;
+    }
+
+    function runIntro() {
+      if (motion.matches || document.hidden || index !== 0 || animation.state.playing) return;
+      remaining = sequence.length - 1;
+      advance();
+    }
+
+    animation.onstate = tick => {
+      if (!tick && remaining && !animation.state.playing && animation.state.t === 1) {
+        remaining--;
+        advance();
       }
+    };
+
+    label();
+    if (!motion.matches) intro = window.setTimeout(() => {
+      intro = 0;
+      runIntro();
+    }, 170);
+    button.addEventListener('pointerenter', event => {
+      if (event.pointerType === 'mouse' && !intro) runIntro();
     });
+    button.addEventListener('click', () => {
+      cancelIntro();
+      advance();
+    });
+
+    function stopMotion() {
+      cancelIntro();
+      const current = sequence[index].glyph;
+      animation.set({ a: current, b: current, t: 0, playing: false });
+    }
+    motion.addEventListener('change', event => { if (event.matches) stopMotion(); });
+    document.addEventListener('visibilitychange', () => { if (document.hidden) stopMotion(); });
   }
 
   const standalone = document.currentScript.hasAttribute('data-pq-standalone');
   if (standalone && window.top !== window) return;
-  const shared = import(new URL('site-shell.js?v=warm-paper-1', assetDirectory))
+  const shared = import(new URL('site-shell.js?v=blue-violet-1', assetDirectory))
     .then(({ mountSiteShell }) => mountSiteShell(assetDirectory))
     .catch(() => null);
   const style = document.createElement('link');
   style.rel = 'stylesheet';
-  style.href = new URL('pq-wordmark.css', assetDirectory);
+  style.href = new URL('pq-wordmark.css?v=blue-violet-1', assetDirectory);
   let stylesheetReady;
   const styled = new Promise(resolve => { stylesheetReady = resolve; });
   style.addEventListener('load', () => stylesheetReady(true), { once: true });
