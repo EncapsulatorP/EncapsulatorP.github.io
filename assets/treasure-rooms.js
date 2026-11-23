@@ -40,7 +40,7 @@
   function init() {
     var nav = document.getElementById('tr-all-rooms'), menu = document.querySelector('.tr-nav-more');
     function syncNav() { var active = document.querySelector('.nav a[aria-current=page]'); if (nav && active) nav.value = active.getAttribute('href'); }
-    if (nav) nav.addEventListener('change', function () { location.hash = nav.value; });
+    if (nav) nav.addEventListener('change', function () { if (nav.value.charAt(0) === '#') location.hash = nav.value; else location.href = nav.value; });
     window.addEventListener('hashchange', function () { syncNav(); if (menu) menu.open = false; }); syncNav();
     if (menu) {
       document.addEventListener('click', function(e) { if (!menu.contains(e.target)) menu.open = false; });
