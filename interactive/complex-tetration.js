@@ -75,7 +75,7 @@
     }
     if (sample.state === 'survived') return [22, 42, 68];
     const v = Math.floor(12 + 190 * Math.pow(Math.min(1, sample.escapedIndex / count), .55));
-    return [Math.floor(v * .85), Math.floor(v * .45), Math.floor(v * .32)];
+    return [Math.floor(v * .62), Math.floor(v * .42), Math.floor(v * .95)];
   }
   const model = { VIEW, ESCAPE_R2, TOLERANCE, tetrationStep, logarithm, orbit, ensemble, fieldSample, fieldColor };
   if (typeof module !== 'undefined' && module.exports) module.exports = model;
@@ -103,7 +103,7 @@
   const hint = document.createElement('p'); hint.textContent = 'Click the basin to seed an orbit. Focus it and use arrow keys to move c; hold Shift for a finer step.';
   seedFields.append(hint); stage.before(seedFields);
   const caption = document.createElement('p'); caption.className = 'ct-caption';
-  caption.innerHTML = '<strong>Read the field.</strong> Basin tint: successive-step tolerance met. Dark blue: undecided after N updates. Brown: escape recorded. Background = bases c; paths = states z on the same scale.';
+  caption.innerHTML = '<strong>Read the field.</strong> Basin tint: successive-step tolerance met. Dark blue: undecided after N updates. Violet: escape recorded (brighter = later escape). Background = bases c; paths = states z on the same scale.';
   stage.after(caption);
   const status = root.querySelector('.ix-status'); status.classList.add('ct-status'); status.setAttribute('role', 'status');
   ui.setLegend([
@@ -165,7 +165,7 @@
     canvas.width = Math.min(600, Math.ceil(width / 2)); canvas.height = Math.ceil(canvas.width * height / width);
     const ctx = canvas.getContext('2d');
     if (!ctx) return null;
-    ctx.fillStyle = '#0f202c'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#0d1530'; ctx.fillRect(0, 0, canvas.width, canvas.height);
     return { canvas, ctx, image: ctx.createImageData(canvas.width, canvas.height), row: 0, count: state.maxIter };
   }
   function advanceField() {

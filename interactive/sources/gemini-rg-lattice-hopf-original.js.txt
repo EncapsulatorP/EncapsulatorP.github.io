@@ -1,0 +1,264 @@
+/* Gemini (Neon) · c3.2z Living SPEC & Prime Forms, tab 1 · RG Lattice & Hopf.
+ * Supplied file: c3_2z_living_spec_prime_forms.html (lines 345–426 markup, 681–690 constants, 816–985 logic). Verbatim excerpt. */
+  <!-- TAB 1 (DEFAULT): RG LATTICE & HOPF                                    -->
+  <!-- ===================================================================== -->
+  <section class="tab-panel active" id="tab-1" role="tabpanel">
+    <!-- 1) Renormalization Group Micro-Lattice -->
+    <div class="panel">
+      <div class="rg-header">
+        <div>
+          <h2>Renormalization Group</h2>
+          <p class="note" id="rg-subtitle" style="margin-top:5px">Layer 0: Planck Scale. Raw discrete spacetime seeded by prime-factor tower heights &amp; Odd Mirror Knot. No information is filtered; every node fluctuates independently.</p>
+        </div>
+        <div class="rg-readouts">
+          <div class="rg-readout-block">
+            <div class="rg-readout-lbl">Scale</div>
+            <div class="rg-readout-val" id="rg-top-scale">10^-35 m</div>
+          </div>
+          <div class="rg-readout-block">
+            <div class="rg-readout-lbl">State</div>
+            <div class="rg-readout-val mint" id="rg-top-state">Discrete</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rg-stage" id="wrap-rg">
+        <canvas id="canvas-rg" role="img" aria-label="32 by 32 Renormalization Group coarse-graining micro-lattice"></canvas>
+      </div>
+
+      <div class="rg-bar">
+        <div class="rg-slider-wrap">
+          <label for="rg-scale" class="mono" style="font-size:.83rem;color:var(--dim)">Coarse-Graining Layer</label>
+          <input id="rg-scale" type="range" min="0" max="3" step="1" value="0">
+          <output id="rg-scale-out" class="mono" style="color:var(--mint);min-width:6.5em">Layer 0 (1×1)</output>
+        </div>
+        <button type="button" id="rg-save">Save PNG</button>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi"><div class="kpi-lbl">Micro-Variance Retained</div><div class="kpi-val gold" id="rg-kpi-var">100.0%</div></div>
+        <div class="kpi"><div class="kpi-lbl">Entropy Loss</div><div class="kpi-val coral" id="rg-kpi-ent">0.00 bits</div></div>
+        <div class="kpi"><div class="kpi-lbl">Active Scale</div><div class="kpi-val" id="rg-kpi-scale">10^-35 m · Discrete</div></div>
+        <div class="kpi"><div class="kpi-lbl">Seed Coupling</div><div class="kpi-val violet" id="rg-kpi-seed">m/s · r=1.22</div></div>
+      </div>
+    </div>
+
+    <!-- 2) Recovered Hopf Dimension Lab -->
+    <div class="panel dimension-lab" id="dimensions">
+      <h2>When does the hole disappear?</h2>
+      <p class="note">Change the detector to hide the hole. Change the pump to collapse the loop. Change units to see what the tower would command if we wired it into the pump.</p>
+      <div class="dimension-layout">
+        <div>
+          <div class="phase-frame">
+            <canvas id="dimension-canvas" width="640" height="244" role="img" aria-label="Oscillator orbit and detector output"></canvas>
+            <p id="dimension-caption" class="note" aria-live="polite"></p>
+          </div>
+          <div class="mode-kpis" id="dimension-kpis" aria-live="polite"></div>
+        </div>
+        <div class="dimension-controls">
+          <label>Detector
+            <select id="dimension-view">
+              <option value="iq">Both quadratures</option>
+              <option value="sum">Coherent mirror sum</option>
+              <option value="power">Power only</option>
+            </select>
+          </label>
+          <label>Unit <select id="dimension-unit"></select></label>
+          <label>Pump input
+            <select id="dimension-drive">
+              <option value="manual">Physical setting</option>
+              <option value="tower">Unit digit → pump</option>
+            </select>
+          </label>
+          <label><span>Pump bias <output id="dimension-bias-label"></output></span>
+            <input id="dimension-bias" type="range" min="-0.60" max="0.60" step="0.01" value="0.18">
+          </label>
+          <label><span>Detection floor <output id="dimension-floor-label"></output></span>
+            <input id="dimension-floor" type="range" min="0" max="0.75" step="0.01" value="0">
+          </label>
+        </div>
+      </div>
+      <p id="dimension-command" class="note"></p>
+      <p class="note">Normalized Hopf normal form. The attractor dimension is the dimension of its invariant set; visible dimension and visible holes depend on the detector.</p>
+    </div>
+  </section>
+const C = 299792458n;
+const fineStructure = 1 / 137.035999177;
+const alphaProxy = 1 / 137;
+const flipParameter = 1 + Math.sqrt(6);
+const factors = ['', '', '2', '3', '2²', '5', '2 × 3', '7', '2³', '3²'];
+const heights = [0, 0, 1, 1, 2, 1, 2, 1, 3, 2];
+const primesByDigit = ['', '', '2', '3', '22', '5', '23', '7', '222', '33'];
+const primeColors = { '2': '#a0f8d9', '3': '#ffce88', '5': '#d6c9ff', '7': '#80d3ff' };
+const harmonics = Array.from({ length: 13 }, (_, i) => i - 6);
+const gainWords = [[2], [3], [5], [7], [2, 7], [7, 2], [3, 5]];
+// ============================================================================
+// 2. TAB 1: RENORMALIZATION GROUP MICRO-LATTICE & HOPF DIMENSION LAB
+// ============================================================================
+const RG_META = [
+  {
+    scale: '10^-35 m', state: 'Discrete', block: 1,
+    desc: 'Layer 0: Planck Scale. Raw discrete spacetime seeded by prime-factor tower heights & Odd Mirror Knot. No information is filtered; every node fluctuates independently.',
+  },
+  {
+    scale: '10^-18 m', state: 'Quantum Fields', block: 2,
+    desc: 'Layer 1: 2×2 block coarse-graining integrates out Planck-scale geometry into continuous quantum fields with emergent c and h.',
+  },
+  {
+    scale: '10^-6 m', state: 'Classical', block: 4,
+    desc: 'Layer 2: 4×4 block coarse-graining averages out quantum interference (decoherence) into classical trajectories governed by G.',
+  },
+  {
+    scale: '10^0 m', state: 'Thermodynamic', block: 8,
+    desc: 'Layer 3: 8×8 macro-gradient coarse-graining. Individual trajectories are erased into irreversible thermodynamic entropy.',
+  },
+];
+const microField = new Float32Array(1024);
+
+function drawRG(t) {
+  const c = byId('canvas-rg'), wrap = byId('wrap-rg');
+  const w = wrap.clientWidth || 720, h = wrap.clientHeight || 390;
+  if (c.width !== w || c.height !== h) { c.width = w; c.height = h; }
+  const ctx = c.getContext('2d');
+  ctx.fillStyle = '#0b0f14';
+  ctx.fillRect(0, 0, w, h);
+
+  const sc = Number(byId('rg-scale').value);
+  const meta = RG_META[sc];
+  const raw = byId('uncap').checked;
+  const digs = [...visibleDigits].map((d) => towerHeight(d, raw) / 3);
+  const dLen = digs.length || 1;
+  const kR = Number(byId('gallery-knot-r').value);
+  const kE = Number(byId('gallery-knot-e').value);
+  const roots = knotAttractors(kR, kE);
+  const knotAmp = roots.length === 2 ? roots[1] : 0.25;
+
+  // Compute 32x32 Layer 0 discrete micro-field
+  let s0 = 0, sq0 = 0;
+  for (let y = 0; y < 32; y++) {
+    for (let x = 0; x < 32; x++) {
+      const hA = digs[(x + y * 3) % dLen];
+      const hB = digs[(x * 5 + y * 7) % dLen];
+      const wave = 0.5 + 0.5 * Math.sin(t * 1.15 + x * 0.42 - y * 0.37 + knotAmp * Math.cos(t * 0.8 + ((x * 7) ^ (y * 11)) * 0.22));
+      const v = Math.max(0, Math.min(1, 0.42 * hA + 0.22 * hB + 0.36 * wave));
+      microField[y * 32 + x] = v;
+      s0 += v; sq0 += v * v;
+    }
+  }
+  const var0 = Math.max(1e-9, sq0 / 1024 - (s0 / 1024) ** 2);
+
+  // Render square instrument frame centered in canvas
+  const blk = meta.block;
+  const side = 32 / blk;
+  const gridPx = Math.min(w - 40, h - 32);
+  const ox = (w - gridPx) / 2;
+  const oy = (h - gridPx) / 2;
+  const cell = gridPx / side;
+
+  ctx.strokeStyle = 'rgba(45,64,75,0.55)';
+  ctx.lineWidth = 1;
+  ctx.strokeRect(ox - 6, oy - 6, gridPx + 12, gridPx + 12);
+
+  let sB = 0, sqB = 0;
+  for (let by = 0; by < side; by++) {
+    for (let bx = 0; bx < side; bx++) {
+      let acc = 0;
+      for (let dy = 0; dy < blk; dy++) {
+        for (let dx = 0; dx < blk; dx++) acc += microField[(by * blk + dy) * 32 + bx * blk + dx];
+      }
+      const avg = acc / (blk * blk);
+      sB += avg; sqB += avg * avg;
+      const cx = ox + (bx + 0.5) * cell;
+      const cy = oy + (by + 0.5) * cell;
+
+      // Precision instrument palette: slate, sky-blue, mint, gold
+      let color;
+      if (avg < 0.34) color = '#4c6278';
+      else if (avg < 0.54) color = '#79baff';
+      else if (avg < 0.72) color = '#a0f8d9';
+      else color = '#ffce88';
+
+      if (blk === 1) {
+        artDot(ctx, cx, cy, Math.max(1.8, cell * 0.36), color);
+      } else if (blk === 8) {
+        // Layer 3: macro-gradient coarse-graining
+        const grad = ctx.createRadialGradient(cx, cy, cell * 0.08, cx, cy, cell * 0.78);
+        grad.addColorStop(0, color);
+        grad.addColorStop(1, 'rgba(11,15,20,0.45)');
+        ctx.fillStyle = grad;
+        ctx.fillRect(cx - cell * 0.48, cy - cell * 0.48, cell * 0.96, cell * 0.96);
+      } else {
+        const sz = cell * 0.86;
+        ctx.fillStyle = color;
+        ctx.fillRect(cx - sz / 2, cy - sz / 2, sz, sz);
+      }
+    }
+  }
+
+  const nB = side * side;
+  const varB = Math.max(0, sqB / nB - (sB / nB) ** 2);
+  const varRetained = sc === 0 ? 100 : Math.min(100, (varB / var0) * 100);
+  // Information loss in bits: log2(1024 / nB) + variance attenuation term
+  const bitsLost = sc === 0 ? 0 : Math.log2(1024 / nB) + Math.max(0, -Math.log2(Math.max(0.01, varRetained / 100)) * 0.5);
+
+  byId('rg-top-scale').textContent = meta.scale;
+  byId('rg-top-state').textContent = meta.state;
+  byId('rg-subtitle').textContent = meta.desc;
+  byId('rg-scale-out').textContent = `Layer ${sc} (${blk}×${blk})`;
+  byId('rg-kpi-var').textContent = varRetained.toFixed(1) + '%';
+  byId('rg-kpi-ent').textContent = bitsLost.toFixed(2) + ' bits';
+  byId('rg-kpi-scale').textContent = `${meta.scale} · ${meta.state}`;
+  byId('rg-kpi-seed').textContent = `${units.get(selected).label} · r=${kR.toFixed(2)}`;
+}
+
+// Hopf Dimension Lab (100% recovered)
+let displayedDimension = null;
+function dimensionState() {
+  const unit = units.get(selected), digit = unit.whole.at(-1);
+  const h = configuredHeight(digit, byId('uncap').checked, ruleConfig());
+  const bias = Number(byId('dimension-bias').value), floor = Number(byId('dimension-floor').value);
+  const driven = byId('dimension-drive').value === 'tower', detector = byId('dimension-view').value;
+  const mu = bias + (driven ? 0.30 * (h - 2) : 0), radius = Math.sqrt(Math.max(0, mu));
+  const active = radius > 0, resolved = active && radius > floor, visible = resolved && detector !== 'power';
+  return { digit, h, bias, floor, driven, detector, mu, radius, active, resolved, visible, hole: visible && detector === 'iq' };
+}
+function renderDimension() {
+  displayedDimension = dimensionState();
+  const d = displayedDimension;
+  byId('dimension-unit').value = selected;
+  byId('dimension-bias-label').textContent = d.bias.toFixed(2);
+  byId('dimension-floor-label').textContent = d.floor.toFixed(2);
+  byId('dimension-kpis').replaceChildren(
+    property('Attractor dimension', d.active ? 1 : 0),
+    property('Visible dimension', d.visible ? 1 : 0),
+    property('Visible holes', d.hole ? 1 : 0),
+  );
+  byId('dimension-caption').textContent = !d.active ? 'The loop has collapsed. The attracting state is a fixed point.'
+    : !d.resolved ? 'The loop is below the detection floor. The oscillator still has a limit cycle.'
+    : d.detector === 'sum' ? 'The mirror fields cancel in the imaginary quadrature. Their sum moves along a line.'
+    : d.detector === 'power' ? 'The field keeps rotating. Its steady intensity is constant.'
+    : 'The stable circle and its mirror share a loop. The two fields run in opposite directions.';
+  byId('dimension-command').textContent = 'Unit digit ' + d.digit + ' → height ' + d.h + ' · ' + (d.driven
+    ? 'tower drives the pump: μ = bias + 0.30 × (height − 2) = ' + d.mu.toFixed(2)
+    : 'physical pump held at μ = ' + d.mu.toFixed(2) + ' while the unit and tower may change');
+  paintDimension(animTime * 1000);
+  updateInvariants();
+}
+function paintDimension(timeMs) {
+  const ctx = byId('dimension-canvas').getContext('2d');
+  if (!ctx || !displayedDimension) return;
+  const { radius, visible, detector, resolved } = displayedDimension;
+  const x = 320, y = 122, angle = 0.0022 * timeMs + 0.66, px = radius * 88;
+  ctx.clearRect(0, 0, 640, 244);
+  ctx.strokeStyle = '#263c48'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(55, y); ctx.lineTo(585, y); ctx.moveTo(x, 19); ctx.lineTo(x, 225); ctx.stroke();
+  ctx.font = '14px system-ui'; ctx.fillStyle = '#abbcc4';
+  ctx.fillText(detector === 'power' ? 'Power' : detector === 'sum' ? 'Real field sum' : 'In-phase field', 493, 145);
+  if (detector === 'iq') ctx.fillText('Quadrature field', 330, 27);
+  if (!visible) { artDot(ctx, detector === 'power' && resolved ? x + 106 * radius ** 2 : x, y, 5.5, '#ffce88'); return; }
+  ctx.strokeStyle = '#a0f8d9'; ctx.lineWidth = 2.5; ctx.beginPath();
+  if (detector === 'sum') { ctx.moveTo(x - 2 * px, y); ctx.lineTo(x + 2 * px, y); } else ctx.arc(x, y, px, 0, 2 * Math.PI);
+  ctx.stroke();
+  if (detector === 'sum') artDot(ctx, x + 2 * px * Math.cos(angle), y, 5.5, '#ffce88');
+  else { artDot(ctx, x + px * Math.cos(angle), y - px * Math.sin(angle), 5.5, '#a0f8d9'); artDot(ctx, x + px * Math.cos(angle), y + px * Math.sin(angle), 5.5, '#d6c9ff'); }
+}

@@ -14,14 +14,15 @@
   const root = document.getElementById('widget');
   if (!root) return;
   if (window.parent !== window) document.documentElement.classList.add('ix-embedded');
+  // Gemini's bright instrument look (white stage, saturated marks), in the site's sapphire/violet palette.
   const colors = {
-    '--surface': '#163b43', '--primary': '#a9e1cc', '--positive': '#9b74df',
-    '--negative': '#af90e5', '--chart-1': '#a9e1cc', '--chart-2': '#89c5df',
-    '--chart-3': '#9082d6', '--chart-4': '#ac8edf', '--chart-5': '#c5b4df',
-    '--on-surface-default': '#edf4eb', '--on-surface-variant': '#bfd2c8',
-    '--outline': '#8daea3', '--outline-variant': '#496d67',
-    '--stroke-emphasis': '#74958a', '--surface-container-high': '#72978d',
-    '--surface-container-highest': '#617b74'
+    '--surface': '#ffffff', '--primary': '#284cad', '--positive': '#6c46c4',
+    '--negative': '#e0364f', '--chart-1': '#284cad', '--chart-2': '#6c46c4',
+    '--chart-3': '#ee9a12', '--chart-4': '#e0364f', '--chart-5': '#2f8fd8',
+    '--on-surface-default': '#18213a', '--on-surface-variant': '#525c74',
+    '--outline': '#9aa3bd', '--outline-variant': '#d9ddec',
+    '--stroke-emphasis': '#8a93ad', '--surface-container-high': '#e6e9f4',
+    '--surface-container-highest': '#c9cfe2'
   };
   const loops = [], redraws = [], cleanups = [];
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -116,7 +117,7 @@
         const signature = JSON.stringify(items), now = performance.now();
         if (signature === hudLast || (animated() && now - hudTime < 120)) return;
         hudLast = signature; hudTime = now; hud.replaceChildren();
-        items.forEach(item => { const itemNode = el('div'); itemNode.append(el('dt', '', item.label), el('dd', '', String(item.value))); hud.append(itemNode); });
+        items.forEach(item => { const itemNode = el('div'), value = el('dd', '', String(item.value)); if (item.color) value.style.color = getColor(item.color); itemNode.append(el('dt', '', item.label), value); hud.append(itemNode); });
       },
       setEditorial(editorial) { if (editorial.hud) ui.setHUD(editorial.hud); },
       setLegend(items) { legend.replaceChildren(); items.forEach(item => { const chip = el('span', '', item.label), dot = el('i'); dot.style.background = getColor(item.color); chip.prepend(dot); legend.append(chip); }); },
@@ -150,8 +151,8 @@
     ctx.drawTag = function (text, x, y) {
       text = text.replace(/\$/g, ''); this.save(); this.font = '600 13px system-ui';
       const w = this.measureText(text).width + 20;
-      this.fillStyle = '#fafbfd'; this.fillRect(x - w / 2, y - 15, w, 26);
-      this.fillStyle = '#182b35'; this.textAlign = 'center'; this.fillText(text, x, y + 3); this.restore();
+      this.fillStyle = '#ffffff'; this.fillRect(x - w / 2, y - 15, w, 26); this.strokeStyle = '#284cad'; this.lineWidth = 1.2; this.strokeRect(x - w / 2, y - 15, w, 26);
+      this.fillStyle = '#18213a'; this.textAlign = 'center'; this.fillText(text, x, y + 3); this.restore();
     };
     loops.push(frame => {
       const { width, height } = view.size;
@@ -186,19 +187,19 @@
     config.marks.forEach(mark => mark.data.forEach((d, i) => { if (mark.type === 'ruleX') allX.push(d); else if (mark.type === 'ruleY') allY.push(d); else { allX.push(channel(mark.options.x, d, i)); allY.push(channel(mark.options.y, d, i)); } }));
     const xd = config.x?.domain || finiteExtent(allX), yd = config.y?.domain || finiteExtent(allY);
     const x = v => left + (v - xd[0]) / (xd[1] - xd[0]) * (right - left), y = v => bottom - (v - yd[0]) / (yd[1] - yd[0]) * (bottom - top);
-    ctx.font = '10px system-ui'; ctx.textBaseline = 'middle'; ctx.fillStyle = colors['--on-surface-variant'];
+    ctx.font = '11px ui-monospace,monospace'; ctx.textBaseline = 'middle'; ctx.fillStyle = colors['--on-surface-variant'];
     for (let i = 0; i <= 4; i++) {
       const px = left + i / 4 * (right - left), py = bottom - i / 4 * (bottom - top);
-      ctx.strokeStyle = '#365b5c'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(px, top); ctx.lineTo(px, bottom); ctx.moveTo(left, py); ctx.lineTo(right, py); ctx.stroke();
+      ctx.strokeStyle = '#e6e9f4'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(px, top); ctx.lineTo(px, bottom); ctx.moveTo(left, py); ctx.lineTo(right, py); ctx.stroke();
       const xv = xd[0] + i / 4 * (xd[1] - xd[0]), yv = yd[0] + i / 4 * (yd[1] - yd[0]);
       ctx.textAlign = 'center'; ctx.fillText(Number(xv.toPrecision(4)).toString(), px, bottom + 15); ctx.textAlign = 'right'; ctx.fillText(Number(yv.toPrecision(3)).toString(), left - 7, py);
     }
-    ctx.fillStyle = colors['--on-surface-default']; ctx.font = '11px system-ui'; ctx.textAlign = 'left'; ctx.fillText(config.title || '', left, 16);
+    ctx.fillStyle = colors['--on-surface-default']; ctx.font = '600 14px system-ui'; ctx.textAlign = 'left'; ctx.fillText(config.title || '', left, 18); ctx.font = '12px system-ui';
     ctx.textAlign = 'center'; ctx.fillText(config.x?.label || '', (left + right) / 2, height - 10);
     ctx.save(); ctx.translate(12, (top + bottom) / 2); ctx.rotate(-Math.PI / 2); ctx.fillText(config.y?.label || '', 0, 0); ctx.restore();
     ctx.save(); ctx.beginPath(); ctx.rect(left, top, right - left, bottom - top); ctx.clip();
     config.marks.forEach(mark => {
-      const o = mark.options; ctx.save(); ctx.strokeStyle = o.stroke || colors['--primary']; ctx.fillStyle = o.fill || colors['--primary']; ctx.lineWidth = o.strokeWidth || 1.4;
+      const o = mark.options; ctx.save(); ctx.strokeStyle = o.stroke || colors['--primary']; ctx.fillStyle = o.fill || colors['--primary']; ctx.lineWidth = o.strokeWidth || 2;
       ctx.globalAlpha = o.strokeOpacity ?? o.fillOpacity ?? 1; ctx.setLineDash(o.strokeDasharray ? String(o.strokeDasharray).split(',').map(Number) : []);
       if (mark.type === 'ruleX' || mark.type === 'ruleY') {
         mark.data.forEach(v => { ctx.beginPath(); if (mark.type === 'ruleX') { ctx.moveTo(x(v), top); ctx.lineTo(x(v), bottom); } else { ctx.moveTo(left, y(v)); ctx.lineTo(right, y(v)); } ctx.stroke(); });

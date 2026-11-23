@@ -11,7 +11,7 @@ const TRAIL_CAPACITY = 768;
 const TRAIL_INTERVAL = 1 / 30;
 const CURRENT_TRAIL_RADIUS = 0.2;
 const RETAINED_TRAIL_RADIUS = 0.155;
-const PASS_COLORS = ['#9eead7', '#ffd172', '#ff91ab', '#b6b1ff'];
+const PASS_COLORS = ['#284cad', '#ee9a12', '#e0364f', '#6c46c4'];
 const VIEW_OVERLAY = 'Superimposed passes';
 const VIEW_CURRENT = 'Current pass';
 const VIEW_ORIGINAL = 'Original view';
@@ -116,8 +116,8 @@ function describeView() {
             label: `Pass ${pass.k}${index === shown.length - 1 ? ' · current' : ' · retained'}`,
             color: pass.color
         })),
-        { label: 'Rotating reference mesh', color: '#91b0a7' },
-        ...(state.trailView === VIEW_ORIGINAL ? [] : [{ label: 'Dashed gold · prescribed reset jump', color: '#ffd172' }])
+        { label: 'Rotating reference mesh', color: '#9aa3bd' },
+        ...(state.trailView === VIEW_ORIGINAL ? [] : [{ label: 'Dashed gold · prescribed reset jump', color: '#ee9a12' }])
     ]);
     passLabel.textContent = `PASS ${state.kt} · ${heldReset ? 'RESET HELD' : state.isPlaying ? 'LIVE' : 'PAUSED'}`;
     viewLabel.textContent = state.trailView === VIEW_OVERLAY
@@ -206,22 +206,22 @@ function renderFrame({ dt }) {
 
 WH.initThree('viz', (scene, camera, renderer, controls) => {
     const bg = new THREE.Color(WH.getColor('--surface'));
-    const resetGold = new THREE.Color('#ffd172');
+    const resetGold = new THREE.Color('#ee9a12');
     scene.background = bg;
     const torusGeometry = new THREE.TorusGeometry(TORUS_R, TORUS_r, 24, 80);
-    const torusMaterial = new THREE.MeshBasicMaterial({ color: '#91b0a7', wireframe: true, transparent: true, opacity: 0.21, depthWrite: false });
+    const torusMaterial = new THREE.MeshBasicMaterial({ color: '#9aa3bd', wireframe: true, transparent: true, opacity: 0.21, depthWrite: false });
     const torus = new THREE.Mesh(torusGeometry, torusMaterial);
     torus.rotation.x = Math.PI / 2;
     scene.add(torus);
 
     const ringGeometry = new THREE.TorusGeometry(TORUS_R - TORUS_r, 0.035, 6, 100);
-    const ringMaterial = new THREE.MeshBasicMaterial({ color: '#ffd172', transparent: true, opacity: 0.5, depthWrite: false });
+    const ringMaterial = new THREE.MeshBasicMaterial({ color: '#ee9a12', transparent: true, opacity: 0.5, depthWrite: false });
     const innerRim = new THREE.Mesh(ringGeometry, ringMaterial);
     innerRim.rotation.x = Math.PI / 2;
     scene.add(innerRim);
 
     const particleGeometry = new THREE.SphereGeometry(0.29, 18, 12);
-    const particleMaterial = new THREE.MeshBasicMaterial({ color: '#f7f8fb' });
+    const particleMaterial = new THREE.MeshBasicMaterial({ color: '#18213a' });
     const particle = new THREE.Mesh(particleGeometry, particleMaterial);
     const haloGeometry = new THREE.SphereGeometry(0.56, 18, 12);
     const haloMaterial = new THREE.MeshBasicMaterial({ color: PASS_COLORS[0], transparent: true, opacity: 0.52, depthWrite: false });
@@ -292,12 +292,12 @@ WH.initThree('viz', (scene, camera, renderer, controls) => {
     }
 
     const jumpGeometry = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(), new THREE.Vector3()]);
-    const jumpMaterial = new THREE.LineDashedMaterial({ color: '#ffd172', dashSize: 0.4, gapSize: 0.23, transparent: true, opacity: 1, depthTest: false, depthWrite: false });
+    const jumpMaterial = new THREE.LineDashedMaterial({ color: '#ee9a12', dashSize: 0.4, gapSize: 0.23, transparent: true, opacity: 1, depthTest: false, depthWrite: false });
     const jumpLine = new THREE.Line(jumpGeometry, jumpMaterial);
     jumpLine.renderOrder = 5;
     const markerGeometry = new THREE.TorusGeometry(0.7, 0.08, 7, 40);
-    const crossingMaterial = new THREE.MeshBasicMaterial({ color: '#ffd172', depthTest: false, depthWrite: false });
-    const landingMaterial = new THREE.MeshBasicMaterial({ color: '#f7f8fb', depthTest: false, depthWrite: false });
+    const crossingMaterial = new THREE.MeshBasicMaterial({ color: '#ee9a12', depthTest: false, depthWrite: false });
+    const landingMaterial = new THREE.MeshBasicMaterial({ color: '#18213a', depthTest: false, depthWrite: false });
     const crossing = new THREE.Mesh(markerGeometry, crossingMaterial);
     const landing = new THREE.Mesh(markerGeometry, landingMaterial);
     crossing.renderOrder = landing.renderOrder = 6;
@@ -425,17 +425,17 @@ if (!view) {
             for (let i = 0; i < 24; i++) {
                 const points = [];
                 for (let j = 0; j <= 64; j++) points.push(torusPoint(i * Math.PI / 12 + meshAngle, j * Math.PI / 32));
-                strokePath(points, '#91b0a7', 0.7, 0.28);
+                strokePath(points, '#9aa3bd', 0.7, 0.28);
             }
             for (let i = 0; i < 8; i++) {
                 const points = [];
                 for (let j = 0; j <= 100; j++) points.push(torusPoint(j * Math.PI / 50, i * Math.PI / 4));
-                strokePath(points, '#91b0a7', 0.7, 0.28);
+                strokePath(points, '#9aa3bd', 0.7, 0.28);
             }
             if (state.trailView !== VIEW_ORIGINAL) {
                 const rim = [];
                 for (let j = 0; j <= 100; j++) rim.push(torusPoint(j * Math.PI / 50, Math.PI));
-                strokePath(rim, '#ffd172', 1.2, 0.5);
+                strokePath(rim, '#ee9a12', 1.2, 0.5);
             }
             for (const pass of visiblePasses()) {
                 const current = pass === passes[passes.length - 1];
@@ -445,14 +445,14 @@ if (!view) {
             }
             if (lastJump && state.trailView !== VIEW_ORIGINAL) {
                 context.setLineDash([6, 5]);
-                strokePath([lastJump.from, lastJump.to], '#ffd172', 2.5);
+                strokePath([lastJump.from, lastJump.to], '#ee9a12', 2.5);
                 context.setLineDash([]);
                 const radius = 9 + currentFrame.flash * 4;
-                circle(lastJump.from, radius, '#ffd172');
-                circle(lastJump.to, radius, '#f7f8fb');
+                circle(lastJump.from, radius, '#ee9a12');
+                circle(lastJump.to, radius, '#18213a');
             }
             circle(currentFrame.position, 10, PASS_COLORS[state.kt % PASS_COLORS.length], true);
-            circle(currentFrame.position, 4.5, '#f7f8fb', true);
+            circle(currentFrame.position, 4.5, '#18213a', true);
         }
     };
     const resize = () => {

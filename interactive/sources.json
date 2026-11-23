@@ -3,9 +3,9 @@
   "contributor": "Gemini",
   "suppliedBy": "Zolton",
   "adaptation": "EncapsulatorP Atlas",
-  "exportFiles": 14,
-  "uniqueWidgets": 11,
-  "selectedWidgets": 9,
+  "exportFiles": 15,
+  "uniqueWidgets": 12,
+  "selectedWidgets": 10,
   "records": [
     {
       "sha256": "4e0a95d07bec132b4de36b46b67c05a44babb6cdbeac9fe9793a96088d9ce9ed",
@@ -210,6 +210,27 @@
         "Provide WebGL and projected Canvas rendering of the same coordinates and camera, with full finite statistics in either view.",
         "Fit the complete original cloud on narrow stages by responsive camera distance; preserve relative user zoom and reset framing."
       ]
+    },
+    {
+      "sha256": "d3ddbfcbfe76bf04abda9c3f688da78324fd4ae3cd447462059c0651a9e85b68",
+      "bytes": 98290,
+      "filenames": [
+        "c3_2z_living_spec_prime_forms.html"
+      ],
+      "status": "selected",
+      "contributor": "Gemini (Neon)",
+      "topic": "rg-lattice-hopf",
+      "route": "rg-lattice-hopf.html",
+      "evidenceClass": "Defined coarse-graining · exact normal form",
+      "boundary": "Layer names are illustrative labels, not a physical renormalization; information lost is a heuristic readout. The Hopf panel is the exact normal form r' = mu r - r^3 with stable cycle radius sqrt(mu).",
+      "originalTopicScript": "sources/gemini-rg-lattice-hopf-original.js.txt",
+      "adaptation": [
+        "Port tab 1 of the c3.2z workspace (drawRG, dimensionState, renderDimension, paintDimension) with its constants, unit tree, ranges and defaults unchanged.",
+        "Bring the knot r/e and third-layer controls that drive the lattice into the same exhibit.",
+        "White instrument stage and the Atlas ramp (lavender, periwinkle, sapphire, amber) in place of slate, sky, mint and gold.",
+        "Add Next layer, Play/Pause and a live R^2 = max(0, mu) check; pause when hidden or under reduced motion.",
+        "State that layer names and the information-loss figure are illustrative, and that digits of c are a symbolic alphabet."
+      ]
     }
   ],
   "runtime": {
@@ -219,5 +240,5 @@
     "requestPolicy": "No runtime network calls; exhibit CSP connect-src none.",
     "originalSourcePolicy": "Only original topic scripts are published as text; the remote scaffold is retained in the supplied uploads, not executed here."
   },
-  "publicViews": 10
+  "publicViews": 11
 }

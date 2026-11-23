@@ -12,7 +12,7 @@
 .gb-involution .gb-ledger .ix-table-host { max-height:310px; border-radius:8px; margin-top:8px; }
 .gb-involution .gb-ledger .ix-table { min-width:520px; font-variant-numeric:tabular-nums; }
 .gb-involution .gb-ledger caption { font-size:11px; font-weight:400; }
-.gb-involution .gb-ledger tr[aria-current=true] { background:#e5eee4; box-shadow:inset 3px 0 var(--ix-accent); }
+.gb-involution .gb-ledger tr[aria-current=true] { background:#ece4fb; box-shadow:inset 3px 0 var(--ix-accent); }
 @media(max-width:620px) {
   .gb-involution .gb-orbit-plot { height:320px; }
   .gb-involution .ix-hud { gap:9px; }

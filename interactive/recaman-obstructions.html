@@ -7,11 +7,11 @@
   <title>Recamán obstructions · Gemini · EncapsulatorP</title>
   <meta name="description" content="Gemini’s Recamán 3D phase and twisted Möbius explorer, with visible red finite-gap markers and the original coordinate mappings.">
   <link rel="icon" href="../assets/favicon-32.png">
-  <link rel="stylesheet" href="shared.css">
-  <link rel="stylesheet" href="recaman-obstructions.css">
+  <link rel="stylesheet" href="shared.css?v=gemini-look-1">
+  <link rel="stylesheet" href="recaman-obstructions.css?v=gemini-look-1">
   <script src="vendor/three-r146.min.js" defer></script>
   <script src="vendor/OrbitControls-r146.js" defer></script>
-  <script src="recaman-obstructions.js?v=restore-20261121-r2" defer></script>
+  <script src="recaman-obstructions.js?v=gemini-look-1" defer></script>
   <script src="../assets/pq-wordmark.js?v=violet-unify-1" data-pq-standalone defer></script>
 </head>
 <body>
@@ -19,13 +19,13 @@
   <header class="ix-header"><div><p class="ix-kicker">Interactive · Exact sequence · finite gaps</p><h1>Recamán obstructions</h1><p>The original 3D phase cloud and twisted Möbius view, with the red holes restored. Turn the scene to see where the visited trajectory and unvisited-value markers overlap.</p></div><div class="ix-signature">Gemini<small>3D Phase &amp; Möbius Explorer<br>Visual concept · Atlas adaptation</small></div></header>
   <p class="ix-boundary"><strong>What the red holes mean</strong>A red marker represents a positive integer not reached within the selected prefix. Its position follows Gemini’s chosen mapping. A finite scalar gap does not establish a missing delay triple, a permanent omission or a topological obstruction.</p>
 
-  <section id="recaman-obstructions" class="ro-explorer" data-theme="dark" aria-label="Recamán 3D phase and Möbius explorer">
+  <section id="recaman-obstructions" class="ro-explorer" data-theme="light" aria-label="Recamán 3D phase and Möbius explorer">
     <div class="ix-controls ro-controls">
       <label class="ix-field" for="ro-terms"><span class="ix-control-label">Terms (N), including a₀ <output id="ro-terms-value" for="ro-terms">2,500</output></span><input id="ro-terms" type="range" min="200" max="8000" step="100" value="2500" aria-describedby="ro-horizon"></label>
       <label class="ix-field ro-mode-field" for="ro-mode"><span class="ix-control-label">Projection</span><select id="ro-mode"><option value="delay">3D delay phase · (aᵢ, aᵢ₊₁, aᵢ₊₂)</option><option value="mobius">Twisted Möbius · remainder modulo 6</option></select></label>
       <button id="ro-holes" class="ix-button" type="button" aria-pressed="true">Holes: ON</button>
       <button id="ro-motion" class="ix-button" type="button" aria-pressed="true">Pause rotation</button>
-      <button id="ro-theme" class="ix-button" type="button" aria-pressed="true">Scene: midnight</button>
+      <button id="ro-theme" class="ix-button" type="button" aria-pressed="false">Scene: paper</button>
     </div>
     <p id="ro-horizon" class="ro-horizon">2,499 transitions · a₀ through a₂₄₉₉</p>
     <dl class="ix-hud ro-hud" aria-label="Exact finite-prefix statistics">
