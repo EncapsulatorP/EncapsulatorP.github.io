@@ -223,6 +223,22 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 .story-body[hidden]{display:none}
 
 
+
+/* Main-page published-content browser: mirrors sitemap.xml without duplicating site ownership. */
+.home-site-map{padding:52px 0 58px;border-top:1px solid var(--atlas-line);border-bottom:1px solid var(--atlas-line);background:var(--atlas-paper)}
+.home-site-map-head{display:flex;gap:28px;align-items:end;justify-content:space-between;margin-bottom:20px}
+.home-site-map h2{font-family:"Fraunces",serif;font-size:clamp(2rem,5vw,3.2rem);line-height:1.05;margin:5px 0 8px}
+.home-site-map p{max-width:66ch;color:var(--atlas-muted);margin:0}
+.home-site-search{min-width:min(330px,100%);font:500 11px "IBM Plex Mono",monospace;color:var(--atlas-muted);text-transform:uppercase;letter-spacing:.08em}
+.home-site-search input{display:block;width:100%;margin-top:6px;border:1px solid var(--atlas-line);border-radius:9px;background:var(--atlas-surface);padding:11px 12px;color:var(--atlas-ink);font:14px "IBM Plex Sans",sans-serif}
+.home-site-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px}
+.home-site-group{border:1px solid var(--atlas-line);background:var(--atlas-surface);border-radius:11px;padding:16px;min-width:0}
+.home-site-group h3{font:600 14px "IBM Plex Sans",sans-serif;margin:0 0 8px;color:var(--atlas-ink)}
+.home-site-group a{display:block;padding:7px 0;border-top:1px solid var(--atlas-line);color:var(--atlas-accent);font-size:12px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere}
+.home-site-group a:hover{text-decoration:underline}.home-site-count{font:500 11px "IBM Plex Mono",monospace;color:var(--atlas-muted);margin-top:12px}
+@media(max-width:850px){.home-site-map-head{align-items:start;flex-direction:column}.home-site-groups{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.home-site-groups{grid-template-columns:1fr}}
+
 </style>
 <link rel="stylesheet" href="assets/research-atlas.css">
 <link rel="stylesheet" href="assets/treasure-rooms.css">
@@ -257,6 +273,13 @@ footer{background:var(--blk);color:var(--paper);padding:52px 0 60px}
 <a href="#cabinet"><small>02 / Two new windows</small><strong>Circles &amp; mirrored worlds</strong><svg class="tr-mini-art" viewBox="0 0 280 95" aria-hidden="true"><circle cx="140" cy="48" r="40" fill="none" stroke="#bdacf3" stroke-width="2"/><path d="M65 48H215M140 3V92" stroke="#45637d"/><circle cx="175" cy="29" r="4" fill="#84e9d2"/><circle cx="175" cy="67" r="4" fill="#84e9d2"/><circle cx="140" cy="48" r="5" fill="#e5d58a"/></svg><p>Put Catalan at the centre. Let two logistic strands merge, mirror or separate.</p><b>Enter the Curious Cabinet →</b></a>
 <a href="#pirate-chest"><small>03 / From the notebook</small><strong>The Pirate Chest</strong><svg class="tr-mini-art" viewBox="0 0 280 95" aria-hidden="true"><path d="M70 72L112 22L140 72L168 22L210 72M86 48H194" fill="none" stroke="#d3c49d" stroke-width="2"/><circle cx="140" cy="48" r="38" fill="none" stroke="#8c9ebf" stroke-dasharray="3 6"/><path d="M140 11V85M133 48H147" stroke="#b6e9d3" stroke-width="2"/></svg><p>Dagger towers, Shapiro rings and unfinished questions with their source trails still attached.</p><b>Pick up a treasure →</b></a>
 </div></div></section>
+
+<section class="home-site-map" id="site-map" aria-labelledby="site-map-title"><div class="wrap">
+<div class="home-site-map-head"><div><p class="kick">Everything published</p><h2 id="site-map-title">Find the work without knowing the maze.</h2><p>The same source as the Map tab: <code>sitemap.xml</code>. Search here for a proof, experiment, Atlas entry or evidence page without leaving the main tab.</p></div><label class="home-site-search">Search published content<input id="home-site-query" type="search" placeholder="Goldbach, tower, Collatz, logistic…" autocomplete="off"></label></div>
+<div id="home-site-groups" class="home-site-groups" aria-live="polite"><div class="home-site-group"><h3>Loading published routes…</h3></div></div>
+<div class="home-site-count" id="home-site-count"></div>
+</div></section>
+
 <details class="home-research-notes"><summary>Read the research notes and counterexamples</summary>
 <div class="ev-comparison" id="evidence-comparison"><div class="wrap" id="evidence-start"><p class="kick">The evidence board</p><p class="ev-intro">Follow an argument, inspect its boundary, or run a finite check. <a href="evidence/">Open the compact evidence index ↗</a></p></div><section class="sec bg-tint" id="home-mathematics" aria-labelledby="home-math-title"><div class="wrap">
 <h2 class="t" id="home-math-title">Identities, asymptotics, <em>and kernels.</em></h2>
@@ -1696,6 +1719,25 @@ window.addEventListener('hashchange',show);show();
 <script src="assets/interactive-space.js?v=restore-20261121-r2"></script>
 <script src="assets/pirates-plan-data.js?v=plan-20261121-r3"></script>
 <script src="assets/pirates-plan.js?v=plan-20261121-r3"></script>
+
+<script>
+(function(){
+  var host=document.getElementById('home-site-groups'),input=document.getElementById('home-site-query'),count=document.getElementById('home-site-count');
+  if(!host||!input)return;
+  var labels={atlas:'Atlas',interactive:'Interactive',treasure:'Treasure Hunt',evidence:'Evidence',other:'Other published routes'},rows=[];
+  function group(path){if(path.indexOf('/atlas/')===0)return'atlas';if(path.indexOf('/interactive/')===0||path==='/recaman/')return'interactive';if(path.indexOf('/treasure-hunt/')===0)return'treasure';if(path.indexOf('/evidence/')===0)return'evidence';return'other'}
+  function title(path){if(path==='/')return'Home';var s=path.replace(/^\//,'').replace(/\/$/,'').split('/').pop().replace(/\.html$/,'');return s.replace(/[-_]/g,' ').replace(/\b\w/g,function(x){return x.toUpperCase()})}
+  function render(){
+    var q=input.value.trim().toLowerCase(),filtered=rows.filter(function(r){return !q||(r.title+' '+r.path).toLowerCase().indexOf(q)>=0});
+    count.textContent=filtered.length+' published route'+(filtered.length===1?'':'s')+' visible';
+    var order=['atlas','interactive','treasure','evidence','other'];
+    host.innerHTML=order.map(function(g){var items=filtered.filter(function(r){return r.group===g}).slice(0,q?30:8);if(!items.length)return'';return '<section class="home-site-group"><h3>'+labels[g]+'</h3>'+items.map(function(r){return '<a href="'+r.url+'">'+r.title+'</a>'}).join('')+(filtered.filter(function(r){return r.group===g}).length>items.length?'<a href="map/">More in Map →</a>':'')+'</section>'}).join('')||'<div class="home-site-group"><h3>No matching route.</h3></div>';
+  }
+  fetch('sitemap.xml',{cache:'no-store'}).then(function(r){return r.text()}).then(function(t){var xml=new DOMParser().parseFromString(t,'application/xml');rows=[].slice.call(xml.querySelectorAll('url > loc')).map(function(n){var u=new URL(n.textContent.trim());return{url:u.href,path:u.pathname,title:title(u.pathname),group:group(u.pathname)}}).filter(function(r){return r.path!='/'});render()}).catch(function(){host.innerHTML='<div class="home-site-group"><h3>Map unavailable</h3><a href="map/">Open the Map tab →</a></div>'});
+  input.addEventListener('input',render);
+}());
+</script>
+
 </body></html>
 
 
