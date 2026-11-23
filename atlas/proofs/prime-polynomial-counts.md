@@ -4,8 +4,6 @@ A focused reading note from the Pirate Chest
 
 **Zolton / EncapsulatorP · with ChatGPT / 23 November 2026**
 
-Source commit: `cc3f20117eaead570db6077377a43a92c0bfc652`
-
 <a id="prime-polynomial-counts-orientation"></a>
 
 ## Prime polynomials count exactly
@@ -18,13 +16,13 @@ $$
 G(N)=[z^N]P_N(z)^2,\qquad U(N)=\frac{G(N)+D(N)}2
 $$
 
-> **Exact finite counting identities (exact).** These identities follow from coefficient extraction. They do not establish a positive Goldbach count at every even integer or infinitely many twin primes.
+> **Exact finite counting identities (exact).** All products and coefficient extractions are finite and formal. The diagonal indicator is one exactly when half the target integer is prime.
 
 Keep the counting convention explicit: unequal pairs appear twice in the ordered count, while a repeated-prime diagonal appears once. Laurent exponents encode the translation q − p = 2.
 
 ### One concrete next step
 
-Identify an additional inequality or structural statement that could control the coefficients. Rewriting the count by itself is not a lower-bound argument.
+Specify a coefficient bound or asymptotic estimate to investigate and identify the additional inequality it would require.
 
 ### Sources and related reading
 
@@ -32,7 +30,7 @@ Identify an additional inequality or structural statement that could control the
 
 [[S2] Read the pinned mathematical notes](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/29f9232545aa112cd6ffa9fe1f3c0e85d093dedd/atlas/mathematical-notes.md)
 
-[Read the pinned collection source](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#prime-polynomials)
+[Historical collection source · original edition](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#prime-polynomials)
 
 [Return to the Treasure Chest](https://encapsulatorp.github.io/#buried-logistic-vanishing)
 
@@ -84,6 +82,6 @@ $$
 
 A term has exponent q − p. Selecting the coefficient of z² imposes q = p + 2, which proves the identity.
 
-> **Finding of the written-proof review (exact).** These are correct, elementary generating-function encodings of the counting definitions. They establish neither positivity of G(N) for every even N ≥ 4 nor infinitely many twin primes.
+> **Conclusion (exact).** The finite polynomial products give exact ordered, unordered and translated prime-pair counts. Their proofs are coefficient extraction and the explicit diagonal correction.
 
-Their usefulness is organizational: one polynomial product expresses reflection and another expresses translation. Any proposed lower bound or asymptotic statement must add a separate argument. The reviewed source states these limits explicitly [S2].
+One product encodes the reflection p + q = N; the Laurent product encodes the translation q − p = 2. A lower bound or asymptotic estimate for these coefficients would require an additional argument.

@@ -4,8 +4,6 @@ A focused reading note from the Pirate Chest
 
 **Zolton / EncapsulatorP · with ChatGPT / 23 November 2026**
 
-Source commit: `cc3f20117eaead570db6077377a43a92c0bfc652`
-
 <a id="fractional-exponential-maps-orientation"></a>
 
 ## Two constructions of six
@@ -28,9 +26,9 @@ Define the orbit or invariant measure of interest and establish the limiting mea
 
 ### Sources and related reading
 
-This note preserves the definitions and written derivation from the supplied mathematical fragments, reconstructed in the full collection. Its proof is given on the following page(s); no literature-priority claim is made.
+The following pages give the complete derivation from the stated definitions. The historical collection records the original fragments and argument.
 
-[Read the pinned collection source](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#six-maps)
+[Historical collection source · original edition](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#six-maps)
 
 [Return to the Treasure Chest](https://encapsulatorp.github.io/#buried-logistic-vanishing)
 
@@ -48,7 +46,7 @@ $$
 3^y+3^y=2\,3^y,\qquad 3^y2^y=6^y.
 $$
 
-The pasted exponents are restored as 3<sup>y</sup>, 2<sup>y</sup> and 6<sup>y</sup>. Define two different maps on y ∈ [0, 1):
+Here 3^y, 2^y and 6^y mean the indicated bases raised to y. Define two maps on y ∈ [0, 1):
 
 $$
 T_{\mathrm{add}}(y)=\operatorname{frac}(2\,3^y),\qquad T_{\mathrm{mul}}(y)=\operatorname{frac}(6^y).
@@ -92,7 +90,7 @@ The scalar equality at the top does not identify the functions or their orbit di
 
 *02 · EXACT FINITE-TIME IDENTITIES*
 
-Take separate orbits y<sub>j</sub><sup>add</sup> and y<sub>j</sub><sup>mul</sup>, each with the differentiability convention just stated. For a ∈ {add, mul} and N ≥ 1, define
+Take a separate orbit for each map, with the branch convention just stated. For a ∈ {add, mul} and integer N ≥ 1, use exactly N samples: j = 0, 1, …, N−1. Define
 
 $$
 \mu_{a,N}=\frac1N\sum_{j=0}^{N-1}y_j^a,\qquad \lambda_{a,N}=\frac1N\sum_{j=0}^{N-1}\log|T_a'(y_j^a)|.

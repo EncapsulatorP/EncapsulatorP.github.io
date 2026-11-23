@@ -3,7 +3,7 @@
   "subtitle": "A focused reading note from the Pirate Chest",
   "date": "23 November 2026",
   "author": "Zolton / EncapsulatorP · with ChatGPT",
-  "source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
+  "historical_source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
   "reviewed_proof_commit": "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd",
   "status": "exact",
   "statusLabel": "Exact foundations; fragments unresolved",
@@ -45,12 +45,12 @@
         },
         {
           "type": "p",
-          "text": "This note preserves the definitions and written derivation from the supplied mathematical fragments, reconstructed in the full collection. Its proof is given on the following page(s); no literature-priority claim is made.",
+          "text": "The following pages give the complete derivation from the stated definitions. The historical collection records the original fragments and argument.",
           "small": true
         },
         {
           "type": "link",
-          "text": "Read the pinned collection source",
+          "text": "Historical collection source · original edition",
           "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#dimensions-fragments"
         },
         {

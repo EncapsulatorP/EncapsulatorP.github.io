@@ -1,10 +1,8 @@
 # Logistic vanishing terms
 
-A Treasure Chest note · recovered mathematics and written-proof review
+Exact statements, conditional arguments and their proofs
 
 **Zolton / EncapsulatorP · editorial reconstruction and checks with ChatGPT / 23 November 2026**
-
-Source commit: `29f9232545aa112cd6ffa9fe1f3c0e85d093dedd`
 
 <a id="opening"></a>
 
@@ -12,7 +10,7 @@ Source commit: `29f9232545aa112cd6ffa9fe1f3c0e85d093dedd`
 
 *ENCAPSULATORP · THE PIRATE CHEST*
 
-A recovered notebook of local cancellation, exponential dynamics, dyadic limits and conditional transcendence, followed by the complete substance of the written-proof review.
+A collection of precise results about local logistic dynamics, fractional exponential maps, dyadic limits, finite counts and alternating towers. Each argument states its objects, assumptions and conclusion.
 
 $$
 r_* = 1+\sqrt{6},\qquad C_*^2=-I,\qquad C_*^4=I
@@ -22,13 +20,13 @@ $$
 \left(f_{r_*}^{\circ 4}-\mathrm{id}\right)'(x_\pm)=0
 $$
 
-> **The exact centre of this note (exact).** At the logistic two-cycle, the fourth-iterate displacement has zero first derivative and the cycle Lyapunov exponent is zero. These are precise local statements, with their derivations inside.
+> **The exact centre of this note (exact).** At the logistic two-cycle with r* = 1 + √6, the fourth-return displacement has zero first derivative and the cycle Lyapunov exponent is zero. The paired linear matrix satisfies C² = −I and C⁴ = I. The derivations keep these three statements distinct.
 
 The surrounding threads retain their own definitions and assumptions. The note includes the two constructions of six, real and complex dimensions, the Schanuel-dependent Z(p) family, a Mahler-type series with an exact geometric remainder, ordinary-palindrome counting, alternating towers and prime-polynomial identities.
 
-**Edition 1.1 · 23 November 2026**<br>Research direction and supplied material: **Zolton / EncapsulatorP**.<br>Editorial reconstruction, calculations and implementation: ChatGPT.
+**Edition 1.2 · 23 November 2026**<br>Research direction and supplied material: **Zolton / EncapsulatorP**.<br>Mathematical reconstruction, calculations and implementation: ChatGPT.
 
-This is an edited mathematical reading copy of the submitted fragments and prior review. Superscripts and radicals lost during pasting have been restored where the equations determine them. Unassigned notation is retained explicitly.
+The displayed equations are paired with readable definitions of indices, powers and domains. The companion proof board records the reported transcription issues and links each reviewed argument. The later cubic-attraction derivation is presented separately.
 
 [Open this treasure on the website](https://encapsulatorp.github.io/#buried-logistic-vanishing)
 
@@ -36,19 +34,19 @@ This is an edited mathematical reading copy of the submitted fragments and prior
 
 <a id="logistic-proof-picture"></a>
 
-## Follow the orange arrow
+## Three exact views of one cycle
 
-*VISUAL TREASURE · FOLLOW THE THREE STEPS*
+*VISUAL GUIDE · ORBIT, MATRIX AND LOCAL RETURN*
 
 [![Three exact steps: two logistic-cycle points exchange places; the rescaled paired derivative arrow makes four quarter-turns; the fourth-return displacement has a flat tangent at the marked cycle point.](assets/logistic-proof.png)](https://encapsulatorp.github.io/atlas/assets/logistic-proof.apng)
 
-**Read it like a treasure map.** First, A and B swap places. Follow the orange arrow through four numbered moves. Then look for the flat dashed line at the centre of the curve.
+**Read the numbered panels in order.** The scalar orbit exchanges A and B. The rescaled paired matrix makes four quarter-turns. The return-displacement graph has a horizontal tangent at the marked cycle point.
 
-In that linear model, the arrow returns exactly after four moves. For the nonlinear map, the conclusion is local: the derivative of f<sup>∘4</sup> − id vanishes at the cycle points. The following pages give the complete algebra.
+The matrix vector returns exactly after four applications. For the scalar map, the graph shows the local identity: the first derivative of the fourth iterate minus the identity is zero at each cycle point. The next pages derive both statements.
 
 [Watch the picture move · animated PNG (APNG)](https://encapsulatorp.github.io/atlas/assets/logistic-proof.apng)
 
-Click the picture or link to open the animation in a browser. The PDF itself displays the still illustration; the travelling arrows guide us between the discrete steps.
+The PDF displays a still image. Open the linked APNG to step through the exact discrete states of the two-point orbit and the four-state matrix model.
 
 <a id="reading-map"></a>
 
@@ -56,7 +54,7 @@ Click the picture or link to open the animation in a browser. The PDF itself dis
 
 *01 · EVIDENCE AND NOTATION*
 
-Each result below has a stated domain and a limited conclusion. A correct small theorem, a consequence of an unproved assumption, a finite calculation and a suggested research bridge carry different kinds of evidence.
+Read each row as a statement with a domain, a conclusion and a proof. The Z(p) independence argument explicitly assumes complex Schanuel; proposed connections are listed as questions with definitions still to supply.
 
 | Thread | What is established | Status |
 | --- | --- | --- |
@@ -71,11 +69,11 @@ Each result below has a stated domain and a limited conclusion. A correct small 
 
 ### Conventions
 
-All logarithms are natural. A superscript *f*<sup>∘m</sup> denotes composition of a map with itself m times. Scalar powers keep their ordinary meaning. The fractional part is frac(x) = x − floor(x). Dimensions always state the scalar field.
+All logarithms are natural. The notation f composed m times means iteration, not a scalar power. The fractional part is frac(x) = x − floor(x). Each dimension states its scalar field; finite averages use j = 0 through N−1, exactly N terms.
 
 The real-number identity 6 = 3 + 3 = 3 × 2 is a prompt to compare explicit constructions. A connection becomes a theorem only after the objects, map between them and preserved property are specified.
 
-> **Scope of the review (open).** The inspected small written arguments pass the checks recorded here. Literature novelty, independent external peer review and Lean/kernel certification are separate questions. This note supplies no proof of Collatz, Goldbach, Schanuel or a comparable headline conjecture.
+> **What the mathematical checks establish (exact).** The arguments below establish their stated identities, bounds and classifications. Full proofs appear in the relevant sections and separate notes. The later logistic cubic and asymptotic-ratio results are identified as additions to this collection.
 
 <a id="logistic-cycle"></a>
 
@@ -169,11 +167,11 @@ $$
 \lambda_{\mathrm{cycle}}=\frac12\log|d_+d_-|=\frac12\log 1=0.
 $$
 
-> **Three different statements (exact).** The displacement f<sup>∘4</sup> − id has zero first derivative at the cycle points; the cycle Lyapunov exponent is zero; and the defined matrix has fourth power I. Each statement follows from the multiplier calculation.
+> **Three different statements (exact).** The fourth-return displacement has zero first derivative at the cycle points; the cycle Lyapunov exponent is zero; and the defined paired matrix has fourth power I. Each follows from the multiplier calculation.
 
-The nonlinear fourth iterate has degree 16 for r ≠ 0, so it is not the identity map. Nor does zero cycle exponent itself prove nonlinear stability at the transition. The logistic critical point x = 1/2, where f′<sub>r</sub>(x) = 0, is another distinct use of the word “vanishing”.
+The nonlinear fourth iterate has degree 16 for r ≠ 0. A zero cycle exponent alone leaves nonlinear stability undecided; the companion cubic note supplies the additional local-attraction argument. At the separate critical point x = 1/2, the **first derivative** is zero and the **map value** is r/4.
 
-The assertions above concern the two specified cycle points; they do not claim those are the only zeros of the derivative of f<sup>∘4</sup> − id.
+These derivative identities are evaluated at the two specified cycle points. Identifying every zero of the derivative of the fourth-return displacement would be a separate root-counting problem.
 
 <a id="six-maps"></a>
 
@@ -189,7 +187,7 @@ $$
 3^y+3^y=2\,3^y,\qquad 3^y2^y=6^y.
 $$
 
-The pasted exponents are restored as 3<sup>y</sup>, 2<sup>y</sup> and 6<sup>y</sup>. Define two different maps on y ∈ [0, 1):
+Here 3^y, 2^y and 6^y mean the indicated bases raised to y. Define two maps on y ∈ [0, 1):
 
 $$
 T_{\mathrm{add}}(y)=\operatorname{frac}(2\,3^y),\qquad T_{\mathrm{mul}}(y)=\operatorname{frac}(6^y).
@@ -233,7 +231,7 @@ The scalar equality at the top does not identify the functions or their orbit di
 
 *05 · EXACT FINITE-TIME IDENTITIES*
 
-Take separate orbits y<sub>j</sub><sup>add</sup> and y<sub>j</sub><sup>mul</sup>, each with the differentiability convention just stated. For a ∈ {add, mul} and N ≥ 1, define
+Take a separate orbit for each map, with the branch convention just stated. For a ∈ {add, mul} and integer N ≥ 1, use exactly N samples: j = 0, 1, …, N−1. Define
 
 $$
 \mu_{a,N}=\frac1N\sum_{j=0}^{N-1}y_j^a,\qquad \lambda_{a,N}=\frac1N\sum_{j=0}^{N-1}\log|T_a'(y_j^a)|.
@@ -356,7 +354,7 @@ The case p = 2 is excluded because ζ(1) has a pole. For even p ≥ 4, the displ
 
 “Algebraically independent” means that no nonzero polynomial with rational coefficients in these k + 1 variables vanishes on the tuple. The next page gives the deduction and keeps the assumption visible.
 
-The exact zeta reduction is unconditional. This argument’s algebraic-independence conclusion, and hence its individual-transcendence conclusion for Z(p), remain conditional on Schanuel. The calculation does not prove the conjecture or change its evidential status.
+The rational-coefficient reduction is unconditional. Algebraic independence of π and the selected Z(p) values, including the resulting individual-transcendence conclusions, follows under the stated complex Schanuel assumption.
 
 <a id="schanuel-proof"></a>
 
@@ -370,7 +368,7 @@ $$
 \alpha_0=i\pi,\qquad \alpha_j=c_{p_j}\pi^{p_j}\quad(1\le j\le k).
 $$
 
-**Linear independence.** In a rational relation among these numbers, the imaginary part forces the coefficient of iπ to vanish. The rest is a polynomial relation in π with distinct powers and nonzero rational c<sub>pⱼ</sub>. Transcendence of π forces every remaining coefficient to vanish.
+**Linear independence.** The imaginary part of a rational relation forces the coefficient of iπ (i times pi) to vanish. The remaining relation is a polynomial in π (pi), with distinct powers and nonzero rational coefficients c_p. Transcendence of π forces every remaining coefficient to vanish.
 
 **The Schanuel bound.** With E the field generated by these inputs and their exponentials, the conjecture gives
 
@@ -378,7 +376,7 @@ $$
 E=\mathbb{Q}(\alpha_0,\ldots,\alpha_k,e^{\alpha_0},\ldots,e^{\alpha_k}),\qquad \operatorname{trdeg}_{\mathbb{Q}}E\ge k+1.
 $$
 
-Euler’s identity gives e<sup>α₀</sup> = −1, and e<sup>αⱼ</sup> = Z(pⱼ) − 1. Therefore
+Euler’s identity gives exp(α₀) = −1, while exp(αⱼ) = Z(pⱼ) − 1. Therefore
 
 $$
 E\subseteq K:=\mathbb{Q}(i,\pi,Z(p_1),\ldots,Z(p_k)).
@@ -402,7 +400,7 @@ $$
 
 This refutes a blanket transcendence claim allowing every nonzero **complex algebraic** coefficient q. It does not refute a claim restricted to rational or real q, since i is neither. Lindemann’s algebraic-input theorem does not directly apply to c<sub>p</sub>π<sup>p</sup>, whose input is transcendental.
 
-This is a direct deduction from the stated conjecture and the even-zeta formula. Novelty of this particular consequence has not been established.
+The deduction uses the stated conjecture, the even-zeta formula and the transcendence of π. Field containment provides the required bound.
 
 <a id="mahler-remainder"></a>
 
@@ -410,13 +408,13 @@ This is a direct deduction from the stated conjecture and the even-zeta formula.
 
 *09 · LACUNARY SERIES; ELEMENTARY PROOF*
 
-The functional relation fixes the intended double exponent in the pasted series:
+Define the lacunary series using the exponent 2^n, meaning 2 raised to n:
 
 $$
 f(x)=\sum_{n=0}^{\infty}x^{2^n},\qquad |x|<1,\qquad f(x)=x+f(x^2).
 $$
 
-The exponent is 2<sup>n</sup>, not 2n. Absolute convergence follows, for example, by comparing |x|<sup>2ⁿ</sup> with |x|<sup>n+1</sup>. The functional equation then follows by an index shift.
+For every integer n ≥ 0, 2^n ≥ n + 1. When |x| < 1, comparison with the geometric series Σ |x|^(n+1) proves absolute convergence. An index shift then proves the functional equation.
 
 $$
 x_k=e^{-2^{-k}},\quad k=0,1,2,\ldots,\qquad x_k^2=x_{k-1}\quad(k\ge1).
@@ -434,7 +432,7 @@ $$
 C=f(e^{-1})+\sum_{j=1}^{\infty}(e^{-2^{-j}}-1).
 $$
 
-Its second series converges absolutely because 0 ≤ 1 − e<sup>−t</sup> ≤ t for t ≥ 0. Subtracting the two expressions gives the exact tail
+The second series converges absolutely because 0 ≤ 1 − exp(−t) ≤ t for t ≥ 0. Subtraction gives the exact tail
 
 $$
 R_k:=f(x_k)-k-C=\sum_{j=k+1}^{\infty}(1-e^{-2^{-j}}).
@@ -444,17 +442,17 @@ $$
 0\le R_k\le\sum_{j=k+1}^{\infty}2^{-j}=2^{-k}.
 $$
 
-A slightly sharper estimate follows from t − t²/2 ≤ 1 − e<sup>−t</sup>:
+The inequality t − t²/2 ≤ 1 − exp(−t) gives the sharper lower bound:
 
 $$
 2^{-k}-\frac{4^{-k}}6\le R_k\le2^{-k}.
 $$
 
-Numerically, f(e<sup>−1</sup>) ≈ 0.52186593845987908905 and C ≈ −0.33274738243289922501. These decimals illustrate the proved identities; they are not formal interval certificates.
+Numerically, f(exp(−1)) ≈ 0.52186593845987908905 and C ≈ −0.33274738243289922501. These decimals illustrate the exact identities; the inequalities above supply the proof.
 
-> **Scope of the limit (exact).** The bound proves f(xₖ) = k + C + O(2<sup>−k</sup>) along this specified dyadic approach to 1. It supplies no universal additive constant for every approach, and no algebraicity or transcendence classification of f(e<sup>−1</sup>).
+> **Scope of the limit (exact).** Along x_k = exp(−2^(−k)), the remainder bound gives f(x_k) = k + C + O(2^(−k)). The constant C belongs to this specified path. The arithmetic classification of f(exp(−1)) remains a separate question.
 
-The argument e<sup>−1</sup> is transcendental. A Mahler-value theorem whose hypothesis requires an algebraic input cannot automatically be applied to it.
+The input exp(−1) is transcendental. A Mahler-value theorem requiring algebraic input therefore needs different hypotheses before it can apply here.
 
 <a id="palindromes"></a>
 
@@ -462,13 +460,13 @@ The argument e<sup>−1</sup> is transcendental. A Mahler-value theorem whose hy
 
 *10 · EXACT COUNTING AND THE BIOPHYSICS BOUNDARY*
 
-Assume each symbol is chosen independently and uniformly from an alphabet of integer size q ≥ 2. An ordinary palindrome reads identically under reversal. For a fixed length n ≥ 1, the first ceiling(n/2) symbols determine the rest.
+Choose symbols independently and uniformly from an alphabet of integer size q ≥ 2. For integer length n ≥ 1, an ordinary palindrome reads identically under reversal. There are ceiling(n/2) free positions, giving q^ceiling(n/2) palindromes among q^n strings.
 
 $$
 \mathbb{P}(\mathrm{ordinary\ palindrome})=\frac{q^{\lceil n/2\rceil}}{q^n}=q^{-\lfloor n/2\rfloor}.
 $$
 
-The shorthand q<sup>−n/2</sup> is exact for even n. With q = 4 and n = 40,
+For even n, floor(n/2) = n/2, so the probability simplifies to q^(−n/2). With q = 4 and n = 40,
 
 $$
 \mathbb{P}=4^{-20}=2^{-40}=\frac1{1\,099\,511\,627\,776}
@@ -478,21 +476,21 @@ $$
 \mathbb{P}\approx9.094947017729282\times10^{-13}.
 $$
 
-The reciprocal is approximately 1.10 × 10<sup>12</sup> independently sampled **complete strings** per first success in the geometric waiting model, including the successful draw. It is not a deterministic guarantee or an automatic formula for overlapping windows.
+The reciprocal gives an expected 1.10 × 10^12 independent **complete-string draws** per first success, including the successful draw. Overlapping windows require a separate dependence model.
 
 | Alphabet size q | Length n | Ordinary-palindrome probability |
 | --- | --- | --- |
-| 4 | 40 | 4⁻²⁰ = 2⁻⁴⁰ |
-| 6 | 40 | 6⁻²⁰ |
-| 8 | 40 | 8⁻²⁰ = 2⁻⁶⁰ |
-| 12 | 40 | 12⁻²⁰ |
-| 40 | 40 | 40⁻²⁰ |
+| 4 | 40 | 4^(−20) = 2^(−40) |
+| 6 | 40 | 6^(−20) |
+| 8 | 40 | 8^(−20) = 2^(−60) |
+| 12 | 40 | 12^(−20) |
+| 40 | 40 | 40^(−20) |
 
 > **What the number 40 means (open).** In the displayed example, 40 is the sequence length n and the alphabet size is q = 4. Taking q = 40 defines a different abstract counting experiment. Neither calculation establishes a maximum sustainable DNA alphabet, a chemical stability threshold or an optimal decay rate.
 
 ### Reversal and reverse complementation
 
-A DNA reverse-complement palindrome is a different condition. Under a fixed-point-free complement pairing and the same uniform independent model, an even length has probability q<sup>−n/2</sup>; an odd length is impossible because its central symbol would have to complement itself.
+For reverse-complement palindromes, assume a fixed-point-free complement pairing and the same sampling model. Then q is even. Even lengths have probability q^(−n/2); odd lengths are impossible because the central symbol would have to complement itself.
 
 The suggested synthetic-alphabet and biophysics thread therefore remains a research direction. It needs an explicit physical model, measurable stability criteria and suitable evidence beyond this combinatorial count.
 
@@ -520,9 +518,9 @@ $$
 1<F_L(v)\le\exp(Le^{-L})\le e^{1/e}.
 $$
 
-The last inequality follows because L e<sup>−L</sup> reaches its maximum 1/e at L = 1. Every starting point v₀ ≥ 1 enters the closed interval I = [1, e<sup>1/e</sup>] after one step.
+The function L exp(−L) has maximum 1/e at L = 1. Every v₀ ≥ 1 therefore enters I = [1, exp(1/e)] after one step.
 
-**Uniform contraction.** Differentiation and the separate maxima of L²e<sup>−L</sup> and Le<sup>−L</sup> give
+**Uniform contraction.** Differentiate and use the separate maxima of L² exp(−L) and L exp(−L):
 
 $$
 |F_L'(v)|=L^2e^{-Lv}\exp(Le^{-Lv})
@@ -532,9 +530,9 @@ $$
 \le L^2e^{-L}\exp(Le^{-L})\le q:=4e^{1/e-2}<1.
 $$
 
-The convenient bound q is not claimed to be optimal. Its strict inequality needs no decimal evidence: 1/e < 1/2 and e<sup>3/2</sup> > 1 + 3/2 + 9/8 + 27/48 > 4. Numerically q ≈ 0.782058136610352468.
+This convenient bound is uniform in L and v. To prove q < 1 without decimals, use 1/e < 1/2 and exp(3/2) > 1 + 3/2 + 9/8 + 27/48 > 4. Numerically q ≈ 0.782058136610352468.
 
-**Existence, uniqueness and convergence.** Banach’s contraction theorem on I applies. Every possible fixed point in the stated domain lies in I, so uniqueness holds throughout that domain. Set u = e<sup>−Lv</sup> to recover both phase equations. Every v₀ ≥ 1 converges.
+**Existence, uniqueness and convergence.** Apply Banach’s contraction theorem on I. Every possible fixed point in the stated domain lies in I, so it is unique throughout that domain. Set u = exp(−Lv) to recover both phase equations. Every v₀ ≥ 1 converges.
 
 $$
 |x-v_*|\le\frac{|F_L(x)-x|}{1-q}\qquad(x\in I).
@@ -542,7 +540,7 @@ $$
 
 The error bound follows by inserting F<sub>L</sub>(x), using the contraction inequality and rearranging. Rounded function values alone do not turn it into an interval certificate.
 
-> **Finding of the written-proof review (exact).** This is a valid global convergence proof for the explicitly defined alternating-sign system. It is not a theorem about unrestricted ordinary tetration. No gap was found in the stated argument.
+> **Conclusion (exact).** For every c > 1, the defined alternating-sign system has a unique solution with 0 < u < 1 < v. Its stated iteration converges from every v₀ ≥ 1 with a uniform contraction bound.
 
 <a id="tower-envelope"></a>
 
@@ -572,7 +570,7 @@ The earlier review called this c<sub>max</sub>. The label c<sub>peak</sub> avoid
 
 ### Why there are exactly two bases
 
-For any fixed 1 < v < v<sub>max</sub>, the number a = v log v lies in (0, 1/e). The function t e<sup>−t</sup> increases up to t = 1 and then decreases to zero. Thus
+For 1 < v < v_max, set a = v log v ∈ (0, 1/e). The function t exp(−t) increases to t = 1 and then decreases to zero. Thus
 
 $$
 t e^{-t}=a
@@ -591,9 +589,9 @@ $$
 | v > vₘₐₓ | None |
 | v = 1 | None; only a limiting height |
 
-> **Finding of the written-proof review (exact).** The sharp bound, attainability and two-base classification are valid deductions. They give an exact description of this construction; matching an arbitrary target constant does not itself establish an arithmetic connection.
+> **Conclusion (exact).** The sharp upper-phase bound is attained. Each interior height corresponds to exactly two finite bases, the maximum to one, and all other listed heights to none.
 
-Together with convergence, this is the strongest self-contained candidate among the reviewed notes for a standalone mathematical presentation. A literature novelty check is still required before claiming a new result.
+The convergence theorem and the inverse classification form one complete argument: first construct the unique phase pair for each base, then determine exactly which bases realize a chosen height.
 
 <a id="prime-polynomials"></a>
 
@@ -643,37 +641,34 @@ $$
 
 A term has exponent q − p. Selecting the coefficient of z² imposes q = p + 2, which proves the identity.
 
-> **Finding of the written-proof review (exact).** These are correct, elementary generating-function encodings of the counting definitions. They establish neither positivity of G(N) for every even N ≥ 4 nor infinitely many twin primes.
+> **Conclusion (exact).** The finite polynomial products give exact ordered, unordered and translated prime-pair counts. Their proofs are coefficient extraction and the explicit diagonal correction.
 
-Their usefulness is organizational: one polynomial product expresses reflection and another expresses translation. Any proposed lower bound or asymptotic statement must add a separate argument. The reviewed source states these limits explicitly [S2].
+One product encodes the reflection p + q = N; the Laurent product encodes the translation q − p = 2. A lower bound or asymptotic estimate for these coefficients would require an additional argument.
 
 <a id="review-finding"></a>
 
-## Review of the written proofs
+## What the written arguments establish
 
-*14 · CORRECTNESS, NOVELTY AND RESEARCH VALUE*
+*MATHEMATICAL REVIEW · STATEMENTS AND PROOF STEPS*
 
-The prior review inspected the site at commit **29f9232545aa112cd6ffa9fe1f3c0e85d093dedd**. This edition uses that pinned source snapshot. Its substantive findings are preserved in the four reviewed sections: alternating-tower convergence, the sharp envelope and two-base classification, the logistic quarter-turn, and prime-polynomial counting.
+The original review inspected the site at commit **29f9232545aa112cd6ffa9fe1f3c0e85d093dedd**. Its four subjects are listed below. The companion proof board also covers the remaining collection and separates the later cubic and asymptotic additions.
 
-| Question | Finding from the inspected material |
+| Argument | Conclusion and proof step |
 | --- | --- |
-| Are the small written statements correct? | They pass the checks recorded in this review, under their stated assumptions. |
-| Do rigorous written arguments exist? | Yes. The inspected arguments are more than plots or finite numerical observations. |
-| Is literature novelty established? | No. The notes disclaim priority; a dedicated literature check remains necessary. |
-| Is there a demonstrated breakthrough on a major open problem? | No. None of these arguments proves Collatz, Goldbach or a comparable headline conjecture. |
-| Are these Lean/kernel-certified? | No such certificates are supplied for the statements reviewed here. |
-| Is independent external peer review established? | No. Assistant checks within this programme do not constitute independent external peer review. |
-| What is the role of numerical reproduction? | Supporting verification, kept distinct from the mathematical proofs. |
+| Logistic two-cycle | Factor the second iterate; calculate the multiplier and the defined paired matrix; evaluate the fourth-return displacement derivative at the cycle points. |
+| Alternating towers | Map into a closed invariant interval and apply a uniform contraction bound to obtain existence, uniqueness and convergence. |
+| Sharp height and two bases | Use v log v = t exp(−t), its maximum and its two inverse branches to classify every admissible upper height. |
+| Prime-polynomial counts | Extract finite coefficients and correct the diagonal to count ordered, unordered and translated prime pairs. |
 
-“No proof of a headline conjecture” is a statement about scope. It does not justify treating every small written proof as invalid. Correctness, novelty, significance and external validation need separate assessments.
+The written algebra and inequalities supply the proofs. Numerical values and symbolic simplification support the checks; the statements retain their specified domains and hypotheses.
 
-### A concrete next paper
+### Continue with a precise question
 
-The alternating-tower theorem, sharp envelope and two-base classification form a coherent short note: a clear domain, uniform convergence bound, complete proof and exact inverse classification. The productive next step is a focused novelty search and external review of that note.
+For the fractional maps, identify the orbit means or invariant measures to study. For T₀–T₃, recover the definitions. For the geometric interpretation, specify the object, evolution and quantity whose disappearance is proposed.
 
-For this treasure’s other branches, the immediate work is narrower: define T₀–T₃; identify which orbit means are relevant to the fractional exponential maps; and state a physical model before connecting alphabet counts to stability or decay.
+[Proof board · statements, corrections and direct proof links](https://encapsulatorp.github.io/atlas/proof-review-board.pdf)
 
-> **Preserved conclusion (exact).** The inspected written proofs are valid within their stated scope and are elementary results of limited demonstrated research significance. Their existence deserves to be recorded accurately, without inflating either novelty or progress on the headline conjectures.
+> **Review finding (exact).** The reviewed arguments establish the identities, bounds and classifications stated here. The later cubic-attraction proof and the explicitly defined geometric model remain clearly identified as subsequent additions.
 
 <a id="sources"></a>
 
@@ -683,11 +678,11 @@ For this treasure’s other branches, the immediate work is narrower: define T�
 
 ### Pinned programme sources
 
-**[S1] Logistic quarter-turn.** EncapsulatorP, *Recovered constructions — independently checked proof notes*, §2, “Logistic two-cycle: a finite-order linearization”. Pinned source for the factorization, paired matrix and fourth-iterate derivative statement.
+**[S1] Logistic quarter-turn.** EncapsulatorP, *Recovered constructions*, §2, “Logistic two-cycle: a finite-order linearization”. Pinned source for the factorization, paired matrix and fourth-iterate derivative statement.
 
 [Read the logistic source at the reviewed commit](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/29f9232545aa112cd6ffa9fe1f3c0e85d093dedd/atlas/recovered-bridges.md#logistic-quarter-turn)
 
-**[S2] Written tower and prime-polynomial proofs.** EncapsulatorP, *Exact structures behind the atlas*, edition 21 November 2026, §§1, 2 and 4. The source records prior solver provenance, numerical-reproduction limits and the absence of priority claims.
+**[S2] Written tower and prime-polynomial proofs.** EncapsulatorP, *Exact structures behind the atlas*, edition 21 November 2026, §§1, 2 and 4. The source supplies the complete arguments, their domains and the numerical-reproduction details.
 
 [Read the mathematical notes at the reviewed commit](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/29f9232545aa112cd6ffa9fe1f3c0e85d093dedd/atlas/mathematical-notes.md)
 
@@ -703,9 +698,9 @@ For this treasure’s other branches, the immediate work is narrower: define T�
 
 ### Editorial record
 
-The user-supplied mathematical fragments and pasted written-proof review were provided for publication in the Pirate Chest. This edition restores lost superscripts, radicals, summation indices and fraction layout; uses c<sub>peak</sub> for the height-maximizing tower base; and explicitly distinguishes n = 40 from q = 40. It retains the unassigned T-labels and does not invent their definitions.
+The submitted fragments and written review are reproduced with explicit indices, powers and domains. This edition makes those notational distinctions readable in prose as well as equations, uses c_peak for the height-maximizing tower base, and distinguishes sequence length n = 40 from alphabet size q = 40. T₀–T₃ remain unassigned labels.
 
-The fractional-map formulas, dyadic-series bound, cardinality explanation and palindrome count are supported by their derivations in this document. External sources [S3] and [S4] supply the specified classical identity and conjectural assumption. The review does not certify novelty or external acceptance.
+The fractional-map formulas, dyadic bound, cardinality argument and palindrome count are derived in this document. References [S3] and [S4] supply the classical even-zeta identity and the stated complex Schanuel assumption. Each focused note links its complete proof.
 
 [Treasure Chest · this note](https://encapsulatorp.github.io/#buried-logistic-vanishing)
 

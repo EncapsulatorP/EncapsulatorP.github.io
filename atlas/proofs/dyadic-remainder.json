@@ -3,7 +3,7 @@
   "subtitle": "A focused reading note from the Pirate Chest",
   "date": "23 November 2026",
   "author": "Zolton / EncapsulatorP · with ChatGPT",
-  "source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
+  "historical_source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
   "reviewed_proof_commit": "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd",
   "status": "exact",
   "statusLabel": "Proved pathwise bound",
@@ -15,7 +15,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "The lacunary series f(x) = Σ x^(2ⁿ) obeys f(x) = x + f(x²). Along the specified dyadic path toward 1, subtracting k and a convergent constant leaves an explicit geometric tail."
+          "text": "The lacunary series f(x) = Σ x^(2^n), where 2^n means 2 raised to n, obeys f(x) = x + f(x²). Along the specified dyadic path toward 1, subtracting k and a convergent constant leaves an explicit tail."
         },
         {
           "type": "eq",
@@ -25,11 +25,11 @@
           "type": "callout",
           "label": "Proved pathwise bound",
           "status": "exact",
-          "text": "The proof concerns xₖ = exp(−2⁻ᵏ). It does not establish the same additive constant for every boundary approach or the arithmetic nature of f(exp(−1))."
+          "text": "The proof concerns x_k = exp(−2^(−k)). Its additive constant belongs to that path; the arithmetic classification of f(exp(−1)) is a separate question."
         },
         {
           "type": "p",
-          "text": "The double exponent 2ⁿ is essential. One index shift and elementary exponential bounds give the dyadic argument. The companion collapse note now proves Rₖ/(ζ(k) − 1) → 1 as integer k → ∞: this leading-ratio connection is established."
+          "text": "An index shift and elementary exponential bounds give the dyadic argument. A later companion proof establishes R_k/(ζ(k) − 1) → 1 as integer k → ∞; it is an asymptotic comparison of two separately defined sequences."
         },
         {
           "type": "h",
@@ -45,12 +45,12 @@
         },
         {
           "type": "p",
-          "text": "This note preserves the definitions and written derivation from the supplied mathematical fragments, reconstructed in the full collection. Its proof is given on the following page(s); no literature-priority claim is made.",
+          "text": "The following pages give the complete derivation from the stated definitions. The historical collection records the original fragments and argument.",
           "small": true
         },
         {
           "type": "link",
-          "text": "Read the pinned collection source",
+          "text": "Historical collection source · original edition",
           "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#mahler-remainder"
         },
         {
@@ -72,7 +72,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "The functional relation fixes the intended double exponent in the pasted series:"
+          "text": "Define the lacunary series using the exponent 2^n, meaning 2 raised to n:"
         },
         {
           "type": "eq",
@@ -80,7 +80,7 @@
         },
         {
           "type": "p",
-          "text": "The exponent is 2<super>n</super>, not 2n. Absolute convergence follows, for example, by comparing |x|<super>2ⁿ</super> with |x|<super>n+1</super>. The functional equation then follows by an index shift."
+          "text": "For every integer n ≥ 0, 2^n ≥ n + 1. When |x| &lt; 1, comparison with the geometric series Σ |x|^(n+1) proves absolute convergence. An index shift then proves the functional equation."
         },
         {
           "type": "eq",
@@ -104,7 +104,7 @@
         },
         {
           "type": "p",
-          "text": "Its second series converges absolutely because 0 ≤ 1 − e<super>−t</super> ≤ t for t ≥ 0. Subtracting the two expressions gives the exact tail"
+          "text": "The second series converges absolutely because 0 ≤ 1 − exp(−t) ≤ t for t ≥ 0. Subtraction gives the exact tail"
         },
         {
           "type": "eq",
@@ -116,7 +116,7 @@
         },
         {
           "type": "p",
-          "text": "A slightly sharper estimate follows from t − t²/2 ≤ 1 − e<super>−t</super>:"
+          "text": "The inequality t − t²/2 ≤ 1 − exp(−t) gives the sharper lower bound:"
         },
         {
           "type": "eq",
@@ -124,17 +124,17 @@
         },
         {
           "type": "p",
-          "text": "Numerically, f(e<super>−1</super>) ≈ 0.52186593845987908905 and C ≈ −0.33274738243289922501. These decimals illustrate the proved identities; they are not formal interval certificates."
+          "text": "Numerically, f(exp(−1)) ≈ 0.52186593845987908905 and C ≈ −0.33274738243289922501. These decimals illustrate the exact identities; the inequalities above supply the proof."
         },
         {
           "type": "callout",
           "label": "Scope of the limit",
-          "text": "The bound proves f(xₖ) = k + C + O(2<super>−k</super>) along this specified dyadic approach to 1. It supplies no universal additive constant for every approach, and no algebraicity or transcendence classification of f(e<super>−1</super>).",
+          "text": "Along x_k = exp(−2^(−k)), the remainder bound gives f(x_k) = k + C + O(2^(−k)). The constant C belongs to this specified path. The arithmetic classification of f(exp(−1)) remains a separate question.",
           "status": "exact"
         },
         {
           "type": "p",
-          "text": "The argument e<super>−1</super> is transcendental. A Mahler-value theorem whose hypothesis requires an algebraic input cannot automatically be applied to it."
+          "text": "The input exp(−1) is transcendental. A Mahler-value theorem requiring algebraic input therefore needs different hypotheses before it can apply here."
         }
       ]
     }

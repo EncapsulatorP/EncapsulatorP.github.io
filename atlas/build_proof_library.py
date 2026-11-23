@@ -7,7 +7,7 @@ Dependencies: atlas/proof-library-requirements.txt.
 The source collection remains canonical for the arguments. Edit those argument
 pages there and the orientation/next-step information in NOTE_SPECS below, then
 rebuild. The original collection PDF is never overwritten by this command.
-The shared orange PDF renderer is imported, not modified.
+The shared PDF renderer is imported, not modified.
 
 The recovered collapse note is authored separately in
 atlas/logistic-collapse-vanishing.{json,md}; this command mirrors those sources
@@ -31,12 +31,12 @@ import build_logistic_vanishing_pdf as renderer
 BASE = Path(__file__).resolve().parent
 SITE = "https://encapsulatorp.github.io"
 REVIEW_COMMIT = "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd"
-COLLECTION_COMMIT = "cc3f20117eaead570db6077377a43a92c0bfc652"
+HISTORICAL_COLLECTION_COMMIT = "cc3f20117eaead570db6077377a43a92c0bfc652"
 REPO = "https://github.com/EncapsulatorP/EncapsulatorP.github.io"
 
 SOURCES = {
     "S1": {
-        "text": "<b>[S1] Logistic quarter-turn.</b> EncapsulatorP, <i>Recovered constructions — independently checked proof notes</i>, §2. The factorization, paired matrix and fourth-iterate derivative statement are pinned to the reviewed source.",
+        "text": "<b>[S1] Logistic quarter-turn.</b> EncapsulatorP, <i>Recovered constructions</i>, §2. The factorization, paired matrix and fourth-iterate derivative statement are linked to the historical source reviewed here.",
         "url": f"{REPO}/blob/{REVIEW_COMMIT}/atlas/recovered-bridges.md#logistic-quarter-turn",
         "label": "[S1] Read the pinned logistic argument",
     },
@@ -67,9 +67,9 @@ NOTE_SPECS = [
         "scope": "The result concerns the specified cycle points and the defined paired derivative model. The nonlinear fourth iterate is a degree-16 polynomial, not the identity map.",
         "equation": r"r_*=1+\sqrt{6},\qquad C_*^2=-I,\qquad C_*^4=I",
         "orientation": "Start with the picture, then follow the second-iterate factorization and multiplier calculation. The two-point orbit and the four-turn linear model are explicitly separated.",
-        "nextStep": "Specify a geometric collapse model before connecting this local cancellation to a surface or brane. State its variables, map, topology and the exact sense in which a quantity vanishes.",
+        "nextStep": "Read the companion cubic calculation to obtain local attraction and its rate. For a further geometric connection, specify the state space, map and quantity to compare with its defined invariant-circle model.",
         "pages": ["logistic-proof-picture", "logistic-cycle", "logistic-vanishing"],
-        "sources": ["S1"], "related": ["fractional-exponential-maps", "alternating-towers"],
+        "sources": ["S1"], "related": ["logistic-collapse-vanishing", "fractional-exponential-maps", "alternating-towers"],
     },
     {
         "slug": "alternating-towers",
@@ -77,10 +77,10 @@ NOTE_SPECS = [
         "shortTitle": "Alternating towers",
         "status": "exact", "statusLabel": "Proved convergence and classification", "kind": "proof",
         "summary": "For every real base c > 1, the alternating-sign system has one pair of phases. The explicit iteration converges from every upper starting phase at least 1, with a uniform contraction bound.",
-        "scope": "The same construction has a sharp maximum upper phase and exactly two bases at every interior height. The theorem is about this alternating-sign system; ordinary unrestricted tetration is a different iteration.",
+        "scope": "The defined alternating-sign system has a sharp maximum upper phase and exactly two finite bases at every height strictly between 1 and that maximum.",
         "equation": r"u=c^{-v},\qquad v=c^u,\qquad c>1",
         "orientation": "The first argument establishes an invariant interval and a contraction. The second extracts the sharp envelope from v log v = t exp(−t) and classifies the two inverse branches.",
-        "nextStep": "Perform a focused literature search and request external review of this complete small theorem. A numerical match to a target constant needs an additional arithmetic argument.",
+        "nextStep": "Compare the convergence and inverse classification with the literature. If a particular arithmetic constant is used as a target height, state the additional arithmetic question separately.",
         "pages": ["tower-convergence", "tower-envelope"],
         "sources": ["S2"], "related": ["logistic-quarter-turn", "proof-review"],
     },
@@ -89,10 +89,10 @@ NOTE_SPECS = [
         "title": "A dyadic vanishing remainder",
         "shortTitle": "Dyadic remainder",
         "status": "exact", "statusLabel": "Proved pathwise bound", "kind": "proof",
-        "summary": "The lacunary series f(x) = Σ x^(2ⁿ) obeys f(x) = x + f(x²). Along the specified dyadic path toward 1, subtracting k and a convergent constant leaves an explicit geometric tail.",
-        "scope": "The proof concerns xₖ = exp(−2⁻ᵏ). It does not establish the same additive constant for every boundary approach or the arithmetic nature of f(exp(−1)).",
+        "summary": "The lacunary series f(x) = Σ x^(2^n), where 2^n means 2 raised to n, obeys f(x) = x + f(x²). Along the specified dyadic path toward 1, subtracting k and a convergent constant leaves an explicit tail.",
+        "scope": "The proof concerns x_k = exp(−2^(−k)). Its additive constant belongs to that path; the arithmetic classification of f(exp(−1)) is a separate question.",
         "equation": r"0\le f(e^{-2^{-k}})-k-C\le2^{-k}",
-        "orientation": "The double exponent 2ⁿ is essential. One index shift and elementary exponential bounds give the dyadic argument. The companion collapse note now proves Rₖ/(ζ(k) − 1) → 1 as integer k → ∞: this leading-ratio connection is established.",
+        "orientation": "An index shift and elementary exponential bounds give the dyadic argument. A later companion proof establishes R_k/(ζ(k) − 1) → 1 as integer k → ∞; it is an asymptotic comparison of two separately defined sequences.",
         "nextStep": "Quantify the finite-k relative error beyond the proved leading-ratio limit, or define a structural map and the property it preserves. A shared dynamical system or conjugacy remains open.",
         "pages": ["mahler-remainder"], "sources": [],
         "readingLinks": [{"text": "Established dyadic/zeta ratio · companion proof, page 6", "url": f"{SITE}/atlas/proofs/logistic-collapse-vanishing.pdf#page=6"}],
@@ -104,10 +104,10 @@ NOTE_SPECS = [
         "shortTitle": "Prime-polynomial counts",
         "status": "exact", "statusLabel": "Exact finite counting identities", "kind": "proof",
         "summary": "Finite polynomial products encode ordered Goldbach representations and twin-prime translations. A diagonal correction converts ordered Goldbach counts into unordered counts.",
-        "scope": "These identities follow from coefficient extraction. They do not establish a positive Goldbach count at every even integer or infinitely many twin primes.",
+        "scope": "All products and coefficient extractions are finite and formal. The diagonal indicator is one exactly when half the target integer is prime.",
         "equation": r"G(N)=[z^N]P_N(z)^2,\qquad U(N)=\frac{G(N)+D(N)}2",
         "orientation": "Keep the counting convention explicit: unequal pairs appear twice in the ordered count, while a repeated-prime diagonal appears once. Laurent exponents encode the translation q − p = 2.",
-        "nextStep": "Identify an additional inequality or structural statement that could control the coefficients. Rewriting the count by itself is not a lower-bound argument.",
+        "nextStep": "Specify a coefficient bound or asymptotic estimate to investigate and identify the additional inequality it would require.",
         "pages": ["prime-polynomials"], "sources": ["S2"],
         "related": ["palindrome-counting", "proof-review"],
     },
@@ -120,7 +120,7 @@ NOTE_SPECS = [
         "scope": "The zeta reduction is unconditional. The independence conclusion in this argument assumes the full complex Schanuel conjecture. Distinct odd exponents and nonzero rational coefficients are part of the hypotheses.",
         "equation": r"Z(p)=e^{c_p\pi^p}+1,\qquad p=3,5,7,\ldots",
         "orientation": "First identify the exact Bernoulli coefficient. Then apply the conjecture to iπ and the selected real π-power exponents; field containment gives the required transcendence-degree bound.",
-        "nextStep": "Check the literature for this specific consequence and investigate unconditional statements separately. Small numerical coefficients do not strengthen the truth status of Schanuel.",
+        "nextStep": "Compare this specific conditional consequence with the literature. State any proposed unconditional result as a separate claim with its own assumptions.",
         "pages": ["zeta-family", "schanuel-proof"], "sources": ["S3", "S4"],
         "related": ["dyadic-remainder", "proof-review"],
     },
@@ -139,10 +139,10 @@ NOTE_SPECS = [
     },
     {
         "slug": "palindrome-counting",
-        "title": "Palindrome counting and its limits",
+        "title": "Palindrome counting",
         "shortTitle": "Palindrome counting",
         "status": "exact", "statusLabel": "Exact count under a sampling model", "kind": "proof",
-        "summary": "For independent uniform q-symbol strings of length n, ordinary palindromes have probability q^−floor(n/2). The example q = 4, n = 40 has probability exactly 2⁻⁴⁰.",
+        "summary": "For independent uniform q-symbol strings of length n, ordinary palindromes have probability q^(−floor(n/2)). The example q = 4, n = 40 has probability exactly 2^(−40).",
         "scope": "The probability is tied to the stated sampling model. Forty is the sequence length in the example, not a proved limit on the size of a sustainable biological alphabet.",
         "equation": r"\mathbb{P}(\mathrm{ordinary\ palindrome})=q^{-\lfloor n/2\rfloor}",
         "orientation": "Count free positions in a reversed string, then distinguish ordinary reversal from reverse complementation. An expected number of independent complete-string draws is not a guarantee for overlapping windows.",
@@ -168,11 +168,12 @@ NOTE_SPECS = [
         "title": "Review of the written proofs",
         "shortTitle": "Written-proof review",
         "status": "review", "statusLabel": "Scope and correctness review", "kind": "review",
-        "summary": "The inspected alternating-tower, logistic and finite prime-counting arguments pass the stated checks. Their correctness, literature novelty, research significance and external validation are separate questions.",
-        "scope": "The review does not supply Lean/kernel certificates or independent external peer review. None of the inspected statements proves a headline conjecture such as Collatz or Goldbach.",
-        "orientation": "Use this note to understand what the review does and does not establish. The linked standalone notes contain the complete arguments and their assumptions.",
-        "nextStep": "Take the alternating-tower convergence, sharp envelope and two-base classification through a focused novelty search and external review as one coherent small mathematical note.",
+        "summary": "The logistic, alternating-tower and finite prime-counting arguments establish the stated identities, bounds and classifications. This note identifies their key proof steps and source versions.",
+        "scope": "The conclusions retain their specified domains. The later cubic-attraction result, asymptotic comparison and defined geometric model are recorded as subsequent additions.",
+        "orientation": "Follow each statement to its standalone proof. The companion proof board records the full collection, the reported transcription issues and the later additions separately.",
+        "nextStep": "Choose one precise extension: a limiting orbit mean, a stronger remainder estimate, a literature comparison for the tower classification, or a fully specified geometric connection.",
         "pages": ["review-finding"], "sources": ["S1", "S2"],
+        "readingLinks": [{"text": "Proof board · full statements and direct proof links", "url": f"{SITE}/atlas/proof-review-board.pdf"}],
         "related": ["alternating-towers", "logistic-quarter-turn", "prime-polynomial-counts"],
     },
 ]
@@ -187,12 +188,14 @@ def link(text: str, url: str) -> dict:
 
 
 def opening(spec: dict, number: int) -> dict:
-    badge = "conditional" if spec["status"] == "conditional" else "open" if spec["kind"] == "review" else "exact"
+    badge = "conditional" if spec["status"] == "conditional" else "exact"
     blocks = [p(spec["summary"])]
     if spec.get("equation"):
         blocks.append({"type": "eq", "latex": spec["equation"]})
+    scope = p(spec["scope"]) if spec["kind"] == "review" else {
+        "type": "callout", "label": spec["statusLabel"], "status": badge, "text": spec["scope"]}
     blocks += [
-        {"type": "callout", "label": spec["statusLabel"], "status": badge, "text": spec["scope"]},
+        scope,
         p(spec["orientation"]),
         {"type": "h", "text": "One concrete next step"},
         p(spec["nextStep"]),
@@ -202,8 +205,8 @@ def opening(spec: dict, number: int) -> dict:
         source = SOURCES[key]
         blocks += [p(source["text"], small=True), link(source["label"], source["url"])]
     if not spec["sources"]:
-        blocks.append(p("This note preserves the definitions and written derivation from the supplied mathematical fragments, reconstructed in the full collection. Its proof is given on the following page(s); no literature-priority claim is made.", small=True))
-    blocks.append(link("Read the pinned collection source", f"{REPO}/blob/{COLLECTION_COMMIT}/atlas/logistic-vanishing-terms.md#{spec['pages'][0]}"))
+        blocks.append(p("The following pages give the complete derivation from the stated definitions. The historical collection records the original fragments and argument.", small=True))
+    blocks.append(link("Historical collection source · original edition", f"{REPO}/blob/{HISTORICAL_COLLECTION_COMMIT}/atlas/logistic-vanishing-terms.md#{spec['pages'][0]}"))
     for reading in spec.get("readingLinks", []):
         blocks.append(link(reading["text"], reading["url"]))
     if spec["kind"] == "review":
@@ -233,7 +236,7 @@ def make_note(collection: dict, spec: dict, number: int) -> dict:
     return {
         "title": spec["title"], "subtitle": "A focused reading note from the Pirate Chest",
         "date": "23 November 2026", "author": "Zolton / EncapsulatorP · with ChatGPT",
-        "source_commit": COLLECTION_COMMIT, "reviewed_proof_commit": REVIEW_COMMIT,
+        "historical_source_commit": HISTORICAL_COLLECTION_COMMIT, "reviewed_proof_commit": REVIEW_COMMIT,
         "status": spec["status"], "statusLabel": spec["statusLabel"], "pages": pages,
     }
 
@@ -288,10 +291,10 @@ def build_recovered_note(output_dir: Path) -> dict:
     print(f"{slug}: {count} pages, {pdf_path.stat().st_size:,} bytes")
     return {
         "slug": slug, "title": "Logistic collapse and vanishing terms",
-        "status": "exact", "statusLabel": "Exact local lemma; brane model open",
+        "status": "exact", "statusLabel": "Proved local attraction; physical interpretation open",
         "kind": "proof-and-open-question",
-        "summary": "Exact logistic seed folding and a local cubic vanishing term distinguish orbit identification from derivative cancellation. The recovered geometric detector is kept separate from a physical brane model.",
-        "nextStep": "Specify the geometric state space, evolution and observable, then prove whether the chosen observable vanishes or the state itself collapses. A physical brane interpretation requires a defined model.",
+        "summary": "The restoring logistic cubic proves local attraction with an inverse-square-root error rate. An explicitly defined product model transfers that result to transverse attraction toward an invariant circle, and a separate tail estimate proves the dyadic–zeta ratio limit.",
+        "nextStep": "Quantify a finite-index ratio error or state a proposed conjugacy with its domain and regularity. For a physical interpretation, specify the object, evolution and measured quantity.",
         "related": ["logistic-quarter-turn", "dimensions-and-fragments", "dyadic-remainder"],
         "pdf": f"atlas/proofs/{slug}.pdf", "markdown": f"atlas/proofs/{slug}.md",
         "source": f"atlas/proofs/{slug}.json", "pageCount": count,
@@ -299,7 +302,7 @@ def build_recovered_note(output_dir: Path) -> dict:
         "canonicalMarkdown": f"atlas/{slug}.md", "canonicalSource": f"atlas/{slug}.json",
         "sourceSha256": hashlib.sha256(source_json.read_bytes()).hexdigest(),
         "reviewedProofCommit": None,
-        "provenance": "New recovery note, 23 November 2026; the historical review did not cover this extension.",
+        "provenance": "Derivations added on 23 November 2026 after the earlier collected-proof review; historical sources are cited separately from the current source hash.",
     }
 
 
@@ -315,7 +318,7 @@ def main() -> int:
         "title": "Pirate Chest proof library", "edition": "2026-11-23",
         "collectionSource": "atlas/logistic-vanishing-terms.json",
         "collectionSourceSha256": hashlib.sha256(source_bytes).hexdigest(),
-        "collectionSourceCommit": COLLECTION_COMMIT,
+        "historicalCollectionSourceCommit": HISTORICAL_COLLECTION_COMMIT,
         "reviewedProofCommit": REVIEW_COMMIT,
         "completeCollection": "atlas/logistic-vanishing-terms.pdf", "notes": [],
     }

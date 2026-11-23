@@ -3,7 +3,7 @@
   "subtitle": "A focused reading note from the Pirate Chest",
   "date": "23 November 2026",
   "author": "Zolton / EncapsulatorP · with ChatGPT",
-  "source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
+  "historical_source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
   "reviewed_proof_commit": "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd",
   "status": "exact",
   "statusLabel": "Exact formulas; limiting means open",
@@ -45,12 +45,12 @@
         },
         {
           "type": "p",
-          "text": "This note preserves the definitions and written derivation from the supplied mathematical fragments, reconstructed in the full collection. Its proof is given on the following page(s); no literature-priority claim is made.",
+          "text": "The following pages give the complete derivation from the stated definitions. The historical collection records the original fragments and argument.",
           "small": true
         },
         {
           "type": "link",
-          "text": "Read the pinned collection source",
+          "text": "Historical collection source · original edition",
           "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#six-maps"
         },
         {
@@ -75,7 +75,7 @@
         },
         {
           "type": "p",
-          "text": "The pasted exponents are restored as 3<super>y</super>, 2<super>y</super> and 6<super>y</super>. Define two different maps on y ∈ [0, 1):"
+          "text": "Here 3^y, 2^y and 6^y mean the indicated bases raised to y. Define two maps on y ∈ [0, 1):"
         },
         {
           "type": "eq",
@@ -136,7 +136,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Take separate orbits y<sub>j</sub><super>add</super> and y<sub>j</sub><super>mul</super>, each with the differentiability convention just stated. For a ∈ {add, mul} and N ≥ 1, define"
+          "text": "Take a separate orbit for each map, with the branch convention just stated. For a ∈ {add, mul} and integer N ≥ 1, use exactly N samples: j = 0, 1, …, N−1. Define"
         },
         {
           "type": "eq",

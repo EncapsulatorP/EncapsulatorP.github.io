@@ -1,0 +1,948 @@
+{
+  "title": "Valid proofs & surviving arguments",
+  "subtitle": "",
+  "author": "EncapsulatorP",
+  "date": "2026-11-23",
+  "source_commit": "f165f366bfd416c92042f56139ece377bb4b42d8",
+  "source_data": "proof-board-data.json",
+  "audit_versions": [
+    {
+      "id": "electric-orange",
+      "label": "Earlier electric-orange edition",
+      "pages": 16,
+      "sha256": "83304df19aa10cefa5ad036ebf82fe2980c52e6cc04e9ce787229a1108d938c2"
+    },
+    {
+      "id": "illustrated",
+      "label": "Earlier illustrated edition",
+      "pages": 17,
+      "sha256": "ae75191d959c2cc6984fe50d363718fc33b090596b4de42a39b8728719f1a1b6"
+    }
+  ],
+  "review_basis": "Mathematical review of the current canonical Markdown and focused proof notes. The 14 core rows below represent the earlier collected arguments. The cubic attraction result and asymptotic comparison are listed separately as later additions.",
+  "audit_summary": "The inspected source and printed notation already contain the correct formulas. Nested powers and derivatives can lose meaning during PDF text extraction. The revision improves readable mathematical text and separates the established arguments from later additions.",
+  "document_role": "Review and navigation; full proofs are linked separately.",
+  "pages": [
+    {
+      "id": "orientation",
+      "title": "Valid proofs & surviving arguments",
+      "kicker": "A / B / C · Review and navigation",
+      "blocks": [
+        {
+          "type": "image",
+          "path": "assets/logistic-proof.png",
+          "max_height": 445,
+          "alt": "Three exact views of the logistic two-cycle at r = 1 + square root of 6: exchanged orbit points, a rescaled paired quarter-turn matrix, and zero derivative of the fourth-return displacement.",
+          "link_url": "https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "A · Audit",
+            "B · Statements",
+            "C · Final board",
+            "S · Later work"
+          ],
+          "widths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "padding": 6,
+          "rows": [
+            [
+              "Notation and editions<br/><b>Pages 2–3</b>",
+              "14 claims + hypotheses<br/><b>Pages 4–7</b>",
+              "Valid arguments + limits<br/><b>Page 8</b>",
+              "Cubic, rate and model<br/><b>Pages 9–10</b>"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "<b>Edition record.</b> The audit compares the 16-page electric-orange and 17-page illustrated PDFs. The exact earlier review excerpt is unknown. Later results are separated on pages 9–10. Click the figure for the complete logistic proof.",
+          "small": true
+        }
+      ]
+    },
+    {
+      "id": "audit-notation",
+      "title": "A. Notation and edition audit",
+      "kicker": "01–04 · Read the symbol in context",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "<b>Audit scope.</b> Compared the complete 16-page electric-orange PDF, the 17-page illustrated PDF, their canonical Markdown and JSON, visible page renders and extracted text. The reported page numbers match the 16-page edition. The exact file or excerpt supplied to the earlier reviewer is unknown.",
+          "small": true
+        },
+        {
+          "type": "h",
+          "text": "A1. Critical point and derivative"
+        },
+        {
+          "type": "p",
+          "text": "<b>Source and print correct.</b> Earlier edition p. 4; illustrated edition p. 5.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "f_r(1/2)=r/4,\\qquad f'_r(1/2)=0."
+        },
+        {
+          "type": "p",
+          "text": "The full PDF already prints the derivative prime. The reported statement without it is not reproduced.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Check the formula in its focused note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf"
+        },
+        {
+          "type": "h",
+          "text": "A2. Exactly N terms"
+        },
+        {
+          "type": "p",
+          "text": "<b>Source and print correct.</b> Earlier edition p. 6; illustrated edition p. 7.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "\\lambda_{a,N}=\\frac1N\\sum_{j=0}^{N-1}\\log|T'_a(y_j^a)|."
+        },
+        {
+          "type": "p",
+          "text": "Both upper limits already read N−1. Extraction fragments the equation, so the revision preserves a complete readable formula.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Check the formula in its focused note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/fractional-exponential-maps.pdf"
+        },
+        {
+          "type": "h",
+          "text": "A3. Ceiling and floor"
+        },
+        {
+          "type": "p",
+          "text": "<b>Source and print correct.</b> Earlier edition p. 11; illustrated edition p. 12.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "\\mathbb{P}(\\mathrm{palindrome})=\\frac{q^{\\lceil n/2\\rceil}}{q^n}=q^{-\\lfloor n/2\\rfloor}."
+        },
+        {
+          "type": "p",
+          "text": "The numerator already uses ceiling and the final exponent uses floor. The formula covers odd and even lengths.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Check the formula in its focused note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/palindrome-counting.pdf"
+        },
+        {
+          "type": "h",
+          "text": "A4. The nested exponent"
+        },
+        {
+          "type": "p",
+          "text": "<b>Extraction loss confirmed.</b> Earlier edition p. 10; illustrated edition p. 11.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "f(x)=\\sum_{n=0}^{\\infty}x^{2^n},\\qquad |x|<1."
+        },
+        {
+          "type": "p",
+          "text": "The printed exponent is 2^n. Copying the PDF can flatten it to 2n; this loss of mathematical structure was reproduced.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Check the formula in its focused note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/dyadic-remainder.pdf"
+        }
+      ]
+    },
+    {
+      "id": "audit-source",
+      "title": "A. Notation and source coverage",
+      "kicker": "05–09 · Symbols, coefficients and the missing-section report",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "A5. π in the proposition"
+        },
+        {
+          "type": "p",
+          "text": "<b>Source and print correct.</b> Earlier edition p. 8; illustrated edition p. 9.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "\\pi,Z(p_1),\\ldots,Z(p_k)."
+        },
+        {
+          "type": "p",
+          "text": "Both the source and inspected PDF say π. The reported n substitution is absent from the inspected versions.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Check the formula in its focused note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.pdf"
+        },
+        {
+          "type": "h",
+          "text": "A6. The input iπ"
+        },
+        {
+          "type": "p",
+          "text": "<b>Source and print correct.</b> Earlier edition p. 9; illustrated edition p. 10.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "\\alpha_0=i\\pi."
+        },
+        {
+          "type": "p",
+          "text": "The coefficient sentence and assumption box already say iπ. These complex inputs belong to the conditional argument.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Check the formula in its focused note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.pdf"
+        },
+        {
+          "type": "h",
+          "text": "A7. One coefficient c"
+        },
+        {
+          "type": "p",
+          "text": "<b>Source and print correct.</b> Earlier edition p. 8; illustrated edition p. 9.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "c_{2m+1}=\\frac{(-1)^{m+1}2^{2m-1}B_{2m}}{(2m+1)!}."
+        },
+        {
+          "type": "p",
+          "text": "The printed letter is lowercase c. The signed Bernoulli expression equals the same positive rational coefficient.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Check the formula in its focused note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.pdf"
+        },
+        {
+          "type": "h",
+          "text": "A8. The continuum exponent"
+        },
+        {
+          "type": "p",
+          "text": "<b>Source and print correct.</b> Earlier edition p. 7; illustrated edition p. 8.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "|\\mathbb{R}^5|=|\\mathbb{R}^6|=|\\mathbb{C}^3|=|\\mathbb{R}|=2^{\\aleph_0}."
+        },
+        {
+          "type": "p",
+          "text": "The source and rendered exponent use aleph-zero. The reported N-zero substitution is not reproduced.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Check the formula in its focused note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/dimensions-and-fragments.pdf"
+        },
+        {
+          "type": "h",
+          "text": "A9. The prime-polynomial section"
+        },
+        {
+          "type": "p",
+          "text": "<b>Present in full PDFs.</b> Earlier edition p. 14; illustrated edition p. 15.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "G(N)=[z^N]P_N(z)^2,\\qquad U(N)=\\frac{G(N)+D(N)}2."
+        },
+        {
+          "type": "p",
+          "text": "The full section is present on page 14 of the 16-page edition and page 15 of the illustrated edition. The exact excerpt received by the earlier reviewer is unknown.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Check the formula in its focused note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/prime-polynomial-counts.pdf"
+        }
+      ]
+    },
+    {
+      "id": "statements-1-4",
+      "title": "B. Logistic identities",
+      "kicker": "01–04 · Exact local statements",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "B1. Logistic two-cycle"
+        },
+        {
+          "type": "p",
+          "text": "<b>EXACT · Hypotheses.</b> Real r &gt; 3; also r ≤ 4 for the conventional invariant interval [0,1].",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "f_r^{\\circ2}(x)-x=-x(rx-r+1)[r^2x^2-r(r+1)x+r+1]."
+        },
+        {
+          "type": "eq",
+          "latex": "x_\\pm=\\frac{r+1\\pm\\sqrt{(r-3)(r+1)}}{2r}."
+        },
+        {
+          "type": "eq",
+          "latex": "d_\\pm=-1\\mp\\sqrt{(r-3)(r+1)},\\qquad d_+d_-=4+2r-r^2."
+        },
+        {
+          "type": "p",
+          "text": "Polynomial algebra also proves that fᵣ exchanges these two distinct nontrivial points.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the complete proof note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf"
+        },
+        {
+          "type": "h",
+          "text": "B2. Paired quarter-turn matrix"
+        },
+        {
+          "type": "p",
+          "text": "<b>EXACT · Hypotheses.</b> At r* = 1 + √6, define C = [[0,d₋],[d₊,0]], a = √2 − 1 and S = diag(√a,1/√a).",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "C_*^2=-I,\\qquad C_*^4=I,\\qquad \\det C_*=1."
+        },
+        {
+          "type": "matrix",
+          "label": "S^{-1}C_*S=",
+          "cells": [
+            [
+              "0",
+              "1"
+            ],
+            [
+              "-1",
+              "0"
+            ]
+          ],
+          "tail": "."
+        },
+        {
+          "type": "p",
+          "text": "This explicitly defined linear matrix has rank 2. The conjugacy is a coordinate rescaling; C is not Euclidean orthogonal in the original coordinates.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the complete proof note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf"
+        },
+        {
+          "type": "h",
+          "text": "B3. Vanishing derivative of the return displacement"
+        },
+        {
+          "type": "p",
+          "text": "<b>EXACT · Hypotheses.</b> At either cycle point p± for r* = 1 + √6.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "(f^{\\circ2})'(p_\\pm)=-1,\\quad(f^{\\circ4})'(p_\\pm)=1,\\quad(f^{\\circ4}-\\mathrm{id})'(p_\\pm)=0."
+        },
+        {
+          "type": "p",
+          "text": "These identities concern the stated cycle points. At the separate critical point 1/2, fᵣ′(1/2) = 0 while fᵣ(1/2) = r/4.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the complete proof note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf"
+        },
+        {
+          "type": "h",
+          "text": "B4. Zero cycle Lyapunov exponent"
+        },
+        {
+          "type": "p",
+          "text": "<b>EXACT · Hypotheses.</b> The exact r* two-cycle; exponent per original logistic update.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "\\lambda_{\\mathrm{cycle}}=\\frac12\\log|d_+d_-|=0."
+        },
+        {
+          "type": "p",
+          "text": "A zero exponent leaves nonlinear stability undecided. The later cubic attraction argument is presented separately on page 9.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the complete proof note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf"
+        }
+      ]
+    },
+    {
+      "id": "statements-5-8",
+      "title": "B. Maps, dimensions and coefficients",
+      "kicker": "05–08 · Domains and operations made explicit",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "B5. Two constructions of six"
+        },
+        {
+          "type": "p",
+          "text": "<b>EXACT · Hypotheses.</b> Tadd(y) = frac(2·3ʸ), Tmul(y) = frac(6ʸ), y ∈ [0,1), N ≥ 1; use the stated branch derivatives.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "\\lambda_{a,N}=\\frac1N\\sum_{j=0}^{N-1}\\log|T'_a(y_j^a)|,\\quad\\Delta\\lambda_N=\\mu_{\\mathrm{mul},N}\\log6-\\mu_{\\mathrm{add},N}\\log3+\\log\\frac{\\log6}{\\log3}-\\log2."
+        },
+        {
+          "type": "p",
+          "text": "The means μadd,N and μmul,N belong to separate orbit segments. Ordinary derivatives fail at jumps; the note specifies endpoint conventions. Infinite-time formulas require convergent means.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the complete proof note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/fractional-exponential-maps.pdf"
+        },
+        {
+          "type": "h",
+          "text": "B6. Dimension and cardinality"
+        },
+        {
+          "type": "p",
+          "text": "<b>EXACT · Hypotheses.</b> Use the indicated real or complex scalar field; cardinality concerns the underlying set.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "\\dim_{\\mathbb{R}}(\\mathbb{R}^3\\times\\mathbb{R}^2)=5,\\quad\\dim_{\\mathbb{R}}(\\mathbb{R}^3\\otimes_{\\mathbb{R}}\\mathbb{R}^2)=6.\\qquad\\dim_{\\mathbb{R}}\\mathbb{C}^3=6,\\quad\\dim_{\\mathbb{C}}\\mathbb{C}^3=3,\\quad|\\mathbb{R}^5|=|\\mathbb{R}^6|=|\\mathbb{C}^3|=2^{\\aleph_0}."
+        },
+        {
+          "type": "p",
+          "text": "Products, tensor products, changes of scalar field and cardinality answer different mathematical questions.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the complete proof note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/dimensions-and-fragments.pdf"
+        },
+        {
+          "type": "h",
+          "text": "B7. Cubic factorization and odd-step conventions"
+        },
+        {
+          "type": "p",
+          "text": "<b>EXACT · Hypotheses.</b> Complex z; odd positive integer n for the iteration conventions.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "z^3-1=(z-1)(z^2+z+1)."
+        },
+        {
+          "type": "p",
+          "text": "3n + 1 and (3n + 1)/2 are distinct odd-step conventions. The latter divides once; the full odd-to-odd step removes all factors of two. T₀–T₃ still need definitions and a connecting map.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the complete proof note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/dimensions-and-fragments.pdf"
+        },
+        {
+          "type": "h",
+          "text": "B8. Exact reduction of Z(p)"
+        },
+        {
+          "type": "p",
+          "text": "<b>EXACT · Hypotheses.</b> Odd integers p ≥ 3; primality is not required.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "Z(p)=1+\\exp\\!\\left(\\frac{\\pi\\zeta(p-1)}p\\right)=1+e^{c_p\\pi^p}.\\quad c_p=\\frac{2^{p-2}|B_{p-1}|}{p!}\\in\\mathbb{Q}_{>0}."
+        },
+        {
+          "type": "p",
+          "text": "Euler’s even-zeta evaluation supplies the coefficient. The signed Bernoulli expression in A7 gives the same lowercase c. At p = 2, ζ(1) has a pole.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the complete proof note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.pdf"
+        }
+      ]
+    },
+    {
+      "id": "statements-9-11",
+      "title": "B. Arithmetic, limits and counting",
+      "kicker": "09–11 · One conditional argument; two exact counts and bounds",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "B9. Conditional algebraic independence"
+        },
+        {
+          "type": "p",
+          "text": "<b>CONDITIONAL · Hypotheses.</b> Assume full complex Schanuel; p₁,…,pₖ are pairwise distinct odd integers ≥ 3.",
+          "small": true
+        },
+        {
+          "type": "p",
+          "text": "Then π, Z(p₁), …, Z(pₖ) are algebraically independent over Q. Apply the assumption to iπ and the real inputs cₚⱼπᵖⱼ.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "E\\subseteq\\mathbb{Q}(i,\\pi,Z(p_1),\\ldots,Z(p_k)),\\quad k+1\\le\\operatorname{trdeg}_{\\mathbb{Q}}E\\le k+1."
+        },
+        {
+          "type": "p",
+          "text": "E is generated over Q by these inputs and their exponentials. The imaginary part isolates iπ in a rational linear relation. Transcendence of π handles the distinct real powers; adjoining i is algebraic.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the complete proof note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.pdf"
+        },
+        {
+          "type": "h",
+          "text": "B10. Dyadic series and vanishing remainder"
+        },
+        {
+          "type": "p",
+          "text": "<b>EXACT · Hypotheses.</b> f(x) = Σₙ≥₀ x^(2^n), |x| &lt; 1; xₖ = exp(−2^(−k)), integer k ≥ 0.",
+          "small": true
+        },
+        {
+          "type": "p",
+          "text": "The functional equation f(x) = x + f(x²) gives f(xₖ) = k + C + Rₖ.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "f(x)=\\sum_{n=0}^{\\infty}x^{2^n},\\qquad f(x)=x+f(x^2),\\qquad x_k=e^{-2^{-k}}."
+        },
+        {
+          "type": "eq",
+          "latex": "C=f(e^{-1})+\\sum_{j=1}^{\\infty}(e^{-2^{-j}}-1),\\quad R_k=\\sum_{j=k+1}^{\\infty}(1-e^{-2^{-j}}),\\quad2^{-k}-\\frac{4^{-k}}6\\le R_k\\le2^{-k}."
+        },
+        {
+          "type": "p",
+          "text": "Absolute convergence, an index shift and t − t²/2 ≤ 1 − exp(−t) ≤ t prove the stated bound. C belongs to the specified dyadic path.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the complete proof note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/dyadic-remainder.pdf"
+        },
+        {
+          "type": "h",
+          "text": "B11. Ordinary palindrome count"
+        },
+        {
+          "type": "p",
+          "text": "<b>EXACT · Hypotheses.</b> Independent uniform symbols; integer alphabet size q ≥ 2 and length n ≥ 1.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "\\mathbb{P}(\\mathrm{palindrome})=\\frac{q^{\\lceil n/2\\rceil}}{q^n}=q^{-\\lfloor n/2\\rfloor},\\qquad4^{-20}=2^{-40}."
+        },
+        {
+          "type": "p",
+          "text": "This counts ordinary reversal for odd and even n. With a fixed-point-free complement pairing, reverse-complement palindromes instead require even n and have probability q^(−n/2).",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the complete proof note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/palindrome-counting.pdf"
+        }
+      ]
+    },
+    {
+      "id": "statements-12-14",
+      "title": "B. Convergence and finite encodings",
+      "kicker": "12–14 · Complete domains and conclusions",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "B12. Global convergence of the alternating towers"
+        },
+        {
+          "type": "p",
+          "text": "<b>EXACT · Hypotheses.</b> Real c &gt; 1, L = log c, v₀ ≥ 1; u = c^(−v), v = cᵘ.",
+          "small": true
+        },
+        {
+          "type": "p",
+          "text": "F_L(v) = exp(L exp(−Lv)) maps [1,∞) into I = [1, exp(1/e)]. Its uniform contraction proves a unique solution and convergence from every stated initial value.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "F_L(v)=e^{Le^{-Lv}},\\qquad I=[1,e^{1/e}]."
+        },
+        {
+          "type": "eq",
+          "latex": "q=4e^{1/e-2}<1,\\qquad |F'_L(v)|\\le q\\quad(v\\ge1)."
+        },
+        {
+          "type": "eq",
+          "latex": "|x-v_*|\\le\\frac{|F_L(x)-x|}{1-q}\\qquad(x\\in I)."
+        },
+        {
+          "type": "p",
+          "text": "Banach’s theorem applies to this defined alternating-sign iteration. The residual-to-error estimate uses exact arithmetic.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the complete proof note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/alternating-towers.pdf"
+        },
+        {
+          "type": "h",
+          "text": "B13. Sharp height and number of bases"
+        },
+        {
+          "type": "p",
+          "text": "<b>EXACT · Hypotheses.</b> The same alternating system, with c &gt; 1 and t = v log c.",
+          "small": true
+        },
+        {
+          "type": "p",
+          "text": "The maximum upper phase is attained at cpeak = exp(1/vmax). Heights 1 &lt; v &lt; vmax have exactly two finite bases; vmax has one; v &gt; vmax and v = 1 have none.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "v\\log v=t e^{-t}\\le1/e,\\quad t=v\\log c,\\quad v_{\\max}=e^{W_0(1/e)}."
+        },
+        {
+          "type": "p",
+          "text": "Strict increase of v log v and the two branches of t exp(−t) give the classification. cpeak is the maximizing base.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the complete proof note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/alternating-towers.pdf"
+        },
+        {
+          "type": "h",
+          "text": "B14. Finite prime-polynomial counting"
+        },
+        {
+          "type": "p",
+          "text": "<b>EXACT · Hypotheses.</b> P_X(z) = Σprime p≤X zᵖ, integer X ≥ 2; integer N ≥ 4; finite coefficient extraction.",
+          "small": true
+        },
+        {
+          "type": "eq",
+          "latex": "G(N)=[z^N]P_N(z)^2,\\quad U(N)=\\frac{G(N)+D(N)}2,\\quad T(X)=[z^2]P_{X+2}(z)P_X(z^{-1})."
+        },
+        {
+          "type": "p",
+          "text": "G counts ordered pairs; D(N) is 1 exactly when N/2 is an integer prime; U counts unordered pairs. T counts prime pairs p,p+2 with p ≤ X. The full section is present in both inspected editions.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the complete proof note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/prime-polynomial-counts.pdf"
+        }
+      ]
+    },
+    {
+      "id": "final-board",
+      "title": "C. The final board",
+      "kicker": "Valid proofs and surviving arguments · Complete notes linked",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "This board collects the surviving arguments. The numbered B entries state their hypotheses; the linked notes contain complete proofs and references."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Reviewed argument",
+            "Verdict and boundary"
+          ],
+          "widths": [
+            0.29,
+            0.71
+          ],
+          "padding": 7,
+          "rows": [
+            [
+              "<b>Logistic algebra and paired quarter-turn</b><br/><link href=\"https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf\" color=\"#8C3A0B\"><u>Full note</u></link>",
+              "<b>VALID.</b> Factorization, cycle exchange, multiplier, matrix conjugacy and return-derivative identities hold for their specified objects and points."
+            ],
+            [
+              "<b>Cycle Lyapunov exponent</b><br/><link href=\"https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf\" color=\"#8C3A0B\"><u>Full note</u></link>",
+              "<b>VALID.</b> The exact r* two-cycle has exponent zero. The later cubic proof supplies its nonlinear attraction argument."
+            ],
+            [
+              "<b>Two constructions of six</b><br/><link href=\"https://encapsulatorp.github.io/atlas/proofs/fractional-exponential-maps.pdf\" color=\"#8C3A0B\"><u>Full note</u></link>",
+              "<b>VALID.</b> Finite branch averages use exactly N terms. Infinite-time comparisons require limiting means; a common measure or conjugacy is still unproved."
+            ],
+            [
+              "<b>Dimension, cardinality and recorded fragments</b><br/><link href=\"https://encapsulatorp.github.io/atlas/proofs/dimensions-and-fragments.pdf\" color=\"#8C3A0B\"><u>Full note</u></link>",
+              "<b>VALID.</b> Dimension, cardinality and cubic identities are valid. A proposed connecting map and the labels T₀–T₃ still need definitions."
+            ],
+            [
+              "<b>Z(p) reduction</b><br/><link href=\"https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.pdf\" color=\"#8C3A0B\"><u>Full note</u></link>",
+              "<b>VALID.</b> For odd p ≥ 3, the positive rational Bernoulli coefficient and exponential expression are exact; lowercase c is consistent."
+            ],
+            [
+              "<b>Schanuel deduction</b><br/><link href=\"https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.pdf\" color=\"#8C3A0B\"><u>Full note</u></link>",
+              "<b>CONDITIONAL.</b> Algebraic independence follows under full complex Schanuel for distinct odd exponents. The assumption remains part of the proposition."
+            ],
+            [
+              "<b>Dyadic remainder</b><br/><link href=\"https://encapsulatorp.github.io/atlas/proofs/dyadic-remainder.pdf\" color=\"#8C3A0B\"><u>Full note</u></link>",
+              "<b>VALID.</b> For the defined series and dyadic path, the functional equation, exact tail and geometric bounds hold. The exponent is 2^n."
+            ],
+            [
+              "<b>Palindrome counting</b><br/><link href=\"https://encapsulatorp.github.io/atlas/proofs/palindrome-counting.pdf\" color=\"#8C3A0B\"><u>Full note</u></link>",
+              "<b>VALID.</b> The uniform-string ceiling/floor count covers odd and even lengths. Ordinary reversal and reverse complementation are distinct models."
+            ],
+            [
+              "<b>Alternating towers</b><br/><link href=\"https://encapsulatorp.github.io/atlas/proofs/alternating-towers.pdf\" color=\"#8C3A0B\"><u>Full note</u></link>",
+              "<b>VALID.</b> The defined alternating iteration has global convergence, a sharp height envelope and the stated complete count of bases."
+            ],
+            [
+              "<b>Prime-polynomial counts</b><br/><link href=\"https://encapsulatorp.github.io/atlas/proofs/prime-polynomial-counts.pdf\" color=\"#8C3A0B\"><u>Full note</u></link>",
+              "<b>VALID.</b> Finite polynomial identities count ordered, unordered and translated prime pairs. The full section is present in both inspected editions."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "later-cubic",
+      "title": "Later addition: what survives locally",
+      "kicker": "S1–S2 · Cubic term, attraction and rate",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "These later derivations extend the logistic thread. They are recorded separately from the earlier collection and its notation audit."
+        },
+        {
+          "type": "h",
+          "text": "S1. The surviving logistic cubic"
+        },
+        {
+          "type": "p",
+          "text": "<b>Hypotheses.</b> r* = 1 + √6; either cycle phase p±; H = f⁴; sufficiently small real h.",
+          "small": true
+        },
+        {
+          "type": "p",
+          "text": "H(p±+h) − (p±+h) = −K±h³ + O(h⁴), with K± = 20r*²(2 ± √2) &gt; 0. The displacement has a zero of exactly order three."
+        },
+        {
+          "type": "eq",
+          "latex": "K_\\pm=20(1+\\sqrt{6})^2(2\\pm\\sqrt{2}),\\quad(H-\\mathrm{id})'''(p_\\pm)=-6K_\\pm\\ne0."
+        },
+        {
+          "type": "p",
+          "text": "This later derivation is separate from the earlier collected-proof review. The exact quartic coefficients and composed cubic were independently checked symbolically.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the later derivation and its proof",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.pdf"
+        },
+        {
+          "type": "h",
+          "text": "S2. Local attraction and its rate"
+        },
+        {
+          "type": "p",
+          "text": "<b>Hypotheses.</b> g(h) = H(p±+h) − p±; sufficiently small nonzero real initial h₀.",
+          "small": true
+        },
+        {
+          "type": "p",
+          "text": "The iterates preserve the sign of h, decrease in absolute value and converge to zero. If hₙ = gⁿ(h₀), then n hₙ² → 1/(2K±)."
+        },
+        {
+          "type": "eq",
+          "latex": "h_n\\sim\\frac{\\operatorname{sgn}(h_0)}{\\sqrt{2K_\\pm n}}."
+        },
+        {
+          "type": "p",
+          "text": "This supplies the nonlinear stability argument. One n-step equals four original logistic updates; the conclusion is local.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the later derivation and its proof",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.pdf"
+        },
+        {
+          "type": "h",
+          "text": "The logical step that supplies attraction"
+        },
+        {
+          "type": "eq",
+          "latex": "g(h)=h-K_\\pm h^3+O(h^4),\\qquad\\frac{g(h)}h=1-K_\\pm h^2+O(h^3)."
+        },
+        {
+          "type": "p",
+          "text": "Because K± is positive, sufficiently small nonzero h retains its sign and decreases in absolute value. The cubic coefficient gives the attraction and the slow inverse-square-root rate. The paired matrix remains invertible; this is a local statement about the scalar return displacement."
+        },
+        {
+          "type": "link",
+          "text": "Return to the earlier derivative and matrix identities",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf"
+        }
+      ]
+    },
+    {
+      "id": "later-connections",
+      "title": "Later connections and next steps",
+      "kicker": "S3–S4 · A proved comparison and a defined geometric model",
+      "blocks": [
+        {
+          "type": "h",
+          "text": "S3. A shared leading decay scale"
+        },
+        {
+          "type": "p",
+          "text": "<b>Hypotheses.</b> Rₖ from the dyadic note; integer k &gt; 1 tending to infinity.",
+          "small": true
+        },
+        {
+          "type": "p",
+          "text": "The dyadic remainder and the zeta tail have the same leading decay scale. Their ratio tends to one."
+        },
+        {
+          "type": "eq",
+          "latex": "R_k\\sim2^{-k},\\qquad\\zeta(k)-1\\sim2^{-k},\\qquad\\frac{R_k}{\\zeta(k)-1}\\longrightarrow1."
+        },
+        {
+          "type": "p",
+          "text": "The dyadic bound and a separate zeta-tail estimate prove an asymptotic comparison. It does not define a shared dynamical system.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the later derivation and its proof",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.pdf"
+        },
+        {
+          "type": "h",
+          "text": "S4. Defined geometric model for the next connection"
+        },
+        {
+          "type": "p",
+          "text": "<b>Hypotheses.</b> Use the displayed cylinder with its product metric and the map Φ below; δ comes from the local attraction proof.",
+          "small": true
+        },
+        {
+          "type": "p",
+          "text": "The invariant circle S¹ × {0} attracts transversely, with distance |gⁿ(h)| tending to zero while the angular coordinate follows its prescribed rotation."
+        },
+        {
+          "type": "eq",
+          "latex": "X=S^1\\times(-\\delta,\\delta),\\qquad\\Phi(\\theta,h)=(\\theta+\\omega\\ \\mathrm{mod}\\ 2\\pi,g(h))."
+        },
+        {
+          "type": "eq",
+          "latex": "\\operatorname{dist}(\\Phi^n(\\theta,h),S^1\\times\\{0\\})=|g^{\\circ n}(h)|\\longrightarrow0."
+        },
+        {
+          "type": "p",
+          "text": "This explicitly defined model has a proved attraction property. A physical brane interpretation and a full logistic–Hopf conjugacy remain separate open questions.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the later derivation and its proof",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.pdf"
+        },
+        {
+          "type": "h",
+          "text": "Next logical steps"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Target",
+            "A concrete completion criterion"
+          ],
+          "widths": [
+            0.25,
+            0.75
+          ],
+          "padding": 6,
+          "rows": [
+            [
+              "<b>Finite-scale comparison</b>",
+              "Bound the relative error in the dyadic/zeta ratio at finite k, with explicit constants and a stated range."
+            ],
+            [
+              "<b>Geometric connection</b>",
+              "Define a map from the cylinder model to the intended geometric object, then prove one preserved property or find a counterexample."
+            ],
+            [
+              "<b>Physical interpretation</b>",
+              "Specify the physical variables and measurable quantity that a brane-collapse interpretation would represent."
+            ]
+          ]
+        },
+        {
+          "type": "link",
+          "text": "Continue in the online board and repository connection map",
+          "url": "https://encapsulatorp.github.io/treasure-hunt/"
+        }
+      ]
+    }
+  ]
+}

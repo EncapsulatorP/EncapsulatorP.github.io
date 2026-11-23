@@ -3,7 +3,7 @@
   "subtitle": "A focused reading note from the Pirate Chest",
   "date": "23 November 2026",
   "author": "Zolton / EncapsulatorP · with ChatGPT",
-  "source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
+  "historical_source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
   "reviewed_proof_commit": "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd",
   "status": "exact",
   "statusLabel": "Exact local result",
@@ -37,7 +37,7 @@
         },
         {
           "type": "p",
-          "text": "Specify a geometric collapse model before connecting this local cancellation to a surface or brane. State its variables, map, topology and the exact sense in which a quantity vanishes."
+          "text": "Read the companion cubic calculation to obtain local attraction and its rate. For a further geometric connection, specify the state space, map and quantity to compare with its defined invariant-circle model."
         },
         {
           "type": "h",
@@ -45,7 +45,7 @@
         },
         {
           "type": "p",
-          "text": "<b>[S1] Logistic quarter-turn.</b> EncapsulatorP, <i>Recovered constructions — independently checked proof notes</i>, §2. The factorization, paired matrix and fourth-iterate derivative statement are pinned to the reviewed source.",
+          "text": "<b>[S1] Logistic quarter-turn.</b> EncapsulatorP, <i>Recovered constructions</i>, §2. The factorization, paired matrix and fourth-iterate derivative statement are linked to the historical source reviewed here.",
           "small": true
         },
         {
@@ -55,7 +55,7 @@
         },
         {
           "type": "link",
-          "text": "Read the pinned collection source",
+          "text": "Historical collection source · original edition",
           "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#logistic-proof-picture"
         },
         {
@@ -67,8 +67,8 @@
     },
     {
       "id": "logistic-proof-picture",
-      "title": "Follow the orange arrow",
-      "kicker": "01 · VISUAL TREASURE · FOLLOW THE THREE STEPS",
+      "title": "Three exact views of one cycle",
+      "kicker": "01 · VISUAL GUIDE · ORBIT, MATRIX AND LOCAL RETURN",
       "blocks": [
         {
           "type": "image",
@@ -79,11 +79,11 @@
         },
         {
           "type": "p",
-          "text": "<b>Read it like a treasure map.</b> First, A and B swap places. Follow the orange arrow through four numbered moves. Then look for the flat dashed line at the centre of the curve."
+          "text": "<b>Read the numbered panels in order.</b> The scalar orbit exchanges A and B. The rescaled paired matrix makes four quarter-turns. The return-displacement graph has a horizontal tangent at the marked cycle point."
         },
         {
           "type": "p",
-          "text": "In that linear model, the arrow returns exactly after four moves. For the nonlinear map, the conclusion is local: the derivative of f<super>∘4</super> − id vanishes at the cycle points. The following pages give the complete algebra."
+          "text": "The matrix vector returns exactly after four applications. For the scalar map, the graph shows the local identity: the first derivative of the fourth iterate minus the identity is zero at each cycle point. The next pages derive both statements."
         },
         {
           "type": "link",
@@ -93,7 +93,7 @@
         {
           "type": "p",
           "small": true,
-          "text": "Click the picture or link to open the animation in a browser. The PDF itself displays the still illustration; the travelling arrows guide us between the discrete steps."
+          "text": "The PDF displays a still image. Open the linked APNG to step through the exact discrete states of the two-point orbit and the four-state matrix model."
         }
       ]
     },
@@ -251,16 +251,16 @@
         {
           "type": "callout",
           "label": "Three different statements",
-          "text": "The displacement f<super>∘4</super> − id has zero first derivative at the cycle points; the cycle Lyapunov exponent is zero; and the defined matrix has fourth power I. Each statement follows from the multiplier calculation.",
+          "text": "The fourth-return displacement has zero first derivative at the cycle points; the cycle Lyapunov exponent is zero; and the defined paired matrix has fourth power I. Each follows from the multiplier calculation.",
           "status": "exact"
         },
         {
           "type": "p",
-          "text": "The nonlinear fourth iterate has degree 16 for r ≠ 0, so it is not the identity map. Nor does zero cycle exponent itself prove nonlinear stability at the transition. The logistic critical point x = 1/2, where f′<sub>r</sub>(x) = 0, is another distinct use of the word “vanishing”."
+          "text": "The nonlinear fourth iterate has degree 16 for r ≠ 0. A zero cycle exponent alone leaves nonlinear stability undecided; the companion cubic note supplies the additional local-attraction argument. At the separate critical point x = 1/2, the <b>first derivative</b> is zero and the <b>map value</b> is r/4."
         },
         {
           "type": "p",
-          "text": "The assertions above concern the two specified cycle points; they do not claim those are the only zeros of the derivative of f<super>∘4</super> − id."
+          "text": "These derivative identities are evaluated at the two specified cycle points. Identifying every zero of the derivative of the fourth-return displacement would be a separate root-counting problem."
         }
       ]
     }

@@ -1,0 +1,380 @@
+{
+  "title": "Valid proofs & surviving arguments",
+  "date": "2026-11-23",
+  "audited_source_commit": "f165f366bfd416c92042f56139ece377bb4b42d8",
+  "review_basis": "Mathematical review of the current canonical Markdown and focused proof notes. The 14 core rows below represent the earlier collected arguments. The cubic attraction result and asymptotic comparison are listed separately as later additions.",
+  "audit_scope": "Compared the complete 16-page electric-orange PDF, the 17-page illustrated PDF, their canonical Markdown and JSON, visible page renders and extracted text. The reported page numbers match the 16-page edition. The exact file or excerpt supplied to the earlier reviewer is unknown.",
+  "audit_summary": "The inspected source and printed notation already contain the correct formulas. Nested powers and derivatives can lose meaning during PDF text extraction. The revision improves readable mathematical text and separates the established arguments from later additions.",
+  "versions": [
+    {
+      "id": "electric-orange",
+      "label": "Earlier electric-orange edition",
+      "pages": 16,
+      "sha256": "83304df19aa10cefa5ad036ebf82fe2980c52e6cc04e9ce787229a1108d938c2"
+    },
+    {
+      "id": "illustrated",
+      "label": "Earlier illustrated edition",
+      "pages": 17,
+      "sha256": "ae75191d959c2cc6984fe50d363718fc33b090596b4de42a39b8728719f1a1b6"
+    }
+  ],
+  "audit": [
+    {
+      "id": "critical-point",
+      "title": "Critical point and derivative",
+      "old_page": 4,
+      "illustrated_page": 5,
+      "formula": "f_r(1/2)=r/4,\\qquad f'_r(1/2)=0.",
+      "finding": "The full PDF already prints the derivative prime. The reported statement without it is not reproduced.",
+      "status_label": "Source and print correct"
+    },
+    {
+      "id": "finite-time-index",
+      "title": "Exactly N terms",
+      "old_page": 6,
+      "illustrated_page": 7,
+      "formula": "\\lambda_{a,N}=\\frac1N\\sum_{j=0}^{N-1}\\log|T'_a(y_j^a)|.",
+      "finding": "Both upper limits already read N−1. Extraction fragments the equation, so the revision preserves a complete readable formula.",
+      "status_label": "Source and print correct"
+    },
+    {
+      "id": "palindrome-parity",
+      "title": "Ceiling and floor",
+      "old_page": 11,
+      "illustrated_page": 12,
+      "formula": "\\mathbb P(\\mathrm{palindrome})=\\frac{q^{\\lceil n/2\\rceil}}{q^n}=q^{-\\lfloor n/2\\rfloor}.",
+      "finding": "The numerator already uses ceiling and the final exponent uses floor. The formula covers odd and even lengths.",
+      "status_label": "Source and print correct"
+    },
+    {
+      "id": "dyadic-exponent",
+      "title": "The nested exponent",
+      "old_page": 10,
+      "illustrated_page": 11,
+      "formula": "f(x)=\\sum_{n=0}^{\\infty}x^{2^n},\\qquad |x|<1.",
+      "finding": "The printed exponent is 2^n. Copying the PDF can flatten it to 2n; this loss of mathematical structure was reproduced.",
+      "status_label": "Extraction loss confirmed"
+    },
+    {
+      "id": "pi-proposition",
+      "title": "π in the proposition",
+      "old_page": 8,
+      "illustrated_page": 9,
+      "formula": "\\pi,Z(p_1),\\ldots,Z(p_k).",
+      "finding": "Both the source and inspected PDF say π. The reported n substitution is absent from the inspected versions.",
+      "status_label": "Source and print correct"
+    },
+    {
+      "id": "complex-input",
+      "title": "The input iπ",
+      "old_page": 9,
+      "illustrated_page": 10,
+      "formula": "\\alpha_0=i\\pi.",
+      "finding": "The coefficient sentence and assumption box already say iπ. These complex inputs belong to the conditional argument.",
+      "status_label": "Source and print correct"
+    },
+    {
+      "id": "bernoulli-coefficient",
+      "title": "One coefficient c",
+      "old_page": 8,
+      "illustrated_page": 9,
+      "formula": "c_{2m+1}=\\frac{(-1)^{m+1}2^{2m-1}B_{2m}}{(2m+1)!}.",
+      "finding": "The printed letter is lowercase c. The signed Bernoulli expression equals the same positive rational coefficient.",
+      "status_label": "Source and print correct"
+    },
+    {
+      "id": "continuum-symbol",
+      "title": "The continuum exponent",
+      "old_page": 7,
+      "illustrated_page": 8,
+      "formula": "|\\mathbb R^5|=|\\mathbb R^6|=|\\mathbb C^3|=|\\mathbb R|=2^{\\aleph_0}.",
+      "finding": "The source and rendered exponent use aleph-zero. The reported N-zero substitution is not reproduced.",
+      "status_label": "Source and print correct"
+    },
+    {
+      "id": "prime-section",
+      "title": "The prime-polynomial section",
+      "old_page": 14,
+      "illustrated_page": 15,
+      "formula": "G(N)=[z^N]P_N(z)^2,\\qquad U(N)=\\frac{G(N)+D(N)}2.",
+      "finding": "The full section is present on page 14 of the 16-page edition and page 15 of the illustrated edition. The exact excerpt received by the earlier reviewer is unknown.",
+      "status_label": "Present in full PDFs"
+    }
+  ],
+  "statements": [
+    {
+      "id": "logistic-cycle",
+      "title": "Logistic two-cycle",
+      "domain": "Real r > 3; additionally r ≤ 4 for the conventional invariant interval [0,1].",
+      "statement": "The second-iterate factorization gives two distinct nontrivial cycle points x₊ and x₋, exchanged by fᵣ. Their derivatives multiply to μ(r) = 4 + 2r − r².",
+      "latex": "f_r^{\\circ2}(x)-x=-x(rx-r+1)[r^2x^2-r(r+1)x+r+1],\\quad x_\\pm=\\frac{r+1\\pm\\sqrt{(r-3)(r+1)}}{2r},\\quad d_\\pm=-1\\mp\\sqrt{(r-3)(r+1)}.",
+      "status": "exact",
+      "qualification": "The factorization, exchange identities and derivative formulas follow by polynomial algebra.",
+      "proof_slug": "logistic-quarter-turn"
+    },
+    {
+      "id": "logistic-quarter-turn",
+      "title": "Paired quarter-turn matrix",
+      "domain": "r* = 1 + √6, with C = [[0, d₋], [d₊, 0]].",
+      "statement": "At μ(r*) = −1, C² = −I and C⁴ = I. Rescaling by S = diag(√a, 1/√a), a = √2 − 1, gives S⁻¹CS = [[0,1], [−1,0]].",
+      "latex": "C_*^2=-I,\\quad C_*^4=I,\\quad S^{-1}C_*S=\\begin{pmatrix}0&1\\\\-1&0\\end{pmatrix}.",
+      "status": "exact",
+      "qualification": "C is the explicitly defined paired linear matrix. It has determinant 1 and rank 2; it is not Euclidean orthogonal in the original coordinates.",
+      "proof_slug": "logistic-quarter-turn"
+    },
+    {
+      "id": "logistic-return-derivative",
+      "title": "Vanishing derivative of the return displacement",
+      "domain": "At either point p₊ or p₋ of the r* = 1 + √6 two-cycle.",
+      "statement": "The second-return derivative is −1, the fourth-return derivative is 1, and the derivative of f⁴ − id is zero at each cycle point.",
+      "latex": "(f^{\\circ2})'(p_\\pm)=-1,\\quad(f^{\\circ4})'(p_\\pm)=1,\\quad(f^{\\circ4}-\\mathrm{id})'(p_\\pm)=0.",
+      "status": "exact",
+      "qualification": "These are local derivative identities. The critical point is a separate point: fᵣ′(1/2) = 0 and fᵣ(1/2) = r/4.",
+      "proof_slug": "logistic-quarter-turn"
+    },
+    {
+      "id": "cycle-lyapunov",
+      "title": "Zero cycle Lyapunov exponent",
+      "domain": "The exact two-cycle at r* = 1 + √6; exponent per original logistic update.",
+      "statement": "The cycle Lyapunov exponent equals one half of log |d₊d₋| and is exactly zero.",
+      "latex": "\\lambda_{\\mathrm{cycle}}=\\frac12\\log|d_+d_-|=0.",
+      "status": "exact",
+      "qualification": "The zero exponent alone leaves nonlinear stability undecided. The separate later cubic argument establishes local attraction.",
+      "proof_slug": "logistic-quarter-turn"
+    },
+    {
+      "id": "fractional-exponential-averages",
+      "title": "Two constructions of six",
+      "domain": "Tadd(y) = frac(2·3ʸ), Tmul(y) = frac(6ʸ), y ∈ [0,1), N ≥ 1; orbit segments with the stated branch derivatives.",
+      "statement": "Each finite-time average uses exactly N terms, indexed 0 through N−1. The branch log derivatives are affine functions of y, so their averages and difference are exact functions of the respective orbit means.",
+      "latex": "\\lambda_{a,N}=\\frac1N\\sum_{j=0}^{N-1}\\log|T'_a(y_j^a)|,\\quad\\Delta\\lambda_N=\\mu_{\\mathrm{mul},N}\\log6-\\mu_{\\mathrm{add},N}\\log3+\\log\\frac{\\log6}{\\log3}-\\log2.",
+      "status": "exact",
+      "qualification": "Ordinary derivatives fail at fraction-part jumps; the source states the branch and endpoint conventions. Infinite-time formulas require the orbit means to converge. No common invariant measure is assumed.",
+      "proof_slug": "fractional-exponential-maps"
+    },
+    {
+      "id": "dimension-cardinality",
+      "title": "Dimension and cardinality",
+      "domain": "Finite-dimensional vector spaces over the indicated scalar fields; cardinality of their underlying sets.",
+      "statement": "R³ × R² has real dimension 5; R³ ⊗R R² has real dimension 6; C³ has real dimension 6 and complex dimension 3. All three underlying sets have cardinality 2^ℵ₀.",
+      "latex": "\\dim_{\\mathbb R}(\\mathbb R^3\\times\\mathbb R^2)=5,\\quad\\dim_{\\mathbb R}(\\mathbb R^3\\otimes_{\\mathbb R}\\mathbb R^2)=6,\\quad|\\mathbb R^5|=|\\mathbb R^6|=|\\mathbb C^3|=2^{\\aleph_0}.",
+      "status": "exact",
+      "qualification": "The product, tensor product, scalar field and set cardinality specify different mathematical questions.",
+      "proof_slug": "dimensions-and-fragments"
+    },
+    {
+      "id": "cubic-and-odd-step",
+      "title": "Cubic factorization and odd-step conventions",
+      "domain": "Complex z; odd positive integer n for the iteration conventions.",
+      "statement": "z³ − 1 = (z − 1)(z² + z + 1). The expressions 3n + 1 and (3n + 1)/2 denote distinct odd-step conventions; the latter includes one division by two.",
+      "latex": "z^3-1=(z-1)(z^2+z+1).",
+      "status": "exact",
+      "qualification": "The full odd-to-odd step removes all factors of two. A connection from these formulas to the logistic matrix still needs an explicit map. T₀–T₃ remain undefined archival labels.",
+      "proof_slug": "dimensions-and-fragments"
+    },
+    {
+      "id": "zeta-reduction",
+      "title": "Exact reduction of Z(p)",
+      "domain": "Odd integers p ≥ 3; primality is not required.",
+      "statement": "Euler’s even-zeta evaluation gives Z(p) = 1 + exp(cₚπᵖ) with positive rational cₚ = 2^(p−2)|Bₚ₋₁|/p!. The signed Bernoulli formula gives the same coefficient.",
+      "latex": "Z(p)=1+\\exp\\!\\left(\\frac{\\pi\\zeta(p-1)}p\\right)=1+e^{c_p\\pi^p},\\quad c_{2m+1}=\\frac{(-1)^{m+1}2^{2m-1}B_{2m}}{(2m+1)!}.",
+      "status": "exact",
+      "qualification": "Lowercase c denotes the same coefficient throughout. The p = 2 definition encounters the pole at ζ(1).",
+      "proof_slug": "schanuel-zeta-family"
+    },
+    {
+      "id": "schanuel-independence",
+      "title": "Conditional algebraic independence",
+      "domain": "Assume full complex Schanuel; p₁,…,pₖ are pairwise distinct odd integers ≥ 3.",
+      "statement": "The tuple π, Z(p₁), …, Z(pₖ) is algebraically independent over Q. Apply Schanuel to iπ and the real inputs cₚⱼπᵖⱼ, then compare transcendence degrees by field containment.",
+      "latex": "E\\subseteq\\mathbb Q(i,\\pi,Z(p_1),\\ldots,Z(p_k)),\\quad k+1\\le\\operatorname{trdeg}_{\\mathbb Q}E\\le k+1.",
+      "status": "conditional",
+      "qualification": "The imaginary part isolates iπ in a rational linear relation; transcendence of π handles the distinct real powers. Adjoining i is algebraic. This proof uses the complex form of the assumption.",
+      "proof_slug": "schanuel-zeta-family"
+    },
+    {
+      "id": "dyadic-remainder",
+      "title": "Dyadic series and vanishing remainder",
+      "domain": "f(x) = Σₙ≥₀ x^(2^n), |x| < 1; xₖ = exp(−2^(−k)), integer k ≥ 0.",
+      "statement": "The functional equation f(x) = x + f(x²) gives f(xₖ) = k + C + Rₖ. The explicit tail satisfies 2^(−k) − 4^(−k)/6 ≤ Rₖ ≤ 2^(−k).",
+      "latex": "C=f(e^{-1})+\\sum_{j=1}^{\\infty}(e^{-2^{-j}}-1),\\quad R_k=\\sum_{j=k+1}^{\\infty}(1-e^{-2^{-j}}),\\quad2^{-k}-\\frac{4^{-k}}6\\le R_k\\le2^{-k}.",
+      "status": "exact",
+      "qualification": "Absolute convergence, an index shift and t − t²/2 ≤ 1 − e^(−t) ≤ t give the proof. The constant belongs to this specified dyadic path.",
+      "proof_slug": "dyadic-remainder"
+    },
+    {
+      "id": "palindrome-counting",
+      "title": "Ordinary palindrome count",
+      "domain": "Independent uniform symbols; alphabet size integer q ≥ 2; string length integer n ≥ 1.",
+      "statement": "There are q^ceil(n/2) palindromes among qⁿ strings, so the probability is q^(−floor(n/2)). The q = 4, n = 40 example is exactly 2^(−40).",
+      "latex": "\\mathbb P(\\mathrm{palindrome})=\\frac{q^{\\lceil n/2\\rceil}}{q^n}=q^{-\\lfloor n/2\\rfloor},\\qquad4^{-20}=2^{-40}.",
+      "status": "exact",
+      "qualification": "The formula includes odd lengths. For reverse complementation with a fixed-point-free complement pairing, odd lengths are impossible and even lengths have probability q^(−n/2).",
+      "proof_slug": "palindrome-counting"
+    },
+    {
+      "id": "tower-convergence",
+      "title": "Global convergence of the alternating towers",
+      "domain": "Real c > 1, L = log c; v₀ ≥ 1; u = c^(−v), v = cᵘ.",
+      "statement": "F_L(v) = exp(L exp(−Lv)) maps [1,∞) into I = [1, exp(1/e)] and is a contraction there with uniform bound q = 4 exp(1/e − 2) < 1. The solution is unique and every stated initial value converges.",
+      "latex": "|F'_L(v)|\\le4e^{1/e-2}<1,\\qquad|x-v_*|\\le\\frac{|F_L(x)-x|}{1-q}\\quad(x\\in I).",
+      "status": "exact",
+      "qualification": "Banach’s theorem proves convergence and uniqueness for this explicitly defined alternating-sign system. The residual estimate is an exact-arithmetic statement.",
+      "proof_slug": "alternating-towers"
+    },
+    {
+      "id": "tower-envelope",
+      "title": "Sharp height and number of bases",
+      "domain": "The preceding alternating system, c > 1.",
+      "statement": "The maximum upper phase is vmax = exp(W₀(1/e)), attained at cpeak = exp(1/vmax). Every height strictly between 1 and vmax has exactly two finite bases; vmax has one, and heights above vmax or equal to 1 have none.",
+      "latex": "v\\log v=t e^{-t}\\le1/e,\\quad t=v\\log c,\\quad v_{\\max}=e^{W_0(1/e)}.",
+      "status": "exact",
+      "qualification": "Strict increase of v log v and the two branches of t exp(−t) give the complete classification. cpeak names the maximizing base, not a maximum allowed base.",
+      "proof_slug": "alternating-towers"
+    },
+    {
+      "id": "prime-polynomial-counts",
+      "title": "Finite prime-polynomial counting",
+      "domain": "P_X(z) = Σprime p≤X zᵖ, integer X ≥ 2; integer N ≥ 4; formal finite coefficient extraction.",
+      "statement": "[zᴺ]P_N(z)² counts ordered prime pairs summing to N. Adding the diagonal indicator and dividing by two counts unordered pairs. [z²]P_(X+2)(z)P_X(z⁻¹) counts prime pairs p,p+2 with p ≤ X.",
+      "latex": "G(N)=[z^N]P_N(z)^2,\\quad U(N)=\\frac{G(N)+D(N)}2,\\quad T(X)=[z^2]P_{X+2}(z)P_X(z^{-1}).",
+      "status": "exact",
+      "qualification": "D(N) = 1 exactly when N/2 is an integer prime. These are direct coefficient identities; the full argument is present in its standalone note.",
+      "proof_slug": "prime-polynomial-counts"
+    }
+  ],
+  "groups": [
+    {
+      "id": "logistic-algebra",
+      "title": "Logistic algebra and paired quarter-turn",
+      "domain": "Real r > 3; quarter-turn at r* = 1 + √6.",
+      "statement": "The factorization, two-cycle exchange, multiplier, matrix conjugacy and return-derivative identities are valid.",
+      "status": "exact",
+      "qualification": "The matrix and scalar return identities refer to specified objects and points.",
+      "proof_slug": "logistic-quarter-turn"
+    },
+    {
+      "id": "cycle-exponent",
+      "title": "Cycle Lyapunov exponent",
+      "domain": "The exact r* two-cycle.",
+      "statement": "The cycle exponent is zero.",
+      "status": "exact",
+      "qualification": "Nonlinear attraction is supplied by the separate later cubic proof.",
+      "proof_slug": "logistic-quarter-turn"
+    },
+    {
+      "id": "six-maps",
+      "title": "Two constructions of six",
+      "domain": "Finite branch orbits of frac(2·3ʸ) and frac(6ʸ).",
+      "statement": "The finite-time averages and their difference are exact with N terms.",
+      "status": "exact",
+      "qualification": "Infinite-time comparisons require limiting orbit means; a common measure or conjugacy is not part of this result.",
+      "proof_slug": "fractional-exponential-maps"
+    },
+    {
+      "id": "dimensions",
+      "title": "Dimension, cardinality and recorded fragments",
+      "domain": "Specified real/complex vector spaces; elementary cubic and odd-step formulas.",
+      "statement": "The dimension and cardinality identities and the cubic factorization are valid.",
+      "status": "exact",
+      "qualification": "The proposed links and the labels T₀–T₃ require definitions.",
+      "proof_slug": "dimensions-and-fragments"
+    },
+    {
+      "id": "zeta",
+      "title": "Z(p) reduction",
+      "domain": "Odd integers p ≥ 3.",
+      "statement": "The positive rational Bernoulli coefficient and exponential expression are exact.",
+      "status": "exact",
+      "qualification": "The coefficient uses lowercase c consistently.",
+      "proof_slug": "schanuel-zeta-family"
+    },
+    {
+      "id": "schanuel",
+      "title": "Schanuel deduction",
+      "domain": "Full complex Schanuel and pairwise distinct odd pⱼ ≥ 3.",
+      "statement": "The algebraic-independence conclusion follows from the stated assumption.",
+      "status": "conditional",
+      "qualification": "The assumption remains part of the theorem statement.",
+      "proof_slug": "schanuel-zeta-family"
+    },
+    {
+      "id": "dyadic",
+      "title": "Dyadic remainder",
+      "domain": "The specified lacunary series and dyadic approach to 1.",
+      "statement": "The functional equation, exact tail and geometric error bounds are valid.",
+      "status": "exact",
+      "qualification": "The exponent is 2^n; the path and constant are explicitly defined.",
+      "proof_slug": "dyadic-remainder"
+    },
+    {
+      "id": "palindromes",
+      "title": "Palindrome counting",
+      "domain": "Independent uniform symbols, q ≥ 2 and n ≥ 1.",
+      "statement": "The ceiling/floor formula is valid for even and odd lengths.",
+      "status": "exact",
+      "qualification": "Ordinary reversal and reverse complementation are distinct models.",
+      "proof_slug": "palindrome-counting"
+    },
+    {
+      "id": "towers",
+      "title": "Alternating towers",
+      "domain": "c > 1 and initial v₀ ≥ 1.",
+      "statement": "Global convergence, the sharp envelope and the complete two-base classification are valid.",
+      "status": "exact",
+      "qualification": "All claims concern the defined alternating-sign iteration.",
+      "proof_slug": "alternating-towers"
+    },
+    {
+      "id": "prime-counts",
+      "title": "Prime-polynomial counts",
+      "domain": "Finite formal polynomials and Laurent polynomials.",
+      "statement": "The ordered, unordered and translated-pair coefficient identities are valid.",
+      "status": "exact",
+      "qualification": "The section is present in both complete archived PDFs and in its standalone note.",
+      "proof_slug": "prime-polynomial-counts"
+    }
+  ],
+  "supplements": [
+    {
+      "id": "surviving-cubic",
+      "title": "Later addition: the surviving logistic cubic",
+      "domain": "r* = 1 + √6; either cycle phase p±; H = f⁴; sufficiently small real h.",
+      "statement": "H(p±+h) − (p±+h) = −K±h³ + O(h⁴), with K± = 20r*²(2 ± √2) > 0. The displacement has a zero of exactly order three.",
+      "latex": "K_\\pm=20(1+\\sqrt6)^2(2\\pm\\sqrt2),\\quad(H-\\mathrm{id})'''(p_\\pm)=-6K_\\pm\\ne0.",
+      "status": "new-local",
+      "qualification": "This later derivation is separate from the earlier collected-proof review. The exact quartic coefficients and composed cubic were independently checked symbolically.",
+      "proof_slug": "logistic-collapse-vanishing"
+    },
+    {
+      "id": "cubic-attraction-rate",
+      "title": "Later addition: local attraction and its rate",
+      "domain": "g(h) = H(p±+h) − p±; sufficiently small nonzero real initial h₀.",
+      "statement": "The iterates preserve the sign of h, decrease in absolute value and converge to zero. If hₙ = gⁿ(h₀), then n hₙ² → 1/(2K±).",
+      "latex": "h_n\\sim\\frac{\\operatorname{sgn}(h_0)}{\\sqrt{2K_\\pm n}}.",
+      "status": "new-local",
+      "qualification": "This supplies the nonlinear stability argument. One n-step equals four original logistic updates; the conclusion is local.",
+      "proof_slug": "logistic-collapse-vanishing"
+    },
+    {
+      "id": "asymptotic-ratio",
+      "title": "Later addition: a shared leading decay scale",
+      "domain": "Rₖ from the dyadic note; integer k > 1 tending to infinity.",
+      "statement": "Rₖ ∼ 2^(−k) and ζ(k) − 1 ∼ 2^(−k), hence Rₖ/(ζ(k) − 1) → 1.",
+      "latex": "\\frac{R_k}{\\zeta(k)-1}\\longrightarrow1.",
+      "status": "new-local",
+      "qualification": "The dyadic bound and a separate zeta-tail estimate prove an asymptotic comparison. It does not define a shared dynamical system.",
+      "proof_slug": "logistic-collapse-vanishing"
+    },
+    {
+      "id": "defined-geometric-model",
+      "title": "Defined geometric model for the next connection",
+      "domain": "X = S¹ × (−δ,δ), Φ(θ,h) = (θ+ω mod 2π, g(h)), with δ from the local attraction proof.",
+      "statement": "The invariant circle S¹ × {0} attracts transversely, with distance |gⁿ(h)| tending to zero while the angular coordinate follows its prescribed rotation.",
+      "status": "definition",
+      "qualification": "This explicitly defined model has a proved attraction property. A physical brane interpretation and a full logistic–Hopf conjugacy remain separate open questions.",
+      "proof_slug": "logistic-collapse-vanishing"
+    }
+  ]
+}

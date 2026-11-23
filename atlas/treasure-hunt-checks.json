@@ -1,6 +1,17 @@
 {
   "date": "2026-11-23",
-  "scope": "Focused static, mathematical and PDF checks before deployment; browser checks recorded after deployment.",
+  "edition": "Orange-yellow-green proof review",
+  "source_base_commit": "f165f366bfd416c92042f56139ece377bb4b42d8",
+  "scope": "Generated-artifact, formula-extraction and source checks for this revision. Live browser checks follow publication.",
+  "review_board": {
+    "audit_entries": 9,
+    "core_statements": 14,
+    "proof_groups": 10,
+    "separate_later_additions": 4,
+    "pages": 10,
+    "stable_alias": "atlas/treasure-hunt-guide.pdf",
+    "pdf_sha256": "c37b699231d7d5520bbde27752cb87a35fefb02d4259a339c96fb800c33b0e34"
+  },
   "proof_notes": {
     "logistic-quarter-turn": 4,
     "alternating-towers": 3,
@@ -14,33 +25,196 @@
     "logistic-collapse-vanishing": 7
   },
   "proof_pages": 30,
-  "guide_pages": 6,
-  "local_links": "all targets present locally or in verified base tree",
-  "html_ids": "unique",
-  "javascript_syntax": "node --check passed",
-  "transport_samples": 241,
-  "transport_error_at_step_240": "0.00152262519370126025314921394798263144846529320203678884944274827852692256758477218920140941",
-  "binary64_c615": "positive subnormal",
-  "binary64_first_odd_zero": 647,
-  "assumptions": "No claim of a physical brane model or full conjugacy. Plots are numerical illustrations of written exact statements.",
-  "browser_checks": {
-    "url": "https://encapsulatorp.github.io/treasure-hunt/",
-    "viewport_width_css_px": 1348,
-    "horizontal_overflow": false,
-    "passed": [
-      "trail selection and exact leading-ratio detail",
-      "two logistic steps return phase but reverse derivative arrow",
-      "DNA search returns one palindrome note",
-      "conditional evidence filter returns one note",
-      "complementary-seed slider updates output",
-      "transverse model reaches step 240 / 960 logistic updates",
-      "sphere-eversion video plays from Commons, readyState4"
+  "collection_pages": 17,
+  "formula_extraction": {
+    "scope": "Display-formula extraction and planned page counts; layout reviewed separately.",
+    "documents": [
+      {
+        "pdf": "atlas/logistic-vanishing-terms.pdf",
+        "pages": 17,
+        "display_formulas": 70,
+        "recovered_formulas": {
+          "pypdf": 70,
+          "pymupdf": 70,
+          "poppler": 70
+        },
+        "sha256": "d75daebe52f59f81dc0db635775648ae517a14050ce1d2715a3bd689e2adf4b6",
+        "failures": []
+      },
+      {
+        "pdf": "atlas/proofs/alternating-towers.pdf",
+        "pages": 3,
+        "display_formulas": 12,
+        "recovered_formulas": {
+          "pypdf": 12,
+          "pymupdf": 12,
+          "poppler": 12
+        },
+        "sha256": "5c7ec82b2b182f8231d28d0c5cb5aa4a5874912627cd87d8592f9ebdfc2c5148",
+        "failures": []
+      },
+      {
+        "pdf": "atlas/proofs/dimensions-and-fragments.pdf",
+        "pages": 2,
+        "display_formulas": 4,
+        "recovered_formulas": {
+          "pypdf": 4,
+          "pymupdf": 4,
+          "poppler": 4
+        },
+        "sha256": "394eee1b65612de56907bed5436aba4241b44dcef3011e6de132c53fe2f649e3",
+        "failures": []
+      },
+      {
+        "pdf": "atlas/proofs/dyadic-remainder.pdf",
+        "pages": 2,
+        "display_formulas": 8,
+        "recovered_formulas": {
+          "pypdf": 8,
+          "pymupdf": 8,
+          "poppler": 8
+        },
+        "sha256": "74eb7e5ecea8d6fd5ad35337b960f42542ed0e4eb0d4352abdb7497c321cfe4f",
+        "failures": []
+      },
+      {
+        "pdf": "atlas/proofs/fractional-exponential-maps.pdf",
+        "pages": 3,
+        "display_formulas": 16,
+        "recovered_formulas": {
+          "pypdf": 16,
+          "pymupdf": 16,
+          "poppler": 16
+        },
+        "sha256": "2183e54c64428e63f66b4a09884339dc42dbddddc7ea186fe7c082f103d0772d",
+        "failures": []
+      },
+      {
+        "pdf": "atlas/proofs/logistic-collapse-vanishing.pdf",
+        "pages": 7,
+        "display_formulas": 36,
+        "recovered_formulas": {
+          "pypdf": 36,
+          "pymupdf": 36,
+          "poppler": 36
+        },
+        "sha256": "6a7506f8c892e81988301895a6eb5188beddde5813af4723363dc3117e845232",
+        "failures": []
+      },
+      {
+        "pdf": "atlas/proofs/logistic-quarter-turn.pdf",
+        "pages": 4,
+        "display_formulas": 15,
+        "recovered_formulas": {
+          "pypdf": 15,
+          "pymupdf": 15,
+          "poppler": 15
+        },
+        "sha256": "dc316ac2cc4070b78e32a24444f56a4f92ed74cc6bbbe7b37cc085108572b47e",
+        "failures": []
+      },
+      {
+        "pdf": "atlas/proofs/palindrome-counting.pdf",
+        "pages": 2,
+        "display_formulas": 4,
+        "recovered_formulas": {
+          "pypdf": 4,
+          "pymupdf": 4,
+          "poppler": 4
+        },
+        "sha256": "04647f7fd57b45545c4f5116a5f6fcc2c6908df7bd69aa78bd19168b6d726a2a",
+        "failures": []
+      },
+      {
+        "pdf": "atlas/proofs/prime-polynomial-counts.pdf",
+        "pages": 2,
+        "display_formulas": 7,
+        "recovered_formulas": {
+          "pypdf": 7,
+          "pymupdf": 7,
+          "poppler": 7
+        },
+        "sha256": "4d3946964eba093233be111f97eabb94f7e4bca8f859ab9eeaf6fd4e6ff031e1",
+        "failures": []
+      },
+      {
+        "pdf": "atlas/proofs/proof-review.pdf",
+        "pages": 2,
+        "display_formulas": 0,
+        "recovered_formulas": {
+          "pypdf": 0,
+          "pymupdf": 0,
+          "poppler": 0
+        },
+        "sha256": "767f730167ed9f900153bf321c7984f8ee4cbce0d67b26659f57fe28b7b33890",
+        "failures": []
+      },
+      {
+        "pdf": "atlas/proofs/schanuel-zeta-family.pdf",
+        "pages": 3,
+        "display_formulas": 10,
+        "recovered_formulas": {
+          "pypdf": 10,
+          "pymupdf": 10,
+          "poppler": 10
+        },
+        "sha256": "2b83cd3499066b967f79868b0fd4770cfeaea62184d5b383b677c688639ac037",
+        "failures": []
+      },
+      {
+        "pdf": "atlas/proof-review-board.pdf",
+        "pages": 10,
+        "display_formulas": 35,
+        "recovered_formulas": {
+          "pypdf": 35,
+          "pymupdf": 35,
+          "poppler": 35
+        },
+        "sha256": "c37b699231d7d5520bbde27752cb87a35fefb02d4259a339c96fb800c33b0e34",
+        "failures": []
+      }
     ],
-    "visual_fixes": [
-      "replace unsupported diagonal/mapsto arrow glyphs",
-      "separate offset-axis label from endpoint tick",
-      "fit complete geometry media and video controls inside figures"
-    ],
-    "mobile_scope": "Responsive CSS reviewed; mobile viewport was not available in this browser API."
-  }
+    "passed": true
+  },
+  "local_links": {
+    "issues": [],
+    "router_targets": [
+      {
+        "target": "../#pirate-chest",
+        "mechanism": "Existing hash router alias to buried-chat-stories"
+      }
+    ]
+  },
+  "javascript_syntax": "node --check treasure-hunt/hunt.js passed",
+  "visual_review": "All 57 unique PDF pages rendered and inspected, with full-size critical notation checks; no clipping, glyph loss or overflow found.",
+  "animation": {
+    "format": "APNG",
+    "frames": 4,
+    "loop_seconds": 7.2,
+    "scalar_orbit": "Only the two exact phase positions are shown; no interpolated orbit states."
+  },
+  "prior_browser_checks": {
+    "source_commit": "f165f366bfd416c92042f56139ece377bb4b42d8",
+    "results": {
+      "url": "https://encapsulatorp.github.io/treasure-hunt/",
+      "viewport_width_css_px": 1348,
+      "horizontal_overflow": false,
+      "passed": [
+        "trail selection and exact leading-ratio detail",
+        "two logistic steps return phase but reverse derivative arrow",
+        "DNA search returns one palindrome note",
+        "conditional evidence filter returns one note",
+        "complementary-seed slider updates output",
+        "transverse model reaches step 240 / 960 logistic updates",
+        "sphere-eversion video plays from Commons, readyState4"
+      ],
+      "visual_fixes": [
+        "replace unsupported diagonal/mapsto arrow glyphs",
+        "separate offset-axis label from endpoint tick",
+        "fit complete geometry media and video controls inside figures"
+      ],
+      "mobile_scope": "Responsive CSS reviewed; mobile viewport was not available in this browser API."
+    }
+  },
+  "limitations": "Formula extraction checks cover display equations and matrices. They do not assert PDF/UA conformance or identical behavior in every reader. Critical prose uses explicit caret notation or words where superscript flattening would change meaning."
 }

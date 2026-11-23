@@ -5,18 +5,18 @@
   const ROOT = '../atlas/proofs/';
   const trails = {
     logistic: {
-      name: 'The logistic trail · a local statement grows one step at a time',
-      caption: 'The first two lines are proved implications for the defined map. The last line asks for a new geometric model.',
+      name: 'Logistic implications · exact objects and local conclusions',
+      caption: 'The first two nodes belong to the core review. The cubic is a later derivation. The dashed connection asks for a specified geometric interpretation.',
       edges: ['exact', 'exact', 'open'],
       nodes: [
         {title:'Find the two-cycle', short:'The starting points', status:'exact', label:'Exact calculation', equation:'r* = 1 + √6;  f(x₋) = x₊', text:'The nontrivial cycle consists of two explicitly defined points. The product of their derivatives is −1 at this parameter.', pdf:'logistic-quarter-turn', next:'Carry the two derivatives into the paired matrix. Keep the original nonlinear map and the linear response distinct.', source:['Logistic entry in the atlas','../#atlas?entry=logistic-quarter-turn']},
         {title:'Turn the response', short:'A matrix identity', status:'exact', label:'Exact local result', equation:'C² = −I;  C⁴ = I', text:'In suitable coordinates, the paired derivative acts like a clockwise quarter-turn. The original matrix is similar to a rotation, rather than Euclidean orthogonal.', pdf:'logistic-quarter-turn', next:'Compose the nonlinear map itself and subtract the starting point. Which Taylor term survives?', source:['The complete local proof',ROOT+'logistic-quarter-turn.md']},
-        {title:'Find what vanishes', short:'The cubic survives', status:'exact', label:'Exact local lemma', equation:'G(0) = G′(0) = G″(0) = 0', text:'The fourth-return displacement has a nonzero cubic leading term. It is flat at the cycle point and still has a restoring local shape.', pdf:'logistic-collapse-vanishing', next:'Define a space and a collapse quantity before transferring this local conclusion to a surface.', source:['Recovered definitions and derivation','../atlas/logistic-collapse-vanishing.md']},
+        {title:'Find what vanishes', short:'The cubic survives', status:'exact', label:'Later derivation · local cubic', equation:'G(0) = G′(0) = G″(0) = 0', text:'The fourth-return displacement has a nonzero cubic leading term. It is flat at the cycle point and still has a restoring local shape.', pdf:'logistic-collapse-vanishing', next:'Define a space and a collapse quantity before transferring this local conclusion to a surface.', source:['Recovered definitions and derivation','../atlas/logistic-collapse-vanishing.md']},
         {title:'Define the brane bridge', short:'An open destination', status:'open', label:'Proposed connection', equation:'Space → map → quantity → theorem', text:'“Vanishing branes” is a working title. A geometric object, its evolution and a precise meaning of vanishing must be supplied before this becomes a theorem about that object.', pdf:'logistic-collapse-vanishing', next:'Finish a one-page definition sheet and test one explicit example. T₀–T₃ remain undefined in the recovered material.', source:['Potential destination: Obstruction-Theory','https://github.com/EncapsulatorP/Obstruction-Theory']}
       ]
     },
     towers: {
-      name: 'The tower trail · from a two-phase rule to a sharp ceiling',
+      name: 'Alternating towers · convergence and sharp height',
       caption: 'Solid connections belong to this explicitly defined alternating-sign system. The last bound uses its fixed-point equation.',
       edges: ['exact','exact','exact'],
       nodes: [
@@ -27,25 +27,25 @@
       ]
     },
     remainders: {
-      name: 'The remainder trail · separate what is proved from the comparison',
-      caption: 'The two estimates prove the displayed leading-scale comparison. The final dashed line asks for a shared structure beyond that limit.',
+      name: 'Dyadic remainders · identities and a later comparison',
+      caption: 'The identity and dyadic bound belong to the core review. The leading-ratio comparison was added later. A common structure remains an open question.',
       edges: ['exact','exact','open'],
       nodes: [
         {title:'Follow the dyadic path', short:'A functional equation', status:'exact', label:'Exact series identity', equation:'f(x) = x + f(x²)', text:'For f(x) = Σ x^(2ⁿ), choose xₖ = exp(−2⁻ᵏ). Squaring xₖ moves exactly one level back along this path.', pdf:'dyadic-remainder', next:'Unroll the identity and subtract k and the explicitly convergent constant C.', source:['Dyadic argument',ROOT+'dyadic-remainder.md']},
         {title:'Catch the small tail', short:'A bound at every k', status:'exact', label:'Proved pathwise bound', equation:'2⁻ᵏ − 4⁻ᵏ/6 ≤ Rₖ ≤ 2⁻ᵏ', text:'The remainder is a sum of positive terms 1 − exp(−2⁻ʲ). Elementary exponential bounds control the entire tail.', pdf:'dyadic-remainder', next:'Write the zeta remainder separately before comparing its size with this one.', source:['Full remainder proof',ROOT+'dyadic-remainder.pdf']},
-        {title:'Compare the leading tails', short:'One precise bridge', status:'exact', label:'Proved asymptotic comparison', equation:'Rₖ / (ζ(k) − 1) → 1', text:'The dyadic bound gives Rₖ ∼ 2⁻ᵏ. Independently, the zeta tail satisfies ζ(k) − 1 ∼ 2⁻ᵏ. Dividing these positive estimates proves this exact limit as k grows.', pdf:'logistic-collapse-vanishing', next:'Sharpen the finite-k relative error. This leading-scale comparison does not identify the functions or their dynamics.', source:['Asymptotics and exact corollary','../atlas/logistic-collapse-vanishing.md']},
+        {title:'Compare the leading tails', short:'One precise bridge', status:'exact', label:'Later derivation · asymptotic ratio', equation:'Rₖ / (ζ(k) − 1) → 1', text:'The dyadic bound gives Rₖ ∼ 2⁻ᵏ. Independently, the zeta tail satisfies ζ(k) − 1 ∼ 2⁻ᵏ. Dividing these positive estimates proves this exact limit as k grows.', pdf:'logistic-collapse-vanishing', next:'Sharpen the finite-k relative error. This leading-scale comparison does not identify the functions or their dynamics.', source:['Asymptotics and exact corollary','../atlas/logistic-collapse-vanishing.md']},
         {title:'Test a common rule', short:'The bridge to build', status:'open', label:'Proposed structural connection', equation:'Define a map + name what it preserves', text:'The leading ratio is now established. A common dynamical or arithmetic structure needs a further definition and argument.', pdf:'dyadic-remainder', next:'Propose one explicit map or invariant and prove it works, or find a counterexample.', source:['Prime-polarity experiments','https://github.com/EncapsulatorP/prime-polarity']}
       ]
     },
     schanuel: {
-      name: 'The Schanuel crossing · the assumption is visible on the map',
+      name: 'Schanuel deduction · the complex assumption stays explicit',
       caption: 'The coefficient formula is unconditional. Algebraic independence on the far side uses full complex Schanuel.',
       edges: ['exact','conditional','conditional'],
       nodes: [
         {title:'Choose odd indices', short:'p ≥ 3', status:'exact', label:'Defined number family', equation:'Z(p) = 1 + exp(πζ(p−1)/p)', text:'The reduction applies to every odd integer p ≥ 3. The index does not have to be prime.', pdf:'schanuel-zeta-family', next:'Use the exact even-zeta formula to isolate a rational coefficient.', source:['Z(p) in the atlas','../#atlas?entry=zp-even-zeta']},
         {title:'Expose the coefficient', short:'A rational cₚ', status:'exact', label:'Exact identity', equation:'Z(p) = 1 + exp(cₚπᵖ)', text:'Here cₚ = 2^(p−2)|Bₚ₋₁|/p!, a nonzero rational number. This identity does not require Schanuel.', pdf:'schanuel-zeta-family', next:'Keep the inputs iπ and the distinct cₚπᵖ linearly independent over the rationals.', source:['Euler’s even-zeta formula','https://dlmf.nist.gov/25.6.E2']},
-        {title:'State the assumption', short:'Complex Schanuel', status:'conditional', label:'Unproved assumption', equation:'Schanuel gives a transcendence-degree bound', text:'The argument invokes the full complex version of Schanuel. The Euler identity exp(iπ) = −1 is included in the field calculation.', pdf:'schanuel-zeta-family', next:'Track exactly which field contains the inputs and outputs; do not replace containment by equality.', source:['Conditional proof and source',ROOT+'schanuel-zeta-family.md']},
-        {title:'Read the conclusion', short:'Conditional independence', status:'conditional', label:'Conditional theorem', equation:'π, Z(p₁), …, Z(pₖ) are independent', text:'Under that assumption, the listed numbers are algebraically independent for any finite list of distinct odd indices. This does not prove Schanuel.', pdf:'schanuel-zeta-family', next:'Check this specific consequence against the literature; investigate unconditional claims separately.', source:['Evidence scope review',ROOT+'proof-review.pdf']}
+        {title:'State the assumption', short:'Complex Schanuel', status:'conditional', label:'Assumption · full complex Schanuel', equation:'Schanuel gives a transcendence-degree bound', text:'The argument invokes the full complex version of Schanuel. The Euler identity exp(iπ) = −1 is included in the field calculation.', pdf:'schanuel-zeta-family', next:'Track exactly which field contains the inputs and outputs; do not replace containment by equality.', source:['Conditional proof and source',ROOT+'schanuel-zeta-family.md']},
+        {title:'Read the conclusion', short:'Conditional independence', status:'conditional', label:'Conditional theorem', equation:'π, Z(p₁), …, Z(pₖ) are independent', text:'Under that assumption, the listed numbers are algebraically independent for any finite list of distinct odd indices.', pdf:'schanuel-zeta-family', next:'Check this specific consequence against the literature; investigate unconditional claims separately.', source:['Evidence scope review',ROOT+'proof-review.pdf']}
       ]
     }
   };
@@ -59,8 +59,8 @@
     add('h3',note.title);
     add('p',note.equation,'formula');
     add('p',note.text);
-    const next=add('p','','next-task');const strong=document.createElement('strong');strong.textContent='Next sound step';next.append(strong,document.createTextNode(note.next));
-    const pdf=add('a','Open this reading note · PDF →');pdf.href=ROOT+note.pdf+'.pdf';
+    const next=add('p','','next-task');const strong=document.createElement('strong');strong.textContent='Next task';next.append(strong,document.createTextNode(note.next));
+    const pdf=add('a','Open the complete note · PDF →');pdf.href=ROOT+note.pdf+'.pdf';
     const source=add('a',note.source[0]+' →','trail-source');source.href=note.source[1];
   }
   function selectTrail(key){
@@ -80,7 +80,7 @@
 
   const SVG_NS='http://www.w3.org/2000/svg';
   function svg(tag,attrs={},text=''){const el=document.createElementNS(SVG_NS,tag);for(const [key,value]of Object.entries(attrs))el.setAttribute(key,String(value));if(text)el.textContent=text;return el;}
-  const ORANGE='#ff5a00',INK='#172235',VIOLET='#6c46ad',MUTED='#a5aebd';
+  const ORANGE='#e45c13',INK='#18271e',VIOLET='#237b46',MUTED='#85968b';
   const r=1+Math.sqrt(6),radical=Math.sqrt((r-3)*(r+1));
   const xm=(r+1-radical)/(2*r),xp=(r+1+radical)/(2*r);
   function f(x){return r*x*(1-x);}
@@ -94,7 +94,7 @@
   const parabola=Array.from({length:181},(_,i)=>{const x=i/180;return (i?'L':'M')+cx(x).toFixed(2)+','+cy(f(x)).toFixed(2);}).join(' ');
   cycle.append(svg('path',{d:parabola,fill:'none',stroke:ORANGE,'stroke-width':3}),svg('line',{x1:cx(0),y1:cy(0),x2:cx(1),y2:cy(1),stroke:MUTED,'stroke-dasharray':'5 6','stroke-width':1.5}));
   const cobweb=[[xm,xm],[xm,xp],[xp,xp],[xp,xm],[xm,xm]].map(p=>cx(p[0])+','+cy(p[1])).join(' ');
-  cycle.append(svg('polyline',{points:cobweb,fill:'none',stroke:'#d69b75','stroke-width':2}));
+  cycle.append(svg('polyline',{points:cobweb,fill:'none',stroke:'#5f8952','stroke-width':2}));
   for(const [x,y,label,dy]of [[xm,xp,'(x₋, x₊)',-16],[xp,xm,'(x₊, x₋)',25]])cycle.append(svg('circle',{cx:cx(x),cy:cy(y),r:4,fill:ORANGE}),svg('text',{x:cx(x)-8,y:cy(y)+dy,'text-anchor':'middle',class:'plot-label'},label));
   cycle.append(svg('text',{x:64,y:27,class:'plot-label'},'next value f(x)'),svg('text',{x:440,y:333,'text-anchor':'end',class:'plot-label'},'starting value x'),svg('text',{x:390,y:48,class:'plot-muted'},'y = x'));
   const cycleMarker=svg('circle',{cx:cx(xm),cy:cy(xp),r:9,fill:ORANGE,stroke:'white','stroke-width':3});cycle.append(cycleMarker);

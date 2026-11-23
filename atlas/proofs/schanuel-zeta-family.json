@@ -3,7 +3,7 @@
   "subtitle": "A focused reading note from the Pirate Chest",
   "date": "23 November 2026",
   "author": "Zolton / EncapsulatorP · with ChatGPT",
-  "source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
+  "historical_source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
   "reviewed_proof_commit": "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd",
   "status": "conditional",
   "statusLabel": "Conditional on complex Schanuel",
@@ -37,7 +37,7 @@
         },
         {
           "type": "p",
-          "text": "Check the literature for this specific consequence and investigate unconditional statements separately. Small numerical coefficients do not strengthen the truth status of Schanuel."
+          "text": "Compare this specific conditional consequence with the literature. State any proposed unconditional result as a separate claim with its own assumptions."
         },
         {
           "type": "h",
@@ -65,7 +65,7 @@
         },
         {
           "type": "link",
-          "text": "Read the pinned collection source",
+          "text": "Historical collection source · original edition",
           "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#zeta-family"
         },
         {
@@ -154,7 +154,7 @@
         },
         {
           "type": "p",
-          "text": "The exact zeta reduction is unconditional. This argument’s algebraic-independence conclusion, and hence its individual-transcendence conclusion for Z(p), remain conditional on Schanuel. The calculation does not prove the conjecture or change its evidential status."
+          "text": "The rational-coefficient reduction is unconditional. Algebraic independence of π and the selected Z(p) values, including the resulting individual-transcendence conclusions, follows under the stated complex Schanuel assumption."
         }
       ]
     },
@@ -173,7 +173,7 @@
         },
         {
           "type": "p",
-          "text": "<b>Linear independence.</b> In a rational relation among these numbers, the imaginary part forces the coefficient of iπ to vanish. The rest is a polynomial relation in π with distinct powers and nonzero rational c<sub>pⱼ</sub>. Transcendence of π forces every remaining coefficient to vanish."
+          "text": "<b>Linear independence.</b> The imaginary part of a rational relation forces the coefficient of iπ (i times pi) to vanish. The remaining relation is a polynomial in π (pi), with distinct powers and nonzero rational coefficients c_p. Transcendence of π forces every remaining coefficient to vanish."
         },
         {
           "type": "p",
@@ -185,7 +185,7 @@
         },
         {
           "type": "p",
-          "text": "Euler’s identity gives e<super>α₀</super> = −1, and e<super>αⱼ</super> = Z(pⱼ) − 1. Therefore"
+          "text": "Euler’s identity gives exp(α₀) = −1, while exp(αⱼ) = Z(pⱼ) − 1. Therefore"
         },
         {
           "type": "eq",
@@ -223,7 +223,7 @@
         },
         {
           "type": "p",
-          "text": "This is a direct deduction from the stated conjecture and the even-zeta formula. Novelty of this particular consequence has not been established."
+          "text": "The deduction uses the stated conjecture, the even-zeta formula and the transcendence of π. Field containment provides the required bound."
         }
       ]
     }

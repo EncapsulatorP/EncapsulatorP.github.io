@@ -1,11 +1,10 @@
 {
   "title": "Logistic collapse and vanishing terms",
-  "subtitle": "The restoring cubic, recovered geometry and a precise next bridge",
+  "subtitle": "Exact local attraction and explicitly defined geometric comparisons",
   "date": "23 November 2026",
   "author": "Zolton / EncapsulatorP · with ChatGPT",
-  "source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
   "status": "exact",
-  "statusLabel": "Exact local lemma; brane model open",
+  "statusLabel": "Exact local attraction; defined geometric model",
   "pages": [
     {
       "id": "complementary-fold",
@@ -150,7 +149,7 @@
         {
           "type": "callout",
           "label": "Exactly what vanishes",
-          "text": "For D = f∘4 − id, D(p) = D′(p) = D″(p) = 0, while D‴(p) = −6K ≠ 0. The displacement has a zero of exactly order three. The derivative of f∘4 itself is 1.",
+          "text": "Define D as the fourth iterate of f minus the identity. At each cycle point p, its value, first derivative and second derivative are zero; its third derivative is −6K ≠ 0. Thus D vanishes to exactly order three. The first derivative of the fourth iterate itself is 1.",
           "status": "exact"
         },
         {
@@ -162,7 +161,7 @@
     },
     {
       "id": "weak-attraction",
-      "title": "A gentle pull back to the cycle",
+      "title": "Local attraction at a zero exponent",
       "kicker": "03 · LOCAL ATTRACTION WITH ZERO EXPONENT",
       "blocks": [
         {
@@ -191,7 +190,7 @@
         },
         {
           "type": "p",
-          "text": "Continuity of f, f∘2 and f∘3 gives the corresponding limits for the intervening iterates. The two-cycle is locally attracting at r*. This is a neighborhood result; it asserts no global convergence for every seed."
+          "text": "Continuity of f and its second and third iterates gives the corresponding limits between fourth returns. The two-cycle is locally attracting at r*: the conclusion holds for sufficiently small initial errors."
         },
         {
           "type": "h",
@@ -233,7 +232,7 @@
         },
         {
           "type": "p",
-          "text": "The coefficient and attraction argument are new derivations in this edition. Exact symbolic simplification checked the quartic coefficients and composition identity; the written steps supply the proof.",
+          "text": "This derivation was added after the earlier collected-proof review. Exact symbolic simplification checks the quartic coefficients and composition identity; the written inequalities prove local attraction and its rate.",
           "small": true
         }
       ]
@@ -295,7 +294,7 @@
         },
         {
           "type": "p",
-          "text": "Exactly Rₙ = 0.7ⁿ → 0 while Lₙ = 1.15ⁿ → ∞. No finite step has zero radius. The website labels this a transport toy; its fixed factors do not implement the suggested compound-Collatz branch selector."
+          "text": "Exactly R_n = 0.7^n tends to zero while L_n = 1.15^n tends to infinity. Every finite radius is positive. These fixed factors define the website’s transport model; a proposed branch-dependent rule would require a separate update equation."
         },
         {
           "type": "link",
@@ -309,20 +308,20 @@
         },
         {
           "type": "p",
-          "text": "These recovered constructions supply useful geometry. None identifies a physical brane or derives a physical law from the logistic map.",
+          "text": "These specified models distinguish a parameter limit, an observation and a discrete update. A physical interpretation needs a state space, dynamics and measured quantities suited to that interpretation.",
           "small": true
         }
       ]
     },
     {
       "id": "defined-brane-bridge",
-      "title": "Give the next bridge a map",
+      "title": "Define the geometric connection",
       "kicker": "05 · A DEFINED TOY; BRANE INTERPRETATION OPEN",
       "blocks": [
         {
           "type": "callout",
           "label": "Working title: vanishing branes",
-          "text": "No brane definition was found in the inspected website notes or C3.2Z pages. Earlier personal-context recovery was unavailable. Preserve the user's research title, and supply the missing mathematical object before assigning it a theorem.",
+          "text": "“Vanishing branes” names the proposed research connection. In the supplied mathematical sources, its state space and evolution have not been defined. The product construction below is an explicit candidate that can be checked.",
           "status": "open"
         },
         {
@@ -335,7 +334,7 @@
         },
         {
           "type": "p",
-          "text": "Use the p₊ error map g and δ from the proved local lemma. Define a new product model"
+          "text": "Use the p₊ error map g and δ from the local-attraction proof. Define the product model"
         },
         {
           "type": "eq",
@@ -355,7 +354,7 @@
         },
         {
           "type": "p",
-          "text": "The angular coordinate continues rotating. For nonzero small h the transverse distance is asymptotic to 1/√(2K₊n). This follows from the scalar proof. It is a newly defined mathematical model, not a recovered physical-brane theory or finite-time annihilation of the whole cylinder."
+          "text": "The angle follows its prescribed rotation. For nonzero small h, the transverse distance is asymptotic to 1/√(2K₊n). This follows from the scalar proof. The conclusion is asymptotic attraction to the invariant circle within the defined model."
         },
         {
           "type": "h",
@@ -380,7 +379,7 @@
         {
           "type": "callout",
           "label": "Treasure-map connection styles",
-          "text": "Solid edge: proved comparison of leading terms. Dashed edge: proposed full conjugacy. Open node: physical interpretation. Shared visual shapes do not replace these definitions.",
+          "text": "Solid edge: the proved leading-term comparison. Dashed edge: the proposed full conjugacy. Open node: the physical interpretation. Each connection states the objects and property being compared.",
           "status": "open"
         }
       ]
@@ -392,7 +391,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "The supplied Gemini SVG proposed a coefficient-decay bridge. For odd integers p ≥ 3, define"
+          "text": "To compare coefficient decay with the dyadic remainder, take odd integers p ≥ 3 and define"
         },
         {
           "type": "eq",
@@ -436,7 +435,7 @@
         },
         {
           "type": "p",
-          "text": "The tail bound follows by adding the first term and the integral from 3 to infinity. Divide by 2⁻ˢ: the remainder ratio tends to zero. Hence ζ(p−1)−1 ∼ 2⁻⁽ᵖ⁻¹⁾ is proved, not merely a numerical test."
+          "text": "Add the first term and the integral from 3 to infinity to bound the tail. After division by 2^(−s), the remainder ratio tends to zero. Thus ζ(p−1) − 1 is asymptotic to 2^(−(p−1))."
         },
         {
           "type": "h",
@@ -448,7 +447,7 @@
         },
         {
           "type": "p",
-          "text": "Apply t−t²/2 ≤ 1−e⁻ᵗ ≤ t term by term and sum the two geometric series:"
+          "text": "Apply t − t²/2 ≤ 1 − exp(−t) ≤ t term by term and sum the two geometric series:"
         },
         {
           "type": "eq",
@@ -460,7 +459,7 @@
         },
         {
           "type": "p",
-          "text": "For integer k > 1, both normalized factors tend to one by the established bounds. Hence R₍ₚ₋₁₎/[ζ(p−1)−1] → 1 along odd p, including odd primes. This proves asymptotic equivalence. A shared dynamical system, functional-equation correspondence or conjugacy remains a separate open claim."
+          "text": "For integer k &gt; 1, both normalized factors tend to one. In particular, R_(p−1)/[ζ(p−1) − 1] tends to one along odd p, including odd primes. This is an asymptotic equivalence of sequences. A shared dynamical system or a conjugacy would require another definition and proof."
         },
         {
           "type": "link",
@@ -484,7 +483,7 @@
         },
         {
           "type": "p",
-          "text": "This is smaller than the least positive normal binary64 number, about 2.22507 × 10⁻³⁰⁸, but much larger than the least positive subnormal, about 4.94066 × 10⁻³²⁴."
+          "text": "The value is below the least positive normal binary64 number, about 2.22507 × 10^(−308), and above the least positive subnormal, about 4.94066 × 10^(−324)."
         },
         {
           "type": "h",
@@ -492,7 +491,7 @@
         },
         {
           "type": "p",
-          "text": "High-precision coefficient evaluation followed by round-to-nearest binary64 conversion gives c₆₁₃ ≈ 9.05352 × 10⁻³⁰⁸ (normal), c₆₁₅ ≈ 9.14330 × 10⁻³⁰⁹ (subnormal), c₆₄₅ ≈ 1.06151 × 10⁻³²³ (nonzero subnormal), and c₆₄₇ ≈ 1.07221 × 10⁻³²⁴ (rounds to zero)."
+          "text": "With high-precision evaluation followed by nearest binary64 conversion: c_613 ≈ 9.05352 × 10^(−308) is normal; c_615 ≈ 9.14330 × 10^(−309) and c_645 ≈ 1.06151 × 10^(−323) are nonzero subnormals; c_647 ≈ 1.07221 × 10^(−324) rounds to zero."
         },
         {
           "type": "p",
@@ -538,7 +537,7 @@
         },
         {
           "type": "p",
-          "text": "The complete companion Markdown contains the detailed metric, determinant, source-section and reproduction notes. The exact quartic coefficients, restoring cubic and local-attraction argument are new in this edition. Literature novelty, formal-kernel certification and physical interpretation remain separate questions.",
+          "text": "The companion Markdown includes the detailed metric, determinant, source sections and reproduction notes. The cubic, local attraction and asymptotic-ratio derivations were added after the earlier collected-proof review. The geometric construction is explicitly defined, with its interpretation kept separate.",
           "small": true
         },
         {
@@ -548,5 +547,6 @@
         }
       ]
     }
-  ]
+  ],
+  "historical_source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652"
 }

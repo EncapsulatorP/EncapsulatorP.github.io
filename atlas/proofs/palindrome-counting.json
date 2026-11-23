@@ -1,21 +1,21 @@
 {
-  "title": "Palindrome counting and its limits",
+  "title": "Palindrome counting",
   "subtitle": "A focused reading note from the Pirate Chest",
   "date": "23 November 2026",
   "author": "Zolton / EncapsulatorP · with ChatGPT",
-  "source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
+  "historical_source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
   "reviewed_proof_commit": "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd",
   "status": "exact",
   "statusLabel": "Exact count under a sampling model",
   "pages": [
     {
       "id": "palindrome-counting-orientation",
-      "title": "Palindrome counting and its limits",
+      "title": "Palindrome counting",
       "kicker": "NOTE 07 · EXACT COUNT UNDER A SAMPLING MODEL",
       "blocks": [
         {
           "type": "p",
-          "text": "For independent uniform q-symbol strings of length n, ordinary palindromes have probability q^−floor(n/2). The example q = 4, n = 40 has probability exactly 2⁻⁴⁰."
+          "text": "For independent uniform q-symbol strings of length n, ordinary palindromes have probability q^(−floor(n/2)). The example q = 4, n = 40 has probability exactly 2^(−40)."
         },
         {
           "type": "eq",
@@ -45,12 +45,12 @@
         },
         {
           "type": "p",
-          "text": "This note preserves the definitions and written derivation from the supplied mathematical fragments, reconstructed in the full collection. Its proof is given on the following page(s); no literature-priority claim is made.",
+          "text": "The following pages give the complete derivation from the stated definitions. The historical collection records the original fragments and argument.",
           "small": true
         },
         {
           "type": "link",
-          "text": "Read the pinned collection source",
+          "text": "Historical collection source · original edition",
           "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#palindromes"
         },
         {
@@ -67,7 +67,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Assume each symbol is chosen independently and uniformly from an alphabet of integer size q ≥ 2. An ordinary palindrome reads identically under reversal. For a fixed length n ≥ 1, the first ceiling(n/2) symbols determine the rest."
+          "text": "Choose symbols independently and uniformly from an alphabet of integer size q ≥ 2. For integer length n ≥ 1, an ordinary palindrome reads identically under reversal. There are ceiling(n/2) free positions, giving q^ceiling(n/2) palindromes among q^n strings."
         },
         {
           "type": "eq",
@@ -75,7 +75,7 @@
         },
         {
           "type": "p",
-          "text": "The shorthand q<super>−n/2</super> is exact for even n. With q = 4 and n = 40,"
+          "text": "For even n, floor(n/2) = n/2, so the probability simplifies to q^(−n/2). With q = 4 and n = 40,"
         },
         {
           "type": "eq",
@@ -87,7 +87,7 @@
         },
         {
           "type": "p",
-          "text": "The reciprocal is approximately 1.10 × 10<super>12</super> independently sampled <b>complete strings</b> per first success in the geometric waiting model, including the successful draw. It is not a deterministic guarantee or an automatic formula for overlapping windows."
+          "text": "The reciprocal gives an expected 1.10 × 10^12 independent <b>complete-string draws</b> per first success, including the successful draw. Overlapping windows require a separate dependence model."
         },
         {
           "type": "table",
@@ -100,27 +100,27 @@
             [
               "4",
               "40",
-              "4⁻²⁰ = 2⁻⁴⁰"
+              "4^(−20) = 2^(−40)"
             ],
             [
               "6",
               "40",
-              "6⁻²⁰"
+              "6^(−20)"
             ],
             [
               "8",
               "40",
-              "8⁻²⁰ = 2⁻⁶⁰"
+              "8^(−20) = 2^(−60)"
             ],
             [
               "12",
               "40",
-              "12⁻²⁰"
+              "12^(−20)"
             ],
             [
               "40",
               "40",
-              "40⁻²⁰"
+              "40^(−20)"
             ]
           ],
           "widths": [
@@ -141,7 +141,7 @@
         },
         {
           "type": "p",
-          "text": "A DNA reverse-complement palindrome is a different condition. Under a fixed-point-free complement pairing and the same uniform independent model, an even length has probability q<super>−n/2</super>; an odd length is impossible because its central symbol would have to complement itself."
+          "text": "For reverse-complement palindromes, assume a fixed-point-free complement pairing and the same sampling model. Then q is even. Even lengths have probability q^(−n/2); odd lengths are impossible because the central symbol would have to complement itself."
         },
         {
           "type": "p",

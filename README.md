@@ -66,23 +66,24 @@ record where a source was recovered and where a definition or table remains miss
 - [Goldbach](https://encapsulatorp.github.io/#goldbach), [Collatz](https://encapsulatorp.github.io/#collatz), and [towers](https://encapsulatorp.github.io/#towers): the existing visual exhibits.
 - [Validatron](https://encapsulatorp.github.io/#validatron): the mathematical retrieval and proof-development programme.
 
-## Little proofs, wider worlds
+## Valid proofs & surviving arguments
 
-The [visual treasure hunt](https://encapsulatorp.github.io/treasure-hunt/) brings the Pirate Chest's proof threads into a bright orange-and-white reading route. It has an interactive logistic two-cycle and rescaled derivative compass, a complementary-seed slider, the exact surviving-cubic picture, and an explicitly defined circle/transport model with shrinking transverse error.
+The [proof review board](https://encapsulatorp.github.io/treasure-hunt/) presents three connected records: **A**, nine reported PDF passages checked against the source and printed editions; **B**, fourteen statements with their hypotheses; and **C**, ten groups of surviving arguments. The inspected source and printed notation already contain the correct formulas. The confirmed text-extraction losses are recorded separately from mathematical correctness.
 
-[Take the six-page visual guide](atlas/treasure-hunt-guide.pdf), or [choose a focused PDF](https://encapsulatorp.github.io/treasure-hunt/#proof-library). Ten independently readable notes now keep each argument, its assumptions and its next step together. The [original illustrated collection](atlas/logistic-vanishing-terms.pdf) remains available.
+[Read the review PDF](atlas/treasure-hunt-guide.pdf), [open the readable mathematical source](atlas/proof-review-board.md), or [choose a standalone proof](https://encapsulatorp.github.io/treasure-hunt/#proof-library). The public [board data](atlas/proof-board-data.json) identifies the reviewed starting commit, earlier PDF checksums, statement domains and evidence status. The [earlier complete collection](atlas/logistic-vanishing-terms.pdf) remains linked for comparison.
 
-Solid routes show proved steps; dotted routes show assumptions such as complex Schanuel; dashed routes show questions still to resolve. “Vanishing branes” is a working research title: the [new collapse note](atlas/proofs/logistic-collapse-vanishing.pdf) proves a local cubic and defines a transverse-contraction model, while leaving physical interpretation and full conjugacies open. The supplied Hopf and sphere-eversion references retain their [source and license credits](atlas/assets/treasure-hunt/media-sources.json).
+The logistic cubic, local attraction rate, dyadic/zeta ratio and explicitly defined transverse-attraction model appear in a separate **later additions** section. Exact two-cycle, quarter-turn, seed-folding, local-return and transport diagrams remain interactive. Solid lines denote proved implications; dotted lines denote assumptions; dashed lines denote open connections. The supplied Hopf and sphere-eversion references remain secondary and retain their [source and license credits](atlas/assets/treasure-hunt/media-sources.json).
 
-To regenerate the focused notes, visual guide and static reading shelf:
+To regenerate the notes, A/B/C review and static website, then check mathematical text recovery:
 
 ```sh
 python3 atlas/build_proof_library.py
 python3 atlas/build_treasure_hunt_guide.py
 python3 atlas/build_treasure_site.py
+python3 atlas/verify_pdf_semantics.py
 ```
 
-The collection index is [proof-library.json](atlas/proof-library.json). The [Pirates Plan](https://encapsulatorp.github.io/#pirates-plan) and [full repository graph](https://encapsulatorp.github.io/#repo-interlinks) remain the organisation-wide planning destinations.
+The searchable PDF collection uses [proof-library.json](atlas/proof-library.json); the static board uses [proof-board-data.json](atlas/proof-board-data.json). The [Pirates Plan](https://encapsulatorp.github.io/#pirates-plan) and [repository graph](https://encapsulatorp.github.io/#repo-interlinks) hold the organisation-wide planning threads.
 
 ## Written arguments and reproduction
 

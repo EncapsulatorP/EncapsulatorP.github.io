@@ -4,8 +4,6 @@ A focused reading note from the Pirate Chest
 
 **Zolton / EncapsulatorP · with ChatGPT / 23 November 2026**
 
-Source commit: `cc3f20117eaead570db6077377a43a92c0bfc652`
-
 <a id="alternating-towers-orientation"></a>
 
 ## Alternating real towers
@@ -18,13 +16,13 @@ $$
 u=c^{-v},\qquad v=c^u,\qquad c>1
 $$
 
-> **Proved convergence and classification (exact).** The same construction has a sharp maximum upper phase and exactly two bases at every interior height. The theorem is about this alternating-sign system; ordinary unrestricted tetration is a different iteration.
+> **Proved convergence and classification (exact).** The defined alternating-sign system has a sharp maximum upper phase and exactly two finite bases at every height strictly between 1 and that maximum.
 
 The first argument establishes an invariant interval and a contraction. The second extracts the sharp envelope from v log v = t exp(−t) and classifies the two inverse branches.
 
 ### One concrete next step
 
-Perform a focused literature search and request external review of this complete small theorem. A numerical match to a target constant needs an additional arithmetic argument.
+Compare the convergence and inverse classification with the literature. If a particular arithmetic constant is used as a target height, state the additional arithmetic question separately.
 
 ### Sources and related reading
 
@@ -32,7 +30,7 @@ Perform a focused literature search and request external review of this complete
 
 [[S2] Read the pinned mathematical notes](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/29f9232545aa112cd6ffa9fe1f3c0e85d093dedd/atlas/mathematical-notes.md)
 
-[Read the pinned collection source](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#tower-convergence)
+[Historical collection source · original edition](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#tower-convergence)
 
 [Return to the Treasure Chest](https://encapsulatorp.github.io/#buried-logistic-vanishing)
 
@@ -60,9 +58,9 @@ $$
 1<F_L(v)\le\exp(Le^{-L})\le e^{1/e}.
 $$
 
-The last inequality follows because L e<sup>−L</sup> reaches its maximum 1/e at L = 1. Every starting point v₀ ≥ 1 enters the closed interval I = [1, e<sup>1/e</sup>] after one step.
+The function L exp(−L) has maximum 1/e at L = 1. Every v₀ ≥ 1 therefore enters I = [1, exp(1/e)] after one step.
 
-**Uniform contraction.** Differentiation and the separate maxima of L²e<sup>−L</sup> and Le<sup>−L</sup> give
+**Uniform contraction.** Differentiate and use the separate maxima of L² exp(−L) and L exp(−L):
 
 $$
 |F_L'(v)|=L^2e^{-Lv}\exp(Le^{-Lv})
@@ -72,9 +70,9 @@ $$
 \le L^2e^{-L}\exp(Le^{-L})\le q:=4e^{1/e-2}<1.
 $$
 
-The convenient bound q is not claimed to be optimal. Its strict inequality needs no decimal evidence: 1/e < 1/2 and e<sup>3/2</sup> > 1 + 3/2 + 9/8 + 27/48 > 4. Numerically q ≈ 0.782058136610352468.
+This convenient bound is uniform in L and v. To prove q < 1 without decimals, use 1/e < 1/2 and exp(3/2) > 1 + 3/2 + 9/8 + 27/48 > 4. Numerically q ≈ 0.782058136610352468.
 
-**Existence, uniqueness and convergence.** Banach’s contraction theorem on I applies. Every possible fixed point in the stated domain lies in I, so uniqueness holds throughout that domain. Set u = e<sup>−Lv</sup> to recover both phase equations. Every v₀ ≥ 1 converges.
+**Existence, uniqueness and convergence.** Apply Banach’s contraction theorem on I. Every possible fixed point in the stated domain lies in I, so it is unique throughout that domain. Set u = exp(−Lv) to recover both phase equations. Every v₀ ≥ 1 converges.
 
 $$
 |x-v_*|\le\frac{|F_L(x)-x|}{1-q}\qquad(x\in I).
@@ -82,7 +80,7 @@ $$
 
 The error bound follows by inserting F<sub>L</sub>(x), using the contraction inequality and rearranging. Rounded function values alone do not turn it into an interval certificate.
 
-> **Finding of the written-proof review (exact).** This is a valid global convergence proof for the explicitly defined alternating-sign system. It is not a theorem about unrestricted ordinary tetration. No gap was found in the stated argument.
+> **Conclusion (exact).** For every c > 1, the defined alternating-sign system has a unique solution with 0 < u < 1 < v. Its stated iteration converges from every v₀ ≥ 1 with a uniform contraction bound.
 
 <a id="tower-envelope"></a>
 
@@ -112,7 +110,7 @@ The earlier review called this c<sub>max</sub>. The label c<sub>peak</sub> avoid
 
 ### Why there are exactly two bases
 
-For any fixed 1 < v < v<sub>max</sub>, the number a = v log v lies in (0, 1/e). The function t e<sup>−t</sup> increases up to t = 1 and then decreases to zero. Thus
+For 1 < v < v_max, set a = v log v ∈ (0, 1/e). The function t exp(−t) increases to t = 1 and then decreases to zero. Thus
 
 $$
 t e^{-t}=a
@@ -131,6 +129,6 @@ $$
 | v > vₘₐₓ | None |
 | v = 1 | None; only a limiting height |
 
-> **Finding of the written-proof review (exact).** The sharp bound, attainability and two-base classification are valid deductions. They give an exact description of this construction; matching an arbitrary target constant does not itself establish an arithmetic connection.
+> **Conclusion (exact).** The sharp upper-phase bound is attained. Each interior height corresponds to exactly two finite bases, the maximum to one, and all other listed heights to none.
 
-Together with convergence, this is the strongest self-contained candidate among the reviewed notes for a standalone mathematical presentation. A literature novelty check is still required before claiming a new result.
+The convergence theorem and the inverse classification form one complete argument: first construct the unique phase pair for each base, then determine exactly which bases realize a chosen height.

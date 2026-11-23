@@ -3,7 +3,7 @@
   "subtitle": "A focused reading note from the Pirate Chest",
   "date": "23 November 2026",
   "author": "Zolton / EncapsulatorP · with ChatGPT",
-  "source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
+  "historical_source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
   "reviewed_proof_commit": "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd",
   "status": "exact",
   "statusLabel": "Proved convergence and classification",
@@ -25,7 +25,7 @@
           "type": "callout",
           "label": "Proved convergence and classification",
           "status": "exact",
-          "text": "The same construction has a sharp maximum upper phase and exactly two bases at every interior height. The theorem is about this alternating-sign system; ordinary unrestricted tetration is a different iteration."
+          "text": "The defined alternating-sign system has a sharp maximum upper phase and exactly two finite bases at every height strictly between 1 and that maximum."
         },
         {
           "type": "p",
@@ -37,7 +37,7 @@
         },
         {
           "type": "p",
-          "text": "Perform a focused literature search and request external review of this complete small theorem. A numerical match to a target constant needs an additional arithmetic argument."
+          "text": "Compare the convergence and inverse classification with the literature. If a particular arithmetic constant is used as a target height, state the additional arithmetic question separately."
         },
         {
           "type": "h",
@@ -55,7 +55,7 @@
         },
         {
           "type": "link",
-          "text": "Read the pinned collection source",
+          "text": "Historical collection source · original edition",
           "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#tower-convergence"
         },
         {
@@ -96,11 +96,11 @@
         },
         {
           "type": "p",
-          "text": "The last inequality follows because L e<super>−L</super> reaches its maximum 1/e at L = 1. Every starting point v₀ ≥ 1 enters the closed interval I = [1, e<super>1/e</super>] after one step."
+          "text": "The function L exp(−L) has maximum 1/e at L = 1. Every v₀ ≥ 1 therefore enters I = [1, exp(1/e)] after one step."
         },
         {
           "type": "p",
-          "text": "<b>Uniform contraction.</b> Differentiation and the separate maxima of L²e<super>−L</super> and Le<super>−L</super> give"
+          "text": "<b>Uniform contraction.</b> Differentiate and use the separate maxima of L² exp(−L) and L exp(−L):"
         },
         {
           "type": "eq",
@@ -112,11 +112,11 @@
         },
         {
           "type": "p",
-          "text": "The convenient bound q is not claimed to be optimal. Its strict inequality needs no decimal evidence: 1/e &lt; 1/2 and e<super>3/2</super> &gt; 1 + 3/2 + 9/8 + 27/48 &gt; 4. Numerically q ≈ 0.782058136610352468."
+          "text": "This convenient bound is uniform in L and v. To prove q &lt; 1 without decimals, use 1/e &lt; 1/2 and exp(3/2) &gt; 1 + 3/2 + 9/8 + 27/48 &gt; 4. Numerically q ≈ 0.782058136610352468."
         },
         {
           "type": "p",
-          "text": "<b>Existence, uniqueness and convergence.</b> Banach’s contraction theorem on I applies. Every possible fixed point in the stated domain lies in I, so uniqueness holds throughout that domain. Set u = e<super>−Lv</super> to recover both phase equations. Every v₀ ≥ 1 converges."
+          "text": "<b>Existence, uniqueness and convergence.</b> Apply Banach’s contraction theorem on I. Every possible fixed point in the stated domain lies in I, so it is unique throughout that domain. Set u = exp(−Lv) to recover both phase equations. Every v₀ ≥ 1 converges."
         },
         {
           "type": "eq",
@@ -128,8 +128,8 @@
         },
         {
           "type": "callout",
-          "label": "Finding of the written-proof review",
-          "text": "This is a valid global convergence proof for the explicitly defined alternating-sign system. It is not a theorem about unrestricted ordinary tetration. No gap was found in the stated argument.",
+          "label": "Conclusion",
+          "text": "For every c &gt; 1, the defined alternating-sign system has a unique solution with 0 &lt; u &lt; 1 &lt; v. Its stated iteration converges from every v₀ ≥ 1 with a uniform contraction bound.",
           "status": "exact"
         }
       ]
@@ -173,7 +173,7 @@
         },
         {
           "type": "p",
-          "text": "For any fixed 1 &lt; v &lt; v<sub>max</sub>, the number a = v log v lies in (0, 1/e). The function t e<super>−t</super> increases up to t = 1 and then decreases to zero. Thus"
+          "text": "For 1 &lt; v &lt; v_max, set a = v log v ∈ (0, 1/e). The function t exp(−t) increases to t = 1 and then decreases to zero. Thus"
         },
         {
           "type": "eq",
@@ -218,13 +218,13 @@
         },
         {
           "type": "callout",
-          "label": "Finding of the written-proof review",
-          "text": "The sharp bound, attainability and two-base classification are valid deductions. They give an exact description of this construction; matching an arbitrary target constant does not itself establish an arithmetic connection.",
+          "label": "Conclusion",
+          "text": "The sharp upper-phase bound is attained. Each interior height corresponds to exactly two finite bases, the maximum to one, and all other listed heights to none.",
           "status": "exact"
         },
         {
           "type": "p",
-          "text": "Together with convergence, this is the strongest self-contained candidate among the reviewed notes for a standalone mathematical presentation. A literature novelty check is still required before claiming a new result."
+          "text": "The convergence theorem and the inverse classification form one complete argument: first construct the unique phase pair for each base, then determine exactly which bases realize a chosen height."
         }
       ]
     }

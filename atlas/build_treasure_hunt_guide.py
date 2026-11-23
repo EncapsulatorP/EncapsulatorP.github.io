@@ -1,501 +1,378 @@
 #!/usr/bin/env python3
-"""Build the six-page visual navigation guide for the Pirate Chest.
+"""Build the A/B/C review board and the stable treasure-guide aliases.
 
 Run from the repository root: python3 atlas/build_treasure_hunt_guide.py
-Dependencies: atlas/logistic-pdf-requirements.txt.
+Dependencies: atlas/proof-library-requirements.txt.
 
-The focused notes contain the complete proofs. This guide is an accessible
-visual route to those notes, with exact results and exploratory links labeled.
-It imports the established font/math helpers without modifying their renderer.
+The public proof-board-data.json supplies the reviewed claims and audit record.
+This document provides hypotheses, conclusions and routes to the complete proof
+notes. The shared renderer supplies vector math, semantic LaTeX copy text, and
+orange-yellow-green accents. The board and legacy guide PDFs are byte-identical.
 """
 
 from __future__ import annotations
 
-import math
+import json
+import re
+import shutil
+import tempfile
+from contextlib import contextmanager
 from pathlib import Path
 from xml.sax.saxutils import escape
 
-from reportlab.lib import colors
-from reportlab.lib.pagesizes import A4
-from reportlab.lib.styles import ParagraphStyle
-from reportlab.lib.utils import ImageReader
-from reportlab.pdfgen.canvas import Canvas
-from reportlab.platypus import Paragraph
+from pypdf import PdfReader
 
-from build_logistic_vanishing_pdf import register_fonts, parse_math, paint_math
+import build_logistic_vanishing_pdf as renderer
 
 
 BASE = Path(__file__).resolve().parent
 SITE = "https://encapsulatorp.github.io"
-DEST = SITE + "/treasure-hunt/"
 PDF_DIR = SITE + "/atlas/proofs/"
-W, H = A4
-M = 34
-CW = W - 2 * M
-ORANGE = colors.HexColor("#FF5A00")
-DARK_ORANGE = colors.HexColor("#A93600")
-INK = colors.HexColor("#2C211B")
-MUTED = colors.HexColor("#6E5549")
-PALE = colors.HexColor("#FFF2E8")
-RULE = colors.HexColor("#FFD4B5")
-TEAL = colors.HexColor("#0E7163")
-TEAL_PALE = colors.HexColor("#EAF7F2")
-AMBER = colors.HexColor("#8A4D00")
-AMBER_PALE = colors.HexColor("#FFF3D0")
-PURPLE = colors.HexColor("#6747A5")
-PURPLE_PALE = colors.HexColor("#F4EEFF")
+REPO = "https://github.com/EncapsulatorP/EncapsulatorP.github.io"
+AUDIT_NOTES = {
+    "critical-point": "logistic-quarter-turn",
+    "finite-time-index": "fractional-exponential-maps",
+    "palindrome-parity": "palindrome-counting",
+    "dyadic-exponent": "dyadic-remainder",
+    "pi-proposition": "schanuel-zeta-family",
+    "complex-input": "schanuel-zeta-family",
+    "bernoulli-coefficient": "schanuel-zeta-family",
+    "continuum-symbol": "dimensions-and-fragments",
+    "prime-section": "prime-polynomial-counts",
+}
 
 
-def text(c, x, top, value, size=13, font="Sans", color=INK):
-    c.setFillColor(color)
-    c.setFont(font, size)
-    c.drawString(x, H - top - size, value)
+def paragraph(text: str, *, small: bool = False) -> dict:
+    return {"type": "p", "text": text, **({"small": True} if small else {})}
 
 
-def para(c, x, top, width, value, size=13, leading=None, color=INK,
-         font="Sans", max_height=None):
-    style = ParagraphStyle("copy", fontName=font, fontSize=size,
-                           leading=leading or size * 1.4,
-                           textColor=color, spaceAfter=0)
-    p = Paragraph(value, style)
-    _, height = p.wrap(width, H)
-    if max_height is not None and height > max_height:
-        raise ValueError(f"Text overflow ({height:.1f}>{max_height}): {value}")
-    p.drawOn(c, x, H - top - height)
-    return height
+def heading(text: str) -> dict:
+    return {"type": "h", "text": text}
 
 
-def rounded(c, x, top, width, height, fill=colors.white, stroke=RULE,
-            radius=16, line_width=1):
-    c.setFillColor(fill)
-    c.setStrokeColor(stroke)
-    c.setLineWidth(line_width)
-    c.roundRect(x, H - top - height, width, height, radius,
-                fill=1, stroke=1)
+def proof_link(slug: str, text: str = "Read the complete proof note") -> dict:
+    return {"type": "link", "text": text, "url": PDF_DIR + slug + ".pdf"}
 
 
-def link(c, x, top, width, height, url):
-    c.linkURL(url, (x, H - top - height, x + width, H - top),
-              relative=0, thickness=0)
+def inline_proof_link(slug: str) -> str:
+    return f'<link href="{PDF_DIR}{slug}.pdf" color="{renderer.LINK_HEX}"><u>Full note</u></link>'
 
 
-def button(c, x, top, width, label, url, fill=ORANGE, color=INK,
-           size=11, height=37):
-    rounded(c, x, top, width, height, fill, fill, 9)
-    c.setFillColor(color)
-    c.setFont("SansBold", size)
-    c.drawCentredString(x + width / 2, H - top - height / 2 - size * .35,
-                       label)
-    link(c, x, top, width, height, url)
+def normalize_math(latex: str) -> str:
+    # MathText requires explicit groups for these TeX single-token commands.
+    latex = re.sub(r"\\mathbb\s+([A-Za-z])", r"\\mathbb{\1}", latex)
+    latex = re.sub(r"\\sqrt\s*([0-9])", r"\\sqrt{\1}", latex)
+    return latex
 
 
-def badge(c, x, top, label, color=TEAL, fill=TEAL_PALE, width=None):
-    width = width or c.stringWidth(label, "SansBold", 8) + 18
-    rounded(c, x, top, width, 20, fill, fill, 7)
-    text(c, x + 9, top + 4, label, 8, "SansBold", color)
+def equations(latex: str) -> list[dict]:
+    """Keep complete formulas together; split only at written quad separators."""
+    latex = normalize_math(latex)
+    width = float(renderer.parse_math(latex).width)
+    if width <= 675:
+        return [{"type": "eq", "latex": latex}]
+    pieces = re.split(r",?\\q(?:quad|uad)\s*", latex)
+    if len(pieces) == 1:
+        raise ValueError(f"Split an overlong board equation explicitly: {latex}")
+    blocks = []
+    for piece in pieces:
+        if piece.strip():
+            blocks.extend(equations(piece.strip()))
+    return blocks
 
 
-def equation(c, x, top, latex, size=20, color=INK, center=False):
-    parsed = parse_math(latex, size)
-    c.setFillColor(color)
-    c.setStrokeColor(color)
-    if center:
-        x -= float(parsed.width) / 2
-    paint_math(c, parsed, x, H - top - float(parsed.height) + float(parsed.depth))
+def page(key: str, title: str, kicker: str, blocks: list[dict]) -> dict:
+    return {"id": key, "title": title, "kicker": kicker, "blocks": blocks}
 
 
-def header(c, page, label, title, subtitle=None):
-    c.setFillColor(ORANGE)
-    c.rect(0, H - 8, W, 8, stroke=0, fill=1)
-    text(c, M, 28, f"{page:02d} / {label.upper()}", 9, "SansBold", DARK_ORANGE)
-    top = 61
-    for line in title.split("\n"):
-        text(c, M, top, line, 33, "SansBold", INK)
-        top += 39
-    if subtitle:
-        para(c, M, top + 12, CW, subtitle, 13.5, color=MUTED, max_height=65)
+def audit_blocks(rows: list[dict], start: int) -> list[dict]:
+    blocks = []
+    for number, row in enumerate(rows, start):
+        blocks.append(heading(f"A{number}. {row['title']}"))
+        blocks.append(paragraph(
+            f"<b>{escape(row['status_label'])}.</b> Earlier edition p. {row['old_page']}; "
+            f"illustrated edition p. {row['illustrated_page']}.", small=True))
+        blocks.extend(equations(row["formula"]))
+        blocks.append(paragraph(escape(row["finding"]), small=True))
+        blocks.append(proof_link(AUDIT_NOTES[row["id"]], "Check the formula in its focused note"))
+    return blocks
 
 
-def footer(c, page):
-    c.setStrokeColor(RULE)
-    c.setLineWidth(.8)
-    c.line(M, 42, W - M, 42)
-    text(c, M, H - 31, "ENCAPSULATORP  /  A VISUAL TREASURE GUIDE", 7.5,
-         "SansBold", MUTED)
-    c.setFillColor(DARK_ORANGE)
-    c.setFont("SansBold", 9)
-    c.drawRightString(W - M, 19, f"{page} / 6")
-    link(c, M, H - 35, 300, 19, DEST)
+# Presentation summaries preserve the hypotheses and conclusions from the public
+# board. Full arguments and primary references remain in the linked proof notes.
+CORE_PRESENTATION = {
+    "logistic-cycle": {
+        "domain": "Real r > 3; also r ≤ 4 for the conventional invariant interval [0,1].",
+        "equations": [r"f_r^{\circ2}(x)-x=-x(rx-r+1)[r^2x^2-r(r+1)x+r+1].",
+                      r"x_\pm=\frac{r+1\pm\sqrt{(r-3)(r+1)}}{2r}.",
+                      r"d_\pm=-1\mp\sqrt{(r-3)(r+1)},\qquad d_+d_-=4+2r-r^2."],
+        "qualification": "Polynomial algebra also proves that fᵣ exchanges these two distinct nontrivial points.",
+    },
+    "logistic-quarter-turn": {
+        "domain": "At r* = 1 + √6, define C = [[0,d₋],[d₊,0]], a = √2 − 1 and S = diag(√a,1/√a).",
+        "latex": r"C_*^2=-I,\qquad C_*^4=I,\qquad \det C_*=1.",
+        "matrix": {"type": "matrix", "label": r"S^{-1}C_*S=", "cells": [["0", "1"], ["-1", "0"]], "tail": "."},
+        "qualification": "This explicitly defined linear matrix has rank 2. The conjugacy is a coordinate rescaling; C is not Euclidean orthogonal in the original coordinates.",
+    },
+    "logistic-return-derivative": {
+        "domain": "At either cycle point p± for r* = 1 + √6.",
+        "qualification": "These identities concern the stated cycle points. At the separate critical point 1/2, fᵣ′(1/2) = 0 while fᵣ(1/2) = r/4.",
+    },
+    "cycle-lyapunov": {
+        "domain": "The exact r* two-cycle; exponent per original logistic update.",
+        "qualification": "A zero exponent leaves nonlinear stability undecided. The later cubic attraction argument is presented separately on page 9.",
+    },
+    "fractional-exponential-averages": {
+        "domain": "Tadd(y) = frac(2·3ʸ), Tmul(y) = frac(6ʸ), y ∈ [0,1), N ≥ 1; use the stated branch derivatives.",
+        "qualification": "The means μadd,N and μmul,N belong to separate orbit segments. Ordinary derivatives fail at jumps; the note specifies endpoint conventions. Infinite-time formulas require convergent means.",
+    },
+    "dimension-cardinality": {
+        "domain": "Use the indicated real or complex scalar field; cardinality concerns the underlying set.",
+        "latex": r"\dim_{\mathbb R}(\mathbb R^3\times\mathbb R^2)=5,\quad\dim_{\mathbb R}(\mathbb R^3\otimes_{\mathbb R}\mathbb R^2)=6.\qquad\dim_{\mathbb R}\mathbb C^3=6,\quad\dim_{\mathbb C}\mathbb C^3=3,\quad|\mathbb R^5|=|\mathbb R^6|=|\mathbb C^3|=2^{\aleph_0}.",
+        "qualification": "Products, tensor products, changes of scalar field and cardinality answer different mathematical questions.",
+    },
+    "cubic-and-odd-step": {
+        "domain": "Complex z; odd positive integer n for the iteration conventions.",
+        "qualification": "3n + 1 and (3n + 1)/2 are distinct odd-step conventions. The latter divides once; the full odd-to-odd step removes all factors of two. T₀–T₃ still need definitions and a connecting map.",
+    },
+    "zeta-reduction": {
+        "domain": "Odd integers p ≥ 3; primality is not required.",
+        "latex": r"Z(p)=1+\exp\!\left(\frac{\pi\zeta(p-1)}p\right)=1+e^{c_p\pi^p}.\quad c_p=\frac{2^{p-2}|B_{p-1}|}{p!}\in\mathbb Q_{>0}.",
+        "qualification": "Euler’s even-zeta evaluation supplies the coefficient. The signed Bernoulli expression in A7 gives the same lowercase c. At p = 2, ζ(1) has a pole.",
+    },
+    "schanuel-independence": {
+        "domain": "Assume full complex Schanuel; p₁,…,pₖ are pairwise distinct odd integers ≥ 3.",
+        "claim": "Then π, Z(p₁), …, Z(pₖ) are algebraically independent over Q. Apply the assumption to iπ and the real inputs cₚⱼπᵖⱼ.",
+        "qualification": "E is generated over Q by these inputs and their exponentials. The imaginary part isolates iπ in a rational linear relation. Transcendence of π handles the distinct real powers; adjoining i is algebraic.",
+    },
+    "dyadic-remainder": {
+        "domain": "f(x) = Σₙ≥₀ x^(2^n), |x| < 1; xₖ = exp(−2^(−k)), integer k ≥ 0.",
+        "claim": "The functional equation f(x) = x + f(x²) gives f(xₖ) = k + C + Rₖ.",
+        "equations": [r"f(x)=\sum_{n=0}^{\infty}x^{2^n},\qquad f(x)=x+f(x^2),\qquad x_k=e^{-2^{-k}}.",
+                      r"C=f(e^{-1})+\sum_{j=1}^{\infty}(e^{-2^{-j}}-1),\quad R_k=\sum_{j=k+1}^{\infty}(1-e^{-2^{-j}}),\quad2^{-k}-\frac{4^{-k}}6\le R_k\le2^{-k}."],
+        "qualification": "Absolute convergence, an index shift and t − t²/2 ≤ 1 − exp(−t) ≤ t prove the stated bound. C belongs to the specified dyadic path.",
+    },
+    "palindrome-counting": {
+        "domain": "Independent uniform symbols; integer alphabet size q ≥ 2 and length n ≥ 1.",
+        "qualification": "This counts ordinary reversal for odd and even n. With a fixed-point-free complement pairing, reverse-complement palindromes instead require even n and have probability q^(−n/2).",
+    },
+    "tower-convergence": {
+        "domain": "Real c > 1, L = log c, v₀ ≥ 1; u = c^(−v), v = cᵘ.",
+        "claim": "F_L(v) = exp(L exp(−Lv)) maps [1,∞) into I = [1, exp(1/e)]. Its uniform contraction proves a unique solution and convergence from every stated initial value.",
+        "equations": [r"F_L(v)=e^{Le^{-Lv}},\qquad I=[1,e^{1/e}].",
+                      r"q=4e^{1/e-2}<1,\qquad |F'_L(v)|\le q\quad(v\ge1).",
+                      r"|x-v_*|\le\frac{|F_L(x)-x|}{1-q}\qquad(x\in I)."],
+        "qualification": "Banach’s theorem applies to this defined alternating-sign iteration. The residual-to-error estimate uses exact arithmetic.",
+    },
+    "tower-envelope": {
+        "domain": "The same alternating system, with c > 1 and t = v log c.",
+        "claim": "The maximum upper phase is attained at cpeak = exp(1/vmax). Heights 1 < v < vmax have exactly two finite bases; vmax has one; v > vmax and v = 1 have none.",
+        "qualification": "Strict increase of v log v and the two branches of t exp(−t) give the classification. cpeak is the maximizing base.",
+    },
+    "prime-polynomial-counts": {
+        "domain": "P_X(z) = Σprime p≤X zᵖ, integer X ≥ 2; integer N ≥ 4; finite coefficient extraction.",
+        "qualification": "G counts ordered pairs; D(N) is 1 exactly when N/2 is an integer prime; U counts unordered pairs. T counts prime pairs p,p+2 with p ≤ X. The full section is present in both inspected editions.",
+    },
+}
 
 
-def polygon(c, pts, fill, stroke=None, width=1):
-    p = c.beginPath()
-    p.moveTo(pts[0][0], H - pts[0][1])
-    for x, y in pts[1:]:
-        p.lineTo(x, H - y)
-    p.close()
-    c.setFillColor(fill)
-    c.setStrokeColor(stroke or fill)
-    c.setLineWidth(width)
-    c.drawPath(p, fill=1, stroke=bool(stroke))
+def statement_blocks(rows: list[dict], start: int) -> list[dict]:
+    blocks = []
+    for number, row in enumerate(rows, start):
+        view = CORE_PRESENTATION[row["id"]]
+        status = "CONDITIONAL" if row["status"] == "conditional" else "EXACT"
+        blocks.append(heading(f"B{number}. {row['title']}"))
+        blocks.append(paragraph(f"<b>{status} · Hypotheses.</b> {escape(view['domain'])}", small=True))
+        if view.get("claim"):
+            blocks.append(paragraph(escape(view["claim"]), small=True))
+        for latex in view.get("equations", [view.get("latex", row["latex"])]):
+            blocks.extend(equations(latex))
+        if view.get("matrix"):
+            blocks.append(view["matrix"])
+        blocks.append(paragraph(escape(view["qualification"]), small=True))
+        blocks.append(proof_link(row["proof_slug"]))
+    return blocks
 
 
-def gem(c, cx, cy, scale):
-    """Decorative treasure emblem; no mathematical model is implied."""
-    for i, col in [(4, "#FFF9F5"), (3, "#FFF4EB"), (2, "#FFECDD")]:
-        c.setFillColor(colors.HexColor(col))
-        c.circle(cx, H - cy, scale * (1 + i * .17), fill=1, stroke=0)
-    pts = [(cx - scale, cy - .25 * scale), (cx - .5 * scale, cy - .8 * scale),
-           (cx + .5 * scale, cy - .8 * scale), (cx + scale, cy - .25 * scale),
-           (cx, cy + .95 * scale)]
-    polygon(c, pts, ORANGE)
-    c.setStrokeColor(colors.white)
-    c.setLineWidth(1.7)
-    for a, b in [(pts[0], pts[3]), (pts[1], pts[4]), (pts[2], pts[4]),
-                 (pts[1], (cx - .18 * scale, cy - .25 * scale)),
-                 (pts[2], (cx + .18 * scale, cy - .25 * scale))]:
-        c.line(a[0], H - a[1], b[0], H - b[1])
-
-
-def image_fit(c, path, x, top, width, height):
-    image = ImageReader(str(path))
-    iw, ih = image.getSize()
-    scale = min(width / iw, height / ih)
-    dw, dh = iw * scale, ih * scale
-    c.drawImage(image, x + (width - dw) / 2, H - top - (height + dh) / 2,
-                dw, dh, mask="auto")
-
-
-def page_cover(c):
-    c.setFillColor(ORANGE)
-    c.rect(0, H - 11, W, 11, stroke=0, fill=1)
-    text(c, M, 34, "ENCAPSULATORP  /  PIRATE CHEST", 9, "SansBold", DARK_ORANGE)
-    text(c, M, 82, "Next treasures", 39, "SansBold", INK)
-    text(c, M, 130, "hunt", 62, "SansBold", ORANGE)
-    para(c, M, 220, 324, "A small proof is a treasure.<br/>Follow the steps. Ask what survives.",
-         17, 25, color=MUTED)
-    gem(c, 457, 278, 57)
-    text(c, M, 329, "YOUR ROUTE", 9, "SansBold", DARK_ORANGE)
-    routes = [
-        ("02", "Follow the logistic arrows", "Two orbit points. A four-turn linear model."),
-        ("03", "Find the vanishing terms", "The cubic tells us what happens next."),
-        ("04", "Choose a proof island", "Open one short note with all its assumptions."),
-        ("05", "Explore nearby geometry", "Fibers, spheres and clearly marked questions."),
-        ("06", "Choose the next useful target", "A concrete deliverable for each new bridge."),
+def final_board(groups: list[dict]) -> list[dict]:
+    # Keep the exact boundaries visible without duplicating every hypothesis
+    # from the numbered B statements on the preceding pages.
+    summaries = {
+        "logistic-algebra": "Factorization, cycle exchange, multiplier, matrix conjugacy and return-derivative identities hold for their specified objects and points.",
+        "cycle-exponent": "The exact r* two-cycle has exponent zero. The later cubic proof supplies its nonlinear attraction argument.",
+        "six-maps": "Finite branch averages use exactly N terms. Infinite-time comparisons require limiting means; a common measure or conjugacy is still unproved.",
+        "dimensions": "Dimension, cardinality and cubic identities are valid. A proposed connecting map and the labels T₀–T₃ still need definitions.",
+        "zeta": "For odd p ≥ 3, the positive rational Bernoulli coefficient and exponential expression are exact; lowercase c is consistent.",
+        "schanuel": "Algebraic independence follows under full complex Schanuel for distinct odd exponents. The assumption remains part of the proposition.",
+        "dyadic": "For the defined series and dyadic path, the functional equation, exact tail and geometric bounds hold. The exponent is 2^n.",
+        "palindromes": "The uniform-string ceiling/floor count covers odd and even lengths. Ordinary reversal and reverse complementation are distinct models.",
+        "towers": "The defined alternating iteration has global convergence, a sharp height envelope and the stated complete count of bases.",
+        "prime-counts": "Finite polynomial identities count ordered, unordered and translated prime pairs. The full section is present in both inspected editions.",
+    }
+    rows = []
+    for group in groups:
+        badge = "CONDITIONAL" if group["status"] == "conditional" else "VALID"
+        left = f"<b>{escape(group['title'])}</b><br/>{inline_proof_link(group['proof_slug'])}"
+        right = f"<b>{badge}.</b> {escape(summaries[group['id']])}"
+        rows.append([left, right])
+    return [
+        paragraph("This board collects the surviving arguments. The numbered B entries state their hypotheses; the linked notes contain complete proofs and references."),
+        {"type": "table", "headers": ["Reviewed argument", "Verdict and boundary"],
+         "widths": [.29, .71], "padding": 7, "rows": rows},
     ]
-    for i, (num, title, detail) in enumerate(routes):
-        top = 355 + i * 61
-        rounded(c, M, top, CW, 51, colors.white, RULE, 11)
-        text(c, M + 14, top + 10, num, 19, "SansBold", ORANGE)
-        text(c, M + 58, top + 8, title, 13, "SansBold", INK)
-        text(c, M + 58, top + 28, detail, 10, "Sans", MUTED)
-        c.linkRect("", "page" + num, (M, H - top - 51, W - M, H - top), thickness=0)
-    text(c, M, 682, "READ THE CONNECTIONS", 9, "SansBold", DARK_ORANGE)
-    badge(c, M, 705, "EXACT", TEAL, TEAL_PALE, 77)
-    badge(c, M + 88, 705, "CONDITIONAL", AMBER, AMBER_PALE, 116)
-    badge(c, M + 215, 705, "EXPLORATORY", PURPLE, PURPLE_PALE, 123)
-    c.setStrokeColor(PURPLE)
-    c.setDash(5, 4)
-    c.setLineWidth(2)
-    c.line(M + 354, H - 715, W - M, H - 715)
-    c.setDash()
-    para(c, M, 741, CW, "Solid result: read the proof. Conditional result: keep the assumption. "
-         "Dashed route: a target still to test.", 10.5, 15, color=MUTED, max_height=32)
-    footer(c, 1)
-    c.showPage()
 
 
-def page_logistic(c):
-    c.bookmarkPage("page02")
-    header(c, 2, "Follow the arrows", "Two places. Four turns.",
-           "First follow the orbit. Then follow a small push in the paired derivative model.")
-    image_fit(c, BASE / "assets/logistic-proof.png", M - 5, 155, CW + 10, 501)
-    rounded(c, M, 677, CW, 51, TEAL_PALE, TEAL_PALE, 12)
-    para(c, M + 15, 689, CW - 30,
-         "The exact statement concerns the cycle and its derivatives. The full nonlinear fourth iterate has degree 16.",
-         12, 17, color=TEAL, max_height=36)
-    button(c, M, 747, 253, "OPEN THE QUARTER-TURN PROOF", PDF_DIR + "logistic-quarter-turn.pdf", size=10)
-    button(c, M + 266, 747, CW - 266, "SEE THE WEB ANIMATION", DEST, PALE, DARK_ORANGE, 10)
-    footer(c, 2)
-    c.showPage()
+def supplement_blocks(row: dict, number: int) -> list[dict]:
+    title = re.sub(r"^Later addition:\s*", "", row["title"], flags=re.I)
+    domain, statement = row["domain"], row["statement"]
+    if row["id"] == "asymptotic-ratio":
+        statement = "The dyadic remainder and the zeta tail have the same leading decay scale. Their ratio tends to one."
+    if row["id"] == "defined-geometric-model":
+        domain = "Use the displayed cylinder with its product metric and the map Φ below; δ comes from the local attraction proof."
+    blocks = [heading(f"S{number}. {title[0].upper() + title[1:]}"),
+              paragraph("<b>Hypotheses.</b> " + escape(domain), small=True),
+              paragraph(escape(statement))]
+    if row["id"] == "asymptotic-ratio":
+        blocks.extend(equations(r"R_k\sim2^{-k},\qquad\zeta(k)-1\sim2^{-k},\qquad\frac{R_k}{\zeta(k)-1}\longrightarrow1."))
+    elif row.get("latex"):
+        blocks.extend(equations(row["latex"]))
+    if row["id"] == "defined-geometric-model":
+        blocks.extend(equations(r"X=S^1\times(-\delta,\delta),\qquad\Phi(\theta,h)=(\theta+\omega\ \mathrm{mod}\ 2\pi,g(h))."))
+        blocks.extend(equations(r"\operatorname{dist}(\Phi^n(\theta,h),S^1\times\{0\})=|g^{\circ n}(h)|\longrightarrow0."))
+    blocks.append(paragraph(escape(row["qualification"]), small=True))
+    blocks.append(proof_link(row["proof_slug"], "Read the later derivation and its proof"))
+    return blocks
 
 
-def page_vanishing(c):
-    c.bookmarkPage("page03")
-    header(c, 3, "Vanishing and collapse", "The flat tangent\nhides a cubic.")
-    para(c, M, 156, CW,
-         "At either cycle point p, start a small distance h away. After four logistic steps, the displacement has this form:",
-         14, 20, color=MUTED, max_height=45)
-    equation(c, W / 2, 219, r"f^{\circ 4}(p+h)-(p+h)=-K h^3+O(h^4),\quad K>0", 20, center=True)
-    vals = [("CONSTANT", "0", "no offset"), ("LINEAR", "0", "flat tangent"),
-            ("QUADRATIC", "0", "still vanishes"), ("CUBIC", "−K h³", "restores locally")]
-    gap = 10
-    width = (CW - 3 * gap) / 4
-    for i, (label, val, detail) in enumerate(vals):
-        x, top = M + i * (width + gap), 275
-        active = i == 3
-        rounded(c, x, top, width, 107, ORANGE if active else PALE,
-                ORANGE if active else RULE, 13)
-        color = INK if active else DARK_ORANGE
-        text(c, x + 11, top + 13, label, 8, "SansBold", color)
-        text(c, x + 11, top + 34, val, 26 if not active else 21, "SansBold", color)
-        text(c, x + 11, top + 82, detail, 8.7, "Sans", color)
-    rounded(c, M, 408, CW, 193, colors.white, RULE, 15)
-    text(c, M + 16, 424, "CHECK THE GEOMETRY TOO", 9, "SansBold", DARK_ORANGE)
-    # Exact image of a unit circle under C=[[0,sqrt(2)-1],[-sqrt(2)-1,0]].
-    # Both drawings use the same scale; determinant 1 preserves their area.
-    cy, unit = 520, 24
-    c.setStrokeColor(TEAL)
-    c.setLineWidth(2.5)
-    c.circle(M + 67, H - cy, unit, stroke=1, fill=0)
-    pts = []
-    for i in range(181):
-        t = 2 * math.pi * i / 180
-        pts.append((M + 164 + unit * (math.sqrt(2) - 1) * math.sin(t),
-                    cy - unit * (-math.sqrt(2) - 1) * math.cos(t)))
-    p = c.beginPath()
-    p.moveTo(pts[0][0], H - pts[0][1])
-    for x, y in pts[1:]:
-        p.lineTo(x, H - y)
-    c.drawPath(p, fill=0, stroke=1)
-    text(c, M + 103, cy - 10, "C →", 13, "SansBold", ORANGE)
-    text(c, M + 36, 573, "Same area", 10, "SansBold", TEAL)
-    para(c, M + 228, 463, CW - 246,
-         "The paired matrix has<br/><b>det C = 1</b> and <b>rank C = 2</b>.<br/>It preserves area and loses no direction.",
-         13, 20, max_height=84)
-    rounded(c, M, 622, CW, 94, PURPLE_PALE, PURPLE_PALE, 14)
-    text(c, M + 15, 635, "VANISHING BRANES / A TOY AND AN OPEN LINK", 9, "SansBold", PURPLE)
-    para(c, M + 15, 657, CW - 30,
-         "The note defines a toy: angular motion survives while a small transverse distance tends to zero. Its physical brane interpretation remains open.",
-         12, 17, color=PURPLE, max_height=52)
-    button(c, M, 741, CW, "OPEN THE LOCAL CUBIC LEMMA", PDF_DIR + "logistic-collapse-vanishing.pdf", size=11)
-    footer(c, 3)
-    c.showPage()
-
-
-ISLANDS = [
-    ("Alternating towers", "A full convergence theorem.", "EXACT", "alternating-towers"),
-    ("Logistic quarter-turn", "A finite-order derivative model.", "EXACT LOCAL", "logistic-quarter-turn"),
-    ("Vanishing terms", "The restoring cubic survives.", "EXACT LOCAL", "logistic-collapse-vanishing"),
-    ("Dyadic remainder", "A tail bounded by 2⁻ᵏ.", "EXACT PATH", "dyadic-remainder"),
-    ("Prime polynomials", "Coefficients count finite pairs.", "EXACT FINITE", "prime-polynomial-counts"),
-    ("Palindrome counts", "Count under a stated model.", "EXACT MODEL", "palindrome-counting"),
-    ("Two maps of six", "Exact formulas; limits open.", "FORMULAS", "fractional-exponential-maps"),
-    ("Dimensions", "Known foundations; fragments open.", "FOUNDATIONS", "dimensions-and-fragments"),
-    ("The Z(p) family", "Assume complex Schanuel.", "CONDITIONAL", "schanuel-zeta-family"),
-]
-
-
-def page_islands(c):
-    c.bookmarkPage("page04")
-    header(c, 4, "Choose an island", "One question. One note.",
-           "Tap a card to open its full argument, assumptions and next step.")
-    width = (CW - 22) / 3
-    for i, (title, description, status, slug) in enumerate(ISLANDS):
-        x = M + (i % 3) * (width + 11)
-        top = 178 + (i // 3) * 163
-        conditional = status == "CONDITIONAL"
-        color, fill = (AMBER, AMBER_PALE) if conditional else (TEAL, TEAL_PALE)
-        rounded(c, x, top, width, 151, colors.white, RULE, 14)
-        badge(c, x + 11, top + 12, status, color, fill)
-        para(c, x + 11, top + 45, width - 22, escape(title),
-             15, 19, font="SansBold", max_height=42)
-        para(c, x + 11, top + 91, width - 22, escape(description),
-             10.5, 14, color=MUTED, max_height=42)
-        text(c, x + width - 31, top + 123, "↗", 16, "SansBold", ORANGE)
-        link(c, x, top, width, 151, PDF_DIR + slug + ".pdf")
-    rounded(c, M, 687, CW, 49, AMBER_PALE, AMBER_PALE, 12)
-    para(c, M + 13, 698, CW - 26,
-         "A conditional conclusion keeps its assumption. The Schanuel card does not turn the conjecture into a theorem.",
-         11.5, 16, color=AMBER, max_height=34)
-    button(c, M, 751, CW, "READ THE PROOF REVIEW AND SCOPE", PDF_DIR + "proof-review.pdf", PALE, DARK_ORANGE, 10.5, 31)
-    footer(c, 4)
-    c.showPage()
-
-
-def page_geometry(c):
-    c.bookmarkPage("page05")
-    header(c, 5, "Explore neighboring geometry", "Beautiful shapes.\nPrecise questions.")
-    para(c, M, 154, CW, "These are established geometry constructions. Any new logistic bridge needs its own definition and proof.",
-         13, 19, color=MUTED, max_height=42)
-    card_w = (CW - 16) / 2
-    x1, x2 = M, M + card_w + 16
-    for x in (x1, x2):
-        rounded(c, x, 215, card_w, 383, colors.white, RULE, 15)
-    image_fit(c, BASE / "assets/treasure-hunt/hopf-fibration.png", x1 + 9, 224, card_w - 18, 211)
-    image_fit(c, BASE / "assets/treasure-hunt/sphere-eversion-poster.jpg", x2 + 9, 224, card_w - 18, 211)
-    text(c, x1 + 13, 450, "CIRCLES AS FIBERS", 11, "SansBold", DARK_ORANGE)
-    para(c, x1 + 13, 474, card_w - 26,
-         "A point on the small sphere picks a circle in the three-sphere. The large shape is a projection.",
-         11.5, 16, max_height=67)
-    text(c, x2 + 13, 450, "A SPHERE TURNS INSIDE OUT", 9.5, "SansBold", DARK_ORANGE)
-    para(c, x2 + 13, 474, card_w - 26,
-         "Self-intersections are allowed. Tears, creases and pinch points are not. The surface stays an immersion.",
-         11.5, 16, max_height=67)
-    para(c, x1 + 13, 550, card_w - 26,
-         '<link href="https://commons.wikimedia.org/wiki/File:Hopf_Fibration.png" color="#A93600">Niles Johnson</link> · '
-         '<link href="https://creativecommons.org/licenses/by/4.0/" color="#A93600">CC BY 4.0</link><br/>'
-         'Supplied resized image; no further changes.', 8.2, 12, color=MUTED, max_height=40)
-    para(c, x2 + 13, 550, card_w - 26,
-         '<link href="https://commons.wikimedia.org/wiki/File:Thurston_Sphere_Eversion.webm" color="#A93600">© 2022 Carsten Steger</link> · '
-         '<link href="https://creativecommons.org/licenses/by-sa/4.0/" color="#A93600">CC BY-SA 4.0</link><br/>'
-         'Frame at 15 s, resized; same license.', 8.2, 12, color=MUTED, max_height=40)
-    c.setStrokeColor(PURPLE)
-    c.setDash(5, 4)
-    c.setLineWidth(1.5)
-    for x in (x1 + card_w / 2, x2 + card_w / 2):
-        c.line(x, H - 604, x, H - 624)
-    c.setDash()
-    rounded(c, M, 628, CW, 110, PURPLE_PALE, PURPLE_PALE, 15)
-    text(c, M + 15, 641, "PROPOSED BRIDGE / A CONCRETE TARGET", 9, "SansBold", PURPLE)
-    para(c, M + 15, 665, CW - 30,
-         "Write down a map from a stated logistic object. Define its domain and output. Then prove one preserved quantity, or exhibit a counterexample.",
-         13, 19, color=PURPLE, max_height=61)
-    button(c, M, 751, CW, "OPEN THE GEOMETRY AND ANIMATIONS", DEST, ORANGE, INK, 10.5, 31)
-    footer(c, 5)
-    c.showPage()
-
-
-def page_targets(c):
-    c.bookmarkPage("page06")
-    header(c, 6, "Next useful targets", "Choose the next\nuseful step.")
-    rows = [
-        ("01", "NOW", "Polish one small theorem",
-         "Deliverable: one statement, full proof, reproducible checks and focused questions for external review.",
-         "Start with alternating towers ↗", PDF_DIR + "alternating-towers.pdf"),
-        ("02", "NEXT", "Make the brane link precise",
-         "Deliverable: define the intended object and connect it to the explicit toy by a stated map or invariant.",
-         "Obstruction-Theory repository ↗", "https://github.com/EncapsulatorP/Obstruction-Theory"),
-        ("03", "THEN", "Recover one Collatz bridge",
-         "Deliverable: one falsifiable claim connecting the delay embedding to a specified diagnostic. Record its scope.",
-         "Collatz-Rupert repository ↗", "https://github.com/EncapsulatorP/collatz_rupert_delay_embedding"),
+def make_board(data: dict) -> dict:
+    audit, statements, groups, supplements = (data[k] for k in ("audit", "statements", "groups", "supplements"))
+    if (len(audit), len(statements), len(groups), len(supplements)) != (9, 14, 10, 4):
+        raise ValueError("The page plan expects 9 audit entries, 14 core statements, 10 groups and 4 supplements")
+    audit_scope = data["audit_scope"]
+    cover = [
+        {"type": "image", "path": "assets/logistic-proof.png", "max_height": 445,
+         "alt": "Three exact views of the logistic two-cycle at r = 1 + square root of 6: exchanged orbit points, a rescaled paired quarter-turn matrix, and zero derivative of the fourth-return displacement.",
+         "link_url": PDF_DIR + "logistic-quarter-turn.pdf"},
+        {"type": "table", "headers": ["A · Audit", "B · Statements", "C · Final board", "S · Later work"],
+         "widths": [1, 1, 1, 1], "padding": 6,
+         "rows": [["Notation and editions<br/><b>Pages 2–3</b>",
+                   "14 claims + hypotheses<br/><b>Pages 4–7</b>",
+                   "Valid arguments + limits<br/><b>Page 8</b>",
+                   "Cubic, rate and model<br/><b>Pages 9–10</b>"]]},
+        paragraph("<b>Edition record.</b> The audit compares the 16-page electric-orange and 17-page illustrated PDFs. The exact earlier review excerpt is unknown. Later results are separated on pages 9–10. Click the figure for the complete logistic proof.", small=True),
     ]
-    for i, (num, when, title, desc, anchor, url) in enumerate(rows):
-        top = 175 + i * 148
-        rounded(c, M, top, CW, 133, colors.white, RULE, 15)
-        text(c, M + 14, top + 12, num, 23, "SansBold", ORANGE)
-        text(c, M + 59, top + 13, when, 8.5, "SansBold", DARK_ORANGE)
-        text(c, M + 59, top + 31, title, 17, "SansBold", INK)
-        para(c, M + 59, top + 60, CW - 76, escape(desc), 11.8, 17,
-             color=MUTED, max_height=36)
-        text(c, M + 59, top + 106, anchor, 10, "SansBold", DARK_ORANGE)
-        link(c, M + 59, top + 102, CW - 76, 23, url)
-    para(c, M, 638, CW,
-         "Order by clarity and reuse: secure a small result, define one bridge, then widen the search. The full plan keeps the larger schedule and repository graph.",
-         12, 18, color=MUTED, max_height=56)
-    button(c, M, 710, (CW - 12) / 2, "OPEN PIRATES PLAN", SITE + "/#pirates-plan", size=10.5)
-    button(c, M + (CW + 12) / 2, 710, (CW - 12) / 2, "EXPLORE REPOSITORY LINKS", SITE + "/#repo-interlinks", PALE, DARK_ORANGE, 9.5)
-    button(c, M, 756, CW, "RETURN TO THE TREASURE HUNT", DEST, PALE, DARK_ORANGE, 10, 28)
-    footer(c, 6)
-    c.showPage()
+    pages = [page("orientation", data["title"], "A / B / C · Review and navigation", cover)]
+    pages.append(page("audit-notation", "A. Notation and edition audit", "01–04 · Read the symbol in context", [
+        paragraph("<b>Audit scope.</b> " + escape(audit_scope), small=True),
+        *audit_blocks(audit[:4], 1),
+    ]))
+    pages.append(page("audit-source", "A. Notation and source coverage", "05–09 · Symbols, coefficients and the missing-section report", [
+        *audit_blocks(audit[4:], 5),
+    ]))
+    ranges = [
+        (0, 4, "B. Logistic identities", "01–04 · Exact local statements"),
+        (4, 8, "B. Maps, dimensions and coefficients", "05–08 · Domains and operations made explicit"),
+        (8, 11, "B. Arithmetic, limits and counting", "09–11 · One conditional argument; two exact counts and bounds"),
+        (11, 14, "B. Convergence and finite encodings", "12–14 · Complete domains and conclusions"),
+    ]
+    for a, b, title, kicker in ranges:
+        pages.append(page(f"statements-{a+1}-{b}", title, kicker, statement_blocks(statements[a:b], a + 1)))
+    pages.append(page("final-board", "C. The final board", "Valid proofs and surviving arguments · Complete notes linked", final_board(groups)))
+    pages.append(page("later-cubic", "Later addition: what survives locally", "S1–S2 · Cubic term, attraction and rate", [
+        paragraph("These later derivations extend the logistic thread. They are recorded separately from the earlier collection and its notation audit."),
+        *supplement_blocks(supplements[0], 1),
+        *supplement_blocks(supplements[1], 2),
+        heading("The logical step that supplies attraction"),
+        *equations(r"g(h)=h-K_\pm h^3+O(h^4),\qquad\frac{g(h)}h=1-K_\pm h^2+O(h^3)."),
+        paragraph("Because K± is positive, sufficiently small nonzero h retains its sign and decreases in absolute value. The cubic coefficient gives the attraction and the slow inverse-square-root rate. The paired matrix remains invertible; this is a local statement about the scalar return displacement."),
+        proof_link("logistic-quarter-turn", "Return to the earlier derivative and matrix identities"),
+    ]))
+    pages.append(page("later-connections", "Later connections and next steps", "S3–S4 · A proved comparison and a defined geometric model", [
+        *supplement_blocks(supplements[2], 3),
+        *supplement_blocks(supplements[3], 4),
+        heading("Next logical steps"),
+        {"type": "table", "headers": ["Target", "A concrete completion criterion"], "widths": [.25, .75], "padding": 6,
+         "rows": [["<b>Finite-scale comparison</b>", "Bound the relative error in the dyadic/zeta ratio at finite k, with explicit constants and a stated range."],
+                  ["<b>Geometric connection</b>", "Define a map from the cylinder model to the intended geometric object, then prove one preserved property or find a counterexample."],
+                  ["<b>Physical interpretation</b>", "Specify the physical variables and measurable quantity that a brane-collapse interpretation would represent."]]},
+        {"type": "link", "text": "Continue in the online board and repository connection map", "url": SITE + "/treasure-hunt/"},
+    ]))
+    return {
+        "title": data["title"], "subtitle": "",
+        "author": "EncapsulatorP", "date": data["date"],
+        "source_commit": data["audited_source_commit"],
+        "source_data": "proof-board-data.json", "audit_versions": data["versions"],
+        "review_basis": data["review_basis"], "audit_summary": data["audit_summary"],
+        "document_role": "Review and navigation; full proofs are linked separately.",
+        "pages": pages,
+    }
 
 
-MARKDOWN = """# Next treasures hunt
+@contextmanager
+def board_footer():
+    original = renderer.page_decoration
 
-A visual guide to the EncapsulatorP Pirate Chest. Edition: 23 November 2026.
+    def decoration(canvas, doc):
+        draw_string = canvas.drawString
 
-**Start:** [Treasure hunt](https://encapsulatorp.github.io/treasure-hunt/).
-**Plan:** [Pirates Plan](https://encapsulatorp.github.io/#pirates-plan).
-**Graph:** [Repository connections](https://encapsulatorp.github.io/#repo-interlinks).
+        def board_string(x, y, text, *args, **kwargs):
+            if text == "Logistic vanishing terms • EncapsulatorP":
+                text = "Valid proofs & surviving arguments • EncapsulatorP"
+            return draw_string(x, y, text, *args, **kwargs)
 
-## 1. Read the route
+        canvas.drawString = board_string
+        try:
+            original(canvas, doc)
+            if canvas.getPageNumber() == 1:
+                width, height = renderer.A4
+                renderer.accent_gradient(canvas, 0, height - 154, width, 91)
+        finally:
+            canvas.drawString = draw_string
 
-A small proof is a treasure. Follow the steps. Ask what survives.
-
-- Exact: a result with explicit assumptions and a written argument.
-- Conditional: the conclusion depends on a stated assumption.
-- Exploratory: a proposed route with a concrete target still to test.
-
-The guide is navigation; the individual notes contain the complete statements and proofs. The status labels make no claim of research novelty or formal proof-assistant certification.
-
-## 2. Follow the logistic arrows
-
-For f(x) = r*x*(1-x), at r = 1 + sqrt(6), the nontrivial two-cycle exchanges x-minus and x-plus. The paired derivative matrix satisfies C^2 = -I and C^4 = I. The compass picture uses rescaled coordinates for that linear model. The nonlinear fourth iterate is a degree-16 polynomial.
-
-[Open the quarter-turn proof](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf).
-
-![Static logistic proof diagram](assets/logistic-proof.png)
-
-## 3. Follow what vanishes
-
-At either two-cycle point p, the fourth-return displacement has the local expansion
-
-```text
-f^4(p+h) - (p+h) = -K*h^3 + O(h^4), K > 0.
-```
-
-The constant, linear and quadratic displacement terms vanish; a restoring cubic remains. The derivative of f^4 itself equals 1 at p. The paired matrix C has determinant 1 and rank 2, so it preserves area and loses no direction.
-
-The note also defines a small mathematical model: let g(h) = f^4(p-plus+h) - p-plus and apply Phi(theta,h) = (theta+omega modulo 2*pi, g(h)). The circle h=0 is invariant; a sufficiently small transverse distance tends to zero while angular motion survives. This is a local, asymptotic result.
-
-**Vanishing-brane target:** define the intended object and connect it to the explicit toy by a stated map or invariant. A physical brane interpretation has not been supplied.
-
-[Open the exact local lemma and scope](https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.pdf).
-
-## 4. Choose one proof island
-
-| Note | Scope |
-|---|---|
-| [Alternating towers](https://encapsulatorp.github.io/atlas/proofs/alternating-towers.pdf) | Proved convergence and classification for the defined alternating-sign system. |
-| [Logistic quarter-turn](https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf) | Exact local derivative result. |
-| [Logistic collapse and vanishing terms](https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.pdf) | Exact local cubic lemma; geometric or physical model still open. |
-| [Dyadic remainder](https://encapsulatorp.github.io/atlas/proofs/dyadic-remainder.pdf) | Proved bound along the specified path. |
-| [Prime polynomials](https://encapsulatorp.github.io/atlas/proofs/prime-polynomial-counts.pdf) | Exact finite counting identities. |
-| [Palindrome counting](https://encapsulatorp.github.io/atlas/proofs/palindrome-counting.pdf) | Exact count under a stated sampling model. |
-| [Two constructions of six](https://encapsulatorp.github.io/atlas/proofs/fractional-exponential-maps.pdf) | Exact formulas; limiting orbit means require more work. |
-| [Dimensions and fragments](https://encapsulatorp.github.io/atlas/proofs/dimensions-and-fragments.pdf) | Known foundations; incomplete fragments remain unresolved. |
-| [The Z(p) family](https://encapsulatorp.github.io/atlas/proofs/schanuel-zeta-family.pdf) | Conditional on complex Schanuel. |
-| [Proof review](https://encapsulatorp.github.io/atlas/proofs/proof-review.pdf) | Correctness, scope and novelty are separate questions. |
-
-## 5. Explore neighboring geometry
-
-### Hopf fibration
-
-Each colored point on the small sphere corresponds to a circle fiber in the three-sphere. The large shape projects those fibers into a three-dimensional ball. This description follows [Niles Johnson's creator explanation](https://nilesjohnson.net/hopf.html).
-
-![Hopf fibration reference](assets/treasure-hunt/hopf-fibration.png)
-
-Image: [Niles Johnson, Hopf Fibration](https://commons.wikimedia.org/wiki/File:Hopf_Fibration.png), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). User-supplied resized copy, preserved without further changes.
-
-### Sphere eversion
-
-A sphere turns inside out through smooth immersed surfaces. Self-intersections are allowed; tears, creases and pinch points are not. See [the creator's explanation and full video](https://commons.wikimedia.org/wiki/File:Thurston_Sphere_Eversion.webm).
-
-![Sphere-eversion frame](assets/treasure-hunt/sphere-eversion-poster.jpg)
-
-Frame: copyright 2022 Carsten Steger, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Extracted at 15 seconds and resized; the derivative keeps the same license.
-
-**Proposed bridge target:** write down a map from a stated logistic object; define its domain and output; prove one preserved quantity or exhibit a counterexample. These illustrations establish no logistic or physical-brane equivalence.
-
-## 6. Choose the next useful step
-
-1. **Now: polish one small theorem.** Deliver one statement, a full proof, reproducible checks and focused questions for external review. Start with the [alternating-tower note](https://encapsulatorp.github.io/atlas/proofs/alternating-towers.pdf).
-2. **Next: make the brane link precise.** Define the intended object and connect it to the explicit toy by a stated map or invariant. Follow the [Obstruction-Theory repository](https://github.com/EncapsulatorP/Obstruction-Theory).
-3. **Then: recover one Collatz bridge.** Deliver one falsifiable claim linking the delay embedding to a specified diagnostic, with its scope recorded. Follow the [Collatz-Rupert repository](https://github.com/EncapsulatorP/collatz_rupert_delay_embedding).
-
-Order by clarity and reuse. The [full Pirates Plan](https://encapsulatorp.github.io/#pirates-plan) carries the larger schedule, and the [repository graph](https://encapsulatorp.github.io/#repo-interlinks) records the connections.
-
-## Rebuild and media records
-
-Run `python3 atlas/build_treasure_hunt_guide.py`. The guide uses the existing DejaVu font families and mathematical text renderer. The logistic figure remains unchanged; precise equations and the determinant illustration are drawn from their definitions. Source media credits and hashes are in `atlas/assets/treasure-hunt/media-sources.json`.
-
-This PDF contains static figures. The website supplies animation and interaction.
-"""
+    renderer.page_decoration = decoration
+    try:
+        yield
+    finally:
+        renderer.page_decoration = original
 
 
-def main():
-    register_fonts()
-    out = BASE / "treasure-hunt-guide.pdf"
-    c = Canvas(str(out), pagesize=A4, pageCompression=1, invariant=1)
-    c.setTitle("Next treasures hunt - A visual Pirate Chest guide")
-    c.setAuthor("EncapsulatorP")
-    c.setSubject("Exact proof islands, conditional statements and exploratory bridges")
-    for page in (page_cover, page_logistic, page_vanishing, page_islands,
-                 page_geometry, page_targets):
-        page(c)
-    c.save()
-    (BASE / "treasure-hunt-guide.md").write_text(MARKDOWN, encoding="utf-8")
-    print(out)
+def expected_math(board: dict) -> list[str]:
+    sources = []
+    for p in board["pages"]:
+        for block in p["blocks"]:
+            if block["type"] == "eq":
+                latex = block["latex"]
+            elif block["type"] == "matrix":
+                latex = block.get("label", "") + r"\begin{pmatrix}" + r" \\ ".join(" & ".join(row) for row in block["cells"]) + r"\end{pmatrix}" + block.get("tail", "")
+            else:
+                continue
+            sources.append(r"\(" + " ".join(latex.strip().strip("$").split()) + r"\)")
+    return sources
+
+
+def main() -> None:
+    data = json.loads((BASE / "proof-board-data.json").read_text(encoding="utf-8"))
+    board = make_board(data)
+    with tempfile.TemporaryDirectory(prefix="proof-review-board-") as temp:
+        work = Path(temp)
+        pdf, markdown = work / "board.pdf", work / "board.md"
+        with board_footer():
+            renderer.build_pdf(board, pdf, asset_base=BASE)
+        reader = PdfReader(pdf)
+        if len(reader.pages) != len(board["pages"]):
+            raise ValueError(f"Review board overflow: {len(reader.pages)} rendered pages for {len(board['pages'])} planned pages")
+        text = "\n".join(p.extract_text() for p in reader.pages)
+        missing = [source for source in expected_math(board) if source not in text]
+        if missing:
+            raise ValueError(f"Math extraction lost {len(missing)} complete formula(s): {missing[0]}")
+        renderer.build_markdown(board, markdown)
+        (BASE / "proof-review-board.json").write_text(json.dumps(board, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        for stem in ("proof-review-board", "treasure-hunt-guide"):
+            shutil.copyfile(pdf, BASE / f"{stem}.pdf")
+            shutil.copyfile(markdown, BASE / f"{stem}.md")
+    print(f"Review board: {len(board['pages'])} pages; {len(expected_math(board))} complete semantic formulas.")
+    print(BASE / "proof-review-board.pdf")
+    print(BASE / "treasure-hunt-guide.pdf")
 
 
 if __name__ == "__main__":

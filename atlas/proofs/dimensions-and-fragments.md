@@ -4,8 +4,6 @@ A focused reading note from the Pirate Chest
 
 **Zolton / EncapsulatorP · with ChatGPT / 23 November 2026**
 
-Source commit: `cc3f20117eaead570db6077377a43a92c0bfc652`
-
 <a id="dimensions-and-fragments-orientation"></a>
 
 ## Dimensions and recovered fragments
@@ -28,9 +26,9 @@ Recover explicit definitions of T₀–T₃ and the intended connecting map. Sta
 
 ### Sources and related reading
 
-This note preserves the definitions and written derivation from the supplied mathematical fragments, reconstructed in the full collection. Its proof is given on the following page(s); no literature-priority claim is made.
+The following pages give the complete derivation from the stated definitions. The historical collection records the original fragments and argument.
 
-[Read the pinned collection source](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#dimensions-fragments)
+[Historical collection source · original edition](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#dimensions-fragments)
 
 [Return to the Treasure Chest](https://encapsulatorp.github.io/#buried-logistic-vanishing)
 

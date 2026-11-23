@@ -4,23 +4,21 @@ A focused reading note from the Pirate Chest
 
 **Zolton / EncapsulatorP · with ChatGPT / 23 November 2026**
 
-Source commit: `cc3f20117eaead570db6077377a43a92c0bfc652`
-
 <a id="dyadic-remainder-orientation"></a>
 
 ## A dyadic vanishing remainder
 
 *NOTE 03 · PROVED PATHWISE BOUND*
 
-The lacunary series f(x) = Σ x^(2ⁿ) obeys f(x) = x + f(x²). Along the specified dyadic path toward 1, subtracting k and a convergent constant leaves an explicit geometric tail.
+The lacunary series f(x) = Σ x^(2^n), where 2^n means 2 raised to n, obeys f(x) = x + f(x²). Along the specified dyadic path toward 1, subtracting k and a convergent constant leaves an explicit tail.
 
 $$
 0\le f(e^{-2^{-k}})-k-C\le2^{-k}
 $$
 
-> **Proved pathwise bound (exact).** The proof concerns xₖ = exp(−2⁻ᵏ). It does not establish the same additive constant for every boundary approach or the arithmetic nature of f(exp(−1)).
+> **Proved pathwise bound (exact).** The proof concerns x_k = exp(−2^(−k)). Its additive constant belongs to that path; the arithmetic classification of f(exp(−1)) is a separate question.
 
-The double exponent 2ⁿ is essential. One index shift and elementary exponential bounds give the dyadic argument. The companion collapse note now proves Rₖ/(ζ(k) − 1) → 1 as integer k → ∞: this leading-ratio connection is established.
+An index shift and elementary exponential bounds give the dyadic argument. A later companion proof establishes R_k/(ζ(k) − 1) → 1 as integer k → ∞; it is an asymptotic comparison of two separately defined sequences.
 
 ### One concrete next step
 
@@ -28,9 +26,9 @@ Quantify the finite-k relative error beyond the proved leading-ratio limit, or d
 
 ### Sources and related reading
 
-This note preserves the definitions and written derivation from the supplied mathematical fragments, reconstructed in the full collection. Its proof is given on the following page(s); no literature-priority claim is made.
+The following pages give the complete derivation from the stated definitions. The historical collection records the original fragments and argument.
 
-[Read the pinned collection source](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#mahler-remainder)
+[Historical collection source · original edition](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#mahler-remainder)
 
 [Established dyadic/zeta ratio · companion proof, page 6](https://encapsulatorp.github.io/atlas/proofs/logistic-collapse-vanishing.pdf#page=6)
 
@@ -42,13 +40,13 @@ This note preserves the definitions and written derivation from the supplied mat
 
 *01 · LACUNARY SERIES; ELEMENTARY PROOF*
 
-The functional relation fixes the intended double exponent in the pasted series:
+Define the lacunary series using the exponent 2^n, meaning 2 raised to n:
 
 $$
 f(x)=\sum_{n=0}^{\infty}x^{2^n},\qquad |x|<1,\qquad f(x)=x+f(x^2).
 $$
 
-The exponent is 2<sup>n</sup>, not 2n. Absolute convergence follows, for example, by comparing |x|<sup>2ⁿ</sup> with |x|<sup>n+1</sup>. The functional equation then follows by an index shift.
+For every integer n ≥ 0, 2^n ≥ n + 1. When |x| < 1, comparison with the geometric series Σ |x|^(n+1) proves absolute convergence. An index shift then proves the functional equation.
 
 $$
 x_k=e^{-2^{-k}},\quad k=0,1,2,\ldots,\qquad x_k^2=x_{k-1}\quad(k\ge1).
@@ -66,7 +64,7 @@ $$
 C=f(e^{-1})+\sum_{j=1}^{\infty}(e^{-2^{-j}}-1).
 $$
 
-Its second series converges absolutely because 0 ≤ 1 − e<sup>−t</sup> ≤ t for t ≥ 0. Subtracting the two expressions gives the exact tail
+The second series converges absolutely because 0 ≤ 1 − exp(−t) ≤ t for t ≥ 0. Subtraction gives the exact tail
 
 $$
 R_k:=f(x_k)-k-C=\sum_{j=k+1}^{\infty}(1-e^{-2^{-j}}).
@@ -76,14 +74,14 @@ $$
 0\le R_k\le\sum_{j=k+1}^{\infty}2^{-j}=2^{-k}.
 $$
 
-A slightly sharper estimate follows from t − t²/2 ≤ 1 − e<sup>−t</sup>:
+The inequality t − t²/2 ≤ 1 − exp(−t) gives the sharper lower bound:
 
 $$
 2^{-k}-\frac{4^{-k}}6\le R_k\le2^{-k}.
 $$
 
-Numerically, f(e<sup>−1</sup>) ≈ 0.52186593845987908905 and C ≈ −0.33274738243289922501. These decimals illustrate the proved identities; they are not formal interval certificates.
+Numerically, f(exp(−1)) ≈ 0.52186593845987908905 and C ≈ −0.33274738243289922501. These decimals illustrate the exact identities; the inequalities above supply the proof.
 
-> **Scope of the limit (exact).** The bound proves f(xₖ) = k + C + O(2<sup>−k</sup>) along this specified dyadic approach to 1. It supplies no universal additive constant for every approach, and no algebraicity or transcendence classification of f(e<sup>−1</sup>).
+> **Scope of the limit (exact).** Along x_k = exp(−2^(−k)), the remainder bound gives f(x_k) = k + C + O(2^(−k)). The constant C belongs to this specified path. The arithmetic classification of f(exp(−1)) remains a separate question.
 
-The argument e<sup>−1</sup> is transcendental. A Mahler-value theorem whose hypothesis requires an algebraic input cannot automatically be applied to it.
+The input exp(−1) is transcendental. A Mahler-value theorem requiring algebraic input therefore needs different hypotheses before it can apply here.

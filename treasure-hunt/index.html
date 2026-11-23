@@ -1,204 +1,405 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#FF5A00">
-  <meta name="description" content="A visual treasure hunt through small mathematical proofs. Explore logistic vanishing terms, alternating towers, dyadic remainders and the next questions, one sound step at a time.">
-  <title>Little proofs, wider worlds · EncapsulatorP Pirate Chest</title>
-  <link rel="icon" href="../assets/favicon-32.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="hunt.css?v=20261123-2">
-  <script src="hunt.js?v=20261123-2" defer></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f56a18">
+<meta name="description" content="A mathematical review board: nine PDF audit findings, fourteen statements with hypotheses, and the valid proofs and conditional arguments. Logistic vanishing, alternating towers, dyadic remainders and later additions.">
+<title>Valid proofs &amp; surviving arguments · EncapsulatorP</title>
+<link rel="icon" href="../assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="hunt.css?v=20261123-board"><script src="hunt.js?v=20261123-board" defer></script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to the treasure hunt</a>
-<header class="site-nav">
-  <a class="brand" href="../#atlas"><img src="../assets/logo-encapsulatorp-96.png" width="30" height="30" alt=""><span>Encapsulator<b>P</b></span></a>
-  <nav aria-label="Treasure hunt navigation">
-    <a href="../#pirate-chest">Pirate Chest</a>
-    <a href="#trails">The trails</a>
-    <a href="#proof-library">Proof library</a>
-    <a href="../#pirates-plan">Pirates Plan →</a>
-  </nav>
-</header>
+<a class="skip" href="#main">Skip to the proof review</a>
+<header class="site-nav"><a class="brand" href="../#pirate-chest"><img src="../assets/logo-encapsulatorp-96.png" width="30" height="30" alt=""><span>Encapsulator<b>P</b><small>THE PIRATE CHEST</small></span></a>
+<nav aria-label="Proof review navigation"><a href="#revision-audit">A · Audit</a><a href="#proved-statements">B · Statements</a><a href="#proof-board">C · Board</a><a href="#proof-library">PDF library</a><a href="../#pirates-plan">Pirates Plan →</a></nav></header>
 <main id="main">
-  <section class="hero shell" aria-labelledby="hero-title">
-    <div class="hero-copy">
-      <p class="eyebrow">The Pirate Chest / a new expedition</p>
-      <h1 id="hero-title">Little proofs.<br><em>Wider worlds.</em></h1>
-      <p class="hero-lead">Follow a beautiful idea.<br>Find the step that makes it true.</p>
-      <p class="hero-intro">A treasure hunt through turning arrows, shrinking remainders and surprising shapes. Start with a picture. Open the proof. Choose the next question.</p>
-      <div class="actions"><a class="button primary" href="#logistic-lab">Follow the orange arrow <span aria-hidden="true">→</span></a><a class="button quiet" href="../atlas/treasure-hunt-guide.pdf">Take the visual guide · PDF</a></div>
-      <p class="edition">23 November 2026 · One result per reading note</p>
+<section class="hero shell" aria-labelledby="hero-title">
+  <div class="hero-copy"><p class="eyebrow">Mathematical notes / review edition · 23 November 2026</p>
+    <h1 id="hero-title">Valid proofs &amp;<br><span>surviving arguments.</span></h1>
+    <p class="hero-lead">The statement. Its hypotheses. The argument that supports it.</p>
+    <p class="hero-intro">A checked record of the collected mathematics: the PDF audit, precise results, and the conclusions that survive review. Later derivations and open connections have their own section.</p>
+    <div class="actions"><a class="button primary" href="../atlas/treasure-hunt-guide.pdf">Read the review · PDF <span aria-hidden="true">→</span></a><a class="button secondary" href="../atlas/proof-review-board.md">Readable math source</a></div>
+  </div>
+  <aside class="hero-math" aria-label="Exact logistic quarter-turn identity">
+    <div class="math-plate"><p class="micro-label">One of the exact results</p><div class="hero-equation">C<sup>2</sup> = −I<br>C<sup>4</sup> = I</div><p>The paired derivative at<br><strong>r<sub>*</sub> = 1 + √6</strong></p>
+    <svg viewBox="0 0 220 96" role="img" aria-label="A vector and its negative at zero, two and four paired-matrix steps"><path d="M35 48H185" stroke="#193d2b" stroke-width="2"/><path d="M178 42L185 48L178 54" fill="none" stroke="#193d2b" stroke-width="2"/><circle cx="35" cy="48" r="15" fill="#f56622"/><circle cx="110" cy="48" r="15" fill="#f6ca3e"/><circle cx="185" cy="48" r="15" fill="#278446"/><path d="M27 48H43M35 40V56" stroke="#19271e" stroke-width="2"/><path d="M102 48H118" stroke="#19271e" stroke-width="2"/><path d="M177 48H193M185 40V56" stroke="white" stroke-width="2"/><g fill="#284a31" font-family="monospace" font-size="10" text-anchor="middle"><text x="35" y="83">0 steps</text><text x="110" y="83">2 steps</text><text x="185" y="83">4 steps</text></g></svg><p class="hero-step-caption">0 → 2 → 4 paired-matrix steps</p>
+    <a href="#logistic-lab">Explore the linear response <span aria-hidden="true">↓</span></a></div>
+  </aside>
+</section>
+<nav class="board-index shell" aria-label="Review sections">
+  <a href="#revision-audit"><span>A</span><div><strong>PDF audit</strong><small>9 passages · print and extraction</small></div><b aria-hidden="true">↓</b></a>
+  <a href="#proved-statements"><span>B</span><div><strong>Valid statements</strong><small>14 results · explicit hypotheses</small></div><b aria-hidden="true">↓</b></a>
+  <a href="#proof-board"><span>C</span><div><strong>Surviving arguments</strong><small>10 groups · direct proof links</small></div><b aria-hidden="true">↓</b></a>
+</nav>
+
+<section id="revision-audit" class="shell section board-section" aria-labelledby="audit-title">
+  <div class="section-heading"><div><p class="eyebrow">A / Document audit</p><h2 id="audit-title">What the PDF actually says</h2></div><p>The correct formulas are retained below. Inspection distinguishes printed notation, text-extraction damage, and the coverage of an earlier excerpt.</p></div>
+  <div class="audit-summary"><strong>The inspected print and source already contain the correct notation.</strong><p>The confirmed defect is semantic loss when mathematics is extracted: nested powers can flatten and derivative marks can be misread. The prime-polynomial section is present in the complete PDFs. The earlier review’s exact file or excerpt is unknown.</p></div>
+  <div class="table-wrap"><table class="review-table audit-table"><caption>Nine reported passages, checked against the complete earlier editions</caption><thead><tr><th scope="col">Passage &amp; earlier pages</th><th scope="col">Correct expression</th><th scope="col">Inspection finding</th></tr></thead><tbody>
+  <!-- AUDIT_ROWS_START -->
+<tr id="audit-critical-point">
+          <th scope="row"><span class="row-index">A01</span>Critical point and derivative<small>Earlier p. 4 · illustrated p. 5</small></th>
+          <td data-label="Correct expression"><div class="math-expression">f<sub>r</sub>(½) = r/4 &nbsp; · &nbsp; f′<sub>r</sub>(½) = 0</div></td>
+          <td data-label="Inspection finding"><span class="status review">Source and print correct</span><p>The full PDF already prints the derivative prime. The reported statement without it is not reproduced.</p></td>
+        </tr>
+<tr id="audit-finite-time-index">
+          <th scope="row"><span class="row-index">A02</span>Exactly N terms<small>Earlier p. 6 · illustrated p. 7</small></th>
+          <td data-label="Correct expression"><div class="math-expression">λ<sub>a,N</sub> = (1/N) ∑<sub>j=0</sub><sup>N−1</sup> log|T′<sub>a</sub>(y<sub>j</sub><sup>a</sup>)|</div></td>
+          <td data-label="Inspection finding"><span class="status review">Source and print correct</span><p>Both upper limits already read N−1. Extraction fragments the equation, so the revision preserves a complete readable formula.</p></td>
+        </tr>
+<tr id="audit-palindrome-parity">
+          <th scope="row"><span class="row-index">A03</span>Ceiling and floor<small>Earlier p. 11 · illustrated p. 12</small></th>
+          <td data-label="Correct expression"><div class="math-expression">P = q<sup>⌈n/2⌉</sup>/q<sup>n</sup> = q<sup>−⌊n/2⌋</sup></div></td>
+          <td data-label="Inspection finding"><span class="status review">Source and print correct</span><p>The numerator already uses ceiling and the final exponent uses floor. The formula covers odd and even lengths.</p></td>
+        </tr>
+<tr id="audit-dyadic-exponent">
+          <th scope="row"><span class="row-index">A04</span>The nested exponent<small>Earlier p. 10 · illustrated p. 11</small></th>
+          <td data-label="Correct expression"><div class="math-expression">f(x) = ∑<sub>n≥0</sub> x<sup>2<sup>n</sup></sup>, &nbsp; |x| &lt; 1</div></td>
+          <td data-label="Inspection finding"><span class="status extraction">Extraction loss confirmed</span><p>The printed exponent is 2^n. Copying the PDF can flatten it to 2n; this loss of mathematical structure was reproduced.</p></td>
+        </tr>
+<tr id="audit-pi-proposition">
+          <th scope="row"><span class="row-index">A05</span>π in the proposition<small>Earlier p. 8 · illustrated p. 9</small></th>
+          <td data-label="Correct expression"><div class="math-expression">π, Z(p<sub>1</sub>), …, Z(p<sub>k</sub>)</div></td>
+          <td data-label="Inspection finding"><span class="status review">Source and print correct</span><p>Both the source and inspected PDF say π. The reported n substitution is absent from the inspected versions.</p></td>
+        </tr>
+<tr id="audit-complex-input">
+          <th scope="row"><span class="row-index">A06</span>The input iπ<small>Earlier p. 9 · illustrated p. 10</small></th>
+          <td data-label="Correct expression"><div class="math-expression">α<sub>0</sub> = iπ</div></td>
+          <td data-label="Inspection finding"><span class="status review">Source and print correct</span><p>The coefficient sentence and assumption box already say iπ. These complex inputs belong to the conditional argument.</p></td>
+        </tr>
+<tr id="audit-bernoulli-coefficient">
+          <th scope="row"><span class="row-index">A07</span>One coefficient c<small>Earlier p. 8 · illustrated p. 9</small></th>
+          <td data-label="Correct expression"><div class="math-expression">c<sub>2m+1</sub> = (−1)<sup>m+1</sup>2<sup>2m−1</sup>B<sub>2m</sub> / (2m+1)!</div></td>
+          <td data-label="Inspection finding"><span class="status review">Source and print correct</span><p>The printed letter is lowercase c. The signed Bernoulli expression equals the same positive rational coefficient.</p></td>
+        </tr>
+<tr id="audit-continuum-symbol">
+          <th scope="row"><span class="row-index">A08</span>The continuum exponent<small>Earlier p. 7 · illustrated p. 8</small></th>
+          <td data-label="Correct expression"><div class="math-expression">|ℝ<sup>5</sup>| = |ℝ<sup>6</sup>| = |ℂ<sup>3</sup>| = |ℝ| = 2<sup>ℵ<sub>0</sub></sup></div></td>
+          <td data-label="Inspection finding"><span class="status review">Source and print correct</span><p>The source and rendered exponent use aleph-zero. The reported N-zero substitution is not reproduced.</p></td>
+        </tr>
+<tr id="audit-prime-section">
+          <th scope="row"><span class="row-index">A09</span>The prime-polynomial section<small>Earlier p. 14 · illustrated p. 15</small></th>
+          <td data-label="Correct expression"><div class="math-expression">G(N) = [z<sup>N</sup>]P<sub>N</sub>(z)<sup>2</sup> &nbsp; · &nbsp; U = (G+D)/2</div></td>
+          <td data-label="Inspection finding"><span class="status review">Present in full PDFs</span><p>The full section is present on page 14 of the 16-page edition and page 15 of the illustrated edition. The exact excerpt received by the earlier reviewer is unknown.</p></td>
+        </tr>
+      <!-- AUDIT_ROWS_END -->
+  </tbody></table></div>
+  <details class="provenance"><summary>Edition and source identification</summary><p>The reported topic page numbers match the 16-page electric-orange edition. An illustration inserted after its cover shifts later topics forward one page in the 17-page edition. These page references identify the inspected earlier editions, not this revised review.</p><p>Reviewed starting source: <a href="https://github.com/EncapsulatorP/EncapsulatorP.github.io/tree/f165f366bfd416c92042f56139ece377bb4b42d8">f165f366bfd4</a>. <a href="../atlas/proof-board-data.json">Structured review and archived PDF checksums</a>.</p></details>
+</section>
+
+<section id="proved-statements" class="section statements-section" aria-labelledby="statements-title"><div class="shell">
+  <div class="section-heading"><div><p class="eyebrow">B / Statements with hypotheses</p><h2 id="statements-title">What is established</h2></div><p>Thirteen exact statements and one conditional deduction. Read each result with its domain; open the argument for the supporting step and full proof.</p></div>
+  <div class="status-key"><span class="status exact">Exact · stated hypotheses</span><span class="status conditional">Conditional · full complex Schanuel</span><a href="#later-additions">Later cubic, rate and model additions ↓</a></div>
+  <div class="table-wrap"><table class="review-table statement-table"><caption>The core arguments in the collected notes</caption><thead><tr><th scope="col">Result</th><th scope="col">Hypotheses</th><th scope="col">Statement and argument</th></tr></thead><tbody>
+  <!-- STATEMENT_ROWS_START -->
+<tr id="statement-logistic-cycle">
+          <th scope="row"><span class="row-index">B01</span>Logistic two-cycle<span class="status exact">Exact statement</span></th>
+          <td data-label="Hypotheses"><p>Real r &gt; 3; additionally r ≤ 4 for the conventional invariant interval [0,1].</p></td>
+          <td data-label="Statement and argument"><p>The second-iterate factorization gives two distinct nontrivial cycle points x₊ and x₋, exchanged by fᵣ. Their derivatives multiply to μ(r) = 4 + 2r − r².</p><div class="math-expression">x<sub>±</sub> = [r+1 ± √((r−3)(r+1))] / (2r)</div><details class="argument-detail"><summary>Argument and qualification</summary><p>The factorization, exchange identities and derivative formulas follow by polynomial algebra.</p><div class="inline-links"><a href="../atlas/proofs/logistic-quarter-turn.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/logistic-quarter-turn.md">Readable source</a></div></details></td>
+        </tr>
+<tr id="statement-logistic-quarter-turn">
+          <th scope="row"><span class="row-index">B02</span>Paired quarter-turn matrix<span class="status exact">Exact statement</span></th>
+          <td data-label="Hypotheses"><p>r* = 1 + √6, with C = [[0, d₋], [d₊, 0]].</p></td>
+          <td data-label="Statement and argument"><p>At μ(r*) = −1, C² = −I and C⁴ = I. Rescaling by S = diag(√a, 1/√a), a = √2 − 1, gives S⁻¹CS = [[0,1], [−1,0]].</p><div class="math-expression">C<sub>*</sub><sup>2</sup> = −I &nbsp; · &nbsp; C<sub>*</sub><sup>4</sup> = I</div><details class="argument-detail"><summary>Argument and qualification</summary><p>C is the explicitly defined paired linear matrix. It has determinant 1 and rank 2; it is not Euclidean orthogonal in the original coordinates.</p><div class="inline-links"><a href="../atlas/proofs/logistic-quarter-turn.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/logistic-quarter-turn.md">Readable source</a></div></details></td>
+        </tr>
+<tr id="statement-logistic-return-derivative">
+          <th scope="row"><span class="row-index">B03</span>Vanishing derivative of the return displacement<span class="status exact">Exact statement</span></th>
+          <td data-label="Hypotheses"><p>At either point p₊ or p₋ of the r* = 1 + √6 two-cycle.</p></td>
+          <td data-label="Statement and argument"><p>The second-return derivative is −1, the fourth-return derivative is 1, and the derivative of f⁴ − id is zero at each cycle point.</p><div class="math-expression">(f<sup>∘4</sup> − id)′(p<sub>±</sub>) = 0</div><details class="argument-detail"><summary>Argument and qualification</summary><p>These are local derivative identities. The critical point is a separate point: fᵣ′(1/2) = 0 and fᵣ(1/2) = r/4.</p><div class="inline-links"><a href="../atlas/proofs/logistic-quarter-turn.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/logistic-quarter-turn.md">Readable source</a></div></details></td>
+        </tr>
+<tr id="statement-cycle-lyapunov">
+          <th scope="row"><span class="row-index">B04</span>Zero cycle Lyapunov exponent<span class="status exact">Exact statement</span></th>
+          <td data-label="Hypotheses"><p>The exact two-cycle at r* = 1 + √6; exponent per original logistic update.</p></td>
+          <td data-label="Statement and argument"><p>The cycle Lyapunov exponent equals one half of log |d₊d₋| and is exactly zero.</p><div class="math-expression">λ<sub>cycle</sub> = ½ log|d<sub>+</sub>d<sub>−</sub>| = 0</div><details class="argument-detail"><summary>Argument and qualification</summary><p>The zero exponent alone leaves nonlinear stability undecided. The separate later cubic argument establishes local attraction.</p><div class="inline-links"><a href="../atlas/proofs/logistic-quarter-turn.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/logistic-quarter-turn.md">Readable source</a></div></details></td>
+        </tr>
+<tr id="statement-fractional-exponential-averages">
+          <th scope="row"><span class="row-index">B05</span>Two constructions of six<span class="status exact">Exact statement</span></th>
+          <td data-label="Hypotheses"><p>Tadd(y) = frac(2·3ʸ), Tmul(y) = frac(6ʸ), y ∈ [0,1), N ≥ 1; orbit segments with the stated branch derivatives.</p></td>
+          <td data-label="Statement and argument"><p>Each finite-time average uses exactly N terms, indexed 0 through N−1. The branch log derivatives are affine functions of y, so their averages and difference are exact functions of the respective orbit means.</p><div class="math-expression">Δλ<sub>N</sub> = μ<sub>mul,N</sub> log 6 − μ<sub>add,N</sub> log 3 + log(log 6 / log 3) − log 2</div><details class="argument-detail"><summary>Argument and qualification</summary><p>Ordinary derivatives fail at fraction-part jumps; the source states the branch and endpoint conventions. Infinite-time formulas require the orbit means to converge. No common invariant measure is assumed.</p><div class="inline-links"><a href="../atlas/proofs/fractional-exponential-maps.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/fractional-exponential-maps.md">Readable source</a></div></details></td>
+        </tr>
+<tr id="statement-dimension-cardinality">
+          <th scope="row"><span class="row-index">B06</span>Dimension and cardinality<span class="status exact">Exact statement</span></th>
+          <td data-label="Hypotheses"><p>Finite-dimensional vector spaces over the indicated scalar fields; cardinality of their underlying sets.</p></td>
+          <td data-label="Statement and argument"><p>R³ × R² has real dimension 5; R³ ⊗R R² has real dimension 6; C³ has real dimension 6 and complex dimension 3. All three underlying sets have cardinality 2^ℵ₀.</p><div class="math-expression">dim<sub>ℝ</sub>(ℝ<sup>3</sup> × ℝ<sup>2</sup>) = 5 &nbsp; · &nbsp; dim<sub>ℝ</sub>(ℝ<sup>3</sup> ⊗<sub>ℝ</sub> ℝ<sup>2</sup>) = 6</div><details class="argument-detail"><summary>Argument and qualification</summary><p>The product, tensor product, scalar field and set cardinality specify different mathematical questions.</p><div class="inline-links"><a href="../atlas/proofs/dimensions-and-fragments.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/dimensions-and-fragments.md">Readable source</a></div></details></td>
+        </tr>
+<tr id="statement-cubic-and-odd-step">
+          <th scope="row"><span class="row-index">B07</span>Cubic factorization and odd-step conventions<span class="status exact">Exact statement</span></th>
+          <td data-label="Hypotheses"><p>Complex z; odd positive integer n for the iteration conventions.</p></td>
+          <td data-label="Statement and argument"><p>z³ − 1 = (z − 1)(z² + z + 1). The expressions 3n + 1 and (3n + 1)/2 denote distinct odd-step conventions; the latter includes one division by two.</p><div class="math-expression">z<sup>3</sup> − 1 = (z−1)(z<sup>2</sup>+z+1)</div><details class="argument-detail"><summary>Argument and qualification</summary><p>The full odd-to-odd step removes all factors of two. A connection from these formulas to the logistic matrix still needs an explicit map. T₀–T₃ remain undefined archival labels.</p><div class="inline-links"><a href="../atlas/proofs/dimensions-and-fragments.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/dimensions-and-fragments.md">Readable source</a></div></details></td>
+        </tr>
+<tr id="statement-zeta-reduction">
+          <th scope="row"><span class="row-index">B08</span>Exact reduction of Z(p)<span class="status exact">Exact statement</span></th>
+          <td data-label="Hypotheses"><p>Odd integers p ≥ 3; primality is not required.</p></td>
+          <td data-label="Statement and argument"><p>Euler’s even-zeta evaluation gives Z(p) = 1 + exp(cₚπᵖ) with positive rational cₚ = 2^(p−2)|Bₚ₋₁|/p!. The signed Bernoulli formula gives the same coefficient.</p><div class="math-expression">Z(p) = 1 + exp(c<sub>p</sub>π<sup>p</sup>), &nbsp; c<sub>p</sub> ∈ ℚ<sub>&gt;0</sub></div><details class="argument-detail"><summary>Argument and qualification</summary><p>Lowercase c denotes the same coefficient throughout. The p = 2 definition encounters the pole at ζ(1).</p><div class="inline-links"><a href="../atlas/proofs/schanuel-zeta-family.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/schanuel-zeta-family.md">Readable source</a></div></details></td>
+        </tr>
+<tr id="statement-schanuel-independence">
+          <th scope="row"><span class="row-index">B09</span>Conditional algebraic independence<span class="status conditional">Conditional deduction</span></th>
+          <td data-label="Hypotheses"><p>Assume full complex Schanuel; p₁,…,pₖ are pairwise distinct odd integers ≥ 3.</p></td>
+          <td data-label="Statement and argument"><p>The tuple π, Z(p₁), …, Z(pₖ) is algebraically independent over Q. Apply Schanuel to iπ and the real inputs cₚⱼπᵖⱼ, then compare transcendence degrees by field containment.</p><div class="math-expression">π, Z(p<sub>1</sub>), …, Z(p<sub>k</sub>) &nbsp; algebraically independent over ℚ</div><details class="argument-detail"><summary>Argument and qualification</summary><p>The imaginary part isolates iπ in a rational linear relation; transcendence of π handles the distinct real powers. Adjoining i is algebraic. This proof uses the complex form of the assumption.</p><div class="inline-links"><a href="../atlas/proofs/schanuel-zeta-family.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/schanuel-zeta-family.md">Readable source</a></div></details></td>
+        </tr>
+<tr id="statement-dyadic-remainder">
+          <th scope="row"><span class="row-index">B10</span>Dyadic series and vanishing remainder<span class="status exact">Exact statement</span></th>
+          <td data-label="Hypotheses"><p>f(x) = Σₙ≥₀ x^(2^n), |x| &lt; 1; xₖ = exp(−2^(−k)), integer k ≥ 0.</p></td>
+          <td data-label="Statement and argument"><p>The functional equation f(x) = x + f(x²) gives f(xₖ) = k + C + Rₖ. The explicit tail satisfies 2^(−k) − 4^(−k)/6 ≤ Rₖ ≤ 2^(−k).</p><div class="math-expression">2<sup>−k</sup> − 4<sup>−k</sup>/6 ≤ R<sub>k</sub> ≤ 2<sup>−k</sup></div><details class="argument-detail"><summary>Argument and qualification</summary><p>Absolute convergence, an index shift and t − t²/2 ≤ 1 − e^(−t) ≤ t give the proof. The constant belongs to this specified dyadic path.</p><div class="inline-links"><a href="../atlas/proofs/dyadic-remainder.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/dyadic-remainder.md">Readable source</a></div></details></td>
+        </tr>
+<tr id="statement-palindrome-counting">
+          <th scope="row"><span class="row-index">B11</span>Ordinary palindrome count<span class="status exact">Exact statement</span></th>
+          <td data-label="Hypotheses"><p>Independent uniform symbols; alphabet size integer q ≥ 2; string length integer n ≥ 1.</p></td>
+          <td data-label="Statement and argument"><p>There are q^ceil(n/2) palindromes among qⁿ strings, so the probability is q^(−floor(n/2)). The q = 4, n = 40 example is exactly 2^(−40).</p><div class="math-expression">P = q<sup>−⌊n/2⌋</sup> &nbsp; · &nbsp; q = 4, n = 40 ⇒ P = 2<sup>−40</sup></div><details class="argument-detail"><summary>Argument and qualification</summary><p>The formula includes odd lengths. For reverse complementation with a fixed-point-free complement pairing, odd lengths are impossible and even lengths have probability q^(−n/2).</p><div class="inline-links"><a href="../atlas/proofs/palindrome-counting.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/palindrome-counting.md">Readable source</a></div></details></td>
+        </tr>
+<tr id="statement-tower-convergence">
+          <th scope="row"><span class="row-index">B12</span>Global convergence of the alternating towers<span class="status exact">Exact statement</span></th>
+          <td data-label="Hypotheses"><p>Real c &gt; 1, L = log c; v₀ ≥ 1; u = c^(−v), v = cᵘ.</p></td>
+          <td data-label="Statement and argument"><p>F_L(v) = exp(L exp(−Lv)) maps [1,∞) into I = [1, exp(1/e)] and is a contraction there with uniform bound q = 4 exp(1/e − 2) &lt; 1. The solution is unique and every stated initial value converges.</p><div class="math-expression">|F′<sub>L</sub>(v)| ≤ q = 4e<sup>1/e−2</sup> &lt; 1</div><details class="argument-detail"><summary>Argument and qualification</summary><p>Banach’s theorem proves convergence and uniqueness for this explicitly defined alternating-sign system. The residual estimate is an exact-arithmetic statement.</p><div class="inline-links"><a href="../atlas/proofs/alternating-towers.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/alternating-towers.md">Readable source</a></div></details></td>
+        </tr>
+<tr id="statement-tower-envelope">
+          <th scope="row"><span class="row-index">B13</span>Sharp height and number of bases<span class="status exact">Exact statement</span></th>
+          <td data-label="Hypotheses"><p>The preceding alternating system, c &gt; 1.</p></td>
+          <td data-label="Statement and argument"><p>The maximum upper phase is vmax = exp(W₀(1/e)), attained at cpeak = exp(1/vmax). Every height strictly between 1 and vmax has exactly two finite bases; vmax has one, and heights above vmax or equal to 1 have none.</p><div class="math-expression">v<sub>max</sub> = exp(W<sub>0</sub>(1/e)) &nbsp; · &nbsp; c<sub>peak</sub> = exp(1/v<sub>max</sub>)</div><details class="argument-detail"><summary>Argument and qualification</summary><p>Strict increase of v log v and the two branches of t exp(−t) give the complete classification. cpeak names the maximizing base, not a maximum allowed base.</p><div class="inline-links"><a href="../atlas/proofs/alternating-towers.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/alternating-towers.md">Readable source</a></div></details></td>
+        </tr>
+<tr id="statement-prime-polynomial-counts">
+          <th scope="row"><span class="row-index">B14</span>Finite prime-polynomial counting<span class="status exact">Exact statement</span></th>
+          <td data-label="Hypotheses"><p>P_X(z) = Σprime p≤X zᵖ, integer X ≥ 2; integer N ≥ 4; formal finite coefficient extraction.</p></td>
+          <td data-label="Statement and argument"><p>[zᴺ]P_N(z)² counts ordered prime pairs summing to N. Adding the diagonal indicator and dividing by two counts unordered pairs. [z²]P_(X+2)(z)P_X(z⁻¹) counts prime pairs p,p+2 with p ≤ X.</p><div class="math-expression">G = [z<sup>N</sup>]P<sub>N</sub><sup>2</sup> &nbsp; · &nbsp; T = [z<sup>2</sup>]P<sub>X+2</sub>(z)P<sub>X</sub>(z<sup>−1</sup>)</div><details class="argument-detail"><summary>Argument and qualification</summary><p>D(N) = 1 exactly when N/2 is an integer prime. These are direct coefficient identities; the full argument is present in its standalone note.</p><div class="inline-links"><a href="../atlas/proofs/prime-polynomial-counts.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/prime-polynomial-counts.md">Readable source</a></div></details></td>
+        </tr>
+      <!-- STATEMENT_ROWS_END -->
+  </tbody></table></div>
+</div></section>
+
+<section id="proof-board" class="shell section" aria-labelledby="board-title">
+  <div class="section-heading"><div><p class="eyebrow">C / Final proof board</p><h2 id="board-title">The surviving arguments</h2></div><p>Grouped conclusions from the review. Each card states what holds, where it holds, and where to read the complete argument.</p></div>
+  <div class="verdict-grid">
+  <!-- PROOF_BOARD_START -->
+<article class="verdict-card" id="board-logistic-algebra">
+          <div class="verdict-top"><span class="row-index">C01</span><span class="status exact">Exact · written argument</span></div>
+          <h3>Logistic algebra and paired quarter-turn</h3><p class="verdict-statement">The factorization, two-cycle exchange, multiplier, matrix conjugacy and return-derivative identities are valid.</p>
+          <dl><dt>Domain</dt><dd>Real r &gt; 3; quarter-turn at r* = 1 + √6.</dd><dt>Scope</dt><dd>The matrix and scalar return identities refer to specified objects and points.</dd></dl>
+          <div class="inline-links"><a href="../atlas/proofs/logistic-quarter-turn.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/logistic-quarter-turn.md">Readable source</a></div>
+        </article>
+<article class="verdict-card" id="board-cycle-exponent">
+          <div class="verdict-top"><span class="row-index">C02</span><span class="status exact">Exact · written argument</span></div>
+          <h3>Cycle Lyapunov exponent</h3><p class="verdict-statement">The cycle exponent is zero.</p>
+          <dl><dt>Domain</dt><dd>The exact r* two-cycle.</dd><dt>Scope</dt><dd>Nonlinear attraction is supplied by the separate later cubic proof.</dd></dl>
+          <div class="inline-links"><a href="../atlas/proofs/logistic-quarter-turn.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/logistic-quarter-turn.md">Readable source</a></div>
+        </article>
+<article class="verdict-card" id="board-six-maps">
+          <div class="verdict-top"><span class="row-index">C03</span><span class="status exact">Exact · written argument</span></div>
+          <h3>Two constructions of six</h3><p class="verdict-statement">The finite-time averages and their difference are exact with N terms.</p>
+          <dl><dt>Domain</dt><dd>Finite branch orbits of frac(2·3ʸ) and frac(6ʸ).</dd><dt>Scope</dt><dd>Infinite-time comparisons require limiting orbit means; a common measure or conjugacy is not part of this result.</dd></dl>
+          <div class="inline-links"><a href="../atlas/proofs/fractional-exponential-maps.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/fractional-exponential-maps.md">Readable source</a></div>
+        </article>
+<article class="verdict-card" id="board-dimensions">
+          <div class="verdict-top"><span class="row-index">C04</span><span class="status exact">Exact · written argument</span></div>
+          <h3>Dimension, cardinality and recorded fragments</h3><p class="verdict-statement">The dimension and cardinality identities and the cubic factorization are valid.</p>
+          <dl><dt>Domain</dt><dd>Specified real/complex vector spaces; elementary cubic and odd-step formulas.</dd><dt>Scope</dt><dd>The proposed links and the labels T₀–T₃ require definitions.</dd></dl>
+          <div class="inline-links"><a href="../atlas/proofs/dimensions-and-fragments.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/dimensions-and-fragments.md">Readable source</a></div>
+        </article>
+<article class="verdict-card" id="board-zeta">
+          <div class="verdict-top"><span class="row-index">C05</span><span class="status exact">Exact · written argument</span></div>
+          <h3>Z(p) reduction</h3><p class="verdict-statement">The positive rational Bernoulli coefficient and exponential expression are exact.</p>
+          <dl><dt>Domain</dt><dd>Odd integers p ≥ 3.</dd><dt>Scope</dt><dd>The coefficient uses lowercase c consistently.</dd></dl>
+          <div class="inline-links"><a href="../atlas/proofs/schanuel-zeta-family.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/schanuel-zeta-family.md">Readable source</a></div>
+        </article>
+<article class="verdict-card" id="board-schanuel">
+          <div class="verdict-top"><span class="row-index">C06</span><span class="status conditional">Conditional · assumption required</span></div>
+          <h3>Schanuel deduction</h3><p class="verdict-statement">The algebraic-independence conclusion follows from the stated assumption.</p>
+          <dl><dt>Domain</dt><dd>Full complex Schanuel and pairwise distinct odd pⱼ ≥ 3.</dd><dt>Scope</dt><dd>The assumption remains part of the theorem statement.</dd></dl>
+          <div class="inline-links"><a href="../atlas/proofs/schanuel-zeta-family.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/schanuel-zeta-family.md">Readable source</a></div>
+        </article>
+<article class="verdict-card" id="board-dyadic">
+          <div class="verdict-top"><span class="row-index">C07</span><span class="status exact">Exact · written argument</span></div>
+          <h3>Dyadic remainder</h3><p class="verdict-statement">The functional equation, exact tail and geometric error bounds are valid.</p>
+          <dl><dt>Domain</dt><dd>The specified lacunary series and dyadic approach to 1.</dd><dt>Scope</dt><dd>The exponent is 2^n; the path and constant are explicitly defined.</dd></dl>
+          <div class="inline-links"><a href="../atlas/proofs/dyadic-remainder.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/dyadic-remainder.md">Readable source</a></div>
+        </article>
+<article class="verdict-card" id="board-palindromes">
+          <div class="verdict-top"><span class="row-index">C08</span><span class="status exact">Exact · written argument</span></div>
+          <h3>Palindrome counting</h3><p class="verdict-statement">The ceiling/floor formula is valid for even and odd lengths.</p>
+          <dl><dt>Domain</dt><dd>Independent uniform symbols, q ≥ 2 and n ≥ 1.</dd><dt>Scope</dt><dd>Ordinary reversal and reverse complementation are distinct models.</dd></dl>
+          <div class="inline-links"><a href="../atlas/proofs/palindrome-counting.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/palindrome-counting.md">Readable source</a></div>
+        </article>
+<article class="verdict-card" id="board-towers">
+          <div class="verdict-top"><span class="row-index">C09</span><span class="status exact">Exact · written argument</span></div>
+          <h3>Alternating towers</h3><p class="verdict-statement">Global convergence, the sharp envelope and the complete two-base classification are valid.</p>
+          <dl><dt>Domain</dt><dd>c &gt; 1 and initial v₀ ≥ 1.</dd><dt>Scope</dt><dd>All claims concern the defined alternating-sign iteration.</dd></dl>
+          <div class="inline-links"><a href="../atlas/proofs/alternating-towers.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/alternating-towers.md">Readable source</a></div>
+        </article>
+<article class="verdict-card" id="board-prime-counts">
+          <div class="verdict-top"><span class="row-index">C10</span><span class="status exact">Exact · written argument</span></div>
+          <h3>Prime-polynomial counts</h3><p class="verdict-statement">The ordered, unordered and translated-pair coefficient identities are valid.</p>
+          <dl><dt>Domain</dt><dd>Finite formal polynomials and Laurent polynomials.</dd><dt>Scope</dt><dd>The section is present in both complete archived PDFs and in its standalone note.</dd></dl>
+          <div class="inline-links"><a href="../atlas/proofs/prime-polynomial-counts.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/prime-polynomial-counts.md">Readable source</a></div>
+        </article>
+      <!-- PROOF_BOARD_END -->
+  </div>
+</section>
+<section id="logistic-lab" class="lab-section section" aria-labelledby="lab-title">
+    <div class="shell">
+      <div class="section-heading"><div><p class="eyebrow">Interactive / the exact logistic result</p><h2 id="lab-title">The cycle and its linear response</h2></div><p>At r = 1 + √6, the nonlinear map exchanges two cycle points. In rescaled coordinates, the paired derivative matrix turns a vector clockwise by 90°. Step through both objects together.</p></div>
+      <div class="lab-setting"><span class="status exact">Exact local result</span><span class="formula">f(x) = rx(1 − x)</span><span class="formula">r = 1 + √6</span><a href="../atlas/proofs/logistic-quarter-turn.pdf">Open the proof · PDF →</a></div>
+      <div class="lab-grid">
+        <figure class="lab-card"><div class="figure-heading"><span class="step-number">A</span><div><h3>Two-cycle of the map</h3><p>The two-cycle of the nonlinear map</p></div></div>
+          <svg id="cycle-chart" class="plot" viewBox="0 0 520 350" role="img" aria-label="Logistic parabola, diagonal and the two points of the cycle. The selected phase changes when you step."></svg>
+          <figcaption><span id="cycle-state" class="result-number">x₋ ≈ 0.439960</span><span>Each step applies the original logistic rule.</span></figcaption>
+        </figure>
+        <figure class="lab-card"><div class="figure-heading"><span class="step-number">B</span><div><h3>Quarter-turn after rescaling</h3><p>The paired derivative, in rescaled coordinates</p></div></div>
+          <svg id="turn-chart" class="plot" viewBox="0 0 520 350" role="img" aria-label="A normalized derivative arrow visits right, down, left and up, then returns to right after four steps."></svg>
+          <figcaption><span id="turn-state" class="result-number">J⁰e₁ = (1, 0)</span><span>The original matrix is similar to this turn; it is not an ordinary rotation in the original coordinates.</span></figcaption>
+        </figure>
+      </div>
+      <div class="lab-controls"><div class="actions"><button id="step-button" class="button primary" type="button">Advance one step →</button><button id="play-button" class="button secondary" type="button" aria-pressed="false">Play the steps</button><button id="reset-button" class="text-button" type="button">Reset</button></div><p id="step-status" role="status" aria-live="polite">Step 0 · start at the lower cycle point.</p></div>
+      <details class="proof-door"><summary>Read the matrix argument</summary><div class="proof-door-body"><p>At the cycle points, the two derivatives multiply to −1. Put them in the paired matrix C. Then C² = −I and C⁴ = I. With a = √2 − 1 and S = diag(√a, 1/√a), the matrix S⁻¹CS is J = [[0, 1], [−1, 0]]. This is the clockwise arrow shown here.</p><p>The nonlinear fourth iterate still has degree 16. Its derivative is 1 at the cycle points; the function is not the identity.</p><a href="../atlas/assets/logistic-proof.apng">Watch the downloadable animation · APNG →</a></div></details>
     </div>
-    <figure class="hero-figure">
-      <img src="../atlas/assets/treasure-hunt/hopf-fibration.png" width="2048" height="1820" alt="Rainbow circle fibers of a Hopf fibration, with corresponding colored points on a small sphere." fetchpriority="high">
-      <figcaption><span class="micro-label">A neighbouring world</span><strong>Many circles. One remarkable space.</strong><a href="#geometry">Meet the Hopf fibers ↓</a><small>Niles Johnson · CC BY 4.0</small></figcaption>
-    </figure>
   </section>
-
-  <div class="legend-bar"><div class="shell legend-inner"><span class="legend-title">Read the map</span><span><i class="route-swatch exact"></i> Solid · proved step</span><span><i class="route-swatch conditional"></i> Dotted · needs an assumption</span><span><i class="route-swatch open"></i> Dashed · next question</span><a href="../#repo-interlinks">Full repository map →</a></div></div>
-
-  <section id="trails" class="shell section" aria-labelledby="trails-title">
-    <div class="section-heading"><div><p class="eyebrow">01 / Choose a trail</p><h2 id="trails-title">Firm ground.<br><em>Then open water.</em></h2></div><p>Every line tells you what carries us to the next stop. Select a stop to see its claim, its source and the work still ahead.</p></div>
+<section id="later-additions" class="section additions-section" aria-labelledby="additions-title"><div class="shell">
+  <div class="section-heading"><div><p class="eyebrow">D / Later additions · separate provenance</p><h2 id="additions-title">The next mathematical steps</h2></div><p>These arguments were added after the earlier collection. They extend the local analysis and define one geometric model; they are recorded separately from the A/B/C review.</p></div>
+  <div class="supplement-grid">
+  <!-- SUPPLEMENTS_START -->
+<article class="supplement-card" id="addition-surviving-cubic">
+          <span class="row-index">D01</span><span class="status addition">Later derivation · exact under its hypotheses</span>
+          <h3>The surviving logistic cubic</h3><p>H(p±+h) − (p±+h) = −K±h³ + O(h⁴), with K± = 20r*²(2 ± √2) &gt; 0. The displacement has a zero of exactly order three.</p><div class="math-expression">H(p<sub>±</sub>+h) − (p<sub>±</sub>+h) = −K<sub>±</sub>h<sup>3</sup> + O(h<sup>4</sup>)</div>
+          <details class="argument-detail"><summary>Hypotheses and provenance</summary><p>r* = 1 + √6; either cycle phase p±; H = f⁴; sufficiently small real h.</p><p>This later derivation is separate from the earlier collected-proof review. The exact quartic coefficients and composed cubic were independently checked symbolically.</p><div class="inline-links"><a href="../atlas/proofs/logistic-collapse-vanishing.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/logistic-collapse-vanishing.md">Readable source</a></div></details>
+        </article>
+<article class="supplement-card" id="addition-cubic-attraction-rate">
+          <span class="row-index">D02</span><span class="status addition">Later derivation · exact under its hypotheses</span>
+          <h3>Local attraction and its rate</h3><p>The iterates preserve the sign of h, decrease in absolute value and converge to zero. If hₙ = gⁿ(h₀), then n hₙ² → 1/(2K±).</p><div class="math-expression">n h<sub>n</sub><sup>2</sup> → 1/(2K<sub>±</sub>)</div>
+          <details class="argument-detail"><summary>Hypotheses and provenance</summary><p>g(h) = H(p±+h) − p±; sufficiently small nonzero real initial h₀.</p><p>This supplies the nonlinear stability argument. One n-step equals four original logistic updates; the conclusion is local.</p><div class="inline-links"><a href="../atlas/proofs/logistic-collapse-vanishing.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/logistic-collapse-vanishing.md">Readable source</a></div></details>
+        </article>
+<article class="supplement-card" id="addition-asymptotic-ratio">
+          <span class="row-index">D03</span><span class="status addition">Later derivation · exact under its hypotheses</span>
+          <h3>A shared leading decay scale</h3><p>Rₖ ∼ 2^(−k) and ζ(k) − 1 ∼ 2^(−k), hence Rₖ/(ζ(k) − 1) → 1.</p><div class="math-expression">R<sub>k</sub> / (ζ(k)−1) → 1</div>
+          <details class="argument-detail"><summary>Hypotheses and provenance</summary><p>Rₖ from the dyadic note; integer k &gt; 1 tending to infinity.</p><p>The dyadic bound and a separate zeta-tail estimate prove an asymptotic comparison. It does not define a shared dynamical system.</p><div class="inline-links"><a href="../atlas/proofs/logistic-collapse-vanishing.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/logistic-collapse-vanishing.md">Readable source</a></div></details>
+        </article>
+<article class="supplement-card" id="addition-defined-geometric-model">
+          <span class="row-index">D04</span><span class="status model">Defined model · attraction proved</span>
+          <h3>Defined geometric model for the next connection</h3><p>The invariant circle S¹ × {0} attracts transversely, with distance |gⁿ(h)| tending to zero while the angular coordinate follows its prescribed rotation.</p><div class="math-expression">Φ(θ,h) = (θ+ω mod 2π, g(h))</div>
+          <details class="argument-detail"><summary>Hypotheses and provenance</summary><p>X = S¹ × (−δ,δ), Φ(θ,h) = (θ+ω mod 2π, g(h)), with δ from the local attraction proof.</p><p>This explicitly defined model has a proved attraction property. A physical brane interpretation and a full logistic–Hopf conjugacy remain separate open questions.</p><div class="inline-links"><a href="../atlas/proofs/logistic-collapse-vanishing.pdf">Proof · PDF <span aria-hidden="true">→</span></a><a href="../atlas/proofs/logistic-collapse-vanishing.md">Readable source</a></div></details>
+        </article>
+      <!-- SUPPLEMENTS_END -->
+  </div>
+</div></section>
+<section id="vanishing" class="shell section" aria-labelledby="vanishing-title">
+    <div class="section-heading"><div><p class="eyebrow">Illustrations / the later local analysis</p><h2 id="vanishing-title">Logistic collapse and vanishing terms</h2></div><p>The figures below keep three objects separate: complementary inputs, the local return displacement, and a proposed geometric interpretation. The cubic calculation belongs to the later note above.</p></div>
+    <div class="collapse-grid">
+      <article class="collapse-card"><span class="status exact">Exact identity · seed folding</span><h3>Complementary seeds merge</h3><p>Mirror a starting number around ½. Both seeds land in the same place after one update.</p>
+        <div class="fold-visual"><span id="seed-left">0.20</span><i aria-hidden="true">→</i><strong id="seed-merged">0.551918</strong><i aria-hidden="true">→</i><span id="seed-right">0.80</span></div>
+        <label for="seed-slider">Choose a seed <output id="seed-output">0.20</output></label><input id="seed-slider" type="range" min="0.02" max="0.48" value="0.20" step="0.01">
+        <p class="formula">f(1 − x) = f(x)</p><p class="caption">The distinction between these two inputs is lost. No surface has been defined by this identity.</p>
+      </article>
+      <article class="collapse-card"><span class="status exact">Later derivation · local cubic</span><h3>The cubic survives</h3><p>At the critical cycle, subtract the starting value after four updates. The first surviving term is cubic.</p>
+        <svg id="remainder-chart" class="plot remainder-plot" viewBox="0 0 440 265" role="img" aria-label="The fourth-return displacement near the lower cycle point is flat at zero but bends away with a nonzero cubic term."></svg>
+        <p class="formula">G(0) = G′(0) = G″(0) = 0</p><p class="caption">G(h) = f⁴(x₋ + h) − (x₋ + h). Orange: computed polynomial. Dashes: leading cubic.</p>
+      </article>
+      <article class="collapse-card open-card"><span class="status open">Open question · physical interpretation</span><h3>Define “vanishing branes”</h3><p>A brane connection needs a specified surface or state family, an evolution rule, and a quantity whose vanishing can be proved.</p>
+        <ol class="model-steps"><li><strong>Name the space.</strong><span>What are its points or surfaces?</span></li><li><strong>Write the evolution.</strong><span>Which map moves them?</span></li><li><strong>Measure the collapse.</strong><span>Radius, volume, rank, or a different quantity?</span></li><li><strong>Prove the bridge.</strong><span>Show how that quantity follows from the logistic rule.</span></li></ol>
+        <a href="../atlas/proofs/logistic-collapse-vanishing.pdf">Read the exact steps and open target · PDF →</a>
+      </article>
+    </div>
+    <details class="proof-door"><summary>Read the later cubic argument</summary><div class="proof-door-body"><p>Set r* = 1 + √6 and F = f². Around either cycle point p = x±, write F(p + h) − p = −h + a±h² + b±h³ − r*³h⁴. Direct composition cancels the quadratic term and gives</p><p class="formula wide">f⁴(x± + h) − (x± + h) = −20r*²(2 ± √2)h³ + O(h⁴).</p><p>The coefficient is negative at both cycle points. For sufficiently small nonzero h, the four-step return moves toward the cycle point without crossing it. This local conclusion uses the surviving cubic; a zero Lyapunov exponent alone would not establish it.</p><p>This derivation was added after the earlier collected arguments. Its provenance is separate from the A/B/C review.</p><a href="../atlas/proofs/logistic-collapse-vanishing.pdf">Definitions and complete derivation →</a></div></details>
+    <article class="transport-lab" aria-labelledby="transport-title"><div class="transport-copy"><span class="status exact">Defined model · transverse attraction</span><h3 id="transport-title">Rotation with transverse attraction</h3><p>On S¹ × (−δ, δ), advance the angular coordinate by ω and update the transverse coordinate using the local four-step return g.</p><p class="formula">Φ(θ, h) = (θ + ω, g(h))</p><p>The circle h = 0 is invariant. For sufficiently small initial error, |gⁿ(h)| tends to zero while angular motion continues. This is the defined mathematical model in the later note.</p><label for="transport-step">Four-step returns <output id="transport-output">48</output></label><input id="transport-step" type="range" min="0" max="240" step="1" value="48"><p id="transport-readout" class="transport-readout" role="status"></p><a href="../atlas/proofs/logistic-collapse-vanishing.pdf">Follow the model’s derivation · PDF →</a></div><figure><svg id="transport-chart" class="plot" viewBox="0 0 560 420" role="img" aria-label="A computed orbit keeps turning around a circle while its transverse height approaches zero."></svg><figcaption class="caption">An orthographic view of (cos θ, sin θ, h). Height is enlarged 150 times for visibility. The trail is a finite numerical illustration; the local attraction proof is in the note.</figcaption></figure></article>
+  </section>
+<div class="legend-bar"><div class="shell legend-inner"><span class="legend-title">Connection types</span><span><i class="route-swatch exact"></i>Solid · proved implication</span><span><i class="route-swatch conditional"></i>Dotted · assumption required</span><span><i class="route-swatch open"></i>Dashed · open connection</span><a href="../#repo-interlinks">Repository map →</a></div></div>
+<section id="trails" class="shell section" aria-labelledby="trails-title">
+    <div class="section-heading"><div><p class="eyebrow">Connections / follow the stated implications</p><h2 id="trails-title">How the arguments connect</h2></div><p>Select a node to inspect its statement, source and next task. Solid, dotted and dashed lines distinguish proved implications, conditional steps and open connections.</p></div>
     <div class="trail-tabs" role="group" aria-label="Choose a mathematical trail">
       <button type="button" data-trail="logistic" aria-pressed="true">01 <span>Logistic &amp; vanishing</span></button>
       <button type="button" data-trail="towers" aria-pressed="false">02 <span>Alternating towers</span></button>
-      <button type="button" data-trail="remainders" aria-pressed="false">03 <span>Remainder hunters</span></button>
-      <button type="button" data-trail="schanuel" aria-pressed="false">04 <span>The Schanuel crossing</span></button>
+      <button type="button" data-trail="remainders" aria-pressed="false">03 <span>Dyadic remainders</span></button>
+      <button type="button" data-trail="schanuel" aria-pressed="false">04 <span>Schanuel deduction</span></button>
     </div>
     <div class="trail-board">
       <div class="trail-chart"><p class="trail-name" id="trail-name">The logistic trail</p><div id="trail-stations" class="trail-stations"></div><p id="trail-caption" class="caption"></p></div>
       <aside id="trail-detail" class="trail-detail" aria-live="polite" aria-atomic="true"></aside>
     </div>
-    <noscript><p>JavaScript brings the trail map to life. The <a href="../atlas/treasure-hunt-guide.pdf">visual guide</a> and the full proof library below also work without it.</p></noscript>
-  </section>
-
-  <section id="logistic-lab" class="lab-section section" aria-labelledby="lab-title">
-    <div class="shell">
-      <div class="section-heading"><div><p class="eyebrow">02 / Move the mathematics</p><h2 id="lab-title">Two places to land.<br><em>Four ways to point.</em></h2></div><p>At one exact setting, the logistic map swaps two numbers. Its paired derivative has a different story: after a change of coordinates, an arrow makes a quarter-turn at each step.</p></div>
-      <div class="lab-setting"><span class="status exact">Exact local result</span><span class="formula">f(x) = rx(1 − x)</span><span class="formula">r = 1 + √6</span><a href="../atlas/proofs/logistic-quarter-turn.pdf">Open the proof · PDF →</a></div>
-      <div class="lab-grid">
-        <figure class="lab-card"><div class="figure-heading"><span class="step-number">A</span><div><h3>The numbers swap</h3><p>The two-cycle of the nonlinear map</p></div></div>
-          <svg id="cycle-chart" class="plot" viewBox="0 0 520 350" role="img" aria-label="Logistic parabola, diagonal and the two points of the cycle. The selected phase changes when you step."></svg>
-          <figcaption><span id="cycle-state" class="result-number">x₋ ≈ 0.439960</span><span>Each step applies the original logistic rule.</span></figcaption>
-        </figure>
-        <figure class="lab-card"><div class="figure-heading"><span class="step-number">B</span><div><h3>The response turns</h3><p>The paired derivative, in rescaled coordinates</p></div></div>
-          <svg id="turn-chart" class="plot" viewBox="0 0 520 350" role="img" aria-label="A normalized derivative arrow visits right, down, left and up, then returns to right after four steps."></svg>
-          <figcaption><span id="turn-state" class="result-number">J⁰e₁ = (1, 0)</span><span>The original matrix is similar to this turn; it is not an ordinary rotation in the original coordinates.</span></figcaption>
-        </figure>
-      </div>
-      <div class="lab-controls"><div class="actions"><button id="step-button" class="button primary" type="button">Take one step →</button><button id="play-button" class="button secondary" type="button" aria-pressed="false">Play the steps</button><button id="reset-button" class="text-button" type="button">Reset</button></div><p id="step-status" role="status" aria-live="polite">Step 0 · start at the lower cycle point.</p></div>
-      <details class="proof-door"><summary>Why the arrow comes back</summary><div class="proof-door-body"><p>At the cycle points, the two derivatives multiply to −1. Put them in the paired matrix C. Then C² = −I and C⁴ = I. With a = √2 − 1 and S = diag(√a, 1/√a), the matrix S⁻¹CS is J = [[0, 1], [−1, 0]]. This is the clockwise arrow shown here.</p><p>The nonlinear fourth iterate still has degree 16. Its derivative is 1 at the cycle points; the function is not the identity.</p><a href="../atlas/assets/logistic-proof.apng">Watch the downloadable animation · APNG →</a></div></details>
-    </div>
-  </section>
-
-  <section id="vanishing" class="shell section" aria-labelledby="vanishing-title">
-    <div class="section-heading"><div><p class="eyebrow">03 / The vanishing treasure</p><h2 id="vanishing-title">What, exactly,<br><em>disappears?</em></h2></div><p>“Collapse” can describe different events. Follow the quantity being measured: two inputs can merge, a Taylor term can cancel, or a geometric radius can tend to zero.</p></div>
-    <div class="collapse-grid">
-      <article class="collapse-card"><span class="status exact">1 · Exact fold</span><h3>Two seeds.<br>One next value.</h3><p>Mirror a starting number around ½. Both seeds land in the same place after one update.</p>
-        <div class="fold-visual"><span id="seed-left">0.20</span><i aria-hidden="true">→</i><strong id="seed-merged">0.551918</strong><i aria-hidden="true">→</i><span id="seed-right">0.80</span></div>
-        <label for="seed-slider">Choose a seed <output id="seed-output">0.20</output></label><input id="seed-slider" type="range" min="0.02" max="0.48" value="0.20" step="0.01">
-        <p class="formula">f(1 − x) = f(x)</p><p class="caption">The distinction between these two inputs is lost. No surface has been defined by this identity.</p>
-      </article>
-      <article class="collapse-card"><span class="status exact">2 · Exact local cancellation</span><h3>The flat point<br>still has a shape.</h3><p>At the critical cycle, subtract the starting value after four updates. The first surviving term is cubic.</p>
-        <svg id="remainder-chart" class="plot remainder-plot" viewBox="0 0 440 265" role="img" aria-label="The fourth-return displacement near the lower cycle point is flat at zero but bends away with a nonzero cubic term."></svg>
-        <p class="formula">G(0) = G′(0) = G″(0) = 0</p><p class="caption">G(h) = f⁴(x₋ + h) − (x₋ + h). Orange: computed polynomial. Dashes: leading cubic.</p>
-      </article>
-      <article class="collapse-card open-card"><span class="status open">3 · Open model</span><h3>“Vanishing branes”<br>needs its object.</h3><p>Keep the name as a destination. Before connecting it to this calculation, define a surface or state family and what “vanishes” means.</p>
-        <ol class="model-steps"><li><strong>Name the space.</strong><span>What are its points or surfaces?</span></li><li><strong>Write the evolution.</strong><span>Which map moves them?</span></li><li><strong>Measure the collapse.</strong><span>Radius, volume, rank, or a different quantity?</span></li><li><strong>Prove the bridge.</strong><span>Show how that quantity follows from the logistic rule.</span></li></ol>
-        <a href="../atlas/proofs/logistic-collapse-vanishing.pdf">Read the exact steps and open target · PDF →</a>
-      </article>
-    </div>
-    <details class="proof-door"><summary>The cubic that survives — read the new lemma</summary><div class="proof-door-body"><p>Set r* = 1 + √6 and F = f². Around either cycle point p = x±, write F(p + h) − p = −h + a±h² + b±h³ − r*³h⁴. Direct composition cancels the quadratic term and gives</p><p class="formula wide">f⁴(x± + h) − (x± + h) = −20r*²(2 ± √2)h³ + O(h⁴).</p><p>The coefficient is negative at both cycle points. For sufficiently small nonzero h, the four-step return moves toward the cycle point without crossing it. This local conclusion uses the surviving cubic; a zero Lyapunov exponent alone would not establish it.</p><p>This derivation is new to this edition. Its literature novelty has not been established.</p><a href="../atlas/proofs/logistic-collapse-vanishing.pdf">Definitions and complete derivation →</a></div></details>
-    <article class="transport-lab" aria-labelledby="transport-title"><div class="transport-copy"><span class="status exact">A defined mathematical model</span><h3 id="transport-title">Keep travelling.<br>Let the distance shrink.</h3><p>Here is a small bridge we can already make precise. Pair an angle with a transverse error. Advance the angle; update the error with the logistic four-step return.</p><p class="formula">Φ(θ, h) = (θ + ω, g(h))</p><p>The circle h = 0 is invariant. Small transverse errors approach it while angular motion continues. The construction is new to this guide; a physical brane interpretation remains open.</p><label for="transport-step">Four-step returns <output id="transport-output">48</output></label><input id="transport-step" type="range" min="0" max="240" step="1" value="48"><p id="transport-readout" class="transport-readout" role="status"></p><a href="../atlas/proofs/logistic-collapse-vanishing.pdf">Follow the model’s derivation · PDF →</a></div><figure><svg id="transport-chart" class="plot" viewBox="0 0 560 420" role="img" aria-label="A computed orbit keeps turning around a circle while its transverse height approaches zero."></svg><figcaption class="caption">An orthographic view of (cos θ, sin θ, h). Height is enlarged 150 times for visibility. The trail is a finite numerical illustration; the local attraction proof is in the note.</figcaption></figure></article>
-  </section>
-
-  <section id="geometry" class="geometry-section section" aria-labelledby="geometry-title"><div class="shell">
-    <div class="section-heading"><div><p class="eyebrow">04 / Look across the water</p><h2 id="geometry-title">Strange shapes.<br><em>Careful bridges.</em></h2></div><p>These are real mathematical constructions, with their own definitions. A visual resemblance is an invitation to ask a better question.</p></div>
+    <noscript><p>JavaScript brings the trail map to life. The <a href="../atlas/treasure-hunt-guide.pdf">review-board PDF</a> and the full proof library below also work without it.</p></noscript>
+  </section><section id="geometry" class="geometry-section section"><div class="shell"><details class="reference-gallery"><summary>Geometry references <span>Hopf fibers · sphere eversion · source credits</span></summary><div class="reference-gallery-body">
     <div class="geometry-grid">
       <article class="geometry-card"><figure><img src="../atlas/assets/treasure-hunt/hopf-fibration.png" width="2048" height="1820" alt="Circle fibers of the Hopf fibration, colored to match their base points on a sphere." loading="lazy" decoding="async"></figure><div class="geometry-copy"><span class="status exact">Established geometry</span><h3>A circle above every point</h3><p>The Hopf fibration sends the three-sphere S³ to the two-sphere S². Each colored point on the small sphere corresponds to a circle fiber. The large picture projects those fibers into a three-dimensional ball.</p><a href="https://nilesjohnson.net/hopf.html">Explore Niles Johnson’s explanation →</a><p class="credit">Hopf Fibration — Niles Johnson. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. User-supplied resized copy; no further changes. <a href="https://commons.wikimedia.org/wiki/File:Hopf_Fibration.png">Source</a>.</p></div></article>
       <article class="geometry-card"><figure class="video-figure"><video controls preload="none" playsinline poster="../atlas/assets/treasure-hunt/sphere-eversion-poster.jpg" aria-label="Sphere eversion using Thurston’s corrugations, by Carsten Steger"><source src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Thurston_Sphere_Eversion.webm" type="video/webm"><p><a href="https://commons.wikimedia.org/wiki/File:Thurston_Sphere_Eversion.webm">Open the sphere-eversion video.</a></p></video></figure><div class="geometry-copy"><span class="status exact">Established geometry</span><h3>A sphere turns inside out</h3><p>The sphere passes through itself smoothly. Self-intersections are allowed; tears, creases and pinch points are not. The surface stays an immersed sphere throughout the eversion.</p><a href="https://commons.wikimedia.org/wiki/File:Thurston_Sphere_Eversion.webm">Watch the original and see its credits →</a><p class="credit">© 2022 Carsten Steger. <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Poster: frame at 15 seconds, resized; same license. The full video contains four presentations of the construction.</p></div></article>
     </div>
-    <div class="bridge-question"><span class="route-swatch open"></span><div><h3>The next bridge needs a definition</h3><p>To connect either construction to logistic vanishing, supply a map between the spaces, name the property it preserves, and prove the relevant implication. The recovered C3.2Z radius-collapse detector is another model; a Hopf bifurcation and a Hopf fibration are different constructions.</p><a href="https://github.com/EncapsulatorP/c3._2z">Visit C3.2Z →</a><a href="../atlas/proofs/logistic-collapse-vanishing.pdf">Read the collapse distinctions →</a></div></div>
-  </div></section>
-
-  <section id="proof-library" class="shell section" aria-labelledby="library-title">
-    <div class="section-heading"><div><p class="eyebrow">05 / Take a little treasure</p><h2 id="library-title">One question.<br><em>One reading note.</em></h2></div><p>Each PDF keeps the assumptions, the full argument, its limits and a useful next step together. Start with the picture; keep the proof close.</p></div>
+    <div class="bridge-question"><span class="route-swatch open"></span><div><h3>An explicit connection remains to be defined</h3><p>To connect either construction to logistic vanishing, supply a map between the spaces, name the property it preserves, and prove the relevant implication. The recovered C3.2Z radius-collapse detector is another model; a Hopf bifurcation and a Hopf fibration are different constructions.</p><a href="https://github.com/EncapsulatorP/c3._2z">Visit C3.2Z →</a><a href="../atlas/proofs/logistic-collapse-vanishing.pdf">Read the collapse distinctions →</a></div></div>
+  </div></details></div></section><section id="proof-library" class="shell section" aria-labelledby="library-title">
+    <div class="section-heading"><div><p class="eyebrow">Downloads / one complete argument per note</p><h2 id="library-title">Standalone proof library</h2></div><p>Search the notes by subject or evidence type. Each PDF has its assumptions, complete argument and readable mathematical source.</p></div>
     <div class="library-toolbar"><label for="proof-search">Find a note <input id="proof-search" type="search" placeholder="Try towers, vanishing, DNA…" autocomplete="off"></label><div class="filter-field"><label for="proof-filter">Evidence</label><select id="proof-filter"><option value="all">All reading notes</option><option value="exact">Exact results</option><option value="conditional">Conditional arguments</option><option value="foundations">Foundations</option><option value="review">Proof review</option></select></div><p id="library-count" role="status"></p></div>
     <div id="proof-cards" class="proof-grid">
       <!-- PROOF_LIBRARY_START -->
-      <article class="proof-card" data-status="exact" data-kind="proof" data-search="the logistic quarter-turn a two-cycle has return multiplier −1 at r = 1 + √6. its paired derivative matrix has fourth power i, and the fourth-return displacement has zero first derivative at the cycle points. specify a geometric collapse model before connecting this local cancellation to a surface or brane. state its variables, map, topology and the exact sense in which a quantity vanishes. ">
-        <span class="status exact">Exact local result</span>
-        <h3>The logistic quarter-turn</h3>
-        <p>A two-cycle has return multiplier −1 at r = 1 + √6. Its paired derivative matrix has fourth power I, and the fourth-return displacement has zero first derivative at the cycle points.</p>
-        <p class="note-next"><strong>Next treasure</strong>Specify a geometric collapse model before connecting this local cancellation to a surface or brane. State its variables, map, topology and the exact sense in which a quantity vanishes.</p>
-        <div class="proof-links"><a href="../atlas/proofs/logistic-quarter-turn.pdf">Read the PDF →</a><a href="../atlas/proofs/logistic-quarter-turn.md">Text source</a><span>4 pages</span></div>
-      </article>
-      <article class="proof-card" data-status="exact" data-kind="proof" data-search="alternating real towers for every real base c &gt; 1, the alternating-sign system has one pair of phases. the explicit iteration converges from every upper starting phase at least 1, with a uniform contraction bound. perform a focused literature search and request external review of this complete small theorem. a numerical match to a target constant needs an additional arithmetic argument. ">
-        <span class="status exact">Proved convergence and classification</span>
-        <h3>Alternating real towers</h3>
-        <p>For every real base c &gt; 1, the alternating-sign system has one pair of phases. The explicit iteration converges from every upper starting phase at least 1, with a uniform contraction bound.</p>
-        <p class="note-next"><strong>Next treasure</strong>Perform a focused literature search and request external review of this complete small theorem. A numerical match to a target constant needs an additional arithmetic argument.</p>
-        <div class="proof-links"><a href="../atlas/proofs/alternating-towers.pdf">Read the PDF →</a><a href="../atlas/proofs/alternating-towers.md">Text source</a><span>3 pages</span></div>
-      </article>
-      <article class="proof-card" data-status="exact" data-kind="proof" data-search="a dyadic vanishing remainder the lacunary series f(x) = σ x^(2ⁿ) obeys f(x) = x + f(x²). along the specified dyadic path toward 1, subtracting k and a convergent constant leaves an explicit geometric tail. quantify the finite-k relative error beyond the proved leading-ratio limit, or define a structural map and the property it preserves. a shared dynamical system or conjugacy remains open. mahler lacunary series">
-        <span class="status exact">Proved pathwise bound</span>
-        <h3>A dyadic vanishing remainder</h3>
-        <p>The lacunary series f(x) = Σ x^(2ⁿ) obeys f(x) = x + f(x²). Along the specified dyadic path toward 1, subtracting k and a convergent constant leaves an explicit geometric tail.</p>
-        <p class="note-next"><strong>Next treasure</strong>Quantify the finite-k relative error beyond the proved leading-ratio limit, or define a structural map and the property it preserves. A shared dynamical system or conjugacy remains open.</p>
-        <div class="proof-links"><a href="../atlas/proofs/dyadic-remainder.pdf">Read the PDF →</a><a href="../atlas/proofs/dyadic-remainder.md">Text source</a><span>2 pages</span></div>
-      </article>
-      <article class="proof-card" data-status="exact" data-kind="proof" data-search="prime polynomials count exactly finite polynomial products encode ordered goldbach representations and twin-prime translations. a diagonal correction converts ordered goldbach counts into unordered counts. identify an additional inequality or structural statement that could control the coefficients. rewriting the count by itself is not a lower-bound argument. ">
-        <span class="status exact">Exact finite counting identities</span>
-        <h3>Prime polynomials count exactly</h3>
-        <p>Finite polynomial products encode ordered Goldbach representations and twin-prime translations. A diagonal correction converts ordered Goldbach counts into unordered counts.</p>
-        <p class="note-next"><strong>Next treasure</strong>Identify an additional inequality or structural statement that could control the coefficients. Rewriting the count by itself is not a lower-bound argument.</p>
-        <div class="proof-links"><a href="../atlas/proofs/prime-polynomial-counts.pdf">Read the PDF →</a><a href="../atlas/proofs/prime-polynomial-counts.md">Text source</a><span>2 pages</span></div>
-      </article>
-      <article class="proof-card" data-status="conditional" data-kind="conditional-proof" data-search="the z(p) family under schanuel euler’s even-zeta formula gives exact rational coefficients cₚ for every odd integer p ≥ 3. assuming complex schanuel, π and any finite list of the corresponding z(p) values are algebraically independent. check the literature for this specific consequence and investigate unconditional statements separately. small numerical coefficients do not strengthen the truth status of schanuel. ">
-        <span class="status conditional">Conditional on complex Schanuel</span>
-        <h3>The Z(p) family under Schanuel</h3>
-        <p>Euler’s even-zeta formula gives exact rational coefficients cₚ for every odd integer p ≥ 3. Assuming complex Schanuel, π and any finite list of the corresponding Z(p) values are algebraically independent.</p>
-        <p class="note-next"><strong>Next treasure</strong>Check the literature for this specific consequence and investigate unconditional statements separately. Small numerical coefficients do not strengthen the truth status of Schanuel.</p>
-        <div class="proof-links"><a href="../atlas/proofs/schanuel-zeta-family.pdf">Read the PDF →</a><a href="../atlas/proofs/schanuel-zeta-family.md">Text source</a><span>3 pages</span></div>
-      </article>
-      <article class="proof-card" data-status="exact" data-kind="proof-and-open-question" data-search="two constructions of six the additive and multiplicative constructions of six define different fractional exponential maps. their smooth-branch derivatives give exact finite-time lyapunov averages in terms of separate orbit means. define the orbit or invariant measure of interest and establish the limiting means before evaluating a zero-difference target. keep the two maps’ means separate. ">
-        <span class="status exact">Exact formulas; limiting means open</span>
-        <h3>Two constructions of six</h3>
-        <p>The additive and multiplicative constructions of six define different fractional exponential maps. Their smooth-branch derivatives give exact finite-time Lyapunov averages in terms of separate orbit means.</p>
-        <p class="note-next"><strong>Next treasure</strong>Define the orbit or invariant measure of interest and establish the limiting means before evaluating a zero-difference target. Keep the two maps’ means separate.</p>
-        <div class="proof-links"><a href="../atlas/proofs/fractional-exponential-maps.pdf">Read the PDF →</a><a href="../atlas/proofs/fractional-exponential-maps.md">Text source</a><span>3 pages</span></div>
-      </article>
-      <article class="proof-card" data-status="exact" data-kind="proof" data-search="palindrome counting and its limits for independent uniform q-symbol strings of length n, ordinary palindromes have probability q^−floor(n/2). the example q = 4, n = 40 has probability exactly 2⁻⁴⁰. before making a biophysical claim, specify a physical alphabet, pairing rule and measurable stability or decay criterion. the finite combinatorics supplies no biochemical feasibility result. dna alphabet biophysics strings forty 40">
-        <span class="status exact">Exact count under a sampling model</span>
-        <h3>Palindrome counting and its limits</h3>
-        <p>For independent uniform q-symbol strings of length n, ordinary palindromes have probability q^−floor(n/2). The example q = 4, n = 40 has probability exactly 2⁻⁴⁰.</p>
-        <p class="note-next"><strong>Next treasure</strong>Before making a biophysical claim, specify a physical alphabet, pairing rule and measurable stability or decay criterion. The finite combinatorics supplies no biochemical feasibility result.</p>
-        <div class="proof-links"><a href="../atlas/proofs/palindrome-counting.pdf">Read the PDF →</a><a href="../atlas/proofs/palindrome-counting.md">Text source</a><span>2 pages</span></div>
-      </article>
-      <article class="proof-card" data-status="exact" data-kind="foundations" data-search="dimensions and recovered fragments products, tensor products and changes of scalar field give different dimensions. equal continuum cardinalities do not identify those dimensions, fractal dimensions or physical degrees of freedom. recover explicit definitions of t₀–t₃ and the intended connecting map. state which structure is preserved before comparing dimensions, dynamics or geometric collapse. ">
-        <span class="status exact">Exact foundations; fragments unresolved</span>
-        <h3>Dimensions and recovered fragments</h3>
-        <p>Products, tensor products and changes of scalar field give different dimensions. Equal continuum cardinalities do not identify those dimensions, fractal dimensions or physical degrees of freedom.</p>
-        <p class="note-next"><strong>Next treasure</strong>Recover explicit definitions of T₀–T₃ and the intended connecting map. State which structure is preserved before comparing dimensions, dynamics or geometric collapse.</p>
-        <div class="proof-links"><a href="../atlas/proofs/dimensions-and-fragments.pdf">Read the PDF →</a><a href="../atlas/proofs/dimensions-and-fragments.md">Text source</a><span>2 pages</span></div>
-      </article>
-      <article class="proof-card" data-status="review" data-kind="review" data-search="review of the written proofs the inspected alternating-tower, logistic and finite prime-counting arguments pass the stated checks. their correctness, literature novelty, research significance and external validation are separate questions. take the alternating-tower convergence, sharp envelope and two-base classification through a focused novelty search and external review as one coherent small mathematical note. ">
-        <span class="status review">Scope and correctness review</span>
-        <h3>Review of the written proofs</h3>
-        <p>The inspected alternating-tower, logistic and finite prime-counting arguments pass the stated checks. Their correctness, literature novelty, research significance and external validation are separate questions.</p>
-        <p class="note-next"><strong>Next treasure</strong>Take the alternating-tower convergence, sharp envelope and two-base classification through a focused novelty search and external review as one coherent small mathematical note.</p>
-        <div class="proof-links"><a href="../atlas/proofs/proof-review.pdf">Read the PDF →</a><a href="../atlas/proofs/proof-review.md">Text source</a><span>2 pages</span></div>
-      </article>
-      <article class="proof-card" data-status="exact" data-kind="proof-and-open-question" data-search="logistic collapse and vanishing terms exact logistic seed folding and a local cubic vanishing term distinguish orbit identification from derivative cancellation. the recovered geometric detector is kept separate from a physical brane model. specify the geometric state space, evolution and observable, then prove whether the chosen observable vanishes or the state itself collapses. a physical brane interpretation requires a defined model. branes collapse transverse hopf projection cubic stability">
-        <span class="status exact">Exact local lemma; brane model open</span>
-        <h3>Logistic collapse and vanishing terms</h3>
-        <p>Exact logistic seed folding and a local cubic vanishing term distinguish orbit identification from derivative cancellation. The recovered geometric detector is kept separate from a physical brane model.</p>
-        <p class="note-next"><strong>Next treasure</strong>Specify the geometric state space, evolution and observable, then prove whether the chosen observable vanishes or the state itself collapses. A physical brane interpretation requires a defined model.</p>
-        <div class="proof-links"><a href="../atlas/proofs/logistic-collapse-vanishing.pdf">Read the PDF →</a><a href="../atlas/proofs/logistic-collapse-vanishing.md">Text source</a><span>7 pages</span></div>
-      </article>
+<article class="proof-card" data-status="exact" data-kind="proof" data-search="the logistic quarter-turn a two-cycle has return multiplier −1 at r = 1 + √6. its paired derivative matrix has fourth power i, and the fourth-return displacement has zero first derivative at the cycle points. read the companion cubic calculation to obtain local attraction and its rate. for a further geometric connection, specify the state space, map and quantity to compare with its defined invariant-circle model. ">
+          <span class="status exact">Exact local result</span>
+          <h3>The logistic quarter-turn</h3><p>A two-cycle has return multiplier −1 at r = 1 + √6. Its paired derivative matrix has fourth power I, and the fourth-return displacement has zero first derivative at the cycle points.</p>
+          <p class="note-next"><strong>Next task</strong>Read the companion cubic calculation to obtain local attraction and its rate. For a further geometric connection, specify the state space, map and quantity to compare with its defined invariant-circle model.</p>
+          <div class="proof-links"><a href="../atlas/proofs/logistic-quarter-turn.pdf">Read the PDF →</a><a href="../atlas/proofs/logistic-quarter-turn.md">Readable source</a><span>4 pages</span></div>
+        </article>
+<article class="proof-card" data-status="exact" data-kind="proof" data-search="alternating real towers for every real base c &gt; 1, the alternating-sign system has one pair of phases. the explicit iteration converges from every upper starting phase at least 1, with a uniform contraction bound. compare the convergence and inverse classification with the literature. if a particular arithmetic constant is used as a target height, state the additional arithmetic question separately. ">
+          <span class="status exact">Proved convergence and classification</span>
+          <h3>Alternating real towers</h3><p>For every real base c &gt; 1, the alternating-sign system has one pair of phases. The explicit iteration converges from every upper starting phase at least 1, with a uniform contraction bound.</p>
+          <p class="note-next"><strong>Next task</strong>Compare the convergence and inverse classification with the literature. If a particular arithmetic constant is used as a target height, state the additional arithmetic question separately.</p>
+          <div class="proof-links"><a href="../atlas/proofs/alternating-towers.pdf">Read the PDF →</a><a href="../atlas/proofs/alternating-towers.md">Readable source</a><span>3 pages</span></div>
+        </article>
+<article class="proof-card" data-status="exact" data-kind="proof" data-search="a dyadic vanishing remainder the lacunary series f(x) = σ x^(2^n), where 2^n means 2 raised to n, obeys f(x) = x + f(x²). along the specified dyadic path toward 1, subtracting k and a convergent constant leaves an explicit tail. quantify the finite-k relative error beyond the proved leading-ratio limit, or define a structural map and the property it preserves. a shared dynamical system or conjugacy remains open. mahler lacunary series">
+          <span class="status exact">Proved pathwise bound</span>
+          <h3>A dyadic vanishing remainder</h3><p>The lacunary series f(x) = Σ x^(2^n), where 2^n means 2 raised to n, obeys f(x) = x + f(x²). Along the specified dyadic path toward 1, subtracting k and a convergent constant leaves an explicit tail.</p>
+          <p class="note-next"><strong>Next task</strong>Quantify the finite-k relative error beyond the proved leading-ratio limit, or define a structural map and the property it preserves. A shared dynamical system or conjugacy remains open.</p>
+          <div class="proof-links"><a href="../atlas/proofs/dyadic-remainder.pdf">Read the PDF →</a><a href="../atlas/proofs/dyadic-remainder.md">Readable source</a><span>2 pages</span></div>
+        </article>
+<article class="proof-card" data-status="exact" data-kind="proof" data-search="prime polynomials count exactly finite polynomial products encode ordered goldbach representations and twin-prime translations. a diagonal correction converts ordered goldbach counts into unordered counts. specify a coefficient bound or asymptotic estimate to investigate and identify the additional inequality it would require. ">
+          <span class="status exact">Exact finite counting identities</span>
+          <h3>Prime polynomials count exactly</h3><p>Finite polynomial products encode ordered Goldbach representations and twin-prime translations. A diagonal correction converts ordered Goldbach counts into unordered counts.</p>
+          <p class="note-next"><strong>Next task</strong>Specify a coefficient bound or asymptotic estimate to investigate and identify the additional inequality it would require.</p>
+          <div class="proof-links"><a href="../atlas/proofs/prime-polynomial-counts.pdf">Read the PDF →</a><a href="../atlas/proofs/prime-polynomial-counts.md">Readable source</a><span>2 pages</span></div>
+        </article>
+<article class="proof-card" data-status="conditional" data-kind="conditional-proof" data-search="the z(p) family under schanuel euler’s even-zeta formula gives exact rational coefficients cₚ for every odd integer p ≥ 3. assuming complex schanuel, π and any finite list of the corresponding z(p) values are algebraically independent. compare this specific conditional consequence with the literature. state any proposed unconditional result as a separate claim with its own assumptions. ">
+          <span class="status conditional">Conditional on complex Schanuel</span>
+          <h3>The Z(p) family under Schanuel</h3><p>Euler’s even-zeta formula gives exact rational coefficients cₚ for every odd integer p ≥ 3. Assuming complex Schanuel, π and any finite list of the corresponding Z(p) values are algebraically independent.</p>
+          <p class="note-next"><strong>Next task</strong>Compare this specific conditional consequence with the literature. State any proposed unconditional result as a separate claim with its own assumptions.</p>
+          <div class="proof-links"><a href="../atlas/proofs/schanuel-zeta-family.pdf">Read the PDF →</a><a href="../atlas/proofs/schanuel-zeta-family.md">Readable source</a><span>3 pages</span></div>
+        </article>
+<article class="proof-card" data-status="exact" data-kind="proof-and-open-question" data-search="two constructions of six the additive and multiplicative constructions of six define different fractional exponential maps. their smooth-branch derivatives give exact finite-time lyapunov averages in terms of separate orbit means. define the orbit or invariant measure of interest and establish the limiting means before evaluating a zero-difference target. keep the two maps’ means separate. ">
+          <span class="status exact">Exact formulas; limiting means open</span>
+          <h3>Two constructions of six</h3><p>The additive and multiplicative constructions of six define different fractional exponential maps. Their smooth-branch derivatives give exact finite-time Lyapunov averages in terms of separate orbit means.</p>
+          <p class="note-next"><strong>Next task</strong>Define the orbit or invariant measure of interest and establish the limiting means before evaluating a zero-difference target. Keep the two maps’ means separate.</p>
+          <div class="proof-links"><a href="../atlas/proofs/fractional-exponential-maps.pdf">Read the PDF →</a><a href="../atlas/proofs/fractional-exponential-maps.md">Readable source</a><span>3 pages</span></div>
+        </article>
+<article class="proof-card" data-status="exact" data-kind="proof" data-search="palindrome counting for independent uniform q-symbol strings of length n, ordinary palindromes have probability q^(−floor(n/2)). the example q = 4, n = 40 has probability exactly 2^(−40). before making a biophysical claim, specify a physical alphabet, pairing rule and measurable stability or decay criterion. the finite combinatorics supplies no biochemical feasibility result. dna alphabet biophysics strings forty 40">
+          <span class="status exact">Exact count under a sampling model</span>
+          <h3>Palindrome counting</h3><p>For independent uniform q-symbol strings of length n, ordinary palindromes have probability q^(−floor(n/2)). The example q = 4, n = 40 has probability exactly 2^(−40).</p>
+          <p class="note-next"><strong>Next task</strong>Before making a biophysical claim, specify a physical alphabet, pairing rule and measurable stability or decay criterion. The finite combinatorics supplies no biochemical feasibility result.</p>
+          <div class="proof-links"><a href="../atlas/proofs/palindrome-counting.pdf">Read the PDF →</a><a href="../atlas/proofs/palindrome-counting.md">Readable source</a><span>2 pages</span></div>
+        </article>
+<article class="proof-card" data-status="exact" data-kind="foundations" data-search="dimensions and recovered fragments products, tensor products and changes of scalar field give different dimensions. equal continuum cardinalities do not identify those dimensions, fractal dimensions or physical degrees of freedom. recover explicit definitions of t₀–t₃ and the intended connecting map. state which structure is preserved before comparing dimensions, dynamics or geometric collapse. ">
+          <span class="status exact">Exact foundations; fragments unresolved</span>
+          <h3>Dimensions and recovered fragments</h3><p>Products, tensor products and changes of scalar field give different dimensions. Equal continuum cardinalities do not identify those dimensions, fractal dimensions or physical degrees of freedom.</p>
+          <p class="note-next"><strong>Next task</strong>Recover explicit definitions of T₀–T₃ and the intended connecting map. State which structure is preserved before comparing dimensions, dynamics or geometric collapse.</p>
+          <div class="proof-links"><a href="../atlas/proofs/dimensions-and-fragments.pdf">Read the PDF →</a><a href="../atlas/proofs/dimensions-and-fragments.md">Readable source</a><span>2 pages</span></div>
+        </article>
+<article class="proof-card" data-status="review" data-kind="review" data-search="review of the written proofs the logistic, alternating-tower and finite prime-counting arguments establish the stated identities, bounds and classifications. this note identifies their key proof steps and source versions. choose one precise extension: a limiting orbit mean, a stronger remainder estimate, a literature comparison for the tower classification, or a fully specified geometric connection. ">
+          <span class="status review">Scope and correctness review</span>
+          <h3>Review of the written proofs</h3><p>The logistic, alternating-tower and finite prime-counting arguments establish the stated identities, bounds and classifications. This note identifies their key proof steps and source versions.</p>
+          <p class="note-next"><strong>Next task</strong>Choose one precise extension: a limiting orbit mean, a stronger remainder estimate, a literature comparison for the tower classification, or a fully specified geometric connection.</p>
+          <div class="proof-links"><a href="../atlas/proofs/proof-review.pdf">Read the PDF →</a><a href="../atlas/proofs/proof-review.md">Readable source</a><span>2 pages</span></div>
+        </article>
+<article class="proof-card" data-status="exact" data-kind="proof-and-open-question" data-search="logistic collapse and vanishing terms the restoring logistic cubic proves local attraction with an inverse-square-root error rate. an explicitly defined product model transfers that result to transverse attraction toward an invariant circle, and a separate tail estimate proves the dyadic–zeta ratio limit. quantify a finite-index ratio error or state a proposed conjugacy with its domain and regularity. for a physical interpretation, specify the object, evolution and measured quantity. branes collapse transverse hopf projection cubic stability rate">
+          <span class="status exact">Proved local attraction; physical interpretation open</span>
+          <h3>Logistic collapse and vanishing terms</h3><p>The restoring logistic cubic proves local attraction with an inverse-square-root error rate. An explicitly defined product model transfers that result to transverse attraction toward an invariant circle, and a separate tail estimate proves the dyadic–zeta ratio limit.</p>
+          <p class="note-next"><strong>Next task</strong>Quantify a finite-index ratio error or state a proposed conjugacy with its domain and regularity. For a physical interpretation, specify the object, evolution and measured quantity.</p>
+          <div class="proof-links"><a href="../atlas/proofs/logistic-collapse-vanishing.pdf">Read the PDF →</a><a href="../atlas/proofs/logistic-collapse-vanishing.md">Readable source</a><span>7 pages</span></div>
+        </article>
       <!-- PROOF_LIBRARY_END -->
     </div>
     <p id="no-notes" class="empty-state" hidden>No notes match this search. Try “logistic”, “towers” or “counting”.</p>
-    <div class="full-notebook"><div><h3>The whole chest, in one place</h3><p>The original illustrated notebook remains available as a complete reading copy.</p></div><a class="button secondary" href="../atlas/logistic-vanishing-terms.pdf">Complete notebook · PDF</a><a class="text-button" href="../atlas/treasure-hunt-guide.pdf">Visual guide · PDF →</a></div>
+    <div class="full-notebook"><div><h3>The complete review and original collection</h3><p>The review board records the audit and current statements. The earlier collection remains available for comparison.</p></div><a class="button secondary" href="../atlas/logistic-vanishing-terms.pdf">Complete notebook · PDF</a><a class="text-button" href="../atlas/treasure-hunt-guide.pdf">A/B/C review · PDF →</a></div>
   </section>
-
-  <section id="next-targets" class="targets-section section"><div class="shell">
-    <div class="section-heading"><div><p class="eyebrow">06 / Next treasures to hunt</p><h2>Choose work that<br><em>earns the next step.</em></h2></div><p>Ranked by clarity of the question, likely learning and effort. These are proposed work blocks, with a concrete finish line.</p></div>
-    <ol class="target-list">
-      <li><span class="priority">01</span><div><p class="eyebrow">First / 1–2 focused sessions / high return</p><h3>Put the tower theorem in front of another reader.</h3><p>Check the literature around the alternating system and invite a line-by-line review of convergence, the sharp envelope and the two-base classification. Finish with recorded feedback and corrected statements.</p><div class="target-links"><a href="../atlas/proofs/alternating-towers.pdf">Tower proof →</a><a href="https://github.com/EncapsulatorP/Some_playful_boundary_paths_and_brun_twin_prime_sign_flipping_towers">Tower repository →</a></div></div></li>
-      <li><span class="priority">02</span><div><p class="eyebrow">Next / 1 focused session / high return</p><h3>Make “vanishing branes” a testable mathematical question.</h3><p>Recover T₀–T₃, define the state space and the measured quantity, then state one implication to prove or falsify. Finish with a one-page definition sheet and one explicit example.</p><div class="target-links"><a href="../atlas/proofs/logistic-collapse-vanishing.pdf">Logistic collapse note →</a><a href="https://github.com/EncapsulatorP/Obstruction-Theory">Obstruction-Theory →</a><span class="status open">Proposed repository bridge</span></div></div></li>
-      <li><span class="priority">03</span><div><p class="eyebrow">Then / 1–2 focused sessions / bounded return</p><h3>Recover one falsifiable Collatz connection.</h3><p>Connect the delay embedding to one specified diagnostic. State the range, control and failure condition before running it. Finish with a small claim that can be disproved, checked or proved on its own.</p><div class="target-links"><a href="https://github.com/EncapsulatorP/collatz_rupert_delay_embedding">Collatz–Rupert repository →</a><a href="../#pirates-plan">Its place in the full plan →</a><span class="status open">A diagnostic target; convergence remains open</span></div></div></li>
-      <li><span class="priority">04</span><div><p class="eyebrow">After that / 2–3 focused sessions / medium return</p><h3>Compare remainders after removing the smooth trend.</h3><p>The exact leading ratio Rₖ/(ζ(k) − 1) → 1 is now established. Sharpen its finite-k relative error, or define a map and preserved quantity that would explain a deeper connection. Finish with a bound or a counterexample to that proposed structure.</p><div class="target-links"><a href="../atlas/proofs/dyadic-remainder.pdf">Dyadic proof →</a><a href="../atlas/logistic-collapse-vanishing.md">Decay and underflow addendum →</a><a href="https://github.com/EncapsulatorP/prime-polarity">Prime-polarity →</a><span class="status open">Proposed mathematical bridge</span></div></div></li>
-      <li><span class="priority">05</span><div><p class="eyebrow">Explore later / scope first / uncertain return</p><h3>Give the DNA thread a physical question.</h3><p>Choose an alphabet and pairing rule, then a measurable stability or decay criterion. The 40-letter example is a string length; it is not a maximum alphabet size or a biochemical stability limit.</p><div class="target-links"><a href="../atlas/proofs/palindrome-counting.pdf">Exact counting starting point →</a><a href="../#plan-bridges">Biophysics bridge in the plan →</a></div></div></li>
-    </ol>
-    <div class="next-banner"><div><p class="eyebrow">The wider expedition</p><h3>Keep the repositories connected.</h3><p>The full organisation plan holds the broader priorities and dependency map.</p></div><div class="actions"><a class="button primary" href="../#repo-interlinks">Repository connections →</a><a class="button quiet" href="../#pirates-plan">Pirates Plan →</a></div></div>
-  </div></section>
+<section id="next-targets" class="targets-section section" aria-labelledby="targets-title"><div class="shell">
+  <div class="section-heading"><div><p class="eyebrow">Next tasks / precise finish lines</p><h2 id="targets-title">Work that advances these notes</h2></div><p>Proposed priorities within this mathematical review. Each task ends with a concrete statement, bound or recorded assessment.</p></div>
+  <ol class="target-list">
+    <li><span class="priority">01</span><div><p class="eyebrow">Local logistic analysis</p><h3>Certify an explicit neighbourhood.</h3><p>Bound the higher-order return terms and give a numerical δ for which sign preservation and contraction in absolute error hold at each cycle phase. Finish with an exact or interval-certified bound.</p><div class="target-links"><a href="../atlas/proofs/logistic-collapse-vanishing.pdf">Cubic and local-attraction proof →</a></div></div></li>
+    <li><span class="priority">02</span><div><p class="eyebrow">Fractional exponential maps</p><h3>Determine the limiting orbit means.</h3><p>For each map, specify an invariant measure or orbit class, prove that the relevant mean exists, and then evaluate the limiting Lyapunov comparison. Finish with a theorem under stated hypotheses or a counterexample.</p><div class="target-links"><a href="../atlas/proofs/fractional-exponential-maps.pdf">Finite-time identities →</a><span class="status open">Open limit problem</span></div></div></li>
+    <li><span class="priority">03</span><div><p class="eyebrow">Dyadic and zeta remainders</p><h3>Quantify the finite-k ratio error.</h3><p>Combine explicit dyadic and zeta-tail bounds to control |Rₖ/(ζ(k)−1) − 1| at finite k. Finish with a bound whose constants and range can be checked.</p><div class="target-links"><a href="../atlas/proofs/dyadic-remainder.pdf">Dyadic remainder →</a><a href="../atlas/proofs/logistic-collapse-vanishing.pdf">Later ratio comparison →</a></div></div></li>
+    <li><span class="priority">04</span><div><p class="eyebrow">Alternating towers</p><h3>Record the literature and external review.</h3><p>Compare the defined alternating system, uniform contraction, sharp height and two-base classification with prior work. Finish with a cited literature note and a line-by-line review from another reader.</p><div class="target-links"><a href="../atlas/proofs/alternating-towers.pdf">Complete tower argument →</a><a href="https://github.com/EncapsulatorP/Some_playful_boundary_paths_and_brun_twin_prime_sign_flipping_towers">Research repository →</a></div></div></li>
+  </ol>
+  <div class="next-banner"><div><p class="eyebrow">Organisation-wide planning</p><h3>Keep the wider research connected.</h3><p>The Pirates Plan contains repository links, longer-term priorities and the other research threads.</p></div><div class="actions"><a class="button primary" href="../#pirates-plan">Pirates Plan →</a><a class="button secondary" href="../#repo-interlinks">Repository map</a></div></div>
+</div></section>
 </main>
-<footer class="shell site-footer"><p><strong>EncapsulatorP · The Pirate Chest</strong><br>Pictures invite a question. Definitions and proofs carry it forward.</p><nav aria-label="Sources and downloads"><a href="../atlas/treasure-hunt-guide.pdf">Visual guide</a><a href="../atlas/proof-library.json">Reading-note index</a><a href="../atlas/assets/treasure-hunt/media-sources.json">Media credits</a><a href="../#pirate-chest">Back to the chest</a></nav><p class="credit">Visual route inspired by the supplied Gemini study. Written results retain their original source trail. Newly written local expansions are identified in their note; no priority claim is made.</p></footer>
-</body>
-</html>
+<footer class="shell site-footer"><p><strong>EncapsulatorP · The Pirate Chest</strong><br>Mathematical review · 23 November 2026</p><nav aria-label="Sources and downloads"><a href="../atlas/treasure-hunt-guide.pdf">Review PDF</a><a href="../atlas/proof-review-board.md">Readable math source</a><a href="../atlas/proof-board-data.json">Review data</a><a href="../atlas/assets/treasure-hunt/media-sources.json">Media credits</a></nav><p class="credit">The supplied Gemini visual study and geometric references retain their credits. The later local expansions are identified by provenance; a written argument’s correctness and its literature priority are separate questions.</p></footer>
+</body></html>

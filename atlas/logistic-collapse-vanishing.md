@@ -1,18 +1,18 @@
 # Logistic collapse and vanishing terms
 
-A Treasure Chest proof note · 23 November 2026
+Exact local dynamics and defined geometric comparisons · 23 November 2026
 
-**Research direction: Zolton / EncapsulatorP. Mathematical reconstruction and new derivation: ChatGPT.**
+**Research direction: Zolton / EncapsulatorP. Mathematical reconstruction and derivations: ChatGPT.**
 
-**Status:** exact elementary identities and a new local derivation; the proposed geometric bridge is an explicitly defined model. “Vanishing branes” remains a working title for an interpretation whose original state space and dynamics have not been recovered.
+**Status:** exact identities, a local-attraction proof and explicitly defined comparison models. “Vanishing branes” names a proposed interpretation whose state space and dynamics still need definitions. The cubic and asymptotic additions below follow the earlier collected-proof review.
 
 **Source baseline:** EncapsulatorP website commit cc3f20117eaead570db6077377a43a92c0bfc652; C3.2Z commit 7e8fb577bd3eb8da2e358d691164a9fee5c75f9b.
 
-## Reading the treasure
+## The objects and conclusions
 
 Two seeds can merge. A displacement can lose its first two terms. A detector can hide a circle. A family of circles can shrink to a point. These statements describe different mathematical operations. This note identifies the object and rule in each case.
 
-The main new result is especially simple to draw. At the logistic period-two boundary, the fourth-return displacement has a flat tangent, but a nonzero cubic term still pulls sufficiently small perturbations toward the cycle.
+At the logistic period-two boundary, the fourth-return displacement has a flat tangent. Its nonzero restoring cubic proves that sufficiently small perturbations approach the cycle. The curve and its inward arrows visualize that local statement.
 
 For the two cycle points \(p_\pm\), the exact leading term is
 
@@ -22,7 +22,7 @@ f^{\circ4}(p_\pm+h)-(p_\pm+h)
 K_\pm=20(1+\sqrt6)^2(2\pm\sqrt2)>0.
 \]
 
-This proves weak local attraction. The derivative of \(f^{\circ4}\) is **one**, while the derivative of its displacement from the identity is **zero**. Nothing in this calculation makes a spatial direction disappear.
+This proves weak local attraction. The derivative of \(f^{\circ4}\) is **one**, while the derivative of its displacement from the identity is **zero**. The vanishing quantity is a local displacement coefficient; the state space and its dimension are specified separately.
 
 ## 1. The complementary-seed fold
 
@@ -157,9 +157,9 @@ The scalar map satisfies
 
 Here and below \(f=f_{r_*}\). These are statements at the two specified cycle points. The polynomial \(f^{\circ4}\) has degree sixteen and is not the identity on an interval.
 
-## 3. New in this edition: the surviving cubic
+## 3. The surviving cubic: a later derivation
 
-This section derives the first nonzero term requested in the existing Atlas next-step entry. It is a new calculation in this edition, not a recovered historical “brane theorem.” No literature-priority claim is made.
+This section supplies the first nonzero term requested in the Atlas next-step entry. It was added after the earlier collected-proof review. The geometric model in Section 6 uses this local result as an explicit ingredient.
 
 Set \(F=f^{\circ2}\). At either \(p=p_\pm\), \(F(p)=p\) and \(F'(p)=-1\). Because \(F\) is quartic, its local expansion is exact:
 
@@ -230,7 +230,7 @@ D'''(p_\pm)=-120r_*^2(2\pm\sqrt2)\ne0.
 
 This is a precise meaning of “vanishing response.” For small positive \(h\), the displacement is negative; for small negative \(h\), it is positive. A proof picture should show this cubic crossing and inward arrows.
 
-The exact quartic coefficients and the cubic identity were independently checked by symbolic simplification. The derivation above supplies the argument; symbolic checks are supporting verification.
+Symbolic simplification checks the exact quartic coefficients and the cubic identity. The written derivation above supplies the argument.
 
 ## 4. Local attraction, with a zero Lyapunov exponent
 
@@ -258,7 +258,7 @@ H^{\circ n}(p+h_0)\longrightarrow p
 \quad\text{for all sufficiently small }h_0.
 \]
 
-The intervening iterates converge to the appropriate cycle phase by continuity of \(f,f^{\circ2},f^{\circ3}\). Thus the two-cycle of \(f\) is locally attracting at \(r=r_*\), despite its neutral linear multiplier. This does not assert global convergence from every initial seed.
+The intervening iterates converge to the appropriate cycle phase by continuity of \(f,f^{\circ2},f^{\circ3}\). Thus the two-cycle of \(f\) is locally attracting at \(r=r_*\), with a neutral linear multiplier. The conclusion holds for sufficiently small initial errors.
 
 ### The rate is algebraic
 
@@ -283,7 +283,7 @@ On the exact two-cycle, the Lyapunov exponent per original update is
 \lambda=\frac12\log|d_+d_-|=0.
 \]
 
-There is no contradiction. A zero linear exponent leaves higher-order terms available to govern attraction. The cubic term gives a power-law decay rather than uniform exponential contraction.
+A zero linear exponent leaves higher-order terms to determine attraction. Here the restoring cubic gives the displayed inverse-square-root decay.
 
 ## 5. Recovered geometry: what disappears in C3.2Z?
 
@@ -309,7 +309,7 @@ Writing \(z=\rho e^{i\theta}\) gives
 
 These equations explain the radius used by the existing display. This explicit model is a clarification of that display, not a physical law derived from the logistic map.
 
-### A. A circle genuinely shrinks in a parameter family
+### A. A circle shrinks in a parameter family
 
 For \(\mu>0\), the attracting periodic orbit has radius \(\sqrt\mu\). As \(\mu\downarrow0\), this family of circles converges to the origin. For \(\mu\le0\), the origin attracts nearby trajectories; at \(\mu=0\) the radial attraction is algebraic.
 
@@ -339,11 +339,11 @@ The website's earlier bubble/tube story [S4] uses
 
 After \(n\) updates, \(R_n=0.7^n\to0\) and \(L_n=1.15^n\to\infty\). No finite iterate has zero radius. The source explicitly labels this a transport toy and says that the suggested compound-Collatz branch selector is not implemented by the fixed-factor slider.
 
-Its damped character kernel is an additional exact arithmetic construction; it supplies no missing dynamical equation for a physical tube or brane.
+The separate damped character kernel is an arithmetic construction. Connecting it to a physical tube or brane requires a state space and evolution law.
 
-## 6. “Vanishing branes”: a concrete next bridge
+## 6. “Vanishing branes”: define the geometric connection
 
-No definition of a brane was found in the inspected website notes, current C3.2Z index, archived Prime Forms pages, or research archive. Earlier personal-context recovery was unavailable in this session. The user's phrase therefore remains a working research title rather than the name of an established object in these sources.
+“Vanishing branes” names the proposed research connection. The inspected website notes, C3.2Z pages and archived material do not define its state space or evolution. The product model below is an explicit candidate whose attraction property can be proved.
 
 To turn it into a theorem, write down:
 
@@ -372,7 +372,7 @@ The circle \(M=S^1\times\{0\}\) is invariant. The proven scalar estimate gives
 
 in the product metric, while the angular coordinate continues its prescribed rotation. For nonzero small \(h\), the transverse distance is asymptotic to \(1/\sqrt{2K_+n}\).
 
-This is a **newly defined skew-product toy**. Its local attraction follows from the proved cubic calculation. It offers a concrete mathematical meaning for “transverse contraction while transport survives.” It is asymptotic attraction, not finite-time annihilation of the whole cylinder.
+This is an **explicitly defined product model**. Its local attraction follows from the cubic calculation. Angular transport follows the prescribed rotation while transverse distance tends to zero. The conclusion is asymptotic attraction to the invariant circle.
 
 ### The comparison gate with Hopf
 
@@ -388,13 +388,13 @@ It therefore shares the same leading restoring cubic and inverse-square-root dec
 
 A claim that the full logistic model and Hopf model are conjugate needs an explicit map \(\Psi\), a domain, regularity assumptions, and a proof such as
 \(\Psi\circ\Phi_{\rm logistic}=\Phi_{\rm Hopf}\circ\Psi\).
-No such conjugacy is supplied here. No physical-brane interpretation is inferred from the shared exponent.
+The displayed comparison establishes the leading term and decay scale. A full conjugacy and a physical interpretation remain separate questions.
 
 For the connection map: use a solid edge for the displayed leading-term comparison, a dashed edge for a proposed full conjugacy, and an explicitly open node for the physical interpretation.
 
 ## 7. Asymptotic addendum: small coefficients are not zero
 
-This section checks the coefficient-decay bridge proposed in the supplied Gemini SVG.
+This section compares the coefficient decay with the dyadic-series remainder. The supplied Gemini SVG motivated the comparison.
 
 For odd integers \(p\ge3\), define
 
@@ -451,7 +451,7 @@ Dividing by \(2^{-s}\) proves
 \zeta(p-1)-1\sim2^{-(p-1)}.
 \]
 
-This third asymptotic is established by the bound; it need not be left as a numerical “test” in the treasure map.
+The tail bound proves this third asymptotic, including its leading constant.
 
 ### The dyadic series comparison
 
@@ -512,5 +512,5 @@ For computation of \(Z(p)-2\), evaluate the direct exponent
 - **[S5] Exact coefficient, Z(p), and dyadic remainder definitions.** [Pinned original collection](https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md). Section 7 supplies the asymptotic arguments and the corrected floating-point reproduction.
 - **Editorial input.** User-supplied gemini-svg (1).svg, inspected 23 November 2026. Its visual proposals motivated the coefficient-decay comparison. Its p=615 zero annotation and unqualified geometric interpretations are not adopted.
 
-The note establishes the stated local results and defined-model comparisons. Historical completeness, literature novelty, formal-kernel certification, and physical interpretation remain separate questions.
+The local cubic, attraction rate and asymptotic-ratio comparison are proved above. The product model is explicitly defined; its physical interpretation and any full dynamical conjugacy require additional specifications and arguments.
 

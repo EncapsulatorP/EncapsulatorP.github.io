@@ -3,7 +3,7 @@
   "subtitle": "A focused reading note from the Pirate Chest",
   "date": "23 November 2026",
   "author": "Zolton / EncapsulatorP · with ChatGPT",
-  "source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
+  "historical_source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
   "reviewed_proof_commit": "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd",
   "status": "exact",
   "statusLabel": "Exact finite counting identities",
@@ -25,7 +25,7 @@
           "type": "callout",
           "label": "Exact finite counting identities",
           "status": "exact",
-          "text": "These identities follow from coefficient extraction. They do not establish a positive Goldbach count at every even integer or infinitely many twin primes."
+          "text": "All products and coefficient extractions are finite and formal. The diagonal indicator is one exactly when half the target integer is prime."
         },
         {
           "type": "p",
@@ -37,7 +37,7 @@
         },
         {
           "type": "p",
-          "text": "Identify an additional inequality or structural statement that could control the coefficients. Rewriting the count by itself is not a lower-bound argument."
+          "text": "Specify a coefficient bound or asymptotic estimate to investigate and identify the additional inequality it would require."
         },
         {
           "type": "h",
@@ -55,7 +55,7 @@
         },
         {
           "type": "link",
-          "text": "Read the pinned collection source",
+          "text": "Historical collection source · original edition",
           "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#prime-polynomials"
         },
         {
@@ -132,13 +132,13 @@
         },
         {
           "type": "callout",
-          "label": "Finding of the written-proof review",
-          "text": "These are correct, elementary generating-function encodings of the counting definitions. They establish neither positivity of G(N) for every even N ≥ 4 nor infinitely many twin primes.",
+          "label": "Conclusion",
+          "text": "The finite polynomial products give exact ordered, unordered and translated prime-pair counts. Their proofs are coefficient extraction and the explicit diagonal correction.",
           "status": "exact"
         },
         {
           "type": "p",
-          "text": "Their usefulness is organizational: one polynomial product expresses reflection and another expresses translation. Any proposed lower bound or asymptotic statement must add a separate argument. The reviewed source states these limits explicitly [S2]."
+          "text": "One product encodes the reflection p + q = N; the Laurent product encodes the translation q − p = 2. A lower bound or asymptotic estimate for these coefficients would require an additional argument."
         }
       ]
     }

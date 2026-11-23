@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Build the treasure note and its Markdown mirror from one JSON source.
 
-Equations remain vector text and rules: Matplotlib parses math, while ReportLab
-embeds and draws the actual glyph fonts. No TeX installation is required.
+Matplotlib lays out math and ReportLab draws sharp vector glyph outlines. Each
+display equation also carries its complete LaTeX source as one invisible text
+run and PDF ActualText, preserving nested powers, primes and summation limits
+when copied or extracted. No TeX installation is required.
 
 Install: python -m pip install -r atlas/logistic-pdf-requirements.txt
 Build:   python atlas/build_logistic_vanishing_pdf.py
@@ -26,6 +28,8 @@ matplotlib.use("Agg")
 matplotlib.rcParams.update({"mathtext.fontset": "dejavuserif", "mathtext.default": "it"})
 from matplotlib.font_manager import FontProperties, findfont
 from matplotlib.mathtext import MathTextParser
+from fontTools.pens.reportLabPen import ReportLabPen
+from fontTools.ttLib import TTFont as OutlineFont
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
@@ -33,6 +37,7 @@ from reportlab.lib.utils import ImageReader
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen.canvas import Canvas
+from reportlab.pdfgen.pathobject import PDFPathObject
 from reportlab.platypus import (
     BaseDocTemplate, Flowable, Frame, PageBreak, PageTemplate, Paragraph,
     Spacer, Table, TableStyle,
@@ -41,18 +46,21 @@ from reportlab.platypus import (
 
 BASE = Path(__file__).resolve().parent
 PAPER = colors.white
-ORANGE = colors.HexColor("#FF5A00")
-HEADING = colors.HexColor("#A93600")
-LINK_HEX = "#A93600"
-INK = colors.HexColor("#2C211B")
-MUTED = colors.HexColor("#6E5549")
-RULE = colors.HexColor("#FFD4B5")
-PALE_ORANGE = colors.HexColor("#FFF2E8")
-# Keep small labels dark enough to read; bright orange is an accent or large title.
+ORANGE = colors.HexColor("#F36B21")
+YELLOW = colors.HexColor("#F6C945")
+GREEN = colors.HexColor("#77B443")
+HEADING = colors.HexColor("#27312B")
+LINK_HEX = "#8C3A0B"
+INK = colors.HexColor("#202520")
+MUTED = colors.HexColor("#62685F")
+RULE = colors.HexColor("#DDE3DA")
+PALE_ORANGE = colors.HexColor("#FFF8EE")
+TABLE_HEAD = colors.HexColor("#F1F4EC")
+# Evidence states are written explicitly; color is a secondary reading aid.
 STATUS = {
-    "exact": ("#A93600", "#FFF2E8"),
-    "conditional": ("#8A4D00", "#FFF5D6"),
-    "open": ("#725044", "#FFF9F5"),
+    "exact": ("#245C38", "#F4F8F1"),
+    "conditional": ("#7B510E", "#FFF9E9"),
+    "open": ("#515A52", "#F5F6F3"),
 }
 MATH = MathTextParser("path")
 
@@ -136,8 +144,81 @@ def parse_math(latex: str, size: float = 14.0):
         raise ValueError(f"Unsupported equation {latex!r}: {exc}") from exc
 
 
-def paint_math(canvas: Canvas, parsed, x: float, baseline: float) -> None:
+class _CanvasGlyphPen(ReportLabPen):
+    """Adapt fontTools' quadratic-to-cubic pen to a PDF canvas path."""
+
+    def _closePath(self):
+        self.path.close()
+
+
+@lru_cache(maxsize=64)
+def _outline_font(path: str):
+    font = OutlineFont(path)
+    return font.getGlyphSet(), font.getBestCmap(), font["head"].unitsPerEm
+
+
+@lru_cache(maxsize=4096)
+def _glyph_outline(path: str, number: int):
+    glyphs, cmap, units = _outline_font(path)
+    if number not in cmap:
+        raise ValueError(f"Math font {path!r} has no glyph for U+{number:04X}")
+    pen = _CanvasGlyphPen(glyphs, path=PDFPathObject())
+    glyphs[cmap[number]].draw(pen)
+    return pen.path, units
+
+
+def _paint_math_outlines(canvas: Canvas, parsed, x: float, baseline: float) -> None:
+    """Draw the same font glyphs/positions without fragmented PDF text."""
     if parsed is None:
+        return
+    for font, size, number, gx, gy in parsed.glyphs:
+        path, units = _glyph_outline(font.fname, number)
+        canvas.saveState()
+        canvas.translate(x + float(gx), baseline + float(gy))
+        canvas.scale(float(size) / units, float(size) / units)
+        canvas.drawPath(path, stroke=0, fill=1, fillMode=1)
+        canvas.restoreState()
+    for rx, ry, width, height in parsed.rects:
+        canvas.rect(x + float(rx), baseline + float(ry),
+                    float(width), float(height), stroke=0, fill=1)
+
+
+def _semantic_math_text(canvas: Canvas, latex: str, x: float, baseline: float,
+                        width: float) -> None:
+    """Supply one unambiguous text representation for the visible formula.
+
+    ActualText is respected by Poppler and current MuPDF, but not by pypdf.
+    The matching invisible text run therefore provides the same source to all
+    three. It is placed over the displayed equation, not off the page. This is
+    a copy/extraction aid, not a claim of complete PDF/UA tagging.
+    """
+    source = " ".join(latex.strip().strip("$").split())
+    text = r"\(" + source + r"\)"
+    actual = "FEFF" + text.encode("utf-16-be").hex().upper()
+    canvas._code.append(f"/Span << /ActualText <{actual}> >> BDC")
+    run = canvas.beginText(x, baseline)
+    run.setFont("Mono", 10)
+    run.setHorizScale(min(100, max(width, 1) / pdfmetrics.stringWidth(text, "Mono", 10) * 100))
+    run.setTextRenderMode(3)
+    run.textOut(text)
+    canvas.drawText(run)
+    canvas._code.append("EMC")
+
+
+def paint_math(canvas: Canvas, parsed, x: float, baseline: float,
+               latex: str | None = None) -> None:
+    """Draw math; supply latex to preserve its logical text representation.
+
+    The four-argument API remains available to existing canvas illustrations.
+    Equation and Matrix use outlines plus complete semantic LaTeX text.
+    """
+    if parsed is None:
+        return
+    if latex is not None:
+        canvas._code.append("/Artifact BMC")
+        _paint_math_outlines(canvas, parsed, x, baseline)
+        canvas._code.append("EMC")
+        _semantic_math_text(canvas, latex, x, baseline, float(parsed.width))
         return
     for font, size, number, gx, gy in parsed.glyphs:
         canvas.setFont(glyph_font(font.fname), size)
@@ -180,7 +261,7 @@ class Equation(Flowable):
         c.setFillColor(INK)
         c.translate((self.width - float(self.parsed.width) * self.scale) / 2, 4)
         c.scale(self.scale, self.scale)
-        paint_math(c, self.parsed, 0, float(self.parsed.depth))
+        paint_math(c, self.parsed, 0, float(self.parsed.depth), self.latex)
         c.restoreState()
 
 
@@ -192,6 +273,9 @@ class Matrix(Flowable):
         if not cells or not cells[0] or any(len(row) != len(cells[0]) for row in cells):
             raise ValueError("A matrix must have a nonempty rectangular cells array")
         self.size = 14.0
+        self.latex = (label + r"\begin{pmatrix}" +
+                      r" \\ ".join(" & ".join(str(value) for value in row) for row in cells) +
+                      r"\end{pmatrix}" + tail)
         self.label, self.tail = parse_math(label, self.size), parse_math(tail, self.size)
         self.cells = [[parse_math(str(value), self.size) for value in row] for row in cells]
         if any(cell is None for row in self.cells for cell in row):
@@ -224,9 +308,10 @@ class Matrix(Flowable):
         c.setStrokeColor(INK)
         c.translate((self.width - self.natural_w * self.scale) / 2, 6)
         c.scale(self.scale, self.scale)
+        c._code.append("/Artifact BMC")
         center = self.natural_h / 2
         if self.label:
-            paint_math(c, self.label, 0, center - float(self.label.height) / 2 + float(self.label.depth))
+            _paint_math_outlines(c, self.label, 0, center - float(self.label.height) / 2 + float(self.label.depth))
         mx, my = self.label_w, center - self.matrix_h / 2
         c.setLineWidth(0.8)
         for left in (True, False):
@@ -242,13 +327,15 @@ class Matrix(Flowable):
             x = mx + self.pad + 5
             bottom = top - height
             for cell, width in zip(row, self.cols):
-                paint_math(c, cell, x + (width - float(cell.width)) / 2,
+                _paint_math_outlines(c, cell, x + (width - float(cell.width)) / 2,
                            bottom + (height - float(cell.height)) / 2 + float(cell.depth))
                 x += width + self.colgap
             top = bottom - self.rowgap
         if self.tail:
-            paint_math(c, self.tail, mx + self.matrix_w + 9,
+            _paint_math_outlines(c, self.tail, mx + self.matrix_w + 9,
                        center - float(self.tail.height) / 2 + float(self.tail.depth))
+        c._code.append("EMC")
+        _semantic_math_text(c, self.latex, 0, center, self.natural_w)
         c.restoreState()
 
 
@@ -298,7 +385,7 @@ def styles() -> dict[str, ParagraphStyle]:
         "h": ParagraphStyle("Heading", parent=body, fontName="SansBold", fontSize=12.2,
                             leading=17, textColor=HEADING, spaceBefore=9, spaceAfter=6, keepWithNext=1),
         "title": ParagraphStyle("Title", fontName="SansBold", fontSize=22, leading=28,
-                                textColor=ORANGE, spaceAfter=12, keepWithNext=1),
+                                textColor=INK, spaceAfter=12, keepWithNext=1),
         "kicker": ParagraphStyle("Kicker", fontName="SansBold", fontSize=8.7, leading=12,
                                  textColor=HEADING, spaceAfter=8, keepWithNext=1),
         "subtitle": ParagraphStyle("Subtitle", parent=body, fontSize=11.2, leading=17, spaceAfter=13),
@@ -328,8 +415,8 @@ def make_table(block: dict, width: float, st: dict) -> Table:
                   spaceBefore=5, spaceAfter=9, splitByRow=1)
     table.setStyle(TableStyle([
         ("FONTNAME", (0, 0), (-1, -1), "Body"),
-        ("BACKGROUND", (0, 0), (-1, 0), ORANGE),
-        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [PALE_ORANGE, PAPER]),
+        ("BACKGROUND", (0, 0), (-1, 0), TABLE_HEAD),
+        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [PAPER, colors.HexColor("#FAFBF8")]),
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
         ("LEFTPADDING", (0, 0), (-1, -1), 9), ("RIGHTPADDING", (0, 0), (-1, -1), 9),
         ("TOPPADDING", (0, 0), (-1, -1), padding), ("BOTTOMPADDING", (0, 0), (-1, -1), padding),
@@ -357,43 +444,16 @@ def make_callout(block: dict, width: float, st: dict) -> Table:
     return table
 
 
-def sparkle(canvas: Canvas, x: float, y: float, radius: float, color) -> None:
-    """A small vector glint, confined to the page furniture."""
-    inset = radius * .24
-    points = [(x, y + radius), (x + inset, y + inset),
-              (x + radius, y), (x + inset, y - inset),
-              (x, y - radius), (x - inset, y - inset),
-              (x - radius, y), (x - inset, y + inset)]
-    path = canvas.beginPath()
-    path.moveTo(*points[0])
-    for point in points[1:]:
-        path.lineTo(*point)
-    path.close()
-    canvas.setFillColor(color)
-    canvas.drawPath(path, fill=1, stroke=0)
-
-
-def treasure_mark(canvas: Canvas, x: float, y: float) -> None:
-    """A faceted orange gem and a quiet halo, clear of the reading area."""
-    canvas.setFillColor(colors.HexColor("#FFF9F4"))
-    canvas.circle(x, y, 22, fill=1, stroke=0)
-    canvas.setFillColor(PALE_ORANGE)
-    canvas.circle(x, y, 16, fill=1, stroke=0)
-    path = canvas.beginPath()
-    path.moveTo(x - 10, y + 3)
-    for point in [(x - 5, y + 9), (x + 5, y + 9),
-                  (x + 10, y + 3), (x, y - 10)]:
-        path.lineTo(*point)
-    path.close()
-    canvas.setFillColor(ORANGE)
-    canvas.drawPath(path, fill=1, stroke=0)
-    canvas.setStrokeColor(colors.white)
-    canvas.setLineWidth(.65)
-    canvas.lines([(x - 10, y + 3, x + 10, y + 3),
-                  (x - 5, y + 9, x, y - 10),
-                  (x + 5, y + 9, x, y - 10)])
-    sparkle(canvas, x + 19, y + 13, 5, ORANGE)
-    sparkle(canvas, x - 19, y - 10, 3, RULE)
+def accent_gradient(canvas: Canvas, x: float, y: float,
+                    width: float, height: float) -> None:
+    """A real vector orange-yellow-green gradient, confined to its rectangle."""
+    canvas.saveState()
+    clip = canvas.beginPath()
+    clip.rect(x, y, width, height)
+    canvas.clipPath(clip, stroke=0)
+    canvas.linearGradient(x, y, x + width, y, [ORANGE, YELLOW, GREEN],
+                          positions=[0, .48, 1], extend=False)
+    canvas.restoreState()
 
 
 def page_decoration(canvas: Canvas, doc: BaseDocTemplate) -> None:
@@ -401,24 +461,18 @@ def page_decoration(canvas: Canvas, doc: BaseDocTemplate) -> None:
     canvas.saveState()
     canvas.setFillColor(PAPER)
     canvas.rect(0, 0, width, height, fill=1, stroke=0)
-    # Electric orange frames a bright white page; ornaments never cross body text.
-    canvas.setFillColor(ORANGE)
-    canvas.rect(0, height - 5, width, 5, fill=1, stroke=0)
-    canvas.roundRect(18, height - 133, 4, 64, 2, fill=1, stroke=0)
-    canvas.rect(doc.leftMargin, height - 39, 18, 3, fill=1, stroke=0)
-    canvas.setFillColor(HEADING)
+    # Color stays in restrained page accents; the reading surface is white.
+    accent_gradient(canvas, 0, height - 5, width, 5)
+    canvas.setFillColor(MUTED)
     canvas.setFont("SansBold", 8)
-    canvas.drawString(doc.leftMargin + 26, height - 39, "ENCAPSULATORP  /  PIRATE CHEST")
-    treasure_mark(canvas, width - 67, height - 31)
+    canvas.drawString(doc.leftMargin, height - 37, "ENCAPSULATORP  /  MATHEMATICAL NOTES")
+    accent_gradient(canvas, width - doc.rightMargin - 72, height - 35, 72, 2)
     canvas.setStrokeColor(RULE)
     canvas.setLineWidth(.5)
     canvas.line(doc.leftMargin, 40, width - doc.rightMargin, 40)
     canvas.setFillColor(MUTED)
     canvas.setFont("Sans", 8)
     canvas.drawString(doc.leftMargin, 25, "Logistic vanishing terms • EncapsulatorP")
-    canvas.setFillColor(PALE_ORANGE)
-    canvas.setStrokeColor(ORANGE)
-    canvas.roundRect(width - doc.rightMargin - 26, 18, 31, 18, 4, fill=1, stroke=1)
     canvas.setFillColor(HEADING)
     canvas.setFont("SansBold", 8.5)
     canvas.drawRightString(width - doc.rightMargin, 25, f"{canvas.getPageNumber():02d}")

@@ -2,8 +2,8 @@
   "title": "Pirate Chest proof library",
   "edition": "2026-11-23",
   "collectionSource": "atlas/logistic-vanishing-terms.json",
-  "collectionSourceSha256": "f945dfd96cdbb4e7132e2d2f9c8c45acdf6b279ee692b90f034b125902e6ca2b",
-  "collectionSourceCommit": "cc3f20117eaead570db6077377a43a92c0bfc652",
+  "collectionSourceSha256": "f770b2544dcb7fd0e7dc5a17887ca381d5a0cafcc4b0cbdfdf5f18a2162a6198",
+  "historicalCollectionSourceCommit": "cc3f20117eaead570db6077377a43a92c0bfc652",
   "reviewedProofCommit": "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd",
   "completeCollection": "atlas/logistic-vanishing-terms.pdf",
   "notes": [
@@ -14,8 +14,9 @@
       "statusLabel": "Exact local result",
       "kind": "proof",
       "summary": "A two-cycle has return multiplier −1 at r = 1 + √6. Its paired derivative matrix has fourth power I, and the fourth-return displacement has zero first derivative at the cycle points.",
-      "nextStep": "Specify a geometric collapse model before connecting this local cancellation to a surface or brane. State its variables, map, topology and the exact sense in which a quantity vanishes.",
+      "nextStep": "Read the companion cubic calculation to obtain local attraction and its rate. For a further geometric connection, specify the state space, map and quantity to compare with its defined invariant-circle model.",
       "related": [
+        "logistic-collapse-vanishing",
         "fractional-exponential-maps",
         "alternating-towers"
       ],
@@ -36,7 +37,7 @@
       "statusLabel": "Proved convergence and classification",
       "kind": "proof",
       "summary": "For every real base c > 1, the alternating-sign system has one pair of phases. The explicit iteration converges from every upper starting phase at least 1, with a uniform contraction bound.",
-      "nextStep": "Perform a focused literature search and request external review of this complete small theorem. A numerical match to a target constant needs an additional arithmetic argument.",
+      "nextStep": "Compare the convergence and inverse classification with the literature. If a particular arithmetic constant is used as a target height, state the additional arithmetic question separately.",
       "related": [
         "logistic-quarter-turn",
         "proof-review"
@@ -56,7 +57,7 @@
       "status": "exact",
       "statusLabel": "Proved pathwise bound",
       "kind": "proof",
-      "summary": "The lacunary series f(x) = Σ x^(2ⁿ) obeys f(x) = x + f(x²). Along the specified dyadic path toward 1, subtracting k and a convergent constant leaves an explicit geometric tail.",
+      "summary": "The lacunary series f(x) = Σ x^(2^n), where 2^n means 2 raised to n, obeys f(x) = x + f(x²). Along the specified dyadic path toward 1, subtracting k and a convergent constant leaves an explicit tail.",
       "nextStep": "Quantify the finite-k relative error beyond the proved leading-ratio limit, or define a structural map and the property it preserves. A shared dynamical system or conjugacy remains open.",
       "related": [
         "logistic-collapse-vanishing",
@@ -78,7 +79,7 @@
       "statusLabel": "Exact finite counting identities",
       "kind": "proof",
       "summary": "Finite polynomial products encode ordered Goldbach representations and twin-prime translations. A diagonal correction converts ordered Goldbach counts into unordered counts.",
-      "nextStep": "Identify an additional inequality or structural statement that could control the coefficients. Rewriting the count by itself is not a lower-bound argument.",
+      "nextStep": "Specify a coefficient bound or asymptotic estimate to investigate and identify the additional inequality it would require.",
       "related": [
         "palindrome-counting",
         "proof-review"
@@ -98,7 +99,7 @@
       "statusLabel": "Conditional on complex Schanuel",
       "kind": "conditional-proof",
       "summary": "Euler’s even-zeta formula gives exact rational coefficients cₚ for every odd integer p ≥ 3. Assuming complex Schanuel, π and any finite list of the corresponding Z(p) values are algebraically independent.",
-      "nextStep": "Check the literature for this specific consequence and investigate unconditional statements separately. Small numerical coefficients do not strengthen the truth status of Schanuel.",
+      "nextStep": "Compare this specific conditional consequence with the literature. State any proposed unconditional result as a separate claim with its own assumptions.",
       "related": [
         "dyadic-remainder",
         "proof-review"
@@ -135,11 +136,11 @@
     },
     {
       "slug": "palindrome-counting",
-      "title": "Palindrome counting and its limits",
+      "title": "Palindrome counting",
       "status": "exact",
       "statusLabel": "Exact count under a sampling model",
       "kind": "proof",
-      "summary": "For independent uniform q-symbol strings of length n, ordinary palindromes have probability q^−floor(n/2). The example q = 4, n = 40 has probability exactly 2⁻⁴⁰.",
+      "summary": "For independent uniform q-symbol strings of length n, ordinary palindromes have probability q^(−floor(n/2)). The example q = 4, n = 40 has probability exactly 2^(−40).",
       "nextStep": "Before making a biophysical claim, specify a physical alphabet, pairing rule and measurable stability or decay criterion. The finite combinatorics supplies no biochemical feasibility result.",
       "related": [
         "prime-polynomial-counts",
@@ -179,8 +180,8 @@
       "status": "review",
       "statusLabel": "Scope and correctness review",
       "kind": "review",
-      "summary": "The inspected alternating-tower, logistic and finite prime-counting arguments pass the stated checks. Their correctness, literature novelty, research significance and external validation are separate questions.",
-      "nextStep": "Take the alternating-tower convergence, sharp envelope and two-base classification through a focused novelty search and external review as one coherent small mathematical note.",
+      "summary": "The logistic, alternating-tower and finite prime-counting arguments establish the stated identities, bounds and classifications. This note identifies their key proof steps and source versions.",
+      "nextStep": "Choose one precise extension: a limiting orbit mean, a stronger remainder estimate, a literature comparison for the tower classification, or a fully specified geometric connection.",
       "related": [
         "alternating-towers",
         "logistic-quarter-turn",
@@ -198,10 +199,10 @@
       "slug": "logistic-collapse-vanishing",
       "title": "Logistic collapse and vanishing terms",
       "status": "exact",
-      "statusLabel": "Exact local lemma; brane model open",
+      "statusLabel": "Proved local attraction; physical interpretation open",
       "kind": "proof-and-open-question",
-      "summary": "Exact logistic seed folding and a local cubic vanishing term distinguish orbit identification from derivative cancellation. The recovered geometric detector is kept separate from a physical brane model.",
-      "nextStep": "Specify the geometric state space, evolution and observable, then prove whether the chosen observable vanishes or the state itself collapses. A physical brane interpretation requires a defined model.",
+      "summary": "The restoring logistic cubic proves local attraction with an inverse-square-root error rate. An explicitly defined product model transfers that result to transverse attraction toward an invariant circle, and a separate tail estimate proves the dyadic–zeta ratio limit.",
+      "nextStep": "Quantify a finite-index ratio error or state a proposed conjugacy with its domain and regularity. For a physical interpretation, specify the object, evolution and measured quantity.",
       "related": [
         "logistic-quarter-turn",
         "dimensions-and-fragments",
@@ -222,9 +223,9 @@
       ],
       "canonicalMarkdown": "atlas/logistic-collapse-vanishing.md",
       "canonicalSource": "atlas/logistic-collapse-vanishing.json",
-      "sourceSha256": "667eb08e59ee84d5d8c0a8a4fbdcaa7a171bf2195440bc54ef10098501aec00e",
+      "sourceSha256": "cf51009ae78690f3cc364540e689cef1af0ebcf70dfb5d7ba70e0b58d32da07d",
       "reviewedProofCommit": null,
-      "provenance": "New recovery note, 23 November 2026; the historical review did not cover this extension."
+      "provenance": "Derivations added on 23 November 2026 after the earlier collected-proof review; historical sources are cited separately from the current source hash."
     }
   ]
 }

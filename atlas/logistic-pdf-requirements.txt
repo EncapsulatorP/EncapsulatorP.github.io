@@ -2,3 +2,5 @@
 # The renderer uses MathText, not an external TeX distribution.
 matplotlib==3.10.8
 reportlab==4.4.9
+# Preserve vector glyph outlines while exposing complete, copyable formula text.
+fonttools==4.61.1
