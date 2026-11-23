@@ -1338,3 +1338,7 @@ body { accent-color: var(--atlas-accent); }
 .pp-near-term li + li { margin-top: 1rem; }
 .pp-near-term p { margin: 0; max-width: 75ch; }
 .pp-near-term a { color: var(--atlas-accent); }
+
+/* Splash workbench photo: wood and copper recoloured into the settled sapphire-to-violet palette.
+   The photo file is unchanged; this layer sits under the hotspots and lets clicks through. */
+.pm-table-photo::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:linear-gradient(120deg,var(--atlas-accent,#284cad),#5d65c7 48%,var(--atlas-violet,#8054b5));mix-blend-mode:color;opacity:.92}
