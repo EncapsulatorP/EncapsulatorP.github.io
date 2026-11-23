@@ -1,0 +1,160 @@
+{
+  "title": "Review of the written proofs",
+  "subtitle": "A focused reading note from the Pirate Chest",
+  "date": "23 November 2026",
+  "author": "Zolton / EncapsulatorP · with ChatGPT",
+  "source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
+  "reviewed_proof_commit": "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd",
+  "status": "review",
+  "statusLabel": "Scope and correctness review",
+  "pages": [
+    {
+      "id": "proof-review-orientation",
+      "title": "Review of the written proofs",
+      "kicker": "NOTE 09 · SCOPE AND CORRECTNESS REVIEW",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The inspected alternating-tower, logistic and finite prime-counting arguments pass the stated checks. Their correctness, literature novelty, research significance and external validation are separate questions."
+        },
+        {
+          "type": "callout",
+          "label": "Scope and correctness review",
+          "status": "open",
+          "text": "The review does not supply Lean/kernel certificates or independent external peer review. None of the inspected statements proves a headline conjecture such as Collatz or Goldbach."
+        },
+        {
+          "type": "p",
+          "text": "Use this note to understand what the review does and does not establish. The linked standalone notes contain the complete arguments and their assumptions."
+        },
+        {
+          "type": "h",
+          "text": "One concrete next step"
+        },
+        {
+          "type": "p",
+          "text": "Take the alternating-tower convergence, sharp envelope and two-base classification through a focused novelty search and external review as one coherent small mathematical note."
+        },
+        {
+          "type": "h",
+          "text": "Sources and related reading"
+        },
+        {
+          "type": "p",
+          "text": "<b>[S1] Logistic quarter-turn.</b> EncapsulatorP, <i>Recovered constructions — independently checked proof notes</i>, §2. The factorization, paired matrix and fourth-iterate derivative statement are pinned to the reviewed source.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "[S1] Read the pinned logistic argument",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/29f9232545aa112cd6ffa9fe1f3c0e85d093dedd/atlas/recovered-bridges.md#logistic-quarter-turn"
+        },
+        {
+          "type": "p",
+          "text": "<b>[S2] Towers and prime polynomials.</b> EncapsulatorP, <i>Exact structures behind the atlas</i>, edition 21 November 2026, §§1, 2 and 4. The written arguments record their scope, prior solver provenance and numerical limits.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "[S2] Read the pinned mathematical notes",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/29f9232545aa112cd6ffa9fe1f3c0e85d093dedd/atlas/mathematical-notes.md"
+        },
+        {
+          "type": "link",
+          "text": "Read the pinned collection source",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#review-finding"
+        },
+        {
+          "type": "link",
+          "text": "Alternating towers · complete note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/alternating-towers.pdf"
+        },
+        {
+          "type": "link",
+          "text": "Logistic quarter-turn · complete note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/logistic-quarter-turn.pdf"
+        },
+        {
+          "type": "link",
+          "text": "Prime-polynomial counts · complete note",
+          "url": "https://encapsulatorp.github.io/atlas/proofs/prime-polynomial-counts.pdf"
+        }
+      ]
+    },
+    {
+      "id": "review-finding",
+      "title": "Review of the written proofs",
+      "kicker": "01 · CORRECTNESS, NOVELTY AND RESEARCH VALUE",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The original review inspected the site at commit <b>29f9232545aa112cd6ffa9fe1f3c0e85d093dedd</b>. Its substantive findings concern alternating-tower convergence, the sharp envelope and two-base classification, the logistic quarter-turn, and prime-polynomial counting. The complete arguments are now available in the separate notes linked on this document’s opening page; their original source references remain pinned."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Question",
+            "Finding from the inspected material"
+          ],
+          "rows": [
+            [
+              "Are the small written statements correct?",
+              "They pass the checks recorded in this review, under their stated assumptions."
+            ],
+            [
+              "Do rigorous written arguments exist?",
+              "Yes. The inspected arguments are more than plots or finite numerical observations."
+            ],
+            [
+              "Is literature novelty established?",
+              "No. The notes disclaim priority; a dedicated literature check remains necessary."
+            ],
+            [
+              "Is there a demonstrated breakthrough on a major open problem?",
+              "No. None of these arguments proves Collatz, Goldbach or a comparable headline conjecture."
+            ],
+            [
+              "Are these Lean/kernel-certified?",
+              "No such certificates are supplied for the statements reviewed here."
+            ],
+            [
+              "Is independent external peer review established?",
+              "No. Assistant checks within this programme do not constitute independent external peer review."
+            ],
+            [
+              "What is the role of numerical reproduction?",
+              "Supporting verification, kept distinct from the mathematical proofs."
+            ]
+          ],
+          "widths": [
+            0.4,
+            0.6
+          ],
+          "padding": 4
+        },
+        {
+          "type": "p",
+          "text": "“No proof of a headline conjecture” is a statement about scope. It does not justify treating every small written proof as invalid. Correctness, novelty, significance and external validation need separate assessments."
+        },
+        {
+          "type": "h",
+          "text": "A concrete next paper"
+        },
+        {
+          "type": "p",
+          "text": "The alternating-tower theorem, sharp envelope and two-base classification form a coherent short note: a clear domain, uniform convergence bound, complete proof and exact inverse classification. The productive next step is a focused novelty search and external review of that note."
+        },
+        {
+          "type": "p",
+          "text": "For this treasure’s other branches, the immediate work is narrower: define T₀–T₃; identify which orbit means are relevant to the fractional exponential maps; and state a physical model before connecting alphabet counts to stability or decay."
+        },
+        {
+          "type": "callout",
+          "label": "Preserved conclusion",
+          "text": "The inspected written proofs are valid within their stated scope and are elementary results of limited demonstrated research significance. Their existence deserves to be recorded accurately, without inflating either novelty or progress on the headline conjectures.",
+          "status": "exact"
+        }
+      ]
+    }
+  ]
+}

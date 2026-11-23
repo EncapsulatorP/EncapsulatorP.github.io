@@ -1,0 +1,229 @@
+{
+  "title": "Pirate Chest proof library",
+  "edition": "2026-11-23",
+  "collectionSource": "atlas/logistic-vanishing-terms.json",
+  "collectionSourceSha256": "f945dfd96cdbb4e7132e2d2f9c8c45acdf6b279ee692b90f034b125902e6ca2b",
+  "collectionSourceCommit": "cc3f20117eaead570db6077377a43a92c0bfc652",
+  "reviewedProofCommit": "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd",
+  "completeCollection": "atlas/logistic-vanishing-terms.pdf",
+  "notes": [
+    {
+      "slug": "logistic-quarter-turn",
+      "title": "The logistic quarter-turn",
+      "status": "exact",
+      "statusLabel": "Exact local result",
+      "kind": "proof",
+      "summary": "A two-cycle has return multiplier −1 at r = 1 + √6. Its paired derivative matrix has fourth power I, and the fourth-return displacement has zero first derivative at the cycle points.",
+      "nextStep": "Specify a geometric collapse model before connecting this local cancellation to a surface or brane. State its variables, map, topology and the exact sense in which a quantity vanishes.",
+      "related": [
+        "fractional-exponential-maps",
+        "alternating-towers"
+      ],
+      "pdf": "atlas/proofs/logistic-quarter-turn.pdf",
+      "markdown": "atlas/proofs/logistic-quarter-turn.md",
+      "source": "atlas/proofs/logistic-quarter-turn.json",
+      "pageCount": 4,
+      "sourcePages": [
+        "logistic-proof-picture",
+        "logistic-cycle",
+        "logistic-vanishing"
+      ]
+    },
+    {
+      "slug": "alternating-towers",
+      "title": "Alternating real towers",
+      "status": "exact",
+      "statusLabel": "Proved convergence and classification",
+      "kind": "proof",
+      "summary": "For every real base c > 1, the alternating-sign system has one pair of phases. The explicit iteration converges from every upper starting phase at least 1, with a uniform contraction bound.",
+      "nextStep": "Perform a focused literature search and request external review of this complete small theorem. A numerical match to a target constant needs an additional arithmetic argument.",
+      "related": [
+        "logistic-quarter-turn",
+        "proof-review"
+      ],
+      "pdf": "atlas/proofs/alternating-towers.pdf",
+      "markdown": "atlas/proofs/alternating-towers.md",
+      "source": "atlas/proofs/alternating-towers.json",
+      "pageCount": 3,
+      "sourcePages": [
+        "tower-convergence",
+        "tower-envelope"
+      ]
+    },
+    {
+      "slug": "dyadic-remainder",
+      "title": "A dyadic vanishing remainder",
+      "status": "exact",
+      "statusLabel": "Proved pathwise bound",
+      "kind": "proof",
+      "summary": "The lacunary series f(x) = Σ x^(2ⁿ) obeys f(x) = x + f(x²). Along the specified dyadic path toward 1, subtracting k and a convergent constant leaves an explicit geometric tail.",
+      "nextStep": "Compare other explicitly defined approaches to the boundary while keeping path-dependent constants separate. Any link to a zeta remainder must be a new statement with its own bound.",
+      "related": [
+        "schanuel-zeta-family",
+        "fractional-exponential-maps"
+      ],
+      "pdf": "atlas/proofs/dyadic-remainder.pdf",
+      "markdown": "atlas/proofs/dyadic-remainder.md",
+      "source": "atlas/proofs/dyadic-remainder.json",
+      "pageCount": 2,
+      "sourcePages": [
+        "mahler-remainder"
+      ]
+    },
+    {
+      "slug": "prime-polynomial-counts",
+      "title": "Prime polynomials count exactly",
+      "status": "exact",
+      "statusLabel": "Exact finite counting identities",
+      "kind": "proof",
+      "summary": "Finite polynomial products encode ordered Goldbach representations and twin-prime translations. A diagonal correction converts ordered Goldbach counts into unordered counts.",
+      "nextStep": "Identify an additional inequality or structural statement that could control the coefficients. Rewriting the count by itself is not a lower-bound argument.",
+      "related": [
+        "palindrome-counting",
+        "proof-review"
+      ],
+      "pdf": "atlas/proofs/prime-polynomial-counts.pdf",
+      "markdown": "atlas/proofs/prime-polynomial-counts.md",
+      "source": "atlas/proofs/prime-polynomial-counts.json",
+      "pageCount": 2,
+      "sourcePages": [
+        "prime-polynomials"
+      ]
+    },
+    {
+      "slug": "schanuel-zeta-family",
+      "title": "The Z(p) family under Schanuel",
+      "status": "conditional",
+      "statusLabel": "Conditional on complex Schanuel",
+      "kind": "conditional-proof",
+      "summary": "Euler’s even-zeta formula gives exact rational coefficients cₚ for every odd integer p ≥ 3. Assuming complex Schanuel, π and any finite list of the corresponding Z(p) values are algebraically independent.",
+      "nextStep": "Check the literature for this specific consequence and investigate unconditional statements separately. Small numerical coefficients do not strengthen the truth status of Schanuel.",
+      "related": [
+        "dyadic-remainder",
+        "proof-review"
+      ],
+      "pdf": "atlas/proofs/schanuel-zeta-family.pdf",
+      "markdown": "atlas/proofs/schanuel-zeta-family.md",
+      "source": "atlas/proofs/schanuel-zeta-family.json",
+      "pageCount": 3,
+      "sourcePages": [
+        "zeta-family",
+        "schanuel-proof"
+      ]
+    },
+    {
+      "slug": "fractional-exponential-maps",
+      "title": "Two constructions of six",
+      "status": "exact",
+      "statusLabel": "Exact formulas; limiting means open",
+      "kind": "proof-and-open-question",
+      "summary": "The additive and multiplicative constructions of six define different fractional exponential maps. Their smooth-branch derivatives give exact finite-time Lyapunov averages in terms of separate orbit means.",
+      "nextStep": "Define the orbit or invariant measure of interest and establish the limiting means before evaluating a zero-difference target. Keep the two maps’ means separate.",
+      "related": [
+        "logistic-quarter-turn",
+        "dyadic-remainder"
+      ],
+      "pdf": "atlas/proofs/fractional-exponential-maps.pdf",
+      "markdown": "atlas/proofs/fractional-exponential-maps.md",
+      "source": "atlas/proofs/fractional-exponential-maps.json",
+      "pageCount": 3,
+      "sourcePages": [
+        "six-maps",
+        "lyapunov-comparison"
+      ]
+    },
+    {
+      "slug": "palindrome-counting",
+      "title": "Palindrome counting and its limits",
+      "status": "exact",
+      "statusLabel": "Exact count under a sampling model",
+      "kind": "proof",
+      "summary": "For independent uniform q-symbol strings of length n, ordinary palindromes have probability q^−floor(n/2). The example q = 4, n = 40 has probability exactly 2⁻⁴⁰.",
+      "nextStep": "Before making a biophysical claim, specify a physical alphabet, pairing rule and measurable stability or decay criterion. The finite combinatorics supplies no biochemical feasibility result.",
+      "related": [
+        "prime-polynomial-counts",
+        "dimensions-and-fragments"
+      ],
+      "pdf": "atlas/proofs/palindrome-counting.pdf",
+      "markdown": "atlas/proofs/palindrome-counting.md",
+      "source": "atlas/proofs/palindrome-counting.json",
+      "pageCount": 2,
+      "sourcePages": [
+        "palindromes"
+      ]
+    },
+    {
+      "slug": "dimensions-and-fragments",
+      "title": "Dimensions and recovered fragments",
+      "status": "exact",
+      "statusLabel": "Exact foundations; fragments unresolved",
+      "kind": "foundations",
+      "summary": "Products, tensor products and changes of scalar field give different dimensions. Equal continuum cardinalities do not identify those dimensions, fractal dimensions or physical degrees of freedom.",
+      "nextStep": "Recover explicit definitions of T₀–T₃ and the intended connecting map. State which structure is preserved before comparing dimensions, dynamics or geometric collapse.",
+      "related": [
+        "logistic-quarter-turn",
+        "palindrome-counting"
+      ],
+      "pdf": "atlas/proofs/dimensions-and-fragments.pdf",
+      "markdown": "atlas/proofs/dimensions-and-fragments.md",
+      "source": "atlas/proofs/dimensions-and-fragments.json",
+      "pageCount": 2,
+      "sourcePages": [
+        "dimensions-fragments"
+      ]
+    },
+    {
+      "slug": "proof-review",
+      "title": "Review of the written proofs",
+      "status": "review",
+      "statusLabel": "Scope and correctness review",
+      "kind": "review",
+      "summary": "The inspected alternating-tower, logistic and finite prime-counting arguments pass the stated checks. Their correctness, literature novelty, research significance and external validation are separate questions.",
+      "nextStep": "Take the alternating-tower convergence, sharp envelope and two-base classification through a focused novelty search and external review as one coherent small mathematical note.",
+      "related": [
+        "alternating-towers",
+        "logistic-quarter-turn",
+        "prime-polynomial-counts"
+      ],
+      "pdf": "atlas/proofs/proof-review.pdf",
+      "markdown": "atlas/proofs/proof-review.md",
+      "source": "atlas/proofs/proof-review.json",
+      "pageCount": 2,
+      "sourcePages": [
+        "review-finding"
+      ]
+    },
+    {
+      "slug": "logistic-collapse-vanishing",
+      "title": "Logistic collapse and vanishing terms",
+      "status": "exact",
+      "statusLabel": "Exact local lemma; brane model open",
+      "kind": "proof-and-open-question",
+      "summary": "Exact logistic seed folding and a local cubic vanishing term distinguish orbit identification from derivative cancellation. The recovered geometric detector is kept separate from a physical brane model.",
+      "nextStep": "Specify the geometric state space, evolution and observable, then prove whether the chosen observable vanishes or the state itself collapses. A physical brane interpretation requires a defined model.",
+      "related": [
+        "logistic-quarter-turn",
+        "dimensions-and-fragments",
+        "dyadic-remainder"
+      ],
+      "pdf": "atlas/proofs/logistic-collapse-vanishing.pdf",
+      "markdown": "atlas/proofs/logistic-collapse-vanishing.md",
+      "source": "atlas/proofs/logistic-collapse-vanishing.json",
+      "pageCount": 7,
+      "sourcePages": [
+        "complementary-fold",
+        "surviving-cubic",
+        "weak-attraction",
+        "three-geometric-meanings",
+        "defined-brane-bridge",
+        "coefficient-decay",
+        "numerical-zero-and-sources"
+      ],
+      "canonicalMarkdown": "atlas/logistic-collapse-vanishing.md",
+      "canonicalSource": "atlas/logistic-collapse-vanishing.json",
+      "sourceSha256": "667eb08e59ee84d5d8c0a8a4fbdcaa7a171bf2195440bc54ef10098501aec00e",
+      "reviewedProofCommit": null,
+      "provenance": "New recovery note, 23 November 2026; the historical review did not cover this extension."
+    }
+  ]
+}

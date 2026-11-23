@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-23",
+  "scope": "Focused static, mathematical and PDF checks before deployment; browser checks recorded after deployment.",
+  "proof_notes": {
+    "logistic-quarter-turn": 4,
+    "alternating-towers": 3,
+    "dyadic-remainder": 2,
+    "prime-polynomial-counts": 2,
+    "schanuel-zeta-family": 3,
+    "fractional-exponential-maps": 3,
+    "palindrome-counting": 2,
+    "dimensions-and-fragments": 2,
+    "proof-review": 2,
+    "logistic-collapse-vanishing": 7
+  },
+  "proof_pages": 30,
+  "guide_pages": 6,
+  "local_links": "all targets present locally or in verified base tree",
+  "html_ids": "unique",
+  "javascript_syntax": "node --check passed",
+  "transport_samples": 241,
+  "transport_error_at_step_240": "0.00152262519370126025314921394798263144846529320203678884944274827852692256758477218920140941",
+  "binary64_c615": "positive subnormal",
+  "binary64_first_odd_zero": 647,
+  "assumptions": "No claim of a physical brane model or full conjugacy. Plots are numerical illustrations of written exact statements."
+}

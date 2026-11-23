@@ -1,0 +1,37 @@
+{
+  "hopf-fibration.png": {
+    "title": "Hopf Fibration",
+    "creator": "Niles Johnson",
+    "created": "2012-10-31",
+    "source": "https://commons.wikimedia.org/wiki/File:Hopf_Fibration.png",
+    "creator_explanation": "https://nilesjohnson.net/hopf.html",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "User-supplied 2048 x 1820 resized version; copied byte-for-byte without further modification.",
+    "sha256": "38de013c1f752ea61a6df8927b4fcb7b6c5800d461fcd6fb5d1b87e3824b9e81",
+    "attribution": "Hopf Fibration — Niles Johnson, CC BY 4.0. User-supplied resized copy; no further changes.",
+    "caption": "Each colored point on the small sphere corresponds to a circle fiber in the three-sphere. The large shape is a projection of those fibers into a three-dimensional ball.",
+    "scope": "Illustrates the Hopf fibration S^3 → S^2 with circle fibers. No established equivalence to the logistic map or a physical brane model is asserted."
+  },
+  "sphere-eversion-poster.jpg": {
+    "title": "Sphere eversion using Thurston's corrugations — frame at 15 seconds",
+    "creator": "Carsten Steger",
+    "created": "2022-01-08",
+    "source": "https://commons.wikimedia.org/wiki/File:Thurston_Sphere_Eversion.webm",
+    "original_media_url": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Thurston_Sphere_Eversion.webm",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Single frame extracted at 15 seconds and resized to 640 x 640 with ffmpeg; distributed under CC BY-SA 4.0.",
+    "sha256": "5bae4e75e0697871caae56c0fe144b61da39a983d79527da7f00545d3365e931",
+    "source_sha1": "15e9c5619e6dd86879d5f80af1970afcb512e56d",
+    "source_upload_verified": "User-provided WebM exactly matches the Commons original SHA1 and byte size (14793045).",
+    "attribution": "Sphere eversion using Thurston's corrugations — © 2022 Carsten Steger, CC BY-SA 4.0. Poster frame extracted at 15 s and resized.",
+    "caption": "A sphere turns inside out through smooth immersed surfaces. Self-intersections are allowed; tears, creases and pinch points are not.",
+    "scope": "A topology example, not collapse to a point and not a proved connection to logistic dynamics."
+  },
+  "integration": {
+    "video_policy": "Use a user-initiated video with controls, preload=none, the local poster, and a link to the Commons source. Do not autoplay. The original video is 14.8 MB and 109.266 s.",
+    "pdf_policy": "Use a static figure and caption in PDFs, with a link to the web animation. Do not describe a static PDF image as animated.",
+    "relationship_policy": "Use solid links only for defined, proved mathematical implications. Use dashed exploratory links for the Hopf/sphere-eversion/logistic relationship until a mapping, preserved quantity and theorem are stated."
+  }
+}

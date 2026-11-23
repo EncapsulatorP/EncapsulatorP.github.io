@@ -1,0 +1,552 @@
+{
+  "title": "Logistic collapse and vanishing terms",
+  "subtitle": "The restoring cubic, recovered geometry and a precise next bridge",
+  "date": "23 November 2026",
+  "author": "Zolton / EncapsulatorP · with ChatGPT",
+  "source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
+  "status": "exact",
+  "statusLabel": "Exact local lemma; brane model open",
+  "pages": [
+    {
+      "id": "complementary-fold",
+      "title": "Logistic collapse and vanishing terms",
+      "kicker": "01 · EXACT COMPLEMENTARY-SEED FOLD",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "For f<sub>r</sub>(x) = rx(1 − x), with 0 &lt; r ≤ 4 and x in [0,1], complementary seeds merge after one update. The identity itself holds over the reals."
+        },
+        {
+          "type": "eq",
+          "latex": "f_r(u)-f_r(v)=r(u-v)(1-u-v)"
+        },
+        {
+          "type": "eq",
+          "latex": "x_0=a,\\ y_0=1-a\\quad\\Longrightarrow\\quad x_1=y_1=ra(1-a)"
+        },
+        {
+          "type": "p",
+          "text": "For r ≠ 0, distinct inputs have equal outputs exactly when they sum to one. Applying the same map again preserves equality, so x<sub>n</sub> = y<sub>n</sub> for every n ≥ 1."
+        },
+        {
+          "type": "callout",
+          "label": "What disappears?",
+          "text": "The gap between this complementary pair disappears. The image of an entire interval is generally still an interval.",
+          "status": "exact"
+        },
+        {
+          "type": "h",
+          "text": "Track the mean and the half-gap"
+        },
+        {
+          "type": "eq",
+          "latex": "m=\\frac{x+y}{2},\\qquad d=\\frac{x-y}{2}"
+        },
+        {
+          "type": "eq",
+          "latex": "m'=r\\left(m(1-m)-d^2\\right),\\qquad d'=r(1-2m)d"
+        },
+        {
+          "type": "p",
+          "text": "The complementary line m = 1/2 maps to d′ = 0, with m′ = r(1/4 − d²). Its image remains one-dimensional in general. The full paired map retains local rank at complementary points with d ≠ 0:"
+        },
+        {
+          "type": "eq",
+          "latex": "f_r'(1/2+d)\\,f_r'(1/2-d)=-4r^2d^2\\ne0"
+        },
+        {
+          "type": "p",
+          "text": "A zero gap on the image of one chosen line does not make the full two-dimensional map singular there."
+        },
+        {
+          "type": "h",
+          "text": "A different zero: the critical-point derivative"
+        },
+        {
+          "type": "eq",
+          "latex": "f_r(1/2+h)=r/4-rh^2"
+        },
+        {
+          "type": "p",
+          "text": "At x = 1/2 the first derivative is zero, but quadratic variation survives. A flat tangent alone does not collapse a neighborhood."
+        },
+        {
+          "type": "link",
+          "text": "[S1] Pinned cabinet proof: mirror, merge, split",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/cabinet-notes.md"
+        },
+        {
+          "type": "p",
+          "text": "Research direction: Zolton / EncapsulatorP. Reconstruction and new derivation: ChatGPT. Edition: 23 November 2026.",
+          "small": true
+        }
+      ]
+    },
+    {
+      "id": "surviving-cubic",
+      "title": "The restoring cubic survives",
+      "kicker": "02 · NEW DERIVATION IN THIS EDITION",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Put r* = 1 + √6 and f = f<sub>r*</sub>. The nontrivial two-cycle has points p± and derivatives d±:"
+        },
+        {
+          "type": "eq",
+          "latex": "p_\\pm=\\frac{r_*+1\\pm\\sqrt{2}}{2r_*},\\qquad d_\\pm=-1\\mp\\sqrt{2}"
+        },
+        {
+          "type": "p",
+          "text": "Their product is −1. With a = √2 − 1, the paired operator is C(v₁,v₂) = (a v₂, −v₁/a). Thus C² = −I, C⁴ = I, and det C = 1. Its rank is two; no direction disappears. Rescaling by S = diag(√a,1/√a) makes it a clockwise quarter-turn."
+        },
+        {
+          "type": "h",
+          "text": "Expand the second return"
+        },
+        {
+          "type": "p",
+          "text": "Let F = f∘f. Since F(p±) = p± and F′(p±) = −1, its exact quartic expansion is"
+        },
+        {
+          "type": "eq",
+          "latex": "F(p_\\pm+h)-p_\\pm=-h+a_\\pm h^2+b_\\pm h^3-r_*^3h^4,"
+        },
+        {
+          "type": "eq",
+          "latex": "a_\\pm=-r_*(2\\pm3\\sqrt{2}),\\qquad b_\\pm=-2r_*^2(1\\pm\\sqrt{2})."
+        },
+        {
+          "type": "p",
+          "text": "The coefficients follow from the chain rule; f″ = −2r* and f‴ = 0 give"
+        },
+        {
+          "type": "eq",
+          "latex": "F''(p)=-2r_*\\left(f'(p)^2+f'(f(p))\\right),"
+        },
+        {
+          "type": "eq",
+          "latex": "F'''(p)=12r_*^2f'(p)."
+        },
+        {
+          "type": "p",
+          "text": "Divide these by 2 and 6 respectively, then substitute d±. The quartic coefficient is −r*³ because f∘f has that leading coefficient."
+        },
+        {
+          "type": "h",
+          "text": "Compose two returns"
+        },
+        {
+          "type": "p",
+          "text": "For G(h) = −h + ah² + bh³ + O(h⁴), substitution gives G(G(h)) = h − 2(a²+b)h³ + O(h⁴). The two quadratic contributions cancel. Here a±²+b± = 10r*²(2±√2). Therefore"
+        },
+        {
+          "type": "eq",
+          "latex": "f^{\\circ4}(p_\\pm+h)-(p_\\pm+h)=-K_\\pm h^3+O(h^4),"
+        },
+        {
+          "type": "eq",
+          "latex": "K_\\pm=20r_*^2(2\\pm\\sqrt{2})>0."
+        },
+        {
+          "type": "callout",
+          "label": "Exactly what vanishes",
+          "text": "For D = f∘4 − id, D(p) = D′(p) = D″(p) = 0, while D‴(p) = −6K ≠ 0. The displacement has a zero of exactly order three. The derivative of f∘4 itself is 1.",
+          "status": "exact"
+        },
+        {
+          "type": "link",
+          "text": "[S2] Recovered multiplier and paired-operator proof",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/recovered-bridges.md#logistic-quarter-turn"
+        }
+      ]
+    },
+    {
+      "id": "weak-attraction",
+      "title": "A gentle pull back to the cycle",
+      "kicker": "03 · LOCAL ATTRACTION WITH ZERO EXPONENT",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Fix either cycle phase p and its positive coefficient K. The fourth-return error map is"
+        },
+        {
+          "type": "eq",
+          "latex": "g(h)=f^{\\circ4}(p+h)-p=h-Kh^3+O(h^4)."
+        },
+        {
+          "type": "p",
+          "text": "Choose δ &gt; 0 so that the remainder has magnitude at most (K/2)|h|³ for |h| &lt; δ, and δ² &lt; 2/(3K). Then, for 0 &lt; |h| &lt; δ,"
+        },
+        {
+          "type": "eq",
+          "latex": "0<1-\\frac{3K}{2}h^2\\leq\\frac{g(h)}{h}\\leq1-\\frac{K}{2}h^2<1."
+        },
+        {
+          "type": "p",
+          "text": "The error keeps its sign and decreases in magnitude. It remains inside this neighborhood. If its decreasing magnitude approached a positive limit, the upper factor would stay bounded below one, a contradiction. Thus the limit is zero."
+        },
+        {
+          "type": "eq",
+          "latex": "g^{\\circ n}(h_0)\\longrightarrow0\\qquad(|h_0|<\\delta)."
+        },
+        {
+          "type": "p",
+          "text": "Continuity of f, f∘2 and f∘3 gives the corresponding limits for the intervening iterates. The two-cycle is locally attracting at r*. This is a neighborhood result; it asserts no global convergence for every seed."
+        },
+        {
+          "type": "h",
+          "text": "The decay is a power law"
+        },
+        {
+          "type": "p",
+          "text": "For nonzero h₀ in this neighborhood, hₙ never becomes zero. Expanding the reciprocal square gives"
+        },
+        {
+          "type": "eq",
+          "latex": "\\frac{1}{h_{n+1}^2}-\\frac{1}{h_n^2}=2K+O(h_n)."
+        },
+        {
+          "type": "p",
+          "text": "Because hₙ → 0, sum this relation and divide by n. The average error tends to zero, giving"
+        },
+        {
+          "type": "eq",
+          "latex": "\\lim_{n\\to\\infty}n h_n^2=\\frac{1}{2K}."
+        },
+        {
+          "type": "p",
+          "text": "The signed error is asymptotic to sign(h₀)/√(2Kn). Here one n-step means four original logistic updates."
+        },
+        {
+          "type": "h",
+          "text": "Why a zero Lyapunov exponent fits"
+        },
+        {
+          "type": "eq",
+          "latex": "\\lambda=\\frac12\\log|d_+d_-|=0."
+        },
+        {
+          "type": "callout",
+          "label": "The flat tangent hides a restoring cubic",
+          "text": "The linear exponent is zero. Higher-order terms still pull nearby points toward the cycle, at inverse-square-root speed instead of uniform exponential speed.",
+          "status": "exact"
+        },
+        {
+          "type": "p",
+          "text": "The coefficient and attraction argument are new derivations in this edition. Exact symbolic simplification checked the quartic coefficients and composition identity; the written steps supply the proof.",
+          "small": true
+        }
+      ]
+    },
+    {
+      "id": "three-geometric-meanings",
+      "title": "A hidden circle or a shrinking circle?",
+      "kicker": "04 · RECOVERED C3.2Z GEOMETRY",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The C3.2Z Hopf detector draws the analytic attracting radius R = √max(0,μ). It distinguishes the state from its detector output. It does not numerically integrate a differential equation."
+        },
+        {
+          "type": "p",
+          "text": "To make its comparison model explicit, define the normalized Hopf equation with ω ≠ 0:"
+        },
+        {
+          "type": "eq",
+          "latex": "\\dot z=(\\mu+i\\omega)z-|z|^2z,"
+        },
+        {
+          "type": "eq",
+          "latex": "\\dot\\rho=\\mu\\rho-\\rho^3,\\qquad \\dot\\theta=\\omega."
+        },
+        {
+          "type": "h",
+          "text": "1. A parameter family really shrinks"
+        },
+        {
+          "type": "p",
+          "text": "For μ &gt; 0 the attracting periodic orbit has radius √μ. These circles approach the origin as μ decreases to zero. For μ ≤ 0 the origin attracts; at μ = 0 radial attraction is algebraic. Every positive-radius circle remains one-dimensional. At the limiting parameter the attracting set is a point."
+        },
+        {
+          "type": "h",
+          "text": "2. A detector can hide a surviving circle"
+        },
+        {
+          "type": "eq",
+          "latex": "z+\\overline{z}=2R\\cos\\theta,\\qquad |z|^2=R^2."
+        },
+        {
+          "type": "p",
+          "text": "At fixed μ &gt; 0, the mirror-sum detector shows a line segment, while power alone is constant. The underlying state still rotates on a circle. A detection floor can also hide a surviving small loop."
+        },
+        {
+          "type": "callout",
+          "label": "State and observation are different objects",
+          "text": "Keep the source's separate readings for attractor dimension, visible dimension and visible holes. A projection does not itself change the dynamics.",
+          "status": "exact"
+        },
+        {
+          "type": "h",
+          "text": "3. The bubble/tube is a separate toy"
+        },
+        {
+          "type": "eq",
+          "latex": "(R,L)\\longmapsto(0.7R,1.15L),\\qquad (R_0,L_0)=(1,1)."
+        },
+        {
+          "type": "p",
+          "text": "Exactly Rₙ = 0.7ⁿ → 0 while Lₙ = 1.15ⁿ → ∞. No finite step has zero radius. The website labels this a transport toy; its fixed factors do not implement the suggested compound-Collatz branch selector."
+        },
+        {
+          "type": "link",
+          "text": "[S3] Pinned C3.2Z Hopf detector and source",
+          "url": "https://github.com/EncapsulatorP/c3._2z/blob/7e8fb577bd3eb8da2e358d691164a9fee5c75f9b/index.html"
+        },
+        {
+          "type": "link",
+          "text": "[S4] Pinned website bubble/tube story",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/index.html"
+        },
+        {
+          "type": "p",
+          "text": "These recovered constructions supply useful geometry. None identifies a physical brane or derives a physical law from the logistic map.",
+          "small": true
+        }
+      ]
+    },
+    {
+      "id": "defined-brane-bridge",
+      "title": "Give the next bridge a map",
+      "kicker": "05 · A DEFINED TOY; BRANE INTERPRETATION OPEN",
+      "blocks": [
+        {
+          "type": "callout",
+          "label": "Working title: vanishing branes",
+          "text": "No brane definition was found in the inspected website notes or C3.2Z pages. Earlier personal-context recovery was unavailable. Preserve the user's research title, and supply the missing mathematical object before assigning it a theorem.",
+          "status": "open"
+        },
+        {
+          "type": "p",
+          "text": "A complete claim needs a state space and metric; an evolving object; a map or flow; the quantity that disappears; and a theorem stating whether disappearance is finite, asymptotic, a parameter limit, or an observational identification."
+        },
+        {
+          "type": "h",
+          "text": "An explicit candidate: transport plus a shrinking transverse error"
+        },
+        {
+          "type": "p",
+          "text": "Use the p₊ error map g and δ from the proved local lemma. Define a new product model"
+        },
+        {
+          "type": "eq",
+          "latex": "X=S^1\\times(-\\delta,\\delta),"
+        },
+        {
+          "type": "eq",
+          "latex": "\\Phi(\\theta,h)=\\left(\\theta+\\omega\\ {\\rm mod}\\ 2\\pi,\\ g(h)\\right)."
+        },
+        {
+          "type": "p",
+          "text": "The circle M = S¹ × {0} is invariant. In the product metric,"
+        },
+        {
+          "type": "eq",
+          "latex": "{\\rm dist}\\left(\\Phi^{\\circ n}(\\theta,h),M\\right)=|g^{\\circ n}(h)|\\longrightarrow0."
+        },
+        {
+          "type": "p",
+          "text": "The angular coordinate continues rotating. For nonzero small h the transverse distance is asymptotic to 1/√(2K₊n). This follows from the scalar proof. It is a newly defined mathematical model, not a recovered physical-brane theory or finite-time annihilation of the whole cylinder."
+        },
+        {
+          "type": "h",
+          "text": "A precise comparison with the Hopf model"
+        },
+        {
+          "type": "p",
+          "text": "At criticality, the radial equation ρ̇ = −Kρ³ has exact time-one map"
+        },
+        {
+          "type": "eq",
+          "latex": "\\rho\\longmapsto\\frac{\\rho}{\\sqrt{1+2K\\rho^2}}=\\rho-K\\rho^3+O(\\rho^5)."
+        },
+        {
+          "type": "p",
+          "text": "It shares the leading restoring cubic and inverse-square-root decay scale with g after matching K. That is an established comparison of local leading terms."
+        },
+        {
+          "type": "p",
+          "text": "A full conjugacy needs an explicit Ψ, a domain and regularity assumptions, plus a proof of Ψ∘Φ<sub>logistic</sub> = Φ<sub>Hopf</sub>∘Ψ. None is supplied here."
+        },
+        {
+          "type": "callout",
+          "label": "Treasure-map connection styles",
+          "text": "Solid edge: proved comparison of leading terms. Dashed edge: proposed full conjugacy. Open node: physical interpretation. Shared visual shapes do not replace these definitions.",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "id": "coefficient-decay",
+      "title": "Three small quantities, three scales",
+      "kicker": "06 · EXACT ASYMPTOTIC ADDENDUM",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The supplied Gemini SVG proposed a coefficient-decay bridge. For odd integers p ≥ 3, define"
+        },
+        {
+          "type": "eq",
+          "latex": "Z(p)=\\exp\\left(\\frac{\\pi\\zeta(p-1)}p\\right)+1,"
+        },
+        {
+          "type": "eq",
+          "latex": "c_p=\\frac{\\zeta(p-1)}{p\\pi^{p-1}}=\\frac{2^{p-2}|B_{p-1}|}{p!}>0."
+        },
+        {
+          "type": "p",
+          "text": "The rational formula follows from Euler's even-zeta identity. Primality is unnecessary; the following limits also hold along odd primes."
+        },
+        {
+          "type": "h",
+          "text": "Coefficient decay and value decay"
+        },
+        {
+          "type": "p",
+          "text": "Because ζ(p−1) → 1, and (eᵗ−1)/t → 1 at zero,"
+        },
+        {
+          "type": "eq",
+          "latex": "c_p\\sim\\frac{1}{p\\pi^{p-1}},\\qquad Z(p)-2\\sim\\frac{\\pi}{p}."
+        },
+        {
+          "type": "p",
+          "text": "Indeed cₚπᵖ = πζ(p−1)/p exactly. Exponential coefficient decay becomes a 1/p scale in the final value; the factors cannot be considered independently."
+        },
+        {
+          "type": "h",
+          "text": "The zeta tail has a dyadic leading term"
+        },
+        {
+          "type": "eq",
+          "latex": "\\zeta(s)-1=2^{-s}+\\sum_{n\\geq3}n^{-s}\\qquad(s>1),"
+        },
+        {
+          "type": "eq",
+          "latex": "0<\\sum_{n\\geq3}n^{-s}\\leq3^{-s}\\left(1+\\frac3{s-1}\\right)."
+        },
+        {
+          "type": "p",
+          "text": "The tail bound follows by adding the first term and the integral from 3 to infinity. Divide by 2⁻ˢ: the remainder ratio tends to zero. Hence ζ(p−1)−1 ∼ 2⁻⁽ᵖ⁻¹⁾ is proved, not merely a numerical test."
+        },
+        {
+          "type": "h",
+          "text": "Compare the separately defined Mahler remainder"
+        },
+        {
+          "type": "eq",
+          "latex": "R_k=\\sum_{j=k+1}^{\\infty}\\left(1-e^{-2^{-j}}\\right)."
+        },
+        {
+          "type": "p",
+          "text": "Apply t−t²/2 ≤ 1−e⁻ᵗ ≤ t term by term and sum the two geometric series:"
+        },
+        {
+          "type": "eq",
+          "latex": "2^{-k}-\\frac{4^{-k}}6\\leq R_k\\leq2^{-k},\\qquad R_k\\sim2^{-k}."
+        },
+        {
+          "type": "eq",
+          "latex": "\\frac{R_k}{\\zeta(k)-1}=\\frac{R_k/2^{-k}}{(\\zeta(k)-1)/2^{-k}}\\longrightarrow1."
+        },
+        {
+          "type": "p",
+          "text": "For integer k > 1, both normalized factors tend to one by the established bounds. Hence R₍ₚ₋₁₎/[ζ(p−1)−1] → 1 along odd p, including odd primes. This proves asymptotic equivalence. A shared dynamical system, functional-equation correspondence or conjugacy remains a separate open claim."
+        },
+        {
+          "type": "link",
+          "text": "[S5] Pinned Z(p) and dyadic-series definitions",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md"
+        }
+      ]
+    },
+    {
+      "id": "numerical-zero-and-sources",
+      "title": "A tiny number is still a number",
+      "kicker": "07 · COMPUTATION, SOURCES AND SCOPE",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The SVG's annotation “float64 0 at p=615” confuses a subnormal value with zero. With binary64 subnormals retained,"
+        },
+        {
+          "type": "eq",
+          "latex": "c_{615}\\approx9.14330169325329\\times10^{-309}>0."
+        },
+        {
+          "type": "p",
+          "text": "This is smaller than the least positive normal binary64 number, about 2.22507 × 10⁻³⁰⁸, but much larger than the least positive subnormal, about 4.94066 × 10⁻³²⁴."
+        },
+        {
+          "type": "h",
+          "text": "Specify the arithmetic before naming a zero"
+        },
+        {
+          "type": "p",
+          "text": "High-precision coefficient evaluation followed by round-to-nearest binary64 conversion gives c₆₁₃ ≈ 9.05352 × 10⁻³⁰⁸ (normal), c₆₁₅ ≈ 9.14330 × 10⁻³⁰⁹ (subnormal), c₆₄₅ ≈ 1.06151 × 10⁻³²³ (nonzero subnormal), and c₆₄₇ ≈ 1.07221 × 10⁻³²⁴ (rounds to zero)."
+        },
+        {
+          "type": "p",
+          "text": "The first odd index rounding to zero in this specified conversion is 647. Flush-to-zero mode, premature overflow or a different evaluation formula can produce an earlier zero. Also, 615 is composite, so it does not index a prime-only family."
+        },
+        {
+          "type": "p",
+          "text": "To evaluate Z(p)−2, form πζ(p−1)/p directly and use an accurate exponential-minus-one routine. Multiplying an underflowed cₚ by an overflowed πᵖ is avoidable. Every exact cₚ in the family is positive."
+        },
+        {
+          "type": "h",
+          "text": "Pinned sources and provenance"
+        },
+        {
+          "type": "link",
+          "text": "[S1] Complementary-seed fold and cabinet modes",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/cabinet-notes.md"
+        },
+        {
+          "type": "link",
+          "text": "[S2] Logistic cycle, multiplier and paired matrix",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/recovered-bridges.md#logistic-quarter-turn"
+        },
+        {
+          "type": "link",
+          "text": "Recovery note: the 20 November 2026 logistic thread",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/recovery-notes.md#logistic-quarter-turn"
+        },
+        {
+          "type": "link",
+          "text": "[S3] C3.2Z detector, radius and observation modes",
+          "url": "https://github.com/EncapsulatorP/c3._2z/blob/7e8fb577bd3eb8da2e358d691164a9fee5c75f9b/index.html"
+        },
+        {
+          "type": "link",
+          "text": "[S4] Bubble/tube transport toy in the website",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/index.html"
+        },
+        {
+          "type": "link",
+          "text": "[S5] Original Z(p) and Mahler-series collection",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md"
+        },
+        {
+          "type": "p",
+          "text": "The complete companion Markdown contains the detailed metric, determinant, source-section and reproduction notes. The exact quartic coefficients, restoring cubic and local-attraction argument are new in this edition. Literature novelty, formal-kernel certification and physical interpretation remain separate questions.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Return to the Treasure Chest",
+          "url": "https://encapsulatorp.github.io/#buried-logistic-vanishing"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "title": "Two constructions of six",
+  "subtitle": "A focused reading note from the Pirate Chest",
+  "date": "23 November 2026",
+  "author": "Zolton / EncapsulatorP · with ChatGPT",
+  "source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
+  "reviewed_proof_commit": "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd",
+  "status": "exact",
+  "statusLabel": "Exact formulas; limiting means open",
+  "pages": [
+    {
+      "id": "fractional-exponential-maps-orientation",
+      "title": "Two constructions of six",
+      "kicker": "NOTE 06 · EXACT FORMULAS; LIMITING MEANS OPEN",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The additive and multiplicative constructions of six define different fractional exponential maps. Their smooth-branch derivatives give exact finite-time Lyapunov averages in terms of separate orbit means."
+        },
+        {
+          "type": "eq",
+          "latex": "T_{\\mathrm{add}}(y)=\\operatorname{frac}(2\\,3^y),\\qquad T_{\\mathrm{mul}}(y)=\\operatorname{frac}(6^y)"
+        },
+        {
+          "type": "callout",
+          "label": "Exact formulas; limiting means open",
+          "status": "exact",
+          "text": "Both maps are uniformly expanding on their smooth branches. The limiting comparison needs the relevant orbit means to exist; no common invariant measure, ergodicity or logistic conjugacy is assumed."
+        },
+        {
+          "type": "p",
+          "text": "State how cuts and endpoints are handled before differentiating an orbit. The finite-time formulas are exact; an infinite-time exponent is a further limit statement."
+        },
+        {
+          "type": "h",
+          "text": "One concrete next step"
+        },
+        {
+          "type": "p",
+          "text": "Define the orbit or invariant measure of interest and establish the limiting means before evaluating a zero-difference target. Keep the two maps’ means separate."
+        },
+        {
+          "type": "h",
+          "text": "Sources and related reading"
+        },
+        {
+          "type": "p",
+          "text": "This note preserves the definitions and written derivation from the supplied mathematical fragments, reconstructed in the full collection. Its proof is given on the following page(s); no literature-priority claim is made.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the pinned collection source",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#six-maps"
+        },
+        {
+          "type": "link",
+          "text": "Return to the Treasure Chest",
+          "url": "https://encapsulatorp.github.io/#buried-logistic-vanishing"
+        }
+      ]
+    },
+    {
+      "id": "six-maps",
+      "title": "Two constructions of six",
+      "kicker": "01 · FRACTIONAL EXPONENTIAL MAPS",
+      "blocks": [
+        {
+          "type": "eq",
+          "latex": "6=3+3=3\\times2,"
+        },
+        {
+          "type": "eq",
+          "latex": "3^y+3^y=2\\,3^y,\\qquad 3^y2^y=6^y."
+        },
+        {
+          "type": "p",
+          "text": "The pasted exponents are restored as 3<super>y</super>, 2<super>y</super> and 6<super>y</super>. Define two different maps on y ∈ [0, 1):"
+        },
+        {
+          "type": "eq",
+          "latex": "T_{\\mathrm{add}}(y)=\\operatorname{frac}(2\\,3^y),\\qquad T_{\\mathrm{mul}}(y)=\\operatorname{frac}(6^y)."
+        },
+        {
+          "type": "p",
+          "text": "The floor term is constant on each smooth branch. Consequently"
+        },
+        {
+          "type": "eq",
+          "latex": "T_{\\mathrm{add}}'(y)=2\\,3^y\\log3,\\qquad T_{\\mathrm{mul}}'(y)=6^y\\log6,"
+        },
+        {
+          "type": "eq",
+          "latex": "\\log|T_{\\mathrm{add}}'(y)|=\\log2+y\\log3+\\log(\\log3),"
+        },
+        {
+          "type": "eq",
+          "latex": "\\log|T_{\\mathrm{mul}}'(y)|=y\\log6+\\log(\\log6)."
+        },
+        {
+          "type": "h",
+          "text": "The cuts belong in the definition"
+        },
+        {
+          "type": "p",
+          "text": "Ordinary derivatives fail at the interior fractional-part jumps. Their locations are"
+        },
+        {
+          "type": "eq",
+          "latex": "y=\\frac{\\log(m/2)}{\\log3},\\quad m=3,4,5\\qquad(T_{\\mathrm{add}}),"
+        },
+        {
+          "type": "eq",
+          "latex": "y=\\frac{\\log m}{\\log6},\\quad m=2,3,4,5\\qquad(T_{\\mathrm{mul}})."
+        },
+        {
+          "type": "p",
+          "text": "At y = 0 a right branch derivative is available. A classical orbit Lyapunov exponent requires an orbit on differentiable branches; if an orbit hits a cut or an endpoint, a one-sided branch convention must instead be stated."
+        },
+        {
+          "type": "callout",
+          "label": "Uniform branch expansion",
+          "text": "On this domain, |T′<sub>add</sub>| ≥ 2 log 3 &gt; 1 and |T′<sub>mul</sub>| ≥ log 6 &gt; 1. Both defined branch Lyapunov averages are strictly positive. They do not reproduce the logistic cycle’s zero exponent.",
+          "status": "exact"
+        },
+        {
+          "type": "p",
+          "text": "The scalar equality at the top does not identify the functions or their orbit distributions. It gives two specified constructions whose dynamics can be compared."
+        }
+      ]
+    },
+    {
+      "id": "lyapunov-comparison",
+      "title": "Comparing the Lyapunov averages",
+      "kicker": "02 · EXACT FINITE-TIME IDENTITIES",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Take separate orbits y<sub>j</sub><super>add</super> and y<sub>j</sub><super>mul</super>, each with the differentiability convention just stated. For a ∈ {add, mul} and N ≥ 1, define"
+        },
+        {
+          "type": "eq",
+          "latex": "\\mu_{a,N}=\\frac1N\\sum_{j=0}^{N-1}y_j^a,\\qquad \\lambda_{a,N}=\\frac1N\\sum_{j=0}^{N-1}\\log|T_a'(y_j^a)|."
+        },
+        {
+          "type": "p",
+          "text": "Averaging the branch identities gives"
+        },
+        {
+          "type": "eq",
+          "latex": "\\lambda_{\\mathrm{add},N}=\\log2+\\mu_{\\mathrm{add},N}\\log3+\\log(\\log3),"
+        },
+        {
+          "type": "eq",
+          "latex": "\\lambda_{\\mathrm{mul},N}=\\mu_{\\mathrm{mul},N}\\log6+\\log(\\log6)."
+        },
+        {
+          "type": "p",
+          "text": "Subtracting, with Δλ<sub>N</sub> = λ<sub>mul,N</sub> − λ<sub>add,N</sub>, yields the submitted formula in finite-time form:"
+        },
+        {
+          "type": "eq",
+          "latex": "\\Delta\\lambda_N=\\mu_{\\mathrm{mul},N}\\log6-\\mu_{\\mathrm{add},N}\\log3+\\log\\!\\left(\\frac{\\log6}{\\log3}\\right)-\\log2."
+        },
+        {
+          "type": "p",
+          "text": "If both orbit means converge, the same equation holds for their limits μ<sub>add</sub>, μ<sub>mul</sub> and Δλ. The means are attached to different dynamics. Neither a common invariant measure nor the substitution μ = 1/2 has been established here."
+        },
+        {
+          "type": "h",
+          "text": "An exact boundary for the proposed bridge"
+        },
+        {
+          "type": "eq",
+          "latex": "\\lambda_{\\mathrm{add},N}\\ge\\log(2\\log3)\\approx0.7871950082,"
+        },
+        {
+          "type": "eq",
+          "latex": "\\lambda_{\\mathrm{mul},N}\\ge\\log(\\log6)\\approx0.5831980808."
+        },
+        {
+          "type": "p",
+          "text": "A zero difference would require the two mean contributions to satisfy"
+        },
+        {
+          "type": "eq",
+          "latex": "\\mu_{\\mathrm{mul}}\\log6-\\mu_{\\mathrm{add}}\\log3=\\log\\!\\left(\\frac{2\\log3}{\\log6}\\right)."
+        },
+        {
+          "type": "callout",
+          "label": "Open question, with a testable target",
+          "text": "Determine the relevant invariant measures or orbit-mean limits before evaluating the limiting difference. These calculations compare derivative products; they establish no conjugacy, shared invariant measure or shared bifurcation structure with the logistic family.",
+          "status": "open"
+        },
+        {
+          "type": "p",
+          "text": "Numerical decimals on this page are illustrations of the exact logarithmic bounds, not interval-certified values."
+        }
+      ]
+    }
+  ]
+}

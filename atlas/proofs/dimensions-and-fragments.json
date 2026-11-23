@@ -1,0 +1,148 @@
+{
+  "title": "Dimensions and recovered fragments",
+  "subtitle": "A focused reading note from the Pirate Chest",
+  "date": "23 November 2026",
+  "author": "Zolton / EncapsulatorP · with ChatGPT",
+  "source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
+  "reviewed_proof_commit": "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd",
+  "status": "exact",
+  "statusLabel": "Exact foundations; fragments unresolved",
+  "pages": [
+    {
+      "id": "dimensions-and-fragments-orientation",
+      "title": "Dimensions and recovered fragments",
+      "kicker": "NOTE 08 · EXACT FOUNDATIONS; FRAGMENTS UNRESOLVED",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Products, tensor products and changes of scalar field give different dimensions. Equal continuum cardinalities do not identify those dimensions, fractal dimensions or physical degrees of freedom."
+        },
+        {
+          "type": "eq",
+          "latex": "\\dim_{\\mathbb{R}}(\\mathbb{R}^3\\times\\mathbb{R}^2)=5,\\qquad \\dim_{\\mathbb{R}}(\\mathbb{R}^3\\otimes_{\\mathbb{R}}\\mathbb{R}^2)=6"
+        },
+        {
+          "type": "callout",
+          "label": "Exact foundations; fragments unresolved",
+          "status": "exact",
+          "text": "The cubic and Collatz expressions are retained with their standard meanings. T₀–T₃ have no supplied definitions, so they cannot yet support a transition rule or a claimed bridge to the logistic model."
+        },
+        {
+          "type": "p",
+          "text": "This is a foundations note and a recovery ledger. Its exact statements explain the operations; its unassigned labels record questions to define rather than results to claim."
+        },
+        {
+          "type": "h",
+          "text": "One concrete next step"
+        },
+        {
+          "type": "p",
+          "text": "Recover explicit definitions of T₀–T₃ and the intended connecting map. State which structure is preserved before comparing dimensions, dynamics or geometric collapse."
+        },
+        {
+          "type": "h",
+          "text": "Sources and related reading"
+        },
+        {
+          "type": "p",
+          "text": "This note preserves the definitions and written derivation from the supplied mathematical fragments, reconstructed in the full collection. Its proof is given on the following page(s); no literature-priority claim is made.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "Read the pinned collection source",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#dimensions-fragments"
+        },
+        {
+          "type": "link",
+          "text": "Return to the Treasure Chest",
+          "url": "https://encapsulatorp.github.io/#buried-logistic-vanishing"
+        }
+      ]
+    },
+    {
+      "id": "dimensions-fragments",
+      "title": "Dimensions, cardinality and fragments",
+      "kicker": "01 · RECOVERED DEFINITIONS",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The dimension fragment becomes unambiguous after specifying both the operation and the scalar field."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Construction",
+            "Dimension",
+            "Reason"
+          ],
+          "rows": [
+            [
+              "ℝ³ × ℝ²",
+              "5 over ℝ",
+              "A point has three plus two real coordinates."
+            ],
+            [
+              "ℝ³ ⊗ℝ ℝ²",
+              "6 over ℝ",
+              "The six elementary tensors eᵢ ⊗ fⱼ form a basis."
+            ],
+            [
+              "ℂ³ viewed over ℝ",
+              "6 over ℝ",
+              "Each complex coordinate gives two real coordinates."
+            ],
+            [
+              "ℂ³ viewed over ℂ",
+              "3 over ℂ",
+              "Three standard complex basis vectors."
+            ]
+          ],
+          "widths": [
+            0.3,
+            0.22,
+            0.48
+          ]
+        },
+        {
+          "type": "eq",
+          "latex": "|\\mathbb{R}^5|=|\\mathbb{R}^6|=|\\mathbb{C}^3|=|\\mathbb{R}|=2^{\\aleph_0}."
+        },
+        {
+          "type": "p",
+          "text": "For cardinality, identify the reals with subsets of a countable set. A finite tuple of such subsets is encoded by a subset of finitely many disjoint copies of that set; their union is still countable. Equality of these set sizes does not identify vector-space dimension. Fractal dimension and physical degrees of freedom require their own definitions and structures."
+        },
+        {
+          "type": "h",
+          "text": "The cubic and Collatz fragments"
+        },
+        {
+          "type": "eq",
+          "latex": "z^3-1=(z-1)(z^2+z+1),"
+        },
+        {
+          "type": "eq",
+          "latex": "3n+1,\\qquad \\frac{3n+1}{2}."
+        },
+        {
+          "type": "p",
+          "text": "The first is a standard polynomial factorization. For an odd positive integer n, the other two expressions represent different Collatz conventions: the unaccelerated odd step, and that step followed by one division by two. The full odd-to-odd Syracuse step removes every factor of two."
+        },
+        {
+          "type": "p",
+          "text": "No map linking these cubic roots, the Collatz branches and the logistic quarter-turn was supplied. Their appearance in the same notebook is retained as a proposed research connection, not an equivalence."
+        },
+        {
+          "type": "callout",
+          "label": "Unassigned archival labels",
+          "text": "T₀, T₁, T₂ and T₃ were supplied without definitions. They remain placeholders. No transition rule, four-layer tower construction or identity among them is inferred.",
+          "status": "open"
+        },
+        {
+          "type": "p",
+          "text": "A useful next recovery is the definition of each T-label and the intended map from the cubic or Collatz expressions to the other constructions. That would turn a remembered association into a question we can check."
+        }
+      ]
+    }
+  ]
+}

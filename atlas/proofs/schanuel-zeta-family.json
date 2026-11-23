@@ -1,0 +1,231 @@
+{
+  "title": "The Z(p) family under Schanuel",
+  "subtitle": "A focused reading note from the Pirate Chest",
+  "date": "23 November 2026",
+  "author": "Zolton / EncapsulatorP · with ChatGPT",
+  "source_commit": "cc3f20117eaead570db6077377a43a92c0bfc652",
+  "reviewed_proof_commit": "29f9232545aa112cd6ffa9fe1f3c0e85d093dedd",
+  "status": "conditional",
+  "statusLabel": "Conditional on complex Schanuel",
+  "pages": [
+    {
+      "id": "schanuel-zeta-family-orientation",
+      "title": "The Z(p) family under Schanuel",
+      "kicker": "NOTE 05 · CONDITIONAL ON COMPLEX SCHANUEL",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Euler’s even-zeta formula gives exact rational coefficients cₚ for every odd integer p ≥ 3. Assuming complex Schanuel, π and any finite list of the corresponding Z(p) values are algebraically independent."
+        },
+        {
+          "type": "eq",
+          "latex": "Z(p)=e^{c_p\\pi^p}+1,\\qquad p=3,5,7,\\ldots"
+        },
+        {
+          "type": "callout",
+          "label": "Conditional on complex Schanuel",
+          "status": "conditional",
+          "text": "The zeta reduction is unconditional. The independence conclusion in this argument assumes the full complex Schanuel conjecture. Distinct odd exponents and nonzero rational coefficients are part of the hypotheses."
+        },
+        {
+          "type": "p",
+          "text": "First identify the exact Bernoulli coefficient. Then apply the conjecture to iπ and the selected real π-power exponents; field containment gives the required transcendence-degree bound."
+        },
+        {
+          "type": "h",
+          "text": "One concrete next step"
+        },
+        {
+          "type": "p",
+          "text": "Check the literature for this specific consequence and investigate unconditional statements separately. Small numerical coefficients do not strengthen the truth status of Schanuel."
+        },
+        {
+          "type": "h",
+          "text": "Sources and related reading"
+        },
+        {
+          "type": "p",
+          "text": "<b>[S3] Even-zeta values.</b> NIST Digital Library of Mathematical Functions, §25.6, equation 25.6.2. This classical formula supplies the exact coefficient c<sub>p</sub>.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "[S3] Euler’s even-zeta evaluation",
+          "url": "https://dlmf.nist.gov/25.6.E2"
+        },
+        {
+          "type": "p",
+          "text": "<b>[S4] Complex Schanuel conjecture.</b> I. A. Broudy and S. Eterović, <i>Schanuel type conjectures and disjointness</i>, The Ramanujan Journal 62 (2023), 781–795, Conjecture 3.1. This supplies the conjectural assumption; the Z(p) deduction is written here.",
+          "small": true
+        },
+        {
+          "type": "link",
+          "text": "[S4] Read the precise Schanuel assumption",
+          "url": "https://link.springer.com/article/10.1007/s11139-023-00707-3"
+        },
+        {
+          "type": "link",
+          "text": "Read the pinned collection source",
+          "url": "https://github.com/EncapsulatorP/EncapsulatorP.github.io/blob/cc3f20117eaead570db6077377a43a92c0bfc652/atlas/logistic-vanishing-terms.md#zeta-family"
+        },
+        {
+          "type": "link",
+          "text": "Return to the Treasure Chest",
+          "url": "https://encapsulatorp.github.io/#buried-logistic-vanishing"
+        }
+      ]
+    },
+    {
+      "id": "zeta-family",
+      "title": "The Z(p) family",
+      "kicker": "01 · EXACT REDUCTION; CONDITIONAL INDEPENDENCE",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Let p be an odd integer at least 3. Primality is optional. Define"
+        },
+        {
+          "type": "eq",
+          "latex": "Z(p)=\\exp\\!\\left(\\frac{\\pi\\zeta(p-1)}p\\right)+1."
+        },
+        {
+          "type": "p",
+          "text": "For p = 2m + 1 with m ≥ 1, Euler’s even-zeta evaluation [S3] gives"
+        },
+        {
+          "type": "eq",
+          "latex": "\\zeta(2m)=\\frac{(2\\pi)^{2m}}{2(2m)!}|B_{2m}|,"
+        },
+        {
+          "type": "eq",
+          "latex": "Z(p)=e^{c_p\\pi^p}+1,\\qquad c_p=\\frac{2^{p-2}|B_{p-1}|}{p!}\\in\\mathbb{Q}_{>0}."
+        },
+        {
+          "type": "p",
+          "text": "Here B<sub>2m</sub> denotes a Bernoulli number. Equivalently"
+        },
+        {
+          "type": "eq",
+          "latex": "c_{2m+1}=\\frac{(-1)^{m+1}2^{2m-1}B_{2m}}{(2m+1)!}."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "p",
+            "cₚ",
+            "Exponent in Z(p) − 1"
+          ],
+          "rows": [
+            [
+              "3",
+              "1/18",
+              "π³/18"
+            ],
+            [
+              "5",
+              "1/450",
+              "π⁵/450"
+            ],
+            [
+              "7",
+              "1/6615",
+              "π⁷/6615"
+            ]
+          ],
+          "widths": [
+            0.16,
+            0.28,
+            0.56
+          ]
+        },
+        {
+          "type": "p",
+          "text": "The case p = 2 is excluded because ζ(1) has a pole. For even p ≥ 4, the displayed rational coefficient does not follow from the even-zeta formula."
+        },
+        {
+          "type": "callout",
+          "label": "Conditional proposition",
+          "text": "Assume the full complex Schanuel conjecture. For pairwise distinct odd integers p₁, …, pₖ ≥ 3, the numbers π, Z(p₁), …, Z(pₖ) are algebraically independent over ℚ.",
+          "status": "conditional"
+        },
+        {
+          "type": "p",
+          "text": "“Algebraically independent” means that no nonzero polynomial with rational coefficients in these k + 1 variables vanishes on the tuple. The next page gives the deduction and keeps the assumption visible."
+        },
+        {
+          "type": "p",
+          "text": "The exact zeta reduction is unconditional. This argument’s algebraic-independence conclusion, and hence its individual-transcendence conclusion for Z(p), remain conditional on Schanuel. The calculation does not prove the conjecture or change its evidential status."
+        }
+      ]
+    },
+    {
+      "id": "schanuel-proof",
+      "title": "The conditional Schanuel argument",
+      "kicker": "02 · COMPLETE DEDUCTION AND DOMAIN LIMITS",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Complex Schanuel states that for ℚ-linearly independent complex numbers α₀, …, αₖ, the field generated by these numbers and their exponentials has transcendence degree at least k + 1 over ℚ [S4]. Apply it to"
+        },
+        {
+          "type": "eq",
+          "latex": "\\alpha_0=i\\pi,\\qquad \\alpha_j=c_{p_j}\\pi^{p_j}\\quad(1\\le j\\le k)."
+        },
+        {
+          "type": "p",
+          "text": "<b>Linear independence.</b> In a rational relation among these numbers, the imaginary part forces the coefficient of iπ to vanish. The rest is a polynomial relation in π with distinct powers and nonzero rational c<sub>pⱼ</sub>. Transcendence of π forces every remaining coefficient to vanish."
+        },
+        {
+          "type": "p",
+          "text": "<b>The Schanuel bound.</b> With E the field generated by these inputs and their exponentials, the conjecture gives"
+        },
+        {
+          "type": "eq",
+          "latex": "E=\\mathbb{Q}(\\alpha_0,\\ldots,\\alpha_k,e^{\\alpha_0},\\ldots,e^{\\alpha_k}),\\qquad \\operatorname{trdeg}_{\\mathbb{Q}}E\\ge k+1."
+        },
+        {
+          "type": "p",
+          "text": "Euler’s identity gives e<super>α₀</super> = −1, and e<super>αⱼ</super> = Z(pⱼ) − 1. Therefore"
+        },
+        {
+          "type": "eq",
+          "latex": "E\\subseteq K:=\\mathbb{Q}(i,\\pi,Z(p_1),\\ldots,Z(p_k))."
+        },
+        {
+          "type": "p",
+          "text": "Adjoining i is algebraic, so"
+        },
+        {
+          "type": "eq",
+          "latex": "\\operatorname{trdeg}_{\\mathbb{Q}}K=\\operatorname{trdeg}_{\\mathbb{Q}}\\mathbb{Q}(\\pi,Z(p_1),\\ldots,Z(p_k))\\le k+1."
+        },
+        {
+          "type": "p",
+          "text": "The lower and upper bounds force equality. A field generated by k + 1 numbers has transcendence degree k + 1 exactly when those generators are algebraically independent. This proves the conditional proposition. The field containment above suffices; literal equality of E and K is not needed."
+        },
+        {
+          "type": "callout",
+          "label": "Why the complex version matters",
+          "text": "The selected inputs include iπ. A real-only version of Schanuel is not the assumption used in this proof.",
+          "status": "conditional"
+        },
+        {
+          "type": "h",
+          "text": "The Euler counterexample has a domain"
+        },
+        {
+          "type": "eq",
+          "latex": "q=i,\\quad m=1:\\qquad e^{q\\pi^m}=e^{i\\pi}=-1."
+        },
+        {
+          "type": "p",
+          "text": "This refutes a blanket transcendence claim allowing every nonzero <b>complex algebraic</b> coefficient q. It does not refute a claim restricted to rational or real q, since i is neither. Lindemann’s algebraic-input theorem does not directly apply to c<sub>p</sub>π<super>p</super>, whose input is transcendental."
+        },
+        {
+          "type": "p",
+          "text": "This is a direct deduction from the stated conjecture and the even-zeta formula. Novelty of this particular consequence has not been established."
+        }
+      ]
+    }
+  ]
+}
