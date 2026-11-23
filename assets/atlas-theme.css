@@ -175,7 +175,7 @@ body { accent-color: var(--atlas-accent); }
 .tr-mini-art { background: var(--atlas-deep); border-radius: 7px; }
 .tr-orbit-emblem { background: var(--atlas-deep); border-radius: 18px; padding: 10px; }
 
-/* Mathematical stages use one dark teal, retaining their high-contrast marks. */
+/* Mathematical stages use midnight blue with distinct plot colors. */
 .at-featured, .at-signatures, .vf-header-model, .gb-bench, .gb-stage,
 .cc-instrument, .cc-console, .tr-panel, .page:not(.atlas-page) .screen,
 .page[data-page="collatz"] .cm-card {
@@ -277,6 +277,7 @@ body { accent-color: var(--atlas-accent); }
 /* The same paper and dark panels in the workbench, chest and research plan. */
 .tr-panel, .vf-header-model { background: var(--atlas-deep-panel); border-color: #526788; }
 .pirate-chest .pirate-chest-head { background: linear-gradient(125deg, #101d31, #252746); }
+.pirate-chest-head .chest-invitation { color: var(--atlas-muted-on-deep); }
 .pp-page {
   --pp-paper: var(--atlas-paper);
   --pp-card: var(--atlas-surface);
