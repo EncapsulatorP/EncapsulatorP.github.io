@@ -10,6 +10,16 @@ Questions worth keeping. Constructions worth exploring. Arguments worth finishin
 
 **[Open the research atlas →](https://encapsulatorp.github.io/#atlas)**
 
+[![The Pirate Chest quest: the P symbol, then five stops](assets/quest-header.svg)](https://encapsulatorp.github.io/treasure-hunt/quest/)
+
+<a href="https://suno.com/s/aWDqYgQ2SZQSAFUz"><img src="assets/quest-song.svg" alt="Play Convolution Kiss, the quest song, on Suno" width="430"></a>
+
+**P is the quest symbol.** *p* and *q* are the primes, **P** is what can be solved fast, and **?** is everything still unknown.
+
+**Pick a treasure:** [① The two-factor gate](https://encapsulatorp.github.io/evidence/) · [② Goldbach observatory](https://encapsulatorp.github.io/interactive/goldbach.html) · [③ Disappointment Island](https://encapsulatorp.github.io/evidence/) · [④ The flat tangent](https://encapsulatorp.github.io/treasure-hunt/quest/) · ⑤ The defect you can count
+
+<sub>Quest header and song button: Claude · Fable 5.2, 24 November 2026 · research direction Zolton / EncapsulatorP · zebracorn cut from Zolton's Grok video · Nevanlinna example and “Convolution Kiss”: DeepSeek contributions.</sub>
+
 [![Omega Stability — a connected research thread](assets/omega-stability-thread-cover.png)](https://encapsulatorp.github.io/#atlas?entry=omega-stability)
 
 </div>
