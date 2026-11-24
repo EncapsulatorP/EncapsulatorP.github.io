@@ -1,0 +1,53 @@
+/* Research routes — light tones (24 Nov 2026).
+   Replaces the dark teal / slate / plum route cards with soft tints
+   that sit with the site's blue + purple theme. No green, no brown. */
+
+.pp-route,
+.pp-page .pp-route {
+  background: linear-gradient(140deg, #f3efff 0%, #e6e0fb 100%);
+  border: 1px solid #cbbff0;
+  color: #2a2148;
+  box-shadow: 0 6px 18px rgba(80, 60, 150, .07);
+}
+.pp-route:nth-child(3n+2),
+.pp-page .pp-route:nth-child(3n+2) {
+  background: linear-gradient(140deg, #eef4ff 0%, #dde8fd 100%);
+  border-color: #b6c8f1;
+}
+.pp-route:nth-child(3n),
+.pp-page .pp-route:nth-child(3n) {
+  background: linear-gradient(140deg, #fff4ea 0%, #fde3f0 100%);
+  border-color: #f2c4d6;
+}
+.pp-route:hover { box-shadow: 0 10px 26px rgba(80, 60, 150, .13); }
+
+.pp-route .pp-route-label { color: #5b4a96; }
+.pp-route h4 { color: #231a46; }
+.pp-route p { color: #4a4268; }
+
+.pp-route .pp-route-repos span {
+  background: rgba(255, 255, 255, .7);
+  border-color: #bdb2e2;
+  color: #3b2f6b;
+}
+.pp-route:nth-child(3n+2) .pp-route-repos span { border-color: #a9bdea; color: #2c3f74; }
+.pp-route:nth-child(3n) .pp-route-repos span { border-color: #ecb7cb; color: #6a2f4f; }
+
+.pp-route .pp-route-target { border-top-color: rgba(91, 74, 150, .25); color: #3e3660; }
+.pp-route .pp-route-target strong { color: #5b4a96; }
+
+.pp-route .pp-button-quiet {
+  background: #ffffff;
+  color: #3b2a78 !important;
+  border-color: #a996dd;
+}
+.pp-route .pp-button-quiet:hover { background: #ece6fb; border-color: #6f58b8; }
+.pp-route:nth-child(3n) .pp-button-quiet { color: #8a2f5c !important; border-color: #e59ab8; }
+.pp-route:nth-child(3n) .pp-button-quiet:hover { background: #fde8f1; border-color: #c95b8a; }
+
+.pp-route .pp-reading-link,
+.pp-route .pp-route-search { color: #4a3d8a !important; }
+.pp-route:nth-child(3n) .pp-reading-link,
+.pp-route:nth-child(3n) .pp-route-search { color: #9a3d66 !important; }
+
+.pp-route[aria-current=true] { outline: 3px solid #7a62d0; outline-offset: 3px; }
