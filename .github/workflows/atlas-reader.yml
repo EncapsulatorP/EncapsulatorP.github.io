@@ -8,6 +8,8 @@ on:
       - 'assets/atlas-*.css'
       - 'assets/logo-encapsulatorp-*.png'
       - 'index.html'
+      - 'map/**'
+      - 'evidence/**'
       - 'treasure-hunt/**'
       - 'package*.json'
       - '.github/workflows/atlas-reader.yml'
@@ -18,6 +20,8 @@ on:
       - 'assets/atlas-*.css'
       - 'assets/logo-encapsulatorp-*.png'
       - 'index.html'
+      - 'map/**'
+      - 'evidence/**'
       - 'treasure-hunt/**'
       - 'package*.json'
       - '.github/workflows/atlas-reader.yml'
@@ -37,7 +41,7 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Preserve every source, equation and evidence label
+      - name: Check reader links, source content and evidence labels
         run: python3 atlas/verify_html_semantics.py
       - name: Check playback and complete GIF exports
         run: node atlas/verify_reader.cjs

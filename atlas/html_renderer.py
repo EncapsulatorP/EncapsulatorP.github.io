@@ -11,7 +11,6 @@ import hashlib
 import html
 import io
 import json
-import os
 import re
 from functools import lru_cache
 from html.parser import HTMLParser
@@ -29,6 +28,8 @@ matplotlib.rcParams.update({
 from matplotlib.font_manager import FontProperties
 from matplotlib.mathtext import math_to_image
 
+from reader_navigation import ATLAS_CONTENTS, HOME, primary_navigation, relative_url, site_href
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE_HOSTS = {"encapsulatorp.github.io", "www.encapsulatorp.github.io"}
@@ -40,6 +41,21 @@ COLLECTION_EXACT_SECTIONS = {
     "prime-polynomials",
 }
 SECTION_STATUS = {"schanuel-proof": "conditional", "review-finding": "review"}
+
+# Use the matching interactive exhibit where one exists, or the corresponding
+# statement on the Treasure Hunt proof board.
+PROOF_ROUTES = {
+    "alternating-towers": ("Explore alternating towers", "index.html#towers"),
+    "logistic-quarter-turn": ("Open the quarter-turn lab", "treasure-hunt/#logistic-lab"),
+    "logistic-collapse-vanishing": ("Explore logistic collapse", "treasure-hunt/#vanishing"),
+    "dimensions-and-fragments": ("Dimension and cardinality on the proof board", "treasure-hunt/#board-dimensions"),
+    "dyadic-remainder": ("Dyadic remainder on the proof board", "treasure-hunt/#board-dyadic"),
+    "fractional-exponential-maps": ("Fractional maps on the proof board", "treasure-hunt/#board-six-maps"),
+    "palindrome-counting": ("Palindrome counting on the proof board", "treasure-hunt/#board-palindromes"),
+    "prime-polynomial-counts": ("Prime-polynomial counts on the proof board", "treasure-hunt/#board-prime-counts"),
+    "schanuel-zeta-family": ("Schanuel deduction on the proof board", "treasure-hunt/#board-schanuel"),
+}
+PROOF_BOARD = ("Open the proof board", "treasure-hunt/#proof-board")
 
 # Hide reading content before first paint; the runtime installs its visual masks
 # synchronously before releasing this cloak. Reduced motion and failed scripts
@@ -54,10 +70,6 @@ def esc(value) -> str:
 
 def script_json(value) -> str:
     return json.dumps(value, ensure_ascii=False, indent=2).replace("</", "<\\/")
-
-
-def relative_url(target: Path, output: Path) -> str:
-    return Path(os.path.relpath(target, output.parent)).as_posix()
 
 
 def migrate_url(value: str) -> str:
@@ -347,8 +359,8 @@ def render_document(source: Path, output: Path, *, status: str | None = None,
     status = status or data.get("status", "reference")
     passages, gif_blocks = [], []
     source_rel = source.relative_to(ROOT).as_posix()
-    root_url = relative_url(ROOT / "index.html", output)
-    return_url = root_url + "#interactive?topic=goldbach-involution"
+    route_label, route = PROOF_ROUTES.get(document, PROOF_BOARD)
+    return_url = site_href(route, output)
 
     def prose(text, passage_id, *, allowed, current_status, tag="p", classes="", attrs="", gif_type="paragraph"):
         content, english = inline(text)
@@ -481,8 +493,7 @@ def render_document(source: Path, output: Path, *, status: str | None = None,
     gif_js = relative_url(ROOT / "assets/atlas-gif.js", output)
     reveal_js = relative_url(ROOT / "assets/atlas-reveal.js?v=unify-1", output)
     wordmark_js = relative_url(ROOT / "assets/pq-wordmark.js", output)
-    collection = relative_url(ROOT / "atlas/README.html", output)
-    board = relative_url(ROOT / "treasure-hunt/index.html", output)
+    contents = site_href(ATLAS_CONTENTS, output)
     complete_sections = "\n".join(section_html)
     description = reading_note or data.get("subtitle") or data["title"]
     note_html = f'\n<p class="reader-subtitle">{html.escape(reading_note)}</p>' if reading_note else ""
@@ -497,8 +508,9 @@ def render_document(source: Path, output: Path, *, status: str | None = None,
 </head><body class="atlas-reader" data-reader-status="{esc(status)}">
 <a class="reader-skip" data-reader-chrome href="#reader-content">Skip to the complete text</a>
 <div class="reader-shell"><header class="reader-header">
-<a class="reader-brand" data-reader-chrome href="{esc(return_url)}"><img src="{esc(config['logoSrc'])}" alt="EncapsulatorP" width="64" height="64"></a>
-<nav class="reader-nav" data-reader-chrome aria-label="Reading routes"><a href="{esc(return_url)}">Interactive space</a><a href="{esc(collection)}">Complete atlas</a><a href="{esc(board)}">Proof board</a></nav>
+<a class="reader-brand" data-reader-chrome href="{esc(site_href(HOME, output))}"><img src="{esc(config['logoSrc'])}" alt="EncapsulatorP" width="64" height="64"></a>
+{primary_navigation(output)}
+<p class="reader-routes" data-reader-chrome><a href="{esc(return_url)}">{esc(route_label)}</a><a href="{esc(contents)}">Atlas contents</a></p>
 <div data-reader-reveal>
 <p class="reader-kicker">ENCAPSULATORP · {html.escape(status_label)}</p>{title}
 {('<p class="reader-subtitle">' + html.escape(data['subtitle']) + '</p>') if data.get('subtitle') else ''}
@@ -512,7 +524,7 @@ def render_document(source: Path, output: Path, *, status: str | None = None,
 {complete_sections}
 </main><footer class="reader-footer"><p data-reader-chrome><a href="{esc(relative_url(source, output))}">Structured source</a>{md_link}</p>
 <details class="reader-provenance" data-reader-reveal data-archival-provenance><summary>Credits and source-version record</summary><pre>{html.escape(json.dumps(metadata, ensure_ascii=False, indent=2))}</pre></details>
-<p data-reader-chrome><a href="{esc(return_url)}">Return to the interactive space</a></p></footer></div>
+<p data-reader-chrome><a href="{esc(return_url)}">{esc(route_label)}</a></p></footer></div>
 <script type="application/json" id="reader-source">{script_json(data)}</script>
 <script type="application/json" id="reader-config">{script_json(config)}</script>
 <script src="{esc(gif_js)}" defer></script><script src="{esc(reveal_js)}" defer></script>

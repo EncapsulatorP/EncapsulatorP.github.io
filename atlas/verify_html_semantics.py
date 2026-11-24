@@ -927,6 +927,80 @@ class Verifier:
                                    f"{relative}: broken fragment {href!r}")
         self.counts["local_links_and_assets"] = total
 
+    def reader_navigation(self):
+        """Validate the page-level routes separately from scholarly citations."""
+        home = self.document("index.html")
+        if not home:
+            return
+        routes = [
+            ("Home", ("index.html", "home")),
+            ("Map", ("map/index.html", "")),
+            ("Atlas", ("index.html", "atlas")),
+            ("Treasure Hunt", ("treasure-hunt/index.html", "")),
+            ("Evidence", ("evidence/index.html", "")),
+        ]
+        atlas_contents = ("atlas/README.html", "contents")
+        proof_board = ("treasure-hunt/index.html", "proof-board")
+        proof_topics = {
+            "alternating-towers": ("index.html", "towers"),
+            "logistic-quarter-turn": ("treasure-hunt/index.html", "logistic-lab"),
+            "logistic-collapse-vanishing": ("treasure-hunt/index.html", "vanishing"),
+            "dimensions-and-fragments": ("treasure-hunt/index.html", "board-dimensions"),
+            "dyadic-remainder": ("treasure-hunt/index.html", "board-dyadic"),
+            "fractional-exponential-maps": ("treasure-hunt/index.html", "board-six-maps"),
+            "palindrome-counting": ("treasure-hunt/index.html", "board-palindromes"),
+            "prime-polynomial-counts": ("treasure-hunt/index.html", "board-prime-counts"),
+            "schanuel-zeta-family": ("treasure-hunt/index.html", "board-schanuel"),
+        }
+
+        def destination(page, href):
+            parsed = urlsplit(href)
+            self.check(bool(href) and not (parsed.scheme or parsed.netloc or href.startswith("/")),
+                       f"{page}: reader navigation must use a relative URL: {href!r}")
+            return self.local_target(page, href)
+
+        def links(page, node, tag="a", attribute="href"):
+            return [(link.text().strip(), destination(page, link.attrs.get(attribute, "")))
+                    for link in node.find(tag=tag)]
+
+        desktop = home.find(attr="class", value="tr-nav-primary")
+        mobile = home.find(tag="select", attr="id", value="tr-all-rooms")
+        self.check(len(desktop) == 1 and links("index.html", desktop[0]) == routes,
+                   "Homepage primary links changed")
+        self.check(len(mobile) == 1 and links("index.html", mobile[0], "option", "value") == routes,
+                   "Homepage mobile navigation differs from primary links")
+
+        for page, config in self.configs.items():
+            doc = self.documents[page]
+            primary = doc.find(tag="nav", attr="aria-label", value="Primary")
+            self.check(len(primary) == 1 and links(page, primary[0]) == routes,
+                       f"{page}: primary navigation differs from the homepage")
+            brand = doc.find(tag="a", attr="class", value="reader-brand")
+            self.check(len(brand) == 1 and destination(page, brand[0].attrs.get("href", "")) == routes[0][1],
+                       f"{page}: brand must link to Home")
+            footer = doc.find(tag="footer", attr="class", value="reader-footer")
+            self.check(len(footer) == 1, f"{page}: expected one reader footer")
+            if page in BASELINE_DATA["structured_outputs"]:
+                topic = proof_topics.get(config["entryId"], proof_board)
+                context = doc.find(tag="p", attr="class", value="reader-routes")
+                self.check(len(context) == 1 and [target for _, target in links(page, context[0])]
+                           == [topic, atlas_contents], f"{page}: incorrect proof backlink or Atlas contents route")
+                self.check(destination(page, config.get("returnUrl", "")) == topic,
+                           f"{page}: incorrect returnUrl for {config['entryId']}")
+            else:
+                topic = routes[0][1]
+                menu = atlas_contents if config["status"] == "false" else topic
+                self.check(destination(page, config.get("menuHref", "")) == menu,
+                           f"{page}: incorrect reader menu destination")
+                if config["status"] == "false":
+                    back = doc.find(attr="class", value="reader-entry-action")
+                    self.check(len(back) == 1 and [target for _, target in links(page, back[0])] == [menu],
+                               f"{page}: rejected-claim action must return to the Atlas")
+            if footer:
+                self.check(topic in [target for _, target in links(page, footer[0])],
+                           f"{page}: incorrect footer return link")
+        self.counts["readers_with_primary_navigation"] = len(self.configs)
+
     def run(self, *, sources_only=False):
         catalog = self.sources()
         self.traps(html=not sources_only)
@@ -937,6 +1011,7 @@ class Verifier:
             self.live_pdf_routes()
             self.legacy_pdf_routes()
             self.full_reveal_contract()
+            self.reader_navigation()
             self.links()
         return {
             "ok": not self.errors, "baseline_commit": BASELINE_DATA["commit"],
