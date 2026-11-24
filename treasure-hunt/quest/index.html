@@ -59,17 +59,17 @@ body.teen .vig{background:radial-gradient(120% 90% at 50% 45%,transparent 50%,rg
 .credits-inner{max-width:650px;width:100%;animation:creditsRise 1.4s ease both}.credits-inner h2{font-size:clamp(28px,6vw,56px);letter-spacing:-.04em;margin:.3em 0 .9em}.credits-inner p{font-size:clamp(13px,1.8vw,17px);line-height:1.5;margin:.85em 0;color:#dce1eb}.credits-inner small{display:block;font:700 10px/1.5 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:#ffe14d}.credits-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:24px}.credits-actions button,.credits-actions a{background:transparent;color:#fff;border:1px solid #667184;border-radius:99px;padding:12px 18px;font:700 12px var(--mono);cursor:pointer;text-decoration:none}.credits-actions button:hover,.credits-actions a:hover{background:#ffe14d;color:#131722}
 @keyframes creditsFade{from{opacity:0}to{opacity:1}}@keyframes creditsRise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}@media(prefers-reduced-motion:reduce){#endcredits[open],.credits-inner{animation:none}}
 </style>
-<style>.ep-quest-morph{margin:12px auto;max-width:680px;padding:8px 12px;border-radius:14px;background:#142139;color:#f6f5ff;border:1px solid #8054b5;text-align:center}.ep-quest-morph summary{cursor:pointer;font:600 12px/1.5 system-ui,sans-serif;color:#c5bbff;letter-spacing:.05em}.ep-quest-morph picture{display:block;margin:6px auto}.ep-quest-morph img{display:block;max-width:100%;width:auto;max-height:clamp(70px,18vh,160px);object-fit:contain;margin:auto}.ep-quest-morph p{font:500 11px/1.4 system-ui,sans-serif;color:#e6eaff;margin:4px auto}.ep-quest-morph a{color:#c5bbff;text-decoration:underline}.ep-quest-morph summary:focus-visible,.ep-quest-morph a:focus-visible{outline:2px solid #ffe14d;outline-offset:2px}@media(prefers-reduced-motion:reduce){.ep-quest-morph img{max-height:52px}} #pick .ep-quest-morph{max-width:560px;margin-block:12px}#pick .ep-quest-morph p{font-size:11px;color:#e6eaff}#pick .pk{width:100%}@media(max-height:520px){#pick .ep-quest-morph img{max-height:80px}#pick{align-items:start}}</style>
+<style>.ep-quest-morph{margin:12px auto;max-width:680px;padding:8px 12px;border-radius:14px;background:#142139;color:#f6f5ff;border:1px solid #8054b5;text-align:center}.ep-quest-morph summary{cursor:pointer;font:600 12px/1.5 system-ui,sans-serif;color:#c5bbff;letter-spacing:.05em}.ep-quest-morph picture{display:block;margin:6px auto}.ep-quest-morph img{display:block;max-width:100%;width:auto;max-height:clamp(70px,18vh,160px);object-fit:contain;margin:auto}.ep-quest-morph p{font:500 11px/1.4 system-ui,sans-serif;color:#e6eaff;margin:4px auto}.ep-quest-morph a{color:#c5bbff;text-decoration:underline}.ep-quest-morph summary:focus-visible,.ep-quest-morph a:focus-visible{outline:2px solid #ffe14d;outline-offset:2px}@media(prefers-reduced-motion:reduce){.ep-quest-morph img{max-height:52px}} #pick .ep-quest-morph{max-width:560px;margin-block:12px}#pick .ep-quest-morph p{font-size:11px;color:#e6eaff}#pick .pk{width:100%}@media(max-height:520px){#pick .ep-quest-morph img{max-height:80px}#pick{align-items:start}}#pokehint{position:fixed;left:50%;bottom:calc(82px + var(--caph,190px) + 14px);transform:translateX(-50%);font:700 clamp(10px,.8vw,13px)/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--deep);background:var(--sun);padding:.6em 1em;border-radius:99px;pointer-events:none;animation:pkb 1.6s ease-in-out infinite;transition:opacity .5s}#pokehint.off{opacity:0}@keyframes pkb{50%{transform:translateX(-50%) translateY(-4px)}}@media (prefers-reduced-motion:reduce){#pokehint{animation:none}}</style>
 </head>
 <body>
 <canvas id="gl" aria-label="Animated 3D scene: a crew of zebracorns flies through the shapes of the proof; some are caught by traps, the rest reach the treasure strip"></canvas>
 <div class="vig"></div>
 <div class="title"><div class="kick">EncapsulatorP · The Pirate Chest · Zebracorn crew</div><h1>The flat tangent<br><span>hides a cubic.</span></h1>
 </div>
-<div class="dots" id="dots"></div><div id="crew">6 riding · 0 trapped</div>
+<div class="dots" id="dots"></div><div id="crew">6 riding · 0 trapped</div><div id="pokehint">Tap a monster to poke it</div>
 <div class="cap off" id="cap"><small id="ck"></small><b id="ct"></b><p id="cs"></p><div class="fx" id="cf"></div></div>
 <pre id="hud"></pre>
-<div class="ctl"><a href="https://encapsulatorp.github.io/treasure-hunt/">Proofs</a><button id="mode">Crew</button><button id="prev" aria-label="Previous stop">◀</button><button id="play">❚❚ Pause</button><button id="next" aria-label="Next stop">▶</button></div>
+<div class="ctl"><a href="https://encapsulatorp.github.io/treasure-hunt/">Proofs</a><button id="poke" aria-label="Poke a monster: it swats a zebracorn">🦑 Poke</button><button id="mode">Crew</button><button id="prev" aria-label="Previous stop">◀</button><button id="play">❚❚ Pause</button><button id="next" aria-label="Next stop">▶</button></div>
 <div id="pick"><div class="pk"><div class="kick">EncapsulatorP · The Pirate Chest</div><h2>Choose your crew</h2><details class="ep-quest-morph" open><summary>q → P → ? · Quest symbol</summary><picture><source media="(prefers-reduced-motion: reduce)" srcset="/assets/logo-encapsulatorp-96.png"><img src="/assets/p-quest-header.gif" alt="EncapsulatorP header animation: q transforms into P and the question mark" decoding="async"></picture><p>p, q: primes · P: polynomial time · ?: open questions. <a href="/assets/p-quest-header.gif">Original header</a></p></details><p>Pick how you want the story told. Only this choice is remembered on this device. No age, name or other detail is stored or sent anywhere.</p>
 <div class="two"><button id="pk"><b>Deckhand</b><span>For young pirates. Bright seas, simple words, the big ideas you can see.</span></button><button id="pt"><b>Navigator</b><span>For teens. Storm light, the real formulas, live numbers on screen.</span></button><a id="pc" href="https://encapsulatorp.github.io/treasure-hunt/"><b>Captain</b><span>No flying. The written proofs, hypotheses and the HTML library.</span></a></div></div></div>
 <dialog id="endcredits" aria-labelledby="credits-title"><div class="credits-inner"><div class="kick">EncapsulatorP · The Pirate Chest</div><h2 id="credits-title">Treasure recovered.</h2><p><small>Research direction</small>Zolton / EncapsulatorP</p><p><small>Derivations</small>With ChatGPT</p><p><small>Scene and checks</small>Claude</p><p><small>Zebracorn crew</small>Cut from Zolton’s Grok video</p><p><small>Mathematical shapes</small>Built from the stated formulas</p><div class="credits-actions"><button id="replay" type="button">Replay expedition</button><a href="https://encapsulatorp.github.io/treasure-hunt/">Explore the proofs</a></div></div></dialog>
@@ -277,6 +277,44 @@ function size(){const w=window.innerWidth,h=window.innerHeight;PORT=w/h<1;render
 window.onresize=size;size();
 const camP=new T.Vector3(-9,6,9),camL=new T.Vector3(0,3,0),tmp=new T.Vector3(),tan=new T.Vector3(),side=new T.Vector3(),UP=new T.Vector3(0,1,0),cp=new T.Vector3(),ct=new T.Vector3(),clock=new T.Clock();let chestOpen=0;cam.position.copy(camP);
 const cl=(v,a,b)=>Math.max(a,Math.min(b,v));
+// ---------- poke a monster: it swats a zebracorn, who spins off chasing a proof, then rides home ----------
+const POKE=[];TRAPS.forEach(Tp=>POKE.push({o:Tp.g,kind:'kraken',t:-9}));seaTraps.forEach(g=>POKE.push({o:g,kind:'sea',t:-9}));POKE.push({o:ness,kind:'ness',t:-9});
+const ray=new T.Raycaster(),ndc=new T.Vector2(),pkW=new T.Vector3(),pkA=new T.Vector3(),pkB=new T.Vector3();
+let pokeHint=true;
+function monsterAt(cx,cy){const r=cvs.getBoundingClientRect();ndc.set(((cx-r.left)/r.width)*2-1,-((cy-r.top)/r.height)*2+1);ray.setFromCamera(ndc,cam);
+ const hits=ray.intersectObjects(POKE.map(p=>p.o),true);if(!hits.length)return null;let o=hits[0].object;while(o){const p=POKE.find(q=>q.o===o);if(p)return p;o=o.parent;}return null;}
+function visibleMonster(){// keyboard / button: the monster closest to the camera that is on screen
+ let best=null,bd=1e9;POKE.forEach(p=>{p.o.getWorldPosition(pkW);const d=pkW.distanceTo(cam.position);pkA.copy(pkW).project(cam);if(Math.abs(pkA.x)<1&&Math.abs(pkA.y)<1&&pkA.z<1&&d<bd){bd=d;best=p;}});return best;}
+function proofAhead(from){// nearest proof shape still ahead of the crew: vanishing terms, closing rings, or the treasure strip
+ let best=null,bd=1e9;const cand=[];zeros.forEach(z=>{if(z.g.visible)cand.push(z.g);});rings.forEach(q=>{if(q.m.visible)cand.push(q.m);});if(strip.visible)cand.push(strip);
+ cand.forEach(o=>{o.getWorldPosition(pkW);if(pkW.x<from.x-2)return;const d=pkW.distanceTo(from);if(d<bd){bd=d;best=pkW.clone();}});
+ if(!best){best=from.clone();best.x+=9;best.y+=3.5;}return best;}
+function poke(p){const now=clock.elapsedTime;if(now-p.t<1.2)return;p.t=now;p.o.getWorldPosition(pkW);
+ const riders=[hero].concat(crew).filter(R=>R.g.visible&&R.board.visible&&!(R.knock&&now-R.knock.t0<R.knock.dur));
+ let v=null,bd=1e9;riders.forEach(R=>{const d=R.g.position.distanceTo(pkW);if(d<bd){bd=d;v=R;}});if(!v)return;
+ v.knock={t0:now+.35,dur:4.6,from:pkW.clone(),spin:(Math.random()<.5?-1:1)*(5+Math.random()*3),tgt:null,off:new T.Vector3()};
+ $('crew').textContent=(p.kind==='ness'?'Nessie':'The kraken')+' swats a zebracorn!';setTimeout(()=>{crewN=-1;},2600);
+ if(pokeHint){pokeHint=false;$('pokehint').classList.add('off');}}
+cvs.addEventListener('pointerdown',e=>{const p=monsterAt(e.clientX,e.clientY);if(p){poke(p);e.preventDefault();}});
+cvs.addEventListener('pointermove',e=>{if(frameN%3)return;cvs.style.cursor=monsterAt(e.clientX,e.clientY)?'pointer':'';});
+$('poke').onclick=()=>{const p=visibleMonster();if(p)poke(p);};
+// monster lunge, applied after the scene sets its idle pose
+function monsterPokes(now){POKE.forEach(p=>{const a=now-p.t;if(a<0||a>1.4)return;const s=Math.sin(Math.min(1,a/1.4)*Math.PI),k=Math.sin(a*18)*(1-a/1.4);
+ if(p.kind==='ness'){p.o.position.y+=s*3.2;p.o.rotation.z=k*.25;}
+ else{const up=p.kind==='kraken'?TRAPS.find(Tp=>Tp.g===p.o).up:p.o;up.scale.y*=1+s*.9;up.rotation.z+=k*.5;up.rotation.y+=s*2.5;}});}
+// knocked rider: the zebracorn leaves its board, tumbles toward the proof, loses balance, and glides back on
+function knockRider(R,now){const K=R.knock;if(!K)return;if(!R.board.visible||!R.g.visible){R.knock=null;R.sp.position.set(0,0,0);return;}const a=(now-K.t0)/K.dur;if(a<0)return;
+ if(a>=1){R.knock=null;R.sp.position.set(0,0,0);R.sp.material.rotation=0;return;}
+ R.sp.getWorldPosition(pkA);if(!K.tgt)K.tgt=proofAhead(R.g.position);
+ const e=t=>t*t*(3-2*t),out=e(Math.min(1,a/.3)),back=e(cl((a-.62)/.38,0,1)),wob=Math.sin(a*Math.PI)*(1-back);
+ // world offset: fling up and toward the proof, orbit it unsteadily, then return to the board (offset 0)
+ pkB.copy(K.tgt).sub(R.g.position);pkB.multiplyScalar(.55*out).add(pkA.set(0,2.6*Math.sin(Math.min(1,a/.3)*Math.PI*.5),0));
+ pkB.x+=Math.sin(now*7.3)*1.1*wob;pkB.z+=Math.cos(now*6.1)*1.1*wob;pkB.y+=Math.sin(now*9.7)*.6*wob;pkB.multiplyScalar(1-back);
+ R.sp.position.copy(pkB).applyAxisAngle(UP,-R.g.rotation.y);
+ R.sp.material.rotation=K.spin*a*(1-back)+Math.sin(now*11)*.35*wob;
+ setPose(R,back>.85?(R===hero?'cap':'ride'):a<.18?'panic':'fall',1-.15*wob);
+ R.tilt.rotation.z+=Math.sin(now*13)*.35*wob;R.tilt.rotation.x+=Math.cos(now*9)*.2*wob;// the empty board wobbles too
+ if(a<.62&&frameN%2===0){const i=pi++%NP;R.sp.getWorldPosition(pkA);pPos[i*3]=pkA.x;pPos[i*3+1]=pkA.y+R.h*.4;pPos[i*3+2]=pkA.z;pVel[i*3]=(Math.random()-.5)*2;pVel[i*3+1]=.5+Math.random();pVel[i*3+2]=(Math.random()-.5)*2;pLife[i]=1;}}
 function tick(){if(!alive)return;const dt=Math.min(.05,clock.getDelta()),now=clock.elapsedTime;frameN++;
  if(TEEN){if(playing){for(let i=0;i<40;i++){hN=f4(pm+hN)-pm;nN++;}if(nN>4e6){hN=.03;nN=0;}}if(frameN%8===0)$('hud').textContent='r*  = '+r.toFixed(10)+'\np±  = '+pp.toFixed(7)+', '+pm.toFixed(7)+'\nd±  = '+(-1-Math.SQRT2).toFixed(7)+', '+(Math.SQRT2-1).toFixed(7)+'\nK±  = '+Kp.toFixed(3)+', '+Km.toFixed(3)+'\n— live check at p₋ —\nn      = '+nN.toLocaleString()+'\nn·hₙ²  = '+(nN*hN*hN).toFixed(7)+'\n1/(2K) = '+(1/(2*Km)).toFixed(7);}
  curve.getPointAt(cl(S/LEN,0,1),tmp);const bx=tmp.x;let v=9.5;SLOW.forEach(q=>{const d=Math.abs(bx-q[0]);if(d<q[1])v=Math.min(v,3+6.5*(d/q[1]));});if(bx<4)v=2.4;
@@ -293,6 +331,7 @@ function tick(){if(!alive)return;const dt=Math.min(.05,clock.getDelta()),now=clo
   fly(R,cp,ct,now,speed,false);const e=cl(q/.45,0,1),e1=e*e*(3-2*e),sk=cl((q-.5)/.5,0,1);
   R.g.position.x+=(Tp.p[0]-R.g.position.x)*e1;R.g.position.z+=(Tp.p[2]-R.g.position.z)*e1;R.g.position.y+=(Tp.g.position.y+3.4-R.g.position.y)*e1-sk*sk*3.6;
   setPose(R,q<.12?'ride':q<.5?'panic':'fall',1-.7*sk);R.sp.material.rotation=q<.5?Math.sin(now*14)*.12*e1:sk*7;R.sp.material.opacity=1-cl((sk-.75)/.25,0,1);R.board.visible=q<.5;R.flames.forEach(fl=>fl.visible=q<.3);});
+ [hero].concat(crew).forEach(R=>knockRider(R,now));
  if(trapped!==crewN){crewN=trapped;$('crew').textContent=(6-trapped)+' riding · '+trapped+' trapped';}
  if(playing&&!atEnd){[hero].concat(crew).forEach((R,zi)=>{if(!R.g.visible||!R.board.visible)return;for(let k=0;k<(zi?1:3);k++){const i=pi++%NP;pPos[i*3]=R.g.position.x-tan.x*.8*R.h/2+(Math.random()-.5)*.3;pPos[i*3+1]=R.g.position.y-.1;pPos[i*3+2]=R.g.position.z-tan.z*.8*R.h/2+(Math.random()-.5)*.3;pVel[i*3]=-tan.x*3+(Math.random()-.5);pVel[i*3+1]=-.5-Math.random();pVel[i*3+2]=-tan.z*3+(Math.random()-.5);pLife[i]=1;}});}
  for(let i=0;i<NP;i++){if(pLife[i]>0){pLife[i]-=dt*.9;pPos[i*3]+=pVel[i*3]*dt;pPos[i*3+1]+=pVel[i*3+1]*dt;pPos[i*3+2]+=pVel[i*3+2]*dt;if(pLife[i]<=0)pPos[i*3+1]=-999;}}pg.attributes.position.needsUpdate=true;
@@ -321,6 +360,7 @@ function tick(){if(!alive)return;const dt=Math.min(.05,clock.getDelta()),now=clo
  seaTraps.forEach((g,i)=>{g.rotation.y=now*.3+i;g.rotation.z=Math.sin(now*1.3+i)*.1;g.scale.y=g.scale.x*(.75+.25*Math.sin(now*.8+i*2));});
  const nx=bx+9+Math.sin(now*.23)*7,nz=Math.sin(now*.31)*3-7.5;ness.rotation.y=Math.cos(now*.31)*.45;ness.position.set(nx,-9.1,nz);humps.forEach((hm,i)=>{hm.position.y=Math.sin(now*2.2-i*1.1)*.3-.15;});nh.rotation.y=Math.sin(now*.9)*.6;qm.material.opacity=.5+.5*Math.sin(now*2);
  sunL.position.set(bx+26,30,-18);sunL.target.position.set(bx,0,0);sunL.target.updateMatrixWorld();sky.position.x=bx;sea.position.x=bx;sunG.position.x=bx+70;
+ monsterPokes(now);
  renderer.render(scene,cam);requestAnimationFrame(tick);}
 show(-1);tick();
 }
