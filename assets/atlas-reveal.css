@@ -18,7 +18,7 @@ html.ar-reveal-pending #reader-content,html.ar-reveal-pending [data-reader-revea
 .trap-fold>:not(summary){padding:.2rem 1rem .6rem}
 .trap-fold-tag{display:inline-block;margin-right:.45rem;padding:.1rem .45rem;border-radius:6px;background:#b8325f;color:#fff;font:700 10px/1.4 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase}
 
-/* Zyntalic shuffle in the citrus gradient #FFF44F → #C9F800 → #7FEF2D; a thin ink outline keeps it legible on paper. */
-.ar-morph:not([data-ar-phase="english"]):not([data-ar-kind="trap"]) .ar-glyph{text-shadow:0 0 1px #18243a,0 0 1px #18243a,0 1px 0 #18243a}
-/* Shuffle mask: citrus gradient text on the paper cover (traps keep their muted grey). */
-.ar-shell:not([data-ar-kind="trap"]) .ar-mask{color:#C9F800;background-image:linear-gradient(90deg,#FFF44F,#C9F800 50%,#7FEF2D),linear-gradient(var(--ar-paper),var(--ar-paper));-webkit-background-clip:text,border-box;background-clip:text,border-box;-webkit-text-fill-color:transparent;text-shadow:none;-webkit-text-stroke:.45px rgba(24,36,58,.7)}
+/* Zyntalic shuffle in the blue → purple → pink gradient #2F6BFF → #8B4DFF → #F0409C; saturated enough to read on paper without an ink outline. */
+.ar-morph:not([data-ar-phase="english"]):not([data-ar-kind="trap"]) .ar-glyph{text-shadow:none}
+/* Shuffle mask: blue–purple–pink gradient text on the paper cover (traps keep their muted grey). */
+.ar-shell:not([data-ar-kind="trap"]) .ar-mask{color:#8B4DFF;background-image:linear-gradient(90deg,#2F6BFF,#8B4DFF 50%,#F0409C),linear-gradient(var(--ar-paper),var(--ar-paper));-webkit-background-clip:text,border-box;background-clip:text,border-box;-webkit-text-fill-color:transparent;text-shadow:none;-webkit-text-stroke:0}

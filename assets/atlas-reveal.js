@@ -15,7 +15,7 @@
   }
 })(typeof globalThis==='object'?globalThis:this,function(Gif){
   'use strict';
-  const COOL=[[0,'#FFF44F'],[.5,'#C9F800'],[1,'#7FEF2D']];
+  const COOL=[[0,'#2F6BFF'],[.5,'#8B4DFF'],[1,'#F0409C']];
   const DULL=[[0,'#65717c'],[.35,'#827481'],[.7,'#887a75'],[1,'#706679']];
   // This alphabet is a transient visual mask, never an asserted translation.
   // Authentic prose endpoints come only from config.passages[].zyntalic.
